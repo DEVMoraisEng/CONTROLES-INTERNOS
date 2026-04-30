@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terrabela do Cerrado · Controle Interno</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & VARS ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0d1117;
+  --bg2:       #161b22;
+  --bg3:       #1c2333;
+  --border:    #30363d;
+  --text:      #e6edf3;
+  --text2:     #8b949e;
+  --text3:     #6e7681;
+  --accent:    #2f81f7;
+  --accent2:   #388bfd;
+
+  /* status cores — documentos */
+  --cinza:     #484f58;
+  --amarelo:   #d29922;
+  --verde:     #2ea043;
+  --verde-claro:#56d364;
+  --laranja:   #db6d28;
+  --vermelho:  #da3633;
+  --roxo:      #8957e5;
+
+  /* status cores — vendas */
+  --azul:      #1f6feb;
+  --amarelo-v: #d29922;
+  --verm-v:    #da3633;
+  --laranja-v: #db6d28;
+  --verde-v:   #2ea043;
+  --verde-esc: #196127;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  min-height: 100vh;
+}
+
+/* ─── HEADER ───────────────────────────────────── */
+.header {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-logo img {
+  height: 32px;
+  opacity: 0.9;
+}
+.header-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.header-setor {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.updated {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+}
+
+/* ─── TOGGLE GESTÃO ────────────────────────────── */
+.toggle-wrap {
+  padding: 20px 24px 0;
+  display: flex;
+  gap: 0;
+}
+.toggle-btn {
+  padding: 10px 28px;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.toggle-btn:first-child { border-radius: 6px 0 0 6px; border-right: none; }
+.toggle-btn:last-child  { border-radius: 0 6px 6px 0; }
+.toggle-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.toggle-btn:not(.active):hover {
+  background: var(--bg3);
+  color: var(--text);
+}
+
+/* ─── MAIN LAYOUT ──────────────────────────────── */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 16px;
+  padding: 16px 24px;
+}
+
+/* ─── MAPA ─────────────────────────────────────── */
+.mapa-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  min-height: 500px;
+}
+.mapa-wrap object,
+.mapa-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+#svg-container {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+#svg-container svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Legenda */
+.legenda {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(13,17,23,0.88);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  max-width: 420px;
+  backdrop-filter: blur(4px);
+}
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text2);
+  font-family: 'DM Mono', monospace;
+}
+.leg-dot {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── QUADROS RÁPIDOS ──────────────────────────── */
+.quadros {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Pesquisa */
+.pesquisa-wrap {
+  position: relative;
+}
+.pesquisa-input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.pesquisa-input:focus { border-color: var(--accent); }
+.pesquisa-input::placeholder { color: var(--text3); }
+.pesquisa-icon {
+  position: absolute;
+  left: 12px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3);
+  font-size: 14px;
+  pointer-events: none;
+}
+.pesquisa-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+}
+.pesquisa-results.show { display: block; }
+.pesquisa-item {
+  padding: 8px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--text2);
+  transition: background 0.1s;
+  font-family: 'DM Mono', monospace;
+}
+.pesquisa-item:hover { background: var(--bg2); color: var(--text); }
+
+/* Quadro de info */
+.info-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  flex: 1;
+}
+.info-card-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.info-card-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Grid de campos */
+.fields-grid {
+  display: grid;
+  gap: 6px;
+}
+.field-row {
+  display: grid;
+  gap: 6px;
+}
+.field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.field-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.field-row.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.field {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 8px 10px;
+  min-width: 0;
+}
+.field-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.field-value {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.field-value.empty { color: var(--text3); font-style: italic; font-size: 11px; }
+.field-value.money { color: #56d364; }
+.field-value.alert { color: var(--amarelo); }
+.field-value.danger { color: var(--vermelho); }
+.field-value.ok    { color: var(--verde); }
+
+/* ─── PLACEHOLDER ESTADO VAZIO ─────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 24px;
+  gap: 8px;
+  color: var(--text3);
+  text-align: center;
+}
+.empty-state-icon { font-size: 32px; opacity: 0.4; }
+.empty-state-text { font-size: 12px; }
+
+/* ─── TABELA ───────────────────────────────────── */
+.tabela-section {
+  padding: 0 24px 24px;
+}
+.tabela-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+.tabela-header-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tabela-controls {
+  display: flex;
+  gap: 8px;
+}
+.btn-sm {
+  padding: 6px 14px;
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text2);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-sm:hover { background: var(--bg3); color: var(--text); }
+.btn-sm.danger:hover { border-color: var(--vermelho); color: var(--vermelho); }
+
+/* Tabela wrapper */
+.tbl-outer {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tbl-scroll {
+  overflow-x: auto;
+  max-height: 480px;
+  overflow-y: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 800px;
+}
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg3);
+}
+thead th {
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+thead th:hover { color: var(--text); }
+thead th .col-filter {
+  display: block;
+  margin-top: 4px;
+}
+thead th input.col-filter-input {
+  width: 100%;
+  padding: 3px 6px;
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text);
+  outline: none;
+}
+thead th input.col-filter-input:focus { border-color: var(--accent); }
+thead th .hide-col-btn {
+  position: absolute;
+  top: 6px; right: 4px;
+  font-size: 10px;
+  color: var(--text3);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+thead th:hover .hide-col-btn { opacity: 1; }
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+  cursor: pointer;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--bg3); }
+tbody tr.selected { background: rgba(47,129,247,0.08); }
+tbody td {
+  padding: 9px 12px;
+  color: var(--text2);
+  white-space: nowrap;
+  font-family: 'DM Mono', monospace;
+}
+tbody td.ref-col { font-weight: 500; color: var(--text); }
+
+/* badges */
+.badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.badge-sim   { background: rgba(46,160,67,0.2);  color: #56d364; }
+.badge-nao   { background: rgba(218,54,51,0.2);  color: #f85149; }
+.badge-vazio { background: rgba(110,118,129,0.2); color: var(--text3); }
+.badge-money { background: rgba(86,211,100,0.15); color: #56d364; }
+.badge-alert { background: rgba(210,153,34,0.2); color: #e3b341; }
+.badge-sem   { background: rgba(110,118,129,0.15); color: var(--text3); font-style: italic; }
+
+/* Colunas ocultas */
+.col-hidden { display: none; }
+
+/* Painel de colunas */
+.col-panel {
+  position: fixed;
+  top: 50%; right: 24px;
+  transform: translateY(-50%);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  width: 220px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 200;
+  display: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.col-panel.show { display: block; }
+.col-panel-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text2);
+  margin-bottom: 12px;
+}
+.col-panel label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text2);
+  padding: 4px 0;
+  cursor: pointer;
+}
+.col-panel label:hover { color: var(--text); }
+.col-panel input[type=checkbox] { accent-color: var(--accent); }
+
+/* Loading */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1000;
+}
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#loading p { font-size: 13px; color: var(--text2); }
+
+/* Tooltip mapa */
+#tip {
+  position: fixed;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: var(--text);
+  pointer-events: none;
+  z-index: 500;
+  display: none;
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+}
+
+/* Responsivo */
+@media (max-width: 1100px) {
+  .main { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <p>Carregando dados...</p>
+</div>
+
+<div id="tip"></div>
+
+<!-- ── HEADER ── -->
+<header class="header">
+  <div class="header-logo">
+    <div>
+      <div class="header-title">Morais Engenharia · Controle Interno</div>
+      <div class="header-setor">Terrabela do Cerrado</div>
+    </div>
+  </div>
+  <div class="updated" id="updated-at">—</div>
+</header>
+
+<!-- ── TOGGLE ── -->
+<div class="toggle-wrap">
+  <button class="toggle-btn active" id="btn-docs" onclick="setModo('docs')">⬡ Gestão Documental</button>
+  <button class="toggle-btn" id="btn-vendas" onclick="setModo('vendas')">◈ Gestão de Vendas</button>
+</div>
+
+<!-- ── MAIN: MAPA + QUADROS ── -->
+<div class="main">
+
+  <!-- Mapa -->
+  <div class="mapa-wrap">
+    <div id="svg-container"><!-- SVG injetado via JS --></div>
+    <div class="legenda" id="legenda-docs">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--cinza)"></div> Não comprado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--amarelo)"></div> Não iniciado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--verde)"></div> Finalizado no prazo</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--laranja)"></div> Finalizado acima prazo</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--vermelho)"></div> Habite-se agendado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--roxo)"></div> Habite-se concluído</div>
+    </div>
+    <div class="legenda" id="legenda-vendas" style="display:none">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--cinza)"></div> Em breve</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--azul)"></div> Disponível</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--verde-claro)"></div> Vendida</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--amarelo-v)"></div> &gt;20 dias</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--verm-v)"></div> &gt;45 dias</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--laranja-v)"></div> &gt;45 dias s/ receber</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--verde-esc)"></div> Entregue</div>
+    </div>
+  </div>
+
+  <!-- Quadros rápidos -->
+  <div class="quadros">
+
+    <!-- Pesquisa -->
+    <div class="pesquisa-wrap">
+      <span class="pesquisa-icon">⌕</span>
+      <input class="pesquisa-input" id="pesquisa" type="text" placeholder="Pesquisar endereço...">
+      <div class="pesquisa-results" id="pesquisa-results"></div>
+    </div>
+
+    <!-- Card de info (preenchido ao clicar) -->
+    <div class="info-card" id="info-card">
+      <div class="empty-state">
+        <div class="empty-state-icon">◎</div>
+        <div class="empty-state-text">Clique em um lote no mapa<br>ou pesquise um endereço</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── TABELA ── -->
+<div class="tabela-section">
+  <div class="tabela-header">
+    <div class="tabela-header-title" id="tabela-titulo">Gestão Documental</div>
+    <div class="tabela-controls">
+      <button class="btn-sm" onclick="toggleColPanel()">⊞ Colunas</button>
+      <button class="btn-sm danger" onclick="resetTabela()">↺ Limpar filtros</button>
+    </div>
+  </div>
+  <div class="tbl-outer">
+    <div class="tbl-scroll">
+      <table id="tabela">
+        <thead id="tabela-head"></thead>
+        <tbody id="tabela-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Painel de colunas -->
+<div class="col-panel" id="col-panel">
+  <div class="col-panel-title">Mostrar / ocultar</div>
+  <div id="col-panel-list"></div>
+</div>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────
+const DATA_URL   = 'data.json';
+const SETOR_DOCS  = 'TERRABELA DO CERRADO';
+const SETOR_VEND  = 'TERRABELA DO CERRADO';
+const SVG_DOCS    = 'TERRABELA_MAPA_DOCUMENTOS.svg';
+const SVG_VENDAS  = 'TERRABELA_MAPA_VENDAS.svg';
+
+// ─── ESTADO GLOBAL ───────────────────────────────
+let modo      = 'docs';   // 'docs' | 'vendas'
+let allDocs   = [];
+let allVendas = [];
+let svgCache  = {};       // { url: svgText }
+let selectedRef = null;
+let colFilters  = {};
+let hiddenCols  = new Set();
+
+// ─── HELPERS ─────────────────────────────────────
+const fmt = v => (v == null || v === '' || v === 'SEM DADOS') ? null : v;
+const fmtDate = s => {
+  if (!s) return null;
+  try {
+    const d = new Date(s);
+    return d.toLocaleDateString('pt-BR');
+  } catch { return s; }
+};
+const fmtMoney = v => {
+  if (v == null || v === 'SEM DADOS') return null;
+  const n = parseFloat(v);
+  if (isNaN(n)) return null;
+  return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+};
+const diffDays = (a, b) => {
+  if (!a || !b) return null;
+  return Math.round((new Date(b) - new Date(a)) / 86400000);
+};
+
+// ─── STATUS DOCS ─────────────────────────────────
+function calcStatusDoc(d) {
+  if (!d) return 'cinza';
+  if (d.aprovou_habite_se)  return 'roxo';
+  if (d.agendou_habite_se)  return 'vermelho';
+  if (d.data_termino_obra && d.data_inicio_obra) {
+    const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
+    return dias <= 150 ? 'verde' : 'laranja';
+  }
+  if (!d.obra_iniciada) return 'amarelo';
+  return 'amarelo';
+}
+
+const COR_DOCS = {
+  cinza:    '#484f58',
+  amarelo:  '#d29922',
+  verde:    '#2ea043',
+  laranja:  '#db6d28',
+  vermelho: '#da3633',
+  roxo:     '#8957e5',
+};
+
+// ─── STATUS VENDAS ────────────────────────────────
+function calcAlertaVenda(v) {
+  if (!v.avaliacao || !v.data_envio_docs) return '';
+  const dias = diffDays(v.data_envio_docs, new Date().toISOString());
+  if (dias == null) return '';
+  const conforme = v.processo_conforme === true || String(v.processo_conforme).toUpperCase() === 'SIM';
+  const assinou  = v.assinou_contrato_banco === true || String(v.assinou_contrato_banco).toUpperCase() === 'SIM';
+  const recebeu  = v.recebeu === true || String(v.recebeu).toUpperCase() === 'SIM';
+  if (dias >= 45 && conforme && assinou && !recebeu) return 'TEMPO CORRIDO MAIOR QUE 45 DIAS E NÃO RECEBEU';
+  if (dias >= 45 && (!conforme || !assinou))        return 'TEMPO CORRIDO MAIOR QUE 45 DIAS';
+  if (dias >= 20 && dias < 45 && (!conforme || !assinou || !recebeu)) return 'TEMPO CORRIDO MAIOR QUE 20 DIAS';
+  return '';
+}
+
+function calcStatusVenda(v) {
+  const entregou = v.entregou_casa === true || String(v.entregou_casa).toUpperCase() === 'SIM';
+  if (entregou) return 'verde-esc';
+  const alerta = calcAlertaVenda(v);
+  if (alerta === 'TEMPO CORRIDO MAIOR QUE 45 DIAS E NÃO RECEBEU') return 'laranja';
+  if (alerta === 'TEMPO CORRIDO MAIOR QUE 45 DIAS')              return 'vermelho';
+  if (alerta === 'TEMPO CORRIDO MAIOR QUE 20 DIAS')              return 'amarelo';
+  if (v.clientes) return 'verde-claro';
+  if (v.avaliacao) return 'azul';
+  return 'cinza';
+}
+
+const COR_VENDAS = {
+  cinza:       '#484f58',
+  azul:        '#1f6feb',
+  'verde-claro': '#56d364',
+  amarelo:     '#d29922',
+  vermelho:    '#da3633',
+  laranja:     '#db6d28',
+  'verde-esc': '#196127',
+};
+
+// ─── AVISO GCAP ──────────────────────────────────
+function calcGcap(v) {
+  const assinou = v.assinou_contrato_banco === true || String(v.assinou_contrato_banco).toUpperCase() === 'SIM';
+  const gcapPago = v.gcap_pago === true || String(v.gcap_pago).toUpperCase() === 'SIM';
+  if (!assinou) return null;
+  if (gcapPago) return 'GCAP PAGO';
+  if (!v.data_assinatura) return 'PAGAR GCAP';
+  const dt = new Date(v.data_assinatura);
+  dt.setMonth(dt.getMonth() + 2);
+  dt.setDate(0); // último dia do mês subsequente
+  return `PAGAR GCAP ATÉ ${dt.toLocaleDateString('pt-BR')}`;
+}
+
+// ─── CARREGAR SVG ────────────────────────────────
+async function loadSVG(url) {
+  if (svgCache[url]) return svgCache[url];
+  const r = await fetch(url);
+  const text = await r.text();
+  svgCache[url] = text;
+  return text;
+}
+
+async function renderMapa() {
+  const url = modo === 'docs' ? SVG_DOCS : SVG_VENDAS;
+  const container = document.getElementById('svg-container');
+  container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text3);font-size:12px">Carregando mapa...</div>';
+
+  const svgText = await loadSVG(url);
+  container.innerHTML = svgText;
+
+  const svgEl = container.querySelector('svg');
+  if (svgEl) {
+    svgEl.style.width  = '100%';
+    svgEl.style.height = 'auto';
+    svgEl.style.display = 'block';
+    paintMap(svgEl);
+    attachMapEvents(svgEl);
+  }
+}
+
+// ─── PINTAR MAPA ─────────────────────────────────
+function paintMap(svgEl) {
+  // Reseta tudo para cinza
+  svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
+    el.style.fill   = '#484f58';
+    el.style.stroke = '#0d1117';
+    el.style.strokeWidth = '1';
+    el.style.opacity = '0.85';
+  });
+
+  if (modo === 'docs') {
+    // Mapa de lotes — IDs tipo "TC 1"
+    const byRef = {};
+    allDocs.forEach(d => { if (d.ref) byRef[d.ref.trim()] = d; });
+
+    svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
+      const id = el.id.trim();
+      const d  = byRef[id];
+      const status = d ? calcStatusDoc(d) : 'cinza';
+      el.style.fill = COR_DOCS[status] || '#484f58';
+      if (d?.ref === selectedRef) {
+        el.style.stroke = '#fff';
+        el.style.strokeWidth = '3';
+        el.style.opacity = '1';
+      }
+    });
+
+  } else {
+    // Mapa de casas — IDs tipo "TB24"
+    // Notion REF pode ser "TB24" ou "TB 24" — normalizar
+    const byRef = {};
+    allVendas.forEach(v => {
+      if (v.ref) {
+        const norm = v.ref.replace(/\s+/g, '').toUpperCase();
+        byRef[norm] = v;
+      }
+    });
+
+    svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
+      const idNorm = el.id.replace(/\s+/g, '').toUpperCase();
+      const v = byRef[idNorm];
+      const status = v ? calcStatusVenda(v) : 'cinza';
+      el.style.fill = COR_VENDAS[status] || '#484f58';
+      if (v?.ref === selectedRef) {
+        el.style.stroke = '#fff';
+        el.style.strokeWidth = '3';
+        el.style.opacity = '1';
+      }
+    });
+  }
+}
+
+// ─── EVENTOS DO MAPA ─────────────────────────────
+function attachMapEvents(svgEl) {
+  const tip = document.getElementById('tip');
+
+  svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
+    el.style.cursor = 'pointer';
+
+    el.addEventListener('mouseenter', e => {
+      const id = el.id.trim();
+      let info = id;
+      if (modo === 'docs') {
+        const d = allDocs.find(x => x.ref && x.ref.trim() === id);
+        if (d) info = `${d.endereco || id} · ${d.ref}`;
+      } else {
+        const norm = id.replace(/\s+/g, '').toUpperCase();
+        const v = allVendas.find(x => x.ref && x.ref.replace(/\s+/g, '').toUpperCase() === norm);
+        if (v) info = `${v.endereco || id} · Casa ${v.casa || '—'}`;
+      }
+      tip.textContent = info;
+      tip.style.display = 'block';
+    });
+
+    el.addEventListener('mousemove', e => {
+      tip.style.left = (e.clientX + 14) + 'px';
+      tip.style.top  = (e.clientY - 28) + 'px';
+    });
+
+    el.addEventListener('mouseleave', () => {
+      tip.style.display = 'none';
+    });
+
+    el.addEventListener('click', () => {
+      const id = el.id.trim();
+      if (modo === 'docs') {
+        const d = allDocs.find(x => x.ref && x.ref.trim() === id);
+        if (d) selectItem(d, 'docs');
+      } else {
+        const norm = id.replace(/\s+/g, '').toUpperCase();
+        const v = allVendas.find(x => x.ref && x.ref.replace(/\s+/g, '').toUpperCase() === norm);
+        if (v) selectItem(v, 'vendas');
+      }
+    });
+  });
+}
+
+// ─── SELECIONAR ITEM ─────────────────────────────
+function selectItem(item, tipo) {
+  selectedRef = item.ref;
+  renderInfoCard(item, tipo);
+
+  // repinta o mapa para destacar
+  const svgEl = document.querySelector('#svg-container svg');
+  if (svgEl) paintMap(svgEl);
+
+  // destaca linha na tabela
+  document.querySelectorAll('#tabela-body tr').forEach(tr => {
+    tr.classList.toggle('selected', tr.dataset.ref === String(item.ref));
+  });
+}
+
+// ─── INFO CARD ────────────────────────────────────
+function renderInfoCard(item, tipo) {
+  const card = document.getElementById('info-card');
+  if (tipo === 'docs') renderInfoCardDocs(card, item);
+  else renderInfoCardVendas(card, item);
+}
+
+function field(label, value, cls = '') {
+  const v = value != null && value !== '' ? value : null;
+  return `<div class="field">
+    <div class="field-label">${label}</div>
+    <div class="field-value ${v ? cls : 'empty'}">${v ?? '—'}</div>
+  </div>`;
+}
+
+function renderInfoCardDocs(card, d) {
+  const tempoObra = (() => {
+    if (d.data_termino_obra && d.data_inicio_obra) {
+      const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
+      return `${dias} dias`;
+    }
+    if (d.data_inicio_obra) {
+      const dias = diffDays(d.data_inicio_obra, new Date().toISOString());
+      return `${dias} dias (em andamento)`;
+    }
+    return null;
+  })();
+
+  card.innerHTML = `
+    <div class="info-card-title">Gestão Documental</div>
+    <div class="fields-grid">
+      <div class="field-row cols-2">
+        ${field('Endereço', d.endereco)}
+        ${field('Referência', d.ref)}
+      </div>
+      <div class="field-row cols-4">
+        ${field('Prev. Início', fmtDate(d.previsao_inicio_obra))}
+        ${field('Data Início', fmtDate(d.data_inicio_obra))}
+        ${field('Data Término', fmtDate(d.data_termino_obra))}
+        ${field('Tempo de Obra', tempoObra)}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Orçado', fmtMoney(d.erp_orcado) ?? (d.erp_orcado === 'SEM DADOS' ? 'SEM DADOS' : null), 'money')}
+        ${field('Valor Pago', fmtMoney(d.erp_valor_pago) ?? (d.erp_valor_pago === 'SEM DADOS' ? 'SEM DADOS' : null), 'money')}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Proprietário', d.proprietario_documento || d.proprietario_real)}
+        ${field('Documento', d.cpf_cnpj)}
+      </div>
+      <div class="field-row cols-4">
+        ${field('Mestre', d.mestre)}
+        ${field('Despachante', d.despachante)}
+        ${field('Proj. Feito', d.projeto_feito === true ? 'SIM' : d.projeto_feito === false ? 'NÃO' : null)}
+        ${field('Proj. Aprovado', d.projeto_aprovado === true ? 'SIM' : d.projeto_aprovado === false ? 'NÃO' : null)}
+      </div>
+    </div>`;
+}
+
+function renderInfoCardVendas(card, v) {
+  const alerta = calcAlertaVenda(v);
+  const gcap   = calcGcap(v);
+  const alertaCls = alerta.includes('45') ? 'danger' : alerta.includes('20') ? 'alert' : '';
+  const gcapCls   = gcap === 'GCAP PAGO' ? 'ok' : gcap ? 'alert' : '';
+
+  card.innerHTML = `
+    <div class="info-card-title">Gestão de Vendas</div>
+    <div class="fields-grid">
+      <div class="field-row cols-2">
+        ${field('Endereço', v.endereco)}
+        ${field('Casa', v.casa)}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Data da Venda', fmtDate(v.data_venda))}
+        ${field('Avaliação', fmtMoney(v.avaliacao), 'money')}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Valor de Venda', fmtMoney(v.valor_venda_contrato), 'money')}
+        ${field('Envio Docs', fmtDate(v.data_envio_docs))}
+      </div>
+      ${alerta ? `<div class="field-row"><div class="field"><div class="field-label">Alerta prazo</div><div class="field-value ${alertaCls}">${alerta}</div></div></div>` : ''}
+      ${gcap ? `<div class="field-row"><div class="field"><div class="field-label">GCAP</div><div class="field-value ${gcapCls}">${gcap}</div></div></div>` : ''}
+      <div class="field-row cols-2">
+        ${field('Data Entrega', fmtDate(v.data_entrega))}
+        ${field('Cliente', v.clientes)}
+      </div>
+    </div>`;
+}
+
+// ─── PESQUISA ────────────────────────────────────
+function setupPesquisa() {
+  const input   = document.getElementById('pesquisa');
+  const results = document.getElementById('pesquisa-results');
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toUpperCase();
+    if (!q) { results.classList.remove('show'); return; }
+
+    const arr = modo === 'docs' ? allDocs : allVendas;
+    const matches = arr.filter(x =>
+      (x.endereco && x.endereco.toUpperCase().includes(q)) ||
+      (x.ref && x.ref.toUpperCase().includes(q))
+    ).slice(0, 10);
+
+    results.innerHTML = matches.map(x =>
+      `<div class="pesquisa-item" data-ref="${x.ref}">${x.endereco || x.ref} ${x.ref ? '· ' + x.ref : ''}</div>`
+    ).join('');
+    results.classList.toggle('show', matches.length > 0);
+  });
+
+  results.addEventListener('click', e => {
+    const item = e.target.closest('.pesquisa-item');
+    if (!item) return;
+    const ref = item.dataset.ref;
+    const arr  = modo === 'docs' ? allDocs : allVendas;
+    const found = arr.find(x => x.ref === ref);
+    if (found) { selectItem(found, modo); input.value = found.endereco || ref; }
+    results.classList.remove('show');
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.pesquisa-wrap')) results.classList.remove('show');
+  });
+}
+
+// ─── TABELA ──────────────────────────────────────
+const COLS_DOCS = [
+  { key: 'ref',                  label: 'REF.' },
+  { key: 'endereco',             label: 'Endereço' },
+  { key: 'setor',                label: 'Setor' },
+  { key: 'cidade',               label: 'Cidade' },
+  { key: 'data_aquisicao_lote',  label: 'Dt. Aquisição', fmt: fmtDate },
+  { key: 'proprietario_documento', label: 'Prop. Documento' },
+  { key: 'proprietario_real',    label: 'Prop. Real' },
+  { key: 'mestre',               label: 'Mestre' },
+  { key: 'despachante',          label: 'Despachante' },
+  { key: 'eng_execucao',         label: 'Eng. Execução' },
+  { key: 'previsao_inicio_obra', label: 'Prev. Início', fmt: fmtDate },
+  { key: 'obra_iniciada',        label: 'Iniciada', fmt: 'bool' },
+  { key: 'data_inicio_obra',     label: 'Dt. Início', fmt: fmtDate },
+  { key: 'data_termino_obra',    label: 'Dt. Término', fmt: fmtDate },
+  { key: 'erp_orcado',           label: 'Orçado', fmt: fmtMoney },
+  { key: 'erp_valor_pago',       label: 'Valor Pago', fmt: fmtMoney },
+  { key: 'escritura_assinada',   label: 'Escritura', fmt: 'bool' },
+  { key: 'itbi_pago',            label: 'ITBI Pago', fmt: 'bool' },
+  { key: 'registro_pago',        label: 'Registro Pago', fmt: 'bool' },
+  { key: 'projeto_feito',        label: 'Proj. Feito', fmt: 'bool' },
+  { key: 'projeto_aprovado',     label: 'Proj. Aprov.', fmt: 'bool' },
+  { key: 'art_feita_paga',       label: 'ART', fmt: 'bool' },
+  { key: 'agendou_habite_se',    label: 'Agend. Habite-se', fmt: 'bool' },
+  { key: 'aprovou_habite_se',    label: 'Aprov. Habite-se', fmt: 'bool' },
+  { key: 'data_habite_se',       label: 'Dt. Habite-se', fmt: fmtDate },
+  { key: 'data_aprovacao_habite', label: 'Dt. Aprov. Habite', fmt: fmtDate },
+  { key: 'uso_solo_emitido',     label: 'Uso Solo', fmt: 'bool' },
+  { key: 'issqn',                label: 'ISSQN', fmt: 'bool' },
+  { key: 'cno_cnd',              label: 'CNO/CND', fmt: 'bool' },
+  { key: 'certidoes_matricula',  label: 'Certidões', fmt: 'bool' },
+];
+
+const COLS_VENDAS = [
+  { key: 'ref',                  label: 'REF' },
+  { key: 'endereco',             label: 'Endereço' },
+  { key: 'casa',                 label: 'Casa' },
+  { key: 'setor',                label: 'Setor' },
+  { key: 'cidade',               label: 'Cidade' },
+  { key: 'clientes',             label: 'Cliente' },
+  { key: 'data_venda',           label: 'Dt. Venda', fmt: fmtDate },
+  { key: 'avaliacao',            label: 'Avaliação', fmt: fmtMoney },
+  { key: 'valor_na_mao',         label: 'Vlr. na Mão', fmt: fmtMoney },
+  { key: 'valor_venda_contrato', label: 'Vlr. Contrato', fmt: fmtMoney },
+  { key: 'correspondente',       label: 'Correspondente' },
+  { key: 'corretor',             label: 'Corretor' },
+  { key: 'data_envio_docs',      label: 'Envio Docs', fmt: fmtDate },
+  { key: 'processo_conforme',    label: 'Conforme', fmt: 'bool' },
+  { key: 'assinou_contrato_banco', label: 'Contrato Banco', fmt: 'bool' },
+  { key: 'recebeu',              label: 'Recebeu', fmt: 'bool' },
+  { key: 'data_entrega',         label: 'Dt. Entrega', fmt: fmtDate },
+  { key: 'entregou_casa',        label: 'Entregou', fmt: 'bool' },
+  { key: 'gcap_pago',            label: 'GCAP Pago', fmt: 'bool' },
+  { key: 'armazenou_contrato',   label: 'Contrato C&V', fmt: 'bool' },
+  { key: 'emitiu_rcpm',          label: 'RCPM', fmt: 'bool' },
+  { key: 'mandou_conformidade',  label: 'Conformidade', fmt: 'bool' },
+  { key: 'entrada_cartorio',     label: 'Cartório', fmt: 'bool' },
+  { key: 'registro_pronto',      label: 'Registro', fmt: 'bool' },
+  { key: 'devolveu_banco',       label: 'Devolveu Banco', fmt: 'bool' },
+  { key: 'pesquisa',             label: 'Pesquisa', fmt: 'bool' },
+];
+
+function fmtCell(value, fmtFn) {
+  if (value == null || value === '') return '<span class="badge badge-vazio">—</span>';
+  if (fmtFn === 'bool') {
+    if (value === true  || String(value).toUpperCase() === 'SIM') return '<span class="badge badge-sim">SIM</span>';
+    if (value === false || String(value).toUpperCase() === 'NÃO') return '<span class="badge badge-nao">NÃO</span>';
+    return `<span class="badge badge-vazio">${value}</span>`;
+  }
+  if (typeof fmtFn === 'function') {
+    const r = fmtFn(value);
+    if (!r) return '<span class="badge badge-vazio">—</span>';
+    if (fmtFn === fmtMoney) return `<span class="badge badge-money">${r}</span>`;
+    return r;
+  }
+  if (value === 'SEM DADOS') return '<span class="badge badge-sem">SEM DADOS</span>';
+  return value;
+}
+
+function buildTabela() {
+  const cols = modo === 'docs' ? COLS_DOCS : COLS_VENDAS;
+  const data = modo === 'docs'
+    ? allDocs.filter(x => x.setor && x.setor.toUpperCase().includes('TERRABELA'))
+    : allVendas.filter(x => x.setor && x.setor.toUpperCase().includes('TERRABELA'));
+
+  // Aplicar filtros de coluna
+  const filtered = data.filter(row =>
+    cols.every(col => {
+      const f = (colFilters[col.key] || '').trim().toUpperCase();
+      if (!f) return true;
+      const v = String(row[col.key] ?? '').toUpperCase();
+      return v.includes(f);
+    })
+  );
+
+  // Cabeçalho
+  const head = document.getElementById('tabela-head');
+  head.innerHTML = `<tr>${cols.map((col, i) => `
+    <th class="${hiddenCols.has(col.key) ? 'col-hidden' : ''}" data-key="${col.key}">
+      <span class="hide-col-btn" onclick="toggleCol('${col.key}')">✕</span>
+      ${col.label}
+      <span class="col-filter">
+        <input class="col-filter-input" placeholder="filtrar..." value="${colFilters[col.key] || ''}"
+          oninput="setFilter('${col.key}', this.value)" onclick="event.stopPropagation()">
+      </span>
+    </th>`).join('')}</tr>`;
+
+  // Corpo
+  const body = document.getElementById('tabela-body');
+  body.innerHTML = filtered.map(row => `
+    <tr data-ref="${row.ref || ''}" onclick="selectItem(${JSON.stringify(row).replace(/"/g, '&quot;')}, '${modo}')">
+      ${cols.map(col => `
+        <td class="${hiddenCols.has(col.key) ? 'col-hidden' : ''} ${col.key === 'ref' ? 'ref-col' : ''}">
+          ${fmtCell(row[col.key], col.fmt)}
+        </td>`).join('')}
+    </tr>`).join('') || '<tr><td colspan="99" style="text-align:center;color:var(--text3);padding:24px">Nenhum registro encontrado</td></tr>';
+
+  // Painel de colunas
+  const panel = document.getElementById('col-panel-list');
+  panel.innerHTML = cols.map(col => `
+    <label>
+      <input type="checkbox" ${hiddenCols.has(col.key) ? '' : 'checked'}
+        onchange="toggleCol('${col.key}')"> ${col.label}
+    </label>`).join('');
+
+  document.getElementById('tabela-titulo').textContent =
+    modo === 'docs' ? `Gestão Documental (${filtered.length})` : `Gestão de Vendas (${filtered.length})`;
+}
+
+function setFilter(key, val) {
+  colFilters[key] = val;
+  buildTabela();
+}
+function toggleCol(key) {
+  if (hiddenCols.has(key)) hiddenCols.delete(key);
+  else hiddenCols.add(key);
+  buildTabela();
+}
+function toggleColPanel() {
+  document.getElementById('col-panel').classList.toggle('show');
+}
+function resetTabela() {
+  colFilters = {};
+  hiddenCols = new Set();
+  buildTabela();
+  document.getElementById('col-panel').classList.remove('show');
+}
+
+// ─── MODO ────────────────────────────────────────
+function setModo(m) {
+  modo = m;
+  selectedRef = null;
+  colFilters  = {};
+  hiddenCols  = new Set();
+
+  document.getElementById('btn-docs').classList.toggle('active', m === 'docs');
+  document.getElementById('btn-vendas').classList.toggle('active', m === 'vendas');
+  document.getElementById('legenda-docs').style.display   = m === 'docs'   ? '' : 'none';
+  document.getElementById('legenda-vendas').style.display = m === 'vendas' ? '' : 'none';
+
+  document.getElementById('info-card').innerHTML = `
+    <div class="empty-state">
+      <div class="empty-state-icon">◎</div>
+      <div class="empty-state-text">Clique em um lote no mapa<br>ou pesquise um endereço</div>
+    </div>`;
+
+  renderMapa();
+  buildTabela();
+}
+
+// ─── INIT ─────────────────────────────────────────
+async function init() {
+  try {
+    const r = await fetch(DATA_URL);
+    const data = await r.json();
+
+    allDocs   = data.documentos || [];
+    allVendas = data.vendas     || [];
+
+    // Atualizado em
+    if (data.updated_at) {
+      const dt = new Date(data.updated_at);
+      document.getElementById('updated-at').textContent =
+        'Atualizado: ' + dt.toLocaleString('pt-BR');
+    }
+
+    await renderMapa();
+    buildTabela();
+    setupPesquisa();
+
+    document.getElementById('loading').style.display = 'none';
+  } catch (e) {
+    document.getElementById('loading').innerHTML =
+      `<div style="color:#f85149;font-size:14px">Erro ao carregar dados:<br>${e.message}</div>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
