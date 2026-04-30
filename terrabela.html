@@ -690,12 +690,12 @@ function calcStatusDoc(d) {
 }
 
 const COR_DOCS = {
-  cinza:    '#484f58',
-  amarelo:  '#d29922',
-  verde:    '#2ea043',
-  laranja:  '#db6d28',
-  vermelho: '#da3633',
-  roxo:     '#8957e5',
+  cinza:    '#3a5068',
+  amarelo:  '#c9a227',
+  verde:    '#2a9d5c',
+  laranja:  '#d46a1a',
+  vermelho: '#c0392b',
+  roxo:     '#7c4daf',
 };
 
 // ─── STATUS VENDAS ────────────────────────────────
@@ -725,13 +725,13 @@ function calcStatusVenda(v) {
 }
 
 const COR_VENDAS = {
-  cinza:       '#484f58',
-  azul:        '#1f6feb',
-  'verde-claro': '#56d364',
-  amarelo:     '#d29922',
-  vermelho:    '#da3633',
-  laranja:     '#db6d28',
-  'verde-esc': '#196127',
+  cinza:       '#3a5068',
+  azul:        '#295778',
+  'verde-claro': '#8FDCD2',
+  amarelo:     '#c9a227',
+  vermelho:    '#c0392b',
+  laranja:     '#d46a1a',
+  'verde-esc': '#1a6b3a',
 };
 
 // ─── AVISO GCAP ──────────────────────────────────
@@ -778,8 +778,8 @@ async function renderMapa() {
 function paintMap(svgEl) {
   // Reseta tudo para cinza
   svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
-    el.style.fill   = '#484f58';
-    el.style.stroke = '#0d1117';
+    el.style.fill   = '#3a5068';
+    el.style.stroke = '#0e1c2b';
     el.style.strokeWidth = '1';
     el.style.opacity = '0.85';
   });
@@ -892,6 +892,9 @@ function clearSelection() {
 
 // ─── SELECIONAR ITEM ─────────────────────────────
 function selectItem(item, tipo) {
+  // Toggle: clicar na mesma linha desmarca
+  if (selectedRef === item.ref) { clearSelection(); return; }
+
   selectedRef = item.ref;
   renderInfoCard(item, tipo);
 
