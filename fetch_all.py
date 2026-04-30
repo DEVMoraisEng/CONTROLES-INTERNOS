@@ -218,7 +218,7 @@ def processar_documentos():
         result[key] = {
             "endereco":                end,
             "ref":                     ref,
-            "setor":                   prop(p, "SETOR", "select") or prop(p, "SETOR", "texto"),
+            "setor":                   prop(p, "SETOR", "select"),
             "cidade":                  prop(p, "CIDADE", "select") or prop(p, "CIDADE", "texto"),
             "data_aquisicao_lote":     prop(p, "DATA DE AQUISIÇÃO DO LOTE", "data"),
             "cota_empresa":            prop(p, "COTA DA EMPRESA (%)", "numero"),
