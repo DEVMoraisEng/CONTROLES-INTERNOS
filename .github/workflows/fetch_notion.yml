@@ -1,7 +1,7 @@
 name: Atualizar dados e publicar site
 
 on:
-  workflow_dispatch: # disparo manual e via cron-job.org
+  workflow_dispatch:
   push:
     branches: [main]
 
@@ -41,13 +41,22 @@ jobs:
           git diff --staged --quiet || git commit -m "chore: atualizar data.json [$(date -u +%Y-%m-%dT%H:%M:%SZ)]"
           git push
 
+      - name: Preparar pasta de publicação
+        run: |
+          mkdir -p dist
+          cp terrabela.html dist/
+          cp terrabela.html dist/index.html
+          cp data.json dist/
+          cp TERRABELA_MAPA_DOCUMENTOS.svg dist/
+          cp TERRABELA_MAPA_VENDAS.svg dist/
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artefato
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "dist"
 
       - name: Deploy Pages
         uses: actions/deploy-pages@v4
