@@ -9,6 +9,7 @@ Chave de JOIN entre os 3 bancos: ENDEREÇO (normalizado)
 
 import os
 import json
+import time
 import requests
 import base64
 from datetime import datetime, timezone
@@ -137,45 +138,61 @@ def erp_fetch(endpoint):
 
     all_rows = []
     page = 1
-    page_size = 100
+    page_size = 500   # máximo para reduzir número de chamadas
+    cabecalho = None  # lido apenas na primeira página
 
     while True:
         params = {"page": page, "pageSize": page_size}
-        r = requests.get(url, headers=headers, params=params, timeout=30)
+
+        # Retry com backoff exponencial em caso de 429
+        for tentativa in range(5):
+            r = requests.get(url, headers=headers, params=params, timeout=60)
+            if r.status_code == 429:
+                espera = 10 * (2 ** tentativa)  # 10s, 20s, 40s, 80s, 160s
+                print(f"[ERP] 429 em /{endpoint} p.{page} — aguardando {espera}s (tentativa {tentativa+1}/5)")
+                time.sleep(espera)
+                continue
+            break  # saiu do loop de retry (sucesso ou erro não-429)
 
         if r.status_code != 200:
-            print(f"[ERP] Erro {r.status_code} em /{endpoint} página {page}")
+            print(f"[ERP] Erro {r.status_code} em /{endpoint} página {page} — abortando")
             break
 
         text = r.text.strip()
         if not text:
             break
 
-        # Parse CSV manual (sem pandas — compatível com qualquer ambiente)
         linhas = text.splitlines()
         if len(linhas) < 2:
             break
 
-        cabecalho = linhas[0].split(",")
-        cabecalho = [c.strip().strip('"') for c in cabecalho]
+        # Cabeçalho: lido só na primeira página
+        if cabecalho is None:
+            cabecalho = [c.strip().strip('"') for c in linhas[0].split(",")]
+            dados = linhas[1:]
+        else:
+            # Páginas seguintes: a API pode ou não repetir o cabeçalho
+            primeira = [c.strip().strip('"') for c in linhas[0].split(",")]
+            if primeira == cabecalho:
+                dados = linhas[1:]   # cabeçalho repetido — pula
+            else:
+                dados = linhas       # sem cabeçalho — usa tudo
 
-        linhas_dados = linhas[1:] if page == 1 else linhas[1:]  # pula header nas páginas > 1
-        if page > 1:
-            linhas_dados = linhas  # nas páginas seguintes não tem header repetido
-
-        for linha in linhas_dados:
+        for linha in dados:
             if not linha.strip():
                 continue
             valores = linha.split(",")
-            row = {}
-            for i, col in enumerate(cabecalho):
-                row[col] = valores[i].strip().strip('"') if i < len(valores) else ""
+            row = {col: (valores[i].strip().strip('"') if i < len(valores) else "")
+                   for i, col in enumerate(cabecalho)}
             all_rows.append(row)
 
-        if len(linhas_dados) < page_size:
+        print(f"[ERP] /{endpoint} p.{page} — {len(all_rows)} registros acumulados")
+
+        if len(dados) < page_size:
             break  # última página
 
         page += 1
+        time.sleep(1)  # pausa entre páginas para não estourar rate limit
 
     return all_rows
 
