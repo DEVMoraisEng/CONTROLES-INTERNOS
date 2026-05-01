@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terrabela do Cerrado · Controle Interno · Morais Engenharia</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── PALETA MORAIS — TONS CLAROS ───────────────── */
+:root {
+  --azul:      #295778;
+  --azul-esc:  #1e3f58;
+  --azul-med:  #2d6a96;
+  --teal:      #8FDCD2;
+  --teal-light:#c2f0eb;
+  --bg:        #EAF1F3;
+  --bg2:       #F5F9FA;
+  --bg3:       #dde8ec;
+  --border:    #b8d0da;
+  --border2:   #d0e4ea;
+  --text:      #1a3347;
+  --text2:     #295778;
+  --text3:     #5a8099;
+  --text4:     #8aacbb;
+  --branco:    #ffffff;
+
+  /* status docs */
+  --cinza:     #8faabb;
+  --amarelo:   #c9a227;
+  --verde:     #2a9d5c;
+  --laranja:   #d46a1a;
+  --vermelho:  #c0392b;
+  --roxo:      #7c4daf;
+
+  /* status vendas */
+  --v-cinza:   #b0c8d4;
+  --v-azul:    #295778;
+  --v-verde:   #8FDCD2;
+  --v-amarelo: #c9a227;
+  --v-verm:    #c0392b;
+  --v-laranja: #d46a1a;
+  --v-esc:     #1a6b40;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  font-size: 14px;
+}
+
+/* ─── HEADER ────────────────────────────────────── */
+.header {
+  background: var(--azul);
+  border-bottom: 3px solid var(--teal);
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.hdr-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* Logo SVG inline — M estilizado */
+.hdr-logo {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+.hdr-text {}
+.hdr-sup {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.hdr-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+.hdr-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.updated {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+}
+.btn-voltar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.75);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 6px 14px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 5px;
+  transition: all 0.15s;
+  font-family: 'Barlow', sans-serif;
+}
+.btn-voltar:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* ─── TOGGLE MODO ───────────────────────────────── */
+.toggle-wrap {
+  background: var(--azul-esc);
+  border-bottom: 1px solid rgba(143,220,210,0.2);
+  padding: 0 28px;
+  display: flex;
+  gap: 0;
+}
+.toggle-btn {
+  padding: 12px 28px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: rgba(143,220,210,0.55);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.toggle-btn.active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+.toggle-btn:not(.active):hover {
+  color: rgba(143,220,210,0.85);
+}
+
+/* ─── MAIN LAYOUT ───────────────────────────────── */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 16px;
+  padding: 16px 28px;
+}
+
+/* ─── MAPA ──────────────────────────────────────── */
+.mapa-card {
+  background: var(--branco);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(41,87,120,0.08);
+  position: relative;
+  min-height: 500px;
+}
+#svg-container {
+  width: 100%;
+  min-height: 500px;
+}
+#svg-container svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.legenda {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(30,63,88,0.92);
+  border: 1px solid rgba(143,220,210,0.3);
+  border-radius: 7px;
+  padding: 10px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  max-width: 440px;
+  backdrop-filter: blur(6px);
+}
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.82);
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+}
+.leg-dot {
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── PAINEL LATERAL ────────────────────────────── */
+.quadros {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pesquisa-wrap {
+  position: relative;
+}
+.pesquisa-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3);
+  font-size: 15px;
+  pointer-events: none;
+}
+.pesquisa-input {
+  width: 100%;
+  padding: 10px 14px 10px 36px;
+  background: var(--branco);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+  box-shadow: 0 1px 4px rgba(41,87,120,0.06);
+}
+.pesquisa-input:focus { border-color: var(--azul-med); }
+.pesquisa-input::placeholder { color: var(--text4); }
+.pesquisa-results {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0; right: 0;
+  background: var(--branco);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  box-shadow: 0 4px 16px rgba(41,87,120,0.12);
+  z-index: 50;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.pesquisa-results:empty { display: none; }
+.pesq-item {
+  padding: 9px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border2);
+  color: var(--text);
+  transition: background 0.1s;
+}
+.pesq-item:last-child { border-bottom: none; }
+.pesq-item:hover { background: var(--bg); }
+.pesq-ref {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 1px;
+}
+
+/* Info card */
+.info-card {
+  background: var(--branco);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 1;
+  box-shadow: 0 2px 10px rgba(41,87,120,0.07);
+  min-height: 200px;
+}
+.info-card-title {
+  background: var(--azul);
+  color: #fff;
+  padding: 11px 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  color: var(--text4);
+  gap: 8px;
+}
+.empty-state-icon { font-size: 28px; opacity: 0.4; }
+.empty-state-text { font-size: 12px; text-align: center; line-height: 1.5; }
+.fields-grid { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.field-row {
+  display: grid;
+  gap: 6px;
+}
+.field-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.field-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.field-row.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.field {
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 5px;
+  padding: 6px 9px;
+}
+.field-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 2px;
+}
+.field-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.field-value.empty { color: var(--text4); font-weight: 400; font-style: italic; }
+.field-value.money { color: #1a5c3a; }
+.field-value.ok    { color: var(--verde); }
+.field-value.alert { color: var(--amarelo); }
+.field-value.danger{ color: var(--vermelho); }
+
+/* ─── TABELA ────────────────────────────────────── */
+.tabela-section {
+  padding: 0 28px 28px;
+}
+.tabela-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+#tabela-titulo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--azul);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.tabela-controls { display: flex; gap: 8px; }
+.btn-sm {
+  padding: 6px 14px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--border);
+  background: var(--branco);
+  color: var(--text2);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-sm:hover { background: var(--bg3); border-color: var(--azul); }
+.btn-sm.danger:hover { border-color: var(--vermelho); color: var(--vermelho); }
+
+/* Filtros multi-select */
+.filtros-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  background: var(--branco);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  align-items: center;
+}
+.filtro-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text3);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.filtro-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+  white-space: nowrap;
+}
+.filtro-chip .chip-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.filtro-chip:hover { border-color: var(--azul-med); background: var(--bg3); }
+.filtro-chip.active {
+  background: var(--azul);
+  border-color: var(--azul);
+  color: #fff;
+}
+.filtro-chip.active .chip-dot { box-shadow: 0 0 0 1px rgba(255,255,255,0.4); }
+.filtro-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 2px;
+}
+.filtro-clear {
+  font-size: 10px;
+  color: var(--text3);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: color 0.12s;
+  margin-left: auto;
+}
+.filtro-clear:hover { color: var(--vermelho); }
+
+/* Tabela */
+.tbl-outer {
+  background: var(--branco);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(41,87,120,0.07);
+}
+.tbl-scroll {
+  overflow-x: auto;
+  max-height: 420px;
+  overflow-y: auto;
+}
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12.5px;
+  min-width: 800px;
+}
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+thead th {
+  padding: 11px 14px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--azul);
+  border-right: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 2px solid var(--teal);
+  white-space: nowrap;
+}
+thead th:last-child { border-right: none; }
+/* linha de filtros */
+thead tr.filter-row th {
+  padding: 5px 8px;
+  background: var(--azul-esc);
+  border-bottom: 1px solid rgba(143,220,210,0.2);
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+thead tr.filter-row th:last-child { border-right: none; }
+thead tr.filter-row input.col-filter-input {
+  width: 100%;
+  padding: 4px 7px;
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(143,220,210,0.2);
+  border-radius: 3px;
+  color: rgba(255,255,255,0.8);
+  outline: none;
+  transition: border-color 0.15s;
+}
+thead tr.filter-row input.col-filter-input:focus {
+  border-color: var(--teal);
+  background: rgba(255,255,255,0.12);
+}
+thead tr.filter-row input.col-filter-input::placeholder { color: rgba(255,255,255,0.3); }
+thead tr.filter-row select.col-filter-select {
+  width: 100%;
+  padding: 3px 4px;
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(143,220,210,0.2);
+  border-radius: 3px;
+  color: rgba(255,255,255,0.8);
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+thead tr.filter-row select.col-filter-select:focus {
+  border-color: var(--teal);
+  background: rgba(255,255,255,0.12);
+}
+thead tr.filter-row select.col-filter-select option {
+  background: var(--azul-esc);
+  color: #fff;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border2);
+  transition: background 0.1s;
+  cursor: pointer;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #e8f3f7; }
+tbody tr.selected { background: #d0e8f0 !important; }
+tbody td {
+  padding: 10px 14px;
+  vertical-align: middle;
+  border-right: 1px solid var(--border2);
+  color: var(--text);
+}
+tbody td:last-child { border-right: none; }
+.ref-col {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--azul);
+  white-space: nowrap;
+}
+.cell-null { color: var(--text4); font-style: italic; font-size: 11px; }
+.bool-sim {
+  display: inline-block;
+  background: rgba(42,157,92,0.12);
+  color: var(--verde);
+  border: 1px solid rgba(42,157,92,0.3);
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.bool-nao {
+  display: inline-block;
+  background: rgba(192,57,43,0.08);
+  color: var(--vermelho);
+  border: 1px solid rgba(192,57,43,0.2);
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.col-hidden { display: none; }
+.hide-col-btn {
+  float: right;
+  cursor: pointer;
+  opacity: 0.4;
+  font-size: 9px;
+  margin-left: 4px;
+}
+.hide-col-btn:hover { opacity: 1; }
+
+/* Painel de colunas */
+.col-panel {
+  display: none;
+  position: absolute;
+  right: 0; top: 36px;
+  background: var(--branco);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(41,87,120,0.12);
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.col-panel.open { display: block; }
+.col-panel label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border2);
+}
+.col-panel label:last-child { border-bottom: none; }
+.tbl-rel { position: relative; }
+
+/* ─── LOADING ───────────────────────────────────── */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: rgba(41,87,120,0.88);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  color: #fff;
+  gap: 14px;
+}
+#loading.hidden { display: none; }
+.spinner {
+  width: 38px; height: 38px;
+  border: 3px solid rgba(255,255,255,0.2);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── TOOLTIP ───────────────────────────────────── */
+#tip {
+  position: fixed;
+  background: var(--azul-esc);
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 11.5px;
+  pointer-events: none;
+  display: none;
+  z-index: 200;
+  border: 1px solid var(--teal);
+  line-height: 1.55;
+  max-width: 230px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+#tip.on { display: block; }
+
+/* ─── STATUS BADGE (tabela vendas) ──────────────── */
+.status-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .main { grid-template-columns: 1fr; }
+  .quadros { order: -1; }
+  .header { padding: 0 16px; }
+  .toggle-wrap, .tabela-section { padding-left: 16px; padding-right: 16px; }
+  .main { padding: 12px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div id="loading"><div class="spinner"></div><p>Carregando dados...</p></div>
+<div id="tip"></div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="hdr-left">
+    <!-- Logo Morais Engenharia SVG inline -->
+    <svg class="hdr-logo" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="42" height="42" rx="6" fill="rgba(143,220,210,0.15)"/>
+      <path d="M7 32V10L14.5 24L21 10L27.5 24L35 10V32" stroke="#8FDCD2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M7 32H35" stroke="#8FDCD2" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <div class="hdr-text">
+      <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
+      <div class="hdr-title">Terrabela do Cerrado</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="updated" id="updated-at">—</div>
+    <a href="/" class="btn-voltar">
+      <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M8 1L3 6l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Voltar
+    </a>
+  </div>
+</header>
+
+<!-- TOGGLE MODO -->
+<div class="toggle-wrap">
+  <button class="toggle-btn active" id="btn-docs"   onclick="setModo('docs')">⬡ Gestão Documental</button>
+  <button class="toggle-btn"        id="btn-vendas" onclick="setModo('vendas')">◈ Gestão de Vendas</button>
+</div>
+
+<!-- MAIN: MAPA + LATERAL -->
+<div class="main">
+
+  <!-- Mapa -->
+  <div class="mapa-card">
+    <div id="svg-container"><!-- SVG via JS --></div>
+    <!-- Legenda docs -->
+    <div class="legenda" id="legenda-docs">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--cinza)"></div> Não comprado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--amarelo)"></div> Não iniciado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--verde)"></div> Finalizado no prazo</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--laranja)"></div> Finalizado acima prazo</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--vermelho)"></div> Habite-se agendado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--roxo)"></div> Habite-se concluído</div>
+    </div>
+    <!-- Legenda vendas -->
+    <div class="legenda" id="legenda-vendas" style="display:none">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--v-cinza)"></div> Em breve</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--v-azul)"></div> Disponível</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--v-verde)"></div> Vendida</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--v-amarelo)"></div> &gt;20 dias</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--v-verm)"></div> &gt;45 dias</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--v-laranja)"></div> &gt;45 dias s/ receber</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--v-esc)"></div> Entregue</div>
+    </div>
+  </div>
+
+  <!-- Lateral -->
+  <div class="quadros">
+    <div class="pesquisa-wrap">
+      <span class="pesquisa-icon">⌕</span>
+      <input class="pesquisa-input" id="pesquisa" type="text" placeholder="Pesquisar endereço...">
+      <div class="pesquisa-results" id="pesquisa-results"></div>
+    </div>
+    <div class="info-card" id="info-card">
+      <div class="empty-state">
+        <div class="empty-state-icon">◎</div>
+        <div class="empty-state-text">Clique em um lote no mapa<br>ou pesquise um endereço</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- TABELA -->
+<div class="tabela-section">
+  <div class="tabela-header">
+    <div id="tabela-titulo">Gestão Documental</div>
+    <div class="tabela-controls">
+      <div class="tbl-rel">
+        <button class="btn-sm" onclick="toggleColPanel()">⊞ Colunas</button>
+        <div class="col-panel" id="col-panel">
+          <div id="col-panel-list"></div>
+        </div>
+      </div>
+      <button class="btn-sm danger" onclick="limparFiltros()">↺ Limpar Filtros</button>
+    </div>
+  </div>
+
+  <!-- Filtros rápidos por status (multi-select) -->
+  <div class="filtros-bar" id="filtros-bar">
+    <!-- preenchido via JS -->
+  </div>
+
+  <div class="tbl-outer">
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr id="tabela-head"></tr>
+          <tr class="filter-row" id="tabela-filter-row"></tr>
+        </thead>
+        <tbody id="tabela-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────
+const DATA_URL        = 'data.json';
+const SETOR_VEND      = 'TERRABELA DO CERRADO';
+const REF_PREFIX_DOCS = 'TC';
+const SVG_DOCS        = 'TERRABELA_MAPA_DOCUMENTOS.svg';
+const SVG_VENDAS      = 'TERRABELA_MAPA_VENDAS.svg';
+
+// ─── ESTADO ──────────────────────────────────────
+let modo        = 'docs';
+let allDocs     = [];
+let allVendas   = [];
+let svgCache    = {};
+let selectedRef = null;
+let colFilters  = {};
+let hiddenCols  = new Set();
+let activeStatusFilters = new Set(); // multi-select de status
+
+// ─── HELPERS ─────────────────────────────────────
+const fmt      = v => (v == null || v === '' || v === 'SEM DADOS') ? null : v;
+const fmtDate  = s => {
+  if (!s) return null;
+  try { const d = new Date(s); return d.toLocaleDateString('pt-BR'); } catch { return s; }
+};
+const fmtMoney = v => {
+  if (v == null || v === 'SEM DADOS' || isNaN(v)) return null;
+  return Number(v).toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
+};
+const diffDays = (a, b) => {
+  try {
+    const ms = new Date(b) - new Date(a);
+    return Math.round(ms / 86400000);
+  } catch { return null; }
+};
+
+function fmtCell(val, fmtFn) {
+  if (fmtFn === 'bool') {
+    if (val === true || String(val).toUpperCase() === 'SIM')
+      return '<span class="bool-sim">SIM</span>';
+    if (val === false || String(val).toUpperCase() === 'NÃO' || String(val).toUpperCase() === 'NAO')
+      return '<span class="bool-nao">NÃO</span>';
+    return '<span class="cell-null">—</span>';
+  }
+  if (typeof fmtFn === 'function') {
+    const r = fmtFn(val);
+    return r != null ? String(r) : '<span class="cell-null">—</span>';
+  }
+  return val != null && val !== '' && val !== 'SEM DADOS'
+    ? String(val)
+    : '<span class="cell-null">—</span>';
+}
+
+// ─── COLS ────────────────────────────────────────
+const COLS_DOCS = [
+  { key: 'ref', label: 'REF.' },
+  { key: 'endereco', label: 'ENDEREÇO' },
+  { key: 'setor', label: 'SETOR' },
+  { key: 'cidade', label: 'CIDADE' },
+  { key: 'data_aquisicao_lote', label: 'DATA DE AQUISIÇÃO DO LOTE', fmt: fmtDate },
+  { key: 'cota_empresa', label: 'COTA DA EMPRESA (%)' },
+  { key: 'proprietario_documento', label: 'PROPRIETÁRIO DOCUMENTO' },
+  { key: 'proprietario_real', label: 'PROPRIETÁRIO REAL' },
+  { key: 'cpf_cnpj', label: 'CPF/CNPJ' },
+  { key: 'mestre', label: 'MESTRE' },
+  { key: 'despachante', label: 'DESPACHANTE' },
+  { key: 'eng_execucao', label: 'ENG. EXECUÇÃO' },
+  { key: 'engenheiro_rt', label: 'ENGENHEIRO RT' },
+  { key: 'previsao_inicio_obra', label: 'PREVISÃO DE INÍCIO DE OBRA', fmt: fmtDate },
+  { key: 'obra_iniciada', label: 'OBRA INICIADA', fmt: 'bool' },
+  { key: 'data_inicio_obra', label: 'DATA DE INÍCIO DA OBRA', fmt: fmtDate },
+  { key: 'uso_solo_solicitado', label: 'USO DO SOLO SOLICITADO', fmt: 'bool' },
+  { key: 'data_sol_uso_solo', label: 'DATA SOLICITAÇÃO USO DO SOLO', fmt: fmtDate },
+  { key: 'uso_solo_emitido', label: 'USO DO SOLO EMITIDO E ARMAZENADO', fmt: 'bool' },
+  { key: 'data_emissao_uso_solo', label: 'DATA DE EMISSÃO USO DO SOLO', fmt: fmtDate },
+  { key: 'escritura_assinada', label: 'ESCRITURA ASSINADA POR TODOS?', fmt: 'bool' },
+  { key: 'itbi_pago', label: 'ITBI PAGO?', fmt: 'bool' },
+  { key: 'registro_pago', label: 'REGISTRO PAGO?', fmt: 'bool' },
+  { key: 'projeto_feito', label: 'PROJETO FEITO?', fmt: 'bool' },
+  { key: 'art_feita_paga', label: 'ART FEITA E PAGA?', fmt: 'bool' },
+  { key: 'escritura_registrada', label: 'ESCRITURA REGISTRADA E DIGITALIZADA?', fmt: 'bool' },
+  { key: 'certidao_lote', label: 'CERTIDÃO DO LOTE ANEXADA?', fmt: 'bool' },
+  { key: 'contrato_mestre', label: 'CONTRATO MESTRE ASSINADO E ARMAZENADO?', fmt: 'bool' },
+  { key: 'contrato_investidor', label: 'CONTRATO INVESTIDOR ASSINADO E ARMAZENADO?', fmt: 'bool' },
+  { key: 'taxas_alvara_pagas', label: 'TAXAS ENTRADA ALVARÁ EMITIDAS E PAGAS?', fmt: 'bool' },
+  { key: 'data_entrada_alvara', label: 'DATA DE ENTRADA DE ALVARÁ', fmt: fmtDate },
+  { key: 'mao_obra_despachante', label: 'MÃO OBRA INICIAL DESPACHANTE PAGA?', fmt: 'bool' },
+  { key: 'projeto_aprovado', label: 'PROJETO APROVADO E ALVARÁ EMITIDO E ARMAZENADO?', fmt: 'bool' },
+  { key: 'data_aprovacao_projeto', label: 'DATA DE APROVAÇÃO DO PROJETO', fmt: fmtDate },
+  { key: 'entrada_incorporacao', label: 'ENTRADA NA INCORPORAÇÃO? (OBRAS CNPJ)', fmt: 'bool' },
+  { key: 'taxas_habite_se', label: 'TAXAS NUM OFICIAL, HABITE-SE E VISTORIA EMITIDAS E PAGAS?', fmt: 'bool' },
+  { key: 'incorporacao_finalizada', label: 'INCORPORAÇÃO FINALIZOU (OBRAS CNPJ)?', fmt: 'bool' },
+  { key: 'data_finalizacao_incorp', label: 'DATA DE FINALIZAÇÃO DA INCORPORAÇÃO', fmt: fmtDate },
+  { key: 'entrada_ret', label: 'ENTRADA NO RET? (OBRAS CNPJ)', fmt: 'bool' },
+  { key: 'data_entrada_ret', label: 'DATA DE ENTRADA DO RET', fmt: fmtDate },
+  { key: 'ret_armazenado', label: 'RET ARMAZENADO', fmt: 'bool' },
+  { key: 'agendou_habite_se', label: 'AGENDOU HABITE-SE?', fmt: 'bool' },
+  { key: 'data_finalizacao_ret', label: 'DATA DE FINALIZAÇÃO DO RET', fmt: fmtDate },
+  { key: 'turno_habite_se', label: 'TURNO HABITE-SE' },
+  { key: 'data_habite_se', label: 'DATA HABITE-SE', fmt: fmtDate },
+  { key: 'aprovou_habite_se', label: 'APROVOU HABITE-SE?', fmt: 'bool' },
+  { key: 'data_aprovacao_habite', label: 'DATA DE APROVAÇÃO DO HABITE-SE', fmt: fmtDate },
+  { key: 'armazenou_habite', label: 'ARMAZENOU HABITE-SE?', fmt: 'bool' },
+  { key: 'issqn', label: 'GEROU E ARMAZENOU ISSQN?', fmt: 'bool' },
+  { key: 'cno_cnd', label: 'EMITIU CNO E CND DE OBRA?', fmt: 'bool' },
+  { key: 'art_acrescimo', label: 'EMITIU ART DE ACRÉSCIMO?', fmt: 'bool' },
+  { key: 'certidoes_matricula', label: 'SAÍRAM AS CERTIDÕES DE MATRÍCULA?', fmt: 'bool' },
+  { key: 'data_certidoes', label: 'DATA DE EMISSÃO DAS CERTIDÕES', fmt: fmtDate },
+  { key: 'docs_vistoria_scpo', label: 'EMITIU DOCS DE VISTORIA E SCPO?', fmt: 'bool' },
+  { key: 'boletos_vistoria', label: 'PAGOU BOLETOS DE VISTORIA CAIXA?', fmt: 'bool' },
+  { key: 'data_termino_obra', label: 'DATA DE TÉRMINO DE OBRA', fmt: fmtDate },
+  { key: 'erp_orcado', label: 'ORÇADO (ERP)', fmt: fmtMoney },
+  { key: 'erp_valor_pago', label: 'VALOR PAGO (ERP)', fmt: fmtMoney },
+];
+
+const COLS_VENDAS = [
+  { key: 'ref', label: 'REF' },
+  { key: 'endereco', label: 'ENDEREÇO' },
+  { key: 'casa', label: 'CASA' },
+  { key: 'cidade', label: 'CIDADE' },
+  { key: 'setor', label: 'SETOR' },
+  { key: 'clientes', label: 'CLIENTES' },
+  { key: 'data_venda', label: 'DATA DA VENDA', fmt: fmtDate },
+  { key: 'cpf', label: 'CPF' },
+  { key: 'correspondente', label: 'CORRESPONDENTE' },
+  { key: 'corretor', label: 'CORRETOR' },
+  { key: 'avaliacao', label: 'AVALIAÇÃO', fmt: fmtMoney },
+  { key: 'validade', label: 'VALIDADE' },
+  { key: 'valor_na_mao', label: 'VALOR NA MÃO', fmt: fmtMoney },
+  { key: 'comissao', label: 'COMISSÃO', fmt: fmtMoney },
+  { key: 'valor_venda_contrato', label: 'VALOR DE COMPRA E VENDA NO CONTRATO', fmt: fmtMoney },
+  { key: 'banco', label: 'BANCO' },
+  { key: 'agencia', label: 'AGÊNCIA' },
+  { key: 'armazenou_contrato', label: 'ARMAZENOU CONTRATO COMPRA E VENDA?', fmt: 'bool' },
+  { key: 'emitiu_rcpm', label: 'EMITIU RCPM?', fmt: 'bool' },
+  { key: 'mandou_docs_corresp', label: 'MANDOU TODOS OS DOCS. P/ CORRESPONDENTE?', fmt: 'bool' },
+  { key: 'data_envio_docs', label: 'DATA DE ENVIO DOS DOCUMENTOS', fmt: fmtDate },
+  { key: 'mandou_conformidade', label: 'MANDOU P/ CONFORMIDADE?', fmt: 'bool' },
+  { key: 'processo_conforme', label: 'PROCESSO CONFORME?', fmt: 'bool' },
+  { key: 'assinou_contrato_banco', label: 'ASSINOU E ARMAZENOU CONTRATO DO BANCO?', fmt: 'bool' },
+  { key: 'data_assinatura', label: 'DATA DE ASSINATURA DO CONTRATO', fmt: fmtDate },
+  { key: 'recebeu_taxa_vistoria', label: 'RECEBEU TAXA VISTORIA?', fmt: 'bool' },
+  { key: 'tem_cadastro', label: 'TEM NÚMERO DE CADASTRO?', fmt: 'bool' },
+  { key: 'num_cadastro', label: 'Nº DE CADASTRO PREFEITURA' },
+  { key: 'entrada_cartorio', label: 'DEU ENTRADA NO CARTÓRIO?', fmt: 'bool' },
+  { key: 'agendou_pre_vistoria', label: 'AGENDOU PRÉ VISTORIA?', fmt: 'bool' },
+  { key: 'data_pre_vistoria', label: 'DATA DA PRÉ-VISTORIA', fmt: fmtDate },
+  { key: 'tem_manual', label: 'TEM MANUAL DE OBRA?', fmt: 'bool' },
+  { key: 'registro_pronto', label: 'FICOU PRONTO O REGISTRO?', fmt: 'bool' },
+  { key: 'devolveu_banco', label: 'DEVOLVEU NO BANCO?', fmt: 'bool' },
+  { key: 'recebeu', label: 'RECEBEU?', fmt: 'bool' },
+  { key: 'entregou_casa', label: 'ENTREGOU A CASA E PEGOU TERMO DE ENTREGA?', fmt: 'bool' },
+  { key: 'data_entrega', label: 'DATA DA ENTREGA', fmt: fmtDate },
+  { key: 'gcap_gerado', label: 'GEROU E ARMAZENOU GCAP?', fmt: 'bool' },
+  { key: 'gcap_pago', label: 'PAGOU GCAP?', fmt: 'bool' },
+  { key: 'pesquisa', label: 'PREENCHEU A PESQUISA?', fmt: 'bool' },
+];
+
+// ─── STATUS DOCS ─────────────────────────────────
+function calcStatusDoc(d) {
+  if (!d) return 'cinza';
+  if (d.aprovou_habite_se)  return 'roxo';
+  if (d.agendou_habite_se)  return 'vermelho';
+  if (d.data_termino_obra && d.data_inicio_obra) {
+    const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
+    return dias <= 150 ? 'verde' : 'laranja';
+  }
+  if (d.data_inicio_obra) return 'amarelo'; // em andamento
+  return 'cinza';
+}
+
+const COR_DOCS = {
+  cinza:    '#8faabb',
+  amarelo:  '#c9a227',
+  verde:    '#2a9d5c',
+  laranja:  '#d46a1a',
+  vermelho: '#c0392b',
+  roxo:     '#7c4daf',
+};
+
+const STATUS_DOCS_LABELS = {
+  cinza:    'Não iniciado',
+  amarelo:  'Em andamento',
+  verde:    'Finalizado no prazo',
+  laranja:  'Acima do prazo',
+  vermelho: 'Habite-se agendado',
+  roxo:     'Habite-se concluído',
+};
+
+// ─── STATUS VENDAS ────────────────────────────────
+function calcAlertaVenda(v) {
+  if (!v.avaliacao || !v.data_envio_docs) return '';
+  const dias = diffDays(v.data_envio_docs, new Date().toISOString());
+  if (dias == null) return '';
+  const conforme = v.processo_conforme === true || String(v.processo_conforme).toUpperCase() === 'SIM';
+  const recebeu  = v.recebeu === true || String(v.recebeu).toUpperCase() === 'SIM';
+  if (dias > 45 && !recebeu) return 'TEMPO CORRIDO MAIOR QUE 45 DIAS E NÃO RECEBEU';
+  if (dias > 45)              return 'TEMPO CORRIDO MAIOR QUE 45 DIAS';
+  if (dias > 20)              return 'TEMPO CORRIDO MAIOR QUE 20 DIAS';
+  return '';
+}
+function calcStatusVenda(v) {
+  const entregou = v.entregou_casa === true || String(v.entregou_casa).toUpperCase() === 'SIM';
+  if (entregou) return 'verde-esc';
+  const alerta = calcAlertaVenda(v);
+  if (alerta.includes('NÃO RECEBEU')) return 'laranja';
+  if (alerta.includes('45 DIAS'))     return 'vermelho';
+  if (alerta.includes('20 DIAS'))     return 'amarelo';
+  if (v.clientes)  return 'verde-claro';
+  if (v.avaliacao) return 'azul';
+  return 'cinza';
+}
+const COR_VENDAS = {
+  cinza:        '#b0c8d4',
+  azul:         '#295778',
+  'verde-claro':'#8FDCD2',
+  amarelo:      '#c9a227',
+  vermelho:     '#c0392b',
+  laranja:      '#d46a1a',
+  'verde-esc':  '#1a6b40',
+};
+const STATUS_VENDAS_LABELS = {
+  cinza:        'Em breve',
+  azul:         'Disponível',
+  'verde-claro':'Vendida',
+  amarelo:      '>20 dias',
+  vermelho:     '>45 dias',
+  laranja:      '>45 dias s/ receber',
+  'verde-esc':  'Entregue',
+};
+
+function calcGcap(v) {
+  if (!v.data_venda) return '';
+  if (v.gcap_pago === true || String(v.gcap_pago).toUpperCase() === 'SIM') return 'GCAP PAGO';
+  if (v.gcap_gerado === true || String(v.gcap_gerado).toUpperCase() === 'SIM') return 'GCAP GERADO';
+  const dias = diffDays(v.data_venda, new Date().toISOString());
+  if (dias != null && dias > 30) return 'GCAP PENDENTE';
+  return '';
+}
+
+// ─── SVG LOADER ──────────────────────────────────
+async function loadSVG(url) {
+  if (svgCache[url]) return svgCache[url];
+  const r = await fetch(url);
+  const text = await r.text();
+  svgCache[url] = text;
+  return text;
+}
+
+async function renderMapa() {
+  const url = modo === 'docs' ? SVG_DOCS : SVG_VENDAS;
+  const container = document.getElementById('svg-container');
+  container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:300px;color:#8aacbb;font-size:12px">Carregando mapa...</div>';
+  const svgText = await loadSVG(url);
+  container.innerHTML = svgText;
+  const svgEl = container.querySelector('svg');
+  if (svgEl) {
+    svgEl.style.width  = '100%';
+    svgEl.style.height = 'auto';
+    svgEl.style.display = 'block';
+    paintMap(svgEl);
+    attachMapEvents(svgEl);
+  }
+}
+
+// ─── PINTAR MAPA ─────────────────────────────────
+function paintMap(svgEl) {
+  svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
+    el.style.fill        = COR_DOCS['cinza'];
+    el.style.stroke      = '#ffffff';
+    el.style.strokeWidth = '0.5';
+    el.style.opacity     = '0.85';
+    el.style.cursor      = 'pointer';
+    el.style.transition  = 'filter 0.12s, opacity 0.12s';
+  });
+
+  if (modo === 'docs') {
+    const byRef = {};
+    allDocs.forEach(d => { if (d.ref) byRef[d.ref.trim()] = d; });
+    svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
+      const id = el.id.trim();
+      const d  = byRef[id];
+      const status = d ? calcStatusDoc(d) : 'cinza';
+      // Filtro de status ativo
+      if (activeStatusFilters.size > 0 && d && !activeStatusFilters.has(status)) {
+        el.style.opacity = '0.2';
+      }
+      el.style.fill = COR_DOCS[status] || COR_DOCS['cinza'];
+      if (d?.ref === selectedRef) {
+        el.style.stroke = '#295778';
+        el.style.strokeWidth = '3';
+        el.style.opacity = '1';
+      }
+    });
+  } else {
+    const byRef = {};
+    allVendas.forEach(v => {
+      if (v.ref) byRef[v.ref.replace(/\s+/g,'').toUpperCase()] = v;
+    });
+    svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
+      const idNorm = el.id.replace(/\s+/g,'').toUpperCase();
+      const v = byRef[idNorm];
+      const status = v ? calcStatusVenda(v) : 'cinza';
+      if (activeStatusFilters.size > 0 && v && !activeStatusFilters.has(status)) {
+        el.style.opacity = '0.2';
+      }
+      el.style.fill = COR_VENDAS[status] || COR_VENDAS['cinza'];
+      if (v?.ref === selectedRef) {
+        el.style.stroke = '#295778';
+        el.style.strokeWidth = '3';
+        el.style.opacity = '1';
+      }
+    });
+  }
+}
+
+// ─── EVENTOS DO MAPA ─────────────────────────────
+function attachMapEvents(svgEl) {
+  const tip = document.getElementById('tip');
+  svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
+    el.addEventListener('mouseenter', e => {
+      const id = el.id.trim();
+      let info = id;
+      if (modo === 'docs') {
+        const d = allDocs.find(x => x.ref && x.ref.trim() === id);
+        if (d) info = `<strong>${d.ref}</strong><br>${d.endereco || ''}`;
+      } else {
+        const norm = id.replace(/\s+/g,'').toUpperCase();
+        const v = allVendas.find(x => x.ref && x.ref.replace(/\s+/g,'').toUpperCase() === norm);
+        if (v) info = `<strong>${v.ref}</strong>${v.endereco ? '<br>'+v.endereco : ''}${v.valor_venda_contrato ? '<br>'+fmtMoney(v.valor_venda_contrato) : ''}`;
+      }
+      tip.innerHTML = info;
+      tip.classList.add('on');
+      el.style.filter = 'brightness(1.2)';
+    });
+    el.addEventListener('mousemove', e => {
+      tip.style.left = (e.clientX + 14) + 'px';
+      tip.style.top  = (e.clientY - 10) + 'px';
+    });
+    el.addEventListener('mouseleave', () => {
+      tip.classList.remove('on');
+      el.style.filter = '';
+    });
+    el.addEventListener('click', () => {
+      const id = el.id.trim();
+      if (modo === 'docs') {
+        const d = allDocs.find(x => x.ref && x.ref.trim() === id);
+        if (d) {
+          if (selectedRef === d.ref) clearSelection();
+          else selectItem(d, 'docs');
+        }
+      } else {
+        const norm = id.replace(/\s+/g,'').toUpperCase();
+        const v = allVendas.find(x => x.ref && x.ref.replace(/\s+/g,'').toUpperCase() === norm);
+        if (v) {
+          if (selectedRef === v.ref) clearSelection();
+          else selectItem(v, 'vendas');
+        }
+      }
+    });
+  });
+}
+
+// ─── SELEÇÃO ─────────────────────────────────────
+function selectItem(item, tipo) {
+  if (selectedRef === item.ref) { clearSelection(); return; }
+  selectedRef = item.ref;
+  renderInfoCard(item, tipo);
+  const svgEl = document.querySelector('#svg-container svg');
+  if (svgEl) paintMap(svgEl);
+  document.querySelectorAll('#tabela-body tr').forEach(tr => {
+    tr.classList.toggle('selected', tr.dataset.ref === String(item.ref));
+  });
+}
+
+function clearSelection() {
+  selectedRef = null;
+  const svgEl = document.querySelector('#svg-container svg');
+  if (svgEl) paintMap(svgEl);
+  document.querySelectorAll('#tabela-body tr').forEach(tr => tr.classList.remove('selected'));
+  document.getElementById('info-card').innerHTML = `
+    <div class="empty-state">
+      <div class="empty-state-icon">◎</div>
+      <div class="empty-state-text">Clique em um lote no mapa<br>ou pesquise um endereço</div>
+    </div>`;
+}
+
+// ─── INFO CARD ───────────────────────────────────
+function renderInfoCard(item, tipo) {
+  const card = document.getElementById('info-card');
+  if (tipo === 'docs') renderInfoCardDocs(card, item);
+  else renderInfoCardVendas(card, item);
+}
+
+function field(label, value, cls='') {
+  const v = value != null && value !== '' ? value : null;
+  return `<div class="field">
+    <div class="field-label">${label}</div>
+    <div class="field-value ${v ? cls : 'empty'}">${v ?? '—'}</div>
+  </div>`;
+}
+
+function renderInfoCardDocs(card, d) {
+  const tempoObra = (() => {
+    if (d.data_termino_obra && d.data_inicio_obra) {
+      return `${diffDays(d.data_inicio_obra, d.data_termino_obra)} dias`;
+    }
+    if (d.data_inicio_obra) {
+      return `${diffDays(d.data_inicio_obra, new Date().toISOString())} dias (em andamento)`;
+    }
+    return null;
+  })();
+  card.innerHTML = `
+    <div class="info-card-title">Gestão Documental
+      <button onclick="clearSelection()" style="margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer;font-size:14px;line-height:1;padding:0 2px;">✕</button>
+    </div>
+    <div class="fields-grid">
+      <div class="field-row cols-2">
+        ${field('Endereço', d.endereco)}
+        ${field('Referência', d.ref)}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Prev. Início', fmtDate(d.previsao_inicio_obra))}
+        ${field('Data Início', fmtDate(d.data_inicio_obra))}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Data Término', fmtDate(d.data_termino_obra))}
+        ${field('Tempo de Obra', tempoObra)}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Orçado', fmtMoney(d.erp_orcado), 'money')}
+        ${field('Valor Pago', fmtMoney(d.erp_valor_pago), 'money')}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Proprietário', d.proprietario_documento || d.proprietario_real)}
+        ${field('CPF/CNPJ', d.cpf_cnpj)}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Mestre', d.mestre)}
+        ${field('Despachante', d.despachante)}
+      </div>
+    </div>`;
+}
+
+function renderInfoCardVendas(card, v) {
+  const alerta = calcAlertaVenda(v);
+  const gcap   = calcGcap(v);
+  card.innerHTML = `
+    <div class="info-card-title">Gestão de Vendas
+      <button onclick="clearSelection()" style="margin-left:auto;background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer;font-size:14px;line-height:1;padding:0 2px;">✕</button>
+    </div>
+    <div class="fields-grid">
+      <div class="field-row cols-2">
+        ${field('Endereço', v.endereco)}
+        ${field('Casa', v.casa)}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Data Venda', fmtDate(v.data_venda))}
+        ${field('Avaliação', fmtMoney(v.avaliacao), 'money')}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Valor de Venda', fmtMoney(v.valor_venda_contrato), 'money')}
+        ${field('Entregue', v.entregou_casa === true ? 'SIM' : v.entregou_casa ? String(v.entregou_casa) : null)}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Correspondente', v.correspondente)}
+        ${field('Corretor', v.corretor)}
+      </div>
+      <div class="field-row cols-2">
+        ${field('Dt. Assinatura', fmtDate(v.data_assinatura))}
+        ${field('Dt. Entrega', fmtDate(v.data_entrega))}
+      </div>
+      ${alerta ? `<div class="field-row cols-1"><div class="field"><div class="field-label">Alerta</div><div class="field-value ${alerta.includes('NÃO RECEBEU') ? 'danger' : 'alert'}">${alerta}</div></div></div>` : ''}
+      ${gcap    ? `<div class="field-row cols-1"><div class="field"><div class="field-label">GCAP</div><div class="field-value ${gcap === 'GCAP PAGO' ? 'ok' : 'alert'}">${gcap}</div></div></div>` : ''}
+    </div>`;
+}
+
+// ─── FILTROS RÁPIDOS (CHIPS MULTI-SELECT) ────────
+function buildFiltrosBar() {
+  const bar = document.getElementById('filtros-bar');
+  if (modo === 'docs') {
+    // Contar por status
+    const counts = {};
+    allDocs.filter(x => x.ref && x.ref.startsWith(REF_PREFIX_DOCS)).forEach(d => {
+      const s = calcStatusDoc(d);
+      counts[s] = (counts[s] || 0) + 1;
+    });
+    const ordem = ['amarelo','verde','laranja','vermelho','roxo','cinza'];
+    bar.innerHTML = `<span class="filtro-label">Status:</span>` +
+      ordem.filter(s => counts[s]).map(s => `
+        <span class="filtro-chip ${activeStatusFilters.has(s) ? 'active' : ''}"
+          onclick="toggleStatusFilter('${s}')"
+          data-status="${s}">
+          <span class="chip-dot" style="background:${COR_DOCS[s]}"></span>
+          ${STATUS_DOCS_LABELS[s]} (${counts[s]})
+        </span>`).join('') +
+      `<span class="filtro-sep"></span>
+       <span class="filtro-clear" onclick="clearStatusFilters()">✕ Limpar</span>`;
+  } else {
+    const counts = {};
+    allVendas.filter(x => x.setor && x.setor.toUpperCase() === SETOR_VEND.toUpperCase()).forEach(v => {
+      const s = calcStatusVenda(v);
+      counts[s] = (counts[s] || 0) + 1;
+    });
+    const ordem = ['azul','verde-claro','amarelo','vermelho','laranja','verde-esc','cinza'];
+    bar.innerHTML = `<span class="filtro-label">Status:</span>` +
+      ordem.filter(s => counts[s]).map(s => `
+        <span class="filtro-chip ${activeStatusFilters.has(s) ? 'active' : ''}"
+          onclick="toggleStatusFilter('${s}')"
+          data-status="${s}">
+          <span class="chip-dot" style="background:${COR_VENDAS[s]}"></span>
+          ${STATUS_VENDAS_LABELS[s]} (${counts[s]})
+        </span>`).join('') +
+      `<span class="filtro-sep"></span>
+       <span class="filtro-clear" onclick="clearStatusFilters()">✕ Limpar</span>`;
+  }
+}
+
+function toggleStatusFilter(status) {
+  if (activeStatusFilters.has(status)) activeStatusFilters.delete(status);
+  else activeStatusFilters.add(status);
+  buildFiltrosBar();
+  buildTabela();
+  const svgEl = document.querySelector('#svg-container svg');
+  if (svgEl) paintMap(svgEl);
+}
+
+function clearStatusFilters() {
+  activeStatusFilters.clear();
+  buildFiltrosBar();
+  buildTabela();
+  const svgEl = document.querySelector('#svg-container svg');
+  if (svgEl) paintMap(svgEl);
+}
+
+// ─── TABELA ───────────────────────────────────────
+function buildTabela() {
+  const cols = modo === 'docs' ? COLS_DOCS : COLS_VENDAS;
+
+  // Filtro base por setor/prefixo
+  let data = modo === 'docs'
+    ? allDocs.filter(x => x.ref && x.ref.toUpperCase().startsWith(REF_PREFIX_DOCS))
+    : allVendas.filter(x => x.setor && x.setor.toUpperCase() === SETOR_VEND.toUpperCase());
+
+  // Filtro por status selecionado (chips)
+  if (activeStatusFilters.size > 0) {
+    data = data.filter(row => {
+      const s = modo === 'docs' ? calcStatusDoc(row) : calcStatusVenda(row);
+      return activeStatusFilters.has(s);
+    });
+  }
+
+  // Filtro por coluna (texto)
+  const filtered = data.filter(row =>
+    cols.every(col => {
+      const f = (colFilters[col.key] || '').trim().toUpperCase();
+      if (!f) return true;
+      if (col.fmt === 'bool') {
+        const raw = row[col.key];
+        const isSim = raw === true || String(raw).toUpperCase() === 'SIM';
+        const isNao = raw === false || String(raw).toUpperCase() === 'NÃO' || String(raw).toUpperCase() === 'NAO';
+        const isEmpty = raw == null || raw === '';
+        if (f === 'SIM')  return isSim;
+        if (f === 'NÃO')  return isNao;
+        if (f === '—')    return isEmpty;
+        return true;
+      }
+      const v = String(row[col.key] ?? '').toUpperCase();
+      return v.includes(f);
+    })
+  );
+
+  // Cabeçalho
+  const head = document.getElementById('tabela-head');
+  head.innerHTML = cols.map(col => `
+    <th class="${hiddenCols.has(col.key) ? 'col-hidden' : ''}" data-key="${col.key}">
+      <span class="hide-col-btn" onclick="toggleCol('${col.key}')">✕</span>
+      ${col.label}
+    </th>`).join('');
+
+  // Linha de filtros em CASCATA
+  // Cascata: para cada coluna, mostra só os valores que existem nos dados
+  // JÁ filtrados pelas outras colunas (exceto a própria coluna sendo filtrada)
+  const filterRow = document.getElementById('tabela-filter-row');
+
+  filterRow.innerHTML = cols.map(col => {
+    const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
+    const cur = colFilters[col.key] || '';
+
+    // Dados filtrados por TODAS as colunas EXCETO esta (cascata)
+    const dataParaEstaCol = data.filter(row => {
+      return cols.every(c => {
+        if (c.key === col.key) return true; // pular a própria coluna
+        const f = (colFilters[c.key] || '').trim().toUpperCase();
+        if (!f) return true;
+        if (c.fmt === 'bool') {
+          const raw = row[c.key];
+          const isSim = raw === true || String(raw).toUpperCase() === 'SIM';
+          const isNao = raw === false || String(raw).toUpperCase() === 'NÃO' || String(raw).toUpperCase() === 'NAO';
+          const isEmpty = raw == null || raw === '';
+          if (f === 'SIM')  return isSim;
+          if (f === 'NÃO')  return isNao;
+          if (f === '—')    return isEmpty;
+          return true;
+        }
+        const v = String(row[c.key] ?? '').toUpperCase();
+        return v.includes(f);
+      });
+    });
+
+    // Valores únicos desta coluna nos dados filtrados
+    const uniqueVals = [...new Set(
+      dataParaEstaCol.map(r => r[col.key]).filter(v => v != null && v !== '' && v !== 'SEM DADOS')
+    )].sort((a, b) => String(a).localeCompare(String(b), 'pt-BR'));
+
+    // Select para cols bool ou com poucos valores únicos (≤30)
+    if (col.fmt === 'bool' || (uniqueVals.length > 0 && uniqueVals.length <= 30)) {
+      const opcoes = col.fmt === 'bool'
+        ? ['SIM', 'NÃO', 'ÁGIO', 'INEXISTE']
+        : uniqueVals;
+      return `<th class="${hidden}">
+        <select class="col-filter-select" onchange="setFilter('${col.key}', this.value)" onclick="event.stopPropagation()">
+          <option value="">Todos (${dataParaEstaCol.length})</option>
+          ${opcoes.map(v => `<option value="${v}" ${cur===String(v)?'selected':''}>${v}</option>`).join('')}
+        </select></th>`;
+    }
+
+    // Input de texto para colunas com muitos valores distintos
+    return `<th class="${hidden}">
+      <input class="col-filter-input" placeholder="filtrar..." value="${cur}"
+        oninput="setFilter('${col.key}', this.value)" onclick="event.stopPropagation()">
+    </th>`;
+  }).join('');
+
+  // Corpo
+  const body = document.getElementById('tabela-body');
+  body.innerHTML = filtered.map(row => `
+    <tr data-ref="${row.ref || ''}" onclick="selectItem(${JSON.stringify(row).replace(/"/g,'&quot;')}, '${modo}')">
+      ${cols.map(col => `
+        <td class="${hiddenCols.has(col.key) ? 'col-hidden' : ''} ${col.key === 'ref' ? 'ref-col' : ''}">
+          ${fmtCell(row[col.key], col.fmt)}
+        </td>`).join('')}
+    </tr>`).join('')
+    || '<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px;font-size:13px">Nenhum registro encontrado</td></tr>';
+
+  // Painel colunas
+  const panel = document.getElementById('col-panel-list');
+  panel.innerHTML = cols.map(col => `
+    <label>
+      <input type="checkbox" ${hiddenCols.has(col.key) ? '' : 'checked'}
+        onchange="toggleCol('${col.key}')"> ${col.label}
+    </label>`).join('');
+
+  document.getElementById('tabela-titulo').textContent =
+    `${modo === 'docs' ? 'Gestão Documental' : 'Gestão de Vendas'} (${filtered.length})`;
+}
+
+function setFilter(key, val) {
+  colFilters[key] = val;
+  buildTabela();
+}
+function toggleCol(key) {
+  if (hiddenCols.has(key)) hiddenCols.delete(key);
+  else hiddenCols.add(key);
+  buildTabela();
+}
+function toggleColPanel() {
+  document.getElementById('col-panel').classList.toggle('open');
+}
+function limparFiltros() {
+  colFilters = {};
+  clearStatusFilters();
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.tbl-rel')) {
+    document.getElementById('col-panel').classList.remove('open');
+  }
+});
+
+// ─── PESQUISA ─────────────────────────────────────
+function setupPesquisa() {
+  const input = document.getElementById('pesquisa');
+  const results = document.getElementById('pesquisa-results');
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toUpperCase();
+    results.innerHTML = '';
+    if (!q || q.length < 2) return;
+    const pool = modo === 'docs'
+      ? allDocs.filter(x => x.ref && x.ref.startsWith(REF_PREFIX_DOCS))
+      : allVendas.filter(x => x.setor && x.setor.toUpperCase() === SETOR_VEND.toUpperCase());
+    const hits = pool.filter(x =>
+      (x.endereco || '').toUpperCase().includes(q) ||
+      (x.ref || '').toUpperCase().includes(q)
+    ).slice(0, 10);
+    results.innerHTML = hits.map(x => `
+      <div class="pesq-item" onclick="pesqSelect(${JSON.stringify(x).replace(/"/g,'&quot;')})">
+        ${x.endereco || x.ref}
+        <div class="pesq-ref">${x.ref}</div>
+      </div>`).join('');
+  });
+}
+function pesqSelect(item) {
+  document.getElementById('pesquisa-results').innerHTML = '';
+  document.getElementById('pesquisa').value = item.endereco || item.ref;
+  selectItem(item, modo);
+}
+
+// ─── MODO ─────────────────────────────────────────
+function setModo(m) {
+  if (modo === m) return;
+  modo = m;
+  activeStatusFilters.clear();
+  colFilters = {};
+  selectedRef = null;
+  document.getElementById('btn-docs').classList.toggle('active', m === 'docs');
+  document.getElementById('btn-vendas').classList.toggle('active', m === 'vendas');
+  document.getElementById('legenda-docs').style.display   = m === 'docs'   ? '' : 'none';
+  document.getElementById('legenda-vendas').style.display = m === 'vendas' ? '' : 'none';
+  renderMapa();
+  buildFiltrosBar();
+  buildTabela();
+  setupPesquisa();
+  clearSelection();
+}
+
+// ─── INIT ─────────────────────────────────────────
+async function init() {
+  try {
+    const r    = await fetch(DATA_URL);
+    const data = await r.json();
+    allDocs   = data.documentos || [];
+    allVendas = data.vendas     || [];
+    if (data.updated_at) {
+      const dt = new Date(data.updated_at);
+      document.getElementById('updated-at').textContent =
+        'Atualizado: ' + dt.toLocaleString('pt-BR');
+    }
+    await renderMapa();
+    buildFiltrosBar();
+    buildTabela();
+    setupPesquisa();
+    document.getElementById('loading').classList.add('hidden');
+  } catch (e) {
+    document.getElementById('loading').innerHTML =
+      `<div style="color:#c0392b;font-size:14px">Erro ao carregar dados:<br>${e.message}</div>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>

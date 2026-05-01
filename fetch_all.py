@@ -25,6 +25,17 @@ def prop_select(p):
     s = p.get("select")
     return s.get("name") if s else None
 
+def get_prop(props, nome):
+    """Busca propriedade tolerando espaços no início/fim do nome."""
+    if nome in props:
+        return props[nome]
+    # Tentar com strip em todas as keys
+    nome_strip = nome.strip()
+    for k, v in props.items():
+        if k.strip() == nome_strip:
+            return v
+    return {}
+
 def prop_number(p):
     return p.get("number")
 
@@ -69,12 +80,12 @@ def notion_pages(token, db_id, filtro=None):
 # ─── PARSE DOCUMENTOS ────────────────────────────────────────
 def parse_doc(page):
     p = page.get("properties", {})
-    def s(nome): return prop_select(p.get(nome, {}))
-    def d(nome): return prop_date(p.get(nome, {}))
-    def n(nome): return prop_number(p.get(nome, {}))
+    def s(nome): return prop_select(get_prop(p, nome))
+    def d(nome): return prop_date(get_prop(p, nome))
+    def n(nome): return prop_number(get_prop(p, nome))
     return {
         "id":                       page.get("id"),
-        "endereco":                 prop_title(p.get("ENDEREÇO", {})),
+        "endereco":                 prop_title(get_prop(p, "ENDEREÇO")),
         "ref":                      prop_text(p.get("REF.", {})),
         "setor":                    s("SETOR"),
         "cidade":                   s("CIDADE"),
@@ -139,13 +150,13 @@ def parse_doc(page):
 # ─── PARSE VENDAS ─────────────────────────────────────────────
 def parse_venda(page):
     p = page.get("properties", {})
-    def s(nome): return prop_select(p.get(nome, {}))
-    def d(nome): return prop_date(p.get(nome, {}))
-    def n(nome): return prop_number(p.get(nome, {}))
-    def t(nome): return prop_text(p.get(nome, {}))
+    def s(nome): return prop_select(get_prop(p, nome))
+    def d(nome): return prop_date(get_prop(p, nome))
+    def n(nome): return prop_number(get_prop(p, nome))
+    def t(nome): return prop_text(get_prop(p, nome))
     return {
         "id":                       page.get("id"),
-        "endereco":                 prop_title(p.get("ENDEREÇO", {})),
+        "endereco":                 prop_title(get_prop(p, "ENDEREÇO")),
         "casa":                     n("CASA"),
         "ref":                      t("REF"),
         "cidade":                   s("CIDADE VI"),
@@ -157,8 +168,8 @@ def parse_venda(page):
         "corretor":                 t("CORRETOR"),
         "avaliacao":                n("AVALIAÇÃO"),
         "validade":                 d("VALIDADE"),
-        "valor_na_mao":             n(" VALOR NA MÃO"),
-        "comissao":                 n(" COMISSÃO"),
+        "valor_na_mao":             n("VALOR NA MÃO"),
+        "comissao":                 n("COMISSÃO"),
         "valor_venda_contrato":     n("VALOR DE COMPRA E VENDA NO CONTRATO (VENDIDA)"),
         "banco":                    s("BANCO"),
         "agencia":                  n("AGÊNCIA"),
