@@ -12,7 +12,6 @@ TOKEN_VENDAS = os.environ.get("NOTION_TOKEN_VENDAS", "")
 DB_VENDAS    = os.environ.get("NOTION_DB_VENDAS",    "33cc5ab532d38047ae3aee8b87ac1f4d")
 ERP_USER     = os.environ.get("ERP_USERNAME",        "")
 ERP_PASS     = os.environ.get("ERP_PASSWORD",        "")
-ERP_BASE     = "https://app.contaazul.com/api/v1"  # ajustar se necessário
 
 # ─── HELPERS NOTION ──────────────────────────────────────────
 def prop_title(p):
@@ -198,42 +197,78 @@ def parse_venda(page):
         "pesquisa":                 s("PREENCHEU A PESQUISA?"),
     }
 
-# ─── ERP (Google Planilhas via API) ──────────────────────────
-def buscar_erp():
-    """Busca propostas e pagamentos do ERP."""
-    orcados = {}   # endereco -> valor
-    pagos   = {}   # endereco -> soma
+# ─── ERP (Mais Controle API) ─────────────────────────────────
+ERP_API_BASE = "https://api-clientes.maiscontroleerp.com.br/data-exports"
+
+def erp_fetch(endpoint):
+    """Busca todos os registros de um endpoint do ERP com paginação."""
     if not ERP_USER or not ERP_PASS:
-        print("  ERP: credenciais não configuradas")
+        return []
+    import base64
+    cred = base64.b64encode(f"{ERP_USER}:{ERP_PASS}".encode()).decode()
+    headers = {"Authorization": f"Basic {cred}"}
+    all_rows = []
+    page = 1
+    page_size = 100
+    while True:
+        try:
+            r = requests.get(
+                f"{ERP_API_BASE}/{endpoint}",
+                headers=headers,
+                params={"page": page, "pageSize": page_size},
+                timeout=30
+            )
+            if r.status_code != 200:
+                print(f"  ERP {endpoint} erro: {r.status_code}")
+                break
+            # Resposta é CSV
+            import io, csv
+            reader = csv.DictReader(io.StringIO(r.text))
+            rows = list(reader)
+            all_rows.extend(rows)
+            if len(rows) < page_size:
+                break
+            page += 1
+        except Exception as e:
+            print(f"  ERP {endpoint} exceção: {e}")
+            break
+    return all_rows
+
+def buscar_erp():
+    """Busca propostas e pagamentos do ERP Mais Controle."""
+    orcados = {}   # endereco_upper -> valor
+    pagos   = {}   # endereco_upper -> soma
+    if not ERP_USER or not ERP_PASS:
+        print("  ERP: credenciais não configuradas (ERP_USERNAME / ERP_PASSWORD)")
         return orcados, pagos
-    try:
-        session = requests.Session()
-        # Login
-        r = session.post(f"{ERP_BASE}/login",
-            json={"username": ERP_USER, "password": ERP_PASS}, timeout=30)
-        if r.status_code not in (200, 201):
-            print(f"  ERP login falhou: {r.status_code}")
-            return orcados, pagos
 
-        # Propostas → orçado
-        r = session.get(f"{ERP_BASE}/propostas", timeout=30)
-        if r.status_code == 200:
-            for row in r.json():
-                obra = (row.get("obra") or "").strip().upper()
-                val  = row.get("preco_total_com_desconto")
-                if obra and val is not None:
-                    orcados[obra] = val
+    # Propostas → orçado (coluna: obra, preco_total_com_desconto)
+    print("  ERP: buscando propostas...")
+    propostas = erp_fetch("propostas")
+    print(f"  ERP: {len(propostas)} propostas")
+    for row in propostas:
+        obra = (row.get("obra") or "").strip().upper()
+        val  = row.get("preco_total_com_desconto")
+        if obra and val:
+            try:
+                orcados[obra] = float(str(val).replace(",", "."))
+            except:
+                pass
 
-        # Pagamentos → valor pago (soma)
-        r = session.get(f"{ERP_BASE}/pagamentos", timeout=30)
-        if r.status_code == 200:
-            for row in r.json():
-                cc  = (row.get("centro_de_custo") or "").strip().upper()
-                val = row.get("valor_pago")
-                if cc and val is not None:
-                    pagos[cc] = pagos.get(cc, 0) + float(val)
-    except Exception as e:
-        print(f"  ERP erro: {e}")
+    # Pagamentos → valor pago somado (coluna: centro_de_custo, valor_pago)
+    print("  ERP: buscando pagamentos...")
+    pagamentos = erp_fetch("pagamentos")
+    print(f"  ERP: {len(pagamentos)} pagamentos")
+    for row in pagamentos:
+        cc  = (row.get("centro_de_custo") or "").strip().upper()
+        val = row.get("valor_pago")
+        if cc and val:
+            try:
+                pagos[cc] = pagos.get(cc, 0) + float(str(val).replace(",", "."))
+            except:
+                pass
+
+    print(f"  ERP: {len(orcados)} obras com orçamento, {len(pagos)} obras com pagamentos")
     return orcados, pagos
 
 # ─── MAIN ─────────────────────────────────────────────────────
