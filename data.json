@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-02T12:37:07.363755+00:00",
+  "updated_at": "2026-05-02T13:01:02.831855+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -60,8 +60,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 252859.1088,
+      "erp_valor_pago": 296443.4299998
     },
     {
       "id": "32fc5ab5-32d3-8002-84c4-da8ade39be95",
@@ -122,8 +122,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 325767.6258,
+      "erp_valor_pago": 214826.78
     },
     {
       "id": "32fc5ab5-32d3-8003-a864-e9f29810dcac",
@@ -184,8 +184,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 327596.6437,
+      "erp_valor_pago": 235254.75000000003
     },
     {
       "id": "32fc5ab5-32d3-8005-b20d-d641b14743fc",
@@ -308,8 +308,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 1354.3500000000001
     },
     {
       "id": "32fc5ab5-32d3-8006-9c87-f0766ad738aa",
@@ -370,8 +370,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 497875.7039,
+      "erp_valor_pago": 291936.45
     },
     {
       "id": "32fc5ab5-32d3-8009-89ca-d37e432e0cab",
@@ -432,8 +432,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 248935.0247,
+      "erp_valor_pago": 322075.95999999996
     },
     {
       "id": "32fc5ab5-32d3-800d-9da3-e34b3f9ad437",
@@ -556,8 +556,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 326962.7384,
+      "erp_valor_pago": 249513.15999999997
     },
     {
       "id": "32fc5ab5-32d3-8010-ad3f-eceb00faceff",
@@ -618,8 +618,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 254259.1169,
+      "erp_valor_pago": 90474.5999999
     },
     {
       "id": "32fc5ab5-32d3-8010-ae9b-e45b97780e7b",
@@ -742,8 +742,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 568.5
     },
     {
       "id": "32fc5ab5-32d3-8013-8700-d965d8a9f776",
@@ -866,8 +866,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 256936.1361,
+      "erp_valor_pago": 150546.03
     },
     {
       "id": "32fc5ab5-32d3-8015-93f5-e21e316e36e2",
@@ -928,8 +928,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 261139.1893,
+      "erp_valor_pago": 100108.67000000001
     },
     {
       "id": "32fc5ab5-32d3-8015-a167-c2b7e4aed8f0",
@@ -1052,8 +1052,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 336654.4207,
+      "erp_valor_pago": 235039.87000027
     },
     {
       "id": "32fc5ab5-32d3-8019-a672-cd46e3056fe3",
@@ -1176,8 +1176,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-03-23",
       "entrada_incorporacao_data": "2025-11-13",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 289937.0028,
+      "erp_valor_pago": 274688.01000002003
     },
     {
       "id": "32fc5ab5-32d3-801c-a699-dce8c9164327",
@@ -1238,8 +1238,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 79557.91
     },
     {
       "id": "32fc5ab5-32d3-801f-827d-fea19e98be44",
@@ -1300,8 +1300,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 254585.0514,
+      "erp_valor_pago": 3000.33
     },
     {
       "id": "32fc5ab5-32d3-801f-afda-f9dc48b34c7f",
@@ -1362,8 +1362,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 270422.7333,
+      "erp_valor_pago": 22726.809999999998
     },
     {
       "id": "32fc5ab5-32d3-8022-a13f-f8c3fc00a6bd",
@@ -1424,8 +1424,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 264756.8214,
+      "erp_valor_pago": 53190.33000000001
     },
     {
       "id": "32fc5ab5-32d3-8023-bfed-e3532c4dfe83",
@@ -1672,8 +1672,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 250663.3052,
+      "erp_valor_pago": 292388.75999980007
     },
     {
       "id": "32fc5ab5-32d3-8028-8202-cd4259fdb51b",
@@ -1734,8 +1734,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 346449.9592,
+      "erp_valor_pago": 27768.890000199997
     },
     {
       "id": "32fc5ab5-32d3-802a-8b15-e8f825120e91",
@@ -1796,8 +1796,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-12",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 335841.8714,
+      "erp_valor_pago": 186932.5999996
     },
     {
       "id": "32fc5ab5-32d3-802d-a297-f949afcfb0c4",
@@ -1858,8 +1858,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-14",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 324606.1796,
+      "erp_valor_pago": 299977.06000000006
     },
     {
       "id": "32fc5ab5-32d3-8032-ab95-eb0fd1382396",
@@ -2044,8 +2044,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 351329.9271,
+      "erp_valor_pago": 246997.68000050006
     },
     {
       "id": "32fc5ab5-32d3-8036-9b3a-c54e0325e7e1",
@@ -2168,8 +2168,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 330691.6458,
+      "erp_valor_pago": 226834.21999999997
     },
     {
       "id": "32fc5ab5-32d3-8039-960d-d902cc5921f9",
@@ -2230,8 +2230,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-01-27",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 344132.9568,
+      "erp_valor_pago": 311048.5200005
     },
     {
       "id": "32fc5ab5-32d3-803a-a502-f56ae8421adc",
@@ -2354,8 +2354,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 262514.8993,
+      "erp_valor_pago": 6515.84
     },
     {
       "id": "32fc5ab5-32d3-8042-917f-c8b9a9e1a214",
@@ -2416,8 +2416,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": "2026-04-09",
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 282695.4669,
+      "erp_valor_pago": 379891.93000025995
     },
     {
       "id": "32fc5ab5-32d3-8044-a254-e33a6dc1ed1c",
@@ -2478,8 +2478,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 2825.05
     },
     {
       "id": "32fc5ab5-32d3-8046-8f9a-d2d00b97fd10",
@@ -2602,8 +2602,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-01-27",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 344785.0621,
+      "erp_valor_pago": 313863.19000072003
     },
     {
       "id": "32fc5ab5-32d3-804a-959d-c059af06ffec",
@@ -2664,8 +2664,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 477570.1478,
+      "erp_valor_pago": 419322.80000000005
     },
     {
       "id": "32fc5ab5-32d3-804b-bd18-d2783f4b19a8",
@@ -2726,8 +2726,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 249673.4914,
+      "erp_valor_pago": 241328.23000000004
     },
     {
       "id": "32fc5ab5-32d3-804e-8917-e1d89bca6030",
@@ -2788,8 +2788,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-06",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 279422.4449,
+      "erp_valor_pago": 348021.67
     },
     {
       "id": "32fc5ab5-32d3-804f-a9dd-e546d5f03871",
@@ -2850,8 +2850,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 254549.5323,
+      "erp_valor_pago": 110543.4600004
     },
     {
       "id": "32fc5ab5-32d3-804f-b17a-f1394e19a96f",
@@ -2912,8 +2912,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-07-02",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 508892.753,
+      "erp_valor_pago": 363807.6199999001
     },
     {
       "id": "32fc5ab5-32d3-8050-81de-dd7adb943a7d",
@@ -3036,8 +3036,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-03-23",
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 287945.1731,
+      "erp_valor_pago": 280237.74999961996
     },
     {
       "id": "32fc5ab5-32d3-8054-9b70-efe6f017eb0f",
@@ -3098,8 +3098,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 250834.2957,
+      "erp_valor_pago": 288231.04999999003
     },
     {
       "id": "32fc5ab5-32d3-8056-914a-d58d2c8adb8d",
@@ -3160,8 +3160,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 485112.1026,
+      "erp_valor_pago": 498039.79000000004
     },
     {
       "id": "32fc5ab5-32d3-8057-9496-e2133054368f",
@@ -3284,8 +3284,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 343337.376,
+      "erp_valor_pago": 244184.0800003
     },
     {
       "id": "32fc5ab5-32d3-8059-b477-f71a776216f8",
@@ -3408,8 +3408,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-07",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 344756.171,
+      "erp_valor_pago": 226893.18000000002
     },
     {
       "id": "32fc5ab5-32d3-805f-aa84-cf0e6992ecf7",
@@ -3470,8 +3470,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 3897.22
     },
     {
       "id": "32fc5ab5-32d3-8062-b1a0-e28701887556",
@@ -3718,8 +3718,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 3311.1099999999997
     },
     {
       "id": "32fc5ab5-32d3-806d-8f62-c4247ed6d73c",
@@ -3842,8 +3842,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-04-09",
       "entrada_incorporacao_data": "2025-11-13",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 274488.3285,
+      "erp_valor_pago": 263510.0299998
     },
     {
       "id": "32fc5ab5-32d3-8070-b28c-c1f2839480aa",
@@ -3904,8 +3904,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 1553.4
     },
     {
       "id": "32fc5ab5-32d3-8072-9948-ca2d657b4873",
@@ -4028,8 +4028,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 692.95
     },
     {
       "id": "32fc5ab5-32d3-8077-929c-f8ab84e701a4",
@@ -4090,8 +4090,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 330907.3561,
+      "erp_valor_pago": 148579.92000010004
     },
     {
       "id": "32fc5ab5-32d3-8079-a0ba-d4994425b7c1",
@@ -4152,8 +4152,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-27",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 351676.8134,
+      "erp_valor_pago": 248936.27999999997
     },
     {
       "id": "32fc5ab5-32d3-807b-9d63-f8b7871795bf",
@@ -4214,8 +4214,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 339525.8635,
+      "erp_valor_pago": 159023.78999999995
     },
     {
       "id": "32fc5ab5-32d3-807d-afc7-e4457eaa92a1",
@@ -4400,8 +4400,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 1133.4399999999998
     },
     {
       "id": "32fc5ab5-32d3-8085-94af-ecc7fdbe6be2",
@@ -4524,8 +4524,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 96887.89
     },
     {
       "id": "32fc5ab5-32d3-8092-9edb-e22faa2b8bcb",
@@ -4586,8 +4586,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 339349.3966,
+      "erp_valor_pago": 237434.5800000799
     },
     {
       "id": "32fc5ab5-32d3-8095-8fbb-d6c763e6313d",
@@ -4648,8 +4648,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 265604.7702,
+      "erp_valor_pago": 162631.00999999995
     },
     {
       "id": "32fc5ab5-32d3-8097-9268-e928e0819a05",
@@ -4710,8 +4710,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 263657.0207,
+      "erp_valor_pago": 15366.619999999999
     },
     {
       "id": "32fc5ab5-32d3-8099-ac9e-e0b149483fdd",
@@ -4772,8 +4772,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 86082.44000000002
     },
     {
       "id": "32fc5ab5-32d3-8099-af20-dd95b4c5db39",
@@ -4896,8 +4896,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": "2026-04-10",
       "entrada_incorporacao_data": "2025-11-13",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 253103.3558,
+      "erp_valor_pago": 263617.54000095
     },
     {
       "id": "32fc5ab5-32d3-809e-be5d-e0e14173eef0",
@@ -5020,8 +5020,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 462.29999999999995
     },
     {
       "id": "32fc5ab5-32d3-80a3-a436-c8b2b0fc9aff",
@@ -5082,8 +5082,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 270422.7333,
+      "erp_valor_pago": 1553.4
     },
     {
       "id": "32fc5ab5-32d3-80a7-b8c4-f0206f432da8",
@@ -5144,8 +5144,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 262102.8793,
+      "erp_valor_pago": 24616.05
     },
     {
       "id": "32fc5ab5-32d3-80a8-a26e-fb3bcc2ca52b",
@@ -5268,8 +5268,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 254801.7523,
+      "erp_valor_pago": 105074.22999970001
     },
     {
       "id": "32fc5ab5-32d3-80ac-997f-eba823f584bc",
@@ -5330,8 +5330,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 266958.7046,
+      "erp_valor_pago": 7488.469999999999
     },
     {
       "id": "32fc5ab5-32d3-80ac-ae80-f10078d50e7e",
@@ -5516,8 +5516,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 263243.1919,
+      "erp_valor_pago": 167521.24999971
     },
     {
       "id": "32fc5ab5-32d3-80b2-8382-ec7cf85aee83",
@@ -5702,8 +5702,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 560.0
     },
     {
       "id": "32fc5ab5-32d3-80b7-bb8d-c5b75a5f2e78",
@@ -5764,8 +5764,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 248510.2749,
+      "erp_valor_pago": 227607.43000000002
     },
     {
       "id": "32fc5ab5-32d3-80b8-8581-c140773afcae",
@@ -5888,8 +5888,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 237431.7821,
+      "erp_valor_pago": 2804.59
     },
     {
       "id": "32fc5ab5-32d3-80bc-9dc5-fbd2f1ec6f91",
@@ -5950,8 +5950,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 255957.3523,
+      "erp_valor_pago": 167196.52
     },
     {
       "id": "32fc5ab5-32d3-80be-9d1b-ff31135e1bed",
@@ -6074,8 +6074,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 1553.4
     },
     {
       "id": "32fc5ab5-32d3-80c3-b78d-cd227d1f1f50",
@@ -6136,8 +6136,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 458995.913,
+      "erp_valor_pago": 515486.95999971
     },
     {
       "id": "32fc5ab5-32d3-80cb-9bd4-d020bd6ea743",
@@ -6198,8 +6198,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 249234.6977,
+      "erp_valor_pago": 310850.16000030003
     },
     {
       "id": "32fc5ab5-32d3-80d4-aaa3-c8c0e111cd7b",
@@ -6260,8 +6260,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-10",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 355739.0601,
+      "erp_valor_pago": 196632.04000000004
     },
     {
       "id": "32fc5ab5-32d3-80d5-8302-ffa02af351ca",
@@ -6384,8 +6384,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 3620.7699999999995
     },
     {
       "id": "32fc5ab5-32d3-80d6-a641-d3e24af21e6b",
@@ -6508,8 +6508,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 3962.0099999999998
     },
     {
       "id": "32fc5ab5-32d3-80d7-9695-ddb495bf62ca",
@@ -6570,8 +6570,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 1703.47
     },
     {
       "id": "32fc5ab5-32d3-80d8-b084-e6db2bd091de",
@@ -6632,8 +6632,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 343537.5221,
+      "erp_valor_pago": 217433.31
     },
     {
       "id": "32fc5ab5-32d3-80d9-8309-dbbbfacdd100",
@@ -6694,8 +6694,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 3890.95
     },
     {
       "id": "32fc5ab5-32d3-80d9-bfdf-c51a4ab4785e",
@@ -6756,8 +6756,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 311270.4296,
+      "erp_valor_pago": 399946.12000000005
     },
     {
       "id": "32fc5ab5-32d3-80dc-8d9b-d51554495b8c",
@@ -6818,7 +6818,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6942,8 +6942,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 108.39
     },
     {
       "id": "32fc5ab5-32d3-80e3-91fc-ed2a653de9a2",
@@ -7004,8 +7004,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 254330.6517,
+      "erp_valor_pago": 170771.76000005
     },
     {
       "id": "32fc5ab5-32d3-80e3-9bed-ce9919214f8b",
@@ -7128,8 +7128,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 3311.11
     },
     {
       "id": "32fc5ab5-32d3-80e8-aa9e-dad69ae73613",
@@ -7190,8 +7190,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 1025.05
     },
     {
       "id": "32fc5ab5-32d3-80e9-8224-ff6cb098a865",
@@ -7252,8 +7252,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 249311.2749,
+      "erp_valor_pago": 150060.13999999996
     },
     {
       "id": "32fc5ab5-32d3-80ea-8531-d048443f3480",
@@ -7314,8 +7314,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 249789.2037,
+      "erp_valor_pago": 179503.94999999995
     },
     {
       "id": "32fc5ab5-32d3-80eb-af60-daf1d8470415",
@@ -7376,8 +7376,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 81600.6
     },
     {
       "id": "32fc5ab5-32d3-80ee-82c6-efb25fcdb491",
@@ -7438,8 +7438,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 453951.5105,
+      "erp_valor_pago": 473057.28000002995
     },
     {
       "id": "32fc5ab5-32d3-80ee-bc56-d6f7f722c59f",
@@ -7562,8 +7562,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 349989.4766,
+      "erp_valor_pago": 228378.9200002
     },
     {
       "id": "32fc5ab5-32d3-80f2-ac4f-d4890ae1b930",
@@ -7624,8 +7624,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 79557.9
     },
     {
       "id": "32fc5ab5-32d3-80f3-bab7-f1f801001c22",
@@ -7686,8 +7686,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 80980.88
     },
     {
       "id": "32fc5ab5-32d3-80f3-bd2e-c338323a540d",
@@ -7872,8 +7872,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 506844.8944,
+      "erp_valor_pago": 267738.83
     },
     {
       "id": "32fc5ab5-32d3-80fa-a08f-cf39a7aa4ae9",
@@ -8120,8 +8120,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 585.13
     },
     {
       "id": "32fc5ab5-32d3-80fc-b4fd-f675f8f9d734",
@@ -8368,8 +8368,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 120089.82000009996
     },
     {
       "id": "335c5ab5-32d3-8054-bf03-ea9b76dc0782",
@@ -8430,8 +8430,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 119955.18000009995
     },
     {
       "id": "335c5ab5-32d3-8071-a885-f6be818fd4ac",
@@ -8492,8 +8492,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 91012.25
     },
     {
       "id": "335c5ab5-32d3-8094-9fad-d363e10ec57c",
@@ -8554,8 +8554,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 119677.54000009997
     },
     {
       "id": "335c5ab5-32d3-8097-b382-d21a1335f666",
@@ -8616,8 +8616,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 81168.17
     },
     {
       "id": "335c5ab5-32d3-80a9-9032-ceda17330acf",
@@ -8678,8 +8678,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 119677.54000009997
     },
     {
       "id": "335c5ab5-32d3-80b8-8993-d8c6c2ef70af",
@@ -8740,8 +8740,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 119677.55000009996
     },
     {
       "id": "34ac5ab5-32d3-801c-9d06-f122ff8b66d7",
