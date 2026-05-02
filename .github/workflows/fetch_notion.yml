@@ -29,8 +29,8 @@ jobs:
           NOTION_DB_DOCS:      ${{ secrets.NOTION_DB_DOCS }}
           NOTION_TOKEN_VENDAS: ${{ secrets.NOTION_TOKEN_VENDAS }}
           NOTION_DB_VENDAS:    ${{ secrets.NOTION_DB_VENDAS }}
-          ERP_USERNAME:        ${{ secrets.ERP_USERNAME }}
-          ERP_PASSWORD:        ${{ secrets.ERP_PASSWORD }}
+          ERP_CSV_PROPOSTAS:   "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=1086346405&single=true&output=csv"
+          ERP_CSV_PAGAMENTOS:  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=90551417&single=true&output=csv"
         run: python fetch_all.py
 
       - name: Commit data.json
@@ -38,7 +38,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data.json
-          git diff --staged --quiet || git commit -m "chore: atualizar data.json [$(date -u +%Y-%m-%dT%H:%M:%SZ)]"
+          git diff --staged --quiet || git commit -m "chore: atualizar data.json [${{ date -u +%Y-%m-%dT%H:%M:%SZ }}]"
           git push
 
       - name: Preparar pasta de publicação
