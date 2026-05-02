@@ -638,6 +638,19 @@ tbody td:last-child { border-right: none; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ─── GCAP ALERT ────────────────────────────────── */
+.gcap-alert {
+  pointer-events: none;
+  font-size: 11px;
+  user-select: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+  animation: gcap-pulse 2s ease-in-out infinite;
+}
+@keyframes gcap-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
 /* ─── TOOLTIP ───────────────────────────────────── */
 #tip {
   position: fixed;
@@ -734,6 +747,7 @@ tbody td:last-child { border-right: none; }
       <div class="leg-item"><div class="leg-dot" style="background:var(--v-verm)"></div> &gt;45 dias</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--v-laranja)"></div> &gt;45 dias s/ receber</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--v-esc)"></div> Entregue</div>
+    <div class="leg-item"><span style="color:#ff6b00;font-size:13px;line-height:1">⚠</span> GCAP pendente</div>
     </div>
   </div>
 
@@ -824,11 +838,17 @@ const diffDays = (a, b) => {
 
 function fmtCell(val, fmtFn) {
   if (fmtFn === 'bool') {
-    if (val === true || String(val).toUpperCase() === 'SIM')
+    if (val == null || val === '') return '<span class="cell-null">—</span>';
+    const s = String(val).toUpperCase().trim();
+    if (s === 'SIM' || val === true)
       return '<span class="bool-sim">SIM</span>';
-    if (val === false || String(val).toUpperCase() === 'NÃO' || String(val).toUpperCase() === 'NAO')
+    if (s === 'NÃO' || s === 'NAO' || val === false)
       return '<span class="bool-nao">NÃO</span>';
-    return '<span class="cell-null">—</span>';
+    if (s === 'ÁGIO' || s === 'AGIO')
+      return '<span class="bool-sim" style="background:rgba(201,162,39,0.15);color:#c9a227;border-color:rgba(201,162,39,0.4)">ÁGIO</span>';
+    if (s === 'INEXISTE')
+      return '<span class="bool-nao" style="background:rgba(90,128,153,0.1);color:#5a8099;border-color:rgba(90,128,153,0.3)">INEXISTE</span>';
+    return `<span class="bool-nao" style="background:rgba(90,128,153,0.1);color:#5a8099;border-color:rgba(90,128,153,0.3)">${val}</span>`;
   }
   if (typeof fmtFn === 'function') {
     const r = fmtFn(val);
@@ -945,15 +965,20 @@ const COLS_VENDAS = [
 ];
 
 // ─── STATUS DOCS ─────────────────────────────────
+function isSim(v) {
+  return v === true || String(v).toUpperCase() === 'SIM';
+}
+
 function calcStatusDoc(d) {
   if (!d) return 'cinza';
-  if (d.aprovou_habite_se)  return 'roxo';
-  if (d.agendou_habite_se)  return 'vermelho';
+  if (isSim(d.aprovou_habite_se))  return 'roxo';
+  if (isSim(d.agendou_habite_se))  return 'vermelho';
   if (d.data_termino_obra && d.data_inicio_obra) {
     const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
     return dias <= 150 ? 'verde' : 'laranja';
   }
-  if (d.data_inicio_obra) return 'amarelo'; // em andamento
+  if (d.data_inicio_obra) return 'amarelo';
+  // Tem ref mas sem data início = não iniciado
   return 'cinza';
 }
 
@@ -980,16 +1005,23 @@ function calcAlertaVenda(v) {
   if (!v.avaliacao || !v.data_envio_docs) return '';
   const dias = diffDays(v.data_envio_docs, new Date().toISOString());
   if (dias == null) return '';
-  const conforme = v.processo_conforme === true || String(v.processo_conforme).toUpperCase() === 'SIM';
-  const recebeu  = v.recebeu === true || String(v.recebeu).toUpperCase() === 'SIM';
-  if (dias > 45 && !recebeu) return 'TEMPO CORRIDO MAIOR QUE 45 DIAS E NÃO RECEBEU';
-  if (dias > 45)              return 'TEMPO CORRIDO MAIOR QUE 45 DIAS';
-  if (dias > 20)              return 'TEMPO CORRIDO MAIOR QUE 20 DIAS';
+  const conforme = isSim(v.processo_conforme);
+  const assinou  = isSim(v.assinou_contrato_banco);
+  const recebeu  = isSim(v.recebeu);
+  if (dias >= 45 && conforme && assinou && !recebeu)
+    return 'TEMPO CORRIDO MAIOR QUE 45 DIAS E NÃO RECEBEU';
+  if (dias >= 45 && (!conforme || !assinou))
+    return 'TEMPO CORRIDO MAIOR QUE 45 DIAS';
+  if (dias >= 20 && dias < 45 && (!conforme || !assinou || !recebeu))
+    return 'TEMPO CORRIDO MAIOR QUE 20 DIAS';
   return '';
 }
+function temGcapPendente(v) {
+  return isSim(v.assinou_contrato_banco) && !isSim(v.gcap_pago);
+}
+
 function calcStatusVenda(v) {
-  const entregou = v.entregou_casa === true || String(v.entregou_casa).toUpperCase() === 'SIM';
-  if (entregou) return 'verde-esc';
+  if (isSim(v.entregou_casa)) return 'verde-esc';
   const alerta = calcAlertaVenda(v);
   if (alerta.includes('NÃO RECEBEU')) return 'laranja';
   if (alerta.includes('45 DIAS'))     return 'vermelho';
@@ -1047,8 +1079,90 @@ async function renderMapa() {
     svgEl.style.height = 'auto';
     svgEl.style.display = 'block';
     paintMap(svgEl);
+    drawGcapAlerts(svgEl);
     attachMapEvents(svgEl);
   }
+}
+
+// ─── CENTROIDE DE POLÍGONO ───────────────────────
+function centroide(el) {
+  // Funciona para polygon, path e rect
+  if (el.tagName === 'rect') {
+    const x = parseFloat(el.getAttribute('x') || 0);
+    const y = parseFloat(el.getAttribute('y') || 0);
+    const w = parseFloat(el.getAttribute('width') || 0);
+    const h = parseFloat(el.getAttribute('height') || 0);
+    return { x: x + w/2, y: y + h/2 };
+  }
+  if (el.tagName === 'polygon') {
+    const pts = (el.getAttribute('points') || '').trim().split(/[\s,]+/).map(Number);
+    let sx = 0, sy = 0, n = 0;
+    for (let i = 0; i < pts.length - 1; i += 2) { sx += pts[i]; sy += pts[i+1]; n++; }
+    return n ? { x: sx/n, y: sy/n } : null;
+  }
+  if (el.tagName === 'path') {
+    try {
+      const bb = el.getBBox();
+      return { x: bb.x + bb.width/2, y: bb.y + bb.height/2 };
+    } catch { return null; }
+  }
+  return null;
+}
+
+// ─── ALERTAS GCAP NO MAPA ────────────────────────
+function drawGcapAlerts(svgEl) {
+  svgEl.querySelectorAll('.gcap-alert').forEach(e => e.remove());
+  if (modo !== 'vendas') return;
+
+  const byRef = {};
+  allVendas.forEach(v => {
+    if (v.ref) byRef[v.ref.replace(/\s+/g,'').toUpperCase()] = v;
+  });
+
+  // Calcular tamanho do viewBox para escalar o fontSize
+  const vb = svgEl.viewBox.baseVal;
+  const vbW = vb.width || 15000;
+  const vbH = vb.height || 9094;
+  const fontSize = Math.min(vbW, vbH) * 0.007; // ~100 unidades SVG
+
+  svgEl.querySelectorAll('polygon[id]').forEach(el => {
+    const idNorm = el.id.replace(/\s+/g,'').toUpperCase();
+    const v = byRef[idNorm];
+    if (!v || !temGcapPendente(v)) return;
+
+    // Centroide do polígono via média dos pontos
+    const pts = (el.getAttribute('points') || '').trim().split(/[\s,]+/).map(Number);
+    if (pts.length < 4) return;
+    let sx = 0, sy = 0, n = 0;
+    for (let i = 0; i + 1 < pts.length; i += 2) { sx += pts[i]; sy += pts[i+1]; n++; }
+    if (!n) return;
+    const cx = sx / n;
+    const cy = sy / n;
+
+    // Criar círculo laranja de fundo
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', cx);
+    circle.setAttribute('cy', cy);
+    circle.setAttribute('r', fontSize * 0.75);
+    circle.setAttribute('fill', '#c0392b');
+    circle.setAttribute('opacity', '0.9');
+    circle.setAttribute('class', 'gcap-alert');
+    circle.style.pointerEvents = 'none';
+    svgEl.appendChild(circle);
+
+    // Criar texto ⚠ branco
+    const txt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    txt.setAttribute('x', cx);
+    txt.setAttribute('y', cy + fontSize * 0.35);
+    txt.setAttribute('text-anchor', 'middle');
+    txt.setAttribute('class', 'gcap-alert');
+    txt.setAttribute('font-size', fontSize * 0.9);
+    txt.setAttribute('font-weight', 'bold');
+    txt.setAttribute('fill', '#ffffff');
+    txt.style.pointerEvents = 'none';
+    txt.textContent = '!';
+    svgEl.appendChild(txt);
+  });
 }
 
 // ─── PINTAR MAPA ─────────────────────────────────
@@ -1089,7 +1203,9 @@ function paintMap(svgEl) {
       const idNorm = el.id.replace(/\s+/g,'').toUpperCase();
       const v = byRef[idNorm];
       const status = v ? calcStatusVenda(v) : 'cinza';
-      if (activeStatusFilters.size > 0 && v && !activeStatusFilters.has(status)) {
+      const isGcapFilter = activeStatusFilters.has('gcap');
+      const passaGcap = isGcapFilter && temGcapPendente(v);
+      if (activeStatusFilters.size > 0 && v && !activeStatusFilters.has(status) && !passaGcap) {
         el.style.opacity = '0.2';
       }
       el.style.fill = COR_VENDAS[status] || COR_VENDAS['cinza'];
@@ -1155,7 +1271,7 @@ function selectItem(item, tipo) {
   selectedRef = item.ref;
   renderInfoCard(item, tipo);
   const svgEl = document.querySelector('#svg-container svg');
-  if (svgEl) paintMap(svgEl);
+  if (svgEl) { paintMap(svgEl); drawGcapAlerts(svgEl); }
   document.querySelectorAll('#tabela-body tr').forEach(tr => {
     tr.classList.toggle('selected', tr.dataset.ref === String(item.ref));
   });
@@ -1164,7 +1280,7 @@ function selectItem(item, tipo) {
 function clearSelection() {
   selectedRef = null;
   const svgEl = document.querySelector('#svg-container svg');
-  if (svgEl) paintMap(svgEl);
+  if (svgEl) { paintMap(svgEl); drawGcapAlerts(svgEl); }
   document.querySelectorAll('#tabela-body tr').forEach(tr => tr.classList.remove('selected'));
   document.getElementById('info-card').innerHTML = `
     <div class="empty-state">
@@ -1291,6 +1407,11 @@ function buildFiltrosBar() {
       counts[s] = (counts[s] || 0) + 1;
     });
     const ordem = ['azul','verde-claro','amarelo','vermelho','laranja','verde-esc','cinza'];
+    // Contar lotes com GCAP pendente
+    const gcapCount = allVendas.filter(v =>
+      v.setor && v.setor.toUpperCase() === SETOR_VEND.toUpperCase() && temGcapPendente(v)
+    ).length;
+
     bar.innerHTML = `<span class="filtro-label">Status:</span>` +
       ordem.filter(s => counts[s]).map(s => `
         <span class="filtro-chip ${activeStatusFilters.has(s) ? 'active' : ''}"
@@ -1299,6 +1420,13 @@ function buildFiltrosBar() {
           <span class="chip-dot" style="background:${COR_VENDAS[s]}"></span>
           ${STATUS_VENDAS_LABELS[s]} (${counts[s]})
         </span>`).join('') +
+      (gcapCount > 0 ? `
+        <span class="filtro-chip ${activeStatusFilters.has('gcap') ? 'active' : ''}"
+          onclick="toggleStatusFilter('gcap')"
+          data-status="gcap"
+          style="${activeStatusFilters.has('gcap') ? '' : 'border-color:#ff6b00;color:#ff6b00;'}">
+          ⚠ GCAP pendente (${gcapCount})
+        </span>` : '') +
       `<span class="filtro-sep"></span>
        <span class="filtro-clear" onclick="clearStatusFilters()">✕ Limpar</span>`;
   }
@@ -1310,7 +1438,7 @@ function toggleStatusFilter(status) {
   buildFiltrosBar();
   buildTabela();
   const svgEl = document.querySelector('#svg-container svg');
-  if (svgEl) paintMap(svgEl);
+  if (svgEl) { paintMap(svgEl); drawGcapAlerts(svgEl); }
 }
 
 function clearStatusFilters() {
@@ -1318,7 +1446,7 @@ function clearStatusFilters() {
   buildFiltrosBar();
   buildTabela();
   const svgEl = document.querySelector('#svg-container svg');
-  if (svgEl) paintMap(svgEl);
+  if (svgEl) { paintMap(svgEl); drawGcapAlerts(svgEl); }
 }
 
 // ─── TABELA ───────────────────────────────────────
@@ -1334,6 +1462,13 @@ function buildTabela() {
   if (activeStatusFilters.size > 0) {
     data = data.filter(row => {
       const s = modo === 'docs' ? calcStatusDoc(row) : calcStatusVenda(row);
+      // Chip GCAP: filtrar lotes com GCAP pendente independente do status
+      if (activeStatusFilters.has('gcap') && activeStatusFilters.size === 1) {
+        return modo === 'vendas' ? temGcapPendente(row) : false;
+      }
+      if (activeStatusFilters.has('gcap')) {
+        return activeStatusFilters.has(s) || (modo === 'vendas' && temGcapPendente(row));
+      }
       return activeStatusFilters.has(s);
     });
   }
@@ -1345,13 +1480,9 @@ function buildTabela() {
       if (!f) return true;
       if (col.fmt === 'bool') {
         const raw = row[col.key];
-        const isSim = raw === true || String(raw).toUpperCase() === 'SIM';
-        const isNao = raw === false || String(raw).toUpperCase() === 'NÃO' || String(raw).toUpperCase() === 'NAO';
-        const isEmpty = raw == null || raw === '';
-        if (f === 'SIM')  return isSim;
-        if (f === 'NÃO')  return isNao;
-        if (f === '—')    return isEmpty;
-        return true;
+        if (!f || f === '') return true;
+        if (f === '—') return raw == null || raw === '';
+        return String(raw || '').toUpperCase().trim() === f.toUpperCase().trim();
       }
       const v = String(row[col.key] ?? '').toUpperCase();
       return v.includes(f);
@@ -1366,36 +1497,54 @@ function buildTabela() {
       ${col.label}
     </th>`).join('');
 
-  // Linha de filtros — bool usa select, texto usa input
+  // Linha de filtros em CASCATA
+  // Cascata: para cada coluna, mostra só os valores que existem nos dados
+  // JÁ filtrados pelas outras colunas (exceto a própria coluna sendo filtrada)
   const filterRow = document.getElementById('tabela-filter-row');
-  // Calcular valores únicos por coluna (para cols não-bool com poucos valores)
-  const uniqueVals = {};
-  cols.forEach(col => {
-    if (col.fmt !== 'bool') {
-      const vals = [...new Set(data.map(r => r[col.key]).filter(v => v != null && v !== '' && v !== 'SEM DADOS'))];
-      if (vals.length > 0 && vals.length <= 20) uniqueVals[col.key] = vals.sort();
-    }
-  });
 
   filterRow.innerHTML = cols.map(col => {
     const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
     const cur = colFilters[col.key] || '';
-    if (col.fmt === 'bool') {
+
+    // Dados filtrados por TODAS as colunas EXCETO esta (cascata)
+    const dataParaEstaCol = data.filter(row => {
+      return cols.every(c => {
+        if (c.key === col.key) return true; // pular a própria coluna
+        const f = (colFilters[c.key] || '').trim().toUpperCase();
+        if (!f) return true;
+        if (c.fmt === 'bool') {
+          const raw = row[c.key];
+          const isSim = raw === true || String(raw).toUpperCase() === 'SIM';
+          const isNao = raw === false || String(raw).toUpperCase() === 'NÃO' || String(raw).toUpperCase() === 'NAO';
+          const isEmpty = raw == null || raw === '';
+          if (f === 'SIM')  return isSim;
+          if (f === 'NÃO')  return isNao;
+          if (f === '—')    return isEmpty;
+          return true;
+        }
+        const v = String(row[c.key] ?? '').toUpperCase();
+        return v.includes(f);
+      });
+    });
+
+    // Valores únicos desta coluna nos dados filtrados
+    const uniqueVals = [...new Set(
+      dataParaEstaCol.map(r => r[col.key]).filter(v => v != null && v !== '' && v !== 'SEM DADOS')
+    )].sort((a, b) => String(a).localeCompare(String(b), 'pt-BR'));
+
+    // Select para cols bool ou com poucos valores únicos (≤30)
+    if (col.fmt === 'bool' || (uniqueVals.length > 0 && uniqueVals.length <= 30)) {
+      const opcoes = col.fmt === 'bool'
+        ? ['SIM', 'NÃO', 'ÁGIO', 'INEXISTE']
+        : uniqueVals;
       return `<th class="${hidden}">
         <select class="col-filter-select" onchange="setFilter('${col.key}', this.value)" onclick="event.stopPropagation()">
-          <option value="">Todos</option>
-          <option value="SIM" ${cur==='SIM'?'selected':''}>✓ SIM</option>
-          <option value="NÃO" ${cur==='NÃO'?'selected':''}>✗ NÃO</option>
-          <option value="—" ${cur==='—'?'selected':''}>— Vazio</option>
+          <option value="">Todos (${dataParaEstaCol.length})</option>
+          ${opcoes.map(v => `<option value="${v}" ${cur===String(v)?'selected':''}>${v}</option>`).join('')}
         </select></th>`;
     }
-    if (uniqueVals[col.key]) {
-      return `<th class="${hidden}">
-        <select class="col-filter-select" onchange="setFilter('${col.key}', this.value)" onclick="event.stopPropagation()">
-          <option value="">Todos</option>
-          ${uniqueVals[col.key].map(v => `<option value="${v}" ${cur===String(v)?'selected':''}>${v}</option>`).join('')}
-        </select></th>`;
-    }
+
+    // Input de texto para colunas com muitos valores distintos
     return `<th class="${hidden}">
       <input class="col-filter-input" placeholder="filtrar..." value="${cur}"
         oninput="setFilter('${col.key}', this.value)" onclick="event.stopPropagation()">
