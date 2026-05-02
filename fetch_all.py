@@ -201,37 +201,54 @@ def parse_venda(page):
 ERP_API_BASE = "https://api-clientes.maiscontroleerp.com.br/data-exports"
 
 def erp_fetch(endpoint):
-    """Busca todos os registros de um endpoint do ERP com paginação."""
+    """Busca todos os registros de um endpoint do ERP com paginação e retry."""
     if not ERP_USER or not ERP_PASS:
         return []
-    import base64
+    import base64, time, io, csv
     cred = base64.b64encode(f"{ERP_USER}:{ERP_PASS}".encode()).decode()
     headers = {"Authorization": f"Basic {cred}"}
     all_rows = []
     page = 1
     page_size = 100
+    max_retries = 3
+
     while True:
-        try:
-            r = requests.get(
-                f"{ERP_API_BASE}/{endpoint}",
-                headers=headers,
-                params={"page": page, "pageSize": page_size},
-                timeout=30
-            )
-            if r.status_code != 200:
-                print(f"  ERP {endpoint} erro: {r.status_code}")
+        retries = 0
+        r = None
+        while retries < max_retries:
+            try:
+                r = requests.get(
+                    f"{ERP_API_BASE}/{endpoint}",
+                    headers=headers,
+                    params={"page": page, "pageSize": page_size},
+                    timeout=60
+                )
+                if r.status_code == 429:
+                    wait = int(r.headers.get("Retry-After", 30))
+                    print(f"  ERP {endpoint} rate limit — aguardando {wait}s...")
+                    time.sleep(wait)
+                    retries += 1
+                    continue
                 break
-            # Resposta é CSV
-            import io, csv
-            reader = csv.DictReader(io.StringIO(r.text))
-            rows = list(reader)
-            all_rows.extend(rows)
-            if len(rows) < page_size:
-                break
-            page += 1
-        except Exception as e:
-            print(f"  ERP {endpoint} exceção: {e}")
+            except Exception as e:
+                print(f"  ERP {endpoint} exceção: {e}")
+                retries += 1
+                time.sleep(5)
+
+        if r is None or r.status_code != 200:
+            print(f"  ERP {endpoint} erro após {retries} tentativas: {r.status_code if r else 'sem resposta'}")
             break
+
+        reader = csv.DictReader(io.StringIO(r.text))
+        rows = list(reader)
+        all_rows.extend(rows)
+        print(f"  ERP {endpoint} pág {page}: {len(rows)} registros (total: {len(all_rows)})")
+
+        if len(rows) < page_size:
+            break
+        page += 1
+        time.sleep(1)  # 1s entre páginas para não triggerar rate limit
+
     return all_rows
 
 def buscar_erp():
@@ -292,40 +309,25 @@ def main():
     print(f"  {len(orcados)} propostas, {len(pagos)} centros de custo")
 
     # Normalizar keys para cruzamento (remove espaços duplos, upper)
-    import re as _re
     def norm(s):
-        return _re.sub(r'\s+', ' ', (s or "").strip().upper())
+        import re
+        return re.sub(r'\s+', ' ', (s or "").strip().upper())
 
     # Reindexar com keys normalizadas
     orcados_norm = {norm(k): v for k, v in orcados.items()}
     pagos_norm   = {norm(k): v for k, v in pagos.items()}
 
     # Cruzar ERP com documentos pelo endereço
-    matched = 0
     for doc in documentos:
         end = norm(doc.get("endereco"))
-        orc = orcados_norm.get(end)
-        pag = pagos_norm.get(end)
-        # Se não encontrou exato, tentar match parcial (ERP pode ter formato diferente)
-        if orc is None:
-            for k, v in orcados_norm.items():
-                if end and end in k or k in end:
-                    orc = v
-                    break
-        if pag is None:
-            for k, v in pagos_norm.items():
-                if end and end in k or k in end:
-                    pag = v
-                    break
-        doc["erp_orcado"]     = orc if orc is not None else "SEM DADOS"
-        doc["erp_valor_pago"] = pag if pag is not None else "SEM DADOS"
-        if orc is not None:
-            matched += 1
-    print(f"  ERP cruzamento: {matched} docs com match de {len(documentos)} total")
-    # Debug: mostrar endereços que não bateram
-    sem_match = [norm(d.get("endereco")) for d in documentos if d["erp_orcado"] == "SEM DADOS"]
-    if sem_match:
-        print(f"  Sem match ERP (primeiros 5): {sem_match[:5]}")
+        doc["erp_orcado"]     = orcados_norm.get(end)
+        doc["erp_valor_pago"] = pagos_norm.get(end)
+        # Se não encontrou, marcar como SEM DADOS
+        if doc["erp_orcado"]     is None: doc["erp_orcado"]     = "SEM DADOS"
+        if doc["erp_valor_pago"] is None: doc["erp_valor_pago"] = "SEM DADOS"
+        # Log para debug
+        if doc["erp_orcado"] != "SEM DADOS":
+            print(f"    ERP match: {end} → orçado={doc['erp_orcado']}, pago={doc['erp_valor_pago']}")
 
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
