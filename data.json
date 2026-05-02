@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-01T19:53:19.965410+00:00",
+  "updated_at": "2026-05-02T12:05:38.649839+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -60,7 +60,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 252859.10881184,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -184,7 +184,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 327596.6437062961,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -308,7 +308,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -370,7 +370,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 497875.7039119999,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -432,7 +432,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 248935.02465864,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -556,7 +556,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 326962.7383722959,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -618,7 +618,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254259.1168570747,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -742,7 +742,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -866,7 +866,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 256936.1361309292,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -928,7 +928,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 261139.1892888475,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1052,7 +1052,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 336654.4206552959,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1176,7 +1176,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-03-23",
       "entrada_incorporacao_data": "2025-11-13",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 289937.0027516013,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1238,7 +1238,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1300,7 +1300,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254585.0513718814,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1362,7 +1362,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 270422.7332767461,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1424,7 +1424,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 264756.8213703605,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1672,7 +1672,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 250663.3052254335,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1734,7 +1734,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 346449.9592418,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1796,7 +1796,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-12",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 335841.8714263965,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -1858,7 +1858,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-14",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 324606.1796002,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2044,7 +2044,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 351329.9271196,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2230,7 +2230,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-01-27",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 344132.9567860785,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2354,7 +2354,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 262514.8992598901,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2416,7 +2416,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": "2026-04-09",
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 282695.4669159,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2478,7 +2478,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2602,7 +2602,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-01-27",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 344785.0621360761,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2664,7 +2664,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 477570.147813513,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2726,7 +2726,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 249673.49141184,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2788,7 +2788,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-06",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 279422.4449301087,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2850,7 +2850,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254549.5323460654,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -2912,7 +2912,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-07-02",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 508892.752991228,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3036,7 +3036,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-03-23",
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 287945.1730616048,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3098,7 +3098,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 250834.2957086462,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3160,7 +3160,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 485112.102606,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3284,7 +3284,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 343337.3760149,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3408,7 +3408,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-07",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 344756.1709987,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3470,7 +3470,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3718,7 +3718,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3842,7 +3842,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-04-09",
       "entrada_incorporacao_data": "2025-11-13",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 274488.3284859,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -3904,7 +3904,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4028,7 +4028,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4090,7 +4090,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 330907.3561263965,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4152,7 +4152,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-27",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 351676.8134418,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4214,7 +4214,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 339525.8635289602,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4400,7 +4400,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4524,7 +4524,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4586,7 +4586,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 339349.3966418,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4648,7 +4648,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 265604.7702258914,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4710,7 +4710,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 263657.0207004358,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4772,7 +4772,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -4896,7 +4896,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": "2026-04-10",
       "entrada_incorporacao_data": "2025-11-13",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 253103.3558009,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5020,7 +5020,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5082,7 +5082,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 270422.7332767461,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5144,7 +5144,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 262102.8792809,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5268,7 +5268,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254801.7522660654,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5330,7 +5330,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 266958.7046171045,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5516,7 +5516,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 263243.1919032478,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5702,7 +5702,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5764,7 +5764,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 248510.27492184,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -5950,7 +5950,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 255957.3522660654,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6074,7 +6074,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6136,7 +6136,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 458995.9129775279,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6198,7 +6198,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 249234.69767184,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6260,7 +6260,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-10",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 355739.0600924,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6384,7 +6384,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6508,7 +6508,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6570,7 +6570,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6632,7 +6632,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 343537.5220817986,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6694,7 +6694,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6756,7 +6756,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 311270.4295609,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6818,7 +6818,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -6942,7 +6942,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7004,7 +7004,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254330.65174684,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7128,7 +7128,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7190,7 +7190,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7252,7 +7252,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 249311.27492184,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7314,7 +7314,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 249789.2037385348,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7376,7 +7376,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7438,7 +7438,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 453951.5104835012,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7562,7 +7562,7 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 349989.4765873,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7624,7 +7624,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7686,7 +7686,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -7872,7 +7872,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 506844.8944387912,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -8120,7 +8120,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -8368,7 +8368,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -8430,7 +8430,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -8492,7 +8492,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -8554,7 +8554,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -8616,7 +8616,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -8678,7 +8678,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
@@ -8740,7 +8740,7 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
     {
