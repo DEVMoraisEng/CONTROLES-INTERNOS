@@ -455,7 +455,7 @@ body {
 }
 .tbl-scroll {
   overflow-x: auto;
-  max-height: 420px;
+  max-height: 840px;
   overflow-y: auto;
 }
 table {
@@ -877,6 +877,8 @@ const COLS_DOCS = [
   { key: 'previsao_inicio_obra', label: 'PREVISÃO DE INÍCIO DE OBRA', fmt: fmtDate },
   { key: 'obra_iniciada', label: 'OBRA INICIADA', fmt: 'bool' },
   { key: 'data_inicio_obra', label: 'DATA DE INÍCIO DA OBRA', fmt: fmtDate },
+  { key: 'erp_orcado', label: 'ORÇADO (ERP)', fmt: fmtMoney },
+  { key: 'erp_valor_pago', label: 'VALOR PAGO (ERP)', fmt: fmtMoney },
   { key: 'uso_solo_solicitado', label: 'USO DO SOLO SOLICITADO', fmt: 'bool' },
   { key: 'data_sol_uso_solo', label: 'DATA SOLICITAÇÃO USO DO SOLO', fmt: fmtDate },
   { key: 'uso_solo_emitido', label: 'USO DO SOLO EMITIDO E ARMAZENADO', fmt: 'bool' },
@@ -917,8 +919,6 @@ const COLS_DOCS = [
   { key: 'docs_vistoria_scpo', label: 'EMITIU DOCS DE VISTORIA E SCPO?', fmt: 'bool' },
   { key: 'boletos_vistoria', label: 'PAGOU BOLETOS DE VISTORIA CAIXA?', fmt: 'bool' },
   { key: 'data_termino_obra', label: 'DATA DE TÉRMINO DE OBRA', fmt: fmtDate },
-  { key: 'erp_orcado', label: 'ORÇADO (ERP)', fmt: fmtMoney },
-  { key: 'erp_valor_pago', label: 'VALOR PAGO (ERP)', fmt: fmtMoney },
 ];
 
 const COLS_VENDAS = [

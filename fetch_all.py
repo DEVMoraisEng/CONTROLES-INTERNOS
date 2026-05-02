@@ -269,6 +269,10 @@ def buscar_erp():
                 pass
 
     print(f"  ERP: {len(orcados)} obras com orçamento, {len(pagos)} obras com pagamentos")
+    if pagos:
+        print("  ERP pagamentos - exemplos de centro_de_custo:", list(pagos.keys())[:5])
+    if orcados:
+        print("  ERP propostas - exemplos de obra:", list(orcados.keys())[:5])
     return orcados, pagos
 
 # ─── MAIN ─────────────────────────────────────────────────────
@@ -287,11 +291,26 @@ def main():
     orcados, pagos = buscar_erp()
     print(f"  {len(orcados)} propostas, {len(pagos)} centros de custo")
 
+    # Normalizar keys para cruzamento (remove espaços duplos, upper)
+    def norm(s):
+        import re
+        return re.sub(r'\s+', ' ', (s or "").strip().upper())
+
+    # Reindexar com keys normalizadas
+    orcados_norm = {norm(k): v for k, v in orcados.items()}
+    pagos_norm   = {norm(k): v for k, v in pagos.items()}
+
     # Cruzar ERP com documentos pelo endereço
     for doc in documentos:
-        end = (doc.get("endereco") or "").strip().upper()
-        doc["erp_orcado"]    = orcados.get(end, "SEM DADOS")
-        doc["erp_valor_pago"] = pagos.get(end, "SEM DADOS")
+        end = norm(doc.get("endereco"))
+        doc["erp_orcado"]     = orcados_norm.get(end)
+        doc["erp_valor_pago"] = pagos_norm.get(end)
+        # Se não encontrou, marcar como SEM DADOS
+        if doc["erp_orcado"]     is None: doc["erp_orcado"]     = "SEM DADOS"
+        if doc["erp_valor_pago"] is None: doc["erp_valor_pago"] = "SEM DADOS"
+        # Log para debug
+        if doc["erp_orcado"] != "SEM DADOS":
+            print(f"    ERP match: {end} → orçado={doc['erp_orcado']}, pago={doc['erp_valor_pago']}")
 
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
