@@ -826,8 +826,11 @@ const fmtDate  = s => {
   try { const d = new Date(s); return d.toLocaleDateString('pt-BR'); } catch { return s; }
 };
 const fmtMoney = v => {
-  if (v == null || v === 'SEM DADOS' || isNaN(v)) return null;
-  return Number(v).toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
+  if (v == null || v === '') return null;
+  if (v === 'SEM DADOS') return 'SEM DADOS';
+  const n = Number(v);
+  if (isNaN(n)) return String(v);
+  return n.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
 };
 const diffDays = (a, b) => {
   try {
@@ -854,7 +857,8 @@ function fmtCell(val, fmtFn) {
     const r = fmtFn(val);
     return r != null ? String(r) : '<span class="cell-null">—</span>';
   }
-  return val != null && val !== '' && val !== 'SEM DADOS'
+  if (val === 'SEM DADOS') return '<span style="color:#c9a227;font-size:10px;font-style:italic">SEM DADOS</span>';
+  return val != null && val !== ''
     ? String(val)
     : '<span class="cell-null">—</span>';
 }

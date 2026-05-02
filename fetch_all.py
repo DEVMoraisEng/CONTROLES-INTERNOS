@@ -292,25 +292,40 @@ def main():
     print(f"  {len(orcados)} propostas, {len(pagos)} centros de custo")
 
     # Normalizar keys para cruzamento (remove espaços duplos, upper)
+    import re as _re
     def norm(s):
-        import re
-        return re.sub(r'\s+', ' ', (s or "").strip().upper())
+        return _re.sub(r'\s+', ' ', (s or "").strip().upper())
 
     # Reindexar com keys normalizadas
     orcados_norm = {norm(k): v for k, v in orcados.items()}
     pagos_norm   = {norm(k): v for k, v in pagos.items()}
 
     # Cruzar ERP com documentos pelo endereço
+    matched = 0
     for doc in documentos:
         end = norm(doc.get("endereco"))
-        doc["erp_orcado"]     = orcados_norm.get(end)
-        doc["erp_valor_pago"] = pagos_norm.get(end)
-        # Se não encontrou, marcar como SEM DADOS
-        if doc["erp_orcado"]     is None: doc["erp_orcado"]     = "SEM DADOS"
-        if doc["erp_valor_pago"] is None: doc["erp_valor_pago"] = "SEM DADOS"
-        # Log para debug
-        if doc["erp_orcado"] != "SEM DADOS":
-            print(f"    ERP match: {end} → orçado={doc['erp_orcado']}, pago={doc['erp_valor_pago']}")
+        orc = orcados_norm.get(end)
+        pag = pagos_norm.get(end)
+        # Se não encontrou exato, tentar match parcial (ERP pode ter formato diferente)
+        if orc is None:
+            for k, v in orcados_norm.items():
+                if end and end in k or k in end:
+                    orc = v
+                    break
+        if pag is None:
+            for k, v in pagos_norm.items():
+                if end and end in k or k in end:
+                    pag = v
+                    break
+        doc["erp_orcado"]     = orc if orc is not None else "SEM DADOS"
+        doc["erp_valor_pago"] = pag if pag is not None else "SEM DADOS"
+        if orc is not None:
+            matched += 1
+    print(f"  ERP cruzamento: {matched} docs com match de {len(documentos)} total")
+    # Debug: mostrar endereços que não bateram
+    sem_match = [norm(d.get("endereco")) for d in documentos if d["erp_orcado"] == "SEM DADOS"]
+    if sem_match:
+        print(f"  Sem match ERP (primeiros 5): {sem_match[:5]}")
 
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
