@@ -197,73 +197,42 @@ def parse_venda(page):
         "pesquisa":                 s("PREENCHEU A PESQUISA?"),
     }
 
-# ─── ERP (Mais Controle API) ─────────────────────────────────
-ERP_API_BASE = "https://api-clientes.maiscontroleerp.com.br/data-exports"
+# ─── ERP (Google Sheets CSV) ────────────────────────────────
+# Adicionar no GitHub Secrets:
+#   ERP_CSV_PROPOSTAS  = URL da aba Propostas publicada como CSV
+#   ERP_CSV_PAGAMENTOS = URL da aba Pagamentos publicada como CSV
+ERP_CSV_PROPOSTAS  = os.environ.get("ERP_CSV_PROPOSTAS",  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=1086346405&single=true&output=csv")
+ERP_CSV_PAGAMENTOS = os.environ.get("ERP_CSV_PAGAMENTOS", "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=90551417&single=true&output=csv")
 
-def erp_fetch(endpoint):
-    """Busca todos os registros de um endpoint do ERP com paginação e retry."""
-    if not ERP_USER or not ERP_PASS:
+def erp_csv(url, nome):
+    """Lê aba do Google Sheets publicada como CSV."""
+    import io, csv
+    if not url:
+        print(f"  ERP {nome}: URL não configurada (secret ERP_CSV_{nome.upper()})")
         return []
-    import base64, time, io, csv
-    cred = base64.b64encode(f"{ERP_USER}:{ERP_PASS}".encode()).decode()
-    headers = {"Authorization": f"Basic {cred}"}
-    all_rows = []
-    page = 1
-    page_size = 100
-    max_retries = 3
-
-    while True:
-        retries = 0
-        r = None
-        while retries < max_retries:
-            try:
-                r = requests.get(
-                    f"{ERP_API_BASE}/{endpoint}",
-                    headers=headers,
-                    params={"page": page, "pageSize": page_size},
-                    timeout=60
-                )
-                if r.status_code == 429:
-                    wait = int(r.headers.get("Retry-After", 30))
-                    print(f"  ERP {endpoint} rate limit — aguardando {wait}s...")
-                    time.sleep(wait)
-                    retries += 1
-                    continue
-                break
-            except Exception as e:
-                print(f"  ERP {endpoint} exceção: {e}")
-                retries += 1
-                time.sleep(5)
-
-        if r is None or r.status_code != 200:
-            print(f"  ERP {endpoint} erro após {retries} tentativas: {r.status_code if r else 'sem resposta'}")
-            break
-
+    try:
+        r = requests.get(url, timeout=30)
+        if r.status_code != 200:
+            print(f"  ERP {nome} erro HTTP: {r.status_code}")
+            return []
         reader = csv.DictReader(io.StringIO(r.text))
         rows = list(reader)
-        all_rows.extend(rows)
-        print(f"  ERP {endpoint} pág {page}: {len(rows)} registros (total: {len(all_rows)})")
-
-        if len(rows) < page_size:
-            break
-        page += 1
-        time.sleep(1)  # 1s entre páginas para não triggerar rate limit
-
-    return all_rows
+        print(f"  ERP {nome}: {len(rows)} registros")
+        if rows:
+            print(f"  ERP {nome} colunas: {list(rows[0].keys())[:8]}")
+        return rows
+    except Exception as e:
+        print(f"  ERP {nome} exceção: {e}")
+        return []
 
 def buscar_erp():
-    """Busca propostas e pagamentos do ERP Mais Controle."""
-    orcados = {}   # endereco_upper -> valor
-    pagos   = {}   # endereco_upper -> soma
-    if not ERP_USER or not ERP_PASS:
-        print("  ERP: credenciais não configuradas (ERP_USERNAME / ERP_PASSWORD)")
-        return orcados, pagos
+    """Busca propostas e pagamentos via Google Sheets CSV."""
+    orcados = {}
+    pagos   = {}
 
-    # Propostas → orçado (coluna: obra, preco_total_com_desconto)
+    # Propostas → orçado
     print("  ERP: buscando propostas...")
-    propostas = erp_fetch("propostas")
-    print(f"  ERP: {len(propostas)} propostas")
-    for row in propostas:
+    for row in erp_csv(ERP_CSV_PROPOSTAS, "propostas"):
         obra = (row.get("obra") or "").strip().upper()
         val  = row.get("preco_total_com_desconto")
         if obra and val:
@@ -272,11 +241,9 @@ def buscar_erp():
             except:
                 pass
 
-    # Pagamentos → valor pago somado (coluna: centro_de_custo, valor_pago)
+    # Pagamentos → soma por centro_de_custo
     print("  ERP: buscando pagamentos...")
-    pagamentos = erp_fetch("pagamentos")
-    print(f"  ERP: {len(pagamentos)} pagamentos")
-    for row in pagamentos:
+    for row in erp_csv(ERP_CSV_PAGAMENTOS, "pagamentos"):
         cc  = (row.get("centro_de_custo") or "").strip().upper()
         val = row.get("valor_pago")
         if cc and val:
@@ -285,11 +252,9 @@ def buscar_erp():
             except:
                 pass
 
-    print(f"  ERP: {len(orcados)} obras com orçamento, {len(pagos)} obras com pagamentos")
-    if pagos:
-        print("  ERP pagamentos - exemplos de centro_de_custo:", list(pagos.keys())[:5])
-    if orcados:
-        print("  ERP propostas - exemplos de obra:", list(orcados.keys())[:5])
+    print(f"  ERP: {len(orcados)} obras, {len(pagos)} centros de custo")
+    if orcados: print("  Propostas ex:", list(orcados.keys())[:3])
+    if pagos:   print("  Pagamentos ex:", list(pagos.keys())[:3])
     return orcados, pagos
 
 # ─── MAIN ─────────────────────────────────────────────────────
