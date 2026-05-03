@@ -2160,7 +2160,7 @@ function renderROILotes(containerId, docs, vendas, setor, tipo) {
       const val = tipo === 'roi'
         ? ((venda - pago) / pago * 100)
         : ((venda - pago) / venda * 100);
-      lotes.push({ label: d.ref || end, val: Math.round(val * 10) / 10, venda, pago });
+      lotes.push({ label: d.endereco || d.ref || end, val: Math.round(val * 10) / 10, venda, pago });
     });
 
   lotes.sort((a, b) => b.val - a.val);
@@ -2210,7 +2210,7 @@ function renderROILotes(containerId, docs, vendas, setor, tipo) {
             const cor  = pos ? 'var(--verde)' : 'var(--vermelho)';
             return `
               <div class="bar-row" title="Venda: ${fmtR(l.venda)} | Custo: ${fmtR(l.pago)}">
-                <div class="bar-label" style="width:70px">${l.label}</div>
+                <div class="bar-label" style="width:160px;font-size:9px" title="${l.label}">${l.label}</div>
                 <div class="bar-track" style="position:relative">
                   <div class="bar-fill" style="width:${pct}%;background:${cor};opacity:0.85"></div>
                 </div>
