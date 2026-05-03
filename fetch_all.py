@@ -246,7 +246,7 @@ def buscar_erp():
     import re as _re2
     pagos_detalhe = {}  # { obra_upper: { 'YYYY-MM': soma } }
     for row in erp_csv(ERP_CSV_PAGAMENTOS, "pagamentos"):
-        cc  = (row.get("centro_de_custo") or "").strip().upper()
+        cc  = (row.get("centro_de_custo") or row.get("obra") or row.get("descricao") or "").strip().upper()
         val = row.get("valor_pago")
         dt  = row.get("data_pagamento") or ""
         if cc and val:
@@ -313,7 +313,7 @@ def main():
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "documentos": documentos,
         "vendas":     vendas,
-        "pagamentos_detalhe": {k: v for k, v in pagos_detalhe_norm.items()},
+        "pagamentos_detalhe": {k: v for k, v in pagos_detalhe.items()},
     }
 
     with open("data.json", "w", encoding="utf-8") as f:
