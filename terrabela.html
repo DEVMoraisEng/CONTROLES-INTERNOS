@@ -2138,6 +2138,174 @@ function renderTicketMedio(containerId, vendas, setor) {
     </div>`;
 }
 
+
+// ─── ROI POR LOTE ────────────────────────────────────────
+function renderROILotes(containerId, docs, vendas, setor, tipo) {
+  // tipo: 'roi' = (venda-pago)/pago  |  'margem' = (venda-pago)/venda
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const vendaMap = {};
+  vendas.filter(v => v.setor && v.setor.toUpperCase() === setor.toUpperCase())
+    .forEach(v => { if (v.endereco) vendaMap[v.endereco.trim().toUpperCase()] = v; });
+
+  const lotes = [];
+  docs.filter(d => d.setor && d.setor.toUpperCase() === setor.toUpperCase())
+    .forEach(d => {
+      const end = (d.endereco || '').trim().toUpperCase();
+      const v = vendaMap[end];
+      const pago  = d.erp_valor_pago && d.erp_valor_pago !== 'SEM DADOS' ? Number(d.erp_valor_pago) : null;
+      const venda = v && v.valor_venda_contrato ? Number(v.valor_venda_contrato) : null;
+      if (!pago || !venda || pago <= 0) return;
+      const val = tipo === 'roi'
+        ? ((venda - pago) / pago * 100)
+        : ((venda - pago) / venda * 100);
+      lotes.push({ label: d.ref || end, val: Math.round(val * 10) / 10, venda, pago });
+    });
+
+  lotes.sort((a, b) => b.val - a.val);
+
+  if (lotes.length === 0) {
+    container.innerHTML = `<div class="grafico-card">
+      <div class="grafico-card-header">
+        <div class="grafico-card-title">${tipo === 'roi' ? 'ROI por Lote' : 'Margem Bruta por Lote'}</div>
+        <div class="grafico-card-sub">Requer valor pago ERP + valor de venda</div>
+      </div>
+      <div class="grafico-card-body" style="padding:20px;text-align:center;color:var(--text4);font-size:11px">
+        Dados insuficientes — verifique ERP e valores de venda.
+      </div>
+    </div>`;
+    return;
+  }
+
+  const fmtPct = v => `${v > 0 ? '+' : ''}${v.toFixed(1)}%`;
+  const fmtR   = v => v.toLocaleString('pt-BR', {style:'currency', currency:'BRL', maximumFractionDigits:0});
+  const maxAbs = Math.max(...lotes.map(l => Math.abs(l.val)), 1);
+  const media  = Math.round(lotes.reduce((a,l) => a + l.val, 0) / lotes.length * 10) / 10;
+
+  container.innerHTML = `
+    <div class="grafico-card">
+      <div class="grafico-card-header">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div class="grafico-card-title">${tipo === 'roi' ? 'ROI por Lote' : 'Margem Bruta por Lote'}</div>
+            <div class="grafico-card-sub">${tipo === 'roi'
+              ? '(Venda − Custo Obra) / Custo Obra × 100'
+              : '(Venda − Custo Obra) / Venda × 100'}
+              · Média: <b>${fmtPct(media)}</b>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;
+                        color:${media>=0?'var(--verde)':'var(--vermelho)'}">${fmtPct(media)}</div>
+            <div style="font-size:9px;color:var(--text3)">média (${lotes.length} lotes)</div>
+          </div>
+        </div>
+      </div>
+      <div class="grafico-card-body" style="max-height:320px;overflow-y:auto">
+        <div class="bar-chart">
+          ${lotes.map(l => {
+            const pos  = l.val >= 0;
+            const pct  = (Math.abs(l.val) / maxAbs * 100).toFixed(0);
+            const cor  = pos ? 'var(--verde)' : 'var(--vermelho)';
+            return `
+              <div class="bar-row" title="Venda: ${fmtR(l.venda)} | Custo: ${fmtR(l.pago)}">
+                <div class="bar-label" style="width:70px">${l.label}</div>
+                <div class="bar-track" style="position:relative">
+                  <div class="bar-fill" style="width:${pct}%;background:${cor};opacity:0.85"></div>
+                </div>
+                <div class="bar-value" style="color:${cor};font-weight:700;width:50px">${fmtPct(l.val)}</div>
+              </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ─── TEMPO POR DESPACHANTE ────────────────────────────────
+function renderTempoDespachante(containerId, docs, setor, campoIni, campoFim, titulo, subtitulo) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const map = {};
+  docs.filter(d => d.setor && d.setor.toUpperCase() === setor.toUpperCase() && d.despachante)
+    .forEach(d => {
+      const dias = diffDias(d[campoIni], d[campoFim]);
+      if (!dias) return;
+      const dep = d.despachante;
+      if (!map[dep]) map[dep] = [];
+      map[dep].push(dias);
+    });
+
+  const arr = Object.entries(map)
+    .map(([dep, vals]) => ({
+      label: dep,
+      media: Math.round(vals.reduce((a,b) => a+b, 0) / vals.length),
+      n: vals.length
+    }))
+    .sort((a,b) => a.media - b.media);
+
+  const maxVal = Math.max(...arr.map(d => d.media), 1);
+
+  container.innerHTML = `
+    <div class="grafico-card">
+      <div class="grafico-card-header">
+        <div class="grafico-card-title">${titulo}</div>
+        <div class="grafico-card-sub">${subtitulo}</div>
+      </div>
+      <div class="grafico-card-body">
+        <div class="bar-chart">
+          ${arr.length === 0
+            ? '<div style="color:var(--text4);font-size:11px">Dados insuficientes</div>'
+            : arr.map(d => `
+              <div class="bar-row">
+                <div class="bar-label highlight" style="width:100px">${d.label}</div>
+                <div class="bar-track">
+                  <div class="bar-fill highlight" style="width:${(d.media/maxVal*100).toFixed(0)}%"></div>
+                </div>
+                <div class="bar-value highlight">${d.media}d (n=${d.n})</div>
+              </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ─── DISTRIBUIÇÃO POR CAMPO (banco / corretor) ────────────
+function renderDistribuicao(containerId, vendas, setor, campo, titulo, subtitulo) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const map = {};
+  vendas.filter(v => v.setor && v.setor.toUpperCase() === setor.toUpperCase() && v[campo])
+    .forEach(v => { map[v[campo]] = (map[v[campo]] || 0) + 1; });
+
+  const arr = Object.entries(map).sort((a,b) => b[1] - a[1]);
+  const maxVal = arr.length ? arr[0][1] : 1;
+  const total  = arr.reduce((a,b) => a + b[1], 0);
+
+  container.innerHTML = `
+    <div class="grafico-card">
+      <div class="grafico-card-header">
+        <div class="grafico-card-title">${titulo}</div>
+        <div class="grafico-card-sub">${subtitulo} · Total: ${total}</div>
+      </div>
+      <div class="grafico-card-body" style="max-height:220px;overflow-y:auto">
+        <div class="bar-chart">
+          ${arr.length === 0
+            ? '<div style="color:var(--text4);font-size:11px">Sem dados</div>'
+            : arr.map(([nome, n]) => `
+              <div class="bar-row">
+                <div class="bar-label" style="width:130px" title="${nome}">${nome}</div>
+                <div class="bar-track">
+                  <div class="bar-fill highlight" style="width:${(n/maxVal*100).toFixed(0)}%"></div>
+                </div>
+                <div class="bar-value highlight">${n} (${(n/total*100).toFixed(0)}%)</div>
+              </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+}
+
 // ─── RENDER PRINCIPAL DAS ANÁLISES ───────────────────────
 function buildAnalises() {
   const setor = SETOR_VEND; // 'TERRABELA DO CERRADO'
@@ -2176,6 +2344,18 @@ function buildAnalises() {
       'Tempo de RET',
       'Data entrada → data finalização RET (dias médios por setor)');
 
+    // Linha 3: tempo por despachante
+    document.getElementById('graficos-docs-linha3').innerHTML =
+      '<div id="g-desp-incorp"></div><div id="g-desp-alvara"></div>';
+    renderTempoDespachante('g-desp-incorp', allDocs, setor,
+      'entrada_incorporacao_data', 'data_finalizacao_incorp',
+      'Incorporação por Despachante',
+      'Tempo médio de incorporação por despachante');
+    renderTempoDespachante('g-desp-alvara', allDocs, setor,
+      'data_entrada_alvara', 'data_aprovacao_projeto',
+      'Alvará por Despachante',
+      'Tempo médio de aprovação de alvará por despachante');
+
   } else {
     document.getElementById('analises-docs').style.display = 'none';
     document.getElementById('analises-vendas').style.display = '';
@@ -2189,37 +2369,18 @@ function buildAnalises() {
     renderTicketMedio('g-ticket', allVendas, setor);
     renderVendasMes('g-vendas-mes', allVendas, setor);
 
-    // Linha 2: Desembolso mensal (placeholder)
+    // Linha 2: Desembolso + Banco + Corretor
     const l2 = document.getElementById('graficos-vendas-linha2');
-    l2.innerHTML = '<div id="g-desembolso"></div><div id="g-desembolso-placeholder"></div>';
+    l2.innerHTML = '<div id="g-desembolso"></div><div id="g-banco"></div><div id="g-corretor"></div>';
     renderDesembolsoMes('g-desembolso', setor);
-    // Segundo card: distribuição de banco financiador
-    const bancos = {};
-    allVendas.filter(v=>v.setor&&v.setor.toUpperCase()===setor.toUpperCase()&&v.banco)
-      .forEach(v=>{ bancos[v.banco]=(bancos[v.banco]||0)+1; });
-    const bancosArr = Object.entries(bancos).sort((a,b)=>b[1]-a[1]);
-    const maxB = bancosArr.length ? bancosArr[0][1] : 1;
-    document.getElementById('g-desembolso-placeholder').innerHTML = `
-      <div class="grafico-card">
-        <div class="grafico-card-header">
-          <div class="grafico-card-title">Bancos Financiadores</div>
-          <div class="grafico-card-sub">Distribuição por banco — ${setor}</div>
-        </div>
-        <div class="grafico-card-body">
-          <div class="bar-chart">
-            ${bancosArr.length===0
-              ? '<div style="color:var(--text4);font-size:11px">Sem dados</div>'
-              : bancosArr.map(([banco, n]) => `
-                <div class="bar-row">
-                  <div class="bar-label">${banco}</div>
-                  <div class="bar-track">
-                    <div class="bar-fill highlight" style="width:${(n/maxB*100).toFixed(0)}%"></div>
-                  </div>
-                  <div class="bar-value highlight">${n}</div>
-                </div>`).join('')}
-          </div>
-        </div>
-      </div>`;
+    renderDistribuicao('g-banco',    allVendas, setor, 'banco',     'Bancos Financiadores',  'Vendas por banco');
+    renderDistribuicao('g-corretor', allVendas, setor, 'corretor',  'Corretores',             'Vendas por corretor');
+
+    // Linha 3: ROI + Margem Bruta por lote
+    const l3 = document.getElementById('graficos-vendas-linha3');
+    l3.innerHTML = '<div id="g-roi"></div><div id="g-margem"></div>';
+    renderROILotes('g-roi',    allDocs, allVendas, setor, 'roi');
+    renderROILotes('g-margem', allDocs, allVendas, setor, 'margem');
   }
 }
 
@@ -2267,6 +2428,10 @@ init();
       <div class="analises-group-title">Tempos de Processo — Linha 2</div>
       <div class="graficos-grid cols-2" id="graficos-docs-linha2"></div>
     </div>
+    <div class="analises-group">
+      <div class="analises-group-title">Desempenho por Despachante</div>
+      <div class="graficos-grid cols-2" id="graficos-docs-linha3"></div>
+    </div>
   </div>
 
   <!-- VENDAS -->
@@ -2275,7 +2440,11 @@ init();
       <div class="graficos-grid cols-3" id="graficos-vendas-linha1"></div>
     </div>
     <div class="analises-group">
-      <div class="graficos-grid cols-2" id="graficos-vendas-linha2"></div>
+      <div class="graficos-grid cols-3" id="graficos-vendas-linha2"></div>
+    </div>
+    <div class="analises-group">
+      <div class="analises-group-title">ROI e Margem Bruta por Lote</div>
+      <div class="graficos-grid cols-2" id="graficos-vendas-linha3"></div>
     </div>
   </div>
 </div>
