@@ -241,21 +241,34 @@ def buscar_erp():
             except:
                 pass
 
-    # Pagamentos → soma por centro_de_custo
+    # Pagamentos → soma total + detalhe mensal por obra
     print("  ERP: buscando pagamentos...")
+    import re as _re2
+    pagos_detalhe = {}  # { obra_upper: { 'YYYY-MM': soma } }
     for row in erp_csv(ERP_CSV_PAGAMENTOS, "pagamentos"):
         cc  = (row.get("centro_de_custo") or "").strip().upper()
         val = row.get("valor_pago")
+        dt  = row.get("data_pagamento") or ""
         if cc and val:
             try:
-                pagos[cc] = pagos.get(cc, 0) + float(str(val).replace(",", "."))
+                v = float(str(val).replace(",", "."))
+                pagos[cc] = pagos.get(cc, 0) + v
+                # Extrair YYYY-MM da data
+                m1 = _re2.match(r'(\d{2})/(\d{2})/(\d{4})', dt)
+                m2 = _re2.match(r'(\d{4})-(\d{2})', dt)
+                if m1:   mes = f"{m1.group(3)}-{m1.group(2)}"
+                elif m2: mes = f"{m2.group(1)}-{m2.group(2)}"
+                else:    mes = "SEM DATA"
+                if cc not in pagos_detalhe:
+                    pagos_detalhe[cc] = {}
+                pagos_detalhe[cc][mes] = pagos_detalhe[cc].get(mes, 0) + v
             except:
                 pass
 
     print(f"  ERP: {len(orcados)} obras, {len(pagos)} centros de custo")
     if orcados: print("  Propostas ex:", list(orcados.keys())[:3])
     if pagos:   print("  Pagamentos ex:", list(pagos.keys())[:3])
-    return orcados, pagos
+    return orcados, pagos, pagos_detalhe
 
 # ─── MAIN ─────────────────────────────────────────────────────
 def main():
@@ -270,7 +283,7 @@ def main():
     vendas = [parse_venda(p) for p in pages_vendas]
 
     print("Buscando ERP...")
-    orcados, pagos = buscar_erp()
+    orcados, pagos, pagos_detalhe = buscar_erp()
     print(f"  {len(orcados)} propostas, {len(pagos)} centros de custo")
 
     # Normalizar keys para cruzamento (remove espaços duplos, upper)
@@ -294,10 +307,13 @@ def main():
         if doc["erp_orcado"] != "SEM DADOS":
             print(f"    ERP match: {end} → orçado={doc['erp_orcado']}, pago={doc['erp_valor_pago']}")
 
+    # Montar desembolso por setor: { setor: { obra: { mes: valor } } }
+    # Para uso nos gráficos — filtrado no frontend por setor
     output = {
         "updated_at": datetime.now(timezone.utc).isoformat(),
         "documentos": documentos,
         "vendas":     vendas,
+        "pagamentos_detalhe": {k: v for k, v in pagos_detalhe_norm.items()},
     }
 
     with open("data.json", "w", encoding="utf-8") as f:
