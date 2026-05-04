@@ -10,154 +10,100 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --azul:#295778;--azul-esc:#1e3f58;--azul-med:#2d6a96;
-  --teal:#8FDCD2;--teal-light:#c2f0eb;
-  --bg:#EAF1F3;--bg2:#F5F9FA;--bg3:#dde8ec;
+  --teal:#8FDCD2;--bg:#EAF1F3;--bg2:#F5F9FA;--bg3:#dde8ec;
   --border:#b8d0da;--border2:#d0e4ea;
-  --text:#1a3347;--text2:#295778;--text3:#5a8099;--text4:#8aacbb;
-  --branco:#fff;
-  --cinza:#8faabb;--amarelo:#c9a227;--verde:#2a9d5c;
-  --laranja:#d46a1a;--vermelho:#c0392b;--roxo:#7c4daf;
+  --text:#1a3347;--text2:#295778;--text3:#5a8099;--text4:#8aacbb;--branco:#fff;
+  --cinza:#8faabb;--amarelo:#c9a227;--verde:#2a9d5c;--laranja:#d46a1a;--vermelho:#c0392b;--roxo:#7c4daf;
 }
-body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;
-     min-height:100vh;font-size:14px}
-
-/* HEADER */
-.header{background:var(--azul);border-bottom:3px solid var(--teal);
-        padding:0 28px;height:64px;display:flex;align-items:center;
-        justify-content:space-between;gap:16px}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;font-size:14px}
+.header{background:var(--azul);border-bottom:3px solid var(--teal);padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .hdr-left{display:flex;align-items:center;gap:16px}
 .hdr-logo{width:40px;height:40px;flex-shrink:0}
-.hdr-sup{font-size:10px;font-weight:700;color:var(--teal);
-         letter-spacing:.12em;text-transform:uppercase;opacity:.85}
-.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;
-           font-weight:800;color:#fff;letter-spacing:.02em;line-height:1.1}
+.hdr-sup{font-size:10px;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:.02em;line-height:1.1}
 .hdr-right{display:flex;align-items:center;gap:12px}
-.updated{font-family:'DM Mono',monospace;font-size:10px;
-         color:rgba(255,255,255,.45)}
-.btn-voltar{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.75);
-            font-size:11px;font-weight:600;letter-spacing:.07em;
-            text-transform:uppercase;text-decoration:none;padding:6px 14px;
-            border:1.5px solid rgba(255,255,255,.2);border-radius:5px;
-            transition:all .15s}
-.btn-voltar:hover{background:rgba(255,255,255,.1);color:#fff;
-                  border-color:rgba(255,255,255,.4)}
-
-/* TABELA */
+.updated{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.45)}
+.btn-voltar{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.75);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;padding:6px 14px;border:1.5px solid rgba(255,255,255,.2);border-radius:5px;transition:all .15s}
+.btn-voltar:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.4)}
 .tabela-section{padding:20px 28px 40px}
-.tabela-header{display:flex;align-items:center;justify-content:space-between;
-               margin-bottom:10px;gap:12px;flex-wrap:wrap}
-#tabela-titulo{font-family:'Barlow Condensed',sans-serif;font-size:18px;
-               font-weight:700;color:var(--azul);text-transform:uppercase;
-               letter-spacing:.07em}
+.tabela-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:12px;flex-wrap:wrap}
+#tabela-titulo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.07em}
 .tabela-controls{display:flex;gap:8px;flex-wrap:wrap}
-.btn-sm{padding:7px 14px;font-family:'Barlow',sans-serif;font-size:11px;
-        font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-        border:1.5px solid var(--border);background:var(--branco);
-        color:var(--text2);border-radius:5px;cursor:pointer;transition:all .15s}
+.btn-sm{padding:7px 14px;font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;border:1.5px solid var(--border);background:var(--branco);color:var(--text2);border-radius:5px;cursor:pointer;transition:all .15s}
 .btn-sm:hover{background:var(--bg3);border-color:var(--azul)}
 .btn-sm.danger:hover{border-color:var(--vermelho);color:var(--vermelho)}
 .btn-sm.excel{border-color:#1a7034;color:#1a7034}
 .btn-sm.excel:hover{background:#f0faf3;border-color:#155228}
-
-/* Filtros chips */
-.filtros-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;
-             padding:10px 12px;background:var(--branco);
-             border:1px solid var(--border);border-radius:8px;align-items:center}
-.filtro-label{font-size:10px;font-weight:700;color:var(--text3);
-              letter-spacing:.07em;text-transform:uppercase;
-              margin-right:4px;white-space:nowrap}
-.filtro-chip{display:inline-flex;align-items:center;gap:5px;
-             padding:4px 10px;border-radius:20px;
-             border:1.5px solid var(--border);background:var(--bg);
-             font-size:11px;font-weight:600;color:var(--text2);
-             cursor:pointer;transition:all .15s;user-select:none;white-space:nowrap}
+.filtros-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;padding:10px 12px;background:var(--branco);border:1px solid var(--border);border-radius:8px;align-items:center}
+.filtro-label{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-right:4px;white-space:nowrap}
+.filtro-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;border:1.5px solid var(--border);background:var(--bg);font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;transition:all .15s;user-select:none;white-space:nowrap}
 .filtro-chip .chip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .filtro-chip:hover{border-color:var(--azul-med);background:var(--bg3)}
 .filtro-chip.active{background:var(--azul);border-color:var(--azul);color:#fff}
 .filtro-sep{width:1px;height:18px;background:var(--border);margin:0 2px}
-.filtro-clear{font-size:10px;color:var(--text3);cursor:pointer;
-              padding:2px 6px;border-radius:3px;margin-left:auto}
+.filtro-clear{font-size:10px;color:var(--text3);cursor:pointer;padding:2px 6px;border-radius:3px;margin-left:auto}
 .filtro-clear:hover{color:var(--vermelho)}
-
-/* Tabela */
-.tbl-outer{background:var(--branco);border:1px solid var(--border);
-           border-radius:10px;overflow:hidden;
-           box-shadow:0 2px 10px rgba(41,87,120,.07)}
+.tbl-outer{background:var(--branco);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(41,87,120,.07)}
 .tbl-scroll{overflow-x:auto;max-height:75vh;overflow-y:auto}
-table{width:100%;border-collapse:separate;border-spacing:0;
-      font-size:12px;min-width:800px}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;min-width:800px}
 thead{position:sticky;top:0;z-index:10}
-thead th{padding:10px 12px;text-align:left;font-size:9.5px;font-weight:700;
-         letter-spacing:.09em;text-transform:uppercase;color:#fff;
-         background:var(--azul);border-right:1px solid rgba(255,255,255,.12);
-         border-bottom:2px solid var(--teal);white-space:nowrap}
+thead th{padding:10px 12px;text-align:left;font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:var(--azul);border-right:1px solid rgba(255,255,255,.12);border-bottom:2px solid var(--teal);white-space:nowrap;cursor:pointer;user-select:none}
+thead th:hover{background:var(--azul-med)}
 thead th:last-child{border-right:none}
-thead tr.filter-row th{padding:4px 6px;background:var(--azul-esc);
-                       border-bottom:1px solid rgba(143,220,210,.2);
-                       border-right:1px solid rgba(255,255,255,.08)}
+thead th .sort-icon{font-size:8px;margin-left:4px;opacity:.5}
+thead th.sort-asc .sort-icon::after{content:'▲';opacity:1}
+thead th.sort-desc .sort-icon::after{content:'▼';opacity:1}
+thead th:not(.sort-asc):not(.sort-desc) .sort-icon::after{content:'⇅'}
+thead tr.filter-row th{padding:4px 6px;background:var(--azul-esc);border-bottom:1px solid rgba(143,220,210,.2);border-right:1px solid rgba(255,255,255,.08);cursor:default}
 thead tr.filter-row th:last-child{border-right:none}
-thead tr.filter-row input.col-filter-input,
-thead tr.filter-row select.col-filter-select{
-  width:100%;padding:3px 5px;font-size:10px;font-family:'DM Mono',monospace;
-  background:rgba(255,255,255,.08);border:1px solid rgba(143,220,210,.2);
-  border-radius:3px;color:rgba(255,255,255,.8);outline:none;
-  transition:border-color .15s;-webkit-appearance:none;appearance:none}
-thead tr.filter-row input.col-filter-input:focus,
-thead tr.filter-row select.col-filter-select:focus{
-  border-color:var(--teal);background:rgba(255,255,255,.12)}
-thead tr.filter-row input.col-filter-input::placeholder{color:rgba(255,255,255,.3)}
-thead tr.filter-row select.col-filter-select option{background:var(--azul-esc);color:#fff}
+thead tr.filter-row input.col-fi{width:100%;padding:3px 5px;font-size:10px;font-family:'DM Mono',monospace;background:rgba(255,255,255,.08);border:1px solid rgba(143,220,210,.2);border-radius:3px;color:rgba(255,255,255,.8);outline:none;transition:border-color .15s}
+thead tr.filter-row input.col-fi:focus{border-color:var(--teal);background:rgba(255,255,255,.12)}
+thead tr.filter-row input.col-fi::placeholder{color:rgba(255,255,255,.3)}
 tbody tr{border-bottom:1px solid var(--border2);transition:background .1s;cursor:default}
 tbody tr:last-child{border-bottom:none}
 tbody tr:hover{background:#e8f3f7}
-tbody tr.selected{background:#d0e8f0!important}
-tbody td{padding:8px 12px;vertical-align:middle;
-         border-right:1px solid var(--border2);color:var(--text)}
+tbody td{padding:8px 12px;vertical-align:middle;border-right:1px solid var(--border2);color:var(--text)}
 tbody td:last-child{border-right:none}
 .cell-null{color:var(--text4);font-style:italic;font-size:10px}
-.bool-sim{display:inline-block;background:rgba(42,157,92,.12);color:var(--verde);
-          border:1px solid rgba(42,157,92,.3);border-radius:3px;
-          padding:1px 5px;font-size:10px;font-weight:700}
-.bool-nao{display:inline-block;background:rgba(192,57,43,.08);color:var(--vermelho);
-          border:1px solid rgba(192,57,43,.2);border-radius:3px;
-          padding:1px 5px;font-size:10px;font-weight:700}
+.bool-sim{display:inline-block;background:rgba(42,157,92,.12);color:var(--verde);border:1px solid rgba(42,157,92,.3);border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
+.bool-nao{display:inline-block;background:rgba(192,57,43,.08);color:var(--vermelho);border:1px solid rgba(192,57,43,.2);border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
 .col-hidden{display:none}
 .tbl-rel{position:relative}
-.col-panel{display:none;position:absolute;right:0;top:36px;
-           background:var(--branco);border:1px solid var(--border);
-           border-radius:8px;padding:12px;z-index:100;
-           box-shadow:0 4px 20px rgba(41,87,120,.12);
-           min-width:200px;max-height:300px;overflow-y:auto}
+.col-panel{display:none;position:absolute;right:0;top:36px;background:var(--branco);border:1px solid var(--border);border-radius:8px;padding:12px;z-index:100;box-shadow:0 4px 20px rgba(41,87,120,.12);min-width:200px;max-height:300px;overflow-y:auto}
 .col-panel.open{display:block}
-.col-panel label{display:flex;align-items:center;gap:8px;padding:5px 0;
-                 font-size:12px;color:var(--text);cursor:pointer;
-                 border-bottom:1px solid var(--border2)}
+.col-panel label{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;color:var(--text);cursor:pointer;border-bottom:1px solid var(--border2)}
 .col-panel label:last-child{border-bottom:none}
-
-/* Loading */
-#loading{position:fixed;inset:0;background:rgba(41,87,120,.88);
-         display:flex;flex-direction:column;align-items:center;
-         justify-content:center;z-index:999;color:#fff;gap:14px}
+#loading{position:fixed;inset:0;background:rgba(41,87,120,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;color:#fff;gap:14px}
 #loading.hidden{display:none}
-.spinner{width:36px;height:36px;border:3px solid rgba(255,255,255,.2);
-         border-top-color:var(--teal);border-radius:50%;
-         animation:spin .7s linear infinite}
+.spinner{width:36px;height:36px;border:3px solid rgba(255,255,255,.2);border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-#tip{position:fixed;background:var(--azul-esc);color:#fff;border-radius:6px;
-     padding:8px 12px;font-size:11px;pointer-events:none;display:none;z-index:200;
-     border:1px solid var(--teal);line-height:1.5;max-width:220px;
-     box-shadow:0 4px 16px rgba(0,0,0,.2)}
+#tip{position:fixed;background:var(--azul-esc);color:#fff;border-radius:6px;padding:8px 12px;font-size:11px;pointer-events:none;display:none;z-index:200;border:1px solid var(--teal);line-height:1.5;max-width:220px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 #tip.on{display:block}
-
-@media(max-width:768px){
-  .tabela-section{padding:12px 16px 28px}
-  .header{padding:0 16px}
-}
+@media(max-width:768px){.tabela-section{padding:12px 16px 28px}.header{padding:0 16px}}
+.col-sticky{position:sticky!important;left:0;z-index:5!important;background:var(--azul)!important;box-shadow:2px 0 6px rgba(41,87,120,.15)}
+.col-sticky-filter{position:sticky!important;left:0;z-index:4!important;background:var(--azul-esc)!important;box-shadow:2px 0 6px rgba(41,87,120,.15)}
+.col-sticky-body{position:sticky!important;left:0;z-index:2;background:var(--branco);box-shadow:2px 0 6px rgba(41,87,120,.10)}
+tbody tr:nth-child(even) .col-sticky-body{background:var(--bg2)}
+tbody tr:hover .col-sticky-body{background:#e8f3f7}
+th[data-key="endereco"],td.col-end{min-width:200px!important}
+/* multi-select */
+.ms-wrap{position:relative;width:100%}
+.ms-btn{width:100%;padding:3px 20px 3px 5px;font-size:10px;font-family:'DM Mono',monospace;background:rgba(255,255,255,.08);border:1px solid rgba(143,220,210,.2);border-radius:3px;color:rgba(255,255,255,.85);cursor:pointer;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative}
+.ms-btn::after{content:'▾';position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:8px;opacity:.6}
+.ms-btn.ativo{border-color:var(--teal)!important;background:rgba(143,220,210,.18)!important}
+.ms-dd{display:none;position:fixed;background:#1e3f58;border:1px solid rgba(143,220,210,.35);border-radius:5px;z-index:9999;box-shadow:0 6px 24px rgba(0,0,0,.35);max-height:240px;min-width:160px;max-width:280px;flex-direction:column}
+.ms-dd.aberto{display:flex}
+.ms-busca{padding:6px 8px;font-size:10px;font-family:'DM Mono',monospace;background:rgba(255,255,255,.1);border:none;border-bottom:1px solid rgba(143,220,210,.2);color:#fff;outline:none;flex-shrink:0}
+.ms-busca::placeholder{color:rgba(255,255,255,.4)}
+.ms-lista{overflow-y:auto;flex:1}
+.ms-item{display:flex;align-items:center;gap:7px;padding:5px 10px;font-size:10.5px;font-family:'DM Mono',monospace;color:rgba(255,255,255,.85);cursor:pointer;user-select:none}
+.ms-item:hover{background:rgba(143,220,210,.12)}
+.ms-item input{accent-color:#8FDCD2;flex-shrink:0;pointer-events:none}
+.ms-rodape{padding:5px 10px;font-size:9.5px;color:#8FDCD2;cursor:pointer;border-top:1px solid rgba(143,220,210,.15);text-align:center;flex-shrink:0}
+.ms-rodape:hover{background:rgba(143,220,210,.1)}
 </style>
 </head>
 <body>
-
 <div id="loading"><div class="spinner"></div><p>Carregando dados...</p></div>
 <div id="tip"></div>
 
@@ -165,8 +111,7 @@ tbody td:last-child{border-right:none}
   <div class="hdr-left">
     <svg class="hdr-logo" viewBox="0 0 42 42" fill="none">
       <rect width="42" height="42" rx="6" fill="rgba(143,220,210,.15)"/>
-      <path d="M7 32V10L14.5 24L21 10L27.5 24L35 10V32" stroke="#8FDCD2" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M7 32V10L14.5 24L21 10L27.5 24L35 10V32" stroke="#8FDCD2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       <path d="M7 32H35" stroke="#8FDCD2" stroke-width="2.5" stroke-linecap="round"/>
     </svg>
     <div>
@@ -177,10 +122,7 @@ tbody td:last-child{border-right:none}
   <div class="hdr-right">
     <div class="updated" id="updated-at">—</div>
     <a href="index.html" class="btn-voltar">
-      <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
-        <path d="M8 1L3 6l5 5" stroke="currentColor" stroke-width="1.8"
-              stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M8 1L3 6l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Voltar
     </a>
   </div>
@@ -198,9 +140,7 @@ tbody td:last-child{border-right:none}
       <button class="btn-sm danger" onclick="limparFiltros()">↺ Limpar Filtros</button>
     </div>
   </div>
-
   <div class="filtros-bar" id="filtros-bar"></div>
-
   <div class="tbl-outer">
     <div class="tbl-scroll">
       <table>
@@ -215,327 +155,308 @@ tbody td:last-child{border-right:none}
 </div>
 
 <script>
-const DATA_URL = 'data.json';
+const DATA_URL='data.json';
+let allDocs=[];
+let colFilters={};
+let hiddenCols=new Set();
+let activeStatusFilters=new Set();
+let sortKey=null,sortDir='asc';
+let _filteredData=[];
+let _ddKey=null;
 
-// ─── ESTADO ──────────────────────────────────────────────
-let allDocs = [];
-let colFilters = {};
-let hiddenCols = new Set();
-let activeStatusFilters = new Set();
+const fmtDate=s=>{if(!s)return null;try{return new Date(s).toLocaleDateString('pt-BR')}catch{return s}};
+const fmtMoney=v=>{
+  if(v==null||v==='')return null;
+  if(v==='SEM DADOS')return 'SEM DADOS';
+  const n=Number(v);return isNaN(n)?String(v):n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})
+};
+const diffDias=(a,b)=>{try{const d=Math.round((new Date(b)-new Date(a))/86400000);return d>0&&d<1500?d:null}catch{return null}};
+function isSim(v){return v===true||String(v).toUpperCase().trim()==='SIM'}
 
-// ─── HELPERS ─────────────────────────────────────────────
-const fmtDate = s => {
-  if (!s) return null;
-  try { return new Date(s).toLocaleDateString('pt-BR'); } catch { return s; }
-};
-const fmtMoney = v => {
-  if (v == null || v === '') return null;
-  if (v === 'SEM DADOS') return 'SEM DADOS';
-  const n = Number(v);
-  if (isNaN(n)) return String(v);
-  return n.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
-};
-const diffDays = (a, b) => {
-  try { return Math.round((new Date(b) - new Date(a)) / 86400000); } catch { return null; }
-};
-function isSim(v) {
-  return v === true || String(v).toUpperCase().trim() === 'SIM';
-}
-
-// ─── COLS ────────────────────────────────────────────────
-const COLS_DOCS = [
-  { key: 'endereco',              label: 'ENDEREÇO' },
-  { key: 'setor',                 label: 'SETOR' },
-  { key: 'cidade',                label: 'CIDADE' },
-  { key: 'data_aquisicao_lote',   label: 'DATA DE AQUISIÇÃO DO LOTE',        fmt: fmtDate },
-  { key: 'cota_empresa',          label: 'COTA DA EMPRESA (%)' },
-  { key: 'proprietario_documento',label: 'PROPRIETÁRIO DOCUMENTO' },
-  { key: 'proprietario_real',     label: 'PROPRIETÁRIO REAL' },
-  { key: 'cpf_cnpj',              label: 'CPF/CNPJ' },
-  { key: 'mestre',                label: 'MESTRE' },
-  { key: 'despachante',           label: 'DESPACHANTE' },
-  { key: 'eng_execucao',          label: 'ENG. EXECUÇÃO' },
-  { key: 'engenheiro_rt',         label: 'ENGENHEIRO RT' },
-  { key: 'previsao_inicio_obra',  label: 'PREVISÃO DE INÍCIO DE OBRA',       fmt: fmtDate },
-  { key: 'obra_iniciada',         label: 'OBRA INICIADA',                    fmt: 'bool' },
-  { key: 'data_inicio_obra',      label: 'DATA DE INÍCIO DA OBRA',           fmt: fmtDate },
-  { key: 'erp_orcado',            label: 'ORÇADO (ERP)',                     fmt: fmtMoney },
-  { key: 'erp_valor_pago',        label: 'VALOR PAGO (ERP)',                 fmt: fmtMoney },
-  { key: 'uso_solo_solicitado',   label: 'USO DO SOLO SOLICITADO',           fmt: 'bool' },
-  { key: 'data_sol_uso_solo',     label: 'DATA SOLICITAÇÃO USO DO SOLO',     fmt: fmtDate },
-  { key: 'uso_solo_emitido',      label: 'USO DO SOLO EMITIDO E ARMAZENADO', fmt: 'bool' },
-  { key: 'data_emissao_uso_solo', label: 'DATA DE EMISSÃO USO DO SOLO',      fmt: fmtDate },
-  { key: 'escritura_assinada',    label: 'ESCRITURA ASSINADA POR TODOS?',    fmt: 'bool' },
-  { key: 'itbi_pago',             label: 'ITBI PAGO?',                       fmt: 'bool' },
-  { key: 'registro_pago',         label: 'REGISTRO PAGO?',                   fmt: 'bool' },
-  { key: 'projeto_feito',         label: 'PROJETO FEITO?',                   fmt: 'bool' },
-  { key: 'art_feita_paga',        label: 'ART FEITA E PAGA?',                fmt: 'bool' },
-  { key: 'escritura_registrada',  label: 'ESCRITURA REGISTRADA E DIGITALIZADA?', fmt: 'bool' },
-  { key: 'certidao_lote',         label: 'CERTIDÃO DO LOTE ANEXADA?',        fmt: 'bool' },
-  { key: 'contrato_mestre',       label: 'CONTRATO MESTRE ASSINADO E ARMAZENADO?', fmt: 'bool' },
-  { key: 'contrato_investidor',   label: 'CONTRATO INVESTIDOR ASSINADO E ARMAZENADO?', fmt: 'bool' },
-  { key: 'taxas_alvara_pagas',    label: 'TAXAS ENTRADA ALVARÁ EMITIDAS E PAGAS?', fmt: 'bool' },
-  { key: 'data_entrada_alvara',   label: 'DATA DE ENTRADA DE ALVARÁ',        fmt: fmtDate },
-  { key: 'mao_obra_despachante',  label: 'MÃO OBRA INICIAL DESPACHANTE PAGA?', fmt: 'bool' },
-  { key: 'projeto_aprovado',      label: 'PROJETO APROVADO E ALVARÁ EMITIDO E ARMAZENADO?', fmt: 'bool' },
-  { key: 'data_aprovacao_projeto',label: 'DATA DE APROVAÇÃO DO PROJETO',     fmt: fmtDate },
-  { key: 'entrada_incorporacao',  label: 'ENTRADA NA INCORPORAÇÃO? (OBRAS CNPJ)', fmt: 'bool' },
-  { key: 'entrada_incorporacao_data', label: 'DATA DE ENTRADA NA INCORPORAÇÃO', fmt: fmtDate },
-  { key: 'taxas_habite_se',       label: 'TAXAS NUM OFICIAL, HABITE-SE E VISTORIA EMITIDAS E PAGAS?', fmt: 'bool' },
-  { key: 'incorporacao_finalizada',label: 'INCORPORAÇÃO FINALIZOU (OBRAS CNPJ)?', fmt: 'bool' },
-  { key: 'data_finalizacao_incorp',label: 'DATA DE FINALIZAÇÃO DA INCORPORAÇÃO', fmt: fmtDate },
-  { key: 'entrada_ret',           label: 'ENTRADA NO RET? (OBRAS CNPJ)',     fmt: 'bool' },
-  { key: 'data_entrada_ret',      label: 'DATA DE ENTRADA DO RET',           fmt: fmtDate },
-  { key: 'ret_armazenado',        label: 'RET ARMAZENADO',                   fmt: 'bool' },
-  { key: 'agendou_habite_se',     label: 'AGENDOU HABITE-SE?',               fmt: 'bool' },
-  { key: 'data_finalizacao_ret',  label: 'DATA DE FINALIZAÇÃO DO RET',       fmt: fmtDate },
-  { key: 'turno_habite_se',       label: 'TURNO HABITE-SE' },
-  { key: 'data_habite_se',        label: 'DATA HABITE-SE',                   fmt: fmtDate },
-  { key: 'aprovou_habite_se',     label: 'APROVOU HABITE-SE?',               fmt: 'bool' },
-  { key: 'data_aprovacao_habite', label: 'DATA DE APROVAÇÃO DO HABITE-SE',   fmt: fmtDate },
-  { key: 'armazenou_habite',      label: 'ARMAZENOU HABITE-SE?',             fmt: 'bool' },
-  { key: 'issqn',                 label: 'GEROU E ARMAZENOU ISSQN?',         fmt: 'bool' },
-  { key: 'cno_cnd',               label: 'EMITIU CNO E CND DE OBRA?',        fmt: 'bool' },
-  { key: 'art_acrescimo',         label: 'EMITIU ART DE ACRÉSCIMO?',         fmt: 'bool' },
-  { key: 'certidoes_matricula',   label: 'SAÍRAM AS CERTIDÕES DE MATRÍCULA?', fmt: 'bool' },
-  { key: 'data_certidoes',        label: 'DATA DE EMISSÃO DAS CERTIDÕES',    fmt: fmtDate },
-  { key: 'docs_vistoria_scpo',    label: 'EMITIU DOCS DE VISTORIA E SCPO?',  fmt: 'bool' },
-  { key: 'boletos_vistoria',      label: 'PAGOU BOLETOS DE VISTORIA CAIXA?', fmt: 'bool' },
-  { key: 'data_termino_obra',     label: 'DATA DE TÉRMINO DE OBRA',          fmt: fmtDate },
+const COLS=[
+  {key:'endereco',              label:'ENDEREÇO'},
+  {key:'setor',                 label:'SETOR'},
+  {key:'cidade',                label:'CIDADE'},
+  {key:'data_aquisicao_lote',   label:'DATA DE AQUISIÇÃO DO LOTE',        fmt:fmtDate},
+  {key:'cota_empresa',          label:'COTA DA EMPRESA (%)'},
+  {key:'proprietario_documento',label:'PROPRIETÁRIO DOCUMENTO'},
+  {key:'proprietario_real',     label:'PROPRIETÁRIO REAL'},
+  {key:'cpf_cnpj',              label:'CPF/CNPJ'},
+  {key:'mestre',                label:'MESTRE'},
+  {key:'despachante',           label:'DESPACHANTE'},
+  {key:'eng_execucao',          label:'ENG. EXECUÇÃO'},
+  {key:'engenheiro_rt',         label:'ENGENHEIRO RT'},
+  {key:'previsao_inicio_obra',  label:'PREVISÃO DE INÍCIO DE OBRA',       fmt:fmtDate},
+  {key:'obra_iniciada',         label:'OBRA INICIADA',                    fmt:'bool'},
+  {key:'data_inicio_obra',      label:'DATA DE INÍCIO DA OBRA',           fmt:fmtDate},
+  {key:'erp_orcado',            label:'ORÇADO (ERP)',                     fmt:fmtMoney},
+  {key:'erp_valor_pago',        label:'VALOR PAGO (ERP)',                 fmt:fmtMoney},
+  {key:'uso_solo_solicitado',   label:'USO DO SOLO SOLICITADO',           fmt:'bool'},
+  {key:'data_sol_uso_solo',     label:'DATA SOLICITAÇÃO USO DO SOLO',     fmt:fmtDate},
+  {key:'uso_solo_emitido',      label:'USO DO SOLO EMITIDO E ARMAZENADO', fmt:'bool'},
+  {key:'data_emissao_uso_solo', label:'DATA DE EMISSÃO USO DO SOLO',      fmt:fmtDate},
+  {key:'escritura_assinada',    label:'ESCRITURA ASSINADA POR TODOS?',    fmt:'bool'},
+  {key:'itbi_pago',             label:'ITBI PAGO?',                       fmt:'bool'},
+  {key:'registro_pago',         label:'REGISTRO PAGO?',                   fmt:'bool'},
+  {key:'projeto_feito',         label:'PROJETO FEITO?',                   fmt:'bool'},
+  {key:'art_feita_paga',        label:'ART FEITA E PAGA?',                fmt:'bool'},
+  {key:'escritura_registrada',  label:'ESCRITURA REGISTRADA E DIGITALIZADA?',fmt:'bool'},
+  {key:'certidao_lote',         label:'CERTIDÃO DO LOTE ANEXADA?',        fmt:'bool'},
+  {key:'contrato_mestre',       label:'CONTRATO MESTRE ASSINADO E ARMAZENADO?',fmt:'bool'},
+  {key:'contrato_investidor',   label:'CONTRATO INVESTIDOR ASSINADO E ARMAZENADO?',fmt:'bool'},
+  {key:'taxas_alvara_pagas',    label:'TAXAS ENTRADA ALVARÁ EMITIDAS E PAGAS?',fmt:'bool'},
+  {key:'data_entrada_alvara',   label:'DATA DE ENTRADA DE ALVARÁ',        fmt:fmtDate},
+  {key:'mao_obra_despachante',  label:'MÃO OBRA INICIAL DESPACHANTE PAGA?',fmt:'bool'},
+  {key:'projeto_aprovado',      label:'PROJETO APROVADO E ALVARÁ EMITIDO E ARMAZENADO?',fmt:'bool'},
+  {key:'data_aprovacao_projeto',label:'DATA DE APROVAÇÃO DO PROJETO',     fmt:fmtDate},
+  {key:'entrada_incorporacao',  label:'ENTRADA NA INCORPORAÇÃO? (OBRAS CNPJ)',fmt:'bool'},
+  {key:'entrada_incorporacao_data',label:'DATA DE ENTRADA NA INCORPORAÇÃO',fmt:fmtDate},
+  {key:'taxas_habite_se',       label:'TAXAS NUM OFICIAL, HABITE-SE E VISTORIA EMITIDAS E PAGAS?',fmt:'bool'},
+  {key:'incorporacao_finalizada',label:'INCORPORAÇÃO FINALIZOU (OBRAS CNPJ)?',fmt:'bool'},
+  {key:'data_finalizacao_incorp',label:'DATA DE FINALIZAÇÃO DA INCORPORAÇÃO',fmt:fmtDate},
+  {key:'entrada_ret',           label:'ENTRADA NO RET? (OBRAS CNPJ)',     fmt:'bool'},
+  {key:'data_entrada_ret',      label:'DATA DE ENTRADA DO RET',           fmt:fmtDate},
+  {key:'ret_armazenado',        label:'RET ARMAZENADO',                   fmt:'bool'},
+  {key:'agendou_habite_se',     label:'AGENDOU HABITE-SE?',               fmt:'bool'},
+  {key:'data_finalizacao_ret',  label:'DATA DE FINALIZAÇÃO DO RET',       fmt:fmtDate},
+  {key:'turno_habite_se',       label:'TURNO HABITE-SE'},
+  {key:'data_habite_se',        label:'DATA HABITE-SE',                   fmt:fmtDate},
+  {key:'aprovou_habite_se',     label:'APROVOU HABITE-SE?',               fmt:'bool'},
+  {key:'data_aprovacao_habite', label:'DATA DE APROVAÇÃO DO HABITE-SE',   fmt:fmtDate},
+  {key:'armazenou_habite',      label:'ARMAZENOU HABITE-SE?',             fmt:'bool'},
+  {key:'issqn',                 label:'GEROU E ARMAZENOU ISSQN?',         fmt:'bool'},
+  {key:'cno_cnd',               label:'EMITIU CNO E CND DE OBRA?',        fmt:'bool'},
+  {key:'art_acrescimo',         label:'EMITIU ART DE ACRÉSCIMO?',         fmt:'bool'},
+  {key:'certidoes_matricula',   label:'SAÍRAM AS CERTIDÕES DE MATRÍCULA?',fmt:'bool'},
+  {key:'data_certidoes',        label:'DATA DE EMISSÃO DAS CERTIDÕES',    fmt:fmtDate},
+  {key:'docs_vistoria_scpo',    label:'EMITIU DOCS DE VISTORIA E SCPO?',  fmt:'bool'},
+  {key:'boletos_vistoria',      label:'PAGOU BOLETOS DE VISTORIA CAIXA?', fmt:'bool'},
+  {key:'data_termino_obra',     label:'DATA DE TÉRMINO DE OBRA',          fmt:fmtDate},
 ];
 
-// ─── STATUS ──────────────────────────────────────────────
-function calcStatusDoc(d) {
-  if (!d) return 'cinza';
-  if (isSim(d.aprovou_habite_se)) return 'roxo';
-  if (isSim(d.agendou_habite_se)) return 'vermelho';
-  if (d.data_termino_obra && d.data_inicio_obra) {
-    const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
-    return dias && dias <= 150 ? 'verde' : 'laranja';
+// CORREÇÃO — "Não comprado" é o fallback FINAL, nunca sobrescreve estados mais avançados
+function calcStatusDoc(d){
+  if(!d) return 'cinza';
+  // Estados avançados primeiro (independente de ter ou não data_aquisicao_lote)
+  if(isSim(d.aprovou_habite_se)) return 'roxo';
+  if(isSim(d.agendou_habite_se)) return 'vermelho';
+  if(d.data_termino_obra&&d.data_inicio_obra){
+    const dias=diffDias(d.data_inicio_obra,d.data_termino_obra);
+    return dias?( dias<=150?'verde':'laranja' ):'azul_esc';
   }
-  if (d.data_inicio_obra) return 'amarelo';
-  return 'cinza';
-}
-const COR_DOCS = {
-  cinza:'#8faabb', amarelo:'#c9a227', verde:'#2a9d5c',
-  laranja:'#d46a1a', vermelho:'#c0392b', roxo:'#7c4daf',
-};
-const STATUS_DOCS_LABELS = {
-  cinza:'Não iniciado', amarelo:'Em andamento', verde:'Finalizado no prazo',
-  laranja:'Acima do prazo', vermelho:'Habite-se agendado', roxo:'Habite-se concluído',
-};
-
-// ─── fmtCell ─────────────────────────────────────────────
-function fmtCell(val, fmtFn) {
-  if (fmtFn === 'bool') {
-    if (val == null || val === '') return '<span class="cell-null">—</span>';
-    const s = String(val).toUpperCase().trim();
-    if (s === 'SIM' || val === true)
-      return '<span class="bool-sim">SIM</span>';
-    if (s === 'NÃO' || s === 'NAO' || val === false)
-      return '<span class="bool-nao">NÃO</span>';
-    if (s === 'ÁGIO' || s === 'AGIO')
-      return `<span class="bool-sim" style="background:rgba(201,162,39,.15);color:#c9a227;border-color:rgba(201,162,39,.4)">ÁGIO</span>`;
-    if (s === 'INEXISTE')
-      return `<span class="bool-nao" style="background:rgba(90,128,153,.1);color:#5a8099;border-color:rgba(90,128,153,.3)">INEXISTE</span>`;
-    return `<span class="bool-nao" style="background:rgba(90,128,153,.1);color:#5a8099;border-color:rgba(90,128,153,.3)">${val}</span>`;
-  }
-  if (typeof fmtFn === 'function') {
-    const r = fmtFn(val);
-    if (r === 'SEM DADOS') return '<span style="color:#c9a227;font-size:10px;font-style:italic">SEM DADOS</span>';
-    return r != null ? String(r) : '<span class="cell-null">—</span>';
-  }
-  return val != null && val !== '' ? String(val) : '<span class="cell-null">—</span>';
+  if(isSim(d.obra_iniciada)) return 'azul_esc';
+  if(d.data_inicio_obra) return 'azul_esc';
+  // Só aqui verifica se foi comprado
+  if(!d.data_aquisicao_lote) return 'cinza'; // não comprado
+  return 'amarelo'; // comprado mas não iniciado
 }
 
-// ─── CHIPS DE STATUS ─────────────────────────────────────
-function buildFiltrosBar() {
-  const bar = document.getElementById('filtros-bar');
-  const counts = {};
-  allDocs.forEach(d => {
-    const s = calcStatusDoc(d);
-    counts[s] = (counts[s] || 0) + 1;
+const COR_DOCS={cinza:'#8faabb',amarelo:'#c9a227',azul_esc:'#1e3f58',verde:'#2a9d5c',laranja:'#d46a1a',vermelho:'#c0392b',roxo:'#7c4daf'};
+const LABEL_DOCS={cinza:'Não comprado',amarelo:'Não iniciado',azul_esc:'Em andamento',verde:'Finalizado no prazo',laranja:'Acima do prazo',vermelho:'Habite-se agendado',roxo:'Habite-se concluído'};
+
+function fmtCell(val,fmt){
+  if(fmt==='bool'){
+    if(val==null||val==='') return '<span class="cell-null">—</span>';
+    const s=String(val).toUpperCase().trim();
+    if(s==='SIM'||val===true) return '<span class="bool-sim">SIM</span>';
+    if(s==='NÃO'||s==='NAO'||val===false) return '<span class="bool-nao">NÃO</span>';
+    if(s==='ÁGIO'||s==='AGIO') return `<span class="bool-sim" style="background:rgba(201,162,39,.15);color:#c9a227;border-color:rgba(201,162,39,.4)">ÁGIO</span>`;
+    if(s==='INEXISTE') return `<span class="bool-nao" style="background:rgba(90,128,153,.1);color:#5a8099;border-color:rgba(90,128,153,.3)">INEXISTE</span>`;
+    return `<span class="bool-nao" style="background:rgba(90,128,153,.1);color:#5a8099">${val}</span>`;
+  }
+  if(typeof fmt==='function'){
+    const r=fmt(val);
+    if(r==='SEM DADOS') return '<span style="color:#c9a227;font-size:10px;font-style:italic">SEM DADOS</span>';
+    return r!=null?String(r):'<span class="cell-null">—</span>';
+  }
+  return val!=null&&val!==''?String(val):'<span class="cell-null">—</span>';
+}
+
+// chips
+function buildFiltrosBar(){
+  const bar=document.getElementById('filtros-bar');
+  const cnt={};
+  allDocs.forEach(d=>{const s=calcStatusDoc(d);cnt[s]=(cnt[s]||0)+1});
+  const ordem=['amarelo','azul_esc','verde','laranja','vermelho','roxo','cinza'];
+  const chips=ordem.filter(s=>cnt[s]).map(s=>`
+    <span class="filtro-chip ${activeStatusFilters.has(s)?'active':''}" onclick="toggleSF('${s}')">
+      <span class="chip-dot" style="background:${COR_DOCS[s]}"></span>
+      ${LABEL_DOCS[s]} (${cnt[s]})
+    </span>`).join('');
+  bar.innerHTML=`<span class="filtro-label">Status:</span>${chips}<span class="filtro-sep"></span><span class="filtro-clear" onclick="clearStatusFilters()">✕ Limpar</span>`;
+}
+function toggleSF(s){activeStatusFilters.has(s)?activeStatusFilters.delete(s):activeStatusFilters.add(s);buildFiltrosBar();build()}
+function clearStatusFilters(){activeStatusFilters.clear();buildFiltrosBar();build()}
+
+// ordenação
+function sortData(data){
+  if(!sortKey) return data;
+  return [...data].sort((a,b)=>{
+    let va=a[sortKey],vb=b[sortKey];
+    if(typeof va==='string'&&/^\d{4}-\d{2}-\d{2}/.test(va)){va=new Date(va);vb=vb?new Date(vb):new Date(0);return sortDir==='asc'?va-vb:vb-va}
+    if(!isNaN(Number(va))&&!isNaN(Number(vb))) return sortDir==='asc'?Number(va)-Number(vb):Number(vb)-Number(va);
+    va=String(va||'');vb=String(vb||'');return sortDir==='asc'?va.localeCompare(vb,'pt-BR'):vb.localeCompare(va,'pt-BR');
   });
-  const ordem = ['amarelo','verde','laranja','vermelho','roxo','cinza'];
-  bar.innerHTML = `<span class="filtro-label">Status:</span>` +
-    ordem.filter(s => counts[s]).map(s => `
-      <span class="filtro-chip ${activeStatusFilters.has(s)?'active':''}"
-        onclick="toggleStatusFilter('${s}')" data-status="${s}">
-        <span class="chip-dot" style="background:${COR_DOCS[s]}"></span>
-        ${STATUS_DOCS_LABELS[s]} (${counts[s]})
-      </span>`).join('') +
-    `<span class="filtro-sep"></span>
-     <span class="filtro-clear" onclick="clearStatusFilters()">✕ Limpar</span>`;
 }
-function toggleStatusFilter(s) {
-  activeStatusFilters.has(s) ? activeStatusFilters.delete(s) : activeStatusFilters.add(s);
-  buildFiltrosBar();
-  buildTabela();
+function setSortCol(key){if(sortKey===key)sortDir=sortDir==='asc'?'desc':'asc';else{sortKey=key;sortDir='asc'}renderBody()}
+
+function rowPassaFiltros(row,excluir){
+  return COLS.every(col=>{
+    if(col.key===excluir) return true;
+    const f=colFilters[col.key];
+    if(!f||(f instanceof Set&&f.size===0)||f==='') return true;
+    const rv=String(row[col.key]??'').toUpperCase().trim();
+    if(f instanceof Set) return [...f].some(fv=>fv==='—'?!row[col.key]&&row[col.key]!==0:rv===String(fv).toUpperCase().trim());
+    return rv.includes(String(f).toUpperCase());
+  });
 }
-function clearStatusFilters() {
-  activeStatusFilters.clear();
-  buildFiltrosBar();
-  buildTabela();
+function getBase(){
+  let data=[...allDocs];
+  if(activeStatusFilters.size>0) data=data.filter(row=>activeStatusFilters.has(calcStatusDoc(row)));
+  return data;
 }
 
-// ─── TABELA ──────────────────────────────────────────────
-function buildTabela() {
-  const cols = COLS_DOCS;
-  let data = [...allDocs];
-
-  if (activeStatusFilters.size > 0) {
-    data = data.filter(row => activeStatusFilters.has(calcStatusDoc(row)));
-  }
-
-  // Filtros em cascata
-  const filterRow = document.getElementById('tabela-filter-row');
-  filterRow.innerHTML = cols.map(col => {
-    const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
-    const cur = colFilters[col.key] || '';
-
-    const dataParaEstaCol = data.filter(row =>
-      cols.every(c => {
-        if (c.key === col.key) return true;
-        const f = (colFilters[c.key] || '').trim().toUpperCase();
-        if (!f) return true;
-        if (c.fmt === 'bool') {
-          if (f === '—') return row[c.key] == null || row[c.key] === '';
-          return String(row[c.key] || '').toUpperCase().trim() === f.toUpperCase().trim();
-        }
-        return String(row[c.key] ?? '').toUpperCase().includes(f);
-      })
-    );
-
-    const uniqueVals = [...new Set(
-      dataParaEstaCol.map(r => r[col.key]).filter(v => v != null && v !== '' && v !== 'SEM DADOS')
-    )].sort((a,b) => String(a).localeCompare(String(b), 'pt-BR'));
-
-    if (col.fmt === 'bool' || (uniqueVals.length > 0 && uniqueVals.length <= 30)) {
-      const opcoes = col.fmt === 'bool' ? ['SIM','NÃO','ÁGIO','INEXISTE'] : uniqueVals;
-      return `<th class="${hidden}">
-        <select class="col-filter-select" onchange="setFilter('${col.key}',this.value)"
-          onclick="event.stopPropagation()">
-          <option value="">Todos (${dataParaEstaCol.length})</option>
-          ${opcoes.map(v=>`<option value="${v}" ${cur===String(v)?'selected':''}>${v}</option>`).join('')}
-        </select></th>`;
-    }
-    return `<th class="${hidden}">
-      <input class="col-filter-input" placeholder="filtrar..." value="${cur}"
-        oninput="setFilter('${col.key}',this.value)" onclick="event.stopPropagation()">
-    </th>`;
-  }).join('');
-
-  // Aplicar filtros de coluna
-  const filtered = data.filter(row =>
-    cols.every(col => {
-      const f = (colFilters[col.key] || '').trim().toUpperCase();
-      if (!f) return true;
-      if (col.fmt === 'bool') {
-        if (f === '—') return row[col.key] == null || row[col.key] === '';
-        return String(row[col.key] || '').toUpperCase().trim() === f.toUpperCase().trim();
-      }
-      return String(row[col.key] ?? '').toUpperCase().includes(f);
-    })
-  );
-
-  // Cabeçalho
-  document.getElementById('tabela-head').innerHTML = cols.map(col => `
-    <th class="${hiddenCols.has(col.key)?'col-hidden':''}" data-key="${col.key}">
-      <span class="hide-col-btn" onclick="toggleCol('${col.key}')"
-        style="float:right;cursor:pointer;opacity:.4;font-size:9px;margin-left:4px"
-        onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.4">✕</span>
-      ${col.label}
-    </th>`).join('');
-
-  // Corpo
-  document.getElementById('tabela-body').innerHTML = filtered.map((row,i) => `
-    <tr style="${i%2===0?'':'background:var(--bg2)'}">
-      ${cols.map(col => `
-        <td class="${hiddenCols.has(col.key)?'col-hidden':''}">
-          ${fmtCell(row[col.key], col.fmt)}
-        </td>`).join('')}
-    </tr>`).join('')
-    || '<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px;font-size:13px">Nenhum registro encontrado</td></tr>';
-
-  // Painel colunas
-  document.getElementById('col-panel-list').innerHTML = cols.map(col => `
-    <label>
-      <input type="checkbox" ${hiddenCols.has(col.key)?'':'checked'}
-        onchange="toggleCol('${col.key}')"> ${col.label}
-    </label>`).join('');
-
-  document.getElementById('tabela-titulo').textContent =
-    `Gestão Documental — Todos os Setores (${filtered.length})`;
-
-  _filteredData = filtered;
-}
-let _filteredData = [];
-
-function setFilter(key, val) { colFilters[key] = val; buildTabela(); }
-function toggleCol(key) {
-  hiddenCols.has(key) ? hiddenCols.delete(key) : hiddenCols.add(key);
-  buildTabela();
-}
-function toggleColPanel() {
-  document.getElementById('col-panel').classList.toggle('open');
-}
-function limparFiltros() {
-  colFilters = {};
-  clearStatusFilters();
-}
-document.addEventListener('click', e => {
-  if (!e.target.closest('.tbl-rel'))
-    document.getElementById('col-panel').classList.remove('open');
+// ── MULTI-SELECT (singleton dropdown) ──────────────────────────────────────
+const _DD=document.createElement('div');
+_DD.className='ms-dd';
+_DD.innerHTML=`<input class="ms-busca" placeholder="buscar..."><div class="ms-lista"></div><div class="ms-rodape">✕ Limpar seleção</div>`;
+document.body.appendChild(_DD);
+_DD.querySelector('.ms-busca').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase();
+  _DD.querySelectorAll('.ms-item').forEach(el=>{el.style.display=el.dataset.v.toLowerCase().includes(q)?'':'none'});
 });
+_DD.querySelector('.ms-rodape').addEventListener('click',e=>{e.stopPropagation();if(_ddKey){colFilters[_ddKey]='';fecharDD();build()}});
+_DD.addEventListener('click',e=>e.stopPropagation());
 
-// ─── EXPORTAR EXCEL ──────────────────────────────────────
-function exportarExcel() {
-  const cols = COLS_DOCS.filter(c => !hiddenCols.has(c.key));
-  const headers = cols.map(c => c.label);
-
-  const rows = _filteredData.map(row =>
-    cols.map(col => {
-      const v = row[col.key];
-      if (v == null || v === '') return '';
-      if (col.fmt === 'bool') return String(v);
-      if (typeof col.fmt === 'function') {
-        const r = col.fmt(v);
-        return r != null ? r : '';
-      }
-      return String(v);
-    })
-  );
-
-  const wsData = [headers, ...rows];
-  const wb = XLSX.utils.book_new();
-  const ws = XLSX.utils.aoa_to_sheet(wsData);
-
-  // Largura automática
-  const colWidths = headers.map((h, i) => ({
-    wch: Math.max(h.length, ...rows.map(r => String(r[i]||'').length), 10)
-  }));
-  ws['!cols'] = colWidths;
-
-  XLSX.utils.book_append_sheet(wb, ws, 'Documentos');
-  XLSX.writeFile(wb, `Gestao_Documental_${new Date().toLocaleDateString('pt-BR').replace(/\//g,'-')}.xlsx`);
+function abrirDD(key,btnEl){
+  if(_ddKey===key){fecharDD();return}
+  if(_ddKey)fecharDD();
+  _ddKey=key;
+  const col=COLS.find(c=>c.key===key);
+  const selSet=colFilters[key] instanceof Set?colFilters[key]:new Set();
+  const base=getBase();
+  const dataCol=base.filter(row=>rowPassaFiltros(row,key));
+  const uniq=[...new Set(dataCol.map(r=>r[key]).filter(v=>v!=null&&v!==''&&v!=='SEM DADOS'))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+  const opts=col.fmt==='bool'?['SIM','NÃO','ÁGIO','INEXISTE']:uniq;
+  const lista=_DD.querySelector('.ms-lista');
+  lista.innerHTML=opts.map(v=>`<div class="ms-item" data-v="${v}"><input type="checkbox" ${selSet.has(String(v))?'checked':''}>${v}</div>`).join('');
+  lista.querySelectorAll('.ms-item').forEach(el=>{
+    el.addEventListener('click',ev=>{
+      ev.stopPropagation();
+      const cb=el.querySelector('input');cb.checked=!cb.checked;
+      const v=el.dataset.v;
+      if(!(colFilters[key] instanceof Set)) colFilters[key]=new Set();
+      if(cb.checked)colFilters[key].add(v);else colFilters[key].delete(v);
+      if(colFilters[key].size===0)colFilters[key]='';
+      atualizarBotao(key);
+      renderBody();
+    });
+  });
+  _DD.querySelector('.ms-busca').value='';
+  _DD.querySelectorAll('.ms-item').forEach(el=>el.style.display='');
+  const rect=btnEl.getBoundingClientRect();
+  _DD.style.top=(rect.bottom+2)+'px';
+  _DD.style.left=rect.left+'px';
+  _DD.style.minWidth=Math.max(rect.width,160)+'px';
+  _DD.classList.add('aberto');
+  _DD.querySelector('.ms-busca').focus();
+}
+function fecharDD(){if(_ddKey){_DD.classList.remove('aberto');_ddKey=null}}
+document.addEventListener('click',()=>{if(_ddKey)fecharDD()});
+function atualizarBotao(key){
+  const btn=document.getElementById('ms-btn-'+key);if(!btn)return;
+  const s=colFilters[key];const ativo=s instanceof Set&&s.size>0;
+  btn.textContent=ativo?[...s].join(', '):'Todos';btn.classList.toggle('ativo',ativo);
 }
 
-// ─── INIT ────────────────────────────────────────────────
-async function init() {
-  try {
-    const r = await fetch(DATA_URL);
-    const data = await r.json();
-    allDocs = data.documentos || [];
-    if (data.updated_at) {
-      document.getElementById('updated-at').textContent =
-        'Atualizado: ' + new Date(data.updated_at).toLocaleString('pt-BR');
+function renderFiltros(){
+  const base=getBase();
+  const fr=document.getElementById('tabela-filter-row');
+  fr.innerHTML=COLS.map((col,ci)=>{
+    const hid=hiddenCols.has(col.key)?'col-hidden':'';
+    const sf=ci===0?'col-sticky-filter':'';
+    const f=colFilters[col.key];
+    const dataCol=base.filter(row=>rowPassaFiltros(row,col.key));
+    const uniq=[...new Set(dataCol.map(r=>r[col.key]).filter(v=>v!=null&&v!==''&&v!=='SEM DADOS'))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+    const isBool=col.fmt==='bool';
+    const isMulti=isBool||(uniq.length>0&&uniq.length<=30);
+    if(isMulti){
+      const selSet=f instanceof Set?f:new Set();
+      const label=selSet.size>0?[...selSet].join(', '):'Todos';
+      return `<th class="${hid} ${sf}"><div class="ms-wrap"><button class="ms-btn${selSet.size>0?' ativo':''}" id="ms-btn-${col.key}" onclick="abrirDD('${col.key}',this);event.stopPropagation()">${label}</button></div></th>`;
     }
+    const cur=f instanceof Set?'':(f||'');
+    return `<th class="${hid} ${sf}"><input class="col-fi" placeholder="filtrar..." value="${cur}" data-fk="${col.key}" oninput="setTxtFilter('${col.key}',this.value)" onclick="event.stopPropagation()"></th>`;
+  }).join('');
+}
+
+function renderBody(){
+  const base=getBase();
+  const filtered=base.filter(row=>rowPassaFiltros(row,null));
+  const sorted=sortData(filtered);
+  document.getElementById('tabela-body').innerHTML=sorted.map((row,i)=>`
+    <tr style="${i%2?'background:var(--bg2)':''}">
+      ${COLS.map((col,ci)=>`<td class="${hiddenCols.has(col.key)?'col-hidden':''} ${ci===0?'col-sticky-body':''}">${fmtCell(row[col.key],col.fmt)}</td>`).join('')}
+    </tr>`).join('')||'<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px">Nenhum registro encontrado</td></tr>';
+  document.getElementById('tabela-titulo').textContent=`Gestão Documental — Todos os Setores (${sorted.length})`;
+  _filteredData=sorted;
+}
+
+function build(){
+  const foco=document.activeElement;
+  const focoKey=foco&&foco.dataset&&foco.dataset.fk?foco.dataset.fk:null;
+  renderFiltros();
+  if(focoKey){const el=document.querySelector(`[data-fk="${focoKey}"]`);if(el){el.focus();const l=el.value.length;el.setSelectionRange(l,l)}}
+  document.getElementById('tabela-head').innerHTML=COLS.map((col,ci)=>{
+    const hid=hiddenCols.has(col.key)?'col-hidden':'';
+    const st=ci===0?'col-sticky':'';
+    const sc=sortKey===col.key?(sortDir==='asc'?'sort-asc':'sort-desc'):'';
+    return `<th class="${hid} ${st} ${sc}" data-key="${col.key}" onclick="setSortCol('${col.key}')">
+      <span style="float:right;cursor:pointer;opacity:.4;font-size:9px" onclick="event.stopPropagation();toggleCol('${col.key}')" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.4">✕</span>
+      ${col.label}<span class="sort-icon"></span></th>`;
+  }).join('');
+  document.getElementById('col-panel-list').innerHTML=COLS.map(col=>`<label><input type="checkbox" ${hiddenCols.has(col.key)?'':'checked'} onchange="toggleCol('${col.key}')"> ${col.label}</label>`).join('');
+  renderBody();
+}
+
+function setTxtFilter(key,val){
+  colFilters[key]=val;
+  renderBody();
+  COLS.forEach(col=>{if(col.key!==key)atualizarBotao(col.key)});
+}
+
+function toggleCol(key){hiddenCols.has(key)?hiddenCols.delete(key):hiddenCols.add(key);build()}
+function toggleColPanel(){document.getElementById('col-panel').classList.toggle('open')}
+function limparFiltros(){colFilters={};clearStatusFilters()}
+document.addEventListener('click',e=>{if(!e.target.closest('.tbl-rel'))document.getElementById('col-panel').classList.remove('open')});
+
+function exportarExcel(){
+  const cols=COLS.filter(c=>!hiddenCols.has(c.key));
+  const headers=cols.map(c=>c.label);
+  const rows=_filteredData.map(row=>cols.map(col=>{
+    const v=row[col.key];if(v==null||v==='')return '';
+    if(col.fmt==='bool')return String(v);
+    if(typeof col.fmt==='function'){const r=col.fmt(v);return r??''}
+    return String(v);
+  }));
+  const wb=XLSX.utils.book_new();
+  const ws=XLSX.utils.aoa_to_sheet([headers,...rows]);
+  ws['!cols']=headers.map((h,i)=>({wch:Math.max(h.length,...rows.map(r=>String(r[i]||'').length),10)}));
+  XLSX.utils.book_append_sheet(wb,ws,'Documentos');
+  XLSX.writeFile(wb,`Gestao_Documental_${new Date().toLocaleDateString('pt-BR').replace(/\//g,'-')}.xlsx`);
+}
+
+async function init(){
+  try{
+    const r=await fetch(DATA_URL);
+    const data=await r.json();
+    allDocs=data.documentos||[];
+    if(data.updated_at) document.getElementById('updated-at').textContent='Atualizado: '+new Date(data.updated_at).toLocaleString('pt-BR');
     buildFiltrosBar();
-    buildTabela();
+    build();
     document.getElementById('loading').classList.add('hidden');
-  } catch(e) {
-    document.getElementById('loading').innerHTML =
-      `<div style="color:#c0392b;font-size:14px">Erro ao carregar dados:<br>${e.message}</div>`;
+  }catch(e){
+    document.getElementById('loading').innerHTML=`<div style="color:#c0392b;font-size:14px">Erro ao carregar dados:<br>${e.message}</div>`;
   }
 }
 init();
