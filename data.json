@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-04T12:35:26.358462+00:00",
+  "updated_at": "2026-05-04T13:29:13.847292+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -189,7 +189,7 @@
     },
     {
       "id": "32fc5ab5-32d3-8005-b20d-d641b14743fc",
-      "endereco": "SV-13 QD 40 LT 19",
+      "endereco": "SV 13 QD 40 LT 19",
       "ref": "SV 4",
       "setor": "SOLAR VILLE",
       "cidade": "GOIÂNIA",
@@ -246,8 +246,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 74502.3
     },
     {
       "id": "32fc5ab5-32d3-8006-83ae-d0f964cbe4ec",
@@ -933,7 +933,7 @@
     },
     {
       "id": "32fc5ab5-32d3-8015-a167-c2b7e4aed8f0",
-      "endereco": "DONA MORENA QD 18 LT B1",
+      "endereco": "DONA MORENA QD 18 LT 8-11 B1",
       "ref": "MQA 1",
       "setor": "MARQUES DE ABREU",
       "cidade": "GOIÂNIA",
@@ -990,8 +990,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-16",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 469362.8405,
+      "erp_valor_pago": 188688.04999999996
     },
     {
       "id": "32fc5ab5-32d3-8017-b8f5-c36b2bb3f3e9",
@@ -1057,7 +1057,7 @@
     },
     {
       "id": "32fc5ab5-32d3-8019-a672-cd46e3056fe3",
-      "endereco": "W-6 QD 17 LT 06",
+      "endereco": "W 6 QD 17 LT 06",
       "ref": "ITAIPU 1",
       "setor": "ITAIPU",
       "cidade": "GOIÂNIA",
@@ -1114,8 +1114,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 567638.4801,
+      "erp_valor_pago": 600661.3400000001
     },
     {
       "id": "32fc5ab5-32d3-801c-9a55-d602d46e4fa0",
@@ -1429,7 +1429,7 @@
     },
     {
       "id": "32fc5ab5-32d3-8023-bfed-e3532c4dfe83",
-      "endereco": "SV-24 QD 40 LT 21",
+      "endereco": "SV 24 QD 40 LT 21",
       "ref": "SV 2",
       "setor": "SOLAR VILLE",
       "cidade": "GOIÂNIA",
@@ -1486,12 +1486,12 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 71445.63
     },
     {
       "id": "32fc5ab5-32d3-8024-9245-d7b75796e4d2",
-      "endereco": "AV. GERCINA BORGES QD 02 LT 02",
+      "endereco": "GERCINA BORGES QD 02 LT 02",
       "ref": "SE 1",
       "setor": "ST EFIGÊNIA",
       "cidade": "GOIÂNIA",
@@ -2049,7 +2049,7 @@
     },
     {
       "id": "32fc5ab5-32d3-8036-9b3a-c54e0325e7e1",
-      "endereco": "SV-24 QD 40 LT 20",
+      "endereco": "SV 24 QD 40 LT 20",
       "ref": "SV 1",
       "setor": "SOLAR VILLE",
       "cidade": "GOIÂNIA",
@@ -3723,7 +3723,7 @@
     },
     {
       "id": "32fc5ab5-32d3-806d-8f62-c4247ed6d73c",
-      "endereco": "AV. CASEMIRO J. MARQUES DE ABREU QD 18 LT B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
       "ref": "MQA 2",
       "setor": "MARQUES DE ABREU",
       "cidade": "GOIÂNIA",
@@ -3780,8 +3780,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-16",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 357000.1259,
+      "erp_valor_pago": 273951.09000055003
     },
     {
       "id": "32fc5ab5-32d3-806e-93c6-f5879377a80e",
@@ -5149,7 +5149,7 @@
     },
     {
       "id": "32fc5ab5-32d3-80a8-a26e-fb3bcc2ca52b",
-      "endereco": "AV. CASEMIRO J. MARQUES DE ABREU QD 18 LT B3",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
       "ref": "MQA 3",
       "setor": "MARQUES DE ABREU",
       "cidade": "GOIÂNIA",
@@ -5206,8 +5206,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-16",
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 378803.8031,
+      "erp_valor_pago": 192014.99
     },
     {
       "id": "32fc5ab5-32d3-80ac-9489-f52b2dcda4d0",
@@ -5397,7 +5397,7 @@
     },
     {
       "id": "32fc5ab5-32d3-80af-8fbf-c04ef13e0944",
-      "endereco": "SV-13 QD 40 LT 18",
+      "endereco": "SV 13 QD 40 LT 18",
       "ref": "SV 5",
       "setor": "SOLAR VILLE",
       "cidade": "GOIÂNIA",
@@ -5454,8 +5454,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 74584.37
     },
     {
       "id": "32fc5ab5-32d3-80af-bae6-e818b6ef0454",
@@ -6265,7 +6265,7 @@
     },
     {
       "id": "32fc5ab5-32d3-80d5-8302-ffa02af351ca",
-      "endereco": "AV. GERCINA BORGES QD 02 LT 03",
+      "endereco": "GERCINA BORGES QD 02 LT 03",
       "ref": "SE 2",
       "setor": "ST EFIGÊNIA",
       "cidade": "GOIÂNIA",
@@ -7753,7 +7753,7 @@
     },
     {
       "id": "32fc5ab5-32d3-80f8-a92b-c4b75c83cace",
-      "endereco": "SV-26 QD 40 LT 17",
+      "endereco": "SV 26 QD 40 LT 17",
       "ref": "SV 6",
       "setor": "SOLAR VILLE",
       "cidade": "GOIÂNIA",
@@ -7810,8 +7810,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 74510.81999999999
     },
     {
       "id": "32fc5ab5-32d3-80f9-aeca-d2a3c9cbdfdf",
@@ -7939,7 +7939,7 @@
     },
     {
       "id": "32fc5ab5-32d3-80fa-a7cb-fd2e0b472767",
-      "endereco": "SV-24 QD 40 LT 22",
+      "endereco": "SV 24 QD 40 LT 22",
       "ref": "SV 3",
       "setor": "SOLAR VILLE",
       "cidade": "GOIÂNIA",
@@ -7996,8 +7996,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 71445.63
     },
     {
       "id": "32fc5ab5-32d3-80fa-a8cf-c7877eb16051",
@@ -9506,7 +9506,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8008-a102-cf3703bc0795",
-      "endereco": "W-6 QD 17 LT 06",
+      "endereco": "W 6 QD 17 LT 06",
       "casa": 2,
       "ref": "IT2",
       "cidade": "GOIÂNIA",
@@ -12602,7 +12602,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8049-8c4f-d5016683beb4",
-      "endereco": "BELO HORIZONTE QD 17 LT 06",
+      "endereco": "W 6 QD 17 LT 06",
       "casa": 4,
       "ref": "IT4",
       "cidade": "GOIÂNIA",
@@ -12688,7 +12688,7 @@
     },
     {
       "id": "33cc5ab5-32d3-804a-b502-de06cf4b826e",
-      "endereco": "AV. GERCINA BORGES QD 02 LT 03",
+      "endereco": "GERCINA BORGES QD 02 LT 03",
       "casa": 1,
       "ref": "EF7",
       "cidade": "GOIÂNIA",
@@ -12817,7 +12817,7 @@
     },
     {
       "id": "33cc5ab5-32d3-804c-b10a-c4387ad4fc81",
-      "endereco": "DONA MORENA QD 18 LT B1",
+      "endereco": "DONA MORENA QD 18 LT 8-11 B1",
       "casa": 2,
       "ref": "M2",
       "cidade": "GOIÂNIA",
@@ -12946,7 +12946,7 @@
     },
     {
       "id": "33cc5ab5-32d3-804e-bec2-cc0a7c854177",
-      "endereco": "DONA MORENA QD 18 LT B1",
+      "endereco": "DONA MORENA QD 18 LT 8-11 B1",
       "casa": 3,
       "ref": "M3",
       "cidade": "GOIÂNIA",
@@ -13720,7 +13720,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8057-b883-dcc7acaf0680",
-      "endereco": "AV. CASEMIRO J. AMRQUES DE ABREU QD 18 LT B3",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
       "casa": 1,
       "ref": "M8",
       "cidade": "GOIÂNIA",
@@ -14623,7 +14623,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8066-b40b-e1116ad75d34",
-      "endereco": "W-6 QD 17 LT 06",
+      "endereco": "W 6 QD 17 LT 06",
       "casa": 1,
       "ref": "IT1",
       "cidade": "GOIÂNIA",
@@ -15225,7 +15225,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8076-834b-f832356f270f",
-      "endereco": "AV. CASEMIRO J. AMRQUES DE ABREU QD 18 LT B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
       "casa": 1,
       "ref": "M5",
       "cidade": "GOIÂNIA",
@@ -16300,7 +16300,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8087-ba3c-ccdc4de7d39a",
-      "endereco": "DONA MORENA QD 18 LT B1",
+      "endereco": "DONA MORENA QD 18 LT 8-11 B1",
       "casa": 1,
       "ref": "M1",
       "cidade": "GOIÂNIA",
@@ -17117,7 +17117,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8093-998b-de2a81db10aa",
-      "endereco": "DONA MORENA QD 18 LT B1",
+      "endereco": "DONA MORENA QD 18 LT 8-11 B1",
       "casa": 4,
       "ref": "M4",
       "cidade": "GOIÂNIA",
@@ -17160,7 +17160,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8094-81ef-e99a810c18a0",
-      "endereco": "AV. GERCINA BORGES QD 02 LT 02",
+      "endereco": "GERCINA BORGES QD 02 LT 02",
       "casa": 1,
       "ref": "EF5",
       "cidade": "GOIÂNIA",
@@ -17633,7 +17633,7 @@
     },
     {
       "id": "33cc5ab5-32d3-809b-8e68-c1cf43c4c4be",
-      "endereco": "AV. CASEMIRO J. AMRQUES DE ABREU QD 18 LT B3",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
       "casa": 3,
       "ref": "M10",
       "cidade": "GOIÂNIA",
@@ -18966,7 +18966,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80ae-bcaf-cd78115d868b",
-      "endereco": "AV. CASEMIRO J. AMRQUES DE ABREU QD 18 LT B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
       "casa": 2,
       "ref": "M6",
       "cidade": "GOIÂNIA",
@@ -20299,7 +20299,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80c7-83e3-d73527611b00",
-      "endereco": "AV. GERCINA BORGES QD 02 LT 02",
+      "endereco": "GERCINA BORGES QD 02 LT 02",
       "casa": 2,
       "ref": "EF6",
       "cidade": "GOIÂNIA",
@@ -21030,7 +21030,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80dc-993a-ea5109aa9748",
-      "endereco": "AV. CASEMIRO J. AMRQUES DE ABREU QD 18 LT B3",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
       "casa": 2,
       "ref": "M9",
       "cidade": "GOIÂNIA",
@@ -21116,7 +21116,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80de-b288-f5f480b17b36",
-      "endereco": "BELO HORIZONTE QD 17 LT 06",
+      "endereco": "W 6 QD 17 LT 06",
       "casa": 3,
       "ref": "IT3",
       "cidade": "GOIÂNIA",
@@ -21804,7 +21804,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80ea-bc57-eceef247bc1c",
-      "endereco": "AV. GERCINA BORGES QD 02 LT 03",
+      "endereco": "GERCINA BORGES QD 02 LT 03",
       "casa": 2,
       "ref": "EF8",
       "cidade": "GOIÂNIA",
@@ -22492,7 +22492,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80fb-9d5d-d4dde5ebfd21",
-      "endereco": "AV. CASEMIRO J. AMRQUES DE ABREU QD 18 LT B2",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
       "casa": 3,
       "ref": "M7",
       "cidade": "GOIÂNIA",
@@ -22621,7 +22621,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80fe-8e3f-c193a5029a33",
-      "endereco": "AV. CASEMIRO J. AMRQUES DE ABREU QD 18 LT B3",
+      "endereco": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
       "casa": 4,
       "ref": "M11",
       "cidade": "GOIÂNIA",
