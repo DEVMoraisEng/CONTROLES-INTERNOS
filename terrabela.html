@@ -1013,6 +1013,7 @@ th[data-key="endereco"], td.col-end { min-width: 200px !important; }
     <div class="legenda" id="legenda-docs">
       <div class="leg-item"><div class="leg-dot" style="background:var(--cinza)"></div> Não comprado</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--amarelo)"></div> Não iniciado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--azul-esc)"></div> Em andamento</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--verde)"></div> Finalizado no prazo</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--laranja)"></div> Finalizado acima prazo</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--vermelho)"></div> Habite-se agendado</div>
@@ -1253,29 +1254,35 @@ function isSim(v) {
 
 function calcStatusDoc(d) {
   if (!d) return 'cinza';
+  // Regra 1: sem data de aquisição do lote = não comprado
+  if (!d.data_aquisicao_lote) return 'cinza';
+  // A partir daqui, lote já foi comprado
   if (isSim(d.aprovou_habite_se))  return 'roxo';
   if (isSim(d.agendou_habite_se))  return 'vermelho';
   if (d.data_termino_obra && d.data_inicio_obra) {
     const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
-    return dias <= 150 ? 'verde' : 'laranja';
+    return (dias && dias > 0) ? (dias <= 150 ? 'verde' : 'laranja') : 'azul_esc';
   }
-  if (d.data_inicio_obra) return 'amarelo';
-  // Tem ref mas sem data início = não iniciado
-  return 'cinza';
+  // Regra 3: obra_iniciada = SIM → em andamento (azul escuro)
+  if (isSim(d.obra_iniciada)) return 'azul_esc';
+  // Regra 2: obra_iniciada = NÃO (ou vazio) e sem data_inicio_obra → não iniciado
+  return 'amarelo';
 }
 
 const COR_DOCS = {
-  cinza:    '#8faabb',
-  amarelo:  '#c9a227',
-  verde:    '#2a9d5c',
-  laranja:  '#d46a1a',
-  vermelho: '#c0392b',
-  roxo:     '#7c4daf',
+  cinza:    '#8faabb',   // não comprado (sem data_aquisicao_lote)
+  amarelo:  '#c9a227',   // não iniciado (comprado mas sem obra iniciada)
+  azul_esc: '#1e3f58',   // em andamento (obra_iniciada = SIM)
+  verde:    '#2a9d5c',   // finalizado no prazo
+  laranja:  '#d46a1a',   // acima do prazo
+  vermelho: '#c0392b',   // habite-se agendado
+  roxo:     '#7c4daf',   // habite-se concluído
 };
 
 const STATUS_DOCS_LABELS = {
-  cinza:    'Não iniciado',
-  amarelo:  'Em andamento',
+  cinza:    'Não comprado',
+  amarelo:  'Não iniciado',
+  azul_esc: 'Em andamento',
   verde:    'Finalizado no prazo',
   laranja:  'Acima do prazo',
   vermelho: 'Habite-se agendado',
@@ -1671,7 +1678,7 @@ function buildFiltrosBar() {
       const s = calcStatusDoc(d);
       counts[s] = (counts[s] || 0) + 1;
     });
-    const ordem = ['amarelo','verde','laranja','vermelho','roxo','cinza'];
+    const ordem = ['amarelo','azul_esc','verde','laranja','vermelho','roxo','cinza'];
     bar.innerHTML = `<span class="filtro-label">Status:</span>` +
       ordem.filter(s => counts[s]).map(s => `
         <span class="filtro-chip ${activeStatusFilters.has(s) ? 'active' : ''}"

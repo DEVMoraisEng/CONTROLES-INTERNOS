@@ -69,12 +69,20 @@ table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;min-wi
 thead{position:sticky;top:0;z-index:10}
 thead th{padding:10px 12px;text-align:left;font-size:9.5px;font-weight:700;
          letter-spacing:.09em;text-transform:uppercase;color:#fff;background:var(--azul);
-         border-right:1px solid rgba(255,255,255,.12);border-bottom:2px solid var(--teal);white-space:nowrap}
+         border-right:1px solid rgba(255,255,255,.12);border-bottom:2px solid var(--teal);white-space:nowrap;
+         cursor:pointer;user-select:none}
+thead th:hover{background:var(--azul-med)}
 thead th:last-child{border-right:none}
+thead th .sort-icon{font-size:8px;margin-left:4px;opacity:.5}
+thead th.sort-asc .sort-icon::after{content:'▲';opacity:1}
+thead th.sort-desc .sort-icon::after{content:'▼';opacity:1}
+thead th:not(.sort-asc):not(.sort-desc) .sort-icon::after{content:'⇅'}
 thead tr.filter-row th{padding:4px 6px;background:var(--azul-esc);
                        border-bottom:1px solid rgba(143,220,210,.2);
-                       border-right:1px solid rgba(255,255,255,.08)}
+                       border-right:1px solid rgba(255,255,255,.08);
+                       cursor:default}
 thead tr.filter-row th:last-child{border-right:none}
+/* ─── FILTROS DE COLUNA (texto e select simples) ─── */
 thead tr.filter-row input.col-filter-input,
 thead tr.filter-row select.col-filter-select{
   width:100%;padding:3px 5px;font-size:10px;font-family:'DM Mono',monospace;
@@ -95,7 +103,6 @@ tbody td:last-child{border-right:none}
           border:1px solid rgba(42,157,92,.3);border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
 .bool-nao{display:inline-block;background:rgba(192,57,43,.08);color:var(--vermelho);
           border:1px solid rgba(192,57,43,.2);border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
-.alerta-cell{font-size:10px;font-weight:700}
 .col-hidden{display:none}
 .tbl-rel{position:relative}
 .col-panel{display:none;position:absolute;right:0;top:36px;background:var(--branco);
@@ -118,130 +125,41 @@ tbody td:last-child{border-right:none}
 #tip.on{display:block}
 @media(max-width:768px){.tabela-section{padding:12px 16px 28px}.header{padding:0 16px}}
 
-/* z-index do thead sticky + col sticky */
-thead th.col-sticky {
-  z-index: 5 !important;
-}
-thead tr.filter-row th.col-sticky-filter {
-  position: sticky !important;
-  left: 0;
-  z-index: 4;
-  background: var(--azul-esc) !important;
-  box-shadow: 2px 0 6px rgba(41,87,120,0.10);
-}
+/* ─── COLUNA STICKY ─── */
+.col-sticky{position:sticky!important;left:0;z-index:5!important;background:var(--azul)!important;box-shadow:2px 0 6px rgba(41,87,120,.15)}
+.col-sticky-filter{position:sticky!important;left:0;z-index:4!important;background:var(--azul-esc)!important;box-shadow:2px 0 6px rgba(41,87,120,.15)}
+.col-sticky-body{position:sticky!important;left:0;z-index:2;background:var(--branco);box-shadow:2px 0 6px rgba(41,87,120,.10)}
+tbody tr:nth-child(even) .col-sticky-body{background:var(--bg2)}
+tbody tr:hover .col-sticky-body{background:#e8f3f7}
+tbody tr.selected .col-sticky-body{background:#d0e8f0!important}
+th[data-key="endereco"],td.col-end{min-width:200px!important}
 
+/* ─── MULTI-SELECT DROPDOWN ─── */
+.ms-wrap{position:relative;width:100%}
+.ms-btn{width:100%;padding:3px 20px 3px 5px;font-size:10px;font-family:'DM Mono',monospace;
+  background:rgba(255,255,255,.08);border:1px solid rgba(143,220,210,.2);border-radius:3px;
+  color:rgba(255,255,255,.85);cursor:pointer;text-align:left;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;position:relative}
+.ms-btn::after{content:'▾';position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:8px;opacity:.6}
+.ms-btn.active{border-color:var(--teal);background:rgba(143,220,210,.15)}
+.ms-dropdown{display:none;position:fixed;background:#1e3f58;border:1px solid rgba(143,220,210,.3);
+  border-radius:5px;z-index:9999;box-shadow:0 6px 24px rgba(0,0,0,.3);
+  max-height:220px;overflow-y:auto;min-width:160px;max-width:260px}
+.ms-dropdown.open{display:block}
+.ms-search{width:100%;padding:5px 8px;font-size:10px;font-family:'DM Mono',monospace;
+  background:rgba(255,255,255,.1);border:none;border-bottom:1px solid rgba(143,220,210,.2);
+  color:#fff;outline:none}
+.ms-search::placeholder{color:rgba(255,255,255,.4)}
+.ms-item{display:flex;align-items:center;gap:7px;padding:5px 10px;font-size:10.5px;
+  font-family:'DM Mono',monospace;color:rgba(255,255,255,.85);cursor:pointer;transition:background .1s;white-space:nowrap}
+.ms-item:hover{background:rgba(143,220,210,.12)}
+.ms-item input[type=checkbox]{accent-color:#8FDCD2;flex-shrink:0}
+.ms-clear{padding:5px 10px;font-size:9.5px;color:#8FDCD2;cursor:pointer;
+  border-top:1px solid rgba(143,220,210,.15);text-align:center}
+.ms-clear:hover{background:rgba(143,220,210,.1)}
 
-/* ─── COLUNA ENDEREÇO TRAVADA ───────────────────── */
-.col-sticky {
-  position: sticky !important;
-  left: 0;
-  z-index: 5 !important;
-  background: var(--azul) !important;
-  box-shadow: 2px 0 6px rgba(41,87,120,0.15);
-}
-.col-sticky-filter {
-  position: sticky !important;
-  left: 0;
-  z-index: 4 !important;
-  background: var(--azul-esc) !important;
-  box-shadow: 2px 0 6px rgba(41,87,120,0.15);
-}
-.col-sticky-body {
-  position: sticky !important;
-  left: 0;
-  z-index: 2;
-  background: var(--branco);
-  box-shadow: 2px 0 6px rgba(41,87,120,0.10);
-}
-tbody tr:nth-child(even) .col-sticky-body { background: var(--bg2); }
-tbody tr:hover .col-sticky-body { background: #e8f3f7; }
-tbody tr.selected .col-sticky-body { background: #d0e8f0 !important; }
-
-
-/* ─── FILTRO MULTI-SELECT COM CHECKBOXES ─── */
-.ms-wrap {
-  position: relative;
-  width: 100%;
-}
-.ms-btn {
-  width: 100%;
-  padding: 3px 20px 3px 5px;
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(143,220,210,.2);
-  border-radius: 3px;
-  color: rgba(255,255,255,.85);
-  cursor: pointer;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  position: relative;
-}
-.ms-btn::after {
-  content: '▾';
-  position: absolute;
-  right: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 8px;
-  opacity: .6;
-}
-.ms-btn.active { border-color: var(--teal); background: rgba(143,220,210,.15); }
-.ms-dropdown {
-  display: none;
-  position: fixed;
-  background: #1e3f58;
-  border: 1px solid rgba(143,220,210,.3);
-  border-radius: 5px;
-  z-index: 9999;
-  box-shadow: 0 6px 24px rgba(0,0,0,.3);
-  max-height: 220px;
-  overflow-y: auto;
-  min-width: 160px;
-  max-width: 260px;
-}
-.ms-dropdown.open { display: block; }
-.ms-search {
-  width: 100%;
-  padding: 5px 8px;
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  background: rgba(255,255,255,.1);
-  border: none;
-  border-bottom: 1px solid rgba(143,220,210,.2);
-  color: #fff;
-  outline: none;
-}
-.ms-search::placeholder { color: rgba(255,255,255,.4); }
-.ms-item {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 10px;
-  font-size: 10.5px;
-  font-family: 'DM Mono', monospace;
-  color: rgba(255,255,255,.85);
-  cursor: pointer;
-  transition: background .1s;
-  white-space: nowrap;
-}
-.ms-item:hover { background: rgba(143,220,210,.12); }
-.ms-item input[type=checkbox] { accent-color: #8FDCD2; flex-shrink: 0; }
-.ms-clear {
-  padding: 5px 10px;
-  font-size: 9.5px;
-  color: #8FDCD2;
-  cursor: pointer;
-  border-top: 1px solid rgba(143,220,210,.15);
-  text-align: center;
-}
-.ms-clear:hover { background: rgba(143,220,210,.1); }
-
-/* Largura mínima da coluna endereço */
-th[data-key="endereco"], td.col-end { min-width: 200px !important; }
-
+/* ─── COLUNA # VENDA ─── */
+td.col-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-align:center;min-width:40px}
 </style>
 </head>
 <body>
@@ -309,6 +227,10 @@ let colFilters = {};
 let hiddenCols = new Set();
 let activeStatusFilters = new Set();
 
+// CORREÇÃO #2 — ordenação de colunas
+let sortKey = 'data_venda'; // padrão: data crescente (item 6)
+let sortDir = 'asc';
+
 // ─── HELPERS ─────────────────────────────────────────────
 const fmtDate = s => {
   if (!s) return null;
@@ -326,7 +248,9 @@ const diffDays = (a, b) => {
 function isSim(v) { return v === true || String(v).toUpperCase().trim() === 'SIM'; }
 
 // ─── COLS ────────────────────────────────────────────────
+// CORREÇÃO #6 — coluna # venda (índice por ano) adicionada no início
 const COLS_VENDAS = [
+  { key: '_num_venda',            label: '#',                                            noSort: false },
   { key: 'endereco',              label: 'ENDEREÇO' },
   { key: 'casa',                  label: 'CASA' },
   { key: 'cidade',                label: 'CIDADE' },
@@ -376,21 +300,27 @@ function calcAlertaVenda(v) {
   const conforme = isSim(v.processo_conforme);
   const assinou  = isSim(v.assinou_contrato_banco);
   const recebeu  = isSim(v.recebeu);
-  if (dias >= 45 && conforme && assinou && !recebeu) return 'TEMPO CORRIDO MAIOR QUE 45 DIAS E NÃO RECEBEU';
-  if (dias >= 45 && (!conforme || !assinou)) return 'TEMPO CORRIDO MAIOR QUE 45 DIAS';
-  if (dias >= 20 && dias < 45 && (!conforme || !assinou || !recebeu)) return 'TEMPO CORRIDO MAIOR QUE 20 DIAS';
+  if (dias >= 45 && conforme && assinou && !recebeu) return 'NÃO RECEBEU';
+  if (dias >= 45 && (!conforme || !assinou)) return '45 DIAS';
+  if (dias >= 20 && dias < 45 && (!conforme || !assinou || !recebeu)) return '20 DIAS';
   return '';
 }
+
+// Cada status granular continua existindo para sub-filtros
 function calcStatusVenda(v) {
   if (isSim(v.entregou_casa)) return 'verde-esc';
   const alerta = calcAlertaVenda(v);
-  if (alerta.includes('NÃO RECEBEU')) return 'laranja';
-  if (alerta.includes('45 DIAS'))     return 'vermelho';
-  if (alerta.includes('20 DIAS'))     return 'amarelo';
-  if (v.clientes)  return 'verde-claro';
+  if (alerta === 'NÃO RECEBEU') return 'laranja';
+  if (alerta === '45 DIAS')     return 'vermelho';
+  if (alerta === '20 DIAS')     return 'amarelo';
+  if (v.clientes)  return 'verde-claro'; // vendida sem alertas
   if (v.avaliacao) return 'azul';
   return 'cinza';
 }
+
+// CORREÇÃO #5 — "Vendida" no chip engloba TODOS com clientes
+const STATUS_VENDIDO_GROUP = new Set(['verde-claro','amarelo','vermelho','laranja','verde-esc']);
+
 const COR_VENDAS = {
   cinza:'#b0c8d4', azul:'#295778', 'verde-claro':'#8FDCD2',
   amarelo:'#c9a227', vermelho:'#c0392b', laranja:'#d46a1a', 'verde-esc':'#1a6b40',
@@ -420,32 +350,123 @@ function fmtCell(val, fmtFn) {
   return val != null && val !== '' ? String(val) : '<span class="cell-null">—</span>';
 }
 
-// ─── CHIPS ───────────────────────────────────────────────
+// ─── CHIPS STATUS ────────────────────────────────────────
+// CORREÇÃO #5 — chip "Vendida" agrega todos com clientes
 function buildFiltrosBar() {
   const bar = document.getElementById('filtros-bar');
+  // Contagem por status granular
   const counts = {};
-  allVendas.forEach(v => { const s = calcStatusVenda(v); counts[s] = (counts[s]||0)+1; });
-  const ordem = ['azul','verde-claro','amarelo','vermelho','laranja','verde-esc','cinza'];
-  bar.innerHTML = `<span class="filtro-label">Status:</span>` +
-    ordem.filter(s => counts[s]).map(s => `
+  let totalVendidas = 0;
+  allVendas.forEach(v => {
+    const s = calcStatusVenda(v);
+    counts[s] = (counts[s]||0)+1;
+    if (STATUS_VENDIDO_GROUP.has(s)) totalVendidas++;
+  });
+
+  // Ordem: Disponível, Vendida (agregado), sub-status, Entregue, Em breve
+  const chipsHtml = [];
+  // Disponível
+  if (counts['azul']) chipsHtml.push(`
+    <span class="filtro-chip ${activeStatusFilters.has('azul')?'active':''}"
+      onclick="toggleStatusFilter('azul')" data-status="azul">
+      <span class="chip-dot" style="background:${COR_VENDAS['azul']}"></span>
+      Disponível (${counts['azul']})
+    </span>`);
+  // Vendida (engloba todos com clientes)
+  if (totalVendidas) chipsHtml.push(`
+    <span class="filtro-chip ${activeStatusFilters.has('_vendida')?'active':''}"
+      onclick="toggleStatusFilter('_vendida')" data-status="_vendida">
+      <span class="chip-dot" style="background:#8FDCD2"></span>
+      Vendida (${totalVendidas})
+    </span>`);
+  // Sub-status de vendida (alertas)
+  ['amarelo','vermelho','laranja'].forEach(s => {
+    if (counts[s]) chipsHtml.push(`
       <span class="filtro-chip ${activeStatusFilters.has(s)?'active':''}"
         onclick="toggleStatusFilter('${s}')" data-status="${s}">
         <span class="chip-dot" style="background:${COR_VENDAS[s]}"></span>
         ${STATUS_VENDAS_LABELS[s]} (${counts[s]})
-      </span>`).join('') +
+      </span>`);
+  });
+  // Entregue
+  if (counts['verde-esc']) chipsHtml.push(`
+    <span class="filtro-chip ${activeStatusFilters.has('verde-esc')?'active':''}"
+      onclick="toggleStatusFilter('verde-esc')" data-status="verde-esc">
+      <span class="chip-dot" style="background:${COR_VENDAS['verde-esc']}"></span>
+      Entregue (${counts['verde-esc']})
+    </span>`);
+  // Em breve
+  if (counts['cinza']) chipsHtml.push(`
+    <span class="filtro-chip ${activeStatusFilters.has('cinza')?'active':''}"
+      onclick="toggleStatusFilter('cinza')" data-status="cinza">
+      <span class="chip-dot" style="background:${COR_VENDAS['cinza']}"></span>
+      Em breve (${counts['cinza']})
+    </span>`);
+
+  bar.innerHTML = `<span class="filtro-label">Status:</span>` +
+    chipsHtml.join('') +
     `<span class="filtro-sep"></span>
      <span class="filtro-clear" onclick="clearStatusFilters()">✕ Limpar</span>`;
 }
+
 function toggleStatusFilter(s) {
   activeStatusFilters.has(s) ? activeStatusFilters.delete(s) : activeStatusFilters.add(s);
   buildFiltrosBar(); buildTabela();
 }
 function clearStatusFilters() { activeStatusFilters.clear(); buildFiltrosBar(); buildTabela(); }
 
-// ─── TABELA ──────────────────────────────────────────────
+// CORREÇÃO #6 — numerar vendas por ano (crescente data_venda)
+function calcNumeracaoAnual(data) {
+  // Ordenar por data_venda crescente para numerar
+  const sorted = [...data]
+    .filter(v => v.clientes && v.data_venda)
+    .sort((a,b) => new Date(a.data_venda) - new Date(b.data_venda));
+  const numMap = {}; // id -> { ano, num }
+  const contadores = {};
+  sorted.forEach(v => {
+    const ano = new Date(v.data_venda).getFullYear();
+    contadores[ano] = (contadores[ano]||0)+1;
+    numMap[v.id || v.endereco] = { ano, num: contadores[ano] };
+  });
+  return numMap;
+}
 
-// ─── BUILD BODY (sem reconstruir filtros) ────────────
-function getFiltered(cols, data) {
+// ─── ORDENAÇÃO ───────────────────────────────────────────
+// CORREÇÃO #2 — clique no cabeçalho ordena coluna
+function sortData(data) {
+  if (!sortKey) return data;
+  return [...data].sort((a, b) => {
+    let va = a[sortKey], vb = b[sortKey];
+    // _num_venda: ordenar pelo número calculado
+    if (sortKey === '_num_venda') {
+      va = a._num_venda_raw || 0;
+      vb = b._num_venda_raw || 0;
+    }
+    // datas
+    if (typeof va === 'string' && va.match(/^\d{4}-\d{2}-\d{2}/)) {
+      va = new Date(va); vb = vb ? new Date(vb) : new Date(0);
+      return sortDir === 'asc' ? va-vb : vb-va;
+    }
+    // números
+    if (!isNaN(Number(va)) && !isNaN(Number(vb))) {
+      return sortDir === 'asc' ? Number(va)-Number(vb) : Number(vb)-Number(va);
+    }
+    // strings
+    va = String(va||''); vb = String(vb||'');
+    return sortDir === 'asc'
+      ? va.localeCompare(vb,'pt-BR')
+      : vb.localeCompare(va,'pt-BR');
+  });
+}
+
+function setSortCol(key) {
+  if (sortKey === key) sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+  else { sortKey = key; sortDir = 'asc'; }
+  buildTabela();
+}
+
+// ─── FILTROS ─────────────────────────────────────────────
+function applyColFilters(data, cols) {
   return data.filter(row =>
     cols.every(col => {
       const f = colFilters[col.key];
@@ -457,92 +478,199 @@ function getFiltered(cols, data) {
           return rawVal === String(fv).toUpperCase().trim();
         });
       }
-      // texto livre
       return rawVal.includes(String(f).toUpperCase());
     })
   );
 }
 
+// ─── TABELA ──────────────────────────────────────────────
+let _filteredData = [];
+// Guarda o numMap atual para usar no export
+let _numMap = {};
+
 function buildTabela() {
   const cols = COLS_VENDAS;
-  let data = [...allVendas];
-  if (activeStatusFilters.size > 0)
-    data = data.filter(row => activeStatusFilters.has(calcStatusVenda(row)));
 
-  // Filtros cascata
+  // 1. Filtro de status
+  let data = [...allVendas];
+  if (activeStatusFilters.size > 0) {
+    data = data.filter(row => {
+      const s = calcStatusVenda(row);
+      // chip "_vendida" = todos do grupo vendido
+      if (activeStatusFilters.has('_vendida') && STATUS_VENDIDO_GROUP.has(s)) return true;
+      return activeStatusFilters.has(s);
+    });
+  }
+
+  // 2. CORREÇÃO #6 — numerar por ano antes de filtrar (para manter sequência correta)
+  _numMap = calcNumeracaoAnual(data);
+  data.forEach(v => {
+    const key = v.id || v.endereco;
+    const info = _numMap[key];
+    v._num_venda = info ? `${info.ano}/${String(info.num).padStart(3,'0')}` : '';
+    v._num_venda_raw = info ? info.ano * 10000 + info.num : 0;
+  });
+
+  // 3. Filtros de coluna (cascata)
+  // CORREÇÃO #3 — linha de filtros NÃO é recriada se há input ativo
+  const activeEl = document.activeElement;
+  const activeKey = activeEl && activeEl.dataset ? activeEl.dataset.filterKey : null;
+
   const filterRow = document.getElementById('tabela-filter-row');
-  filterRow.innerHTML = cols.map((col,ci) => {
+  filterRow.innerHTML = cols.map((col, ci) => {
     const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
-    const stickyFilter = ci === 0 ? 'col-sticky-filter' : '';
-    const cur = colFilters[col.key] || '';
+    const sf = ci === 1 ? 'col-sticky-filter' : ''; // col 1 = endereco (0 = #)
+    const cur = colFilters[col.key];
+    const curStr = cur instanceof Set ? '' : (cur||'');
+
+    // dados disponíveis para esta coluna (cascata)
     const dataParaCol = data.filter(row =>
       cols.every(c => {
         if (c.key === col.key) return true;
-        const f = (colFilters[c.key]||'').trim().toUpperCase();
-        if (!f) return true;
-        if (c.fmt === 'bool') {
-          if (f==='—') return row[c.key]==null||row[c.key]==='';
-          return String(row[c.key]||'').toUpperCase().trim()===f;
-        }
-        return String(row[c.key]??'').toUpperCase().includes(f);
+        const f = colFilters[c.key];
+        if (!f || (f instanceof Set && f.size === 0) || f === '') return true;
+        const rv = String(row[c.key] ?? '').toUpperCase().trim();
+        if (f instanceof Set)
+          return [...f].some(fv => fv === '—' ? (!row[c.key] && row[c.key] !== 0) : rv === String(fv).toUpperCase().trim());
+        return rv.includes(String(f).toUpperCase());
       })
     );
-    const uniq = [...new Set(dataParaCol.map(r=>r[col.key]).filter(v=>v!=null&&v!==''))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
-    const sf = ci===0?'col-sticky-filter':'';
-    if (col.fmt==='bool'||(uniq.length>0&&uniq.length<=30)) {
-      const opts = col.fmt==='bool' ? ['SIM','NÃO','ÁGIO','INEXISTE'] : uniq;
-      return `<th class="${hidden} ${sf}"><select class="col-filter-select"
-        onchange="setFilter('${col.key}',this.value)" onclick="event.stopPropagation()">
-        <option value="">Todos (${dataParaCol.length})</option>
-        ${opts.map(v=>`<option value="${v}" ${cur===String(v)?'selected':''}>${v}</option>`).join('')}
-      </select></th>`;
+
+    // colunas especiais sem filtro
+    if (col.key === '_num_venda') {
+      return `<th class="${hidden}"></th>`;
     }
-    return `<th class="${hidden} ${sf}"><input class="col-filter-input" placeholder="filtrar..."
-      value="${cur}" oninput="setFilter('${col.key}',this.value)"
-      onclick="event.stopPropagation()"></th>`;
+
+    const uniq = [...new Set(dataParaCol.map(r=>r[col.key]).filter(v=>v!=null&&v!==''))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+    const isBool = col.fmt === 'bool';
+    const isMulti = isBool || (uniq.length > 0 && uniq.length <= 30);
+
+    if (isMulti) {
+      // CORREÇÃO #4 — multi-select com checkboxes
+      const opts = isBool ? ['SIM','NÃO','ÁGIO','INEXISTE'] : uniq;
+      const selSet = (cur instanceof Set) ? cur : new Set();
+      const btnLabel = selSet.size ? [...selSet].join(', ') : `Todos (${dataParaCol.length})`;
+      const isActive = selSet.size > 0;
+      const ddId = `ms-dd-${col.key}`;
+      return `<th class="${hidden} ${sf}">
+        <div class="ms-wrap">
+          <button class="ms-btn${isActive?' active':''}" id="ms-btn-${col.key}"
+            onclick="openDropdown('${col.key}',this)">${btnLabel}</button>
+          <div class="ms-dropdown" id="${ddId}">
+            <input class="ms-search" placeholder="buscar..." oninput="filterMsSearch('${col.key}',this.value)" onclick="event.stopPropagation()">
+            ${opts.map(v=>`
+              <div class="ms-item" data-val="${v}" onclick="toggleMsOption('${col.key}','${v}',!document.getElementById('ms-cb-${col.key}-${v.replace(/[^a-zA-Z0-9]/g,'_')}').checked);event.stopPropagation()">
+                <input type="checkbox" id="ms-cb-${col.key}-${v.replace(/[^a-zA-Z0-9]/g,'_')}"
+                  ${selSet.has(v)?'checked':''} onclick="event.stopPropagation()">
+                ${v}
+              </div>`).join('')}
+            <div class="ms-clear" onclick="clearMsFilter('${col.key}');event.stopPropagation()">✕ Limpar</div>
+          </div>
+        </div>
+      </th>`;
+    }
+
+    // CORREÇÃO #3 — input de texto: usar oninput que não recria o elemento
+    return `<th class="${hidden} ${sf}">
+      <input class="col-filter-input" placeholder="filtrar..." value="${curStr}"
+        data-filter-key="${col.key}"
+        oninput="setTextFilter('${col.key}',this.value)"
+        onclick="event.stopPropagation()">
+    </th>`;
   }).join('');
 
-  const filtered = data.filter(row =>
-    cols.every(col => {
-      const f = (colFilters[col.key]||'').trim().toUpperCase();
-      if (!f) return true;
-      if (col.fmt==='bool') {
-        if (f==='—') return row[col.key]==null||row[col.key]==='';
-        return String(row[col.key]||'').toUpperCase().trim()===f;
-      }
-      return String(row[col.key]??'').toUpperCase().includes(f);
-    })
-  );
+  // Restaurar foco se havia input ativo
+  if (activeKey) {
+    const el = filterRow.querySelector(`[data-filter-key="${activeKey}"]`);
+    if (el) { el.focus(); const len = el.value.length; el.setSelectionRange(len,len); }
+  }
 
-  document.getElementById('tabela-head').innerHTML = cols.map((col,ci) => `
-    <th class="${hiddenCols.has(col.key)?'col-hidden':''} ${ci===0?'col-sticky':''}" data-key="${col.key}">
-      <span style="float:right;cursor:pointer;opacity:.4;font-size:9px;margin-left:4px"
-        onclick="toggleCol('${col.key}')" onmouseover="this.style.opacity=1"
-        onmouseout="this.style.opacity=.4">✕</span>
-      ${col.label}
-    </th>`).join('');
+  // 4. Filtros coluna aplicados
+  const filtered = applyColFilters(data, cols);
 
-  document.getElementById('tabela-body').innerHTML = filtered.map((row,i) => `
+  // 5. Ordenação
+  const sorted = sortData(filtered);
+
+  // 6. Cabeçalho com ícones de ordenação
+  document.getElementById('tabela-head').innerHTML = cols.map((col,ci) => {
+    const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
+    const sticky = ci === 1 ? 'col-sticky' : '';
+    const isSortCol = sortKey === col.key;
+    const sortClass = isSortCol ? (sortDir === 'asc' ? 'sort-asc' : 'sort-desc') : '';
+    const clickHandler = col.key === '_num_venda' ? '' : `onclick="setSortCol('${col.key}')"`;
+    return `<th class="${hidden} ${sticky} ${sortClass}" data-key="${col.key}" ${clickHandler}>
+      ${col.label}<span class="sort-icon"></span>
+      ${col.key !== '_num_venda' ? `<span style="float:right;cursor:pointer;opacity:.4;font-size:9px;margin-left:4px"
+        onclick="event.stopPropagation();toggleCol('${col.key}')"
+        onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.4">✕</span>` : ''}
+    </th>`;
+  }).join('');
+
+  // 7. Corpo
+  document.getElementById('tabela-body').innerHTML = sorted.map((row,i) => `
     <tr style="${i%2===0?'':'background:var(--bg2)'}">
-      ${cols.map((col,ci) => `
-        <td class="${hiddenCols.has(col.key)?'col-hidden':''} ${ci===0?'col-sticky-body':''}">
-          ${fmtCell(row[col.key], col.fmt)}
-        </td>`).join('')}
+      ${cols.map((col,ci) => {
+        const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
+        const sticky = ci === 1 ? 'col-sticky-body' : '';
+        if (col.key === '_num_venda') {
+          return `<td class="${hidden} col-num">${row._num_venda || ''}</td>`;
+        }
+        return `<td class="${hidden} ${sticky}">${fmtCell(row[col.key], col.fmt)}</td>`;
+      }).join('')}
     </tr>`).join('')
     || '<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px;font-size:13px">Nenhum registro encontrado</td></tr>';
 
+  // 8. Painel colunas
   document.getElementById('col-panel-list').innerHTML = cols.map(col => `
     <label><input type="checkbox" ${hiddenCols.has(col.key)?'':'checked'}
       onchange="toggleCol('${col.key}')"> ${col.label}</label>`).join('');
 
   document.getElementById('tabela-titulo').textContent =
-    `Gestão de Vendas — Todos os Setores (${filtered.length})`;
+    `Gestão de Vendas — Todos os Setores (${sorted.length})`;
 
-  _filteredData = filtered;
+  _filteredData = sorted;
 }
-let _filteredData = [];
 
+// ─── FILTROS HELPERS ─────────────────────────────────────
 function setFilter(key, val) { colFilters[key] = val; buildTabela(); }
+// CORREÇÃO #3 — setTextFilter não reconstrói a tabela inteira, só o body
+function setTextFilter(key, val) {
+  colFilters[key] = val;
+  // Reconstrói apenas o tbody para não perder foco
+  const cols = COLS_VENDAS;
+  let data = [...allVendas];
+  if (activeStatusFilters.size > 0) {
+    data = data.filter(row => {
+      const s = calcStatusVenda(row);
+      if (activeStatusFilters.has('_vendida') && STATUS_VENDIDO_GROUP.has(s)) return true;
+      return activeStatusFilters.has(s);
+    });
+  }
+  _numMap = calcNumeracaoAnual(data);
+  data.forEach(v => {
+    const k = v.id || v.endereco;
+    const info = _numMap[k];
+    v._num_venda = info ? `${info.ano}/${String(info.num).padStart(3,'0')}` : '';
+    v._num_venda_raw = info ? info.ano * 10000 + info.num : 0;
+  });
+  const filtered = applyColFilters(data, cols);
+  const sorted = sortData(filtered);
+  document.getElementById('tabela-body').innerHTML = sorted.map((row,i) => `
+    <tr style="${i%2===0?'':'background:var(--bg2)'}">
+      ${cols.map((col,ci) => {
+        const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
+        const sticky = ci === 1 ? 'col-sticky-body' : '';
+        if (col.key === '_num_venda')
+          return `<td class="${hidden} col-num">${row._num_venda || ''}</td>`;
+        return `<td class="${hidden} ${sticky}">${fmtCell(row[col.key], col.fmt)}</td>`;
+      }).join('')}
+    </tr>`).join('')
+    || '<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px;font-size:13px">Nenhum registro encontrado</td></tr>';
+  document.getElementById('tabela-titulo').textContent =
+    `Gestão de Vendas — Todos os Setores (${sorted.length})`;
+  _filteredData = sorted;
+}
+
 function buildBody() { buildTabela(); }
 function toggleCol(key) { hiddenCols.has(key)?hiddenCols.delete(key):hiddenCols.add(key); buildTabela(); }
 function toggleColPanel() { document.getElementById('col-panel').classList.toggle('open'); }
@@ -551,12 +679,76 @@ document.addEventListener('click', e => {
   if (!e.target.closest('.tbl-rel')) document.getElementById('col-panel').classList.remove('open');
 });
 
+// ─── MULTI-SELECT ENGINE ──────────────────────────────────
+let _activeDropdown = null;
+function openDropdown(key, btnEl) {
+  if (_activeDropdown && _activeDropdown !== key) closeDropdown(_activeDropdown);
+  const dd = document.getElementById('ms-dd-' + key);
+  if (!dd) return;
+  if (dd.classList.contains('open')) { closeDropdown(key); return; }
+  const rect = btnEl.getBoundingClientRect();
+  dd.style.top  = (rect.bottom + 2) + 'px';
+  dd.style.left = rect.left + 'px';
+  dd.style.minWidth = Math.max(rect.width, 160) + 'px';
+  dd.classList.add('open');
+  _activeDropdown = key;
+  const srch = dd.querySelector('.ms-search');
+  if (srch) srch.focus();
+}
+function closeDropdown(key) {
+  const dd = document.getElementById('ms-dd-' + key);
+  if (dd) dd.classList.remove('open');
+  if (_activeDropdown === key) _activeDropdown = null;
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.ms-wrap') && !e.target.closest('.ms-dropdown')) {
+    if (_activeDropdown) closeDropdown(_activeDropdown);
+  }
+  if (!e.target.closest('.tbl-rel')) document.getElementById('col-panel').classList.remove('open');
+});
+function toggleMsOption(key, val, shouldCheck) {
+  if (!colFilters[key] || typeof colFilters[key] === 'string') colFilters[key] = new Set();
+  const cbId = `ms-cb-${key}-${val.replace(/[^a-zA-Z0-9]/g,'_')}`;
+  const cb = document.getElementById(cbId);
+  if (cb) cb.checked = shouldCheck;
+  if (shouldCheck) colFilters[key].add(val);
+  else colFilters[key].delete(val);
+  if (colFilters[key].size === 0) colFilters[key] = '';
+  updateMsBtn(key);
+  buildTabela();
+}
+function clearMsFilter(key) {
+  colFilters[key] = '';
+  updateMsBtn(key);
+  const dd = document.getElementById('ms-dd-' + key);
+  if (dd) dd.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+  buildTabela();
+}
+function updateMsBtn(key) {
+  const btn = document.getElementById('ms-btn-' + key);
+  if (!btn) return;
+  const s = colFilters[key];
+  if (!s || (s instanceof Set && s.size === 0) || s === '') {
+    btn.textContent = 'Todos'; btn.classList.remove('active');
+  } else if (s instanceof Set) {
+    btn.textContent = [...s].join(', '); btn.classList.add('active');
+  }
+}
+function filterMsSearch(key, q) {
+  const dd = document.getElementById('ms-dd-' + key);
+  if (!dd) return;
+  dd.querySelectorAll('.ms-item').forEach(item => {
+    item.style.display = item.dataset.val.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+  });
+}
+
 // ─── EXPORTAR EXCEL ──────────────────────────────────────
 function exportarExcel() {
   const cols = COLS_VENDAS.filter(c => !hiddenCols.has(c.key));
   const headers = cols.map(c => c.label);
   const rows = _filteredData.map(row =>
     cols.map(col => {
+      if (col.key === '_num_venda') return row._num_venda || '';
       const v = row[col.key];
       if (v == null || v === '') return '';
       if (col.fmt === 'bool') return String(v);
@@ -571,107 +763,18 @@ function exportarExcel() {
   XLSX.writeFile(wb, `Gestao_Vendas_${new Date().toLocaleDateString('pt-BR').replace(/\//g,'-')}.xlsx`);
 }
 
-
-// ─── MULTI-SELECT ENGINE ──────────────────────────────
-// colFilters[key] = Set de valores selecionados (ou string para texto livre)
-let _activeDropdown = null;
-
-function openDropdown(key, btnEl) {
-  // Fechar dropdown anterior
-  if (_activeDropdown && _activeDropdown !== key) closeDropdown(_activeDropdown);
-
-  const dd = document.getElementById('ms-dd-' + key);
-  if (!dd) return;
-
-  if (dd.classList.contains('open')) {
-    closeDropdown(key);
-    return;
-  }
-
-  // Posicionar fixed relativo ao botão
-  const rect = btnEl.getBoundingClientRect();
-  dd.style.top  = (rect.bottom + 2) + 'px';
-  dd.style.left = rect.left + 'px';
-  dd.style.minWidth = Math.max(rect.width, 160) + 'px';
-  dd.classList.add('open');
-  _activeDropdown = key;
-
-  // Focar busca
-  const srch = dd.querySelector('.ms-search');
-  if (srch) srch.focus();
-}
-
-function closeDropdown(key) {
-  const dd = document.getElementById('ms-dd-' + key);
-  if (dd) dd.classList.remove('open');
-  if (_activeDropdown === key) _activeDropdown = null;
-}
-
-document.addEventListener('click', e => {
-  if (!e.target.closest('.ms-wrap') && !e.target.closest('.ms-dropdown')) {
-    if (_activeDropdown) closeDropdown(_activeDropdown);
-  }
-  if (!e.target.closest('.tbl-rel'))
-    document.getElementById('col-panel').classList.remove('open');
-});
-
-function toggleMsOption(key, val, chk) {
-  if (!colFilters[key] || typeof colFilters[key] === 'string') {
-    colFilters[key] = new Set();
-  }
-  if (chk) colFilters[key].add(val);
-  else      colFilters[key].delete(val);
-  if (colFilters[key].size === 0) colFilters[key] = '';
-  updateMsBtn(key);
-  buildBody(); // só reconstrói o corpo, não os filtros
-}
-
-function clearMsFilter(key) {
-  colFilters[key] = '';
-  updateMsBtn(key);
-  // Desmarcar checkboxes
-  const dd = document.getElementById('ms-dd-' + key);
-  if (dd) dd.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
-  buildBody();
-}
-
-function updateMsBtn(key) {
-  const btn = document.getElementById('ms-btn-' + key);
-  if (!btn) return;
-  const s = colFilters[key];
-  if (!s || (s instanceof Set && s.size === 0) || s === '') {
-    btn.textContent = 'Todos';
-    btn.classList.remove('active');
-  } else if (s instanceof Set) {
-    btn.textContent = [...s].join(', ');
-    btn.classList.add('active');
-  } else {
-    btn.textContent = s || 'Todos';
-    btn.classList.toggle('active', !!s);
-  }
-  // Recriar o ::after (pseudoelement via JS workaround)
-  btn.setAttribute('data-label', btn.textContent);
-}
-
-function filterMsSearch(key, q) {
-  const dd = document.getElementById('ms-dd-' + key);
-  if (!dd) return;
-  dd.querySelectorAll('.ms-item').forEach(item => {
-    item.style.display = item.dataset.val.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
-  });
-}
-
-function setTextFilter(key, val) {
-  colFilters[key] = val;
-  buildBody();
-}
-
 // ─── INIT ────────────────────────────────────────────────
 async function init() {
   try {
     const r = await fetch(DATA_URL);
     const data = await r.json();
-    allVendas = data.vendas || [];
+    // CORREÇÃO #6 — ordenar por data_venda crescente por padrão
+    allVendas = (data.vendas || []).sort((a,b) => {
+      if (!a.data_venda && !b.data_venda) return 0;
+      if (!a.data_venda) return 1;
+      if (!b.data_venda) return -1;
+      return new Date(a.data_venda) - new Date(b.data_venda);
+    });
     if (data.updated_at)
       document.getElementById('updated-at').textContent =
         'Atualizado: ' + new Date(data.updated_at).toLocaleString('pt-BR');
