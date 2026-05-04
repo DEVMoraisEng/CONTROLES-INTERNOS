@@ -117,6 +117,46 @@ tbody td:last-child{border-right:none}
      line-height:1.5;max-width:220px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 #tip.on{display:block}
 @media(max-width:768px){.tabela-section{padding:12px 16px 28px}.header{padding:0 16px}}
+
+/* z-index do thead sticky + col sticky */
+thead th.col-sticky {
+  z-index: 5 !important;
+}
+thead tr.filter-row th.col-sticky-filter {
+  position: sticky !important;
+  left: 0;
+  z-index: 4;
+  background: var(--azul-esc) !important;
+  box-shadow: 2px 0 6px rgba(41,87,120,0.10);
+}
+
+
+/* ─── COLUNA ENDEREÇO TRAVADA ───────────────────── */
+.col-sticky {
+  position: sticky !important;
+  left: 0;
+  z-index: 5 !important;
+  background: var(--azul) !important;
+  box-shadow: 2px 0 6px rgba(41,87,120,0.15);
+}
+.col-sticky-filter {
+  position: sticky !important;
+  left: 0;
+  z-index: 4 !important;
+  background: var(--azul-esc) !important;
+  box-shadow: 2px 0 6px rgba(41,87,120,0.15);
+}
+.col-sticky-body {
+  position: sticky !important;
+  left: 0;
+  z-index: 2;
+  background: var(--branco);
+  box-shadow: 2px 0 6px rgba(41,87,120,0.10);
+}
+tbody tr:nth-child(even) .col-sticky-body { background: var(--bg2); }
+tbody tr:hover .col-sticky-body { background: #e8f3f7; }
+tbody tr.selected .col-sticky-body { background: #d0e8f0 !important; }
+
 </style>
 </head>
 <body>
@@ -326,8 +366,9 @@ function buildTabela() {
 
   // Filtros cascata
   const filterRow = document.getElementById('tabela-filter-row');
-  filterRow.innerHTML = cols.map(col => {
+  filterRow.innerHTML = cols.map((col,ci) => {
     const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
+    const stickyFilter = ci === 0 ? 'col-sticky-filter' : '';
     const cur = colFilters[col.key] || '';
     const dataParaCol = data.filter(row =>
       cols.every(c => {
@@ -342,15 +383,16 @@ function buildTabela() {
       })
     );
     const uniq = [...new Set(dataParaCol.map(r=>r[col.key]).filter(v=>v!=null&&v!==''))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+    const sf = ci===0?'col-sticky-filter':'';
     if (col.fmt==='bool'||(uniq.length>0&&uniq.length<=30)) {
       const opts = col.fmt==='bool' ? ['SIM','NÃO','ÁGIO','INEXISTE'] : uniq;
-      return `<th class="${hidden}"><select class="col-filter-select"
+      return `<th class="${hidden} ${sf}"><select class="col-filter-select"
         onchange="setFilter('${col.key}',this.value)" onclick="event.stopPropagation()">
         <option value="">Todos (${dataParaCol.length})</option>
         ${opts.map(v=>`<option value="${v}" ${cur===String(v)?'selected':''}>${v}</option>`).join('')}
       </select></th>`;
     }
-    return `<th class="${hidden}"><input class="col-filter-input" placeholder="filtrar..."
+    return `<th class="${hidden} ${sf}"><input class="col-filter-input" placeholder="filtrar..."
       value="${cur}" oninput="setFilter('${col.key}',this.value)"
       onclick="event.stopPropagation()"></th>`;
   }).join('');
@@ -367,8 +409,8 @@ function buildTabela() {
     })
   );
 
-  document.getElementById('tabela-head').innerHTML = cols.map(col => `
-    <th class="${hiddenCols.has(col.key)?'col-hidden':''}" data-key="${col.key}">
+  document.getElementById('tabela-head').innerHTML = cols.map((col,ci) => `
+    <th class="${hiddenCols.has(col.key)?'col-hidden':''} ${ci===0?'col-sticky':''}" data-key="${col.key}">
       <span style="float:right;cursor:pointer;opacity:.4;font-size:9px;margin-left:4px"
         onclick="toggleCol('${col.key}')" onmouseover="this.style.opacity=1"
         onmouseout="this.style.opacity=.4">✕</span>
@@ -377,8 +419,8 @@ function buildTabela() {
 
   document.getElementById('tabela-body').innerHTML = filtered.map((row,i) => `
     <tr style="${i%2===0?'':'background:var(--bg2)'}">
-      ${cols.map(col => `
-        <td class="${hiddenCols.has(col.key)?'col-hidden':''}">
+      ${cols.map((col,ci) => `
+        <td class="${hiddenCols.has(col.key)?'col-hidden':''} ${ci===0?'col-sticky-body':''}">
           ${fmtCell(row[col.key], col.fmt)}
         </td>`).join('')}
     </tr>`).join('')
