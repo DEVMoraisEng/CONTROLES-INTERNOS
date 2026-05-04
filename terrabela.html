@@ -882,6 +882,91 @@ tbody tr:nth-child(even) .col-sticky-body { background: var(--bg2); }
 tbody tr:hover .col-sticky-body { background: #e8f3f7; }
 tbody tr.selected .col-sticky-body { background: #d0e8f0 !important; }
 
+
+/* ─── FILTRO MULTI-SELECT COM CHECKBOXES ─── */
+.ms-wrap {
+  position: relative;
+  width: 100%;
+}
+.ms-btn {
+  width: 100%;
+  padding: 3px 20px 3px 5px;
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(143,220,210,.2);
+  border-radius: 3px;
+  color: rgba(255,255,255,.85);
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.ms-btn::after {
+  content: '▾';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8px;
+  opacity: .6;
+}
+.ms-btn.active { border-color: var(--teal); background: rgba(143,220,210,.15); }
+.ms-dropdown {
+  display: none;
+  position: fixed;
+  background: #1e3f58;
+  border: 1px solid rgba(143,220,210,.3);
+  border-radius: 5px;
+  z-index: 9999;
+  box-shadow: 0 6px 24px rgba(0,0,0,.3);
+  max-height: 220px;
+  overflow-y: auto;
+  min-width: 160px;
+  max-width: 260px;
+}
+.ms-dropdown.open { display: block; }
+.ms-search {
+  width: 100%;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  background: rgba(255,255,255,.1);
+  border: none;
+  border-bottom: 1px solid rgba(143,220,210,.2);
+  color: #fff;
+  outline: none;
+}
+.ms-search::placeholder { color: rgba(255,255,255,.4); }
+.ms-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px;
+  font-size: 10.5px;
+  font-family: 'DM Mono', monospace;
+  color: rgba(255,255,255,.85);
+  cursor: pointer;
+  transition: background .1s;
+  white-space: nowrap;
+}
+.ms-item:hover { background: rgba(143,220,210,.12); }
+.ms-item input[type=checkbox] { accent-color: #8FDCD2; flex-shrink: 0; }
+.ms-clear {
+  padding: 5px 10px;
+  font-size: 9.5px;
+  color: #8FDCD2;
+  cursor: pointer;
+  border-top: 1px solid rgba(143,220,210,.15);
+  text-align: center;
+}
+.ms-clear:hover { background: rgba(143,220,210,.1); }
+
+/* Largura mínima da coluna endereço */
+th[data-key="endereco"], td.col-end { min-width: 200px !important; }
+
 </style>
 </head>
 <body>
@@ -1647,6 +1732,26 @@ function clearStatusFilters() {
 }
 
 // ─── TABELA ───────────────────────────────────────
+
+// ─── BUILD BODY (sem reconstruir filtros) ────────────
+function getFiltered(cols, data) {
+  return data.filter(row =>
+    cols.every(col => {
+      const f = colFilters[col.key];
+      if (!f || (f instanceof Set && f.size === 0) || f === '') return true;
+      const rawVal = String(row[col.key] ?? '').toUpperCase().trim();
+      if (f instanceof Set) {
+        return [...f].some(fv => {
+          if (fv === '—') return row[col.key] == null || row[col.key] === '';
+          return rawVal === String(fv).toUpperCase().trim();
+        });
+      }
+      // texto livre
+      return rawVal.includes(String(f).toUpperCase());
+    })
+  );
+}
+
 function buildTabela() {
   const cols = modo === 'docs' ? COLS_DOCS : COLS_VENDAS;
 
@@ -2423,6 +2528,101 @@ function buildAnalises() {
   }
 }
 
+
+
+// ─── MULTI-SELECT ENGINE ──────────────────────────────
+// colFilters[key] = Set de valores selecionados (ou string para texto livre)
+let _activeDropdown = null;
+
+function openDropdown(key, btnEl) {
+  // Fechar dropdown anterior
+  if (_activeDropdown && _activeDropdown !== key) closeDropdown(_activeDropdown);
+
+  const dd = document.getElementById('ms-dd-' + key);
+  if (!dd) return;
+
+  if (dd.classList.contains('open')) {
+    closeDropdown(key);
+    return;
+  }
+
+  // Posicionar fixed relativo ao botão
+  const rect = btnEl.getBoundingClientRect();
+  dd.style.top  = (rect.bottom + 2) + 'px';
+  dd.style.left = rect.left + 'px';
+  dd.style.minWidth = Math.max(rect.width, 160) + 'px';
+  dd.classList.add('open');
+  _activeDropdown = key;
+
+  // Focar busca
+  const srch = dd.querySelector('.ms-search');
+  if (srch) srch.focus();
+}
+
+function closeDropdown(key) {
+  const dd = document.getElementById('ms-dd-' + key);
+  if (dd) dd.classList.remove('open');
+  if (_activeDropdown === key) _activeDropdown = null;
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.ms-wrap') && !e.target.closest('.ms-dropdown')) {
+    if (_activeDropdown) closeDropdown(_activeDropdown);
+  }
+  if (!e.target.closest('.tbl-rel'))
+    document.getElementById('col-panel').classList.remove('open');
+});
+
+function toggleMsOption(key, val, chk) {
+  if (!colFilters[key] || typeof colFilters[key] === 'string') {
+    colFilters[key] = new Set();
+  }
+  if (chk) colFilters[key].add(val);
+  else      colFilters[key].delete(val);
+  if (colFilters[key].size === 0) colFilters[key] = '';
+  updateMsBtn(key);
+  buildBody(); // só reconstrói o corpo, não os filtros
+}
+
+function clearMsFilter(key) {
+  colFilters[key] = '';
+  updateMsBtn(key);
+  // Desmarcar checkboxes
+  const dd = document.getElementById('ms-dd-' + key);
+  if (dd) dd.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+  buildBody();
+}
+
+function updateMsBtn(key) {
+  const btn = document.getElementById('ms-btn-' + key);
+  if (!btn) return;
+  const s = colFilters[key];
+  if (!s || (s instanceof Set && s.size === 0) || s === '') {
+    btn.textContent = 'Todos';
+    btn.classList.remove('active');
+  } else if (s instanceof Set) {
+    btn.textContent = [...s].join(', ');
+    btn.classList.add('active');
+  } else {
+    btn.textContent = s || 'Todos';
+    btn.classList.toggle('active', !!s);
+  }
+  // Recriar o ::after (pseudoelement via JS workaround)
+  btn.setAttribute('data-label', btn.textContent);
+}
+
+function filterMsSearch(key, q) {
+  const dd = document.getElementById('ms-dd-' + key);
+  if (!dd) return;
+  dd.querySelectorAll('.ms-item').forEach(item => {
+    item.style.display = item.dataset.val.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+  });
+}
+
+function setTextFilter(key, val) {
+  colFilters[key] = val;
+  buildBody();
+}
 
 // ─── INIT ─────────────────────────────────────────
 async function init() {
