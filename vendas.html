@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestão de Vendas · Todos os Setores · Morais Engenharia</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --azul:#295778;--azul-esc:#1e3f58;--azul-med:#2d6a96;
+  --teal:#8FDCD2;--bg:#EAF1F3;--bg2:#F5F9FA;--bg3:#dde8ec;
+  --border:#b8d0da;--border2:#d0e4ea;
+  --text:#1a3347;--text2:#295778;--text3:#5a8099;--text4:#8aacbb;--branco:#fff;
+  --verde:#2a9d5c;--vermelho:#c0392b;--amarelo:#c9a227;--laranja:#d46a1a;
+  --v-cinza:#b0c8d4;--v-azul:#295778;--v-verde:#8FDCD2;
+  --v-verm:#c0392b;--v-laranja:#d46a1a;--v-esc:#1a6b40;
+}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;
+     min-height:100vh;font-size:14px}
+.header{background:var(--azul);border-bottom:3px solid var(--teal);
+        padding:0 28px;height:64px;display:flex;align-items:center;
+        justify-content:space-between;gap:16px}
+.hdr-left{display:flex;align-items:center;gap:16px}
+.hdr-logo{width:40px;height:40px;flex-shrink:0}
+.hdr-sup{font-size:10px;font-weight:700;color:var(--teal);
+         letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;
+           font-weight:800;color:#fff;letter-spacing:.02em;line-height:1.1}
+.hdr-right{display:flex;align-items:center;gap:12px}
+.updated{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.45)}
+.btn-voltar{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.75);
+            font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+            text-decoration:none;padding:6px 14px;
+            border:1.5px solid rgba(255,255,255,.2);border-radius:5px;transition:all .15s}
+.btn-voltar:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.4)}
+.tabela-section{padding:20px 28px 40px}
+.tabela-header{display:flex;align-items:center;justify-content:space-between;
+               margin-bottom:10px;gap:12px;flex-wrap:wrap}
+#tabela-titulo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;
+               color:var(--azul);text-transform:uppercase;letter-spacing:.07em}
+.tabela-controls{display:flex;gap:8px;flex-wrap:wrap}
+.btn-sm{padding:7px 14px;font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;
+        letter-spacing:.05em;text-transform:uppercase;border:1.5px solid var(--border);
+        background:var(--branco);color:var(--text2);border-radius:5px;cursor:pointer;transition:all .15s}
+.btn-sm:hover{background:var(--bg3);border-color:var(--azul)}
+.btn-sm.danger:hover{border-color:var(--vermelho);color:var(--vermelho)}
+.btn-sm.excel{border-color:#1a7034;color:#1a7034}
+.btn-sm.excel:hover{background:#f0faf3;border-color:#155228}
+.filtros-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;padding:10px 12px;
+             background:var(--branco);border:1px solid var(--border);border-radius:8px;align-items:center}
+.filtro-label{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.07em;
+              text-transform:uppercase;margin-right:4px;white-space:nowrap}
+.filtro-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;
+             border:1.5px solid var(--border);background:var(--bg);font-size:11px;font-weight:600;
+             color:var(--text2);cursor:pointer;transition:all .15s;user-select:none;white-space:nowrap}
+.filtro-chip .chip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.filtro-chip:hover{border-color:var(--azul-med);background:var(--bg3)}
+.filtro-chip.active{background:var(--azul);border-color:var(--azul);color:#fff}
+.filtro-sep{width:1px;height:18px;background:var(--border);margin:0 2px}
+.filtro-clear{font-size:10px;color:var(--text3);cursor:pointer;padding:2px 6px;
+              border-radius:3px;margin-left:auto}
+.filtro-clear:hover{color:var(--vermelho)}
+.tbl-outer{background:var(--branco);border:1px solid var(--border);border-radius:10px;
+           overflow:hidden;box-shadow:0 2px 10px rgba(41,87,120,.07)}
+.tbl-scroll{overflow-x:auto;max-height:75vh;overflow-y:auto}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;min-width:800px}
+thead{position:sticky;top:0;z-index:10}
+thead th{padding:10px 12px;text-align:left;font-size:9.5px;font-weight:700;
+         letter-spacing:.09em;text-transform:uppercase;color:#fff;background:var(--azul);
+         border-right:1px solid rgba(255,255,255,.12);border-bottom:2px solid var(--teal);white-space:nowrap}
+thead th:last-child{border-right:none}
+thead tr.filter-row th{padding:4px 6px;background:var(--azul-esc);
+                       border-bottom:1px solid rgba(143,220,210,.2);
+                       border-right:1px solid rgba(255,255,255,.08)}
+thead tr.filter-row th:last-child{border-right:none}
+thead tr.filter-row input.col-filter-input,
+thead tr.filter-row select.col-filter-select{
+  width:100%;padding:3px 5px;font-size:10px;font-family:'DM Mono',monospace;
+  background:rgba(255,255,255,.08);border:1px solid rgba(143,220,210,.2);
+  border-radius:3px;color:rgba(255,255,255,.8);outline:none;transition:border-color .15s;
+  -webkit-appearance:none;appearance:none}
+thead tr.filter-row input.col-filter-input:focus,
+thead tr.filter-row select.col-filter-select:focus{border-color:var(--teal);background:rgba(255,255,255,.12)}
+thead tr.filter-row input.col-filter-input::placeholder{color:rgba(255,255,255,.3)}
+thead tr.filter-row select.col-filter-select option{background:var(--azul-esc);color:#fff}
+tbody tr{border-bottom:1px solid var(--border2);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#e8f3f7}
+tbody td{padding:8px 12px;vertical-align:middle;border-right:1px solid var(--border2);color:var(--text)}
+tbody td:last-child{border-right:none}
+.cell-null{color:var(--text4);font-style:italic;font-size:10px}
+.bool-sim{display:inline-block;background:rgba(42,157,92,.12);color:var(--verde);
+          border:1px solid rgba(42,157,92,.3);border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
+.bool-nao{display:inline-block;background:rgba(192,57,43,.08);color:var(--vermelho);
+          border:1px solid rgba(192,57,43,.2);border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
+.alerta-cell{font-size:10px;font-weight:700}
+.col-hidden{display:none}
+.tbl-rel{position:relative}
+.col-panel{display:none;position:absolute;right:0;top:36px;background:var(--branco);
+           border:1px solid var(--border);border-radius:8px;padding:12px;z-index:100;
+           box-shadow:0 4px 20px rgba(41,87,120,.12);min-width:200px;max-height:300px;overflow-y:auto}
+.col-panel.open{display:block}
+.col-panel label{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;
+                 color:var(--text);cursor:pointer;border-bottom:1px solid var(--border2)}
+.col-panel label:last-child{border-bottom:none}
+#loading{position:fixed;inset:0;background:rgba(41,87,120,.88);display:flex;
+         flex-direction:column;align-items:center;justify-content:center;
+         z-index:999;color:#fff;gap:14px}
+#loading.hidden{display:none}
+.spinner{width:36px;height:36px;border:3px solid rgba(255,255,255,.2);
+         border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#tip{position:fixed;background:var(--azul-esc);color:#fff;border-radius:6px;padding:8px 12px;
+     font-size:11px;pointer-events:none;display:none;z-index:200;border:1px solid var(--teal);
+     line-height:1.5;max-width:220px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+#tip.on{display:block}
+@media(max-width:768px){.tabela-section{padding:12px 16px 28px}.header{padding:0 16px}}
+</style>
+</head>
+<body>
+
+<div id="loading"><div class="spinner"></div><p>Carregando dados...</p></div>
+<div id="tip"></div>
+
+<header class="header">
+  <div class="hdr-left">
+    <svg class="hdr-logo" viewBox="0 0 42 42" fill="none">
+      <rect width="42" height="42" rx="6" fill="rgba(143,220,210,.15)"/>
+      <path d="M7 32V10L14.5 24L21 10L27.5 24L35 10V32" stroke="#8FDCD2" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M7 32H35" stroke="#8FDCD2" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
+      <div class="hdr-title">Gestão de Vendas — Todos os Setores</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="updated" id="updated-at">—</div>
+    <a href="index.html" class="btn-voltar">
+      <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
+        <path d="M8 1L3 6l5 5" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Voltar
+    </a>
+  </div>
+</header>
+
+<div class="tabela-section">
+  <div class="tabela-header">
+    <div id="tabela-titulo">Gestão de Vendas</div>
+    <div class="tabela-controls">
+      <div class="tbl-rel">
+        <button class="btn-sm" onclick="toggleColPanel()">⊞ Colunas</button>
+        <div class="col-panel" id="col-panel"><div id="col-panel-list"></div></div>
+      </div>
+      <button class="btn-sm excel" onclick="exportarExcel()">⬇ Exportar Excel</button>
+      <button class="btn-sm danger" onclick="limparFiltros()">↺ Limpar Filtros</button>
+    </div>
+  </div>
+
+  <div class="filtros-bar" id="filtros-bar"></div>
+
+  <div class="tbl-outer">
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr id="tabela-head"></tr>
+          <tr class="filter-row" id="tabela-filter-row"></tr>
+        </thead>
+        <tbody id="tabela-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+const DATA_URL = 'data.json';
+let allVendas = [];
+let colFilters = {};
+let hiddenCols = new Set();
+let activeStatusFilters = new Set();
+
+// ─── HELPERS ─────────────────────────────────────────────
+const fmtDate = s => {
+  if (!s) return null;
+  try { return new Date(s).toLocaleDateString('pt-BR'); } catch { return s; }
+};
+const fmtMoney = v => {
+  if (v == null || v === '') return null;
+  const n = Number(v);
+  if (isNaN(n)) return String(v);
+  return n.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+};
+const diffDays = (a, b) => {
+  try { return Math.round((new Date(b) - new Date(a)) / 86400000); } catch { return null; }
+};
+function isSim(v) { return v === true || String(v).toUpperCase().trim() === 'SIM'; }
+
+// ─── COLS ────────────────────────────────────────────────
+const COLS_VENDAS = [
+  { key: 'endereco',              label: 'ENDEREÇO' },
+  { key: 'casa',                  label: 'CASA' },
+  { key: 'cidade',                label: 'CIDADE' },
+  { key: 'setor',                 label: 'SETOR' },
+  { key: 'clientes',              label: 'CLIENTES' },
+  { key: 'data_venda',            label: 'DATA DA VENDA',                        fmt: fmtDate },
+  { key: 'cpf',                   label: 'CPF' },
+  { key: 'correspondente',        label: 'CORRESPONDENTE' },
+  { key: 'corretor',              label: 'CORRETOR' },
+  { key: 'avaliacao',             label: 'AVALIAÇÃO',                            fmt: fmtMoney },
+  { key: 'validade',              label: 'VALIDADE',                             fmt: fmtDate },
+  { key: 'valor_na_mao',          label: 'VALOR NA MÃO',                        fmt: fmtMoney },
+  { key: 'comissao',              label: 'COMISSÃO',                             fmt: fmtMoney },
+  { key: 'valor_venda_contrato',  label: 'VALOR DE COMPRA E VENDA NO CONTRATO', fmt: fmtMoney },
+  { key: 'banco',                 label: 'BANCO' },
+  { key: 'agencia',               label: 'AGÊNCIA' },
+  { key: 'armazenou_contrato',    label: 'ARMAZENOU CONTRATO COMPRA E VENDA?',  fmt: 'bool' },
+  { key: 'emitiu_rcpm',           label: 'EMITIU RCPM?',                        fmt: 'bool' },
+  { key: 'mandou_docs_corresp',   label: 'MANDOU TODOS OS DOCS. P/ CORRESPONDENTE?', fmt: 'bool' },
+  { key: 'data_envio_docs',       label: 'DATA DE ENVIO DOS DOCUMENTOS',        fmt: fmtDate },
+  { key: 'mandou_conformidade',   label: 'MANDOU P/ CONFORMIDADE?',             fmt: 'bool' },
+  { key: 'processo_conforme',     label: 'PROCESSO CONFORME?',                  fmt: 'bool' },
+  { key: 'assinou_contrato_banco',label: 'ASSINOU E ARMAZENOU CONTRATO DO BANCO?', fmt: 'bool' },
+  { key: 'data_assinatura',       label: 'DATA DE ASSINATURA DO CONTRATO',      fmt: fmtDate },
+  { key: 'recebeu_taxa_vistoria', label: 'RECEBEU TAXA VISTORIA?',              fmt: 'bool' },
+  { key: 'tem_cadastro',          label: 'TEM NÚMERO DE CADASTRO?',             fmt: 'bool' },
+  { key: 'num_cadastro',          label: 'Nº DE CADASTRO PREFEITURA' },
+  { key: 'entrada_cartorio',      label: 'DEU ENTRADA NO CARTÓRIO?',            fmt: 'bool' },
+  { key: 'agendou_pre_vistoria',  label: 'AGENDOU PRÉ VISTORIA?',              fmt: 'bool' },
+  { key: 'data_pre_vistoria',     label: 'DATA DA PRÉ-VISTORIA',               fmt: fmtDate },
+  { key: 'tem_manual',            label: 'TEM MANUAL DE OBRA?',                 fmt: 'bool' },
+  { key: 'registro_pronto',       label: 'FICOU PRONTO O REGISTRO?',            fmt: 'bool' },
+  { key: 'devolveu_banco',        label: 'DEVOLVEU NO BANCO?',                  fmt: 'bool' },
+  { key: 'recebeu',               label: 'RECEBEU?',                            fmt: 'bool' },
+  { key: 'entregou_casa',         label: 'ENTREGOU A CASA E PEGOU TERMO DE ENTREGA?', fmt: 'bool' },
+  { key: 'data_entrega',          label: 'DATA DA ENTREGA',                     fmt: fmtDate },
+  { key: 'gcap_gerado',           label: 'GEROU E ARMAZENOU GCAP?',             fmt: 'bool' },
+  { key: 'gcap_pago',             label: 'PAGOU GCAP?',                         fmt: 'bool' },
+  { key: 'pesquisa',              label: 'PREENCHEU A PESQUISA?',               fmt: 'bool' },
+];
+
+// ─── STATUS ──────────────────────────────────────────────
+function calcAlertaVenda(v) {
+  if (!v.avaliacao || !v.data_envio_docs) return '';
+  const dias = diffDays(v.data_envio_docs, new Date().toISOString());
+  if (dias == null) return '';
+  const conforme = isSim(v.processo_conforme);
+  const assinou  = isSim(v.assinou_contrato_banco);
+  const recebeu  = isSim(v.recebeu);
+  if (dias >= 45 && conforme && assinou && !recebeu) return 'TEMPO CORRIDO MAIOR QUE 45 DIAS E NÃO RECEBEU';
+  if (dias >= 45 && (!conforme || !assinou)) return 'TEMPO CORRIDO MAIOR QUE 45 DIAS';
+  if (dias >= 20 && dias < 45 && (!conforme || !assinou || !recebeu)) return 'TEMPO CORRIDO MAIOR QUE 20 DIAS';
+  return '';
+}
+function calcStatusVenda(v) {
+  if (isSim(v.entregou_casa)) return 'verde-esc';
+  const alerta = calcAlertaVenda(v);
+  if (alerta.includes('NÃO RECEBEU')) return 'laranja';
+  if (alerta.includes('45 DIAS'))     return 'vermelho';
+  if (alerta.includes('20 DIAS'))     return 'amarelo';
+  if (v.clientes)  return 'verde-claro';
+  if (v.avaliacao) return 'azul';
+  return 'cinza';
+}
+const COR_VENDAS = {
+  cinza:'#b0c8d4', azul:'#295778', 'verde-claro':'#8FDCD2',
+  amarelo:'#c9a227', vermelho:'#c0392b', laranja:'#d46a1a', 'verde-esc':'#1a6b40',
+};
+const STATUS_VENDAS_LABELS = {
+  cinza:'Em breve', azul:'Disponível', 'verde-claro':'Vendida',
+  amarelo:'>20 dias', vermelho:'>45 dias', laranja:'>45 dias s/ receber', 'verde-esc':'Entregue',
+};
+
+// ─── fmtCell ─────────────────────────────────────────────
+function fmtCell(val, fmtFn) {
+  if (fmtFn === 'bool') {
+    if (val == null || val === '') return '<span class="cell-null">—</span>';
+    const s = String(val).toUpperCase().trim();
+    if (s === 'SIM' || val === true) return '<span class="bool-sim">SIM</span>';
+    if (s === 'NÃO' || s === 'NAO' || val === false) return '<span class="bool-nao">NÃO</span>';
+    if (s === 'ÁGIO' || s === 'AGIO')
+      return `<span class="bool-sim" style="background:rgba(201,162,39,.15);color:#c9a227;border-color:rgba(201,162,39,.4)">ÁGIO</span>`;
+    if (s === 'INEXISTE')
+      return `<span class="bool-nao" style="background:rgba(90,128,153,.1);color:#5a8099;border-color:rgba(90,128,153,.3)">INEXISTE</span>`;
+    return `<span class="bool-nao" style="background:rgba(90,128,153,.1);color:#5a8099;">${val}</span>`;
+  }
+  if (typeof fmtFn === 'function') {
+    const r = fmtFn(val);
+    return r != null ? String(r) : '<span class="cell-null">—</span>';
+  }
+  return val != null && val !== '' ? String(val) : '<span class="cell-null">—</span>';
+}
+
+// ─── CHIPS ───────────────────────────────────────────────
+function buildFiltrosBar() {
+  const bar = document.getElementById('filtros-bar');
+  const counts = {};
+  allVendas.forEach(v => { const s = calcStatusVenda(v); counts[s] = (counts[s]||0)+1; });
+  const ordem = ['azul','verde-claro','amarelo','vermelho','laranja','verde-esc','cinza'];
+  bar.innerHTML = `<span class="filtro-label">Status:</span>` +
+    ordem.filter(s => counts[s]).map(s => `
+      <span class="filtro-chip ${activeStatusFilters.has(s)?'active':''}"
+        onclick="toggleStatusFilter('${s}')" data-status="${s}">
+        <span class="chip-dot" style="background:${COR_VENDAS[s]}"></span>
+        ${STATUS_VENDAS_LABELS[s]} (${counts[s]})
+      </span>`).join('') +
+    `<span class="filtro-sep"></span>
+     <span class="filtro-clear" onclick="clearStatusFilters()">✕ Limpar</span>`;
+}
+function toggleStatusFilter(s) {
+  activeStatusFilters.has(s) ? activeStatusFilters.delete(s) : activeStatusFilters.add(s);
+  buildFiltrosBar(); buildTabela();
+}
+function clearStatusFilters() { activeStatusFilters.clear(); buildFiltrosBar(); buildTabela(); }
+
+// ─── TABELA ──────────────────────────────────────────────
+function buildTabela() {
+  const cols = COLS_VENDAS;
+  let data = [...allVendas];
+  if (activeStatusFilters.size > 0)
+    data = data.filter(row => activeStatusFilters.has(calcStatusVenda(row)));
+
+  // Filtros cascata
+  const filterRow = document.getElementById('tabela-filter-row');
+  filterRow.innerHTML = cols.map(col => {
+    const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
+    const cur = colFilters[col.key] || '';
+    const dataParaCol = data.filter(row =>
+      cols.every(c => {
+        if (c.key === col.key) return true;
+        const f = (colFilters[c.key]||'').trim().toUpperCase();
+        if (!f) return true;
+        if (c.fmt === 'bool') {
+          if (f==='—') return row[c.key]==null||row[c.key]==='';
+          return String(row[c.key]||'').toUpperCase().trim()===f;
+        }
+        return String(row[c.key]??'').toUpperCase().includes(f);
+      })
+    );
+    const uniq = [...new Set(dataParaCol.map(r=>r[col.key]).filter(v=>v!=null&&v!==''))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+    if (col.fmt==='bool'||(uniq.length>0&&uniq.length<=30)) {
+      const opts = col.fmt==='bool' ? ['SIM','NÃO','ÁGIO','INEXISTE'] : uniq;
+      return `<th class="${hidden}"><select class="col-filter-select"
+        onchange="setFilter('${col.key}',this.value)" onclick="event.stopPropagation()">
+        <option value="">Todos (${dataParaCol.length})</option>
+        ${opts.map(v=>`<option value="${v}" ${cur===String(v)?'selected':''}>${v}</option>`).join('')}
+      </select></th>`;
+    }
+    return `<th class="${hidden}"><input class="col-filter-input" placeholder="filtrar..."
+      value="${cur}" oninput="setFilter('${col.key}',this.value)"
+      onclick="event.stopPropagation()"></th>`;
+  }).join('');
+
+  const filtered = data.filter(row =>
+    cols.every(col => {
+      const f = (colFilters[col.key]||'').trim().toUpperCase();
+      if (!f) return true;
+      if (col.fmt==='bool') {
+        if (f==='—') return row[col.key]==null||row[col.key]==='';
+        return String(row[col.key]||'').toUpperCase().trim()===f;
+      }
+      return String(row[col.key]??'').toUpperCase().includes(f);
+    })
+  );
+
+  document.getElementById('tabela-head').innerHTML = cols.map(col => `
+    <th class="${hiddenCols.has(col.key)?'col-hidden':''}" data-key="${col.key}">
+      <span style="float:right;cursor:pointer;opacity:.4;font-size:9px;margin-left:4px"
+        onclick="toggleCol('${col.key}')" onmouseover="this.style.opacity=1"
+        onmouseout="this.style.opacity=.4">✕</span>
+      ${col.label}
+    </th>`).join('');
+
+  document.getElementById('tabela-body').innerHTML = filtered.map((row,i) => `
+    <tr style="${i%2===0?'':'background:var(--bg2)'}">
+      ${cols.map(col => `
+        <td class="${hiddenCols.has(col.key)?'col-hidden':''}">
+          ${fmtCell(row[col.key], col.fmt)}
+        </td>`).join('')}
+    </tr>`).join('')
+    || '<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px;font-size:13px">Nenhum registro encontrado</td></tr>';
+
+  document.getElementById('col-panel-list').innerHTML = cols.map(col => `
+    <label><input type="checkbox" ${hiddenCols.has(col.key)?'':'checked'}
+      onchange="toggleCol('${col.key}')"> ${col.label}</label>`).join('');
+
+  document.getElementById('tabela-titulo').textContent =
+    `Gestão de Vendas — Todos os Setores (${filtered.length})`;
+
+  _filteredData = filtered;
+}
+let _filteredData = [];
+
+function setFilter(key, val) { colFilters[key] = val; buildTabela(); }
+function toggleCol(key) { hiddenCols.has(key)?hiddenCols.delete(key):hiddenCols.add(key); buildTabela(); }
+function toggleColPanel() { document.getElementById('col-panel').classList.toggle('open'); }
+function limparFiltros() { colFilters = {}; clearStatusFilters(); }
+document.addEventListener('click', e => {
+  if (!e.target.closest('.tbl-rel')) document.getElementById('col-panel').classList.remove('open');
+});
+
+// ─── EXPORTAR EXCEL ──────────────────────────────────────
+function exportarExcel() {
+  const cols = COLS_VENDAS.filter(c => !hiddenCols.has(c.key));
+  const headers = cols.map(c => c.label);
+  const rows = _filteredData.map(row =>
+    cols.map(col => {
+      const v = row[col.key];
+      if (v == null || v === '') return '';
+      if (col.fmt === 'bool') return String(v);
+      if (typeof col.fmt === 'function') { const r = col.fmt(v); return r != null ? r : ''; }
+      return String(v);
+    })
+  );
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+  ws['!cols'] = headers.map((h,i) => ({wch: Math.max(h.length, ...rows.map(r=>String(r[i]||'').length), 10)}));
+  XLSX.utils.book_append_sheet(wb, ws, 'Vendas');
+  XLSX.writeFile(wb, `Gestao_Vendas_${new Date().toLocaleDateString('pt-BR').replace(/\//g,'-')}.xlsx`);
+}
+
+// ─── INIT ────────────────────────────────────────────────
+async function init() {
+  try {
+    const r = await fetch(DATA_URL);
+    const data = await r.json();
+    allVendas = data.vendas || [];
+    if (data.updated_at)
+      document.getElementById('updated-at').textContent =
+        'Atualizado: ' + new Date(data.updated_at).toLocaleString('pt-BR');
+    buildFiltrosBar();
+    buildTabela();
+    document.getElementById('loading').classList.add('hidden');
+  } catch(e) {
+    document.getElementById('loading').innerHTML =
+      `<div style="color:#c0392b;font-size:14px">Erro ao carregar dados:<br>${e.message}</div>`;
+  }
+}
+init();
+</script>
+</body>
+</html>

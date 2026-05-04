@@ -1,11 +1,181 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=terrabela.html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Morais Engenharia · Controle Interno</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --azul:#295778;--azul-esc:#1e3f58;--teal:#8FDCD2;
+  --bg:#EAF1F3;--bg2:#F5F9FA;--border:#b8d0da;
+  --text:#1a3347;--text3:#5a8099;--text4:#8aacbb;--branco:#fff;
+}
+body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;
+     display:flex;flex-direction:column}
+
+/* HEADER */
+.header{background:var(--azul);border-bottom:3px solid var(--teal);
+        padding:0 32px;height:68px;display:flex;align-items:center;gap:16px}
+.hdr-logo{width:42px;height:42px;flex-shrink:0}
+.hdr-sup{font-size:10px;font-weight:700;color:var(--teal);letter-spacing:.12em;
+         text-transform:uppercase;opacity:.85}
+.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;
+           font-weight:800;color:#fff;letter-spacing:.02em;line-height:1.1}
+.updated{margin-left:auto;font-size:10px;color:rgba(255,255,255,.4);
+         font-family:monospace}
+
+/* HERO */
+.hero{padding:48px 32px 24px;text-align:center}
+.hero-sup{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.15em;
+          text-transform:uppercase;margin-bottom:8px}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:38px;
+            font-weight:800;color:var(--azul);margin-bottom:8px}
+.hero-sub{font-size:13px;color:var(--text3);max-width:520px;margin:0 auto}
+
+/* GRID DE SEÇÕES */
+.sections{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+          gap:20px;padding:24px 32px 48px;max-width:1200px;margin:0 auto;width:100%}
+
+.section-card{background:var(--branco);border:1px solid var(--border);
+              border-radius:14px;overflow:hidden;
+              box-shadow:0 2px 14px rgba(41,87,120,.08);
+              transition:transform .15s,box-shadow .15s;cursor:pointer}
+.section-card:hover{transform:translateY(-3px);
+                    box-shadow:0 6px 24px rgba(41,87,120,.14)}
+
+.card-header{background:var(--azul);padding:20px 24px;
+             border-bottom:3px solid var(--teal)}
+.card-icon{font-size:28px;margin-bottom:8px}
+.card-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;
+            font-weight:800;color:#fff;text-transform:uppercase;
+            letter-spacing:.06em;line-height:1.1}
+.card-badge{display:inline-block;margin-top:6px;padding:2px 8px;
+            background:rgba(143,220,210,.2);border:1px solid rgba(143,220,210,.4);
+            border-radius:10px;font-size:9px;font-weight:700;color:var(--teal);
+            letter-spacing:.06em;text-transform:uppercase}
+
+.card-body{padding:20px 24px}
+.card-desc{font-size:12.5px;color:var(--text3);line-height:1.6;margin-bottom:16px}
+.card-features{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.card-feat{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text)}
+.card-feat::before{content:'';width:6px;height:6px;border-radius:50%;
+                   background:var(--teal);flex-shrink:0}
+
+.btn-acessar{display:block;width:100%;padding:11px;
+             background:var(--azul);color:#fff;border:none;border-radius:7px;
+             font-family:'Barlow Condensed',sans-serif;font-size:13px;
+             font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+             cursor:pointer;text-align:center;text-decoration:none;
+             transition:background .15s}
+.btn-acessar:hover{background:var(--azul-esc)}
+
+.divider{width:100%;height:1px;background:var(--border);
+         margin:0 32px;max-width:calc(100% - 64px)}
+
+/* footer */
+footer{margin-top:auto;padding:16px 32px;text-align:center;
+       font-size:10px;color:var(--text4)}
+</style>
 </head>
 <body>
-<script>window.location.href = 'terrabela.html';</script>
+
+<header class="header">
+  <svg class="hdr-logo" viewBox="0 0 42 42" fill="none">
+    <rect width="42" height="42" rx="6" fill="rgba(143,220,210,.15)"/>
+    <path d="M7 32V10L14.5 24L21 10L27.5 24L35 10V32" stroke="#8FDCD2" stroke-width="3"
+          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M7 32H35" stroke="#8FDCD2" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+  <div>
+    <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
+    <div class="hdr-title">Central de Gestão</div>
+  </div>
+  <div class="updated" id="updated-at">—</div>
+</header>
+
+<div class="hero">
+  <div class="hero-sup">Sistema de Controle Interno</div>
+  <div class="hero-title">Selecione um módulo</div>
+  <div class="hero-sub">Acesse os dados de documentação e vendas por setor ou de forma consolidada</div>
+</div>
+
+<div class="sections">
+
+  <!-- Terrabela -->
+  <div class="section-card" onclick="location.href='terrabela.html'">
+    <div class="card-header">
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">Terrabela do Cerrado</div>
+      <div class="card-badge">Mapa + Tabela + Análises</div>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">Controle completo do setor Terrabela do Cerrado com visualização no mapa SVG, filtros por status e análises de desempenho.</div>
+      <div class="card-features">
+        <div class="card-feat">Mapa de documentação e vendas</div>
+        <div class="card-feat">Alerta de GCAP pendente</div>
+        <div class="card-feat">Análises de ROI e tempo de processo</div>
+        <div class="card-feat">Integração com ERP</div>
+      </div>
+      <a class="btn-acessar" href="terrabela.html">Acessar →</a>
+    </div>
+  </div>
+
+  <!-- Documentos Geral -->
+  <div class="section-card" onclick="location.href='documentos.html'">
+    <div class="card-header">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Gestão Documental</div>
+      <div class="card-badge">Todos os Setores</div>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">Tabela consolidada de documentação de obras com todos os setores, filtros em cascata e exportação para Excel.</div>
+      <div class="card-features">
+        <div class="card-feat">Todos os 11 setores</div>
+        <div class="card-feat">57 colunas de documentação</div>
+        <div class="card-feat">Filtros por status e coluna</div>
+        <div class="card-feat">Exportação para Excel</div>
+      </div>
+      <a class="btn-acessar" href="documentos.html">Acessar →</a>
+    </div>
+  </div>
+
+  <!-- Vendas Geral -->
+  <div class="section-card" onclick="location.href='vendas.html'">
+    <div class="card-header">
+      <div class="card-icon">🏠</div>
+      <div class="card-title">Gestão de Vendas</div>
+      <div class="card-badge">Todos os Setores</div>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">Tabela consolidada de vendas com todos os setores, alertas de prazo, filtros por status e exportação para Excel.</div>
+      <div class="card-features">
+        <div class="card-feat">Todos os setores e corretores</div>
+        <div class="card-feat">39 colunas de vendas</div>
+        <div class="card-feat">Alertas de tempo corrido</div>
+        <div class="card-feat">Exportação para Excel</div>
+      </div>
+      <a class="btn-acessar" href="vendas.html">Acessar →</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Morais Engenharia e Construção · Controle Interno · 
+  <span id="footer-updated"></span>
+</footer>
+
+<script>
+const DATA_URL = 'data.json';
+fetch(DATA_URL).then(r => r.json()).then(d => {
+  if (d.updated_at) {
+    const dt = new Date(d.updated_at).toLocaleString('pt-BR');
+    document.getElementById('updated-at').textContent = 'Atualizado: ' + dt;
+    document.getElementById('footer-updated').textContent = 'Dados de ' + dt;
+  }
+}).catch(() => {});
+</script>
 </body>
 </html>
