@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-04T12:15:12.447156+00:00",
+  "updated_at": "2026-05-04T12:35:26.358462+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -5852,8 +5852,8 @@
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
-      "registro_pago": "NÃO",
+      "itbi_pago": "SIM",
+      "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
