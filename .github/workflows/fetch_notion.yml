@@ -44,8 +44,10 @@ jobs:
       - name: Preparar pasta de publicação
         run: |
           mkdir -p dist
+          cp index.html dist/
           cp terrabela.html dist/
-          cp terrabela.html dist/index.html
+          cp documentos.html dist/
+          cp vendas.html dist/
           cp data.json dist/
           cp TERRABELA_MAPA_DOCUMENTOS.svg dist/
           cp TERRABELA_MAPA_VENDAS.svg dist/
