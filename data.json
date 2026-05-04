@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-04T13:29:13.847292+00:00",
+  "updated_at": "2026-05-04T13:46:15.504477+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -1491,7 +1491,7 @@
     },
     {
       "id": "32fc5ab5-32d3-8024-9245-d7b75796e4d2",
-      "endereco": "GERCINA BORGES QD 02 LT 02",
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
       "ref": "SE 1",
       "setor": "ST EFIGÊNIA",
       "cidade": "GOIÂNIA",
@@ -1548,8 +1548,8 @@
       "boletos_vistoria": null,
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 243019.4453,
+      "erp_valor_pago": 299540.74999999994
     },
     {
       "id": "32fc5ab5-32d3-8025-b553-e9b9c806be8c",
@@ -2049,7 +2049,7 @@
     },
     {
       "id": "32fc5ab5-32d3-8036-9b3a-c54e0325e7e1",
-      "endereco": "SV 24 QD 40 LT 20",
+      "endereco": "SV 13 QD 40 LT 20",
       "ref": "SV 1",
       "setor": "SOLAR VILLE",
       "cidade": "GOIÂNIA",
@@ -2106,8 +2106,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 0.0,
+      "erp_valor_pago": 71615.21
     },
     {
       "id": "32fc5ab5-32d3-8038-8825-f79a27bd9b07",
@@ -6265,7 +6265,7 @@
     },
     {
       "id": "32fc5ab5-32d3-80d5-8302-ffa02af351ca",
-      "endereco": "GERCINA BORGES QD 02 LT 03",
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
       "ref": "SE 2",
       "setor": "ST EFIGÊNIA",
       "cidade": "GOIÂNIA",
@@ -6322,8 +6322,8 @@
       "boletos_vistoria": null,
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
-      "erp_orcado": "SEM DADOS",
-      "erp_valor_pago": "SEM DADOS"
+      "erp_orcado": 242867.3153,
+      "erp_valor_pago": 293097.66999976395
     },
     {
       "id": "32fc5ab5-32d3-80d6-8781-ff507f73eb80",
@@ -12688,7 +12688,7 @@
     },
     {
       "id": "33cc5ab5-32d3-804a-b502-de06cf4b826e",
-      "endereco": "GERCINA BORGES QD 02 LT 03",
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
       "casa": 1,
       "ref": "EF7",
       "cidade": "GOIÂNIA",
@@ -17160,7 +17160,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8094-81ef-e99a810c18a0",
-      "endereco": "GERCINA BORGES QD 02 LT 02",
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
       "casa": 1,
       "ref": "EF5",
       "cidade": "GOIÂNIA",
@@ -20299,7 +20299,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80c7-83e3-d73527611b00",
-      "endereco": "GERCINA BORGES QD 02 LT 02",
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
       "casa": 2,
       "ref": "EF6",
       "cidade": "GOIÂNIA",
@@ -21804,7 +21804,7 @@
     },
     {
       "id": "33cc5ab5-32d3-80ea-bc57-eceef247bc1c",
-      "endereco": "GERCINA BORGES QD 02 LT 03",
+      "endereco": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
       "casa": 2,
       "ref": "EF8",
       "cidade": "GOIÂNIA",
