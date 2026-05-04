@@ -842,131 +842,6 @@ canvas.line-canvas { width: 100%; display: block; }
   .analises-section { padding: 0 16px 28px; }
 }
 
-
-/* z-index do thead sticky + col sticky */
-thead th.col-sticky {
-  z-index: 5 !important;
-}
-thead tr.filter-row th.col-sticky-filter {
-  position: sticky !important;
-  left: 0;
-  z-index: 4;
-  background: var(--azul-esc) !important;
-  box-shadow: 2px 0 6px rgba(41,87,120,0.10);
-}
-
-
-/* ─── COLUNA ENDEREÇO TRAVADA ───────────────────── */
-.col-sticky {
-  position: sticky !important;
-  left: 0;
-  z-index: 5 !important;
-  background: var(--azul) !important;
-  box-shadow: 2px 0 6px rgba(41,87,120,0.15);
-}
-.col-sticky-filter {
-  position: sticky !important;
-  left: 0;
-  z-index: 4 !important;
-  background: var(--azul-esc) !important;
-  box-shadow: 2px 0 6px rgba(41,87,120,0.15);
-}
-.col-sticky-body {
-  position: sticky !important;
-  left: 0;
-  z-index: 2;
-  background: var(--branco);
-  box-shadow: 2px 0 6px rgba(41,87,120,0.10);
-}
-tbody tr:nth-child(even) .col-sticky-body { background: var(--bg2); }
-tbody tr:hover .col-sticky-body { background: #e8f3f7; }
-tbody tr.selected .col-sticky-body { background: #d0e8f0 !important; }
-
-
-/* ─── FILTRO MULTI-SELECT COM CHECKBOXES ─── */
-.ms-wrap {
-  position: relative;
-  width: 100%;
-}
-.ms-btn {
-  width: 100%;
-  padding: 3px 20px 3px 5px;
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(143,220,210,.2);
-  border-radius: 3px;
-  color: rgba(255,255,255,.85);
-  cursor: pointer;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  position: relative;
-}
-.ms-btn::after {
-  content: '▾';
-  position: absolute;
-  right: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 8px;
-  opacity: .6;
-}
-.ms-btn.active { border-color: var(--teal); background: rgba(143,220,210,.15); }
-.ms-dropdown {
-  display: none;
-  position: fixed;
-  background: #1e3f58;
-  border: 1px solid rgba(143,220,210,.3);
-  border-radius: 5px;
-  z-index: 9999;
-  box-shadow: 0 6px 24px rgba(0,0,0,.3);
-  max-height: 220px;
-  overflow-y: auto;
-  min-width: 160px;
-  max-width: 260px;
-}
-.ms-dropdown.open { display: block; }
-.ms-search {
-  width: 100%;
-  padding: 5px 8px;
-  font-size: 10px;
-  font-family: 'DM Mono', monospace;
-  background: rgba(255,255,255,.1);
-  border: none;
-  border-bottom: 1px solid rgba(143,220,210,.2);
-  color: #fff;
-  outline: none;
-}
-.ms-search::placeholder { color: rgba(255,255,255,.4); }
-.ms-item {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 5px 10px;
-  font-size: 10.5px;
-  font-family: 'DM Mono', monospace;
-  color: rgba(255,255,255,.85);
-  cursor: pointer;
-  transition: background .1s;
-  white-space: nowrap;
-}
-.ms-item:hover { background: rgba(143,220,210,.12); }
-.ms-item input[type=checkbox] { accent-color: #8FDCD2; flex-shrink: 0; }
-.ms-clear {
-  padding: 5px 10px;
-  font-size: 9.5px;
-  color: #8FDCD2;
-  cursor: pointer;
-  border-top: 1px solid rgba(143,220,210,.15);
-  text-align: center;
-}
-.ms-clear:hover { background: rgba(143,220,210,.1); }
-
-/* Largura mínima da coluna endereço */
-th[data-key="endereco"], td.col-end { min-width: 200px !important; }
-
 </style>
 </head>
 <body>
@@ -1013,7 +888,6 @@ th[data-key="endereco"], td.col-end { min-width: 200px !important; }
     <div class="legenda" id="legenda-docs">
       <div class="leg-item"><div class="leg-dot" style="background:var(--cinza)"></div> Não comprado</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--amarelo)"></div> Não iniciado</div>
-      <div class="leg-item"><div class="leg-dot" style="background:var(--azul-esc)"></div> Em andamento</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--verde)"></div> Finalizado no prazo</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--laranja)"></div> Finalizado acima prazo</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--vermelho)"></div> Habite-se agendado</div>
@@ -1254,35 +1128,29 @@ function isSim(v) {
 
 function calcStatusDoc(d) {
   if (!d) return 'cinza';
-  // Regra 1: sem data de aquisição do lote = não comprado
-  if (!d.data_aquisicao_lote) return 'cinza';
-  // A partir daqui, lote já foi comprado
   if (isSim(d.aprovou_habite_se))  return 'roxo';
   if (isSim(d.agendou_habite_se))  return 'vermelho';
   if (d.data_termino_obra && d.data_inicio_obra) {
     const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
-    return (dias && dias > 0) ? (dias <= 150 ? 'verde' : 'laranja') : 'azul_esc';
+    return dias <= 150 ? 'verde' : 'laranja';
   }
-  // Regra 3: obra_iniciada = SIM → em andamento (azul escuro)
-  if (isSim(d.obra_iniciada)) return 'azul_esc';
-  // Regra 2: obra_iniciada = NÃO (ou vazio) e sem data_inicio_obra → não iniciado
-  return 'amarelo';
+  if (d.data_inicio_obra) return 'amarelo';
+  // Tem ref mas sem data início = não iniciado
+  return 'cinza';
 }
 
 const COR_DOCS = {
-  cinza:    '#8faabb',   // não comprado (sem data_aquisicao_lote)
-  amarelo:  '#c9a227',   // não iniciado (comprado mas sem obra iniciada)
-  azul_esc: '#1e3f58',   // em andamento (obra_iniciada = SIM)
-  verde:    '#2a9d5c',   // finalizado no prazo
-  laranja:  '#d46a1a',   // acima do prazo
-  vermelho: '#c0392b',   // habite-se agendado
-  roxo:     '#7c4daf',   // habite-se concluído
+  cinza:    '#8faabb',
+  amarelo:  '#c9a227',
+  verde:    '#2a9d5c',
+  laranja:  '#d46a1a',
+  vermelho: '#c0392b',
+  roxo:     '#7c4daf',
 };
 
 const STATUS_DOCS_LABELS = {
-  cinza:    'Não comprado',
-  amarelo:  'Não iniciado',
-  azul_esc: 'Em andamento',
+  cinza:    'Não iniciado',
+  amarelo:  'Em andamento',
   verde:    'Finalizado no prazo',
   laranja:  'Acima do prazo',
   vermelho: 'Habite-se agendado',
@@ -1678,7 +1546,7 @@ function buildFiltrosBar() {
       const s = calcStatusDoc(d);
       counts[s] = (counts[s] || 0) + 1;
     });
-    const ordem = ['amarelo','azul_esc','verde','laranja','vermelho','roxo','cinza'];
+    const ordem = ['amarelo','verde','laranja','vermelho','roxo','cinza'];
     bar.innerHTML = `<span class="filtro-label">Status:</span>` +
       ordem.filter(s => counts[s]).map(s => `
         <span class="filtro-chip ${activeStatusFilters.has(s) ? 'active' : ''}"
@@ -1739,26 +1607,6 @@ function clearStatusFilters() {
 }
 
 // ─── TABELA ───────────────────────────────────────
-
-// ─── BUILD BODY (sem reconstruir filtros) ────────────
-function getFiltered(cols, data) {
-  return data.filter(row =>
-    cols.every(col => {
-      const f = colFilters[col.key];
-      if (!f || (f instanceof Set && f.size === 0) || f === '') return true;
-      const rawVal = String(row[col.key] ?? '').toUpperCase().trim();
-      if (f instanceof Set) {
-        return [...f].some(fv => {
-          if (fv === '—') return row[col.key] == null || row[col.key] === '';
-          return rawVal === String(fv).toUpperCase().trim();
-        });
-      }
-      // texto livre
-      return rawVal.includes(String(f).toUpperCase());
-    })
-  );
-}
-
 function buildTabela() {
   const cols = modo === 'docs' ? COLS_DOCS : COLS_VENDAS;
 
@@ -1800,8 +1648,8 @@ function buildTabela() {
 
   // Cabeçalho
   const head = document.getElementById('tabela-head');
-  head.innerHTML = cols.map((col,ci) => `
-    <th class="${hiddenCols.has(col.key) ? 'col-hidden' : ''} ${ci===0?'col-sticky':''}" data-key="${col.key}">
+  head.innerHTML = cols.map(col => `
+    <th class="${hiddenCols.has(col.key) ? 'col-hidden' : ''}" data-key="${col.key}">
       <span class="hide-col-btn" onclick="toggleCol('${col.key}')">✕</span>
       ${col.label}
     </th>`).join('');
@@ -1811,9 +1659,8 @@ function buildTabela() {
   // JÁ filtrados pelas outras colunas (exceto a própria coluna sendo filtrada)
   const filterRow = document.getElementById('tabela-filter-row');
 
-  filterRow.innerHTML = cols.map((col,ci) => {
+  filterRow.innerHTML = cols.map(col => {
     const hidden = hiddenCols.has(col.key) ? 'col-hidden' : '';
-    const stickyFilter = ci === 0 ? 'col-sticky-filter' : '';
     const cur = colFilters[col.key] || '';
 
     // Dados filtrados por TODAS as colunas EXCETO esta (cascata)
@@ -1847,7 +1694,7 @@ function buildTabela() {
       const opcoes = col.fmt === 'bool'
         ? ['SIM', 'NÃO', 'ÁGIO', 'INEXISTE']
         : uniqueVals;
-      return `<th class="${hidden} ${stickyFilter}">
+      return `<th class="${hidden}">
         <select class="col-filter-select" onchange="setFilter('${col.key}', this.value)" onclick="event.stopPropagation()">
           <option value="">Todos (${dataParaEstaCol.length})</option>
           ${opcoes.map(v => `<option value="${v}" ${cur===String(v)?'selected':''}>${v}</option>`).join('')}
@@ -1855,7 +1702,7 @@ function buildTabela() {
     }
 
     // Input de texto para colunas com muitos valores distintos
-    return `<th class="${hidden} ${stickyFilter}">
+    return `<th class="${hidden}">
       <input class="col-filter-input" placeholder="filtrar..." value="${cur}"
         oninput="setFilter('${col.key}', this.value)" onclick="event.stopPropagation()">
     </th>`;
@@ -1865,8 +1712,8 @@ function buildTabela() {
   const body = document.getElementById('tabela-body');
   body.innerHTML = filtered.map(row => `
     <tr data-ref="${row.ref || ''}" onclick="selectItem(${JSON.stringify(row).replace(/"/g,'&quot;')}, '${modo}')">
-      ${cols.map((col,ci) => `
-        <td class="${hiddenCols.has(col.key) ? 'col-hidden' : ''} ${col.key === 'ref' ? 'ref-col' : ''} ${ci===0?'col-sticky-body':''}">
+      ${cols.map(col => `
+        <td class="${hiddenCols.has(col.key) ? 'col-hidden' : ''} ${col.key === 'ref' ? 'ref-col' : ''}">
           ${fmtCell(row[col.key], col.fmt)}
         </td>`).join('')}
     </tr>`).join('')
@@ -2535,101 +2382,6 @@ function buildAnalises() {
   }
 }
 
-
-
-// ─── MULTI-SELECT ENGINE ──────────────────────────────
-// colFilters[key] = Set de valores selecionados (ou string para texto livre)
-let _activeDropdown = null;
-
-function openDropdown(key, btnEl) {
-  // Fechar dropdown anterior
-  if (_activeDropdown && _activeDropdown !== key) closeDropdown(_activeDropdown);
-
-  const dd = document.getElementById('ms-dd-' + key);
-  if (!dd) return;
-
-  if (dd.classList.contains('open')) {
-    closeDropdown(key);
-    return;
-  }
-
-  // Posicionar fixed relativo ao botão
-  const rect = btnEl.getBoundingClientRect();
-  dd.style.top  = (rect.bottom + 2) + 'px';
-  dd.style.left = rect.left + 'px';
-  dd.style.minWidth = Math.max(rect.width, 160) + 'px';
-  dd.classList.add('open');
-  _activeDropdown = key;
-
-  // Focar busca
-  const srch = dd.querySelector('.ms-search');
-  if (srch) srch.focus();
-}
-
-function closeDropdown(key) {
-  const dd = document.getElementById('ms-dd-' + key);
-  if (dd) dd.classList.remove('open');
-  if (_activeDropdown === key) _activeDropdown = null;
-}
-
-document.addEventListener('click', e => {
-  if (!e.target.closest('.ms-wrap') && !e.target.closest('.ms-dropdown')) {
-    if (_activeDropdown) closeDropdown(_activeDropdown);
-  }
-  if (!e.target.closest('.tbl-rel'))
-    document.getElementById('col-panel').classList.remove('open');
-});
-
-function toggleMsOption(key, val, chk) {
-  if (!colFilters[key] || typeof colFilters[key] === 'string') {
-    colFilters[key] = new Set();
-  }
-  if (chk) colFilters[key].add(val);
-  else      colFilters[key].delete(val);
-  if (colFilters[key].size === 0) colFilters[key] = '';
-  updateMsBtn(key);
-  buildBody(); // só reconstrói o corpo, não os filtros
-}
-
-function clearMsFilter(key) {
-  colFilters[key] = '';
-  updateMsBtn(key);
-  // Desmarcar checkboxes
-  const dd = document.getElementById('ms-dd-' + key);
-  if (dd) dd.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
-  buildBody();
-}
-
-function updateMsBtn(key) {
-  const btn = document.getElementById('ms-btn-' + key);
-  if (!btn) return;
-  const s = colFilters[key];
-  if (!s || (s instanceof Set && s.size === 0) || s === '') {
-    btn.textContent = 'Todos';
-    btn.classList.remove('active');
-  } else if (s instanceof Set) {
-    btn.textContent = [...s].join(', ');
-    btn.classList.add('active');
-  } else {
-    btn.textContent = s || 'Todos';
-    btn.classList.toggle('active', !!s);
-  }
-  // Recriar o ::after (pseudoelement via JS workaround)
-  btn.setAttribute('data-label', btn.textContent);
-}
-
-function filterMsSearch(key, q) {
-  const dd = document.getElementById('ms-dd-' + key);
-  if (!dd) return;
-  dd.querySelectorAll('.ms-item').forEach(item => {
-    item.style.display = item.dataset.val.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
-  });
-}
-
-function setTextFilter(key, val) {
-  colFilters[key] = val;
-  buildBody();
-}
 
 // ─── INIT ─────────────────────────────────────────
 async function init() {
