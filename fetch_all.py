@@ -1,19 +1,23 @@
 """
 fetch_all.py — Morais Engenharia · Controles Internos
-Busca dados dos dois bancos Notion + ERP e gera data.json
+Busca dados do Notion + API direta do Mais Controle ERP e gera data.json.
+v2 — ERP consultado via API REST (sem Google Sheets como intermediário)
 """
-import requests, json, os
+import requests, json, os, re, io, csv
 from datetime import datetime, timezone
 
-# ─── CREDENCIAIS (via GitHub Secrets) ────────────────────────
+# ─── CREDENCIAIS ──────────────────────────────────────────────
 TOKEN_DOCS   = os.environ.get("NOTION_TOKEN_DOCS",   "")
 DB_DOCS      = os.environ.get("NOTION_DB_DOCS",      "32fc5ab532d380a0900dd7f4bfc619bd")
 TOKEN_VENDAS = os.environ.get("NOTION_TOKEN_VENDAS", "")
 DB_VENDAS    = os.environ.get("NOTION_DB_VENDAS",    "33cc5ab532d38047ae3aee8b87ac1f4d")
-ERP_USER     = os.environ.get("ERP_USERNAME",        "")
-ERP_PASS     = os.environ.get("ERP_PASSWORD",        "")
 
-# ─── HELPERS NOTION ──────────────────────────────────────────
+# Credenciais API Mais Controle ERP
+ERP_USER = os.environ.get("ERP_USERNAME", "")
+ERP_PASS = os.environ.get("ERP_PASSWORD", "")
+ERP_BASE = "https://api-clientes.maiscontroleerp.com.br/data-exports"
+
+# ─── HELPERS NOTION ───────────────────────────────────────────
 def prop_title(p):
     return "".join(c.get("plain_text","") for c in p.get("title",[])) or None
 
@@ -25,36 +29,18 @@ def prop_select(p):
     return s.get("name") if s else None
 
 def get_prop(props, nome):
-    """Busca propriedade tolerando espaços no início/fim do nome."""
-    if nome in props:
-        return props[nome]
-    # Tentar com strip em todas as keys
+    if nome in props: return props[nome]
     nome_strip = nome.strip()
     for k, v in props.items():
-        if k.strip() == nome_strip:
-            return v
+        if k.strip() == nome_strip: return v
     return {}
 
-def prop_number(p):
-    return p.get("number")
-
+def prop_number(p):  return p.get("number")
 def prop_date(p):
     d = p.get("date")
     return d.get("start") if d else None
 
-def prop_checkbox(p):
-    return p.get("checkbox")
-
-def prop_formula_str(p):
-    f = p.get("formula", {})
-    t = f.get("type")
-    if t == "string": return f.get("string") or None
-    if t == "number": return f.get("number")
-    if t == "boolean": return f.get("boolean")
-    return None
-
-def notion_pages(token, db_id, filtro=None):
-    """Busca todas as páginas de um banco Notion (com paginação)."""
+def notion_pages(token, db_id):
     url = f"https://api.notion.com/v1/databases/{db_id}/query"
     headers = {
         "Authorization": f"Bearer {token}",
@@ -65,7 +51,6 @@ def notion_pages(token, db_id, filtro=None):
     while True:
         body = {}
         if cursor: body["start_cursor"] = cursor
-        if filtro: body["filter"] = filtro
         r = requests.post(url, headers=headers, json=body, timeout=60)
         if r.status_code != 200:
             print(f"  ERRO Notion {db_id}: {r.status_code} {r.text[:200]}")
@@ -76,7 +61,7 @@ def notion_pages(token, db_id, filtro=None):
         cursor = data.get("next_cursor")
     return pages
 
-# ─── PARSE DOCUMENTOS ────────────────────────────────────────
+# ─── PARSE DOCUMENTOS ─────────────────────────────────────────
 def parse_doc(page):
     p = page.get("properties", {})
     def s(nome): return prop_select(get_prop(p, nome))
@@ -141,7 +126,6 @@ def parse_doc(page):
         "boletos_vistoria":         s("PAGOU BOLETOS DE VISTORIA CAIXA?"),
         "data_termino_obra":        d("DATA DE TÉRMINO DE OBRA"),
         "entrada_incorporacao_data":d("DATA DE ENTRADA NA INCORPORAÇÃO"),
-        # ERP — preenchido depois
         "erp_orcado":    None,
         "erp_valor_pago": None,
     }
@@ -197,42 +181,61 @@ def parse_venda(page):
         "pesquisa":                 s("PREENCHEU A PESQUISA?"),
     }
 
-# ─── ERP (Google Sheets CSV) ────────────────────────────────
-# Adicionar no GitHub Secrets:
-#   ERP_CSV_PROPOSTAS  = URL da aba Propostas publicada como CSV
-#   ERP_CSV_PAGAMENTOS = URL da aba Pagamentos publicada como CSV
-ERP_CSV_PROPOSTAS  = os.environ.get("ERP_CSV_PROPOSTAS",  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=1086346405&single=true&output=csv")
-ERP_CSV_PAGAMENTOS = os.environ.get("ERP_CSV_PAGAMENTOS", "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=90551417&single=true&output=csv")
+# ─── API MAIS CONTROLE ERP (direto, sem Google Sheets) ────────
+def erp_api(endpoint, descricao):
+    """
+    Busca dados da API REST do Mais Controle com paginação automática.
+    Autenticação Basic (email:senha em base64).
+    """
+    import base64
+    if not ERP_USER or not ERP_PASS:
+        print(f"  ERP {descricao}: credenciais não configuradas (ERP_USERNAME / ERP_PASSWORD)")
+        return []
 
-def erp_csv(url, nome):
-    """Lê aba do Google Sheets publicada como CSV."""
-    import io, csv
-    if not url:
-        print(f"  ERP {nome}: URL não configurada (secret ERP_CSV_{nome.upper()})")
-        return []
-    try:
-        r = requests.get(url, timeout=30)
-        if r.status_code != 200:
-            print(f"  ERP {nome} erro HTTP: {r.status_code}")
-            return []
-        reader = csv.DictReader(io.StringIO(r.text))
-        rows = list(reader)
-        print(f"  ERP {nome}: {len(rows)} registros")
-        if rows:
-            print(f"  ERP {nome} colunas: {list(rows[0].keys())[:8]}")
-        return rows
-    except Exception as e:
-        print(f"  ERP {nome} exceção: {e}")
-        return []
+    credencial = base64.b64encode(f"{ERP_USER}:{ERP_PASS}".encode()).decode()
+    headers = {"Authorization": f"Basic {credencial}"}
+    url = f"{ERP_BASE}/{endpoint}"
+
+    todos = []
+    page  = 1
+    page_size = 100
+
+    while True:
+        try:
+            params = {"page": page, "pageSize": page_size}
+            r = requests.get(url, headers=headers, params=params, timeout=60)
+            if r.status_code != 200:
+                print(f"  ERP {descricao} erro HTTP {r.status_code}: {r.text[:200]}")
+                break
+            texto = r.text.strip()
+            if not texto:
+                break  # sem mais dados
+            reader = csv.DictReader(io.StringIO(texto))
+            linhas = list(reader)
+            if not linhas:
+                break
+            todos.extend(linhas)
+            print(f"  ERP {descricao}: página {page} → {len(linhas)} registros")
+            if len(linhas) < page_size:
+                break  # última página
+            page += 1
+            import time; time.sleep(1)  # respeitar rate limit
+        except Exception as e:
+            print(f"  ERP {descricao} exceção: {e}")
+            break
+
+    print(f"  ERP {descricao}: total = {len(todos)} registros")
+    return todos
 
 def buscar_erp():
-    """Busca propostas e pagamentos via Google Sheets CSV."""
-    orcados = {}
-    pagos   = {}
+    """Busca propostas e pagamentos direto da API do ERP."""
+    orcados       = {}
+    pagos         = {}
+    pagos_detalhe = {}
 
-    # Propostas → orçado
+    # ── Propostas → orçado ────────────────────────────────────
     print("  ERP: buscando propostas...")
-    for row in erp_csv(ERP_CSV_PROPOSTAS, "propostas"):
+    for row in erp_api("propostas", "propostas"):
         obra = (row.get("obra") or "").strip().upper()
         val  = row.get("preco_total_com_desconto")
         if obra and val:
@@ -241,11 +244,9 @@ def buscar_erp():
             except:
                 pass
 
-    # Pagamentos → soma total + detalhe mensal por obra
+    # ── Pagamentos → soma total + detalhe mensal ───────────────
     print("  ERP: buscando pagamentos...")
-    import re as _re2
-    pagos_detalhe = {}  # { obra_upper: { 'YYYY-MM': soma } }
-    for row in erp_csv(ERP_CSV_PAGAMENTOS, "pagamentos"):
+    for row in erp_api("pagamentos", "pagamentos"):
         cc  = (row.get("centro_de_custo") or row.get("obra") or row.get("descricao") or "").strip().upper()
         val = row.get("valor_pago")
         dt  = row.get("data_pagamento") or ""
@@ -254,8 +255,8 @@ def buscar_erp():
                 v = float(str(val).replace(",", "."))
                 pagos[cc] = pagos.get(cc, 0) + v
                 # Extrair YYYY-MM da data
-                m1 = _re2.match(r'(\d{2})/(\d{2})/(\d{4})', dt)
-                m2 = _re2.match(r'(\d{4})-(\d{2})', dt)
+                m1 = re.match(r'(\d{2})/(\d{2})/(\d{4})', dt)
+                m2 = re.match(r'(\d{4})-(\d{2})', dt)
                 if m1:   mes = f"{m1.group(3)}-{m1.group(2)}"
                 elif m2: mes = f"{m2.group(1)}-{m2.group(2)}"
                 else:    mes = "SEM DATA"
@@ -265,13 +266,14 @@ def buscar_erp():
             except:
                 pass
 
-    print(f"  ERP: {len(orcados)} obras, {len(pagos)} centros de custo")
-    if orcados: print("  Propostas ex:", list(orcados.keys())[:3])
-    if pagos:   print("  Pagamentos ex:", list(pagos.keys())[:3])
+    print(f"  ERP: {len(orcados)} propostas, {len(pagos)} centros de custo")
     return orcados, pagos, pagos_detalhe
 
 # ─── MAIN ─────────────────────────────────────────────────────
 def main():
+    def norm(s):
+        return re.sub(r'\s+', ' ', (s or "").strip().upper())
+
     print("Buscando DOCUMENTOS...")
     pages_docs = notion_pages(TOKEN_DOCS, DB_DOCS)
     print(f"  {len(pages_docs)} registros")
@@ -282,14 +284,8 @@ def main():
     print(f"  {len(pages_vendas)} registros")
     vendas = [parse_venda(p) for p in pages_vendas]
 
-    print("Buscando ERP...")
+    print("Buscando ERP (API direta)...")
     orcados, pagos, pagos_detalhe = buscar_erp()
-    print(f"  {len(orcados)} propostas, {len(pagos)} centros de custo")
-
-    # Normalizar keys para cruzamento (remove espaços duplos, upper)
-    def norm(s):
-        import re
-        return re.sub(r'\s+', ' ', (s or "").strip().upper())
 
     # Reindexar com keys normalizadas
     orcados_norm = {norm(k): v for k, v in orcados.items()}
@@ -300,19 +296,15 @@ def main():
         end = norm(doc.get("endereco"))
         doc["erp_orcado"]     = orcados_norm.get(end)
         doc["erp_valor_pago"] = pagos_norm.get(end)
-        # Se não encontrou, marcar como SEM DADOS
         if doc["erp_orcado"]     is None: doc["erp_orcado"]     = "SEM DADOS"
         if doc["erp_valor_pago"] is None: doc["erp_valor_pago"] = "SEM DADOS"
-        # Log para debug
         if doc["erp_orcado"] != "SEM DADOS":
             print(f"    ERP match: {end} → orçado={doc['erp_orcado']}, pago={doc['erp_valor_pago']}")
 
-    # Montar desembolso por setor: { setor: { obra: { mes: valor } } }
-    # Para uso nos gráficos — filtrado no frontend por setor
     output = {
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-        "documentos": documentos,
-        "vendas":     vendas,
+        "updated_at":        datetime.now(timezone.utc).isoformat(),
+        "documentos":        documentos,
+        "vendas":            vendas,
         "pagamentos_detalhe": {k: v for k, v in pagos_detalhe.items()},
     }
 
