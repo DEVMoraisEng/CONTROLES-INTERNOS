@@ -482,11 +482,15 @@ thead th {
   border-right: 1px solid rgba(255,255,255,0.12);
   border-bottom: 2px solid var(--teal);
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
 }
 thead th:last-child { border-right: none; }
 thead th { cursor: pointer; user-select: none; }
 thead th:hover { background: var(--azul-med); }
-.sort-icon { font-size: 8px; margin-left: 4px; opacity: .5; }
+.sort-icon { font-size: 8px; opacity: .7; flex-shrink: 0; }
 .sort-asc  .sort-icon::after { content: '▲'; opacity: 1; }
 .sort-desc .sort-icon::after { content: '▼'; opacity: 1; }
 thead th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: '⇅'; }
@@ -984,11 +988,7 @@ th[data-key="endereco"], td.col-end { min-width: 200px !important; }
 <header class="header">
   <div class="hdr-left">
     <!-- Logo Morais Engenharia SVG inline -->
-    <svg class="hdr-logo" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="42" height="42" rx="6" fill="rgba(143,220,210,0.15)"/>
-      <path d="M7 32V10L14.5 24L21 10L27.5 24L35 10V32" stroke="#8FDCD2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M7 32H35" stroke="#8FDCD2" stroke-width="2.5" stroke-linecap="round"/>
-    </svg>
+    <img src="logo.png" class="hdr-logo" alt="Morais Engenharia">
     <div class="hdr-text">
       <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
       <div class="hdr-title">Terrabela do Cerrado</div>
@@ -2009,8 +2009,8 @@ function buildTabela() {
     const st  = ci === 0 ? 'col-sticky' : '';
     const sc  = sortKey===col.key ? (sortDir==='asc'?'sort-asc':'sort-desc') : '';
     return `<th class="${hid} ${st} ${sc}" data-key="${col.key}" onclick="setSortCol('${col.key}')">
-      <span style="float:right;cursor:pointer;opacity:.4;font-size:9px" onclick="event.stopPropagation();toggleCol('${col.key}')" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.4">✕</span>
-      ${col.label}<span class="sort-icon"></span></th>`;
+      <span style="display:flex;align-items:center;gap:3px;flex:1;min-width:0">${col.label}<span class="sort-icon"></span></span>
+      <span style="cursor:pointer;opacity:.35;font-size:9px;flex-shrink:0" onclick="event.stopPropagation();toggleCol('${col.key}')" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.35">✕</span></th>`;
   }).join('');
   renderFiltros();
   renderBody();
