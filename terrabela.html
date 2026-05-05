@@ -482,15 +482,15 @@ thead th {
   border-right: 1px solid rgba(255,255,255,0.12);
   border-bottom: 2px solid var(--teal);
   white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
+  position: relative;
+  padding-right: 22px;
 }
 thead th:last-child { border-right: none; }
 thead th { cursor: pointer; user-select: none; }
 thead th:hover { background: var(--azul-med); }
-.sort-icon { font-size: 8px; opacity: .7; flex-shrink: 0; }
+.sort-icon { font-size: 8px; margin-left: 3px; opacity: .7; }
+thead th .th-x { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); cursor: pointer; opacity: .35; font-size: 9px; line-height: 1; }
+thead th .th-x:hover { opacity: 1; }
 .sort-asc  .sort-icon::after { content: '▲'; opacity: 1; }
 .sort-desc .sort-icon::after { content: '▼'; opacity: 1; }
 thead th:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: '⇅'; }
@@ -2009,8 +2009,8 @@ function buildTabela() {
     const st  = ci === 0 ? 'col-sticky' : '';
     const sc  = sortKey===col.key ? (sortDir==='asc'?'sort-asc':'sort-desc') : '';
     return `<th class="${hid} ${st} ${sc}" data-key="${col.key}" onclick="setSortCol('${col.key}')">
-      <span style="display:flex;align-items:center;gap:3px;flex:1;min-width:0">${col.label}<span class="sort-icon"></span></span>
-      <span style="cursor:pointer;opacity:.35;font-size:9px;flex-shrink:0" onclick="event.stopPropagation();toggleCol('${col.key}')" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.35">✕</span></th>`;
+      ${col.label}<span class="sort-icon"></span>
+      <span class="th-x" onclick="event.stopPropagation();toggleCol('${col.key}')">✕</span></th>`;
   }).join('');
   renderFiltros();
   renderBody();
