@@ -29,8 +29,8 @@ jobs:
           NOTION_DB_DOCS:      ${{ secrets.NOTION_DB_DOCS }}
           NOTION_TOKEN_VENDAS: ${{ secrets.NOTION_TOKEN_VENDAS }}
           NOTION_DB_VENDAS:    ${{ secrets.NOTION_DB_VENDAS }}
-          ERP_CSV_PROPOSTAS:   "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=1086346405&single=true&output=csv"
-          ERP_CSV_PAGAMENTOS:  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=90551417&single=true&output=csv"
+          ERP_CSV_PROPOSTAS:   ${{ secrets.ERP_CSV_PROPOSTAS }}
+          ERP_CSV_PAGAMENTOS:  ${{ secrets.ERP_CSV_PAGAMENTOS }}
         run: python fetch_all.py
 
       - name: Commit data.json
