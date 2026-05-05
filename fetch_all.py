@@ -201,8 +201,8 @@ def parse_venda(page):
 # Adicionar no GitHub Secrets:
 #   ERP_CSV_PROPOSTAS  = URL da aba Propostas publicada como CSV
 #   ERP_CSV_PAGAMENTOS = URL da aba Pagamentos publicada como CSV
-ERP_CSV_PROPOSTAS  = os.environ.get("ERP_CSV_PROPOSTAS",  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=1086346405&single=true&output=csv")
-ERP_CSV_PAGAMENTOS = os.environ.get("ERP_CSV_PAGAMENTOS", "https://docs.google.com/spreadsheets/d/e/2PACX-1vSeHfx3yU6LKsFC6yqXlvymW2cpOX_UkeTGQ4oFkLPgZtmgGDyIGakACNGdYZOszNMkdCTtCJ-KnCLw/pub?gid=90551417&single=true&output=csv")
+ERP_CSV_PROPOSTAS  = os.environ.get("ERP_CSV_PROPOSTAS",  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=1966733628&single=true&output=csv")
+ERP_CSV_PAGAMENTOS = os.environ.get("ERP_CSV_PAGAMENTOS", "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=593188455&single=true&output=csv")
 
 def erp_csv(url, nome):
     """Lê aba do Google Sheets publicada como CSV."""
