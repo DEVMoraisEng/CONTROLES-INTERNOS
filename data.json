@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-05T17:56:51.287008+00:00",
+  "updated_at": "2026-05-05T17:59:05.989350+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -9192,11 +9192,11 @@
       "num_cadastro": 83688,
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2026-04-14",
+      "data_pre_vistoria": "2026-04-27",
       "tem_manual": "SIM",
-      "registro_pronto": "NÃO",
-      "devolveu_banco": "NÃO",
-      "recebeu": "NÃO",
+      "registro_pronto": "SIM",
+      "devolveu_banco": "SIM",
+      "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "NÃO",
