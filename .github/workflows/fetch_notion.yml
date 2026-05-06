@@ -25,12 +25,16 @@ jobs:
 
       - name: Gerar data.json
         env:
-          NOTION_TOKEN_DOCS:   ${{ secrets.NOTION_TOKEN_DOCS }}
-          NOTION_DB_DOCS:      ${{ secrets.NOTION_DB_DOCS }}
-          NOTION_TOKEN_VENDAS: ${{ secrets.NOTION_TOKEN_VENDAS }}
-          NOTION_DB_VENDAS:    ${{ secrets.NOTION_DB_VENDAS }}
-          ERP_CSV_PROPOSTAS:   ${{ secrets.ERP_CSV_PROPOSTAS }}
-          ERP_CSV_PAGAMENTOS:  ${{ secrets.ERP_CSV_PAGAMENTOS }}
+          NOTION_TOKEN_DOCS:    ${{ secrets.NOTION_TOKEN_DOCS }}
+          NOTION_DB_DOCS:       ${{ secrets.NOTION_DB_DOCS }}
+          NOTION_TOKEN_VENDAS:  ${{ secrets.NOTION_TOKEN_VENDAS }}
+          NOTION_DB_VENDAS:     ${{ secrets.NOTION_DB_VENDAS }}
+          ERP_CSV_PROPOSTAS:    ${{ secrets.ERP_CSV_PROPOSTAS }}
+          ERP_CSV_PAGAMENTOS:   ${{ secrets.ERP_CSV_PAGAMENTOS }}
+          ERP_CSV_OBRAS:        ${{ secrets.ERP_CSV_OBRAS }}
+          ERP_CSV_FATURAMENTOS: ${{ secrets.ERP_CSV_FATURAMENTOS }}
+          NOTION_TOKEN_METAS:   ${{ secrets.NOTION_TOKEN_METAS }}
+          NOTION_DB_METAS:      ${{ secrets.NOTION_DB_METAS }}
         run: python fetch_all.py
 
       - name: Commit data.json
@@ -48,7 +52,9 @@ jobs:
           cp terrabela.html dist/
           cp documentos.html dist/
           cp vendas.html dist/
+          cp analise.html dist/
           cp data.json dist/
+          cp logo.png dist/ 2>/dev/null || true
           cp TERRABELA_MAPA_DOCUMENTOS.svg dist/
           cp TERRABELA_MAPA_VENDAS.svg dist/
 
