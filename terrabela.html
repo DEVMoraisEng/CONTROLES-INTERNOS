@@ -2077,7 +2077,6 @@ function setModo(m) {
   renderMapa();
   buildFiltrosBar();
   buildTabela();
-  buildAnalises();
   setupPesquisa();
   clearSelection();
 }
@@ -2691,7 +2690,6 @@ async function init() {
     await renderMapa();
     buildFiltrosBar();
     buildTabela();
-    buildAnalises();
     setupPesquisa();
     document.getElementById('loading').classList.add('hidden');
   } catch (e) {
@@ -2703,41 +2701,6 @@ async function init() {
 init();
 </script>
 
-<!-- ═══ ANÁLISES DE DESEMPENHO ═══════════════════════════ -->
-<div class="analises-section" id="analises-section">
-  <div class="analises-title">Análises de Desempenho</div>
-  <div class="analises-subtitle" id="analises-modo-label">Gestão Documental · Terrabela do Cerrado vs. demais setores</div>
-
-  <!-- DOCS -->
-  <div id="analises-docs">
-    <div class="analises-group">
-      <div class="analises-group-title">Tempos de Processo — Linha 1</div>
-      <div class="graficos-grid cols-2" id="graficos-docs-linha1"></div>
-    </div>
-    <div class="analises-group">
-      <div class="analises-group-title">Tempos de Processo — Linha 2</div>
-      <div class="graficos-grid cols-2" id="graficos-docs-linha2"></div>
-    </div>
-    <div class="analises-group">
-      <div class="analises-group-title">Desempenho por Despachante</div>
-      <div class="graficos-grid cols-2" id="graficos-docs-linha3"></div>
-    </div>
-  </div>
-
-  <!-- VENDAS -->
-  <div id="analises-vendas" style="display:none">
-    <div class="analises-group">
-      <div class="graficos-grid cols-3" id="graficos-vendas-linha1"></div>
-    </div>
-    <div class="analises-group">
-      <div class="graficos-grid cols-3" id="graficos-vendas-linha2"></div>
-    </div>
-    <div class="analises-group">
-      <div class="analises-group-title">ROI e Margem Bruta por Lote</div>
-      <div class="graficos-grid cols-2" id="graficos-vendas-linha3"></div>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>

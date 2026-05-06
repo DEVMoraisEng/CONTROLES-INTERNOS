@@ -141,6 +141,8 @@ def parse_doc(page):
         "boletos_vistoria":         s("PAGOU BOLETOS DE VISTORIA CAIXA?"),
         "data_termino_obra":        d("DATA DE TÉRMINO DE OBRA"),
         "entrada_incorporacao_data":d("DATA DE ENTRADA NA INCORPORAÇÃO"),
+        "n_casas":                  n("Nº DE CASAS"),
+        "implantacao":              s("IMPLANTAÇÃO"),
         # ERP — preenchido depois
         "erp_orcado":    None,
         "erp_valor_pago": None,
@@ -201,8 +203,14 @@ def parse_venda(page):
 # Adicionar no GitHub Secrets:
 #   ERP_CSV_PROPOSTAS  = URL da aba Propostas publicada como CSV
 #   ERP_CSV_PAGAMENTOS = URL da aba Pagamentos publicada como CSV
-ERP_CSV_PROPOSTAS  = os.environ.get("ERP_CSV_PROPOSTAS",  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=1966733628&single=true&output=csv")
-ERP_CSV_PAGAMENTOS = os.environ.get("ERP_CSV_PAGAMENTOS", "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=593188455&single=true&output=csv")
+ERP_CSV_PROPOSTAS    = os.environ.get("ERP_CSV_PROPOSTAS",    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=1966733628&single=true&output=csv")
+ERP_CSV_PAGAMENTOS   = os.environ.get("ERP_CSV_PAGAMENTOS",   "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=593188455&single=true&output=csv")
+ERP_CSV_OBRAS        = os.environ.get("ERP_CSV_OBRAS",        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=931586083&single=true&output=csv")
+ERP_CSV_FATURAMENTOS = os.environ.get("ERP_CSV_FATURAMENTOS", "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=1427336895&single=true&output=csv")
+
+# ─── CREDENCIAIS NOTION METAS ────────────────────────────
+TOKEN_METAS = os.environ.get("NOTION_TOKEN_METAS", "")
+DB_METAS    = os.environ.get("NOTION_DB_METAS",    "358c5ab532d3804fbcbfebc3656b1220")
 
 def erp_csv(url, nome):
     """Lê aba do Google Sheets publicada como CSV."""
@@ -270,6 +278,78 @@ def buscar_erp():
     if pagos:   print("  Pagamentos ex:", list(pagos.keys())[:3])
     return orcados, pagos, pagos_detalhe
 
+
+def buscar_obras_erp():
+    """Busca aba Obras do ERP: nome + area_total."""
+    import re as _re3
+    obras = {}
+    print("  ERP: buscando Obras...")
+    for row in erp_csv(ERP_CSV_OBRAS, "obras"):
+        nome = (row.get("nome") or "").strip().upper()
+        area = row.get("area_total")
+        if nome and area:
+            try:
+                val = float(str(area).replace(",", "."))
+                obras[nome] = obras.get(nome, 0) + val
+            except:
+                pass
+    print(f"  ERP Obras: {len(obras)} registros")
+    return obras
+
+
+def buscar_faturamentos_erp():
+    """Busca aba Faturamentos do ERP: centro_de_custo + valor_liquido + data_competencia."""
+    import re as _re4
+    fat = []  # lista de dicts { cc, valor, mes }
+    print("  ERP: buscando Faturamentos...")
+    for row in erp_csv(ERP_CSV_FATURAMENTOS, "faturamentos"):
+        cc  = (row.get("centro_de_custo") or "").strip().upper()
+        val = row.get("valor_liquido")
+        dt  = (row.get("data_competencia") or "").strip()
+        if cc and val:
+            try:
+                v = float(str(val).replace(",", "."))
+                m1 = _re4.match(r'(\d{2})/(\d{2})/(\d{4})', dt)
+                m2 = _re4.match(r'(\d{4})-(\d{2})', dt)
+                if m1:   mes = f"{m1.group(3)}-{m1.group(2)}"
+                elif m2: mes = f"{m2.group(1)}-{m2.group(2)}"
+                else:    mes = "SEM DATA"
+                fat.append({"cc": cc, "valor": v, "mes": mes})
+            except:
+                pass
+    print(f"  ERP Faturamentos: {len(fat)} registros")
+    return fat
+
+
+def buscar_metas():
+    """Busca banco de dados METAS do Notion: ano + meta_casas."""
+    metas = []
+    if not TOKEN_METAS:
+        print("  METAS: token não configurado (secret NOTION_TOKEN_METAS)")
+        return metas
+    print("  Notion: buscando METAS...")
+    pages = notion_pages(TOKEN_METAS, DB_METAS)
+    for page in pages:
+        p = page.get("properties", {})
+        ano  = prop_number(get_prop(p, "ANO"))
+        qtd  = prop_number(get_prop(p, "META DE CASAS"))
+        # Tentar variações de nome
+        if ano is None:
+            for k in p:
+                if "ano" in k.lower():
+                    ano = prop_number(p[k])
+                    break
+        if qtd is None:
+            for k in p:
+                if "meta" in k.lower() or "casas" in k.lower():
+                    qtd = prop_number(p[k])
+                    break
+        if ano is not None:
+            metas.append({"ano": int(ano), "meta_casas": qtd or 0})
+    metas.sort(key=lambda x: x["ano"])
+    print(f"  METAS: {len(metas)} registros")
+    return metas
+
 # ─── MAIN ─────────────────────────────────────────────────────
 def main():
     print("Buscando DOCUMENTOS...")
@@ -282,9 +362,17 @@ def main():
     print(f"  {len(pages_vendas)} registros")
     vendas = [parse_venda(p) for p in pages_vendas]
 
-    print("Buscando ERP...")
+    print("Buscando ERP (pagamentos)...")
     orcados, pagos, pagos_detalhe = buscar_erp()
-    print(f"  {len(orcados)} propostas, {len(pagos)} centros de custo")
+
+    print("Buscando ERP (obras)...")
+    obras_erp = buscar_obras_erp()
+
+    print("Buscando ERP (faturamentos)...")
+    faturamentos_erp = buscar_faturamentos_erp()
+
+    print("Buscando METAS...")
+    metas = buscar_metas()
 
     # Normalizar keys para cruzamento (remove espaços duplos, upper)
     def norm(s):
@@ -300,26 +388,50 @@ def main():
         end = norm(doc.get("endereco"))
         doc["erp_orcado"]     = orcados_norm.get(end)
         doc["erp_valor_pago"] = pagos_norm.get(end)
-        # Se não encontrou, marcar como SEM DADOS
         if doc["erp_orcado"]     is None: doc["erp_orcado"]     = "SEM DADOS"
         if doc["erp_valor_pago"] is None: doc["erp_valor_pago"] = "SEM DADOS"
-        # Log para debug
         if doc["erp_orcado"] != "SEM DADOS":
             print(f"    ERP match: {end} → orçado={doc['erp_orcado']}, pago={doc['erp_valor_pago']}")
 
-    # Montar desembolso por setor: { setor: { obra: { mes: valor } } }
-    # Para uso nos gráficos — filtrado no frontend por setor
+    # Construir lista de endereços de obras conhecidas (para filtro custo obra)
+    obras_enderecos = set(norm(doc.get("endereco")) for doc in documentos)
+
+    # Agregar faturamentos por tipo e mês
+    # Tipos: obra, escritorio, pos_obra — classificados pelo centro_de_custo
+    fat_por_tipo = {}  # { tipo: { 'YYYY-MM': valor } }
+    for item in faturamentos_erp:
+        cc  = item["cc"]
+        val = item["valor"]
+        mes = item["mes"]
+        if "ESCRIT" in cc:
+            tipo = "escritorio"
+        elif "POS OBRA" in cc or "PÓS OBRA" in cc or "POS_OBRA" in cc:
+            tipo = "pos_obra"
+        else:
+            # Checar se é obra conhecida
+            if cc in obras_enderecos or any(cc in end for end in obras_enderecos):
+                tipo = "obra"
+            else:
+                tipo = "outros"
+        if tipo not in fat_por_tipo:
+            fat_por_tipo[tipo] = {}
+        fat_por_tipo[tipo][mes] = fat_por_tipo[tipo].get(mes, 0) + val
+
     output = {
-        "updated_at": datetime.now(timezone.utc).isoformat(),
-        "documentos": documentos,
-        "vendas":     vendas,
+        "updated_at":         datetime.now(timezone.utc).isoformat(),
+        "documentos":         documentos,
+        "vendas":             vendas,
         "pagamentos_detalhe": {k: v for k, v in pagos_detalhe.items()},
+        "obras_erp":          obras_erp,          # { nome_upper: area_total }
+        "faturamentos_erp":   faturamentos_erp,   # lista [{cc, valor, mes}]
+        "fat_por_tipo":       fat_por_tipo,        # { tipo: { mes: valor } }
+        "metas":              metas,               # [{ano, meta_casas}]
     }
 
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"\ndata.json gerado: {len(documentos)} docs, {len(vendas)} vendas")
+    print(f"\ndata.json gerado: {len(documentos)} docs, {len(vendas)} vendas, {len(metas)} metas")
 
 if __name__ == "__main__":
     main()

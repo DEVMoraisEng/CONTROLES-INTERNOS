@@ -160,12 +160,52 @@ footer{margin-top:auto;padding:16px 32px;text-align:center;
     </div>
   </div>
 
+  <!-- Análise de Dados -->
+  <div class="section-card" onclick="abrirAnalise()">
+    <div class="card-header">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Análise de Dados</div>
+      <div class="card-badge">Dashboard Gerencial</div>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">Dashboard com indicadores mensais de VGV, custos de obra e escritório, metas de produção e tempos médios de processo.</div>
+      <div class="card-features">
+        <div class="card-feat">VGV e custos mensais</div>
+        <div class="card-feat">Metas × realizado (lotes, obras, vendas)</div>
+        <div class="card-feat">Tempos médios de processo</div>
+        <div class="card-feat">Rankings de corretores</div>
+      </div>
+      <button class="btn-acessar" onclick="event.stopPropagation();abrirAnalise()">Acessar →</button>
+    </div>
+  </div>
+
 </div>
 
 <footer>
   Morais Engenharia e Construção · Controle Interno · 
   <span id="footer-updated"></span>
 </footer>
+
+<!-- ═══ MODAL ANÁLISE DE DADOS ═══════════════════════════════ -->
+<div id="modal-analise" style="
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:var(--bg);overflow:auto;
+">
+  <iframe id="iframe-analise" src="analise.html"
+    style="width:100%;height:100%;border:none;display:block">
+  </iframe>
+</div>
+
+<style>
+/* card Análise com destaque teal */
+.section-card:last-child .card-header { background: var(--azul-esc); border-bottom-color: #4cd964; }
+.section-card:last-child .card-badge  { background: rgba(76,217,100,.15); border-color: rgba(76,217,100,.4); color: #4cd964; }
+.section-card:last-child .btn-acessar { background: var(--azul-esc); border: none; width: 100%; padding: 11px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; cursor: pointer; border-radius: 7px;
+  color: #fff; transition: background .15s; }
+.section-card:last-child .btn-acessar:hover { background: #0f2233; }
+</style>
 
 <script>
 const DATA_URL = 'data.json';
@@ -176,6 +216,16 @@ fetch(DATA_URL).then(r => r.json()).then(d => {
     document.getElementById('footer-updated').textContent = 'Dados de ' + dt;
   }
 }).catch(() => {});
+
+function abrirAnalise() {
+  document.getElementById('modal-analise').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+// A analise.html chama window.parent.fecharAnalise() para fechar
+window.fecharAnalise = function() {
+  document.getElementById('modal-analise').style.display = 'none';
+  document.body.style.overflow = '';
+};
 </script>
 </body>
 </html>
