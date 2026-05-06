@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-06T11:30:27.603311+00:00",
+  "updated_at": "2026-05-06T16:01:21.227473+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -17,7 +17,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-16",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -60,6 +60,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 252859.1088,
       "erp_valor_pago": 297903.4299998
     },
@@ -79,7 +81,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": "2026-03-03",
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-03-03",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -122,6 +124,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 265350.2126,
       "erp_valor_pago": 221146.78
     },
@@ -141,7 +145,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": "2025-11-10",
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-10",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -184,6 +188,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 263363.9107,
       "erp_valor_pago": 235325.45000000004
     },
@@ -203,7 +209,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-02-19",
@@ -246,6 +252,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 74502.3
     },
@@ -265,7 +273,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -308,6 +316,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 1354.3500000000001
     },
@@ -327,7 +337,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-02-01",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -370,6 +380,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 497875.7039,
       "erp_valor_pago": 297996.45
     },
@@ -389,7 +401,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-13",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -432,6 +444,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 248935.0247,
       "erp_valor_pago": 324664.16
     },
@@ -451,7 +465,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -494,6 +508,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-03-11",
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -513,7 +529,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": "2025-11-10",
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-10",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -556,6 +572,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 263012.3558,
       "erp_valor_pago": 249513.15999999997
     },
@@ -575,7 +593,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-02-12",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -618,6 +636,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 254259.1169,
       "erp_valor_pago": 92750.56999990002
     },
@@ -637,7 +657,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -680,6 +700,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-05-30",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -699,7 +721,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -742,6 +764,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 568.5
     },
@@ -761,7 +785,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -804,6 +828,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -823,7 +849,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-02-05",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -866,6 +892,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 256936.1361,
       "erp_valor_pago": 151806.63000000003
     },
@@ -885,7 +913,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-03-10",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -928,6 +956,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 263775.1945,
       "erp_valor_pago": 109633.53
     },
@@ -947,7 +977,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-03-01",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -990,6 +1020,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-16",
+      "n_casas": 4,
+      "implantacao": "RUA",
       "erp_orcado": 469362.8405,
       "erp_valor_pago": 206956.30999999994
     },
@@ -1009,7 +1041,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": "2025-11-10",
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-10",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1052,6 +1084,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 274921.9392,
       "erp_valor_pago": 238331.87000027
     },
@@ -1071,7 +1105,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "JOAO VITOR CABRAL DE MORAIS",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1114,6 +1148,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 4,
+      "implantacao": "RUA",
       "erp_orcado": 567638.4801,
       "erp_valor_pago": 600961.3400000001
     },
@@ -1133,7 +1169,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-09-20",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -1176,6 +1212,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-03-23",
       "entrada_incorporacao_data": "2025-11-13",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 289937.0028,
       "erp_valor_pago": 274975.61000002
     },
@@ -1195,7 +1233,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1238,6 +1276,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 79557.91
     },
@@ -1257,7 +1297,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "CAIO",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1300,6 +1340,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 254585.0514,
       "erp_valor_pago": 3000.33
     },
@@ -1319,7 +1361,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1362,6 +1404,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 275058.456,
       "erp_valor_pago": 24857.9
     },
@@ -1381,7 +1425,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-03-17",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1424,6 +1468,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 266512.5572,
       "erp_valor_pago": 56960.33000000001
     },
@@ -1443,7 +1489,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-02-10",
@@ -1486,6 +1532,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 71445.63
     },
@@ -1505,7 +1553,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1548,6 +1596,8 @@
       "boletos_vistoria": null,
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 243019.4453,
       "erp_valor_pago": 299540.74999999994
     },
@@ -1567,7 +1617,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1610,6 +1660,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -1629,7 +1681,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-16",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -1672,6 +1724,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 250663.3052,
       "erp_valor_pago": 297928.75999980007
     },
@@ -1691,7 +1745,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-09-25",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1734,6 +1788,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 253129.9168,
       "erp_valor_pago": 31538.8900002
     },
@@ -1753,7 +1809,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-03-01",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1796,6 +1852,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-12",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 264232.1136,
       "erp_valor_pago": 196698.59999959997
     },
@@ -1815,7 +1873,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": "2025-10-10",
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-10-10",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1858,6 +1916,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-14",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 253200.7506,
       "erp_valor_pago": 304151.39
     },
@@ -1877,7 +1937,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1920,6 +1980,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -1939,7 +2001,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -1982,6 +2044,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -2001,7 +2065,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2044,6 +2108,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 262339.0697,
       "erp_valor_pago": 248291.18000050006
     },
@@ -2063,7 +2129,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-02-19",
@@ -2106,6 +2172,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 71615.21
     },
@@ -2125,7 +2193,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": "2026-03-03",
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-03-03",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2168,6 +2236,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 269670.1526,
       "erp_valor_pago": 232364.21999999997
     },
@@ -2187,7 +2257,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": "2025-12-20",
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-12-20",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2230,6 +2300,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-01-27",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 275029.5848,
       "erp_valor_pago": 312848.5200005
     },
@@ -2249,7 +2321,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2292,6 +2364,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-05-30",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -2311,7 +2385,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-04-13",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -2354,6 +2428,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 266458.8184,
       "erp_valor_pago": 11940.84
     },
@@ -2373,7 +2449,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "JOAO VITOR",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-08-07",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -2416,6 +2492,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": "2026-04-09",
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 282695.4669,
       "erp_valor_pago": 381391.93000025995
     },
@@ -2435,7 +2513,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-03-24",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2478,6 +2556,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 271441.016,
       "erp_valor_pago": 2825.05
     },
@@ -2497,7 +2577,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2540,6 +2620,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-04-23",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -2559,7 +2641,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": "2025-12-20",
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-12-20",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2602,6 +2684,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-01-27",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 275796.2781,
       "erp_valor_pago": 313863.19000072003
     },
@@ -2621,7 +2705,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-10-09",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2664,6 +2748,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 477570.1478,
       "erp_valor_pago": 419722.80000000005
     },
@@ -2683,7 +2769,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-01-22",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -2726,6 +2812,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 249673.4914,
       "erp_valor_pago": 256439.04
     },
@@ -2745,7 +2833,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2788,6 +2876,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-06",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 266782.2914,
       "erp_valor_pago": 348137.07
     },
@@ -2807,7 +2897,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-01-09",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -2850,6 +2940,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 254549.5323,
       "erp_valor_pago": 110543.4600004
     },
@@ -2869,7 +2961,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2912,6 +3004,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-07-02",
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 397372.153,
       "erp_valor_pago": 363864.6999999001
     },
@@ -2931,7 +3025,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -2974,6 +3068,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-05-30",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -2993,7 +3089,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-09-20",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -3036,6 +3132,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-03-23",
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 287945.1731,
       "erp_valor_pago": 280237.74999961996
     },
@@ -3055,7 +3153,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-16",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -3098,6 +3196,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 250834.2957,
       "erp_valor_pago": 290406.04999999003
     },
@@ -3117,7 +3217,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-08-25",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3160,6 +3260,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 485112.1026,
       "erp_valor_pago": 498039.79000000004
     },
@@ -3179,7 +3281,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3222,6 +3324,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-03",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -3241,7 +3345,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3284,6 +3388,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 249549.5112,
       "erp_valor_pago": 244184.0800003
     },
@@ -3303,7 +3409,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3346,6 +3452,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -3365,7 +3473,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3408,6 +3516,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-07",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 251002.5278,
       "erp_valor_pago": 227007.34000000003
     },
@@ -3427,7 +3537,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -3470,6 +3580,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 3897.22
     },
@@ -3489,7 +3601,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3532,6 +3644,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-09",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -3551,7 +3665,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3594,6 +3708,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-04-23",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -3613,7 +3729,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3656,6 +3772,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-06-24",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -3675,7 +3793,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -3718,6 +3836,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 3311.1099999999997
     },
@@ -3737,7 +3857,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-12-11",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3780,6 +3900,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-16",
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 357000.1259,
       "erp_valor_pago": 285558.5900005501
     },
@@ -3799,7 +3921,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-09-23",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -3842,6 +3964,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": "2026-04-09",
       "entrada_incorporacao_data": "2025-11-13",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 274524.3485,
       "erp_valor_pago": 268710.0299998
     },
@@ -3861,7 +3985,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3904,6 +4028,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 1553.4
     },
@@ -3923,7 +4049,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -3966,6 +4092,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -3985,7 +4113,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -4028,6 +4156,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 692.95
     },
@@ -4047,7 +4177,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-01-15",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4090,6 +4220,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 259532.9836,
       "erp_valor_pago": 152236.66000010003
     },
@@ -4109,7 +4241,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4152,6 +4284,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-27",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 257356.771,
       "erp_valor_pago": 248936.27999999997
     },
@@ -4171,7 +4305,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-01-05",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4214,6 +4348,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 260044.1526,
       "erp_valor_pago": 161822.81999999992
     },
@@ -4233,7 +4369,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "CAIO ARAUJO",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -4276,6 +4412,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 5,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -4295,7 +4433,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4338,6 +4476,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -4357,7 +4497,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4400,6 +4540,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 1133.4399999999998
     },
@@ -4419,7 +4561,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4462,6 +4604,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 4,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -4524,6 +4668,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 96887.89
     },
@@ -4543,7 +4689,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4586,6 +4732,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 249014.8218,
       "erp_valor_pago": 237434.5800000799
     },
@@ -4605,7 +4753,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-02-05",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -4648,6 +4796,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 257466.9795,
       "erp_valor_pago": 170351.00999999995
     },
@@ -4667,7 +4817,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "CAIO",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4710,6 +4860,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 263657.0207,
       "erp_valor_pago": 25921.87
     },
@@ -4729,7 +4881,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4772,6 +4924,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 86082.44000000002
     },
@@ -4791,7 +4945,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4834,6 +4988,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-06-13",
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -4853,7 +5009,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-09-25",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -4896,6 +5052,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": "2026-04-10",
       "entrada_incorporacao_data": "2025-11-13",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 254382.3262,
       "erp_valor_pago": 263817.54000095004
     },
@@ -4915,7 +5073,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -4958,6 +5116,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-06-16",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -4977,7 +5137,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5020,6 +5180,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 462.29999999999995
     },
@@ -5039,7 +5201,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5082,6 +5244,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 273954.397,
       "erp_valor_pago": 1553.4
     },
@@ -5101,7 +5265,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -5144,6 +5308,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 253965.0885,
       "erp_valor_pago": 24616.05
     },
@@ -5163,7 +5329,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-02-10",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5206,6 +5372,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-16",
+      "n_casas": 4,
+      "implantacao": "RUA",
       "erp_orcado": 378803.8031,
       "erp_valor_pago": 204641.00999999995
     },
@@ -5225,7 +5393,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-01-09",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -5268,6 +5436,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 254801.7523,
       "erp_valor_pago": 106924.22999970001
     },
@@ -5287,7 +5457,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5330,6 +5500,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 271439.0319,
       "erp_valor_pago": 25964.140000400002
     },
@@ -5349,7 +5521,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5392,6 +5564,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-03-11",
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -5411,7 +5585,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-02-19",
@@ -5454,6 +5628,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 74584.37
     },
@@ -5473,7 +5649,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-02-05",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5516,6 +5692,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 263243.1919,
       "erp_valor_pago": 167521.24999971
     },
@@ -5535,7 +5713,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5578,6 +5756,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -5597,7 +5777,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5640,6 +5820,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-06-16",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -5659,7 +5841,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -5702,6 +5884,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 560.0
     },
@@ -5721,7 +5905,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-01-22",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -5764,6 +5948,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 249694.7214,
       "erp_valor_pago": 242728.19
     },
@@ -5783,7 +5969,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5826,6 +6012,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -5845,7 +6033,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "CAIO",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -5888,6 +6076,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 237431.7821,
       "erp_valor_pago": 2804.59
     },
@@ -5907,7 +6097,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-02-05",
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -5950,6 +6140,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 256463.7481,
       "erp_valor_pago": 171721.28
     },
@@ -5969,7 +6161,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6012,6 +6204,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -6031,7 +6225,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6074,6 +6268,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 1553.4
     },
@@ -6093,7 +6289,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-09-01",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6136,6 +6332,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 485493.6866,
       "erp_valor_pago": 515586.85999971
     },
@@ -6155,7 +6353,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-13",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -6198,6 +6396,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 249234.6977,
       "erp_valor_pago": 323958.73000030004
     },
@@ -6217,7 +6417,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-03-01",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6260,6 +6460,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-03-10",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 274981.0693,
       "erp_valor_pago": 204117.04000000004
     },
@@ -6279,7 +6481,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6322,6 +6524,8 @@
       "boletos_vistoria": null,
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 242867.3153,
       "erp_valor_pago": 293097.66999976395
     },
@@ -6341,7 +6545,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6384,6 +6588,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 5751.86
     },
@@ -6403,7 +6609,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6446,6 +6652,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-04-23",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -6465,7 +6673,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -6508,6 +6716,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 3962.0099999999998
     },
@@ -6527,7 +6737,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6570,6 +6780,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-04-28",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 269444.3122,
       "erp_valor_pago": 3840.8200000000006
     },
@@ -6589,7 +6801,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6632,6 +6844,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 256395.6109,
       "erp_valor_pago": 228590.84000000003
     },
@@ -6651,7 +6865,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6694,6 +6908,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 3890.95
     },
@@ -6713,7 +6929,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "CAIO ARAUJO",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -6756,6 +6972,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 311270.4296,
       "erp_valor_pago": 399946.12000000005
     },
@@ -6775,7 +6993,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6818,6 +7036,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": "SEM DADOS"
     },
@@ -6837,7 +7057,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6880,6 +7100,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -6899,7 +7121,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -6942,6 +7164,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 108.39
     },
@@ -6961,7 +7185,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-16",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -7004,6 +7228,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 254330.6517,
       "erp_valor_pago": 178787.08000005005
     },
@@ -7023,7 +7249,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7066,6 +7292,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-05-20",
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -7085,7 +7313,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": null,
       "data_sol_uso_solo": null,
@@ -7128,6 +7356,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 3311.11
     },
@@ -7147,7 +7377,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7190,6 +7420,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 1025.05
     },
@@ -7209,7 +7441,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-04-02",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -7252,6 +7484,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 249311.2749,
       "erp_valor_pago": 151540.13999999996
     },
@@ -7271,7 +7505,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-11-16",
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2025-10-13",
@@ -7314,6 +7548,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 250269.2037,
       "erp_valor_pago": 179929.94999999995
     },
@@ -7333,7 +7569,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7376,6 +7612,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 81600.6
     },
@@ -7395,7 +7633,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2025-10-09",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7438,6 +7676,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 453951.5105,
       "erp_valor_pago": 473057.28000002995
     },
@@ -7457,7 +7697,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7500,6 +7740,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-03",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -7519,7 +7761,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7562,6 +7804,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 255669.4342,
       "erp_valor_pago": 228937.52000020002
     },
@@ -7581,7 +7825,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7624,6 +7868,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 79557.9
     },
@@ -7643,7 +7889,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7686,6 +7932,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 80980.88
     },
@@ -7705,7 +7953,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7748,6 +7996,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -7767,7 +8017,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-02-19",
@@ -7810,6 +8060,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 74510.81999999999
     },
@@ -7829,7 +8081,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": "2026-02-15",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7872,6 +8124,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 506844.8944,
       "erp_valor_pago": 269178.83
     },
@@ -7891,7 +8145,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -7934,6 +8188,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-04-23",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -7953,7 +8209,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-02-13",
@@ -7996,6 +8252,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 71445.63
     },
@@ -8015,7 +8273,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8058,6 +8316,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-05-30",
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -8077,7 +8337,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8120,6 +8380,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 585.13
     },
@@ -8139,7 +8401,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8182,6 +8444,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -8201,7 +8465,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8244,6 +8508,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-10-03",
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -8263,7 +8529,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "SIM",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8306,6 +8572,8 @@
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": "SEM DADOS"
     },
@@ -8325,7 +8593,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-04-07",
@@ -8368,6 +8636,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 120089.82000009996
     },
@@ -8387,7 +8657,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-04-07",
@@ -8430,6 +8700,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 119955.18000009995
     },
@@ -8449,7 +8721,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8492,6 +8764,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 91012.25
     },
@@ -8511,7 +8785,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-04-07",
@@ -8554,6 +8828,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 119677.54000009997
     },
@@ -8573,7 +8849,7 @@
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8616,6 +8892,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 81168.17
     },
@@ -8635,7 +8913,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-04-07",
@@ -8678,6 +8956,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 119677.54000009997
     },
@@ -8697,7 +8977,7 @@
       "eng_execucao": "GUILHERME",
       "engenheiro_rt": "PAULA FLEURY",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "SIM",
       "data_sol_uso_solo": "2026-04-07",
@@ -8740,6 +9020,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 3,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 119677.55000009996
     },
@@ -8759,7 +9041,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": null,
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8802,6 +9084,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": 87000.0
     },
@@ -8821,7 +9105,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": null,
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8864,6 +9148,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": "SEM DADOS",
       "erp_valor_pago": 87000.0
     },
@@ -8883,7 +9169,7 @@
       "eng_execucao": null,
       "engenheiro_rt": null,
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8926,6 +9212,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 77375.0
     },
@@ -8945,7 +9233,7 @@
       "eng_execucao": null,
       "engenheiro_rt": null,
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -8988,6 +9276,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 77375.0
     },
@@ -9007,7 +9297,7 @@
       "eng_execucao": null,
       "engenheiro_rt": null,
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -9050,6 +9340,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 77429.99
     },
@@ -9069,7 +9361,7 @@
       "eng_execucao": null,
       "engenheiro_rt": null,
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": null,
       "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
@@ -9112,6 +9404,8 @@
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
+      "n_casas": 2,
+      "implantacao": "RUA",
       "erp_orcado": 0.0,
       "erp_valor_pago": 77375.0
     }
@@ -12634,8 +12928,8 @@
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-04-27",
       "tem_manual": "SIM",
-      "registro_pronto": "NÃO",
-      "devolveu_banco": "NÃO",
+      "registro_pronto": "SIM",
+      "devolveu_banco": "SIM",
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
       "data_entrega": null,
@@ -24003,5 +24297,1667 @@
       "2025-07": 9547.3,
       "2025-08": 25.9
     }
-  }
+  },
+  "obras_erp": {
+    "Z. [OBRA MODELO] CASA ALTO PADRÃ£O - 220 MÂ²": 0.0,
+    "Z. [OBRA MODELO] CASA MÃ©DIO PADRÃ£O - 100 M2": 0.0,
+    "Z. [OBRA MODELO] REFORMA": 0.0,
+    "RB 24 QD 06 LT 26": 4462.14,
+    "I 3 QD 04 LT 17": 0.0,
+    "Z. TESTE": 0.0,
+    "Z. (OBRA MODELO) - CASA 2 QUARTOS": 0.0,
+    "W 6 QD 17 LT 06": 218.76,
+    "FERROVIARIOS QD 01 LT 13": 209.73,
+    "FERROVIARIOS QD 01 LT 12": 209.73,
+    "RR 04 QD 03 LT 19": 157.0,
+    "FERROVIARIOS QD 01 LT 14": 209.73,
+    "FERROVIARIOS QD 01 LT 15": 209.73,
+    "Z. MODELO CASAS PADRÃ£O MCMV": 0.0,
+    "TB 20 QD 37 LT 17": 189.99,
+    "TB 14 QD 43 LT 48": 118.16,
+    "TB 19 QD 46 LT 07": 118.16,
+    "TB 14 QD 43 LT 35": 118.16,
+    "ESCRITORIO - MORAIS ENGENHARIA": 0.0,
+    "TB 17 QD 48 LT 41": 118.16,
+    "FERROVIARIOS QD 01 LT 16": 209.73,
+    "FERROVIARIOS QD 01 LT 17": 209.73,
+    "TB 17 QD 48 LT 44": 118.16,
+    "TB 17 QD 48 LT 38": 118.16,
+    "TB 17 QD 48 LT 40": 118.16,
+    "TB 17 QD 48 LT 46": 118.16,
+    "MORAIS ENGENHARIA - FATURAMENTO - SICOOB": 0.0,
+    "TERRA BELA - FATURAMENTO - SICOOB": 0.0,
+    "GERCINA BORGES TEIXEIRA QD 02 LT 02": 131.24,
+    "GERCINA BORGES TEIXEIRA QD 02 LT 03": 131.24,
+    "TB 21 QD 46 LT 18": 120.87,
+    "RPB 24 QD 26A LT 01": 118.16,
+    "RPB 24 QD 26A LT 04": 118.16,
+    "RPB 24 QD 26A LT 05": 118.16,
+    "RPB 24 QD 26A LT 09": 118.16,
+    "RPB 24 QD 26A LT 10": 118.16,
+    "RPB 24 QD 26A LT 11": 118.16,
+    "RPB 24 QD 26A LT 12": 118.16,
+    "RPB 24 QD 26A LT 13": 118.16,
+    "RPB 24 QD 26A LT 14": 118.16,
+    "RPB 24 QD 26A LT 17": 127.7,
+    "RPB 24 QD 26A LT 02": 118.16,
+    "RPB 24 QD 26A LT 07": 118.12,
+    "RPB 24 QD 26A LT 16": 118.16,
+    "RPB 24 QD 26A LT 06": 118.12,
+    "RPB 24 QD 26A LT 08": 118.16,
+    "RPB 24 QD 26A LT 15": 118.16,
+    "CONDOMÃNIO RESERVA DOS IPÃS": 0.0,
+    "MORAIS EMPREENDIMENTOS BURITIS - FATURAMENTO - SICOOB": 0.0,
+    "TB 19 QD 50 LT 03": 118.16,
+    "TB 19 QD 50 LT 04": 118.16,
+    "ESCRITORIO MOURA DANTAS EMPREENDIMENTOS SICOOB": 0.0,
+    "MOURA EMPREENDIMENTOS - CONTA 49310-4 / BOX OBRAS": 0.0,
+    "MOURA EMPREENDIMENTOS Â BOX OBRAS": 0.0,
+    "SALA 1212": 0.0,
+    "MORAIS EMPREENDIMENTOS BURITIS - FATURAMENTO - INTER": 0.0,
+    "RPB 24 QD 28 LT 01": 121.76,
+    "RPB 24 QD 29 LT 42": 0.0,
+    "TB 21 QD 50 LT 32": 118.16,
+    "TB 21 QD 50 LT 26": 118.16,
+    "TB 21 QD 50 LT 39": 118.16,
+    "TB 21 QD 50 LT 40": 118.16,
+    "TB 21 QD 50 LT 25": 118.16,
+    "TB 21 QD 51 LT 32": 173.5,
+    "TB 21 QD 51 LT 33": 118.16,
+    "TB 21 QD 51 LT 34": 118.16,
+    "TB 21 QD 51 LT 35": 118.16,
+    "TB 21 QD 46 LT 26": 173.5,
+    "REFORMA SALA 1212": 0.0,
+    "CONDOMÃNIO VALE DAS BRISAS": 0.0,
+    "ATALANTA QD 01 LT 21": 116.3,
+    "ATALANTA QD 01 LT 22": 116.3,
+    "ATALANTA QD 01 LT 23": 116.3,
+    "ATALANTA QD 01 LT 24": 130.8,
+    "APOLO LYKEIOS QD 01 LT 33": 116.3,
+    "APOLO LYKEIOS QD 01 LT 34": 116.3,
+    "APOLO LYKEIOS QD 01 LT 35": 116.3,
+    "APOLO LYKEIOS QD 01 LT 36": 116.3,
+    "APOLO LYKEIOS QD 01 LT 37": 116.3,
+    "PATHERNON QD 01 LT 26": 135.86,
+    "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2": 175.63,
+    "DONA MORENA QD 18 LT 8-11 B1": 212.12,
+    "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3": 224.17,
+    "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS": 0.0,
+    "OBRA TESTE": 160.0,
+    "ESCRITORIO - IPANEMA MORAIS INCORPORACOES SPE LTDA": 0.0,
+    "TB 18 QD 49 LT 37": 176.0,
+    "TB 18 QD 49 LT 24": 118.12,
+    "TB 18 QD 49 LT 26": 176.0,
+    "TB 18 QD 49 LT 29": 118.12,
+    "TB 18 QD 49 LT 27": 118.12,
+    "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA": 0.0,
+    "IPANEMA - FATURAMENTO - SICOOB": 0.0,
+    "TB 18 QD 49 LT 32": 118.12,
+    "TB 18 QD 49 LT 31": 176.0,
+    "TB 18 QD 49 LT 30": 0.0,
+    "SV 26 QD 40 LT 17": 0.0,
+    "SV 13 QD 40 LT 18": 0.0,
+    "SV 13 QD 40 LT 19": 0.0,
+    "TB 18 QD 49 LT 35": 118.12,
+    "TB 01 QD 49 LT 40": 0.0,
+    "VXZ ESCRITORIO": 0.0,
+    "RUA 8 QD 09 LT 05 - GALPÃO": 0.0,
+    "POS OBRA MORAIS ENGENHARIA": 0.0,
+    "RR 01 QD 01 LT 12": 194.2,
+    "RR 03  QD 02 LT 20": 0.0,
+    "RR 15 QD 02 LT 12": 170.75,
+    "TB 18 QD 49 LT 38": 176.0,
+    "TB 16 QD 47 LT 40": 0.0,
+    "TB 25 QD 47 LT 44": 0.0,
+    "SV 24 QD 40 LT 22": 0.0,
+    "SV 24 QD 40 LT 21": 0.0,
+    "SV 13 QD 40 LT 20": 0.0,
+    "POS OBRA JULIO CESAR": 0.0,
+    "POS OBRA JOÃO VITOR": 0.0,
+    "OBRA TESTE DE COEFICIENTES (GERCINA LT 02)": 0.0,
+    "ESCRITORIO - TERRA BELA MORAIS ENGENHARIA SPE LTDA": 0.0,
+    "RR 02 QD 01 LT 29": 0.0,
+    "TB 21 QD 51 LT 23": 0.0,
+    "TB 21 QD 51 LT 26": 0.0,
+    "TB 21 QD 51 LT 13": 0.0,
+    "TB 19 QD 51 LT 14": 0.0,
+    "TB 19 QD 51 LT 13": 0.0,
+    "TB 15 QD 47 LT 18": 0.0,
+    "TB 17 QD 49 LT 10": 0.0,
+    "TB 17 QD 49 LT 15": 176.0,
+    "TB 21 QD 51 LT 29": 0.0,
+    "TB 21 QD 51 LT 28": 0.0,
+    "TESTE": 0.0,
+    "52 QD 81 LT 12": 0.0,
+    "52 QD 81 LT 11": 0.0,
+    "52 QD 81 LT 09": 0.0,
+    "66 QD 81 LT 08": 0.0,
+    "52 QD 81 LT 10": 0.0,
+    "TB 21 QD 50 LT 34": 0.0,
+    "TB 14 QD 42 LT 19": 0.0,
+    "TB 19 QD 51 LT 16": 0.0,
+    "TB 19 QD 51 LT 19": 0.0,
+    "TB 19 QD 51 LT 15": 0.0,
+    "RR 01 QD 01 LT 09": 0.0,
+    "TB 19 QD 51 LT 17": 0.0,
+    "REEMBOLSO - EMPRESA MORAIS ENGENHARIA": 0.0,
+    "ESCRITORIO - MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA": 0.0,
+    "ESCRITORIO - MORAIS PARTICIPAÃÃES IMOBILIARIAS SPE I LTDA": 0.0,
+    "ESCRITORIO - MORAIS EMPREENDIMENTOS GOIÃNIA SPE I LTDA": 0.0,
+    "A CLASSIFICAR - OBRA PENDENTE": 0.0,
+    "RR 02 QD 01 LT 23": 0.0,
+    "RR 01 QD 01 LT 08": 0.0,
+    "TB 19 QD 50 LT 07": 0.0,
+    "TB 19 QD 50 LT 09": 0.0,
+    "TB 21 QD 51 LT 38": 0.0,
+    "TB 19 QD 51 LT 20": 0.0
+  },
+  "faturamentos_erp": [
+    {
+      "cc": "RB 24 QD 06 LT 26",
+      "valor": 8675.55,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 8675.55,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 4275.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 45633.86,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 38868.12,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 9088.88,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 250000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 250000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 250000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 29818.15,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 13",
+      "valor": 40000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 310000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 310000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 310000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 310000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 310000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 310000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 310000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 310000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 0.01,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 14",
+      "valor": 35000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 14",
+      "valor": 50000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 15",
+      "valor": 42000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 15",
+      "valor": 25000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 15",
+      "valor": 20000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 20000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 35879.95,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 60000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 60000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 24867.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 60000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 20000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 40000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 20000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 100700.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 40000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 20000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 0.01,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 40000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 10000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 35000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 35000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 30000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 35000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 30000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 30000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 50000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 50000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 50000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 50000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 38",
+      "valor": 50000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 20000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 10000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 20000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 60000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 15000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TERRA BELA - FATURAMENTO - SICOOB",
+      "valor": 10000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TERRA BELA - FATURAMENTO - SICOOB",
+      "valor": 17000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 46 LT 18",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 13",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 13",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 13",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 260000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 260000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 205.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 280000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 280000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
+      "valor": 265000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
+      "valor": 265000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
+      "valor": 265000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
+      "valor": 265000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 252000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 252000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 252000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 265000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "CONDOMÃNIO RESERVA DOS IPÃS",
+      "valor": 14340.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "MORAIS EMPREENDIMENTOS BURITIS - FATURAMENTO - SICOOB",
+      "valor": 5000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 257000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 257000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 248342.94,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 248342.94,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 248342.94,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 248342.94,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 268024.9,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 268024.9,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 268024.9,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 268024.9,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 50000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 35000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 35000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 25000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 31000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 60000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 30000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 25000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 39",
+      "valor": 125.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 40",
+      "valor": 125.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 35000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 50000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 35000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 15643.88,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 35000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 35000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 32",
+      "valor": 125.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 33",
+      "valor": 125.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 50965.18,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 13070.67,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 25000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 32366.15,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 7358.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 25000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 1067.84,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 80000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 30000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 90000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "CONDOMÃNIO VALE DAS BRISAS",
+      "valor": 214.14,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 50000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 15708.7,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 6302.72,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 17988.58,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "APOLO LYKEIOS QD 01 LT 33",
+      "valor": 1035.16,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 14210.8,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 15789.2,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 20000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 50000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 28500.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 15000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 7500.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 10000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 7500.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 5000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 3500.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÃRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 25000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "OBRA TESTE",
+      "valor": 1000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "OBRA TESTE",
+      "valor": 200.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 37",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 37",
+      "valor": 50000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 15172.59,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 9149.07,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 15678.34,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 30402.08,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 19597.92,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 12562.9,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 27437.1,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 0.81,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 6779.36,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 24321.66,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 15678.35,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 18298.77,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 24827.41,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 32923.33,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 15000.32,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 14921.87,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 15172.59,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 40000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 34999.45,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 17076.67,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 40000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 14999.19,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 35105.27,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 35105.27,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 4894.72,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 30000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 4894.72,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 50000.01,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 89789.44,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 30289.56,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 9789.44,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 17789.44,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 6831.96,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 23833.67,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 17872.98,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 58456.38,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 23560.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 20586.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 58456.39,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 32758.46,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 30587.32,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 45720.99,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 130.08,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 16370.95,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 19168.17,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 25000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 1426.77,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 7942.21,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 23701.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 10000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 35000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 26633.85,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 12000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 17000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 20000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 50000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 10000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 40000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 30000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 0.01,
+      "mes": "2026-05"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 0.33,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 50001.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 40000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 20000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 50000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 1461.12,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 60010.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 163.67,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 7000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 7000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 310.08,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 7000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 7000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RR 01 QD 01 LT 12",
+      "valor": 50000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "SV 24 QD 40 LT 22",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "SV 24 QD 40 LT 21",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "SV 24 QD 40 LT 21",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "SV 24 QD 40 LT 21",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "SV 13 QD 40 LT 20",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "SV 13 QD 40 LT 20",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "52 QD 81 LT 12",
+      "valor": 57.57,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "52 QD 81 LT 11",
+      "valor": 57.56,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "52 QD 81 LT 09",
+      "valor": 57.56,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "66 QD 81 LT 08",
+      "valor": 57.56,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "52 QD 81 LT 10",
+      "valor": 57.56,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 19 QD 50 LT 09",
+      "valor": 77500.0,
+      "mes": "2026-04"
+    }
+  ],
+  "fat_por_tipo": {
+    "outros": {
+      "2025-09": 74834.22,
+      "2025-08": 109722.73999999999,
+      "2025-06": 80000.01000000001,
+      "2025-05": 2480000.0,
+      "2025-07": 80000.0,
+      "2026-01": 119782.31,
+      "2026-04": 95585.09,
+      "2025-11": 1200.0,
+      "2026-03": 340497.20999999996,
+      "2025-12": 294845.72,
+      "2026-02": 107851.06999999999
+    },
+    "obra": {
+      "2026-02": 2197159.38,
+      "2025-07": 290518.15,
+      "2026-03": 3379810.0799999996,
+      "2025-10": 351567.83999999997,
+      "2025-06": 232746.95,
+      "2025-08": 240000.01,
+      "2025-09": 360000.0,
+      "2025-11": 2267099.5999999996,
+      "2026-04": 758777.9299999999,
+      "2025-12": 1142366.15,
+      "2026-01": 3513983.8399999994,
+      "2026-05": 0.01
+    },
+    "escritorio": {
+      "2026-04": 71000.0,
+      "2026-01": 50000.0,
+      "2026-02": 58500.0,
+      "2026-03": 12500.0
+    }
+  },
+  "metas": []
 }
