@@ -14,86 +14,111 @@
   --border:#b8d0da;--border2:#d0e4ec;
   --text:#1a3347;--text3:#5a8099;--text4:#8aacbb;--branco:#fff;
 }
-body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;
+     display:flex;flex-direction:column;overflow-x:hidden}
 
-/* HEADER */
-.header{background:var(--azul);border-bottom:3px solid var(--teal);padding:0 28px;height:68px;
-        display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:200;flex-shrink:0}
-.hdr-back{background:rgba(143,220,210,.15);border:1px solid rgba(143,220,210,.35);border-radius:7px;
-          padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
-          color:var(--teal);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
-          transition:background .15s;flex-shrink:0;display:none}
+/* ─── HEADER ─────────────────────── */
+.header{background:var(--azul);border-bottom:3px solid var(--teal);padding:0 28px;
+        height:68px;display:flex;align-items:center;gap:14px;
+        position:sticky;top:0;z-index:200;flex-shrink:0}
+.hdr-back{background:rgba(143,220,210,.18);border:1px solid rgba(143,220,210,.4);
+          border-radius:7px;padding:7px 16px;font-family:'Barlow Condensed',sans-serif;
+          font-size:14px;font-weight:700;color:var(--teal);letter-spacing:.06em;
+          text-transform:uppercase;cursor:pointer;transition:background .15s;
+          flex-shrink:0;display:none}
 .hdr-back.vis{display:block}
-.hdr-back:hover{background:rgba(143,220,210,.28)}
+.hdr-back:hover{background:rgba(143,220,210,.32)}
 .hdr-logo{width:38px;height:38px;flex-shrink:0}
 .hdr-info{display:flex;flex-direction:column}
-.hdr-sup{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
-.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:.02em}
-.updated{margin-left:auto;font-size:11px;color:rgba(255,255,255,.4);font-family:monospace;white-space:nowrap}
+.hdr-sup{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.12em;
+         text-transform:uppercase;opacity:.85}
+.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;
+           color:#fff;letter-spacing:.02em}
+.updated{margin-left:auto;font-size:11px;color:rgba(255,255,255,.4);
+         font-family:monospace;white-space:nowrap}
 
-/* LOADING */
+/* ─── LOADING ─────────────────────── */
 #loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;
          justify-content:center;z-index:500;flex-direction:column;gap:12px}
 #loading.hidden{display:none}
-.spin{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--teal);
-      border-radius:50%;animation:spin .7s linear infinite}
+.spin{width:36px;height:36px;border:3px solid var(--border);
+      border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* PÁGINAS */
+/* ─── PÁGINAS ─────────────────────── */
 .page{display:none;flex:1;min-height:0}
 .page.active{display:flex}
 
-/* ═══ DASHBOARD ═══ */
+/* ══ DASHBOARD ══ */
 #page-dash{flex-direction:row}
-.dash-nav{width:210px;flex-shrink:0;background:var(--azul-esc);border-right:2px solid var(--border);
-          display:flex;flex-direction:column;padding:28px 0}
-.nav-btn{display:block;width:100%;padding:16px 20px;font-family:'Barlow Condensed',sans-serif;
-         font-size:15px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.08em;
-         text-transform:uppercase;text-align:left;cursor:pointer;border:none;background:none;
-         border-left:4px solid transparent;transition:all .15s;line-height:1.3}
-.nav-btn:hover{color:#fff;background:rgba(255,255,255,.06);border-left-color:var(--teal)}
-.nav-btn:disabled{opacity:.35;cursor:not-allowed}
+
+/* Nav esquerda — mais visível */
+.dash-nav{width:220px;flex-shrink:0;background:var(--azul-esc);
+          border-right:2px solid rgba(143,220,210,.25);
+          display:flex;flex-direction:column;padding:24px 14px;gap:8px}
+.nav-btn{display:block;width:100%;padding:14px 16px;
+         font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;
+         color:rgba(255,255,255,.55);letter-spacing:.09em;text-transform:uppercase;
+         text-align:left;cursor:pointer;border:2px solid transparent;
+         border-radius:8px;background:rgba(255,255,255,.04);
+         transition:all .18s;line-height:1.2}
+.nav-btn:hover{color:#fff;background:rgba(143,220,210,.14);
+               border-color:rgba(143,220,210,.3)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed}
 .dash-main{flex:1;padding:24px 28px 40px;overflow-y:auto}
 
 /* seletor */
 .sel-bar{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
-.sel-lbl{font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em}
-select{background:var(--branco);border:1px solid var(--border);border-radius:7px;padding:7px 14px;
-       font-family:'Barlow',sans-serif;font-size:13px;color:var(--text);cursor:pointer;outline:none}
+.sel-lbl{font-size:13px;font-weight:700;color:var(--text3);
+         text-transform:uppercase;letter-spacing:.07em}
+select{background:var(--branco);border:1px solid var(--border);border-radius:7px;
+       padding:7px 14px;font-family:'Barlow',sans-serif;font-size:13px;
+       color:var(--text);cursor:pointer;outline:none}
 select:focus{border-color:var(--teal)}
 
 /* bloco título */
-.blk-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--azul);
-           text-transform:uppercase;letter-spacing:.08em;padding:8px 16px;background:var(--bg3);
-           border-left:4px solid var(--teal);border-radius:0 6px 6px 0;margin-bottom:14px;margin-top:6px}
+.blk-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;
+           color:var(--azul);text-transform:uppercase;letter-spacing:.08em;
+           padding:8px 16px;background:var(--bg3);border-left:4px solid var(--teal);
+           border-radius:0 6px 6px 0;margin-bottom:14px;margin-top:8px}
 
-/* grade KPI */
+/* KPIs */
 .kpi-row{display:grid;gap:12px;margin-bottom:14px}
 .r4{grid-template-columns:repeat(4,1fr)}
 .r3{grid-template-columns:repeat(3,1fr)}
 .r2{grid-template-columns:repeat(2,1fr)}
-.kpi-card{background:var(--branco);border:1px solid var(--border);border-radius:9px;padding:16px 18px;
-          box-shadow:0 2px 6px rgba(41,87,120,.05)}
-.kpi-lbl{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}
-.kpi-val{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;color:var(--azul);line-height:1}
+.kpi-card{background:var(--branco);border:1px solid var(--border);border-radius:9px;
+          padding:16px 18px;box-shadow:0 2px 6px rgba(41,87,120,.05)}
+.kpi-lbl{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;
+         letter-spacing:.08em;margin-bottom:7px}
+.kpi-val{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;
+         color:var(--azul);line-height:1}
 .kpi-val.g{color:var(--verde)}
 .kpi-sub2{font-size:11px;color:var(--text4);margin-top:4px}
 
-/* ═══ METAS ═══ */
+/* ══ METAS ══ */
 #page-metas{flex-direction:column}
-.metas-hdr{background:var(--azul-esc);border-bottom:2px solid var(--border);padding:14px 28px}
-.metas-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;
-                 color:#fff;text-transform:uppercase;letter-spacing:.06em}
-/* sub-tabs centralizadas em verde */
+.metas-hdr{background:var(--azul-esc);border-bottom:2px solid rgba(143,220,210,.2);
+           padding:14px 28px}
+.metas-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;
+                 font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.06em}
+
+/* Sub-tabs centralizadas em verde — mais visíveis */
 .sub-tabs-outer{background:var(--bg2);border-bottom:2px solid var(--border);
-                padding:16px 28px;display:flex;justify-content:center}
-.sub-tabs-box{display:flex;gap:10px;background:rgba(41,87,120,.06);
-              border:2px solid var(--verde-btn);border-radius:10px;padding:6px}
-.sub-tab{padding:11px 32px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;
-         color:var(--text3);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
-         border-radius:7px;border:2px solid transparent;background:none;transition:all .18s}
-.sub-tab:hover{color:var(--azul);background:rgba(76,217,100,.1)}
-.sub-tab.active{background:var(--verde-btn);color:#1a3347;border-color:var(--verde-btn)}
+                padding:18px 28px;display:flex;justify-content:center}
+.sub-tabs-box{display:flex;gap:6px;padding:6px;
+              border:2.5px solid var(--verde-btn);border-radius:12px;
+              background:rgba(76,217,100,.06)}
+.sub-tab{padding:12px 36px;font-family:'Barlow Condensed',sans-serif;font-size:16px;
+         font-weight:800;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;
+         cursor:pointer;border-radius:8px;border:2px solid transparent;
+         background:none;transition:all .2s}
+.sub-tab:hover{color:var(--azul-esc);background:rgba(76,217,100,.15);
+               border-color:rgba(76,217,100,.4)}
+.sub-tab.active{background:var(--verde-btn);color:#1a3347;
+                border-color:var(--verde-btn);
+                box-shadow:0 3px 10px rgba(76,217,100,.35)}
+
 .metas-body{flex:1;padding:24px 28px 40px;overflow-y:auto}
 .sub-pg{display:none}
 .sub-pg.active{display:block}
@@ -101,73 +126,97 @@ select:focus{border-color:var(--teal)}
 /* controles */
 .controles{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
 
-/* dois gráficos lado a lado */
+/* gráficos lado a lado */
 .graf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
 .graf-card{background:var(--branco);border:1px solid var(--border);border-radius:10px;
            overflow:hidden;box-shadow:0 2px 8px rgba(41,87,120,.06)}
-.graf-hdr{padding:10px 16px 8px;border-bottom:1px solid var(--border2)}
+.graf-hdr{padding:11px 16px 9px;border-bottom:1px solid var(--border2)}
 .graf-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;
                 color:var(--azul);text-transform:uppercase;letter-spacing:.06em}
 .graf-hdr-sub{font-size:11px;color:var(--text3);margin-top:2px}
 .graf-body{padding:14px 16px}
 .legenda{display:flex;gap:14px;margin-bottom:10px}
-.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)}
+.leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text3)}
 .leg-cor{width:12px;height:12px;border-radius:2px;flex-shrink:0}
 .chart-wrap{position:relative;width:100%}
 canvas{display:block}
 
-/* tabelas */
-.tbl-wrap{border-radius:8px;border:1px solid var(--border);overflow:hidden;margin-bottom:22px}
+/* tabelas — com divisórias e colunas compactas */
+.tbl-wrap{border-radius:8px;border:1px solid var(--border);
+          overflow:hidden;margin-bottom:22px}
 table{width:100%;border-collapse:collapse;font-size:13px}
-thead th{background:var(--azul);color:#fff;padding:10px 16px;text-align:left;
-         font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
-         text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}
+thead th{background:var(--azul);color:#fff;padding:9px 12px;text-align:left;
+         font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;
+         text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;
+         border-right:1px solid rgba(255,255,255,.15)}
+thead th:last-child{border-right:none}
 tbody tr:nth-child(even){background:var(--bg2)}
 tbody tr:hover{background:var(--bg3)}
-tbody td{padding:9px 16px;color:var(--text);border-bottom:1px solid var(--border2);white-space:nowrap}
-tfoot td{background:var(--azul-esc);color:#fff;padding:9px 16px;
-         font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px}
+tbody td{padding:7px 12px;color:var(--text);border-bottom:1px solid var(--border2);
+         border-right:1px solid var(--border2);white-space:nowrap}
+tbody td:last-child{border-right:none}
+tfoot td{background:var(--azul-esc);color:#fff;padding:8px 12px;
+         font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;
+         border-right:1px solid rgba(255,255,255,.12)}
+tfoot td:last-child{border-right:none}
 .nr{text-align:right;font-family:'DM Mono',monospace}
 
-/* detalhe por mês */
+/* detalhe mês */
 .det-bloco{margin-bottom:20px}
 .det-mes-hdr{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;
-             color:#fff;background:var(--azul);padding:9px 18px;border-radius:7px 7px 0 0}
-.det-mes-body{border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;overflow:hidden}
+             color:#fff;background:var(--azul);padding:9px 16px;
+             border-radius:7px 7px 0 0}
+.det-mes-body{border:1px solid var(--border);border-top:none;
+              border-radius:0 0 8px 8px;overflow:hidden}
 
 /* ranking */
 .rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
-.rank-card{background:var(--branco);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.rank-card{background:var(--branco);border:1px solid var(--border);
+           border-radius:10px;overflow:hidden}
 .rank-hdr{background:var(--azul);padding:11px 16px}
 .rank-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;
                 color:#fff;text-transform:uppercase;letter-spacing:.06em}
 .rank-row{display:flex;align-items:center;gap:10px;padding:9px 16px;
           border-bottom:1px solid var(--border2)}
 .rank-row:last-child{border-bottom:none}
-.rank-pos{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--text4);width:24px}
+.rank-pos{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;
+          color:var(--text4);width:24px;flex-shrink:0}
 .rank-pos.top3{color:#c9a227}
-.rank-nome{flex:1;font-size:13px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rank-qt{font-family:'DM Mono',monospace;font-size:12px;color:var(--azul);font-weight:700}
+.rank-nome{flex:1;font-size:13px;color:var(--text);
+           overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank-qt{font-family:'DM Mono',monospace;font-size:12px;
+         color:var(--azul);font-weight:700}
+
+/* card KPI interno */
+.kpi-card-sm{background:var(--bg2);border:1px solid var(--border2);
+             border-radius:8px;padding:14px 16px;margin-bottom:12px}
+.kpi-card-sm .kpi-lbl{font-size:11px}
+.kpi-card-sm .kpi-val{font-size:26px}
 
 @media(max-width:900px){
   #page-dash{flex-direction:column}
-  .dash-nav{width:100%;flex-direction:row;padding:8px 12px;flex-wrap:wrap}
-  .nav-btn{border-left:none;border-bottom:3px solid transparent;padding:8px 12px;width:auto}
+  .dash-nav{width:100%;flex-direction:row;flex-wrap:wrap;padding:10px;gap:6px}
+  .nav-btn{width:auto;padding:8px 12px;font-size:13px}
   .graf-row{grid-template-columns:1fr}
   .kpi-row.r4{grid-template-columns:1fr 1fr}
   .rank-grid{grid-template-columns:1fr}
+  .sub-tab{padding:10px 20px;font-size:14px}
 }
 </style>
 </head>
 <body>
 
-<div id="loading"><div class="spin"></div><div style="font-size:12px;color:var(--text3)">Carregando dados…</div></div>
+<div id="loading">
+  <div class="spin"></div>
+  <div style="font-size:13px;color:var(--text3)">Carregando dados…</div>
+</div>
 
 <header class="header">
   <button class="hdr-back" id="btn-back" onclick="voltarDash()">← Voltar</button>
   <svg class="hdr-logo" viewBox="0 0 38 38" fill="none">
     <rect width="38" height="38" rx="6" fill="rgba(143,220,210,.15)"/>
-    <path d="M6 29V9L13 22L19 9L25 22L32 9V29" stroke="#8FDCD2" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6 29V9L13 22L19 9L25 22L32 9V29" stroke="#8FDCD2" stroke-width="2.8"
+          stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M6 29H32" stroke="#8FDCD2" stroke-width="2.2" stroke-linecap="round"/>
   </svg>
   <div class="hdr-info">
@@ -177,12 +226,12 @@ tfoot td{background:var(--azul-esc);color:#fff;padding:9px 16px;
   <div class="updated" id="updated-at">—</div>
 </header>
 
-<!-- ══════════ DASHBOARD ══════════ -->
+<!-- ══ DASHBOARD ══ -->
 <div class="page active" id="page-dash">
   <nav class="dash-nav">
-    <button class="nav-btn" onclick="irPara('metas','Metas')">METAS</button>
-    <button class="nav-btn" disabled>ANÁLISES SETORIZADAS</button>
-    <button class="nav-btn" disabled>COMPARATIVO DE ANÁLISES</button>
+    <button class="nav-btn" onclick="irPara('metas','Metas')">Metas</button>
+    <button class="nav-btn" disabled>Análises Setorizadas</button>
+    <button class="nav-btn" disabled>Comparativo de Análises</button>
   </nav>
   <div class="dash-main">
     <div class="sel-bar">
@@ -203,7 +252,7 @@ tfoot td{background:var(--azul-esc);color:#fff;padding:9px 16px;
   </div>
 </div>
 
-<!-- ══════════ METAS ══════════ -->
+<!-- ══ METAS ══ -->
 <div class="page" id="page-metas">
   <div class="metas-hdr"><div class="metas-hdr-title">Metas</div></div>
   <div class="sub-tabs-outer">
@@ -225,17 +274,29 @@ tfoot td{background:var(--azul-esc);color:#fff;padding:9px 16px;
       <div class="blk-title">Lotes Adquiridos por Mês</div>
       <div class="graf-row">
         <div class="graf-card">
-          <div class="graf-hdr"><div class="graf-hdr-title">Morais + Investidores (total)</div><div class="graf-hdr-sub">Proporção por cota de empresa</div></div>
+          <div class="graf-hdr">
+            <div class="graf-hdr-title">Morais + Investidores (total)</div>
+            <div class="graf-hdr-sub">Proporção por cota de empresa</div>
+          </div>
           <div class="graf-body">
-            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-lt" height="180"></canvas></div>
+            <div class="legenda">
+              <div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div>
+              <div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div>
+            </div>
+            <div class="chart-wrap"><canvas id="ch-lt" height="200"></canvas></div>
           </div>
         </div>
         <div class="graf-card">
-          <div class="graf-hdr"><div class="graf-hdr-title">Morais vs. Investidores (separado)</div><div class="graf-hdr-sub">Linhas separadas por mês</div></div>
+          <div class="graf-hdr">
+            <div class="graf-hdr-title">Morais vs. Investidores (separado)</div>
+            <div class="graf-hdr-sub">Linhas separadas por mês</div>
+          </div>
           <div class="graf-body">
-            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-ls" height="180"></canvas></div>
+            <div class="legenda">
+              <div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div>
+              <div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div>
+            </div>
+            <div class="chart-wrap"><canvas id="ch-ls" height="200"></canvas></div>
           </div>
         </div>
       </div>
@@ -255,17 +316,28 @@ tfoot td{background:var(--azul-esc);color:#fff;padding:9px 16px;
       <div class="blk-title">Casas de Obras Iniciadas por Mês</div>
       <div class="graf-row">
         <div class="graf-card">
-          <div class="graf-hdr"><div class="graf-hdr-title">Morais + Investidores (total)</div><div class="graf-hdr-sub">Casas cuja obra foi iniciada — por cota</div></div>
+          <div class="graf-hdr">
+            <div class="graf-hdr-title">Morais + Investidores (total)</div>
+            <div class="graf-hdr-sub">Casas por cota — n_casas × cota_empresa</div>
+          </div>
           <div class="graf-body">
-            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-ot" height="180"></canvas></div>
+            <div class="legenda">
+              <div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div>
+              <div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div>
+            </div>
+            <div class="chart-wrap"><canvas id="ch-ot" height="200"></canvas></div>
           </div>
         </div>
         <div class="graf-card">
-          <div class="graf-hdr"><div class="graf-hdr-title">Morais vs. Investidores (separado)</div></div>
+          <div class="graf-hdr">
+            <div class="graf-hdr-title">Morais vs. Investidores (separado)</div>
+          </div>
           <div class="graf-body">
-            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-os" height="180"></canvas></div>
+            <div class="legenda">
+              <div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div>
+              <div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div>
+            </div>
+            <div class="chart-wrap"><canvas id="ch-os" height="200"></canvas></div>
           </div>
         </div>
       </div>
@@ -279,21 +351,36 @@ tfoot td{background:var(--azul-esc);color:#fff;padding:9px 16px;
     <div class="sub-pg" id="sub-vendas">
       <div class="controles">
         <span class="sel-lbl">Ano:</span><select id="sel-ano-v" onchange="buildVendas()"></select>
-        <span class="sel-lbl">Cidade:</span><select id="sel-cid-v" onchange="buildVendas()"><option value="">Todas</option></select>
-        <span class="sel-lbl">Setor:</span><select id="sel-set-v" onchange="buildVendas()"><option value="">Todos</option></select>
+        <span class="sel-lbl">Cidade:</span>
+        <select id="sel-cid-v" onchange="buildVendas()"><option value="">Todas</option></select>
+        <span class="sel-lbl">Setor:</span>
+        <select id="sel-set-v" onchange="buildVendas()"><option value="">Todos</option></select>
       </div>
       <div class="kpi-row r4" id="kpi-v-res" style="margin-bottom:20px"></div>
       <div class="blk-title">Casas Vendidas por Mês</div>
       <div class="graf-row">
         <div class="graf-card">
-          <div class="graf-hdr"><div class="graf-hdr-title">Quantidade de Vendas Mensais</div></div>
-          <div class="graf-body"><div class="chart-wrap"><canvas id="ch-vv" height="180"></canvas></div></div>
+          <div class="graf-hdr">
+            <div class="graf-hdr-title">Quantidade de Vendas Mensais</div>
+          </div>
+          <div class="graf-body">
+            <div class="chart-wrap"><canvas id="ch-vv" height="200"></canvas></div>
+          </div>
         </div>
         <div class="graf-card">
-          <div class="graf-hdr"><div class="graf-hdr-title">VGV e Prazo Médio</div></div>
-          <div class="graf-body" style="display:flex;flex-direction:column;gap:14px;padding-top:20px">
-            <div class="kpi-card"><div class="kpi-lbl">VGV Médio por Venda</div><div class="kpi-val" id="kv-vgv">—</div></div>
-            <div class="kpi-card"><div class="kpi-lbl">Prazo Médio de Venda</div><div class="kpi-val" id="kv-prazo">—</div><div class="kpi-sub2">Certidões → data de venda</div></div>
+          <div class="graf-hdr">
+            <div class="graf-hdr-title">VGV e Prazo Médio</div>
+          </div>
+          <div class="graf-body" style="display:flex;flex-direction:column;gap:12px;padding-top:16px">
+            <div class="kpi-card-sm">
+              <div class="kpi-lbl">VGV Médio por Venda</div>
+              <div class="kpi-val" id="kv-vgv">—</div>
+            </div>
+            <div class="kpi-card-sm">
+              <div class="kpi-lbl">Prazo Médio de Venda</div>
+              <div class="kpi-val" id="kv-prazo">—</div>
+              <div class="kpi-sub2">Certidões → data de venda</div>
+            </div>
           </div>
         </div>
       </div>
@@ -307,17 +394,21 @@ tfoot td{background:var(--azul-esc);color:#fff;padding:9px 16px;
 </div>
 
 <script>
-// ── DADOS ──
-let D={},docs=[],vendas=[],metas=[],pags={};
+// ══ DADOS GLOBAIS ══
+let docs=[], vendas=[], metas=[], pags={};
 
-// ── NAVEGAÇÃO ──
-function fechar(){if(window.parent&&window.parent.fecharAnalise)window.parent.fecharAnalise();else history.back();}
+// ══ NAVEGAÇÃO ══
+function fechar(){
+  if(window.parent&&window.parent.fecharAnalise)window.parent.fecharAnalise();
+  else history.back();
+}
 function irPara(id,titulo){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.getElementById('btn-back').classList.add('vis');
   document.getElementById('hdr-title').textContent=titulo;
-  renderSub();
+  // Redesenhar gráficos da aba ativa (canvas agora tem largura real)
+  setTimeout(()=>renderSubAtiva(),50);
 }
 function voltarDash(){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -330,9 +421,9 @@ function showSub(id,btn){
   document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('sub-'+id).classList.add('active');
   btn.classList.add('active');
-  renderSub();
+  setTimeout(()=>renderSubAtiva(),50);
 }
-function renderSub(){
+function renderSubAtiva(){
   const a=document.querySelector('.sub-pg.active');
   if(!a)return;
   if(a.id==='sub-lotes')buildLotes();
@@ -340,96 +431,146 @@ function renderSub(){
   else if(a.id==='sub-vendas')buildVendas();
 }
 
-// ── UTILS ──
+// ══ UTILS ══
 const MPT=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-const MFU=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-const fmtM=ym=>{if(!ym||ym==='SEM DATA')return ym||'—';const[y,m]=ym.split('-');return MPT[+m-1]+'/'+y.slice(2);};
-const fmtBRL=v=>v==null||isNaN(v)?'—':'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0});
-const fmtN=(v,d=1)=>v==null||isNaN(v)?'—':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const MFU=['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+           'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const fmtM=ym=>{
+  if(!ym||ym==='SEM DATA')return ym||'—';
+  const[y,m]=ym.split('-');return MPT[+m-1]+'/'+y.slice(2);
+};
+const fmtBRL=v=>v==null||isNaN(v)?'—':
+  'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0});
+const fmtN=(v,d=1)=>v==null||isNaN(v)?'—':
+  Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
 const mesD=d=>d?d.slice(0,7):null;
 const anoD=d=>d?d.slice(0,4):null;
-function diasDiff(a,b){if(!a||!b)return null;const d=Math.round((new Date(b)-new Date(a))/86400000);return d>0&&d<3000?d:null;}
-function mediaDias(arr,c1,c2){const v=arr.map(d=>diasDiff(d[c1],d[c2])).filter(Boolean);return v.length?Math.round(v.reduce((a,b)=>a+b)/v.length):null;}
+function diasDiff(a,b){
+  if(!a||!b)return null;
+  const d=Math.round((new Date(b)-new Date(a))/86400000);
+  return d>0&&d<3000?d:null;
+}
+function mediaDias(arr,c1,c2){
+  const v=arr.map(d=>diasDiff(d[c1],d[c2])).filter(Boolean);
+  return v.length?Math.round(v.reduce((a,b)=>a+b)/v.length):null;
+}
 const normS=s=>(s||'').trim().toUpperCase().replace(/\s+/g,' ');
-// cota já é decimal 0..1
-const cotaM=doc=>{const c=doc.cota_empresa;return c==null?1:c;};
-const kpi=(lbl,val,sub='',cls='')=>`<div class="kpi-card"><div class="kpi-lbl">${lbl}</div><div class="kpi-val ${cls}">${val}</div>${sub?`<div class="kpi-sub2">${sub}</div>`:''}</div>`;
+
+// cota_empresa já é decimal 0..1
+const cotaM=doc=>{const c=doc.cota_empresa;return c==null?1:Number(c);};
+
+const kpi=(lbl,val,sub='',cls='')=>
+  `<div class="kpi-card"><div class="kpi-lbl">${lbl}</div>
+   <div class="kpi-val ${cls}">${val}</div>
+   ${sub?`<div class="kpi-sub2">${sub}</div>`:''}</div>`;
+
 const meses12=ano=>Array.from({length:12},(_,i)=>`${ano}-${String(i+1).padStart(2,'0')}`);
+
 function initSel(id,items,def,fn){
   const el=document.getElementById(id);if(!el)return;
-  el.innerHTML='';items.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o);});
-  if(def&&items.includes(def))el.value=def;else if(el.options.length)el.value=el.options[el.options.length-1].value;
+  el.innerHTML='';
+  items.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o);});
+  if(def&&items.includes(String(def)))el.value=String(def);
+  else if(el.options.length)el.value=el.options[el.options.length-1].value;
   el.onchange=fn;
 }
-function anosDisp(arr,campo){return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();}
+function anosDisp(arr,campo){
+  return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
+}
 
-// ── CANVAS: BARRAS ──
+// ══ CANVAS BARRAS ══
 function drawBars(id,labels,datasets,fmtV){
   const c=document.getElementById(id);if(!c)return;
-  const pw=c.parentElement.clientWidth||400;
-  const H=parseInt(c.getAttribute('height'))||180;
+  const pw=c.parentElement.clientWidth||500;
+  if(pw<10)return; // ainda oculto
+  const H=parseInt(c.getAttribute('height'))||200;
   const dpr=window.devicePixelRatio||1;
-  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  c.width=pw*dpr;c.height=H*dpr;
+  c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-  const W=pw,P={t:24,r:10,b:36,l:10};
+  const W=pw,P={t:28,r:10,b:40,l:10};
   const cW=W-P.l-P.r,cH=H-P.t-P.b,n=labels.length;
   if(!n)return;
-  const mx=Math.max(...datasets.flatMap(d=>d.data),0.01);
-  const gW=cW/n,nD=datasets.length,bW=Math.min((gW*.8)/nD,32),gP=(gW-bW*nD)/2;
+  const allVals=datasets.flatMap(d=>d.data);
+  const mx=Math.max(...allVals,0.01);
+  const gW=cW/n,nD=datasets.length;
+  const bW=Math.min((gW*0.8)/nD,36);
+  const gPad=(gW-bW*nD)/2;
   ctx.clearRect(0,0,W,H);
   // grade
-  ctx.strokeStyle='#dceaef';ctx.lineWidth=1;
-  [.25,.5,.75,1].forEach(f=>{const y=P.t+cH*(1-f);ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();});
-  // labels x
-  ctx.fillStyle='#8aacbb';ctx.font="500 10px 'DM Mono',monospace";ctx.textAlign='center';
-  labels.forEach((lb,i)=>ctx.fillText(lb,P.l+i*gW+gW/2,H-P.b+14));
+  ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
+  [0.25,0.5,0.75,1].forEach(f=>{
+    const y=P.t+cH*(1-f);
+    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
+  });
+  // labels X
+  ctx.fillStyle='#5a8099';ctx.font="600 11px 'Barlow',sans-serif";ctx.textAlign='center';
+  labels.forEach((lb,i)=>ctx.fillText(lb,P.l+i*gW+gW/2,H-P.b+16));
   // barras
   datasets.forEach((ds,di)=>{
     ds.data.forEach((v,i)=>{
       if(!v)return;
-      const bH=(v/mx)*cH,x=P.l+i*gW+gP+di*bW,y=P.t+cH-bH;
+      const bH=(v/mx)*cH,x=P.l+i*gW+gPad+di*bW,y=P.t+cH-bH;
       ctx.fillStyle=ds.color||'#295778';
       ctx.beginPath();
-      if(ctx.roundRect)ctx.roundRect(x,y,bW-1,bH,[3,3,0,0]);else ctx.rect(x,y,bW-1,bH);
+      if(ctx.roundRect)ctx.roundRect(x,y,bW-1,bH,[3,3,0,0]);
+      else ctx.rect(x,y,bW-1,bH);
       ctx.fill();
-      ctx.fillStyle='#5a8099';ctx.font="500 9px 'DM Mono',monospace";ctx.textAlign='center';
-      ctx.fillText(fmtV?fmtV(v):fmtN(v,1),x+(bW-1)/2,y-3);
+      // valor
+      ctx.fillStyle='#295778';ctx.font="700 10px 'DM Mono',monospace";ctx.textAlign='center';
+      const lbl=fmtV?fmtV(v):fmtN(v,1);
+      ctx.fillText(lbl,x+(bW-1)/2,y-5);
       ctx.fillStyle=ds.color||'#295778';
     });
   });
 }
 
-// ── CANVAS: LINHAS ──
+// ══ CANVAS LINHAS ══
 function drawLines(id,labels,datasets,fmtV){
   const c=document.getElementById(id);if(!c)return;
-  const pw=c.parentElement.clientWidth||400;
-  const H=parseInt(c.getAttribute('height'))||180;
+  const pw=c.parentElement.clientWidth||500;
+  if(pw<10)return;
+  const H=parseInt(c.getAttribute('height'))||200;
   const dpr=window.devicePixelRatio||1;
-  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  c.width=pw*dpr;c.height=H*dpr;
+  c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-  const W=pw,P={t:24,r:20,b:36,l:10};
+  const W=pw,P={t:28,r:20,b:40,l:10};
   const cW=W-P.l-P.r,cH=H-P.t-P.b,n=labels.length;if(!n)return;
   const mx=Math.max(...datasets.flatMap(d=>d.data.filter(Boolean)),0.01);
   const xP=i=>P.l+(n>1?i/(n-1):0.5)*cW;
   const yP=v=>P.t+cH-(v/mx)*cH;
   ctx.clearRect(0,0,W,H);
-  ctx.strokeStyle='#dceaef';ctx.lineWidth=1;
-  [.25,.5,.75,1].forEach(f=>{const y=P.t+cH*(1-f);ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();});
-  ctx.fillStyle='#8aacbb';ctx.font="500 10px 'DM Mono',monospace";ctx.textAlign='center';
-  labels.forEach((lb,i)=>ctx.fillText(lb,xP(i),H-P.b+14));
+  ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
+  [0.25,0.5,0.75,1].forEach(f=>{
+    const y=P.t+cH*(1-f);
+    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
+  });
+  ctx.fillStyle='#5a8099';ctx.font="600 11px 'Barlow',sans-serif";ctx.textAlign='center';
+  labels.forEach((lb,i)=>ctx.fillText(lb,xP(i),H-P.b+16));
   datasets.forEach(ds=>{
-    ctx.strokeStyle=ds.color||'#295778';ctx.lineWidth=2.5;ctx.lineJoin='round';
+    ctx.strokeStyle=ds.color||'#295778';ctx.lineWidth=2.8;ctx.lineJoin='round';
     ctx.beginPath();let st=false;
-    ds.data.forEach((v,i)=>{if(v==null){st=false;return;}if(!st){ctx.moveTo(xP(i),yP(v));st=true;}else ctx.lineTo(xP(i),yP(v));});
+    ds.data.forEach((v,i)=>{
+      if(v==null||v===0){st=false;return;}
+      if(!st){ctx.moveTo(xP(i),yP(v));st=true;}else ctx.lineTo(xP(i),yP(v));
+    });
     ctx.stroke();
     ctx.fillStyle=ds.color||'#295778';
-    ds.data.forEach((v,i)=>{if(v==null)return;ctx.beginPath();ctx.arc(xP(i),yP(v),3.5,0,Math.PI*2);ctx.fill();});
-    ctx.font="700 8px 'DM Mono',monospace";
-    ds.data.forEach((v,i)=>{if(!v)return;ctx.textAlign='center';ctx.fillText(fmtV?fmtV(v):fmtN(v,1),xP(i),yP(v)-7);});
+    ds.data.forEach((v,i)=>{
+      if(!v)return;
+      ctx.beginPath();ctx.arc(xP(i),yP(v),4,0,Math.PI*2);ctx.fill();
+    });
+    ctx.font="700 10px 'DM Mono',monospace";
+    ds.data.forEach((v,i)=>{
+      if(!v)return;
+      ctx.textAlign='center';
+      ctx.fillText(fmtV?fmtV(v):fmtN(v,1),xP(i),yP(v)-9);
+    });
   });
 }
 
-// ── DASHBOARD ──
+// ══ DASHBOARD ══
 function initSelMes(){
   const s=new Set();
   vendas.forEach(v=>{const m=mesD(v.data_venda);if(m)s.add(m);});
@@ -441,8 +582,10 @@ function initSelMes(){
 function buildDash(){
   const mes=document.getElementById('sel-mes')?.value;if(!mes)return;
   const endD=new Set(docs.map(d=>normS(d.endereco)));
+
   const vMes=vendas.filter(v=>v.clientes&&mesD(v.data_venda)===mes);
   const vgvM=vMes.reduce((s,v)=>s+(v.valor_na_mao||0),0);
+
   let cO=0,cE=0,cP=0;
   Object.entries(pags).forEach(([cc,mp])=>{
     const v=mp[mes]||0;if(!v)return;
@@ -451,18 +594,21 @@ function buildDash(){
     else if(/POS\s*OBRA|PÓS\s*OBRA/i.test(u))cP+=v;
     else if(endD.has(u))cO+=v;
   });
+
   const base=new Date(mes+'-01');
-  function somaPeriodo(n,fn){
-    const ml=[];for(let i=0;i<n;i++){const d=new Date(base);d.setMonth(d.getMonth()-i);ml.push(d.toISOString().slice(0,7));}
+  function somaPer(n,fn){
+    const ml=[];
+    for(let i=0;i<n;i++){const d=new Date(base);d.setMonth(d.getMonth()-i);ml.push(d.toISOString().slice(0,7));}
     return fn(ml);
   }
-  const vgvTri=somaPeriodo(3,ml=>ml.reduce((s,m)=>s+vendas.filter(v=>v.clientes&&mesD(v.data_venda)===m).reduce((a,v)=>a+(v.valor_na_mao||0),0),0));
-  const escTri=somaPeriodo(3,ml=>ml.reduce((s,m)=>{let v=0;Object.entries(pags).forEach(([cc,mp])=>{if(/ESCRIT/i.test(cc))v+=mp[m]||0;});return s+v;},0));
-  const vgvAno=somaPeriodo(12,ml=>ml.reduce((s,m)=>s+vendas.filter(v=>v.clientes&&mesD(v.data_venda)===m).reduce((a,v)=>a+(v.valor_na_mao||0),0),0));
-  const escAno=somaPeriodo(12,ml=>ml.reduce((s,m)=>{let v=0;Object.entries(pags).forEach(([cc,mp])=>{if(/ESCRIT/i.test(cc))v+=mp[m]||0;});return s+v;},0));
+  const vgvTri=somaPer(3,ml=>ml.reduce((s,m)=>s+vendas.filter(v=>v.clientes&&mesD(v.data_venda)===m).reduce((a,v)=>a+(v.valor_na_mao||0),0),0));
+  const escTri=somaPer(3,ml=>ml.reduce((s,m)=>{let v=0;Object.entries(pags).forEach(([cc,mp])=>{if(/ESCRIT/i.test(cc))v+=mp[m]||0;});return s+v;},0));
+  const vgvAno=somaPer(12,ml=>ml.reduce((s,m)=>s+vendas.filter(v=>v.clientes&&mesD(v.data_venda)===m).reduce((a,v)=>a+(v.valor_na_mao||0),0),0));
+  const escAno=somaPer(12,ml=>ml.reduce((s,m)=>{let v=0;Object.entries(pags).forEach(([cc,mp])=>{if(/ESCRIT/i.test(cc))v+=mp[m]||0;});return s+v;},0));
 
+  // Produção — obras por data_inicio_obra (não depende de obra_iniciada)
   const lC=docs.filter(d=>mesD(d.data_aquisicao_lote)===mes).length;
-  const oI=docs.filter(d=>d.obra_iniciada==='SIM'&&mesD(d.data_inicio_obra)===mes).length;
+  const oI=docs.filter(d=>d.data_inicio_obra&&mesD(d.data_inicio_obra)===mes).length;
   const oF=docs.filter(d=>mesD(d.data_termino_obra)===mes).length;
   const cV=vendas.filter(v=>v.clientes&&mesD(v.data_venda)===mes).length;
 
@@ -470,8 +616,14 @@ function buildDash(){
   const tAl=mediaDias(docs,'data_entrada_alvara','data_aprovacao_projeto');
   const tIn=mediaDias(docs,'entrada_incorporacao_data','data_finalizacao_incorp');
   const tRt=mediaDias(docs,'data_entrada_ret','data_finalizacao_ret');
-  const tOb=mediaDias(docs.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
-  const dv=[];docs.forEach(d=>{if(!d.data_certidoes)return;const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));if(v?.data_venda){const x=diasDiff(d.data_certidoes,v.data_venda);if(x)dv.push(x);}});
+  const docsObra=docs.filter(d=>d.data_inicio_obra&&d.data_termino_obra);
+  const tOb=mediaDias(docsObra,'data_inicio_obra','data_termino_obra');
+  const dv=[];
+  docs.forEach(d=>{
+    if(!d.data_certidoes)return;
+    const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
+    if(v?.data_venda){const x=diasDiff(d.data_certidoes,v.data_venda);if(x)dv.push(x);}
+  });
   const tVe=dv.length?Math.round(dv.reduce((a,b)=>a+b)/dv.length):null;
 
   document.getElementById('kpi-fin').innerHTML=[
@@ -486,7 +638,7 @@ function buildDash(){
   ].join('');
   document.getElementById('kpi-prod').innerHTML=[
     kpi('Lotes Comprados no Mês',lC||'0','Data de aquisição'),
-    kpi('Obras Iniciadas no Mês',oI||'0','Data de início'),
+    kpi('Obras Iniciadas no Mês',oI||'0','Data de início de obra'),
     kpi('Obras Finalizadas no Mês',oF||'0','Data de término'),
     kpi('Casas Vendidas no Mês',cV||'0','Clientes + data venda',cV>0?'g':''),
   ].join('');
@@ -502,102 +654,153 @@ function buildDash(){
   ].join('');
 }
 
-// ── HELPERS METAS ──
+// ══ HELPERS METAS ══
 function agrupMes(arr,campo,campoQt){
   const r={};
   arr.forEach(d=>{
     const m=mesD(d[campo]);if(!m)return;
     if(!r[m])r[m]={morais:0,invest:0};
-    const cm=cotaM(d),qt=campoQt?(d[campoQt]||1):1;
-    r[m].morais+=qt*cm; r[m].invest+=qt*(1-cm);
+    const cm=cotaM(d);
+    // n_casas: usar valor real, fallback 1
+    const qt=campoQt?(+(d[campoQt])||1):1;
+    r[m].morais+=qt*cm;
+    r[m].invest+=qt*(1-cm);
   });
   return r;
 }
 
-function tblRes(meses,dM,dI){
+function tblRes(meses,dM,dI,colLbl='Qt Morais'){
   const body=meses.map((m,i)=>{
     const t=(dM[i]||0)+(dI[i]||0);if(!t)return'';
-    return`<tr><td>${fmtM(m)}</td><td class="nr">${fmtN(dM[i]||0,2)}</td><td class="nr">${fmtN(dI[i]||0,2)}</td><td class="nr"><strong>${fmtN(t,2)}</strong></td></tr>`;
+    return`<tr>
+      <td>${fmtM(m)}</td>
+      <td class="nr">${fmtN(dM[i]||0,2)}</td>
+      <td class="nr">${fmtN(dI[i]||0,2)}</td>
+      <td class="nr"><strong>${fmtN(t,2)}</strong></td>
+    </tr>`;
   }).join('');
   const tM=dM.reduce((a,b)=>a+b,0),tI=dI.reduce((a,b)=>a+b,0);
-  return`<table><thead><tr><th>Mês</th><th>Qt Morais</th><th>Qt Investidores</th><th>Total</th></tr></thead>
+  return`<table>
+    <thead><tr>
+      <th>Mês</th><th>${colLbl}</th><th>Qt Investidores</th><th>Total</th>
+    </tr></thead>
     <tbody>${body||'<tr><td colspan="4" style="color:var(--text4);padding:12px;text-align:center">Sem dados no período</td></tr>'}</tbody>
-    <tfoot><tr><td>TOTAL</td><td class="nr">${fmtN(tM,2)}</td><td class="nr">${fmtN(tI,2)}</td><td class="nr">${fmtN(tM+tI,2)}</td></tr></tfoot></table>`;
+    <tfoot><tr>
+      <td>TOTAL</td>
+      <td class="nr">${fmtN(tM,2)}</td>
+      <td class="nr">${fmtN(tI,2)}</td>
+      <td class="nr">${fmtN(tM+tI,2)}</td>
+    </tr></tfoot>
+  </table>`;
 }
 
 function tblDet(arr,campoQt,lblCol){
-  if(!arr.length)return'';
+  if(!arr.length)return'<p style="padding:12px;color:var(--text4)">Sem dados</p>';
   const rows=arr.map(d=>{
-    const cm=cotaM(d),ci=1-cm,qt=campoQt?(d[campoQt]||1):1;
+    const cm=cotaM(d),ci=1-cm;
+    const qt=campoQt?(+(d[campoQt])||1):1;
     const prop=cm>=1?'MORAIS':ci>=1?'INVESTIDOR':'MISTO';
-    return`<tr><td>${d.endereco||'—'}</td><td>${prop}</td><td class="nr">${fmtN((d.cota_empresa??1)*100,1)}%</td><td class="nr">${fmtN(qt*cm,2)}</td><td>${d.implantacao||'—'}</td></tr>`;
+    const cotaPct=fmtN((d.cota_empresa??1)*100,1)+'%';
+    return`<tr>
+      <td>${d.endereco||'—'}</td>
+      <td>${prop}</td>
+      <td class="nr">${cotaPct}</td>
+      <td class="nr">${fmtN(qt*cm,2)}</td>
+      <td>${d.implantacao||'—'}</td>
+    </tr>`;
   }).join('');
-  const tM=arr.reduce((s,d)=>s+cotaM(d)*(campoQt?(d[campoQt]||1):1),0);
-  const tI=arr.reduce((s,d)=>s+(1-cotaM(d))*(campoQt?(d[campoQt]||1):1),0);
-  return`<table><thead><tr><th>Endereço</th><th>Proprietário</th><th>Cota</th><th>${lblCol}</th><th>Tipo</th></tr></thead>
+  const tM=arr.reduce((s,d)=>s+cotaM(d)*(+(d[campoQt]||1)||1),0);
+  const tI=arr.reduce((s,d)=>s+(1-cotaM(d))*(+(d[campoQt]||1)||1),0);
+  return`<table>
+    <thead><tr>
+      <th>Endereço</th><th>Proprietário</th><th>Cota</th>
+      <th>${lblCol}</th><th>Tipo</th>
+    </tr></thead>
     <tbody>${rows}</tbody>
     <tfoot>
-      <tr><td colspan="3">Total de Lotes Morais: ${arr.filter(d=>cotaM(d)>0).length}</td><td class="nr">${fmtN(tM,2)}</td><td></td></tr>
-      <tr><td colspan="3">Total de Lotes Investidores: ${arr.filter(d=>cotaM(d)<1).length}</td><td class="nr">${fmtN(tI,2)}</td><td></td></tr>
-    </tfoot></table>`;
+      <tr>
+        <td colspan="3">Total de Lotes Morais: ${arr.filter(d=>cotaM(d)>0).length}</td>
+        <td class="nr">${fmtN(tM,2)}</td><td></td>
+      </tr>
+      <tr>
+        <td colspan="3">Total de Lotes Investidores: ${arr.filter(d=>cotaM(d)<1).length}</td>
+        <td class="nr">${fmtN(tI,2)}</td><td></td>
+      </tr>
+    </tfoot>
+  </table>`;
 }
 
-// ── LOTES ──
+// ══ LOTES COMPRADOS ══
 function buildLotes(){
   const ano=document.getElementById('sel-ano-lotes')?.value;if(!ano)return;
   const arr=docs.filter(d=>d.data_aquisicao_lote&&anoD(d.data_aquisicao_lote)===ano);
   const ag=agrupMes(arr,'data_aquisicao_lote');
-  const ms=meses12(ano),dM=ms.map(m=>ag[m]?.morais||0),dI=ms.map(m=>ag[m]?.invest||0),lb=ms.map(fmtM);
+  const ms=meses12(ano),dM=ms.map(m=>ag[m]?.morais||0),dI=ms.map(m=>ag[m]?.invest||0);
+  const lb=ms.map(fmtM);
   const tM=dM.reduce((a,b)=>a+b,0),tI=dI.reduce((a,b)=>a+b,0);
   const meta=metas.find(m=>m.ano===+ano);
+
+  // Casas totais: soma de n_casas × cota (para comparar com meta de casas)
+  const casasMorais=arr.reduce((s,d)=>s+(+(d.n_casas)||1)*cotaM(d),0);
+  const casasInvest=arr.reduce((s,d)=>s+(+(d.n_casas)||1)*(1-cotaM(d)),0);
+
   document.getElementById('kpi-lotes-res').innerHTML=[
-    kpi('Total Morais ('+ano+')',fmtN(tM,2),'Lotes por cota'),
-    kpi('Total Investidores ('+ano+')',fmtN(tI,2),'Lotes por cota'),
-    kpi('Meta de Casas '+ano,meta?meta.meta_casas:'—','Banco METAS Notion'),
+    kpi('Lotes Morais ('+ano+')',fmtN(tM,1),'Quantidade por cota'),
+    kpi('Lotes Investidores ('+ano+')',fmtN(tI,1),'Quantidade por cota'),
+    kpi('Meta de Casas '+ano,meta?meta.meta_casas:'—',
+        meta?`Adquirido: ${fmtN(casasMorais+casasInvest,1)} casas`:'Banco METAS Notion'),
   ].join('');
-  requestAnimationFrame(()=>{
-    drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
-    drawLines('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
-  });
-  document.getElementById('tbl-lotes').innerHTML=tblRes(ms,dM,dI);
+
+  drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
+  drawLines('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
+
+  document.getElementById('tbl-lotes').innerHTML=tblRes(ms,dM,dI,'Qt Morais');
+
   const det=document.getElementById('det-lotes');det.innerHTML='';
   ms.forEach(m=>{
     const a=arr.filter(d=>mesD(d.data_aquisicao_lote)===m);if(!a.length)return;
     const titulo=MFU[+m.split('-')[1]-1]+' / '+m.split('-')[0];
     const b=document.createElement('div');b.className='det-bloco';
-    b.innerHTML=`<div class="det-mes-hdr">${titulo}</div><div class="det-mes-body">${tblDet(a,null,'Casas (cota)')}</div>`;
+    b.innerHTML=`<div class="det-mes-hdr">${titulo}</div>
+      <div class="det-mes-body">${tblDet(a,'n_casas','Casas Comportadas (cota)')}</div>`;
     det.appendChild(b);
   });
 }
 
-// ── OBRAS ──
+// ══ OBRAS INICIADAS ══
+// Critério: data_inicio_obra preenchida (obra_iniciada=SIM pode ser None por tipo checkbox)
 function buildObras(){
   const ano=document.getElementById('sel-ano-obras')?.value;if(!ano)return;
-  const arr=docs.filter(d=>d.obra_iniciada==='SIM'&&d.data_inicio_obra&&anoD(d.data_inicio_obra)===ano);
+  // Usa data_inicio_obra como critério — mais confiável que obra_iniciada
+  const arr=docs.filter(d=>d.data_inicio_obra&&anoD(d.data_inicio_obra)===ano);
   const ag=agrupMes(arr,'data_inicio_obra','n_casas');
-  const ms=meses12(ano),dM=ms.map(m=>ag[m]?.morais||0),dI=ms.map(m=>ag[m]?.invest||0),lb=ms.map(fmtM);
+  const ms=meses12(ano),dM=ms.map(m=>ag[m]?.morais||0),dI=ms.map(m=>ag[m]?.invest||0);
+  const lb=ms.map(fmtM);
   const tM=dM.reduce((a,b)=>a+b,0),tI=dI.reduce((a,b)=>a+b,0);
+
   document.getElementById('kpi-obras-res').innerHTML=[
-    kpi('Casas Morais Iniciadas ('+ano+')',fmtN(tM,2)),
-    kpi('Casas Investidores Iniciadas ('+ano+')',fmtN(tI,2)),
-    kpi('Total',fmtN(tM+tI,2)),
+    kpi('Casas Morais Iniciadas ('+ano+')',fmtN(tM,1),'n_casas × cota'),
+    kpi('Casas Investidores Iniciadas ('+ano+')',fmtN(tI,1),'n_casas × (1−cota)'),
+    kpi('Total Casas Iniciadas',fmtN(tM+tI,1),''),
   ].join('');
-  requestAnimationFrame(()=>{
-    drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
-    drawLines('ch-os',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
-  });
-  document.getElementById('tbl-obras').innerHTML=tblRes(ms,dM,dI);
+
+  drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
+  drawLines('ch-os',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
+
+  document.getElementById('tbl-obras').innerHTML=tblRes(ms,dM,dI,'Casas Morais');
+
   const det=document.getElementById('det-obras');det.innerHTML='';
   ms.forEach(m=>{
     const a=arr.filter(d=>mesD(d.data_inicio_obra)===m);if(!a.length)return;
     const titulo=MFU[+m.split('-')[1]-1]+' / '+m.split('-')[0];
     const b=document.createElement('div');b.className='det-bloco';
-    b.innerHTML=`<div class="det-mes-hdr">${titulo}</div><div class="det-mes-body">${tblDet(a,'n_casas','Casas Iniciadas (cota)')}</div>`;
+    b.innerHTML=`<div class="det-mes-hdr">${titulo}</div>
+      <div class="det-mes-body">${tblDet(a,'n_casas','Casas Iniciadas (cota)')}</div>`;
     det.appendChild(b);
   });
 }
 
-// ── VENDAS ──
+// ══ CASAS VENDIDAS ══
 function buildVendas(){
   const ano=document.getElementById('sel-ano-v')?.value;if(!ano)return;
   const cid=document.getElementById('sel-cid-v')?.value;
@@ -606,55 +809,110 @@ function buildVendas(){
   if(cid)v=v.filter(x=>x.cidade===cid);
   if(set)v=v.filter(x=>x.setor===set);
   const ms=meses12(ano),pm={};
-  v.forEach(x=>{const m=mesD(x.data_venda);if(!m)return;if(!pm[m])pm[m]={qt:0,vgv:0};pm[m].qt++;pm[m].vgv+=(x.valor_na_mao||0);});
+  v.forEach(x=>{
+    const m=mesD(x.data_venda);if(!m)return;
+    if(!pm[m])pm[m]={qt:0,vgv:0};
+    pm[m].qt++;pm[m].vgv+=(x.valor_na_mao||0);
+  });
   const dQ=ms.map(m=>pm[m]?.qt||0),lb=ms.map(fmtM);
   const tQ=v.length,tV=v.reduce((s,x)=>s+(x.valor_na_mao||0),0);
   const dArr=[];
-  v.forEach(vn=>{const d=docs.find(d=>normS(d.endereco)===normS(vn.endereco));if(d?.data_certidoes){const x=diasDiff(d.data_certidoes,vn.data_venda);if(x)dArr.push(x);}});
+  v.forEach(vn=>{
+    const d=docs.find(d=>normS(d.endereco)===normS(vn.endereco));
+    if(d?.data_certidoes){const x=diasDiff(d.data_certidoes,vn.data_venda);if(x)dArr.push(x);}
+  });
   const prazo=dArr.length?Math.round(dArr.reduce((a,b)=>a+b)/dArr.length):null;
   const meta=metas.find(m=>m.ano===+ano);
+
   document.getElementById('kpi-v-res').innerHTML=[
-    kpi('Total Vendas '+ano,tQ),
-    kpi('VGV Total '+ano,fmtBRL(tV)),
-    kpi('Meta '+ano,meta?meta.meta_casas:'—','Banco METAS Notion'),
-    kpi('Realizado vs Meta',meta?fmtN(tQ/meta.meta_casas*100,0)+'%':'—'),
+    kpi('Total Casas Vendidas '+ano,tQ,''),
+    kpi('VGV Total '+ano,fmtBRL(tV),''),
+    kpi('Meta de Casas '+ano,meta?meta.meta_casas:'—','Banco METAS Notion'),
+    kpi('Realizado vs Meta',meta?fmtN(tQ/meta.meta_casas*100,0)+'%':'—',
+        meta?`${tQ} de ${meta.meta_casas} casas`:''),
   ].join('');
   document.getElementById('kv-vgv').textContent=tQ?fmtBRL(tV/tQ):'—';
   document.getElementById('kv-prazo').textContent=prazo!=null?prazo+'d':'—';
-  requestAnimationFrame(()=>drawBars('ch-vv',lb,[{data:dQ,color:'#295778'}],v=>String(v)));
-  const body=ms.map((m,i)=>{if(!dQ[i])return'';return`<tr><td>${fmtM(m)}</td><td class="nr">${dQ[i]}</td><td class="nr">${fmtBRL(pm[m]?.vgv||0)}</td></tr>`;}).join('');
-  document.getElementById('tbl-vendas').innerHTML=`<table><thead><tr><th>Mês</th><th>Qt Vendas</th><th>VGV</th></tr></thead><tbody>${body||'<tr><td colspan="3" style="color:var(--text4);padding:12px;text-align:center">Sem dados</td></tr>'}</tbody><tfoot><tr><td>TOTAL</td><td class="nr">${tQ}</td><td class="nr">${fmtBRL(tV)}</td></tr></tfoot></table>`;
+
+  drawBars('ch-vv',lb,[{data:dQ,color:'#295778'}],v=>String(v));
+
+  const body=ms.map((m,i)=>{
+    if(!dQ[i])return'';
+    return`<tr>
+      <td>${fmtM(m)}</td>
+      <td class="nr">${dQ[i]}</td>
+      <td class="nr">${fmtBRL(pm[m]?.vgv||0)}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('tbl-vendas').innerHTML=`<table>
+    <thead><tr><th>Mês</th><th>Qt Casas Vendidas</th><th>VGV</th></tr></thead>
+    <tbody>${body||'<tr><td colspan="3" style="color:var(--text4);padding:12px;text-align:center">Sem dados</td></tr>'}</tbody>
+    <tfoot><tr><td>TOTAL</td><td class="nr">${tQ}</td><td class="nr">${fmtBRL(tV)}</td></tr></tfoot>
+  </table>`;
+
   const rC={},rR={};
-  v.forEach(x=>{if(x.corretor)rC[x.corretor]=(rC[x.corretor]||0)+1;if(x.correspondente)rR[x.correspondente]=(rR[x.correspondente]||0)+1;});
+  v.forEach(x=>{
+    if(x.corretor)rC[x.corretor]=(rC[x.corretor]||0)+1;
+    if(x.correspondente)rR[x.correspondente]=(rR[x.correspondente]||0)+1;
+  });
   const sR=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]).slice(0,10);
   function rCard(t,d){
-    const rows=d.map(([n,q],i)=>`<div class="rank-row"><div class="rank-pos ${i<3?'top3':''}">${i+1}º</div><div class="rank-nome">${n||'—'}</div><div class="rank-qt">${q}</div></div>`).join('');
-    return`<div class="rank-card"><div class="rank-hdr"><div class="rank-hdr-title">${t}</div></div><div>${rows||'<div style="color:var(--text4);font-size:11px;padding:12px">Sem dados</div>'}</div></div>`;
+    const rows=d.map(([n,q],i)=>`
+      <div class="rank-row">
+        <div class="rank-pos ${i<3?'top3':''}">${i+1}º</div>
+        <div class="rank-nome">${n||'—'}</div>
+        <div class="rank-qt">${q}</div>
+      </div>`).join('');
+    return`<div class="rank-card">
+      <div class="rank-hdr"><div class="rank-hdr-title">${t}</div></div>
+      <div>${rows||'<div style="color:var(--text4);font-size:12px;padding:12px">Sem dados</div>'}</div>
+    </div>`;
   }
-  document.getElementById('rankings').innerHTML=rCard('Corretores com mais vendas',sR(rC))+rCard('Correspondentes com mais vendas',sR(rR));
+  document.getElementById('rankings').innerHTML=
+    rCard('Corretores com mais vendas',sR(rC))+
+    rCard('Correspondentes com mais vendas',sR(rR));
 }
 
-// ── INIT ──
+// ══ INIT ══
 async function init(){
   try{
     const r=await fetch('data.json'),data=await r.json();
-    docs=data.documentos||[];vendas=data.vendas||[];metas=data.metas||[];pags=data.pagamentos_detalhe||{};
-    if(data.updated_at)document.getElementById('updated-at').textContent='Atualizado: '+new Date(data.updated_at).toLocaleString('pt-BR');
-    initSelMes();buildDash();
+    docs=data.documentos||[];
+    vendas=data.vendas||[];
+    metas=data.metas||[];
+    pags=data.pagamentos_detalhe||{};
+
+    if(data.updated_at)
+      document.getElementById('updated-at').textContent=
+        'Atualizado: '+new Date(data.updated_at).toLocaleString('pt-BR');
+
+    initSelMes();
+    buildDash();
+
     const anoAtual=String(new Date().getFullYear());
-    // Popula selects SEM chamar build ainda (fn=null), depois chama build manualmente
+
+    // Lotes
     initSel('sel-ano-lotes',anosDisp(docs,'data_aquisicao_lote'),anoAtual,buildLotes);
-    initSel('sel-ano-obras',anosDisp(docs.filter(d=>d.obra_iniciada==='SIM'),'data_inicio_obra'),anoAtual,buildObras);
+    // Obras — usa data_inicio_obra como critério
+    initSel('sel-ano-obras',anosDisp(docs,'data_inicio_obra'),anoAtual,buildObras);
+    // Vendas
     initSel('sel-ano-v',anosDisp(vendas.filter(v=>v.clientes),'data_venda'),anoAtual,buildVendas);
+
     const sC=document.getElementById('sel-cid-v');
-    [...new Set(vendas.map(v=>v.cidade).filter(Boolean))].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sC.appendChild(o);});
+    [...new Set(vendas.map(v=>v.cidade).filter(Boolean))].sort()
+      .forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sC.appendChild(o);});
     const sS=document.getElementById('sel-set-v');
-    [...new Set(vendas.map(v=>v.setor).filter(Boolean))].sort().forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sS.appendChild(o);});
-    // Pré-renderiza todas as sub-páginas para que estejam prontas ao navegar
+    [...new Set(vendas.map(v=>v.setor).filter(Boolean))].sort()
+      .forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sS.appendChild(o);});
+
+    // Pré-computa dados (sem desenhar — canvas ainda está oculto)
     buildLotes();buildObras();buildVendas();
+
     document.getElementById('loading').classList.add('hidden');
   }catch(e){
-    document.getElementById('loading').innerHTML=`<div style="color:#c0392b;font-size:13px;padding:20px;text-align:center">Erro ao carregar dados:<br><code>${e.message}</code></div>`;
+    document.getElementById('loading').innerHTML=
+      `<div style="color:#c0392b;font-size:13px;padding:20px;text-align:center">
+        Erro ao carregar dados:<br><code>${e.message}</code></div>`;
   }
 }
 init();
