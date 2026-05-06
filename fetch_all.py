@@ -298,13 +298,15 @@ def buscar_obras_erp():
 
 
 def buscar_faturamentos_erp():
-    """Busca aba Faturamentos do ERP: centro_de_custo + valor_liquido + data_competencia."""
+    """Busca aba Faturamentos do ERP: centro_de_custo + valor_bruto + data_competencia.
+    Colunas reais confirmadas no log: valor_bruto (nao valor_liquido)
+    """
     import re as _re4
     fat = []  # lista de dicts { cc, valor, mes }
     print("  ERP: buscando Faturamentos...")
     for row in erp_csv(ERP_CSV_FATURAMENTOS, "faturamentos"):
         cc  = (row.get("centro_de_custo") or "").strip().upper()
-        val = row.get("valor_liquido")
+        val = row.get("valor_bruto") or row.get("valor_liquido") or row.get("valor_pago")
         dt  = (row.get("data_competencia") or "").strip()
         if cc and val:
             try:
