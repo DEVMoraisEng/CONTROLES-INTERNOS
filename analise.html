@@ -24,9 +24,7 @@ body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;
 .hdr-back{background:rgba(143,220,210,.18);border:1px solid rgba(143,220,210,.4);
           border-radius:7px;padding:7px 16px;font-family:'Barlow Condensed',sans-serif;
           font-size:14px;font-weight:700;color:var(--teal);letter-spacing:.06em;
-          text-transform:uppercase;cursor:pointer;transition:background .15s;
-          flex-shrink:0;display:none}
-.hdr-back.vis{display:block}
+          text-transform:uppercase;cursor:pointer;transition:background .15s;flex-shrink:0}
 .hdr-back:hover{background:rgba(143,220,210,.32)}
 .hdr-logo{height:38px;flex-shrink:0;object-fit:contain}
 .hdr-info{display:flex;flex-direction:column;flex:1}
@@ -170,7 +168,8 @@ tfoot td:last-child{border-right:none}
 .det-bloco{margin-bottom:0}
 .det-mes-hdr{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;
              color:#fff;background:var(--azul);padding:9px 16px;
-             border-radius:8px 8px 0 0;text-align:center;letter-spacing:.04em}
+             border-radius:8px 8px 0 0;text-align:center;letter-spacing:.04em;
+             border-bottom:3px solid var(--verde-btn)}
 .det-mes-body{border:1.5px solid var(--border);border-top:none;
               border-radius:0 0 8px 8px;overflow:hidden}
 
@@ -228,7 +227,7 @@ tfoot td:last-child{border-right:none}
 </div>
 
 <header class="header">
-  <button class="hdr-back" id="btn-back" onclick="voltarDash()">← Voltar</button>
+  <button class="hdr-back" id="btn-back" onclick="fechar()">← Voltar</button>
   <img src="logo.png" class="hdr-logo" alt="Morais Engenharia"
        onerror="this.style.display='none';document.getElementById('logo-svg').style.display='block'">
   <svg id="logo-svg" style="display:none;width:38px;height:38px;flex-shrink:0" viewBox="0 0 38 38" fill="none">
@@ -243,7 +242,6 @@ tfoot td:last-child{border-right:none}
   </div>
   <div class="hdr-right">
     <div class="updated" id="updated-at">—</div>
-    <button class="hdr-fechar" onclick="fechar()">✕ Fechar</button>
   </div>
 </header>
 
@@ -416,7 +414,7 @@ tfoot td:last-child{border-right:none}
         <select id="sel-set-v" onchange="buildVendas()"><option value="">Todos</option></select>
       </div>
       <!-- KPIs sem "Realizado vs Meta" aqui — ponto 9 remove info redundante -->
-      <div class="kpi-row r4" id="kpi-v-res" style="margin-bottom:20px"></div>
+      <div class="kpi-row r3" id="kpi-v-res" style="margin-bottom:20px"></div>
       <div class="blk-title">Casas Vendidas por Mês</div>
       <div class="graf-row">
         <div class="graf-card">
@@ -643,7 +641,9 @@ function drawLines(id,labels,datasets,fmtV){
   const niceStep=Math.ceil(rawStep/mag)*mag||1;
   const yMax=niceStep*(ySteps+1);
 
-  const xP=i=>P.l+(n>1?i/(n-1):0.5)*cW;
+  // Padding lateral para não colar no eixo — 5% de margem em cada lado
+  const xPad=cW*0.05;
+  const xP=i=>P.l+xPad+(n>1?i/(n-1):0.5)*(cW-2*xPad);
   const yP=v=>P.t+cH-(v/yMax)*cH;
 
   ctx.clearRect(0,0,W,H);
@@ -868,24 +868,32 @@ function tblDet(arr,campoQt){
     <tbody>${rows}</tbody>
   </table>`;
 
-  // Totais em grade 2x2 conforme layout
-  const totais=`<div style="display:grid;grid-template-columns:1fr 1fr;border-top:2px solid rgba(76,217,100,.4)">
-    <div style="padding:8px 12px;background:rgba(76,217,100,.1);border-right:1px solid rgba(76,217,100,.3);border-bottom:1px solid rgba(76,217,100,.3)">
-      <div style="font-size:10px;font-weight:700;color:#5a8099;text-transform:uppercase;letter-spacing:.06em">Total de Lotes</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px">
-        <div style="font-size:11px;color:var(--text3)">Morais</div>
-        <div style="font-size:13px;font-weight:800;color:#2a9d5c;font-family:'Barlow Condensed',sans-serif">${qtLotesM}</div>
-        <div style="font-size:11px;color:var(--text3)">Investidores</div>
-        <div style="font-size:13px;font-weight:800;color:#295778;font-family:'Barlow Condensed',sans-serif">${qtLotesI}</div>
+  // Totais em grade 2x2 — fonte maior, linhas separadas
+  const totais=`<div style="display:grid;grid-template-columns:1fr 1fr;border-top:2px solid rgba(76,217,100,.5)">
+    <div style="padding:12px 16px;background:rgba(76,217,100,.1);border-right:1px solid rgba(76,217,100,.35)">
+      <div style="font-size:11px;font-weight:700;color:#5a8099;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Total de Lotes</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:6px;border-bottom:1px solid rgba(76,217,100,.25)">
+          <span style="font-size:13px;color:var(--text3)">Morais</span>
+          <span style="font-size:22px;font-weight:800;color:#2a9d5c;font-family:'Barlow Condensed',sans-serif">${qtLotesM}</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:13px;color:var(--text3)">Investidores</span>
+          <span style="font-size:22px;font-weight:800;color:#295778;font-family:'Barlow Condensed',sans-serif">${qtLotesI}</span>
+        </div>
       </div>
     </div>
-    <div style="padding:8px 12px;background:rgba(76,217,100,.08);border-bottom:1px solid rgba(76,217,100,.3)">
-      <div style="font-size:10px;font-weight:700;color:#5a8099;text-transform:uppercase;letter-spacing:.06em">Total de Casas</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px">
-        <div style="font-size:11px;color:var(--text3)">Morais</div>
-        <div style="font-size:13px;font-weight:800;color:#2a9d5c;font-family:'Barlow Condensed',sans-serif">${fmtN(qtCasasM,2)}</div>
-        <div style="font-size:11px;color:var(--text3)">Investidores</div>
-        <div style="font-size:13px;font-weight:800;color:#295778;font-family:'Barlow Condensed',sans-serif">${fmtN(qtCasasI,2)}</div>
+    <div style="padding:12px 16px;background:rgba(76,217,100,.07)">
+      <div style="font-size:11px;font-weight:700;color:#5a8099;text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Total de Casas</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:6px;border-bottom:1px solid rgba(76,217,100,.25)">
+          <span style="font-size:13px;color:var(--text3)">Morais</span>
+          <span style="font-size:22px;font-weight:800;color:#2a9d5c;font-family:'Barlow Condensed',sans-serif">${fmtN(qtCasasM,1)}</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:13px;color:var(--text3)">Investidores</span>
+          <span style="font-size:22px;font-weight:800;color:#295778;font-family:'Barlow Condensed',sans-serif">${fmtN(qtCasasI,1)}</span>
+        </div>
       </div>
     </div>
   </div>`;
@@ -961,8 +969,9 @@ function buildObras(){
   const meta=metas.find(m=>m.ano===+ano);
   const unidade=viz==='casas'?'Casas':'Lotes';
 
-  // 10: relação casas iniciadas vs meta
-  const pctMeta=meta&&tM+tI>0?fmtN((tM+tI)/meta.meta_casas*100,0)+'%':'—';
+  // Iniciado vs meta sempre em casas (independente do seletor lotes/casas)
+  const casasIniciadas=arr.reduce((s,d)=>s+(+(d.n_casas)||1),0);
+  const pctMeta=meta&&casasIniciadas>0?fmtN(casasIniciadas/meta.meta_casas*100,0)+'%':'—';
 
   document.getElementById('blk-obras-title').textContent=
     `${unidade} de Obras Iniciadas por Mês`;
@@ -971,7 +980,7 @@ function buildObras(){
     kpi(`${unidade} Morais (${ano})`,fmtN(tM,1),'Por cota de empresa'),
     kpi(`${unidade} Investidores (${ano})`,fmtN(tI,1),'Por cota (1−cota)'),
     kpi(`Iniciado vs Meta ${ano}`,pctMeta,
-        meta?`${fmtN(tM+tI,1)} de ${meta.meta_casas} casas meta`:'Sem meta cadastrada'),
+        meta?`${fmtN(casasIniciadas,1)} de ${meta.meta_casas} casas meta`:'Sem meta cadastrada'),
   ].join('');
 
   drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
@@ -1033,13 +1042,10 @@ function buildVendas(){
   const prazo=dArr.length?Math.round(dArr.reduce((a,b)=>a+b)/dArr.length):null;
   const meta=metas.find(m=>m.ano===+ano);
 
-  // 9: sem "Realizado vs Meta" — esse vai na aba de obras
   document.getElementById('kpi-v-res').innerHTML=[
     kpi('Total Casas Vendidas',tQ,''),
     kpi('VGV Total (Valor na Mão)',fmtBRL(tVmao),''),
-    kpi('VGV Total (Contrato)',fmtBRL(tVcont),''),// 15
-    kpi('Meta de Casas '+ano,meta?meta.meta_casas:'—',
-        meta?`${fmtN(tQ/meta.meta_casas*100,0)}% da meta (${tQ} vendas)`:'Banco METAS Notion'),
+    kpi('VGV Total (Contrato)',fmtBRL(tVcont),''),
   ].join('');
 
   // 15: dois VGVs médios
