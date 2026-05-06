@@ -29,13 +29,18 @@ body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;
 .hdr-back.vis{display:block}
 .hdr-back:hover{background:rgba(143,220,210,.32)}
 .hdr-logo{height:38px;flex-shrink:0;object-fit:contain}
-.hdr-info{display:flex;flex-direction:column}
+.hdr-info{display:flex;flex-direction:column;flex:1}
 .hdr-sup{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.12em;
          text-transform:uppercase;opacity:.85}
 .hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;
            color:#fff;letter-spacing:.02em}
-.updated{margin-left:auto;font-size:11px;color:rgba(255,255,255,.4);
-         font-family:monospace;white-space:nowrap}
+.hdr-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.updated{font-size:11px;color:rgba(255,255,255,.4);font-family:monospace;white-space:nowrap}
+.hdr-fechar{background:transparent;border:1px solid rgba(255,255,255,.25);
+            border-radius:7px;padding:7px 14px;font-family:'Barlow Condensed',sans-serif;
+            font-size:13px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;
+            cursor:pointer;transition:all .15s;flex-shrink:0}
+.hdr-fechar:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
 
 /* LOADING */
 #loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;
@@ -162,12 +167,20 @@ tfoot td:last-child{border-right:none}
 .nr{text-align:right!important;font-family:'DM Mono',monospace}
 
 /* cabeçalho de mês nas tabelas detalhe — centralizado e destacado */
-.det-bloco{margin-bottom:24px}
-.det-mes-hdr{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;
-             color:#fff;background:var(--azul);padding:11px 20px;
+.det-bloco{margin-bottom:0}
+.det-mes-hdr{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;
+             color:#fff;background:var(--azul);padding:9px 16px;
              border-radius:8px 8px 0 0;text-align:center;letter-spacing:.04em}
 .det-mes-body{border:1.5px solid var(--border);border-top:none;
               border-radius:0 0 8px 8px;overflow:hidden}
+
+/* tabelas detalhe 2 por linha */
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+
+/* aviso amarelo */
+.aviso{background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.4);
+       border-radius:7px;padding:10px 16px;font-size:12px;color:#7a5e0a;
+       margin-bottom:16px}
 
 /* rodapé da tabela detalhe em verde */
 .det-footer{background:rgba(76,217,100,.12);border-top:2px solid rgba(76,217,100,.4)}
@@ -202,7 +215,7 @@ tfoot td:last-child{border-right:none}
   .nav-btn{width:auto;padding:8px 12px;font-size:13px}
   .graf-row{grid-template-columns:1fr}
   .kpi-row.r4{grid-template-columns:1fr 1fr}
-  .rank-grid{grid-template-columns:1fr}
+  .rank-grid,.det-grid{grid-template-columns:1fr}
   .sub-tab{padding:10px 20px;font-size:14px}
 }
 </style>
@@ -216,7 +229,6 @@ tfoot td:last-child{border-right:none}
 
 <header class="header">
   <button class="hdr-back" id="btn-back" onclick="voltarDash()">← Voltar</button>
-  <!-- Logo real do repositório -->
   <img src="logo.png" class="hdr-logo" alt="Morais Engenharia"
        onerror="this.style.display='none';document.getElementById('logo-svg').style.display='block'">
   <svg id="logo-svg" style="display:none;width:38px;height:38px;flex-shrink:0" viewBox="0 0 38 38" fill="none">
@@ -229,7 +241,10 @@ tfoot td:last-child{border-right:none}
     <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
     <div class="hdr-title" id="hdr-title">Análise de Dados</div>
   </div>
-  <div class="updated" id="updated-at">—</div>
+  <div class="hdr-right">
+    <div class="updated" id="updated-at">—</div>
+    <button class="hdr-fechar" onclick="fechar()">✕ Fechar</button>
+  </div>
 </header>
 
 <!-- DASHBOARD -->
@@ -304,7 +319,7 @@ tfoot td:last-child{border-right:none}
               <div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div>
               <div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div>
             </div>
-            <div class="chart-wrap"><canvas id="ch-lt" height="210"></canvas></div>
+            <div class="chart-wrap"><canvas id="ch-lt" height="280"></canvas></div>
           </div>
         </div>
         <div class="graf-card">
@@ -317,7 +332,7 @@ tfoot td:last-child{border-right:none}
               <div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div>
               <div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div>
             </div>
-            <div class="chart-wrap"><canvas id="ch-ls" height="210"></canvas></div>
+            <div class="chart-wrap"><canvas id="ch-ls" height="280"></canvas></div>
           </div>
         </div>
       </div>
@@ -363,7 +378,7 @@ tfoot td:last-child{border-right:none}
               <div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div>
               <div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div>
             </div>
-            <div class="chart-wrap"><canvas id="ch-ot" height="210"></canvas></div>
+            <div class="chart-wrap"><canvas id="ch-ot" height="280"></canvas></div>
           </div>
         </div>
         <div class="graf-card">
@@ -375,7 +390,7 @@ tfoot td:last-child{border-right:none}
               <div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div>
               <div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div>
             </div>
-            <div class="chart-wrap"><canvas id="ch-os" height="210"></canvas></div>
+            <div class="chart-wrap"><canvas id="ch-os" height="280"></canvas></div>
           </div>
         </div>
       </div>
@@ -409,7 +424,7 @@ tfoot td:last-child{border-right:none}
             <div class="graf-hdr-title">Quantidade de Vendas Mensais</div>
           </div>
           <div class="graf-body">
-            <div class="chart-wrap"><canvas id="ch-vv" height="210"></canvas></div>
+            <div class="chart-wrap"><canvas id="ch-vv" height="280"></canvas></div>
           </div>
         </div>
         <div class="graf-card">
@@ -526,28 +541,34 @@ function anosDisp(arr,campo){
   return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
 }
 
-// ── CANVAS: BARRAS COM EIXO Y ──
+// ── CANVAS: BARRAS COM EIXO Y — só meses com dados ──
 function drawBars(id,labels,datasets,fmtV){
   const c=document.getElementById(id);if(!c)return;
   const pw=c.parentElement.clientWidth||500;
   if(pw<20)return;
-  const H=parseInt(c.getAttribute('height'))||210;
+
+  // Filtrar só índices onde pelo menos um dataset tem valor > 0
+  const idxComDados=labels.map((_,i)=>datasets.some(d=>d.data[i]>0)?i:-1).filter(i=>i>=0);
+  if(!idxComDados.length){c.style.display='none';return;}
+  c.style.display='block';
+  const labelsF=idxComDados.map(i=>labels[i]);
+  const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
+
+  const H=parseInt(c.getAttribute('height'))||280;
   const dpr=window.devicePixelRatio||1;
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw;
-  // Espaço para eixo Y à esquerda
   const P={t:28,r:12,b:44,l:52};
-  const cW=W-P.l-P.r,cH=H-P.t-P.b,n=labels.length;
+  const cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
-  const allVals=datasets.flatMap(d=>d.data).filter(v=>v>0);
+  const allVals=datasetsF.flatMap(d=>d.data).filter(v=>v>0);
   const mx=Math.max(...allVals,0.01);
-  // Calcular escala Y bonita
   const ySteps=4;
   const rawStep=mx/ySteps;
-  const mag=Math.pow(10,Math.floor(Math.log10(rawStep)));
-  const niceStep=Math.ceil(rawStep/mag)*mag;
+  const mag=Math.pow(10,Math.floor(Math.log10(rawStep||1)));
+  const niceStep=Math.ceil(rawStep/mag)*mag||1;
   const yMax=niceStep*(ySteps+1);
 
   ctx.clearRect(0,0,W,H);
@@ -559,23 +580,22 @@ function drawBars(id,labels,datasets,fmtV){
     const v=niceStep*i;
     const y=P.t+cH*(1-v/yMax);
     ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
-    const lbl=fmtV?fmtV(v):fmtN(v,v<10?1:0);
-    ctx.fillText(lbl,P.l-5,y+3.5);
+    ctx.fillText(fmtV?fmtV(v):fmtN(v,v<10?1:0),P.l-5,y+3.5);
   }
 
   // Labels X
   ctx.fillStyle='#5a8099';ctx.font="600 10.5px 'Barlow',sans-serif";ctx.textAlign='center';
-  labels.forEach((lb,i)=>{
+  labelsF.forEach((lb,i)=>{
     const x=P.l+(i+.5)*(cW/n);
     ctx.fillText(lb,x,H-P.b+16);
   });
 
   // Barras
-  const gW=cW/n,nD=datasets.length;
-  const bW=Math.min((gW*0.78)/nD,34);
+  const gW=cW/n,nD=datasetsF.length;
+  const bW=Math.min((gW*0.78)/nD,38);
   const gPad=(gW-bW*nD)/2;
 
-  datasets.forEach((ds,di)=>{
+  datasetsF.forEach((ds,di)=>{
     ds.data.forEach((v,i)=>{
       if(!v)return;
       const bH=(v/yMax)*cH;
@@ -586,34 +606,40 @@ function drawBars(id,labels,datasets,fmtV){
       if(ctx.roundRect)ctx.roundRect(x,y,bW-1,bH,[3,3,0,0]);
       else ctx.rect(x,y,bW-1,bH);
       ctx.fill();
-      // Valor acima
-      ctx.fillStyle='#1a3347';ctx.font="600 9.5px 'DM Mono',monospace";ctx.textAlign='center';
-      const lbl=fmtV?fmtV(v):fmtN(v,v<10?1:0);
-      ctx.fillText(lbl,x+(bW-1)/2,y-4);
+      ctx.fillStyle='#1a3347';ctx.font="600 10px 'DM Mono',monospace";ctx.textAlign='center';
+      ctx.fillText(fmtV?fmtV(v):fmtN(v,v<10?1:0),x+(bW-1)/2,y-5);
       ctx.fillStyle=ds.color||'#295778';
     });
   });
 }
 
-// ── CANVAS: LINHAS COM EIXO Y ──
+// ── CANVAS: LINHAS COM EIXO Y — só meses com dados ──
 function drawLines(id,labels,datasets,fmtV){
   const c=document.getElementById(id);if(!c)return;
   const pw=c.parentElement.clientWidth||500;
   if(pw<20)return;
-  const H=parseInt(c.getAttribute('height'))||210;
+
+  // Filtrar só índices onde pelo menos um dataset tem valor > 0
+  const idxComDados=labels.map((_,i)=>datasets.some(d=>d.data[i]>0)?i:-1).filter(i=>i>=0);
+  if(!idxComDados.length){c.style.display='none';return;}
+  c.style.display='block';
+  const labelsF=idxComDados.map(i=>labels[i]);
+  const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||null)}));
+
+  const H=parseInt(c.getAttribute('height'))||280;
   const dpr=window.devicePixelRatio||1;
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw;
   const P={t:28,r:20,b:44,l:52};
-  const cW=W-P.l-P.r,cH=H-P.t-P.b,n=labels.length;if(!n)return;
+  const cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;if(!n)return;
 
-  const allVals=datasets.flatMap(d=>d.data).filter(Boolean);
+  const allVals=datasetsF.flatMap(d=>d.data).filter(Boolean);
   const mx=Math.max(...allVals,0.01);
   const ySteps=4;
   const rawStep=mx/ySteps;
-  const mag=Math.pow(10,Math.floor(Math.log10(rawStep)));
+  const mag=Math.pow(10,Math.floor(Math.log10(rawStep||1)));
   const niceStep=Math.ceil(rawStep/mag)*mag||1;
   const yMax=niceStep*(ySteps+1);
 
@@ -634,10 +660,10 @@ function drawLines(id,labels,datasets,fmtV){
 
   // Labels X
   ctx.fillStyle='#5a8099';ctx.font="600 10.5px 'Barlow',sans-serif";ctx.textAlign='center';
-  labels.forEach((lb,i)=>ctx.fillText(lb,xP(i),H-P.b+16));
+  labelsF.forEach((lb,i)=>ctx.fillText(lb,xP(i),H-P.b+16));
 
   // Linhas
-  datasets.forEach(ds=>{
+  datasetsF.forEach(ds=>{
     ctx.strokeStyle=ds.color||'#295778';ctx.lineWidth=2.8;ctx.lineJoin='round';
     ctx.beginPath();let st=false;
     ds.data.forEach((v,i)=>{
@@ -655,8 +681,7 @@ function drawLines(id,labels,datasets,fmtV){
     ds.data.forEach((v,i)=>{
       if(!v)return;
       ctx.fillStyle=ds.color||'#295778';ctx.textAlign='center';
-      const lbl=fmtV?fmtV(v):fmtN(v,v<10?1:0);
-      ctx.fillText(lbl,xP(i),yP(v)-9);
+      ctx.fillText(fmtV?fmtV(v):fmtN(v,v<10?1:0),xP(i),yP(v)-9);
     });
   });
 }
@@ -832,29 +857,40 @@ function tblDet(arr,campoQt){
   const qtCasasM=arr.reduce((s,d)=>s+(+(d[campoQt]||1)||1)*cotaM(d),0);
   const qtCasasI=arr.reduce((s,d)=>s+(+(d[campoQt]||1)||1)*(1-cotaM(d)),0);
 
-  return`<table>
+  // Tabela compacta de lotes
+  const tabelaLotes=`<table style="font-size:12px">
     <thead><tr>
-      <th class="left">Endereço</th>
-      <th>Proprietário</th>
-      <th>Cota</th>
-      <th>Tipo</th>
+      <th class="left" style="min-width:120px">Endereço</th>
+      <th style="min-width:90px">Proprietário</th>
+      <th style="min-width:60px">Cota</th>
+      <th style="min-width:50px">Tipo</th>
     </tr></thead>
     <tbody>${rows}</tbody>
-    <tfoot class="det-footer">
-      <tr class="det-footer">
-        <td class="det-footer">Lotes Morais: <strong>${qtLotesM}</strong></td>
-        <td class="det-footer" style="text-align:center">Casas Morais:</td>
-        <td class="det-footer nr"><strong>${fmtN(qtCasasM,2)}</strong></td>
-        <td class="det-footer"></td>
-      </tr>
-      <tr class="det-footer">
-        <td class="det-footer">Lotes Investidores: <strong>${qtLotesI}</strong></td>
-        <td class="det-footer" style="text-align:center">Casas Investidores:</td>
-        <td class="det-footer nr"><strong>${fmtN(qtCasasI,2)}</strong></td>
-        <td class="det-footer"></td>
-      </tr>
-    </tfoot>
   </table>`;
+
+  // Totais em grade 2x2 conforme layout
+  const totais=`<div style="display:grid;grid-template-columns:1fr 1fr;border-top:2px solid rgba(76,217,100,.4)">
+    <div style="padding:8px 12px;background:rgba(76,217,100,.1);border-right:1px solid rgba(76,217,100,.3);border-bottom:1px solid rgba(76,217,100,.3)">
+      <div style="font-size:10px;font-weight:700;color:#5a8099;text-transform:uppercase;letter-spacing:.06em">Total de Lotes</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px">
+        <div style="font-size:11px;color:var(--text3)">Morais</div>
+        <div style="font-size:13px;font-weight:800;color:#2a9d5c;font-family:'Barlow Condensed',sans-serif">${qtLotesM}</div>
+        <div style="font-size:11px;color:var(--text3)">Investidores</div>
+        <div style="font-size:13px;font-weight:800;color:#295778;font-family:'Barlow Condensed',sans-serif">${qtLotesI}</div>
+      </div>
+    </div>
+    <div style="padding:8px 12px;background:rgba(76,217,100,.08);border-bottom:1px solid rgba(76,217,100,.3)">
+      <div style="font-size:10px;font-weight:700;color:#5a8099;text-transform:uppercase;letter-spacing:.06em">Total de Casas</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px">
+        <div style="font-size:11px;color:var(--text3)">Morais</div>
+        <div style="font-size:13px;font-weight:800;color:#2a9d5c;font-family:'Barlow Condensed',sans-serif">${fmtN(qtCasasM,2)}</div>
+        <div style="font-size:11px;color:var(--text3)">Investidores</div>
+        <div style="font-size:13px;font-weight:800;color:#295778;font-family:'Barlow Condensed',sans-serif">${fmtN(qtCasasI,2)}</div>
+      </div>
+    </div>
+  </div>`;
+
+  return tabelaLotes+totais;
 }
 
 // ── LOTES COMPRADOS ──
@@ -887,14 +923,21 @@ function buildLotes(){
   document.getElementById('tbl-lotes').innerHTML=tblRes(ms,dM,dI,'Qt Morais','Qt Investidores');
 
   const det=document.getElementById('det-lotes');det.innerHTML='';
-  ms.forEach(m=>{
-    const a=arr.filter(d=>mesD(d.data_aquisicao_lote)===m);if(!a.length)return;
-    const titulo=`${MFU[+m.split('-')[1]-1]} / ${m.split('-')[0]}`;
-    const b=document.createElement('div');b.className='det-bloco';
-    b.innerHTML=`<div class="det-mes-hdr">${titulo}</div>
-      <div class="det-mes-body">${tblDet(a,'n_casas')}</div>`;
-    det.appendChild(b);
-  });
+  // Agrupar meses em pares para layout 2 colunas
+  const mesesComDados=ms.filter(m=>arr.some(d=>mesD(d.data_aquisicao_lote)===m));
+  for(let i=0;i<mesesComDados.length;i+=2){
+    const row=document.createElement('div');row.className='det-grid';
+    [0,1].forEach(j=>{
+      const m=mesesComDados[i+j];if(!m)return;
+      const a=arr.filter(d=>mesD(d.data_aquisicao_lote)===m);
+      const titulo=`${MFU[+m.split('-')[1]-1]} / ${m.split('-')[0]}`;
+      const b=document.createElement('div');b.className='det-bloco';
+      b.innerHTML=`<div class="det-mes-hdr">${titulo}</div>
+        <div class="det-mes-body">${tblDet(a,'n_casas')}</div>`;
+      row.appendChild(b);
+    });
+    det.appendChild(row);
+  }
 }
 
 // ── OBRAS INICIADAS ──
@@ -937,15 +980,23 @@ function buildObras(){
   document.getElementById('tbl-obras').innerHTML=
     tblRes(ms,dM,dI,`${unidade} Morais`,`${unidade} Investidores`);
 
-  const det=document.getElementById('det-obras');det.innerHTML='';
-  ms.forEach(m=>{
-    const a=arr.filter(d=>mesD(d.data_inicio_obra)===m);if(!a.length)return;
-    const titulo=`${MFU[+m.split('-')[1]-1]} / ${m.split('-')[0]}`;
-    const b=document.createElement('div');b.className='det-bloco';
-    b.innerHTML=`<div class="det-mes-hdr">${titulo}</div>
-      <div class="det-mes-body">${tblDet(a,'n_casas')}</div>`;
-    det.appendChild(b);
-  });
+  const det=document.getElementById('det-obras');
+  det.innerHTML=`<div class="aviso">⚠️ O campo <strong>OBRA INCIADA</strong> do Notion não está preenchido em nenhum registro. 
+    Os dados abaixo consideram obras com <strong>Data de Início da Obra</strong> preenchida como critério equivalente.</div>`;
+  const mesesComDadosO=ms.filter(m=>arr.some(d=>mesD(d.data_inicio_obra)===m));
+  for(let i=0;i<mesesComDadosO.length;i+=2){
+    const row=document.createElement('div');row.className='det-grid';
+    [0,1].forEach(j=>{
+      const m=mesesComDadosO[i+j];if(!m)return;
+      const a=arr.filter(d=>mesD(d.data_inicio_obra)===m);
+      const titulo=`${MFU[+m.split('-')[1]-1]} / ${m.split('-')[0]}`;
+      const b=document.createElement('div');b.className='det-bloco';
+      b.innerHTML=`<div class="det-mes-hdr">${titulo}</div>
+        <div class="det-mes-body">${tblDet(a,'n_casas')}</div>`;
+      row.appendChild(b);
+    });
+    det.appendChild(row);
+  }
 }
 
 // ── CASAS VENDIDAS ──
