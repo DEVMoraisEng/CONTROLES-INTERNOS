@@ -9,19 +9,21 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --azul:#295778;--azul-esc:#1e3f58;--teal:#8FDCD2;
-  --verde:#4cd964;--amarelo:#c9a227;--vermelho:#c0392b;--laranja:#d46a1a;
-  --bg:#EAF1F3;--bg2:#F5F9FA;--bg3:#dceaef;--border:#b8d0da;--border2:#d0e4ec;
+  --verde:#2a9d5c;--verde-btn:#4cd964;
+  --bg:#EAF1F3;--bg2:#F5F9FA;--bg3:#dceaef;
+  --border:#b8d0da;--border2:#d0e4ec;
   --text:#1a3347;--text3:#5a8099;--text4:#8aacbb;--branco:#fff;
 }
-body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
 
-/* ─── HEADER ──────────────────────────────── */
-.header{background:var(--azul);border-bottom:3px solid var(--teal);
-        padding:0 28px;height:68px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:100}
-.hdr-back{background:rgba(143,220,210,.15);border:1px solid rgba(143,220,210,.35);
-          border-radius:7px;padding:6px 14px;font-family:'Barlow Condensed',sans-serif;
-          font-size:13px;font-weight:700;color:var(--teal);letter-spacing:.06em;
-          text-transform:uppercase;cursor:pointer;transition:background .15s;flex-shrink:0}
+/* HEADER */
+.header{background:var(--azul);border-bottom:3px solid var(--teal);padding:0 28px;height:68px;
+        display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:200;flex-shrink:0}
+.hdr-back{background:rgba(143,220,210,.15);border:1px solid rgba(143,220,210,.35);border-radius:7px;
+          padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
+          color:var(--teal);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+          transition:background .15s;flex-shrink:0;display:none}
+.hdr-back.vis{display:block}
 .hdr-back:hover{background:rgba(143,220,210,.28)}
 .hdr-logo{width:38px;height:38px;flex-shrink:0}
 .hdr-info{display:flex;flex-direction:column}
@@ -29,1112 +31,629 @@ body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;displ
 .hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:.02em}
 .updated{margin-left:auto;font-size:10px;color:rgba(255,255,255,.4);font-family:monospace;white-space:nowrap}
 
-/* ─── NAV PÁGINAS ─────────────────────────── */
-.page-nav{background:var(--azul-esc);border-bottom:2px solid var(--border);
-          display:flex;gap:0;overflow-x:auto}
-.page-tab{padding:12px 24px;font-family:'Barlow Condensed',sans-serif;font-size:13px;
-          font-weight:700;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;
-          cursor:pointer;border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap;
-          border:none;background:none}
-.page-tab:hover{color:rgba(255,255,255,.85)}
-.page-tab.active{color:#fff;border-bottom-color:var(--teal)}
-
-/* ─── PÁGINAS ─────────────────────────────── */
-.page{display:none;padding:24px 28px 40px;flex:1}
-.page.active{display:block}
-
-/* ─── SEÇÃO TÍTULO ────────────────────────── */
-.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;
-           color:var(--azul);text-transform:uppercase;letter-spacing:.08em;
-           padding:8px 14px;background:var(--bg3);border-left:4px solid var(--teal);
-           border-radius:0 6px 6px 0;margin-bottom:16px}
-.sec-sub{font-size:11px;color:var(--text3);margin-bottom:20px;margin-top:-10px}
-
-/* ─── SELETOR MÊS/ANO ─────────────────────── */
-.filtros-bar{display:flex;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
-.filtro-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;
-              letter-spacing:.07em}
-.filtro-select{background:var(--branco);border:1px solid var(--border);border-radius:7px;
-               padding:6px 12px;font-family:'Barlow',sans-serif;font-size:12px;color:var(--text);
-               cursor:pointer;outline:none}
-.filtro-select:focus{border-color:var(--teal)}
-
-/* ─── GRADE DE KPI ────────────────────────── */
-.kpi-grid{display:grid;gap:14px;margin-bottom:28px}
-.kpi-grid.cols-4{grid-template-columns:repeat(4,1fr)}
-.kpi-grid.cols-3{grid-template-columns:repeat(3,1fr)}
-.kpi-grid.cols-2{grid-template-columns:repeat(2,1fr)}
-
-.kpi-card{background:var(--branco);border:1px solid var(--border);border-radius:10px;
-          padding:18px 20px;box-shadow:0 2px 8px rgba(41,87,120,.06);
-          display:flex;flex-direction:column;gap:4px}
-.kpi-card.destaque{border-color:var(--teal);border-width:2px}
-.kpi-top{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;
-         letter-spacing:.08em}
-.kpi-val{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;
-         color:var(--azul);line-height:1}
-.kpi-val.verde{color:#2a9d5c}
-.kpi-val.vermelho{color:var(--vermelho)}
-.kpi-sub{font-size:10px;color:var(--text4)}
-
-/* ─── GRÁFICO DE BARRAS ───────────────────── */
-.bar-chart{display:flex;flex-direction:column;gap:6px}
-.bar-row{display:flex;align-items:center;gap:8px}
-.bar-label{font-size:9.5px;color:var(--text);width:150px;flex-shrink:0;
-           white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-           font-family:'DM Mono',monospace}
-.bar-label.hl{color:var(--azul);font-weight:700}
-.bar-track{flex:1;background:var(--bg3);border-radius:3px;height:16px;overflow:hidden}
-.bar-fill{height:100%;border-radius:3px;background:var(--border);transition:width .5s ease}
-.bar-fill.hl{background:var(--azul)}
-.bar-fill.teal{background:var(--teal)}
-.bar-fill.verde{background:#2a9d5c}
-.bar-fill.amarelo{background:var(--amarelo)}
-.bar-fill.vermelho{background:var(--vermelho)}
-.bar-val{font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);
-         width:60px;text-align:right;flex-shrink:0}
-.bar-val.hl{color:var(--azul);font-weight:700}
-
-/* ─── GRÁFICO DE LINHA (Canvas) ───────────── */
-.chart-wrap{position:relative;width:100%;margin-bottom:4px}
-canvas.chart-canvas{width:100% !important;display:block}
-
-/* ─── CARD GRÁFICO ────────────────────────── */
-.graf-card{background:var(--branco);border:1px solid var(--border);border-radius:10px;
-           overflow:hidden;box-shadow:0 2px 8px rgba(41,87,120,.06);margin-bottom:18px}
-.graf-card-hdr{padding:10px 16px 8px;border-bottom:1px solid var(--border2)}
-.graf-card-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
-                 color:var(--azul);text-transform:uppercase;letter-spacing:.06em}
-.graf-card-sub{font-size:10px;color:var(--text3);margin-top:2px}
-.graf-card-body{padding:14px 16px}
-
-/* ─── TABELA ──────────────────────────────── */
-.tbl-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border);margin-bottom:22px}
-table.tbl{width:100%;border-collapse:collapse;font-size:12px}
-table.tbl thead th{background:var(--azul);color:#fff;padding:9px 12px;text-align:left;
-                    font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
-                    text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}
-table.tbl tbody tr:nth-child(even){background:var(--bg2)}
-table.tbl tbody tr:hover{background:var(--bg3)}
-table.tbl td{padding:7px 12px;color:var(--text);border-bottom:1px solid var(--border2);
-             white-space:nowrap}
-table.tbl tfoot td{background:var(--azul-esc);color:#fff;padding:8px 12px;
-                    font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px}
-table.tbl .num{text-align:right;font-family:'DM Mono',monospace}
-table.tbl .mes-hdr{min-width:90px}
-
-/* ─── LOADING ─────────────────────────────── */
+/* LOADING */
 #loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;
-         justify-content:center;z-index:200;flex-direction:column;gap:12px}
+         justify-content:center;z-index:500;flex-direction:column;gap:12px}
 #loading.hidden{display:none}
 .spin{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--teal);
       border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ─── TABS INTERNAS (Metas) ───────────────── */
-.sub-tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:22px}
-.sub-tab{padding:9px 20px;font-family:'Barlow Condensed',sans-serif;font-size:13px;
-         font-weight:700;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;
-         cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;
-         border:none;background:none;transition:all .15s}
-.sub-tab:hover{color:var(--azul)}
-.sub-tab.active{color:var(--azul);border-bottom-color:var(--teal)}
-.sub-page{display:none}
-.sub-page.active{display:block}
+/* PÁGINAS */
+.page{display:none;flex:1;min-height:0}
+.page.active{display:flex}
 
-/* ─── LEGENDA GRÁFICO ─────────────────────── */
-.legenda{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
-.leg-item{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--text3)}
-.leg-cor{width:12px;height:12px;border-radius:2px}
+/* ═══ DASHBOARD ═══ */
+#page-dash{flex-direction:row}
+.dash-nav{width:210px;flex-shrink:0;background:var(--azul-esc);border-right:2px solid var(--border);
+          display:flex;flex-direction:column;padding:28px 0}
+.nav-btn{display:block;width:100%;padding:14px 20px;font-family:'Barlow Condensed',sans-serif;
+         font-size:13px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.08em;
+         text-transform:uppercase;text-align:left;cursor:pointer;border:none;background:none;
+         border-left:4px solid transparent;transition:all .15s;line-height:1.3}
+.nav-btn:hover{color:#fff;background:rgba(255,255,255,.06);border-left-color:var(--teal)}
+.nav-btn:disabled{opacity:.35;cursor:not-allowed}
+.dash-main{flex:1;padding:24px 28px 40px;overflow-y:auto}
 
-/* ─── TABELA DETALHE MÊS ──────────────────── */
-.mes-tabelas{display:flex;flex-direction:column;gap:18px}
-.mes-tbl-title{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;
-               color:var(--azul);text-transform:uppercase;letter-spacing:.06em;
-               padding:6px 12px;background:var(--bg3);border-left:3px solid var(--teal);
-               border-radius:0 5px 5px 0}
+/* seletor */
+.sel-bar{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.sel-lbl{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em}
+select{background:var(--branco);border:1px solid var(--border);border-radius:7px;padding:6px 12px;
+       font-family:'Barlow',sans-serif;font-size:12px;color:var(--text);cursor:pointer;outline:none}
+select:focus{border-color:var(--teal)}
 
-/* ─── RANKING ─────────────────────────────── */
-.ranking-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+/* bloco título */
+.blk-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;color:var(--azul);
+           text-transform:uppercase;letter-spacing:.08em;padding:7px 14px;background:var(--bg3);
+           border-left:4px solid var(--teal);border-radius:0 6px 6px 0;margin-bottom:14px;margin-top:6px}
+
+/* grade KPI */
+.kpi-row{display:grid;gap:12px;margin-bottom:14px}
+.r4{grid-template-columns:repeat(4,1fr)}
+.r3{grid-template-columns:repeat(3,1fr)}
+.r2{grid-template-columns:repeat(2,1fr)}
+.kpi-card{background:var(--branco);border:1px solid var(--border);border-radius:9px;padding:14px 16px;
+          box-shadow:0 2px 6px rgba(41,87,120,.05)}
+.kpi-lbl{font-size:9.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.kpi-val{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:var(--azul);line-height:1}
+.kpi-val.g{color:var(--verde)}
+.kpi-sub2{font-size:9.5px;color:var(--text4);margin-top:3px}
+
+/* ═══ METAS ═══ */
+#page-metas{flex-direction:column}
+.metas-hdr{background:var(--azul-esc);border-bottom:2px solid var(--border);padding:14px 28px}
+.metas-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;
+                 color:#fff;text-transform:uppercase;letter-spacing:.06em}
+/* sub-tabs centralizadas em verde */
+.sub-tabs-outer{background:var(--bg2);border-bottom:2px solid var(--border);
+                padding:16px 28px;display:flex;justify-content:center}
+.sub-tabs-box{display:flex;gap:10px;background:rgba(41,87,120,.06);
+              border:2px solid var(--verde-btn);border-radius:10px;padding:6px}
+.sub-tab{padding:10px 30px;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;
+         color:var(--text3);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+         border-radius:7px;border:2px solid transparent;background:none;transition:all .18s}
+.sub-tab:hover{color:var(--azul);background:rgba(76,217,100,.1)}
+.sub-tab.active{background:var(--verde-btn);color:#1a3347;border-color:var(--verde-btn)}
+.metas-body{flex:1;padding:24px 28px 40px;overflow-y:auto}
+.sub-pg{display:none}
+.sub-pg.active{display:block}
+
+/* controles */
+.controles{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+
+/* dois gráficos lado a lado */
+.graf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+.graf-card{background:var(--branco);border:1px solid var(--border);border-radius:10px;
+           overflow:hidden;box-shadow:0 2px 8px rgba(41,87,120,.06)}
+.graf-hdr{padding:10px 16px 8px;border-bottom:1px solid var(--border2)}
+.graf-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
+                color:var(--azul);text-transform:uppercase;letter-spacing:.06em}
+.graf-hdr-sub{font-size:10px;color:var(--text3);margin-top:2px}
+.graf-body{padding:14px 16px}
+.legenda{display:flex;gap:14px;margin-bottom:10px}
+.leg{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text3)}
+.leg-cor{width:11px;height:11px;border-radius:2px;flex-shrink:0}
+.chart-wrap{position:relative;width:100%}
+canvas{display:block}
+
+/* tabelas */
+.tbl-wrap{border-radius:8px;border:1px solid var(--border);overflow:hidden;margin-bottom:22px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{background:var(--azul);color:#fff;padding:9px 14px;text-align:left;
+         font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
+         text-transform:uppercase;letter-spacing:.07em;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--bg2)}
+tbody tr:hover{background:var(--bg3)}
+tbody td{padding:8px 14px;color:var(--text);border-bottom:1px solid var(--border2);white-space:nowrap}
+tfoot td{background:var(--azul-esc);color:#fff;padding:8px 14px;
+         font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px}
+.nr{text-align:right;font-family:'DM Mono',monospace}
+
+/* detalhe por mês */
+.det-bloco{margin-bottom:18px}
+.det-mes-hdr{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;
+             color:#fff;background:var(--azul);padding:8px 16px;border-radius:7px 7px 0 0}
+.det-mes-body{border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;overflow:hidden}
+
+/* ranking */
+.rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
 .rank-card{background:var(--branco);border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .rank-hdr{background:var(--azul);padding:10px 14px}
-.rank-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
-            color:#fff;text-transform:uppercase;letter-spacing:.06em}
-.rank-body{padding:12px 14px;display:flex;flex-direction:column;gap:6px}
-.rank-row{display:flex;align-items:center;gap:10px}
-.rank-pos{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:var(--text4);width:20px}
-.rank-pos.top{color:var(--amarelo)}
-.rank-nome{flex:1;font-size:11.5px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rank-qt{font-family:'DM Mono',monospace;font-size:11px;color:var(--azul);font-weight:700;flex-shrink:0}
+.rank-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
+                color:#fff;text-transform:uppercase;letter-spacing:.06em}
+.rank-row{display:flex;align-items:center;gap:10px;padding:8px 14px;
+          border-bottom:1px solid var(--border2)}
+.rank-row:last-child{border-bottom:none}
+.rank-pos{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:var(--text4);width:22px}
+.rank-pos.top3{color:#c9a227}
+.rank-nome{flex:1;font-size:11.5px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank-qt{font-family:'DM Mono',monospace;font-size:11px;color:var(--azul);font-weight:700}
 
 @media(max-width:900px){
-  .kpi-grid.cols-4{grid-template-columns:1fr 1fr}
-  .kpi-grid.cols-3{grid-template-columns:1fr 1fr}
-  .ranking-grid{grid-template-columns:1fr}
-  .page{padding:16px}
-}
-@media(max-width:600px){
-  .kpi-grid.cols-4,.kpi-grid.cols-3,.kpi-grid.cols-2{grid-template-columns:1fr}
+  #page-dash{flex-direction:column}
+  .dash-nav{width:100%;flex-direction:row;padding:8px 12px;flex-wrap:wrap}
+  .nav-btn{border-left:none;border-bottom:3px solid transparent;padding:8px 12px;width:auto}
+  .graf-row{grid-template-columns:1fr}
+  .kpi-row.r4{grid-template-columns:1fr 1fr}
+  .rank-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<div id="loading">
-  <div class="spin"></div>
-  <div style="font-size:12px;color:var(--text3)">Carregando dados…</div>
-</div>
+<div id="loading"><div class="spin"></div><div style="font-size:12px;color:var(--text3)">Carregando dados…</div></div>
 
-<!-- HEADER -->
 <header class="header">
-  <button class="hdr-back" onclick="fechar()">← Voltar</button>
+  <button class="hdr-back" id="btn-back" onclick="voltarDash()">← Voltar</button>
   <svg class="hdr-logo" viewBox="0 0 38 38" fill="none">
     <rect width="38" height="38" rx="6" fill="rgba(143,220,210,.15)"/>
-    <path d="M6 29V9L13 22L19 9L25 22L32 9V29" stroke="#8FDCD2" stroke-width="2.8"
-          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M6 29V9L13 22L19 9L25 22L32 9V29" stroke="#8FDCD2" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M6 29H32" stroke="#8FDCD2" stroke-width="2.2" stroke-linecap="round"/>
   </svg>
   <div class="hdr-info">
     <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
-    <div class="hdr-title">Análise de Dados</div>
+    <div class="hdr-title" id="hdr-title">Análise de Dados</div>
   </div>
   <div class="updated" id="updated-at">—</div>
 </header>
 
-<!-- NAV PÁGINAS -->
-<nav class="page-nav">
-  <button class="page-tab active" onclick="showPage('dashboard')">Dashboard</button>
-  <button class="page-tab" onclick="showPage('metas')">Metas</button>
-</nav>
+<!-- ══════════ DASHBOARD ══════════ -->
+<div class="page active" id="page-dash">
+  <nav class="dash-nav">
+    <button class="nav-btn" onclick="irPara('metas','Metas')">METAS</button>
+    <button class="nav-btn" disabled>ANÁLISES SETORIZADAS</button>
+    <button class="nav-btn" disabled>COMPARATIVO DE ANÁLISES</button>
+  </nav>
+  <div class="dash-main">
+    <div class="sel-bar">
+      <span class="sel-lbl">Mês de referência:</span>
+      <select id="sel-mes" onchange="buildDash()"></select>
+    </div>
 
-<!-- ══════════════════════════════════════════════════════
-     PÁGINA: DASHBOARD
-══════════════════════════════════════════════════════ -->
-<div class="page active" id="page-dashboard">
+    <div class="blk-title">Financeiro — Mês Selecionado</div>
+    <div class="kpi-row r4" id="kpi-fin"></div>
+    <div class="kpi-row r2" style="margin-bottom:20px" id="kpi-rat"></div>
 
-  <!-- Seletor de mês -->
-  <div class="filtros-bar">
-    <span class="filtro-label">Mês de referência:</span>
-    <select class="filtro-select" id="sel-mes" onchange="buildDashboard()"></select>
+    <div class="blk-title">Produção — Mês Selecionado</div>
+    <div class="kpi-row r4" id="kpi-prod"></div>
+
+    <div class="blk-title">Tempos Médios — Todo o Período</div>
+    <div class="kpi-row r3" id="kpi-t1"></div>
+    <div class="kpi-row r3" id="kpi-t2"></div>
   </div>
-
-  <!-- BLOCO 1: VGV + CUSTOS MENSAIS -->
-  <div class="sec-title">Financeiro — Mês Selecionado</div>
-  <div class="kpi-grid cols-4" id="kpi-financeiro"></div>
-
-  <!-- BLOCO 2: Ratios Escritório/VGV -->
-  <div class="kpi-grid cols-2" id="kpi-ratios"></div>
-
-  <!-- BLOCO 3: Contagens do mês -->
-  <div class="sec-title" style="margin-top:8px">Produção — Mês Selecionado</div>
-  <div class="kpi-grid cols-4" id="kpi-producao"></div>
-
-  <!-- BLOCO 4: Tempos médios (todo período) -->
-  <div class="sec-title" style="margin-top:8px">Tempos Médios — Todo o Período</div>
-  <div class="sec-sub">Calculados sobre todos os registros com datas válidas. Valores zerados, nulos e negativos excluídos.</div>
-  <div class="kpi-grid cols-3" id="kpi-tempos-l1"></div>
-  <div class="kpi-grid cols-2" style="margin-top:14px" id="kpi-tempos-l2"></div>
-
 </div>
 
-<!-- ══════════════════════════════════════════════════════
-     PÁGINA: METAS
-══════════════════════════════════════════════════════ -->
+<!-- ══════════ METAS ══════════ -->
 <div class="page" id="page-metas">
-
-  <!-- Tabs internas -->
-  <div class="sub-tabs">
-    <button class="sub-tab active" onclick="showSubPage('lotes')">Lotes Comprados</button>
-    <button class="sub-tab" onclick="showSubPage('obras')">Obras Iniciadas</button>
-    <button class="sub-tab" onclick="showSubPage('vendas')">Casas Vendidas</button>
+  <div class="metas-hdr"><div class="metas-hdr-title">Metas</div></div>
+  <div class="sub-tabs-outer">
+    <div class="sub-tabs-box">
+      <button class="sub-tab active" onclick="showSub('lotes',this)">Lotes Comprados</button>
+      <button class="sub-tab" onclick="showSub('obras',this)">Obras Iniciadas</button>
+      <button class="sub-tab" onclick="showSub('vendas',this)">Casas Vendidas</button>
+    </div>
   </div>
+  <div class="metas-body">
 
-  <!-- ── LOTES COMPRADOS ── -->
-  <div class="sub-page active" id="sub-lotes">
-    <div class="filtros-bar">
-      <span class="filtro-label">Ano:</span>
-      <select class="filtro-select" id="sel-ano-lotes" onchange="buildLotes()"></select>
-    </div>
-    <div class="kpi-grid cols-3" id="kpi-lotes-resumo" style="margin-bottom:22px"></div>
-
-    <div class="sec-title">Lotes Adquiridos por Mês</div>
-    <div class="graf-card">
-      <div class="graf-card-hdr">
-        <div class="graf-card-title">Morais + Investidores (total)</div>
-        <div class="graf-card-sub">Quantidade de lotes adquiridos — proporção por cota</div>
+    <!-- LOTES -->
+    <div class="sub-pg active" id="sub-lotes">
+      <div class="controles">
+        <span class="sel-lbl">Ano:</span>
+        <select id="sel-ano-lotes" onchange="buildLotes()"></select>
       </div>
-      <div class="graf-card-body">
-        <div class="legenda">
-          <div class="leg-item"><div class="leg-cor" style="background:var(--azul)"></div>Morais</div>
-          <div class="leg-item"><div class="leg-cor" style="background:var(--teal)"></div>Investidor</div>
+      <div class="kpi-row r3" id="kpi-lotes-res" style="margin-bottom:20px"></div>
+      <div class="blk-title">Lotes Adquiridos por Mês</div>
+      <div class="graf-row">
+        <div class="graf-card">
+          <div class="graf-hdr"><div class="graf-hdr-title">Morais + Investidores (total)</div><div class="graf-hdr-sub">Proporção por cota de empresa</div></div>
+          <div class="graf-body">
+            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
+            <div class="chart-wrap"><canvas id="ch-lt" height="180"></canvas></div>
+          </div>
         </div>
-        <div class="chart-wrap"><canvas class="chart-canvas" id="chart-lotes-total" height="160"></canvas></div>
-      </div>
-    </div>
-    <div class="graf-card">
-      <div class="graf-card-hdr">
-        <div class="graf-card-title">Morais vs. Investidores (separado)</div>
-        <div class="graf-card-sub">Linhas separadas — Morais e investidores por mês</div>
-      </div>
-      <div class="graf-card-body">
-        <div class="legenda">
-          <div class="leg-item"><div class="leg-cor" style="background:var(--azul)"></div>Morais</div>
-          <div class="leg-item"><div class="leg-cor" style="background:var(--teal)"></div>Investidor</div>
+        <div class="graf-card">
+          <div class="graf-hdr"><div class="graf-hdr-title">Morais vs. Investidores (separado)</div><div class="graf-hdr-sub">Linhas separadas por mês</div></div>
+          <div class="graf-body">
+            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
+            <div class="chart-wrap"><canvas id="ch-ls" height="180"></canvas></div>
+          </div>
         </div>
-        <div class="chart-wrap"><canvas class="chart-canvas" id="chart-lotes-sep" height="160"></canvas></div>
       </div>
+      <div class="blk-title">Tabela de Lotes/Mês</div>
+      <div class="tbl-wrap" id="tbl-lotes"></div>
+      <div class="blk-title">Detalhe por Lote</div>
+      <div id="det-lotes"></div>
     </div>
 
-    <!-- Tabela resumo por mês -->
-    <div class="sec-title">Resumo por Mês</div>
-    <div class="tbl-wrap" id="tbl-lotes-mes"></div>
+    <!-- OBRAS -->
+    <div class="sub-pg" id="sub-obras">
+      <div class="controles">
+        <span class="sel-lbl">Ano:</span>
+        <select id="sel-ano-obras" onchange="buildObras()"></select>
+      </div>
+      <div class="kpi-row r3" id="kpi-obras-res" style="margin-bottom:20px"></div>
+      <div class="blk-title">Casas de Obras Iniciadas por Mês</div>
+      <div class="graf-row">
+        <div class="graf-card">
+          <div class="graf-hdr"><div class="graf-hdr-title">Morais + Investidores (total)</div><div class="graf-hdr-sub">Casas cuja obra foi iniciada — por cota</div></div>
+          <div class="graf-body">
+            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
+            <div class="chart-wrap"><canvas id="ch-ot" height="180"></canvas></div>
+          </div>
+        </div>
+        <div class="graf-card">
+          <div class="graf-hdr"><div class="graf-hdr-title">Morais vs. Investidores (separado)</div></div>
+          <div class="graf-body">
+            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
+            <div class="chart-wrap"><canvas id="ch-os" height="180"></canvas></div>
+          </div>
+        </div>
+      </div>
+      <div class="blk-title">Tabela de Casas/Mês</div>
+      <div class="tbl-wrap" id="tbl-obras"></div>
+      <div class="blk-title">Detalhe por Lote</div>
+      <div id="det-obras"></div>
+    </div>
 
-    <!-- Tabelas detalhadas por mês -->
-    <div class="sec-title" style="margin-top:8px">Detalhe por Lote</div>
-    <div class="mes-tabelas" id="det-lotes"></div>
+    <!-- VENDAS -->
+    <div class="sub-pg" id="sub-vendas">
+      <div class="controles">
+        <span class="sel-lbl">Ano:</span><select id="sel-ano-v" onchange="buildVendas()"></select>
+        <span class="sel-lbl">Cidade:</span><select id="sel-cid-v" onchange="buildVendas()"><option value="">Todas</option></select>
+        <span class="sel-lbl">Setor:</span><select id="sel-set-v" onchange="buildVendas()"><option value="">Todos</option></select>
+      </div>
+      <div class="kpi-row r4" id="kpi-v-res" style="margin-bottom:20px"></div>
+      <div class="blk-title">Casas Vendidas por Mês</div>
+      <div class="graf-row">
+        <div class="graf-card">
+          <div class="graf-hdr"><div class="graf-hdr-title">Quantidade de Vendas Mensais</div></div>
+          <div class="graf-body"><div class="chart-wrap"><canvas id="ch-vv" height="180"></canvas></div></div>
+        </div>
+        <div class="graf-card">
+          <div class="graf-hdr"><div class="graf-hdr-title">VGV e Prazo Médio</div></div>
+          <div class="graf-body" style="display:flex;flex-direction:column;gap:14px;padding-top:20px">
+            <div class="kpi-card"><div class="kpi-lbl">VGV Médio por Venda</div><div class="kpi-val" id="kv-vgv">—</div></div>
+            <div class="kpi-card"><div class="kpi-lbl">Prazo Médio de Venda</div><div class="kpi-val" id="kv-prazo">—</div><div class="kpi-sub2">Certidões → data de venda</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="blk-title">Tabela de Vendas/Mês</div>
+      <div class="tbl-wrap" id="tbl-vendas"></div>
+      <div class="blk-title">Rankings</div>
+      <div class="rank-grid" id="rankings"></div>
+    </div>
+
   </div>
-
-  <!-- ── OBRAS INICIADAS ── -->
-  <div class="sub-page" id="sub-obras">
-    <div class="filtros-bar">
-      <span class="filtro-label">Ano:</span>
-      <select class="filtro-select" id="sel-ano-obras" onchange="buildObras()"></select>
-    </div>
-    <div class="kpi-grid cols-3" id="kpi-obras-resumo" style="margin-bottom:22px"></div>
-
-    <div class="sec-title">Obras Iniciadas por Mês (casas)</div>
-    <div class="graf-card">
-      <div class="graf-card-hdr">
-        <div class="graf-card-title">Morais + Investidores (total)</div>
-        <div class="graf-card-sub">Casas cujas obras foram iniciadas — proporção por cota</div>
-      </div>
-      <div class="graf-card-body">
-        <div class="legenda">
-          <div class="leg-item"><div class="leg-cor" style="background:var(--azul)"></div>Morais</div>
-          <div class="leg-item"><div class="leg-cor" style="background:var(--teal)"></div>Investidor</div>
-        </div>
-        <div class="chart-wrap"><canvas class="chart-canvas" id="chart-obras-total" height="160"></canvas></div>
-      </div>
-    </div>
-    <div class="graf-card">
-      <div class="graf-card-hdr">
-        <div class="graf-card-title">Morais vs. Investidores (separado)</div>
-      </div>
-      <div class="graf-card-body">
-        <div class="legenda">
-          <div class="leg-item"><div class="leg-cor" style="background:var(--azul)"></div>Morais</div>
-          <div class="leg-item"><div class="leg-cor" style="background:var(--teal)"></div>Investidor</div>
-        </div>
-        <div class="chart-wrap"><canvas class="chart-canvas" id="chart-obras-sep" height="160"></canvas></div>
-      </div>
-    </div>
-
-    <div class="sec-title">Resumo por Mês</div>
-    <div class="tbl-wrap" id="tbl-obras-mes"></div>
-    <div class="sec-title" style="margin-top:8px">Detalhe por Lote</div>
-    <div class="mes-tabelas" id="det-obras"></div>
-  </div>
-
-  <!-- ── CASAS VENDIDAS ── -->
-  <div class="sub-page" id="sub-vendas">
-    <div class="filtros-bar">
-      <span class="filtro-label">Ano:</span>
-      <select class="filtro-select" id="sel-ano-vendas" onchange="buildVendasMetas()"></select>
-      <span class="filtro-label" style="margin-left:12px">Cidade:</span>
-      <select class="filtro-select" id="sel-cidade-vendas" onchange="buildVendasMetas()">
-        <option value="">Todas</option>
-      </select>
-      <span class="filtro-label">Setor:</span>
-      <select class="filtro-select" id="sel-setor-vendas" onchange="buildVendasMetas()">
-        <option value="">Todos</option>
-      </select>
-    </div>
-
-    <!-- KPIs resumo -->
-    <div class="kpi-grid cols-2" id="kpi-vendas-resumo" style="margin-bottom:22px"></div>
-
-    <!-- Gráfico -->
-    <div class="sec-title">Casas Vendidas por Mês</div>
-    <div class="graf-card">
-      <div class="graf-card-hdr">
-        <div class="graf-card-title">Quantidade de vendas mensais</div>
-        <div class="graf-card-sub">Filtros aplicados: ano, cidade e setor</div>
-      </div>
-      <div class="graf-card-body">
-        <div class="chart-wrap"><canvas class="chart-canvas" id="chart-vendas" height="160"></canvas></div>
-      </div>
-    </div>
-
-    <!-- Tabela resumo -->
-    <div class="sec-title">Resumo por Mês</div>
-    <div class="tbl-wrap" id="tbl-vendas-mes"></div>
-
-    <!-- Rankings -->
-    <div class="sec-title" style="margin-top:8px">Rankings</div>
-    <div class="ranking-grid" id="rankings-vendas"></div>
-  </div>
-
-</div><!-- /page-metas -->
+</div>
 
 <script>
-// ──────────────────────────────────────────────────────────
-//  UTILS
-// ──────────────────────────────────────────────────────────
-const DATA_URL = 'data.json';
-let D = {}; // data.json completo
-let allDocs = [], allVendas = [], allMetas = [];
-let pagamentos = {}, obrasErp = {}, faturamentosErp = [], fatPorTipo = {};
+// ── DADOS ──
+let D={},docs=[],vendas=[],metas=[],pags={};
 
-function fechar() {
-  if (window.parent && window.parent.fecharAnalise) {
-    window.parent.fecharAnalise();
-  } else {
-    history.back();
-  }
+// ── NAVEGAÇÃO ──
+function fechar(){if(window.parent&&window.parent.fecharAnalise)window.parent.fecharAnalise();else history.back();}
+function irPara(id,titulo){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('btn-back').classList.add('vis');
+  document.getElementById('hdr-title').textContent=titulo;
+  renderSub();
+}
+function voltarDash(){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-dash').classList.add('active');
+  document.getElementById('btn-back').classList.remove('vis');
+  document.getElementById('hdr-title').textContent='Análise de Dados';
+}
+function showSub(id,btn){
+  document.querySelectorAll('.sub-pg').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sub-'+id).classList.add('active');
+  btn.classList.add('active');
+  renderSub();
+}
+function renderSub(){
+  const a=document.querySelector('.sub-pg.active');
+  if(!a)return;
+  if(a.id==='sub-lotes')buildLotes();
+  else if(a.id==='sub-obras')buildObras();
+  else if(a.id==='sub-vendas')buildVendas();
 }
 
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  event.currentTarget.classList.add('active');
+// ── UTILS ──
+const MPT=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+const MFU=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const fmtM=ym=>{if(!ym||ym==='SEM DATA')return ym||'—';const[y,m]=ym.split('-');return MPT[+m-1]+'/'+y.slice(2);};
+const fmtBRL=v=>v==null||isNaN(v)?'—':'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:0});
+const fmtN=(v,d=1)=>v==null||isNaN(v)?'—':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const mesD=d=>d?d.slice(0,7):null;
+const anoD=d=>d?d.slice(0,4):null;
+function diasDiff(a,b){if(!a||!b)return null;const d=Math.round((new Date(b)-new Date(a))/86400000);return d>0&&d<3000?d:null;}
+function mediaDias(arr,c1,c2){const v=arr.map(d=>diasDiff(d[c1],d[c2])).filter(Boolean);return v.length?Math.round(v.reduce((a,b)=>a+b)/v.length):null;}
+const normS=s=>(s||'').trim().toUpperCase().replace(/\s+/g,' ');
+// cota já é decimal 0..1
+const cotaM=doc=>{const c=doc.cota_empresa;return c==null?1:c;};
+const kpi=(lbl,val,sub='',cls='')=>`<div class="kpi-card"><div class="kpi-lbl">${lbl}</div><div class="kpi-val ${cls}">${val}</div>${sub?`<div class="kpi-sub2">${sub}</div>`:''}</div>`;
+const meses12=ano=>Array.from({length:12},(_,i)=>`${ano}-${String(i+1).padStart(2,'0')}`);
+function initSel(id,items,def,fn){
+  const el=document.getElementById(id);if(!el)return;
+  el.innerHTML='';items.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o);});
+  if(def&&items.includes(def))el.value=def;else if(el.options.length)el.value=el.options[el.options.length-1].value;
+  el.onchange=fn;
 }
+function anosDisp(arr,campo){return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();}
 
-function showSubPage(id) {
-  document.querySelectorAll('.sub-page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('sub-' + id).classList.add('active');
-  event.currentTarget.classList.add('active');
-}
-
-const MESES_PT = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-const MESES_FULL = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
-                    'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-
-function fmtMes(ym) { // '2025-03' → 'Mar/25'
-  if (!ym || ym === 'SEM DATA') return ym;
-  const [y, m] = ym.split('-');
-  return MESES_PT[parseInt(m)-1] + '/' + y.slice(2);
-}
-
-function fmtBRL(v) {
-  if (v == null || isNaN(v)) return '—';
-  return 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits:0, maximumFractionDigits:0});
-}
-
-function fmtNum(v, dec=1) {
-  if (v == null || isNaN(v)) return '—';
-  return v.toLocaleString('pt-BR', {minimumFractionDigits:dec, maximumFractionDigits:dec});
-}
-
-function diasDiff(d1, d2) {
-  if (!d1 || !d2) return null;
-  const a = new Date(d1), b = new Date(d2);
-  const diff = Math.round((b - a) / 86400000);
-  return diff > 0 ? diff : null;
-}
-
-function mediaDias(arr, c1, c2) {
-  const vals = arr.map(d => diasDiff(d[c1], d[c2])).filter(v => v && v > 0);
-  if (!vals.length) return null;
-  return Math.round(vals.reduce((a,b)=>a+b,0) / vals.length);
-}
-
-function mesDeData(d) { // '2025-03-15' → '2025-03'
-  if (!d) return null;
-  return d.slice(0, 7);
-}
-
-function anoDeData(d) {
-  if (!d) return null;
-  return d.slice(0, 4);
-}
-
-function kpiCard(top, val, sub='', cls='') {
-  return `<div class="kpi-card">
-    <div class="kpi-top">${top}</div>
-    <div class="kpi-val ${cls}">${val}</div>
-    ${sub ? `<div class="kpi-sub">${sub}</div>` : ''}
-  </div>`;
-}
-
-// ──────────────────────────────────────────────────────────
-//  CANVAS CHART (sem biblioteca externa)
-// ──────────────────────────────────────────────────────────
-function drawBarChart(canvasId, labels, datasets, opts={}) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) return;
-  const dpr = window.devicePixelRatio || 1;
-  const W = canvas.clientWidth || canvas.parentElement.clientWidth;
-  const H = parseInt(canvas.getAttribute('height')) || 160;
-  canvas.width  = W * dpr;
-  canvas.height = H * dpr;
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-
-  const PAD = {top:20, right:10, bottom:36, left:10};
-  const cW = W - PAD.left - PAD.right;
-  const cH = H - PAD.top - PAD.bottom;
-
-  const maxVal = Math.max(...datasets.flatMap(ds => ds.data), 1);
-
-  const n = labels.length;
-  const groupW = cW / n;
-  const barW = Math.min(groupW * 0.85 / datasets.length, 28);
-  const gap = (groupW - barW * datasets.length) / 2;
-
-  // Eixo X
-  ctx.fillStyle = '#8aacbb';
-  ctx.font = `500 9px 'DM Mono', monospace`;
-  ctx.textAlign = 'center';
-  labels.forEach((lbl, i) => {
-    const x = PAD.left + i * groupW + groupW / 2;
-    ctx.fillText(lbl, x, H - PAD.bottom + 14);
-  });
-
-  // Barras
-  datasets.forEach((ds, di) => {
-    ctx.fillStyle = ds.color || '#295778';
-    ds.data.forEach((val, i) => {
-      if (!val) return;
-      const barH = (val / maxVal) * cH;
-      const x = PAD.left + i * groupW + gap + di * barW;
-      const y = PAD.top + cH - barH;
+// ── CANVAS: BARRAS ──
+function drawBars(id,labels,datasets,fmtV){
+  const c=document.getElementById(id);if(!c)return;
+  const pw=c.parentElement.clientWidth||400;
+  const H=parseInt(c.getAttribute('height'))||180;
+  const dpr=window.devicePixelRatio||1;
+  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
+  const W=pw,P={t:24,r:10,b:36,l:10};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b,n=labels.length;
+  if(!n)return;
+  const mx=Math.max(...datasets.flatMap(d=>d.data),0.01);
+  const gW=cW/n,nD=datasets.length,bW=Math.min((gW*.8)/nD,32),gP=(gW-bW*nD)/2;
+  ctx.clearRect(0,0,W,H);
+  // grade
+  ctx.strokeStyle='#dceaef';ctx.lineWidth=1;
+  [.25,.5,.75,1].forEach(f=>{const y=P.t+cH*(1-f);ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();});
+  // labels x
+  ctx.fillStyle='#8aacbb';ctx.font="500 9px 'DM Mono',monospace";ctx.textAlign='center';
+  labels.forEach((lb,i)=>ctx.fillText(lb,P.l+i*gW+gW/2,H-P.b+14));
+  // barras
+  datasets.forEach((ds,di)=>{
+    ds.data.forEach((v,i)=>{
+      if(!v)return;
+      const bH=(v/mx)*cH,x=P.l+i*gW+gP+di*bW,y=P.t+cH-bH;
+      ctx.fillStyle=ds.color||'#295778';
       ctx.beginPath();
-      ctx.roundRect
-        ? ctx.roundRect(x, y, barW - 1, barH, [3, 3, 0, 0])
-        : ctx.rect(x, y, barW - 1, barH);
+      if(ctx.roundRect)ctx.roundRect(x,y,bW-1,bH,[3,3,0,0]);else ctx.rect(x,y,bW-1,bH);
       ctx.fill();
-
-      // Valor acima
-      if (val > 0) {
-        ctx.fillStyle = '#5a8099';
-        ctx.font = `500 8px 'DM Mono', monospace`;
-        ctx.textAlign = 'center';
-        const label = opts.fmtVal ? opts.fmtVal(val) : fmtNum(val, 1);
-        ctx.fillText(label, x + (barW-1)/2, y - 3);
-        ctx.fillStyle = ds.color || '#295778';
-      }
+      ctx.fillStyle='#5a8099';ctx.font="500 8px 'DM Mono',monospace";ctx.textAlign='center';
+      ctx.fillText(fmtV?fmtV(v):fmtN(v,1),x+(bW-1)/2,y-3);
+      ctx.fillStyle=ds.color||'#295778';
     });
   });
 }
 
-function drawLineChart(canvasId, labels, datasets, opts={}) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) return;
-  const dpr = window.devicePixelRatio || 1;
-  const W = canvas.clientWidth || canvas.parentElement.clientWidth;
-  const H = parseInt(canvas.getAttribute('height')) || 160;
-  canvas.width  = W * dpr;
-  canvas.height = H * dpr;
-  const ctx = canvas.getContext('2d');
-  ctx.scale(dpr, dpr);
-
-  const PAD = {top:20, right:20, bottom:36, left:10};
-  const cW = W - PAD.left - PAD.right;
-  const cH = H - PAD.top - PAD.bottom;
-
-  const maxVal = Math.max(...datasets.flatMap(ds => ds.data), 1);
-  const n = labels.length;
-
-  const xPos = i => PAD.left + (i / Math.max(n-1,1)) * cW;
-  const yPos = v => PAD.top + cH - (v / maxVal) * cH;
-
-  // Grade
-  ctx.strokeStyle = '#dceaef';
-  ctx.lineWidth = 1;
-  [0.25, 0.5, 0.75, 1].forEach(f => {
-    const y = PAD.top + cH * (1 - f);
-    ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(PAD.left+cW, y); ctx.stroke();
-  });
-
-  // Labels X
-  ctx.fillStyle = '#8aacbb';
-  ctx.font = `500 9px 'DM Mono', monospace`;
-  ctx.textAlign = 'center';
-  labels.forEach((lbl, i) => {
-    ctx.fillText(lbl, xPos(i), H - PAD.bottom + 14);
-  });
-
-  // Linhas
-  datasets.forEach(ds => {
-    ctx.strokeStyle = ds.color || '#295778';
-    ctx.lineWidth = 2.5;
-    ctx.lineJoin = 'round';
-    ctx.beginPath();
-    let started = false;
-    ds.data.forEach((v, i) => {
-      if (v == null) { started = false; return; }
-      if (!started) { ctx.moveTo(xPos(i), yPos(v)); started = true; }
-      else ctx.lineTo(xPos(i), yPos(v));
-    });
+// ── CANVAS: LINHAS ──
+function drawLines(id,labels,datasets,fmtV){
+  const c=document.getElementById(id);if(!c)return;
+  const pw=c.parentElement.clientWidth||400;
+  const H=parseInt(c.getAttribute('height'))||180;
+  const dpr=window.devicePixelRatio||1;
+  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
+  const W=pw,P={t:24,r:20,b:36,l:10};
+  const cW=W-P.l-P.r,cH=H-P.t-P.b,n=labels.length;if(!n)return;
+  const mx=Math.max(...datasets.flatMap(d=>d.data.filter(Boolean)),0.01);
+  const xP=i=>P.l+(n>1?i/(n-1):0.5)*cW;
+  const yP=v=>P.t+cH-(v/mx)*cH;
+  ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle='#dceaef';ctx.lineWidth=1;
+  [.25,.5,.75,1].forEach(f=>{const y=P.t+cH*(1-f);ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();});
+  ctx.fillStyle='#8aacbb';ctx.font="500 9px 'DM Mono',monospace";ctx.textAlign='center';
+  labels.forEach((lb,i)=>ctx.fillText(lb,xP(i),H-P.b+14));
+  datasets.forEach(ds=>{
+    ctx.strokeStyle=ds.color||'#295778';ctx.lineWidth=2.5;ctx.lineJoin='round';
+    ctx.beginPath();let st=false;
+    ds.data.forEach((v,i)=>{if(v==null){st=false;return;}if(!st){ctx.moveTo(xP(i),yP(v));st=true;}else ctx.lineTo(xP(i),yP(v));});
     ctx.stroke();
-
-    // Pontos
-    ctx.fillStyle = ds.color || '#295778';
-    ds.data.forEach((v, i) => {
-      if (v == null) return;
-      ctx.beginPath();
-      ctx.arc(xPos(i), yPos(v), 3.5, 0, Math.PI*2);
-      ctx.fill();
-    });
-
-    // Valores
-    ctx.fillStyle = ds.color || '#295778';
-    ctx.font = `700 8.5px 'DM Mono', monospace`;
-    ds.data.forEach((v, i) => {
-      if (!v) return;
-      const label = opts.fmtVal ? opts.fmtVal(v) : fmtNum(v, 1);
-      ctx.textAlign = 'center';
-      ctx.fillText(label, xPos(i), yPos(v) - 7);
-    });
+    ctx.fillStyle=ds.color||'#295778';
+    ds.data.forEach((v,i)=>{if(v==null)return;ctx.beginPath();ctx.arc(xP(i),yP(v),3.5,0,Math.PI*2);ctx.fill();});
+    ctx.font="700 8px 'DM Mono',monospace";
+    ds.data.forEach((v,i)=>{if(!v)return;ctx.textAlign='center';ctx.fillText(fmtV?fmtV(v):fmtN(v,1),xP(i),yP(v)-7);});
   });
 }
 
-// ──────────────────────────────────────────────────────────
-//  DASHBOARD — INIT SELETOR MÊS
-// ──────────────────────────────────────────────────────────
-function initSelMes() {
-  // Coletar todos os meses com dados relevantes
-  const meses = new Set();
-
-  // De vendas
-  allVendas.forEach(v => { const m = mesDeData(v.data_venda); if(m) meses.add(m); });
-
-  // De pagamentos_detalhe
-  Object.values(pagamentos).forEach(mp => Object.keys(mp).forEach(m => { if(m!=='SEM DATA') meses.add(m); }));
-
-  // De faturamentos ERP
-  faturamentosErp.forEach(f => { if(f.mes && f.mes!=='SEM DATA') meses.add(f.mes); });
-
-  const sorted = [...meses].filter(m => /^\d{4}-\d{2}$/.test(m)).sort();
-  const sel = document.getElementById('sel-mes');
-  sel.innerHTML = '';
-
-  sorted.forEach(m => {
-    const o = document.createElement('option');
-    o.value = m;
-    o.textContent = fmtMes(m);
-    sel.appendChild(o);
-  });
-
-  // Default: mês mais recente
-  if (sorted.length) sel.value = sorted[sorted.length-1];
+// ── DASHBOARD ──
+function initSelMes(){
+  const s=new Set();
+  vendas.forEach(v=>{const m=mesD(v.data_venda);if(m)s.add(m);});
+  Object.values(pags).forEach(mp=>Object.keys(mp).forEach(m=>{if(m!=='SEM DATA')s.add(m);}));
+  const sorted=[...s].filter(m=>/^\d{4}-\d{2}$/.test(m)).sort();
+  initSel('sel-mes',sorted,sorted[sorted.length-1],buildDash);
 }
 
-// ──────────────────────────────────────────────────────────
-//  DASHBOARD — BUILD
-// ──────────────────────────────────────────────────────────
-function buildDashboard() {
-  const mes = document.getElementById('sel-mes').value;
-  if (!mes) return;
-
-  const [ano, mm] = mes.split('-');
-
-  // ── VGV MENSAL (vendas Notion, VALOR NA MÃO)
-  const vendasMes = allVendas.filter(v => mesDeData(v.data_venda) === mes && v.clientes);
-  const vgvMensal = vendasMes.reduce((s,v) => s + (v.valor_na_mao||0), 0);
-
-  // ── CUSTOS via pagamentos_detalhe (classificando por CC)
-  let custoObraMes = 0, custoEscMes = 0, custoPosObraMes = 0;
-  const enderecosDocs = new Set(allDocs.map(d => norm(d.endereco)));
-
-  Object.entries(pagamentos).forEach(([cc, meses]) => {
-    const val = meses[mes] || 0;
-    if (!val) return;
-    const ccU = cc.toUpperCase();
-    if (/ESCRIT/i.test(ccU)) {
-      custoEscMes += val;
-    } else if (/POS\s*OBRA|PÓS\s*OBRA/i.test(ccU)) {
-      custoPosObraMes += val;
-    } else if (enderecosDocs.has(ccU)) {
-      custoObraMes += val;
-    }
+function buildDash(){
+  const mes=document.getElementById('sel-mes')?.value;if(!mes)return;
+  const endD=new Set(docs.map(d=>normS(d.endereco)));
+  const vMes=vendas.filter(v=>v.clientes&&mesD(v.data_venda)===mes);
+  const vgvM=vMes.reduce((s,v)=>s+(v.valor_na_mao||0),0);
+  let cO=0,cE=0,cP=0;
+  Object.entries(pags).forEach(([cc,mp])=>{
+    const v=mp[mes]||0;if(!v)return;
+    const u=cc.toUpperCase();
+    if(/ESCRIT/i.test(u))cE+=v;
+    else if(/POS\s*OBRA|PÓS\s*OBRA/i.test(u))cP+=v;
+    else if(endD.has(u))cO+=v;
   });
-
-  // Custo obra por m² (Faturamentos / area_total obras)
-  let areaTotalObras = Object.values(obrasErp).reduce((s,v)=>s+v,0);
-  const custoM2 = areaTotalObras > 0 ? custoObraMes / areaTotalObras : null;
-
-  // Ratios Escritório/VGV (trimestre e anual)
-  function somaVgv(meses) {
-    return meses.reduce((s,m) => {
-      return s + allVendas.filter(v=>mesDeData(v.data_venda)===m&&v.clientes)
-                          .reduce((a,v)=>a+(v.valor_na_mao||0),0);
-    }, 0);
+  const base=new Date(mes+'-01');
+  function somaPeriodo(n,fn){
+    const ml=[];for(let i=0;i<n;i++){const d=new Date(base);d.setMonth(d.getMonth()-i);ml.push(d.toISOString().slice(0,7));}
+    return fn(ml);
   }
-  function somaEsc(meses) {
-    return meses.reduce((s,m) => {
-      let v=0;
-      Object.entries(pagamentos).forEach(([cc,mp]) => {
-        if(/ESCRIT/i.test(cc)) v+=(mp[m]||0);
-      });
-      return s+v;
-    }, 0);
-  }
+  const vgvTri=somaPeriodo(3,ml=>ml.reduce((s,m)=>s+vendas.filter(v=>v.clientes&&mesD(v.data_venda)===m).reduce((a,v)=>a+(v.valor_na_mao||0),0),0));
+  const escTri=somaPeriodo(3,ml=>ml.reduce((s,m)=>{let v=0;Object.entries(pags).forEach(([cc,mp])=>{if(/ESCRIT/i.test(cc))v+=mp[m]||0;});return s+v;},0));
+  const vgvAno=somaPeriodo(12,ml=>ml.reduce((s,m)=>s+vendas.filter(v=>v.clientes&&mesD(v.data_venda)===m).reduce((a,v)=>a+(v.valor_na_mao||0),0),0));
+  const escAno=somaPeriodo(12,ml=>ml.reduce((s,m)=>{let v=0;Object.entries(pags).forEach(([cc,mp])=>{if(/ESCRIT/i.test(cc))v+=mp[m]||0;});return s+v;},0));
 
-  // Trimestre: 3 meses anteriores incluindo atual
-  const mesTri = [], mesAno = [];
-  const base = new Date(mes+'-01');
-  for(let i=0; i<3; i++) {
-    const d = new Date(base); d.setMonth(d.getMonth()-i);
-    mesTri.push(d.toISOString().slice(0,7));
-  }
-  for(let i=0; i<12; i++) {
-    const d = new Date(base); d.setMonth(d.getMonth()-i);
-    mesAno.push(d.toISOString().slice(0,7));
-  }
+  const lC=docs.filter(d=>mesD(d.data_aquisicao_lote)===mes).length;
+  const oI=docs.filter(d=>d.obra_iniciada==='SIM'&&mesD(d.data_inicio_obra)===mes).length;
+  const oF=docs.filter(d=>mesD(d.data_termino_obra)===mes).length;
+  const cV=vendas.filter(v=>v.clientes&&mesD(v.data_venda)===mes).length;
 
-  const escTri = somaEsc(mesTri), vgvTri = somaVgv(mesTri);
-  const escAno = somaEsc(mesAno), vgvAno = somaVgv(mesAno);
-  const ratioTri = vgvTri>0 ? (escTri/vgvTri*100) : null;
-  const ratioAno = vgvAno>0 ? (escAno/vgvAno*100) : null;
+  const tUS=mediaDias(docs,'data_sol_uso_solo','data_emissao_uso_solo');
+  const tAl=mediaDias(docs,'data_entrada_alvara','data_aprovacao_projeto');
+  const tIn=mediaDias(docs,'entrada_incorporacao_data','data_finalizacao_incorp');
+  const tRt=mediaDias(docs,'data_entrada_ret','data_finalizacao_ret');
+  const tOb=mediaDias(docs.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
+  const dv=[];docs.forEach(d=>{if(!d.data_certidoes)return;const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));if(v?.data_venda){const x=diasDiff(d.data_certidoes,v.data_venda);if(x)dv.push(x);}});
+  const tVe=dv.length?Math.round(dv.reduce((a,b)=>a+b)/dv.length):null;
 
-  // ── CONTAGENS DO MÊS
-  const lotesComprados = allDocs.filter(d => mesDeData(d.data_aquisicao_lote) === mes).length;
-  const obrasIniciadas = allDocs.filter(d => d.obra_iniciada==='SIM' && mesDeData(d.data_inicio_obra)===mes).length;
-  const obrasFinalizadas = allDocs.filter(d => mesDeData(d.data_termino_obra)===mes).length;
-  const casasVendidas = allVendas.filter(v => v.clientes && mesDeData(v.data_venda)===mes).length;
+  document.getElementById('kpi-fin').innerHTML=[
+    kpi('VGV Mensal',fmtBRL(vgvM),vMes.length+' venda(s)',vgvM>0?'g':''),
+    kpi('Custo Obra Mensal',fmtBRL(cO),'Pagamentos ERP — obras'),
+    kpi('Custo Escritório Mensal',fmtBRL(cE),'CCs com ESCRITÓRIO'),
+    kpi('Custo Pós Obra Mensal',fmtBRL(cP),'CCs com POS OBRA'),
+  ].join('');
+  document.getElementById('kpi-rat').innerHTML=[
+    kpi('Custo Escritório / VGV Trimestral',vgvTri>0?fmtN(escTri/vgvTri*100,1)+'%':'—',`Esc: ${fmtBRL(escTri)} | VGV: ${fmtBRL(vgvTri)}`),
+    kpi('Custo Escritório / VGV Anual (12m)',vgvAno>0?fmtN(escAno/vgvAno*100,1)+'%':'—',`Esc: ${fmtBRL(escAno)} | VGV: ${fmtBRL(vgvAno)}`),
+  ].join('');
+  document.getElementById('kpi-prod').innerHTML=[
+    kpi('Lotes Comprados no Mês',lC||'0','Data de aquisição'),
+    kpi('Obras Iniciadas no Mês',oI||'0','Data de início'),
+    kpi('Obras Finalizadas no Mês',oF||'0','Data de término'),
+    kpi('Casas Vendidas no Mês',cV||'0','Clientes + data venda',cV>0?'g':''),
+  ].join('');
+  document.getElementById('kpi-t1').innerHTML=[
+    kpi('Tempo Médio Uso do Solo',tUS!=null?tUS+'d':'—','Solicitação → emissão'),
+    kpi('Tempo Médio Alvará',tAl!=null?tAl+'d':'—','Entrada → aprovação'),
+    kpi('Tempo Médio Incorporação',tIn!=null?tIn+'d':'—','Entrada → finalização'),
+  ].join('');
+  document.getElementById('kpi-t2').innerHTML=[
+    kpi('Tempo Médio RET',tRt!=null?tRt+'d':'—','Entrada → finalização'),
+    kpi('Tempo Médio Venda',tVe!=null?tVe+'d':'—','Certidões → data de venda'),
+    kpi('Tempo Médio de Obra',tOb!=null?tOb+'d':'—','Início → término'),
+  ].join('');
+}
 
-  // ── TEMPOS MÉDIOS (todo período)
-  const tUsoSolo  = mediaDias(allDocs, 'data_sol_uso_solo',      'data_emissao_uso_solo');
-  const tAlvara   = mediaDias(allDocs, 'data_entrada_alvara',     'data_aprovacao_projeto');
-  const tIncorp   = mediaDias(allDocs, 'entrada_incorporacao_data','data_finalizacao_incorp');
-  const tRet      = mediaDias(allDocs, 'data_entrada_ret',         'data_finalizacao_ret');
-
-  // Tempo médio de venda: certidões → venda (cruzando docs e vendas pelo endereço)
-  const tVendaArr = [];
-  allDocs.forEach(doc => {
-    if (!doc.data_certidoes) return;
-    const venda = allVendas.find(v => v.clientes && norm(v.endereco) === norm(doc.endereco));
-    if (venda && venda.data_venda) {
-      const d = diasDiff(doc.data_certidoes, venda.data_venda);
-      if (d && d > 0) tVendaArr.push(d);
-    }
+// ── HELPERS METAS ──
+function agrupMes(arr,campo,campoQt){
+  const r={};
+  arr.forEach(d=>{
+    const m=mesD(d[campo]);if(!m)return;
+    if(!r[m])r[m]={morais:0,invest:0};
+    const cm=cotaM(d),qt=campoQt?(d[campoQt]||1):1;
+    r[m].morais+=qt*cm; r[m].invest+=qt*(1-cm);
   });
-  const tVenda = tVendaArr.length ? Math.round(tVendaArr.reduce((a,b)=>a+b,0)/tVendaArr.length) : null;
-
-  // Tempo médio de obra: apenas com data início E término
-  const docsComObra = allDocs.filter(d => d.data_inicio_obra && d.data_termino_obra);
-  const tObra = mediaDias(docsComObra, 'data_inicio_obra', 'data_termino_obra');
-
-  // ── RENDER KPIs
-  const kf = document.getElementById('kpi-financeiro');
-  kf.innerHTML = [
-    kpiCard('VGV Mensal', fmtBRL(vgvMensal), `${vendasMes.length} casa(s) vendida(s)`, vgvMensal>0?'verde':''),
-    kpiCard('Custo Obra Mensal', fmtBRL(custoObraMes), 'Pagamentos ERP — obras'),
-    kpiCard('Custo Escritório Mensal', fmtBRL(custoEscMes), 'Centros de custo ESCRITÓRIO'),
-    kpiCard('Custo Pós Obra Mensal', fmtBRL(custoPosObraMes), 'Centros de custo POS OBRA'),
-  ].join('');
-
-  const kr = document.getElementById('kpi-ratios');
-  kr.innerHTML = [
-    kpiCard('Custo Escritório / VGV Trimestral',
-      ratioTri!=null ? fmtNum(ratioTri,1)+'%' : '—',
-      `Esc: ${fmtBRL(escTri)} | VGV: ${fmtBRL(vgvTri)}`),
-    kpiCard('Custo Escritório / VGV Anual (12m)',
-      ratioAno!=null ? fmtNum(ratioAno,1)+'%' : '—',
-      `Esc: ${fmtBRL(escAno)} | VGV: ${fmtBRL(vgvAno)}`),
-  ].join('');
-
-  const kp = document.getElementById('kpi-producao');
-  kp.innerHTML = [
-    kpiCard('Lotes Comprados no Mês', lotesComprados||'0', 'Data de aquisição do lote'),
-    kpiCard('Obras Iniciadas no Mês', obrasIniciadas||'0', 'Data de início de obra'),
-    kpiCard('Obras Finalizadas no Mês', obrasFinalizadas||'0', 'Data de término de obra'),
-    kpiCard('Casas Vendidas no Mês', casasVendidas||'0', 'Clientes + data da venda', casasVendidas>0?'verde':''),
-  ].join('');
-
-  const t1 = document.getElementById('kpi-tempos-l1');
-  t1.innerHTML = [
-    kpiCard('Tempo Médio Uso do Solo', tUsoSolo!=null?tUsoSolo+'d':'—', 'Solicitação → emissão'),
-    kpiCard('Tempo Médio Alvará',      tAlvara!=null?tAlvara+'d':'—',   'Entrada → aprovação'),
-    kpiCard('Tempo Médio Incorporação',tIncorp!=null?tIncorp+'d':'—',   'Entrada → finalização'),
-  ].join('');
-  const t2 = document.getElementById('kpi-tempos-l2');
-  t2.innerHTML = [
-    kpiCard('Tempo Médio RET',   tRet!=null?tRet+'d':'—',   'Entrada → finalização'),
-    kpiCard('Tempo Médio Venda', tVenda!=null?tVenda+'d':'—','Certidões → data de venda'),
-    kpiCard('Tempo Médio de Obra',tObra!=null?tObra+'d':'—','Início → término (obras com ambas datas)'),
-  ].join('');
-  // Colocar t2 em 3 colunas também
-  t2.className = 'kpi-grid cols-3';
+  return r;
 }
 
-// ──────────────────────────────────────────────────────────
-//  METAS — HELPERS COTA
-// ──────────────────────────────────────────────────────────
-function cotaMorais(doc) {
-  const c = doc.cota_empresa;
-  if (c == null) return 1; // sem info → assume Morais
-  return c / 100;
-}
-
-function norm(s) {
-  return (s||'').trim().toUpperCase().replace(/\s+/g,' ');
-}
-
-// Agrupa docs por mês de uma data com split Morais/Investidor
-// Retorna { 'YYYY-MM': { morais: n, invest: n } }
-function agruparPorMes(docs, campoData, campoQtd=null) {
-  const res = {};
-  docs.forEach(doc => {
-    const m = mesDeData(doc[campoData]);
-    if (!m) return;
-    if (!res[m]) res[m] = {morais:0, invest:0};
-    const cm = cotaMorais(doc);
-    const ci = 1 - cm;
-    const qtd = campoQtd ? (doc[campoQtd]||1) : 1;
-    res[m].morais += qtd * cm;
-    res[m].invest += qtd * ci;
-  });
-  return res;
-}
-
-function mesesDoAno(ano) {
-  return Array.from({length:12}, (_,i) => `${ano}-${String(i+1).padStart(2,'0')}`);
-}
-
-function initSelAno(selId, docs, campoData, onchange) {
-  const anos = new Set(docs.map(d => anoDeData(d[campoData])).filter(Boolean));
-  const sel = document.getElementById(selId);
-  sel.innerHTML = '';
-  const anoAtual = String(new Date().getFullYear());
-  [...anos].sort().forEach(a => {
-    const o = document.createElement('option');
-    o.value = a; o.textContent = a;
-    sel.appendChild(o);
-  });
-  if (anos.has(anoAtual)) sel.value = anoAtual;
-  else if (sel.options.length) sel.value = sel.options[sel.options.length-1].value;
-  sel.onchange = onchange;
-}
-
-// ──────────────────────────────────────────────────────────
-//  METAS — LOTES COMPRADOS
-// ──────────────────────────────────────────────────────────
-function buildLotes() {
-  const ano = document.getElementById('sel-ano-lotes').value;
-  if (!ano) return;
-
-  const docs = allDocs.filter(d => d.data_aquisicao_lote && anoDeData(d.data_aquisicao_lote)===ano);
-  const agrup = agruparPorMes(docs, 'data_aquisicao_lote');
-  const meses = mesesDoAno(ano);
-
-  const dataMorais = meses.map(m => agrup[m]?.morais||0);
-  const dataInvest = meses.map(m => agrup[m]?.invest||0);
-  const dataTotal  = meses.map((_,i) => dataMorais[i]+dataInvest[i]);
-  const labels = meses.map(m => fmtMes(m));
-
-  // KPIs resumo
-  const totM = dataMorais.reduce((a,b)=>a+b,0);
-  const totI = dataInvest.reduce((a,b)=>a+b,0);
-  const metaAno = allMetas.find(m=>m.ano===parseInt(ano));
-  document.getElementById('kpi-lotes-resumo').innerHTML = [
-    kpiCard('Total Lotes Morais', fmtNum(totM,1), ano),
-    kpiCard('Total Lotes Investidores', fmtNum(totI,1), ano),
-    kpiCard('Meta de Casas '+ano, metaAno?metaAno.meta_casas:'—', 'Banco METAS Notion'),
-  ].join('');
-
-  // Gráfico 1: barras empilhadas (Morais + Invest como datasets separados)
-  setTimeout(()=>{
-    drawBarChart('chart-lotes-total', labels, [
-      {data: dataMorais, color: '#295778'},
-      {data: dataInvest, color: '#8FDCD2'},
-    ], {fmtVal: v => fmtNum(v,1)});
-
-    drawLineChart('chart-lotes-sep', labels, [
-      {data: dataMorais, color: '#295778'},
-      {data: dataInvest, color: '#8FDCD2'},
-    ], {fmtVal: v => fmtNum(v,1)});
-  }, 50);
-
-  // Tabela resumo por mês
-  const tbody = meses.map((m,i) => {
-    if (!dataTotal[i]) return '';
-    return `<tr>
-      <td>${fmtMes(m)}</td>
-      <td class="num">${fmtNum(dataMorais[i],2)}</td>
-      <td class="num">${fmtNum(dataInvest[i],2)}</td>
-      <td class="num"><strong>${fmtNum(dataTotal[i],2)}</strong></td>
-    </tr>`;
+function tblRes(meses,dM,dI){
+  const body=meses.map((m,i)=>{
+    const t=(dM[i]||0)+(dI[i]||0);if(!t)return'';
+    return`<tr><td>${fmtM(m)}</td><td class="nr">${fmtN(dM[i]||0,2)}</td><td class="nr">${fmtN(dI[i]||0,2)}</td><td class="nr"><strong>${fmtN(t,2)}</strong></td></tr>`;
   }).join('');
-  const totais = `<td>TOTAL</td>
-    <td class="num">${fmtNum(totM,2)}</td>
-    <td class="num">${fmtNum(totI,2)}</td>
-    <td class="num">${fmtNum(totM+totI,2)}</td>`;
+  const tM=dM.reduce((a,b)=>a+b,0),tI=dI.reduce((a,b)=>a+b,0);
+  return`<table><thead><tr><th>Mês</th><th>Qt Morais</th><th>Qt Investidores</th><th>Total</th></tr></thead>
+    <tbody>${body||'<tr><td colspan="4" style="color:var(--text4);padding:12px;text-align:center">Sem dados no período</td></tr>'}</tbody>
+    <tfoot><tr><td>TOTAL</td><td class="nr">${fmtN(tM,2)}</td><td class="nr">${fmtN(tI,2)}</td><td class="nr">${fmtN(tM+tI,2)}</td></tr></tfoot></table>`;
+}
 
-  document.getElementById('tbl-lotes-mes').innerHTML = `
-    <table class="tbl"><thead><tr>
-      <th>Mês</th><th>Qt Morais</th><th>Qt Investidores</th><th>Total</th>
-    </tr></thead><tbody>${tbody||'<tr><td colspan="4" style="color:var(--text4);padding:12px">Sem dados</td></tr>'}</tbody>
-    <tfoot><tr>${totais}</tr></tfoot></table>`;
+function tblDet(arr,campoQt,lblCol){
+  if(!arr.length)return'';
+  const rows=arr.map(d=>{
+    const cm=cotaM(d),ci=1-cm,qt=campoQt?(d[campoQt]||1):1;
+    const prop=cm>=1?'MORAIS':ci>=1?'INVESTIDOR':'MISTO';
+    return`<tr><td>${d.endereco||'—'}</td><td>${prop}</td><td class="nr">${fmtN((d.cota_empresa??1)*100,1)}%</td><td class="nr">${fmtN(qt*cm,2)}</td><td>${d.implantacao||'—'}</td></tr>`;
+  }).join('');
+  const tM=arr.reduce((s,d)=>s+cotaM(d)*(campoQt?(d[campoQt]||1):1),0);
+  const tI=arr.reduce((s,d)=>s+(1-cotaM(d))*(campoQt?(d[campoQt]||1):1),0);
+  return`<table><thead><tr><th>Endereço</th><th>Proprietário</th><th>Cota</th><th>${lblCol}</th><th>Tipo</th></tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot>
+      <tr><td colspan="3">Total de Lotes Morais: ${arr.filter(d=>cotaM(d)>0).length}</td><td class="nr">${fmtN(tM,2)}</td><td></td></tr>
+      <tr><td colspan="3">Total de Lotes Investidores: ${arr.filter(d=>cotaM(d)<1).length}</td><td class="nr">${fmtN(tI,2)}</td><td></td></tr>
+    </tfoot></table>`;
+}
 
-  // Tabelas detalhe por mês
-  const det = document.getElementById('det-lotes');
-  det.innerHTML = '';
-  meses.forEach(m => {
-    const docsMes = docs.filter(d => mesDeData(d.data_aquisicao_lote)===m);
-    if (!docsMes.length) return;
-    const rows = docsMes.map(doc => {
-      const cm = cotaMorais(doc);
-      const ci = 1-cm;
-      const ncasas = doc.n_casas||1;
-      return `<tr>
-        <td>${doc.endereco||'—'}</td>
-        <td>${cm>=1?'MORAIS':ci>=1?'INVESTIDOR':'MISTO'}</td>
-        <td class="num">${fmtNum(doc.cota_empresa??100,1)}%</td>
-        <td class="num">${fmtNum(ncasas*cm,2)}</td>
-        <td>${doc.implantacao||'—'}</td>
-      </tr>`;
-    }).join('');
-
-    const tM = docsMes.reduce((s,d)=>s+(d.n_casas||1)*cotaMorais(d),0);
-    const tI = docsMes.reduce((s,d)=>s+(d.n_casas||1)*(1-cotaMorais(d)),0);
-
-    const bloco = document.createElement('div');
-    bloco.innerHTML = `
-      <div class="mes-tbl-title">${MESES_FULL[parseInt(m.split('-')[1])-1]} / ${m.split('-')[0]}</div>
-      <div class="tbl-wrap">
-        <table class="tbl"><thead><tr>
-          <th>Endereço</th><th>Proprietário</th><th>Cota</th><th>Casas (cota)</th><th>Tipo</th>
-        </tr></thead><tbody>${rows}</tbody>
-        <tfoot><tr>
-          <td colspan="3">TOTAL DE LOTES MORAIS: ${fmtNum(docsMes.filter(d=>cotaMorais(d)>0).length,0)}</td>
-          <td class="num">${fmtNum(tM,2)}</td><td></td>
-        </tr><tr>
-          <td colspan="3">TOTAL DE LOTES INVESTIDORES: ${fmtNum(docsMes.filter(d=>cotaMorais(d)<1).length,0)}</td>
-          <td class="num">${fmtNum(tI,2)}</td><td></td>
-        </tr></tfoot></table>
-      </div>`;
-    det.appendChild(bloco);
+// ── LOTES ──
+function buildLotes(){
+  const ano=document.getElementById('sel-ano-lotes')?.value;if(!ano)return;
+  const arr=docs.filter(d=>d.data_aquisicao_lote&&anoD(d.data_aquisicao_lote)===ano);
+  const ag=agrupMes(arr,'data_aquisicao_lote');
+  const ms=meses12(ano),dM=ms.map(m=>ag[m]?.morais||0),dI=ms.map(m=>ag[m]?.invest||0),lb=ms.map(fmtM);
+  const tM=dM.reduce((a,b)=>a+b,0),tI=dI.reduce((a,b)=>a+b,0);
+  const meta=metas.find(m=>m.ano===+ano);
+  document.getElementById('kpi-lotes-res').innerHTML=[
+    kpi('Total Morais ('+ano+')',fmtN(tM,2),'Lotes por cota'),
+    kpi('Total Investidores ('+ano+')',fmtN(tI,2),'Lotes por cota'),
+    kpi('Meta de Casas '+ano,meta?meta.meta_casas:'—','Banco METAS Notion'),
+  ].join('');
+  requestAnimationFrame(()=>{
+    drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
+    drawLines('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
+  });
+  document.getElementById('tbl-lotes').innerHTML=tblRes(ms,dM,dI);
+  const det=document.getElementById('det-lotes');det.innerHTML='';
+  ms.forEach(m=>{
+    const a=arr.filter(d=>mesD(d.data_aquisicao_lote)===m);if(!a.length)return;
+    const titulo=MFU[+m.split('-')[1]-1]+' / '+m.split('-')[0];
+    const b=document.createElement('div');b.className='det-bloco';
+    b.innerHTML=`<div class="det-mes-hdr">${titulo}</div><div class="det-mes-body">${tblDet(a,null,'Casas (cota)')}</div>`;
+    det.appendChild(b);
   });
 }
 
-// ──────────────────────────────────────────────────────────
-//  METAS — OBRAS INICIADAS
-// ──────────────────────────────────────────────────────────
-function buildObras() {
-  const ano = document.getElementById('sel-ano-obras').value;
-  if (!ano) return;
-
-  const docs = allDocs.filter(d => d.obra_iniciada==='SIM' && d.data_inicio_obra && anoDeData(d.data_inicio_obra)===ano);
-  const agrup = agruparPorMes(docs, 'data_inicio_obra', 'n_casas');
-  const meses = mesesDoAno(ano);
-
-  const dataMorais = meses.map(m => agrup[m]?.morais||0);
-  const dataInvest = meses.map(m => agrup[m]?.invest||0);
-  const labels = meses.map(m => fmtMes(m));
-
-  const totM = dataMorais.reduce((a,b)=>a+b,0);
-  const totI = dataInvest.reduce((a,b)=>a+b,0);
-  document.getElementById('kpi-obras-resumo').innerHTML = [
-    kpiCard('Casas Morais Iniciadas', fmtNum(totM,1), ano),
-    kpiCard('Casas Investidores Iniciadas', fmtNum(totI,1), ano),
-    kpiCard('Total', fmtNum(totM+totI,1), ano),
+// ── OBRAS ──
+function buildObras(){
+  const ano=document.getElementById('sel-ano-obras')?.value;if(!ano)return;
+  const arr=docs.filter(d=>d.obra_iniciada==='SIM'&&d.data_inicio_obra&&anoD(d.data_inicio_obra)===ano);
+  const ag=agrupMes(arr,'data_inicio_obra','n_casas');
+  const ms=meses12(ano),dM=ms.map(m=>ag[m]?.morais||0),dI=ms.map(m=>ag[m]?.invest||0),lb=ms.map(fmtM);
+  const tM=dM.reduce((a,b)=>a+b,0),tI=dI.reduce((a,b)=>a+b,0);
+  document.getElementById('kpi-obras-res').innerHTML=[
+    kpi('Casas Morais Iniciadas ('+ano+')',fmtN(tM,2)),
+    kpi('Casas Investidores Iniciadas ('+ano+')',fmtN(tI,2)),
+    kpi('Total',fmtN(tM+tI,2)),
   ].join('');
-
-  setTimeout(()=>{
-    drawBarChart('chart-obras-total', labels, [
-      {data: dataMorais, color:'#295778'},
-      {data: dataInvest, color:'#8FDCD2'},
-    ], {fmtVal: v=>fmtNum(v,1)});
-    drawLineChart('chart-obras-sep', labels, [
-      {data: dataMorais, color:'#295778'},
-      {data: dataInvest, color:'#8FDCD2'},
-    ], {fmtVal: v=>fmtNum(v,1)});
-  }, 50);
-
-  // Tabela resumo
-  const tbody = meses.map((m,i)=>{
-    const tot = dataMorais[i]+dataInvest[i];
-    if (!tot) return '';
-    return `<tr><td>${fmtMes(m)}</td><td class="num">${fmtNum(dataMorais[i],2)}</td><td class="num">${fmtNum(dataInvest[i],2)}</td><td class="num"><strong>${fmtNum(tot,2)}</strong></td></tr>`;
-  }).join('');
-  document.getElementById('tbl-obras-mes').innerHTML = `
-    <table class="tbl"><thead><tr><th>Mês</th><th>Morais</th><th>Investidores</th><th>Total</th></tr></thead>
-    <tbody>${tbody||'<tr><td colspan="4" style="color:var(--text4);padding:12px">Sem dados</td></tr>'}</tbody>
-    <tfoot><tr><td>TOTAL</td><td class="num">${fmtNum(totM,2)}</td><td class="num">${fmtNum(totI,2)}</td><td class="num">${fmtNum(totM+totI,2)}</td></tr></tfoot>
-    </table>`;
-
-  // Detalhe
-  const det = document.getElementById('det-obras');
-  det.innerHTML = '';
-  meses.forEach(m => {
-    const docsMes = docs.filter(d => mesDeData(d.data_inicio_obra)===m);
-    if (!docsMes.length) return;
-    const rows = docsMes.map(doc => {
-      const cm = cotaMorais(doc); const ci = 1-cm;
-      const nc = doc.n_casas||1;
-      return `<tr>
-        <td>${doc.endereco||'—'}</td>
-        <td>${cm>=1?'MORAIS':ci>=1?'INVESTIDOR':'MISTO'}</td>
-        <td class="num">${fmtNum((doc.cota_empresa??100),1)}%</td>
-        <td class="num">${fmtNum(nc*cm,2)}</td>
-        <td>${doc.implantacao||'—'}</td>
-      </tr>`;
-    }).join('');
-    const tM = docsMes.reduce((s,d)=>s+(d.n_casas||1)*cotaMorais(d),0);
-    const tI = docsMes.reduce((s,d)=>s+(d.n_casas||1)*(1-cotaMorais(d)),0);
-    const bloco = document.createElement('div');
-    bloco.innerHTML = `
-      <div class="mes-tbl-title">${MESES_FULL[parseInt(m.split('-')[1])-1]} / ${m.split('-')[0]}</div>
-      <div class="tbl-wrap"><table class="tbl">
-        <thead><tr><th>Endereço</th><th>Proprietário</th><th>Cota</th><th>Casas Iniciadas (cota)</th><th>Tipo</th></tr></thead>
-        <tbody>${rows}</tbody>
-        <tfoot>
-          <tr><td colspan="3">TOTAL CASAS MORAIS</td><td class="num">${fmtNum(tM,2)}</td><td></td></tr>
-          <tr><td colspan="3">TOTAL CASAS INVESTIDORES</td><td class="num">${fmtNum(tI,2)}</td><td></td></tr>
-        </tfoot>
-      </table></div>`;
-    det.appendChild(bloco);
+  requestAnimationFrame(()=>{
+    drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
+    drawLines('ch-os',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}]);
+  });
+  document.getElementById('tbl-obras').innerHTML=tblRes(ms,dM,dI);
+  const det=document.getElementById('det-obras');det.innerHTML='';
+  ms.forEach(m=>{
+    const a=arr.filter(d=>mesD(d.data_inicio_obra)===m);if(!a.length)return;
+    const titulo=MFU[+m.split('-')[1]-1]+' / '+m.split('-')[0];
+    const b=document.createElement('div');b.className='det-bloco';
+    b.innerHTML=`<div class="det-mes-hdr">${titulo}</div><div class="det-mes-body">${tblDet(a,'n_casas','Casas Iniciadas (cota)')}</div>`;
+    det.appendChild(b);
   });
 }
 
-// ──────────────────────────────────────────────────────────
-//  METAS — CASAS VENDIDAS
-// ──────────────────────────────────────────────────────────
-function buildVendasMetas() {
-  const ano    = document.getElementById('sel-ano-vendas').value;
-  const cidade = document.getElementById('sel-cidade-vendas').value;
-  const setor  = document.getElementById('sel-setor-vendas').value;
-  if (!ano) return;
-
-  let vendas = allVendas.filter(v => v.clientes && v.data_venda && anoDeData(v.data_venda)===ano);
-  if (cidade) vendas = vendas.filter(v => v.cidade===cidade);
-  if (setor)  vendas = vendas.filter(v => v.setor===setor);
-
-  const meses = mesesDoAno(ano);
-  const porMes = {};
-  vendas.forEach(v => {
-    const m = mesDeData(v.data_venda);
-    if (!m) return;
-    if (!porMes[m]) porMes[m] = {qt:0, vgv:0, dias:[]};
-    porMes[m].qt++;
-    porMes[m].vgv += v.valor_na_mao||0;
-    // Tempo de venda
-    const doc = allDocs.find(d => norm(d.endereco)===norm(v.endereco));
-    if (doc?.data_certidoes && v.data_venda) {
-      const d = diasDiff(doc.data_certidoes, v.data_venda);
-      if (d>0) porMes[m].dias.push(d);
-    }
-  });
-
-  const labels = meses.map(m => fmtMes(m));
-  const dataQt = meses.map(m => porMes[m]?.qt||0);
-
-  const totalQt = vendas.length;
-  const totalVgv = vendas.reduce((s,v)=>s+(v.valor_na_mao||0),0);
-  const vgvMedio = totalQt>0 ? totalVgv/totalQt : 0;
-  const diasTodos = Object.values(porMes).flatMap(m=>m.dias);
-  const prazoMedio = diasTodos.length ? Math.round(diasTodos.reduce((a,b)=>a+b,0)/diasTodos.length) : null;
-  const metaAno = allMetas.find(m=>m.ano===parseInt(ano));
-
-  document.getElementById('kpi-vendas-resumo').innerHTML = [
-    kpiCard('VGV Médio', fmtBRL(vgvMedio), `${totalQt} venda(s) no ano`),
-    kpiCard('Prazo Médio de Venda', prazoMedio!=null?prazoMedio+'d':'—', 'Certidões → data de venda'),
-    kpiCard('Meta '+ano, metaAno?metaAno.meta_casas:'—', 'Banco METAS Notion'),
-    kpiCard('Realizado '+ano, totalQt, metaAno? `${((totalQt/metaAno.meta_casas)*100).toFixed(0)}% da meta`:''),
+// ── VENDAS ──
+function buildVendas(){
+  const ano=document.getElementById('sel-ano-v')?.value;if(!ano)return;
+  const cid=document.getElementById('sel-cid-v')?.value;
+  const set=document.getElementById('sel-set-v')?.value;
+  let v=vendas.filter(x=>x.clientes&&x.data_venda&&anoD(x.data_venda)===ano);
+  if(cid)v=v.filter(x=>x.cidade===cid);
+  if(set)v=v.filter(x=>x.setor===set);
+  const ms=meses12(ano),pm={};
+  v.forEach(x=>{const m=mesD(x.data_venda);if(!m)return;if(!pm[m])pm[m]={qt:0,vgv:0};pm[m].qt++;pm[m].vgv+=(x.valor_na_mao||0);});
+  const dQ=ms.map(m=>pm[m]?.qt||0),lb=ms.map(fmtM);
+  const tQ=v.length,tV=v.reduce((s,x)=>s+(x.valor_na_mao||0),0);
+  const dArr=[];
+  v.forEach(vn=>{const d=docs.find(d=>normS(d.endereco)===normS(vn.endereco));if(d?.data_certidoes){const x=diasDiff(d.data_certidoes,vn.data_venda);if(x)dArr.push(x);}});
+  const prazo=dArr.length?Math.round(dArr.reduce((a,b)=>a+b)/dArr.length):null;
+  const meta=metas.find(m=>m.ano===+ano);
+  document.getElementById('kpi-v-res').innerHTML=[
+    kpi('Total Vendas '+ano,tQ),
+    kpi('VGV Total '+ano,fmtBRL(tV)),
+    kpi('Meta '+ano,meta?meta.meta_casas:'—','Banco METAS Notion'),
+    kpi('Realizado vs Meta',meta?fmtN(tQ/meta.meta_casas*100,0)+'%':'—'),
   ].join('');
-  document.getElementById('kpi-vendas-resumo').className = 'kpi-grid cols-4';
-
-  setTimeout(()=>{
-    drawBarChart('chart-vendas', labels, [{data:dataQt, color:'#295778'}],
-      {fmtVal: v=>v.toString()});
-  }, 50);
-
-  // Tabela resumo
-  const tbody = meses.map((m,i)=>{
-    if (!dataQt[i]) return '';
-    const vgv = porMes[m]?.vgv||0;
-    return `<tr><td>${fmtMes(m)}</td><td class="num">${dataQt[i]}</td><td class="num">${fmtBRL(vgv)}</td></tr>`;
-  }).join('');
-  document.getElementById('tbl-vendas-mes').innerHTML = `
-    <table class="tbl"><thead><tr><th>Mês</th><th>Qt Vendas</th><th>VGV</th></tr></thead>
-    <tbody>${tbody||'<tr><td colspan="3" style="color:var(--text4);padding:12px">Sem dados</td></tr>'}</tbody>
-    <tfoot><tr><td>TOTAL</td><td class="num">${totalQt}</td><td class="num">${fmtBRL(totalVgv)}</td></tr></tfoot>
-    </table>`;
-
-  // Rankings
-  const rankCorr = {};
-  const rankCorrResp = {};
-  vendas.forEach(v => {
-    if(v.corretor)      rankCorr[v.corretor]     = (rankCorr[v.corretor]||0)+1;
-    if(v.correspondente)rankCorrResp[v.correspondente]=(rankCorrResp[v.correspondente]||0)+1;
-  });
-  const sortRank = obj => Object.entries(obj).sort((a,b)=>b[1]-a[1]).slice(0,10);
-
-  function rankHtml(titulo, dados) {
-    const rows = dados.map(([nome,qt],i)=>`
-      <div class="rank-row">
-        <div class="rank-pos ${i<3?'top':''}">${i+1}º</div>
-        <div class="rank-nome">${nome||'—'}</div>
-        <div class="rank-qt">${qt}</div>
-      </div>`).join('');
-    return `<div class="rank-card">
-      <div class="rank-hdr"><div class="rank-title">${titulo}</div></div>
-      <div class="rank-body">${rows||'<div style="color:var(--text4);font-size:11px">Sem dados</div>'}</div>
-    </div>`;
+  document.getElementById('kv-vgv').textContent=tQ?fmtBRL(tV/tQ):'—';
+  document.getElementById('kv-prazo').textContent=prazo!=null?prazo+'d':'—';
+  requestAnimationFrame(()=>drawBars('ch-vv',lb,[{data:dQ,color:'#295778'}],v=>String(v)));
+  const body=ms.map((m,i)=>{if(!dQ[i])return'';return`<tr><td>${fmtM(m)}</td><td class="nr">${dQ[i]}</td><td class="nr">${fmtBRL(pm[m]?.vgv||0)}</td></tr>`;}).join('');
+  document.getElementById('tbl-vendas').innerHTML=`<table><thead><tr><th>Mês</th><th>Qt Vendas</th><th>VGV</th></tr></thead><tbody>${body||'<tr><td colspan="3" style="color:var(--text4);padding:12px;text-align:center">Sem dados</td></tr>'}</tbody><tfoot><tr><td>TOTAL</td><td class="nr">${tQ}</td><td class="nr">${fmtBRL(tV)}</td></tr></tfoot></table>`;
+  const rC={},rR={};
+  v.forEach(x=>{if(x.corretor)rC[x.corretor]=(rC[x.corretor]||0)+1;if(x.correspondente)rR[x.correspondente]=(rR[x.correspondente]||0)+1;});
+  const sR=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  function rCard(t,d){
+    const rows=d.map(([n,q],i)=>`<div class="rank-row"><div class="rank-pos ${i<3?'top3':''}">${i+1}º</div><div class="rank-nome">${n||'—'}</div><div class="rank-qt">${q}</div></div>`).join('');
+    return`<div class="rank-card"><div class="rank-hdr"><div class="rank-hdr-title">${t}</div></div><div>${rows||'<div style="color:var(--text4);font-size:11px;padding:12px">Sem dados</div>'}</div></div>`;
   }
-
-  document.getElementById('rankings-vendas').innerHTML =
-    rankHtml('Corretores com mais vendas', sortRank(rankCorr)) +
-    rankHtml('Correspondentes com mais vendas', sortRank(rankCorrResp));
+  document.getElementById('rankings').innerHTML=rCard('Corretores com mais vendas',sR(rC))+rCard('Correspondentes com mais vendas',sR(rR));
 }
 
-// ──────────────────────────────────────────────────────────
-//  INIT FILTROS CASAS VENDIDAS
-// ──────────────────────────────────────────────────────────
-function initFiltrosVendas() {
-  const cidades = [...new Set(allVendas.map(v=>v.cidade).filter(Boolean))].sort();
-  const selC = document.getElementById('sel-cidade-vendas');
-  cidades.forEach(c => { const o=document.createElement('option'); o.value=c; o.textContent=c; selC.appendChild(o); });
-
-  const setores = [...new Set(allVendas.map(v=>v.setor).filter(Boolean))].sort();
-  const selS = document.getElementById('sel-setor-vendas');
-  setores.forEach(s => { const o=document.createElement('option'); o.value=s; o.textContent=s; selS.appendChild(o); });
-}
-
-// ──────────────────────────────────────────────────────────
-//  INIT GLOBAL
-// ──────────────────────────────────────────────────────────
-async function init() {
-  try {
-    const r    = await fetch(DATA_URL);
-    const data = await r.json();
-    D = data;
-    allDocs   = data.documentos  || [];
-    allVendas = data.vendas      || [];
-    allMetas  = data.metas       || [];
-    pagamentos   = data.pagamentos_detalhe || {};
-    obrasErp     = data.obras_erp          || {};
-    faturamentosErp = data.faturamentos_erp || [];
-    fatPorTipo   = data.fat_por_tipo       || {};
-
-    if (data.updated_at) {
-      document.getElementById('updated-at').textContent =
-        'Atualizado: ' + new Date(data.updated_at).toLocaleString('pt-BR');
-    }
-
-    initSelMes();
-    buildDashboard();
-
-    // Seletores de ano para Metas
-    initSelAno('sel-ano-lotes', allDocs, 'data_aquisicao_lote', buildLotes);
-    initSelAno('sel-ano-obras', allDocs.filter(d=>d.obra_iniciada==='SIM'), 'data_inicio_obra', buildObras);
-    initSelAno('sel-ano-vendas', allVendas.filter(v=>v.clientes), 'data_venda', buildVendasMetas);
-    initFiltrosVendas();
-    buildLotes();
-    buildObras();
-    buildVendasMetas();
-
+// ── INIT ──
+async function init(){
+  try{
+    const r=await fetch('data.json'),data=await r.json();
+    docs=data.documentos||[];vendas=data.vendas||[];metas=data.metas||[];pags=data.pagamentos_detalhe||{};
+    if(data.updated_at)document.getElementById('updated-at').textContent='Atualizado: '+new Date(data.updated_at).toLocaleString('pt-BR');
+    initSelMes();buildDash();
+    const anoAtual=String(new Date().getFullYear());
+    initSel('sel-ano-lotes',anosDisp(docs,'data_aquisicao_lote'),anoAtual,buildLotes);
+    initSel('sel-ano-obras',anosDisp(docs.filter(d=>d.obra_iniciada==='SIM'),'data_inicio_obra'),anoAtual,buildObras);
+    initSel('sel-ano-v',anosDisp(vendas.filter(v=>v.clientes),'data_venda'),anoAtual,buildVendas);
+    const sC=document.getElementById('sel-cid-v');
+    [...new Set(vendas.map(v=>v.cidade).filter(Boolean))].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sC.appendChild(o);});
+    const sS=document.getElementById('sel-set-v');
+    [...new Set(vendas.map(v=>v.setor).filter(Boolean))].sort().forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sS.appendChild(o);});
     document.getElementById('loading').classList.add('hidden');
-  } catch(e) {
-    document.getElementById('loading').innerHTML =
-      `<div style="color:#c0392b;font-size:14px;padding:20px">Erro ao carregar dados:<br>${e.message}</div>`;
+  }catch(e){
+    document.getElementById('loading').innerHTML=`<div style="color:#c0392b;font-size:13px;padding:20px;text-align:center">Erro ao carregar dados:<br><code>${e.message}</code></div>`;
   }
 }
-
 init();
 </script>
 </body>
