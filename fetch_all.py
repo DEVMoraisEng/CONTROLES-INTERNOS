@@ -98,7 +98,7 @@ def parse_doc(page):
         "eng_execucao":             s("ENG. EXECUÇÃO"),
         "engenheiro_rt":            s("ENGENHEIRO RT"),
         "previsao_inicio_obra":     d("PREVISÃO DE INÍCIO DE OBRA"),
-        "obra_iniciada":            s("OBRA INCIADA"),
+        "obra_iniciada":            s("OBRA INCIADA") or ("SIM" if prop_checkbox(get_prop(p, "OBRA INCIADA")) else None),
         "data_inicio_obra":         d("DATA DE INÍCIO DA OBRA"),
         "uso_solo_solicitado":      s("USO DO SOLO SOLICITADO"),
         "data_sol_uso_solo":        d("DATA DE SOLICITAÇÃO USO DO SOLO"),
@@ -324,32 +324,41 @@ def buscar_faturamentos_erp():
 
 
 def buscar_metas():
-    """Busca banco de dados METAS do Notion: ano + meta_casas."""
+    """Busca banco de dados METAS do Notion: ANO (título) + META DE CASAS (número)."""
     metas = []
     if not TOKEN_METAS:
         print("  METAS: token não configurado (secret NOTION_TOKEN_METAS)")
         return metas
     print("  Notion: buscando METAS...")
     pages = notion_pages(TOKEN_METAS, DB_METAS)
+    print(f"  METAS: {len(pages)} páginas encontradas")
     for page in pages:
         p = page.get("properties", {})
-        ano  = prop_number(get_prop(p, "ANO"))
-        qtd  = prop_number(get_prop(p, "META DE CASAS"))
-        # Tentar variações de nome
-        if ano is None:
-            for k in p:
-                if "ano" in k.lower():
-                    ano = prop_number(p[k])
-                    break
-        if qtd is None:
-            for k in p:
-                if "meta" in k.lower() or "casas" in k.lower():
-                    qtd = prop_number(p[k])
-                    break
-        if ano is not None:
-            metas.append({"ano": int(ano), "meta_casas": qtd or 0})
+        # Log tipos para debug
+        tipos = {k: v.get("type") for k, v in p.items()}
+        print(f"  METAS props tipos: {tipos}")
+        ano_str = None
+        qtd = None
+        for k, v in p.items():
+            t = v.get("type", "")
+            # ANO pode ser título ou número
+            if t == "title":
+                ano_str = prop_title(v)
+            elif t == "number":
+                kl = k.lower()
+                if "meta" in kl or "casas" in kl:
+                    qtd = prop_number(v)
+                elif "ano" in kl:
+                    n = prop_number(v)
+                    if n is not None:
+                        ano_str = str(int(n))
+        if ano_str:
+            try:
+                metas.append({"ano": int(str(ano_str).strip()), "meta_casas": int(qtd or 0)})
+            except Exception as e:
+                print(f"  METAS: erro convertendo ano='{ano_str}': {e}")
     metas.sort(key=lambda x: x["ano"])
-    print(f"  METAS: {len(metas)} registros")
+    print(f"  METAS resultado: {metas}")
     return metas
 
 # ─── MAIN ─────────────────────────────────────────────────────
