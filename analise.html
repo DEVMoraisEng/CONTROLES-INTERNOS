@@ -1067,7 +1067,7 @@ function buildVendasMetas() {
   function rankHtml(titulo, dados) {
     const rows = dados.map(([nome,qt],i)=>`
       <div class="rank-row">
-        <div class="rank-pos ${i<3?'top'}">${i+1}º</div>
+        <div class="rank-pos ${i<3?'top':''}">${i+1}º</div>
         <div class="rank-nome">${nome||'—'}</div>
         <div class="rank-qt">${qt}</div>
       </div>`).join('');
