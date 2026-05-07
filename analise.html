@@ -956,8 +956,14 @@ function buildObras(){
   const tipo=document.getElementById('sel-tipo-obras')?.value||'';
   const ms=mesesPeriodo(ano,per);
 
-  // Usa data_inicio_obra (mais confiável que obra_iniciada que está None)
-  let arr=docs.filter(d=>d.data_inicio_obra&&ms.includes(mesD(d.data_inicio_obra)));
+  // Usar obra_iniciada=SIM se disponível; fallback para data_inicio_obra
+  const temObraIniciada=docs.some(d=>d.obra_iniciada==='SIM');
+  let arr;
+  if(temObraIniciada){
+    arr=docs.filter(d=>d.obra_iniciada==='SIM'&&d.data_inicio_obra&&ms.includes(mesD(d.data_inicio_obra)));
+  } else {
+    arr=docs.filter(d=>d.data_inicio_obra&&ms.includes(mesD(d.data_inicio_obra)));
+  }
   if(tipo)arr=arr.filter(d=>(d.implantacao||'').toUpperCase()===tipo.toUpperCase());
 
   // 14: lotes ou casas
@@ -990,8 +996,7 @@ function buildObras(){
     tblRes(ms,dM,dI,`${unidade} Morais`,`${unidade} Investidores`);
 
   const det=document.getElementById('det-obras');
-  det.innerHTML=`<div class="aviso">⚠️ O campo <strong>OBRA INCIADA</strong> do Notion não está preenchido em nenhum registro. 
-    Os dados abaixo consideram obras com <strong>Data de Início da Obra</strong> preenchida como critério equivalente.</div>`;
+  det.innerHTML=temObraIniciada?'':`<div class="aviso">⚠️ O campo <strong>OBRA INCIADA</strong> do Notion não está preenchido em nenhum registro. Os dados abaixo consideram obras com <strong>Data de Início da Obra</strong> preenchida como critério equivalente.</div>`;
   const mesesComDadosO=ms.filter(m=>arr.some(d=>mesD(d.data_inicio_obra)===m));
   for(let i=0;i<mesesComDadosO.length;i+=2){
     const row=document.createElement('div');row.className='det-grid';
