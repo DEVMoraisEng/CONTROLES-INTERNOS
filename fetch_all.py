@@ -45,6 +45,11 @@ def prop_date(p):
 def prop_checkbox(p):
     return p.get("checkbox")
 
+def prop_status(p):
+    """Lê campos do tipo 'status' do Notion (diferente de 'select')."""
+    s = p.get("status")
+    return s.get("name") if s else None
+
 def prop_formula_str(p):
     f = p.get("formula", {})
     t = f.get("type")
@@ -98,7 +103,7 @@ def parse_doc(page):
         "eng_execucao":             s("ENG. EXECUÇÃO"),
         "engenheiro_rt":            s("ENGENHEIRO RT"),
         "previsao_inicio_obra":     d("PREVISÃO DE INÍCIO DE OBRA"),
-        "obra_iniciada":            s("OBRA INCIADA") or ("SIM" if prop_checkbox(get_prop(p, "OBRA INCIADA")) else None),
+        "obra_iniciada":            s("OBRA INCIADA") or prop_status(get_prop(p, "OBRA INCIADA")) or ("SIM" if prop_checkbox(get_prop(p, "OBRA INCIADA")) else None),
         "data_inicio_obra":         d("DATA DE INÍCIO DA OBRA"),
         "uso_solo_solicitado":      s("USO DO SOLO SOLICITADO"),
         "data_sol_uso_solo":        d("DATA DE SOLICITAÇÃO USO DO SOLO"),
