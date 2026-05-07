@@ -371,7 +371,20 @@ def main():
     print("Buscando DOCUMENTOS...")
     pages_docs = notion_pages(TOKEN_DOCS, DB_DOCS)
     print(f"  {len(pages_docs)} registros")
+    # DEBUG — tipo real do campo OBRA INCIADA na API Notion
+    if pages_docs:
+        props_debug = pages_docs[0].get("properties", {})
+        campo_obra = None
+        for k in props_debug:
+            if "OBRA" in k.upper() and "INCIADA" in k.upper():
+                campo_obra = (k, props_debug[k])
+        if campo_obra:
+            print(f"  DEBUG OBRA INCIADA — nome='{campo_obra[0]}' tipo='{campo_obra[1].get('type')}' raw={str(campo_obra[1])[:120]}")
+        else:
+            print(f"  DEBUG OBRA INCIADA — campo NÃO encontrado. Keys disponíveis: {[k for k in props_debug if 'OBRA' in k.upper()]}")
     documentos = [parse_doc(p) for p in pages_docs]
+    obra_sim = sum(1 for d in documentos if d.get("obra_iniciada") == "SIM")
+    print(f"  DEBUG obra_iniciada=SIM: {obra_sim} de {len(documentos)} registros")
 
     print("Buscando VENDAS...")
     pages_vendas = notion_pages(TOKEN_VENDAS, DB_VENDAS)
