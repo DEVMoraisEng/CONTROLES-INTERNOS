@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-08T18:59:47.941901+00:00",
+  "updated_at": "2026-05-08T19:07:31.398504+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -432,8 +432,8 @@
       "data_finalizacao_ret": null,
       "turno_habite_se": "MANHÃ",
       "data_habite_se": "2026-05-04",
-      "aprovou_habite_se": "NÃO",
-      "data_aprovacao_habite": null,
+      "aprovou_habite_se": "SIM",
+      "data_aprovacao_habite": "2026-05-06",
       "armazenou_habite": "NÃO",
       "issqn": "NÃO",
       "cno_cnd": "SIM",
@@ -6384,8 +6384,8 @@
       "data_finalizacao_ret": "2026-05-05",
       "turno_habite_se": "MANHÃ",
       "data_habite_se": "2026-05-04",
-      "aprovou_habite_se": "NÃO",
-      "data_aprovacao_habite": null,
+      "aprovou_habite_se": "SIM",
+      "data_aprovacao_habite": "2026-05-06",
       "armazenou_habite": "NÃO",
       "issqn": "NÃO",
       "cno_cnd": "SIM",
