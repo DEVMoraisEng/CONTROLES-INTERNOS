@@ -303,15 +303,17 @@ def buscar_obras_erp():
 
 
 def buscar_faturamentos_erp():
-    """Busca aba Faturamentos do ERP: centro_de_custo + valor_bruto + data_competencia.
-    Colunas reais confirmadas no log: valor_bruto (nao valor_liquido)
+    """Busca aba Faturamentos do ERP: centro_de_custo + valor_recebido_parcela + data_competencia.
+    CORREÇÃO 11: usar coluna 'Valor recebido parcela' como campo principal.
     """
     import re as _re4
     fat = []  # lista de dicts { cc, valor, mes }
     print("  ERP: buscando Faturamentos...")
     for row in erp_csv(ERP_CSV_FATURAMENTOS, "faturamentos"):
         cc  = (row.get("centro_de_custo") or "").strip().upper()
-        val = row.get("Valor recebido parcela") or row.get("valor_recebido_parcela") or row.get("valor_bruto") or row.get("valor_liquido")
+        # CORREÇÃO 11: priorizar 'Valor recebido parcela', fallback para variações
+        val = (row.get("Valor recebido parcela") or row.get("valor recebido parcela")
+               or row.get("valor_recebido_parcela") or row.get("VALOR RECEBIDO PARCELA"))
         dt  = (row.get("data_competencia") or "").strip()
         if cc and val:
             try:
@@ -451,7 +453,8 @@ def main():
         mes = item["mes"]
         if "ESCRIT" in cc:
             tipo = "escritorio"
-        elif "POS OBRA" in cc or "PÓS OBRA" in cc or "POS_OBRA" in cc:
+        elif cc == "POS OBRA MORAIS ENGENHARIA":
+            # CORREÇÃO 1: pós-obra apenas do centro "Pos obra Morais Engenharia"
             tipo = "pos_obra"
         else:
             # Checar se é obra conhecida

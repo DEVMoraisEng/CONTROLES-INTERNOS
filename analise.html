@@ -320,6 +320,7 @@ tfoot td:last-child{border-right:none}
     <div class="blk-title">Tempos Médios — Todo o Período</div>
     <div class="kpi-row r3" id="kpi-t1"></div>
     <div class="kpi-row r3" id="kpi-t2"></div>
+    <div class="kpi-row r2" id="kpi-t3"></div>
   </div>
 </div>
 
@@ -364,6 +365,13 @@ tfoot td:last-child{border-right:none}
           <option value="">Todos</option>
           <option value="RUA">RUA</option>
           <option value="CONDOMÍNIO">CONDOMÍNIO</option>
+        </select>
+        <!-- CORREÇÃO 8: filtro investidor -->
+        <span class="sel-lbl">Proprietário:</span>
+        <select id="sel-prop-lotes" onchange="buildLotes()">
+          <option value="">Todos</option>
+          <option value="morais">Morais</option>
+          <option value="invest">Investidor</option>
         </select>
       </div>
       <div class="kpi-row r3" id="kpi-lotes-res" style="margin-bottom:20px"></div>
@@ -415,6 +423,13 @@ tfoot td:last-child{border-right:none}
           <option value="">Todos</option>
           <option value="RUA">RUA</option>
           <option value="CONDOMÍNIO">CONDOMÍNIO</option>
+        </select>
+        <!-- CORREÇÃO 8 -->
+        <span class="sel-lbl">Proprietário:</span>
+        <select id="sel-prop-obras" onchange="buildObras()">
+          <option value="">Todos</option>
+          <option value="morais">Morais</option>
+          <option value="invest">Investidor</option>
         </select>
       </div>
       <div class="kpi-row r3" id="kpi-obras-res" style="margin-bottom:20px"></div>
@@ -490,7 +505,8 @@ tfoot td:last-child{border-right:none}
 
     <div class="blk-title">Tempos Médios de Processo</div>
     <div class="kpi-row r3" id="kpi-pz-t1" style="margin-bottom:8px"></div>
-    <div class="kpi-row r3" id="kpi-pz-t2" style="margin-bottom:20px"></div>
+    <div class="kpi-row r3" id="kpi-pz-t2" style="margin-bottom:8px"></div>
+    <div class="kpi-row r2" id="kpi-pz-t3" style="margin-bottom:20px"></div>
 
     <div class="blk-title">Comparativo por Despachante</div>
     <div class="comp-grid" id="comp-desp"></div>
@@ -679,10 +695,17 @@ function anosDisp(arr,campo){
 }
 
 // ── CANVAS: BARRAS ──
+// CORREÇÃO 2: usar clientWidth do elemento pai e garantir redraw ao resize
+function getCanvasWidth(c){
+  const el=c.parentElement;
+  if(!el)return 500;
+  const pw=el.getBoundingClientRect().width||el.clientWidth;
+  return pw>20?pw:500;
+}
+
 function drawBars(id,labels,datasets,fmtV,mediaLinha){
   const c=document.getElementById(id);if(!c)return;
-  const pw=c.parentElement.clientWidth||500;
-  if(pw<20)return;
+  const pw=getCanvasWidth(c);
   const idxComDados=labels.map((_,i)=>datasets.some(d=>d.data[i]>0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -746,7 +769,7 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
 // ── CANVAS: LINHAS COM 2 MÉDIAS ──
 function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
   const c=document.getElementById(id);if(!c)return;
-  const pw=c.parentElement.clientWidth||500;if(pw<20)return;
+  const pw=getCanvasWidth(c);if(pw<20)return;
   const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -809,7 +832,7 @@ function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
 // ── CANVAS: LINHAS ──
 function drawLines(id,labels,datasets,fmtV,mediaLinha){
   const c=document.getElementById(id);if(!c)return;
-  const pw=c.parentElement.clientWidth||500;
+  const pw=getCanvasWidth(c);
   if(pw<20)return;
   const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
@@ -880,6 +903,76 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
   }
 }
 
+// ── CANVAS: EXPOSIÇÃO DE CAIXA (cores por sinal) — CORREÇÕES 10+12 ──
+function drawLinesExposicao(id,labels,valores){
+  const c=document.getElementById(id);if(!c)return;
+  const pw=getCanvasWidth(c);if(pw<20)return;
+  const idxComDados=valores.map((v,i)=>v!==0?i:-1).filter(i=>i>=0);
+  // Incluir TODOS os índices para não perder datas (correção 9/10)
+  const labelsF=labels;
+  const valoresF=valores;
+  const H=parseInt(c.getAttribute('height'))||240;
+  const dpr=Math.max(window.devicePixelRatio||1,2);
+  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
+  const n=labelsF.length;if(!n)return;
+  const W=pw,P={t:28,r:20,b:44,l:90},cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const minV=Math.min(...valoresF),maxV=Math.max(...valoresF,0.01);
+  const range=Math.max(maxV-minV,Math.abs(maxV),Math.abs(minV))||1;
+  const pad=range*0.12;
+  const yMin=minV-pad,yMax=maxV+pad;
+  const xOf=i=>P.l+(n===1?cW/2:(i/(n-1))*cW);
+  const yOf=v=>P.t+cH*(1-(v-yMin)/(yMax-yMin));
+
+  ctx.clearRect(0,0,W,H);
+  // Grade
+  ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
+  const steps=5;
+  for(let i=0;i<=steps;i++){
+    const v=yMin+(yMax-yMin)*i/steps,y=yOf(v);
+    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
+    ctx.fillStyle='#5a8099';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='right';
+    ctx.fillText(fmtBRL(v),P.l-5,y+3.5);
+  }
+  // Linha zero
+  if(yMin<0&&yMax>0){
+    const y0=yOf(0);
+    ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(P.l,y0);ctx.lineTo(P.l+cW,y0);ctx.stroke();ctx.restore();
+  }
+  // Labels eixo X
+  ctx.fillStyle='#5a8099';ctx.font="600 10px 'Barlow',sans-serif";ctx.textAlign='center';
+  labelsF.forEach((lb,i)=>ctx.fillText(lb,xOf(i),H-P.b+16));
+  // Linha colorida por segmento — vermelho se >0 (dinheiro exposto), verde se <0 (recebendo de volta)
+  // CORREÇÃO 12: exposição positiva = investimento ativo = vermelho; negativa = retorno = verde
+  if(n===1){
+    const v=valoresF[0];
+    ctx.beginPath();ctx.arc(xOf(0),yOf(v),5,0,Math.PI*2);
+    ctx.fillStyle=v>0?'#c0392b':'#2a9d5c';ctx.fill();
+  } else {
+    for(let i=0;i<n-1;i++){
+      const v1=valoresF[i],v2=valoresF[i+1];
+      const cor=((v1+v2)/2)>0?'#c0392b':'#2a9d5c';
+      ctx.beginPath();ctx.strokeStyle=cor;ctx.lineWidth=2.5;
+      ctx.moveTo(xOf(i),yOf(v1));ctx.lineTo(xOf(i+1),yOf(v2));ctx.stroke();
+    }
+    // Pontos
+    valoresF.forEach((v,i)=>{
+      ctx.beginPath();ctx.arc(xOf(i),yOf(v),4,0,Math.PI*2);
+      ctx.fillStyle=v>0?'#c0392b':'#2a9d5c';ctx.fill();
+      ctx.fillStyle='#1a3347';ctx.font="600 9px 'DM Mono',monospace";ctx.textAlign='center';
+      const lbl=Math.abs(v)>=1000?fmtBRL(v):fmtBRL2(v);
+      ctx.fillText(lbl,xOf(i),yOf(v)-(v>=0?10:-16));
+    });
+  }
+  // Legenda
+  ctx.fillStyle='#c0392b';ctx.fillRect(P.l,P.t-18,10,10);
+  ctx.fillStyle='#1a3347';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='left';
+  ctx.fillText('Capital exposto (↑ = investindo)',P.l+14,P.t-9);
+  ctx.fillStyle='#2a9d5c';ctx.fillRect(P.l+220,P.t-18,10,10);
+  ctx.fillText('Retorno positivo',P.l+234,P.t-9);
+}
+
 // ── VGV helpers ──
 // CORREÇÃO 2: usar valor_venda_contrato em vez de valor_na_mao
 function somaVgvMeses(ml){
@@ -919,9 +1012,9 @@ function buildDash(){
   let cO=0,cE=0,cP=0;
   Object.entries(pags).forEach(([cc,mp])=>{
     const v=mp[mes]||0;if(!v)return;
-    const u=cc.toUpperCase();
+    const u=cc.toUpperCase().trim();
     if(/ESCRIT/i.test(u))cE+=v;
-    else if(/POS\s*OBRA|PÓS\s*OBRA/i.test(u))cP+=v;
+    else if(u==='POS OBRA MORAIS ENGENHARIA')cP+=v; // CORREÇÃO 1: apenas este CC
     else if(endD.has(normS(cc)))cO+=v;
   });
 
@@ -946,7 +1039,20 @@ function buildDash(){
   const tAl=mediaDias(docs,'data_entrada_alvara','data_aprovacao_projeto');
   const tIn=mediaDias(docs,'entrada_incorporacao_data','data_finalizacao_incorp');
   const tRt=mediaDias(docs,'data_entrada_ret','data_finalizacao_ret');
+  // CORREÇÃO 5: tempo de obra apenas para obras com início E término
   const tOb=mediaDias(docs.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
+  // CORREÇÃO 4: tempo médio p/ averbação = início da obra até certidões
+  const tAv=mediaDias(docs.filter(d=>d.data_inicio_obra&&d.data_certidoes),'data_inicio_obra','data_certidoes');
+  // CORREÇÃO 6: prazo de giro = aquisição do lote até assinatura no banco
+  const tGiro=(()=>{
+    const pares=[];
+    docs.forEach(d=>{
+      if(!d.data_aquisicao_lote)return;
+      const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
+      if(v?.data_assinatura){const x=diasDiff(d.data_aquisicao_lote,v.data_assinatura);if(x)pares.push(x);}
+    });
+    return pares.length?Math.round(pares.reduce((a,b)=>a+b)/pares.length):null;
+  })();
   const dv=[];
   docs.forEach(d=>{
     if(!d.data_certidoes)return;
@@ -975,14 +1081,18 @@ function buildDash(){
     kpi('Casas Vendidas no Mês',cV||'0','Clientes + data venda',cV>0?'g':''),
   ].join('');
   document.getElementById('kpi-t1').innerHTML=[
-    kpi('Tempo Médio Uso do Solo',tUS!=null?tUS+'d':'—','Solicitação → emissão'),
-    kpi('Tempo Médio Alvará',tAl!=null?tAl+'d':'—','Entrada → aprovação'),
-    kpi('Tempo Médio Incorporação',tIn!=null?tIn+'d':'—','Entrada → finalização'),
+    kpi('Uso do Solo',tUS!=null?tUS+'d':'—','Solicitação → emissão'),
+    kpi('Alvará',tAl!=null?tAl+'d':'—','Entrada → aprovação'),
+    kpi('Incorporação',tIn!=null?tIn+'d':'—','Entrada → finalização'),
   ].join('');
   document.getElementById('kpi-t2').innerHTML=[
-    kpi('Tempo Médio RET',tRt!=null?tRt+'d':'—','Entrada → finalização'),
-    kpi('Tempo Médio Venda',tVe!=null?tVe+'d':'—','Certidões → data de venda'),
-    kpi('Tempo Médio de Obra',tOb!=null?tOb+'d':'—','Início → término'),
+    kpi('RET',tRt!=null?tRt+'d':'—','Entrada → finalização'),
+    kpi('Tempo Médio de Obra',tOb!=null?tOb+'d':'—','Início → término (c/ ambas as datas)'),
+    kpi('Venda',tVe!=null?tVe+'d':'—','Certidões → data de venda'),
+  ].join('');
+  document.getElementById('kpi-t3').innerHTML=[
+    kpi('Tempo Médio p/ Averbação',tAv!=null?tAv+'d':'—','Início da obra → certidões'),
+    kpi('Prazo de Giro (Lote→Banco)',tGiro!=null?tGiro+'d':'—','Aquisição do lote → assinatura banco'),
   ].join('');
 }
 
@@ -1071,9 +1181,13 @@ function buildLotes(){
   const per=document.getElementById('sel-per-lotes')?.value||'ano';
   const tipo=document.getElementById('sel-tipo-lotes')?.value||'';
   const viz=document.getElementById('sel-viz-lotes')?.value||'lotes';
+  const prop=document.getElementById('sel-prop-lotes')?.value||'';
   const ms=mesesPeriodo(ano,per);
   let arr=docs.filter(d=>d.data_aquisicao_lote&&ms.includes(mesD(d.data_aquisicao_lote)));
   if(tipo)arr=arr.filter(d=>(d.implantacao||'').toUpperCase()===tipo.toUpperCase());
+  // CORREÇÃO 8: filtro proprietário
+  if(prop==='morais')arr=arr.filter(d=>cotaM(d)>0);
+  else if(prop==='invest')arr=arr.filter(d=>cotaM(d)<1);
 
   const usarCasas=viz==='casas';
   const ag=agrupMes(arr,'data_aquisicao_lote',usarCasas?'n_casas':null);
@@ -1145,12 +1259,16 @@ function buildObras(){
   const per=document.getElementById('sel-per-obras')?.value||'ano';
   const viz=document.getElementById('sel-viz-obras')?.value||'casas';
   const tipo=document.getElementById('sel-tipo-obras')?.value||'';
+  const prop=document.getElementById('sel-prop-obras')?.value||'';
   const ms=mesesPeriodo(ano,per);
   const temObraIniciada=docs.some(d=>d.obra_iniciada==='SIM');
   let arr=temObraIniciada
     ?docs.filter(d=>d.obra_iniciada==='SIM'&&d.data_inicio_obra&&ms.includes(mesD(d.data_inicio_obra)))
     :docs.filter(d=>d.data_inicio_obra&&ms.includes(mesD(d.data_inicio_obra)));
   if(tipo)arr=arr.filter(d=>(d.implantacao||'').toUpperCase()===tipo.toUpperCase());
+  // CORREÇÃO 8: filtro proprietário
+  if(prop==='morais')arr=arr.filter(d=>cotaM(d)>0);
+  else if(prop==='invest')arr=arr.filter(d=>cotaM(d)<1);
   const campoQt=viz==='casas'?'n_casas':null;
   const ag=agrupMes(arr,'data_inicio_obra',campoQt);
   const dM=ms.map(m=>ag[m]?.morais||0),dI=ms.map(m=>ag[m]?.invest||0);
@@ -1269,7 +1387,20 @@ function buildPrazos(){
   const tAl=mediaDias(arr,'data_entrada_alvara','data_aprovacao_projeto');
   const tIn=mediaDias(arr,'entrada_incorporacao_data','data_finalizacao_incorp');
   const tRt=mediaDias(arr,'data_entrada_ret','data_finalizacao_ret');
+  // CORREÇÃO 5: obra apenas com início E término
   const tOb=mediaDias(arr.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
+  // CORREÇÃO 4: início da obra → certidões
+  const tAv=mediaDias(arr.filter(d=>d.data_inicio_obra&&d.data_certidoes),'data_inicio_obra','data_certidoes');
+  // CORREÇÃO 6: aquisição lote → assinatura banco
+  const tGiro=(()=>{
+    const pares=[];
+    arr.forEach(d=>{
+      if(!d.data_aquisicao_lote)return;
+      const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
+      if(v?.data_assinatura){const x=diasDiff(d.data_aquisicao_lote,v.data_assinatura);if(x)pares.push(x);}
+    });
+    return pares.length?Math.round(pares.reduce((a,b)=>a+b)/pares.length):null;
+  })();
   const dv=[];
   arr.forEach(d=>{
     if(!d.data_certidoes)return;
@@ -1286,7 +1417,11 @@ function buildPrazos(){
   document.getElementById('kpi-pz-t2').innerHTML=[
     kpi('RET',tRt!=null?tRt+'d':'—','Entrada → finalização'),
     kpi('Venda',tVe!=null?tVe+'d':'—','Certidões → venda'),
-    kpi('Obra',tOb!=null?tOb+'d':'—','Início → término'),
+    kpi('Obra',tOb!=null?tOb+'d':'—','Início → término (c/ ambas as datas)'),
+  ].join('');
+  document.getElementById('kpi-pz-t3').innerHTML=[
+    kpi('Tempo Médio p/ Averbação',tAv!=null?tAv+'d':'—','Início da obra → certidões'),
+    kpi('Prazo de Giro (Lote→Banco)',tGiro!=null?tGiro+'d':'—','Aquisição do lote → assinatura banco'),
   ].join('');
 
   // Comparativo por despachante
@@ -1570,10 +1705,9 @@ function buildSetor(){
     `<div class="roi-card"><div class="roi-lbl">MTIR Mensal / Anual</div><div class="roi-val">${mtirAm!=null?fmtN(mtirAm*100,3)+'% / '+fmtN((mtirAa||0)*100,2)+'%':'—'}</div><div class="roi-sub">Fin: ${(rFin*100).toFixed(2)}% · Rein: ${(rRein*100).toFixed(2)}%</div></div>`,
   ].join('');
 
-  // Tabela exposição
+  // CORREÇÃO 9: mostrar TODOS os meses incluindo primeiro e último — não filtrar nenhum
   const rowsExp=meses.map((m,i)=>{
-    const sinal=expCaixa[i]<0?'+':expCaixa[i]>0?'-':'';
-    const corExp=expCaixa[i]<0?'color:#2a9d5c':expCaixa[i]>0?'color:#c0392b':'';
+    const corExp=expCaixa[i]<0?'color:#2a9d5c;font-weight:700':expCaixa[i]>0?'color:#c0392b;font-weight:700':'';
     return`<tr>
       <td><strong>${fmtM(m)}</strong></td>
       <td class="nr">${fmtBRL2(gastos[i])}</td>
@@ -1604,9 +1738,11 @@ function buildSetor(){
     </tr></tfoot>
   </table>`;
 
-  // Gráfico exposição de caixa
+  // CORREÇÃO 10: gráfico de exposição — redesenhar com cores por valor (correção 12)
+  // e usar largura real do container (correção 2)
   const lb=meses.map(fmtM);
-  drawLines('ch-exp',lb,[{data:expCaixa.map(v=>-v),color:'#295778',label:'Exposição'}],v=>fmtBRL(v));
+  // Usar drawLines mas com callback de cor por segmento
+  drawLinesExposicao('ch-exp',lb,expCaixa);
 }
 
 // ── ALERTAS METAS ──
@@ -1736,6 +1872,20 @@ async function init(){
     calcAlertas();
     // Inicializar obras para setorizadas
     initObrasSetor();
+
+    // CORREÇÃO 2: re-renderizar gráficos ao redimensionar (evita bug de esticamento)
+    let resizeTimer=null;
+    window.addEventListener('resize',()=>{
+      clearTimeout(resizeTimer);
+      resizeTimer=setTimeout(()=>{
+        const pag=document.querySelector('.page.active');
+        if(!pag)return;
+        if(pag.id==='page-metas'){renderSubAtiva();}
+        else if(pag.id==='page-setor'){buildSetor();}
+        else if(pag.id==='page-prazos'){buildPrazos();}
+        else if(pag.id==='page-dash'){buildDash();}
+      },200);
+    });
   }catch(e){
     document.getElementById('loading').innerHTML=
       `<div style="color:#c0392b;font-size:13px;padding:20px;text-align:center">
