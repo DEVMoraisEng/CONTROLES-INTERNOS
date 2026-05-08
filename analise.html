@@ -694,18 +694,34 @@ function anosDisp(arr,campo){
   return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
 }
 
-// ── CANVAS: BARRAS ──
-// CORREÇÃO 2: usar clientWidth do elemento pai e garantir redraw ao resize
-function getCanvasWidth(c){
-  const el=c.parentElement;
-  if(!el)return 500;
-  const pw=el.getBoundingClientRect().width||el.clientWidth;
-  return pw>20?pw:500;
+// ── CANVAS ENGINE — CORREÇÃO 1+2: width real aguardando DOM visível ──
+// Mapa para re-render: { canvasId -> { fn, args } }
+const _pendingRender = {};
+
+function _realWidth(c){
+  // Sobe até encontrar um ancestral com largura real
+  let el = c;
+  while(el){
+    const w = el.getBoundingClientRect().width;
+    if(w > 30) return Math.floor(w);
+    el = el.parentElement;
+  }
+  return 0;
+}
+
+function _scheduleRender(id, fn, args){
+  _pendingRender[id] = {fn, args};
+  // Tenta imediatamente, depois em rAF duplo (garante que o DOM já pintou)
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    const job = _pendingRender[id];
+    if(job) { delete _pendingRender[id]; job.fn(...job.args); }
+  }));
 }
 
 function drawBars(id,labels,datasets,fmtV,mediaLinha){
   const c=document.getElementById(id);if(!c)return;
-  const pw=getCanvasWidth(c);
+  const pw=_realWidth(c);
+  if(pw<30){ _scheduleRender(id,drawBars,[id,labels,datasets,fmtV,mediaLinha]); return; }
   const idxComDados=labels.map((_,i)=>datasets.some(d=>d.data[i]>0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -769,7 +785,8 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
 // ── CANVAS: LINHAS COM 2 MÉDIAS ──
 function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
   const c=document.getElementById(id);if(!c)return;
-  const pw=getCanvasWidth(c);if(pw<20)return;
+  const pw=_realWidth(c);
+  if(pw<30){ _scheduleRender(id,drawLinesComMedias,[id,labels,datasets,mediaM,mediaI]); return; }
   const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -832,8 +849,8 @@ function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
 // ── CANVAS: LINHAS ──
 function drawLines(id,labels,datasets,fmtV,mediaLinha){
   const c=document.getElementById(id);if(!c)return;
-  const pw=getCanvasWidth(c);
-  if(pw<20)return;
+  const pw=_realWidth(c);
+  if(pw<30){ _scheduleRender(id,drawLines,[id,labels,datasets,fmtV,mediaLinha]); return; }
   const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -906,7 +923,8 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
 // ── CANVAS: EXPOSIÇÃO DE CAIXA (cores por sinal) — CORREÇÕES 10+12 ──
 function drawLinesExposicao(id,labels,valores){
   const c=document.getElementById(id);if(!c)return;
-  const pw=getCanvasWidth(c);if(pw<20)return;
+  const pw=_realWidth(c);
+  if(pw<30){ _scheduleRender(id,drawLinesExposicao,[id,labels,valores]); return; }
   const idxComDados=valores.map((v,i)=>v!==0?i:-1).filter(i=>i>=0);
   // Incluir TODOS os índices para não perder datas (correção 9/10)
   const labelsF=labels;
@@ -943,23 +961,23 @@ function drawLinesExposicao(id,labels,valores){
   // Labels eixo X
   ctx.fillStyle='#5a8099';ctx.font="600 10px 'Barlow',sans-serif";ctx.textAlign='center';
   labelsF.forEach((lb,i)=>ctx.fillText(lb,xOf(i),H-P.b+16));
-  // Linha colorida por segmento — vermelho se >0 (dinheiro exposto), verde se <0 (recebendo de volta)
-  // CORREÇÃO 12: exposição positiva = investimento ativo = vermelho; negativa = retorno = verde
+  // CORREÇÃO 4: negativo=VERMELHO (empresa investindo/exposta), positivo=VERDE (retorno)
+  const corExp=v=>v<0?'#c0392b':'#2a9d5c';
   if(n===1){
     const v=valoresF[0];
     ctx.beginPath();ctx.arc(xOf(0),yOf(v),5,0,Math.PI*2);
-    ctx.fillStyle=v>0?'#c0392b':'#2a9d5c';ctx.fill();
+    ctx.fillStyle=corExp(v);ctx.fill();
   } else {
     for(let i=0;i<n-1;i++){
       const v1=valoresF[i],v2=valoresF[i+1];
-      const cor=((v1+v2)/2)>0?'#c0392b':'#2a9d5c';
+      const cor=corExp((v1+v2)/2);
       ctx.beginPath();ctx.strokeStyle=cor;ctx.lineWidth=2.5;
       ctx.moveTo(xOf(i),yOf(v1));ctx.lineTo(xOf(i+1),yOf(v2));ctx.stroke();
     }
     // Pontos
     valoresF.forEach((v,i)=>{
       ctx.beginPath();ctx.arc(xOf(i),yOf(v),4,0,Math.PI*2);
-      ctx.fillStyle=v>0?'#c0392b':'#2a9d5c';ctx.fill();
+      ctx.fillStyle=corExp(v);ctx.fill();
       ctx.fillStyle='#1a3347';ctx.font="600 9px 'DM Mono',monospace";ctx.textAlign='center';
       const lbl=Math.abs(v)>=1000?fmtBRL(v):fmtBRL2(v);
       ctx.fillText(lbl,xOf(i),yOf(v)-(v>=0?10:-16));
@@ -968,9 +986,9 @@ function drawLinesExposicao(id,labels,valores){
   // Legenda
   ctx.fillStyle='#c0392b';ctx.fillRect(P.l,P.t-18,10,10);
   ctx.fillStyle='#1a3347';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='left';
-  ctx.fillText('Capital exposto (↑ = investindo)',P.l+14,P.t-9);
-  ctx.fillStyle='#2a9d5c';ctx.fillRect(P.l+220,P.t-18,10,10);
-  ctx.fillText('Retorno positivo',P.l+234,P.t-9);
+  ctx.fillText('Empresa exposta (capital investido)',P.l+14,P.t-9);
+  ctx.fillStyle='#2a9d5c';ctx.fillRect(P.l+240,P.t-18,10,10);
+  ctx.fillText('Retorno positivo (lucro)',P.l+254,P.t-9);
 }
 
 // ── VGV helpers ──
@@ -1223,14 +1241,8 @@ function buildLotes(){
   const mediaLinhaTotal=mediaM!=null&&mediaI!=null?(mediaM+mediaI):mediaM||mediaI;
 
   drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinhaTotal);
-  drawLines('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,null);
-  // No gráfico separado, desenhar duas linhas de média distintas
-  if(mediaM!=null||mediaI!=null){
-    // Redesenha ch-ls com linhas de média individuais
-    setTimeout(()=>drawLinesComMedias('ch-ls',lb,
-      [{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],
-      mediaM,mediaI),30);
-  }
+  // Gráfico de linhas separadas: sempre com 2 médias (mesmo que null)
+  drawLinesComMedias('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],mediaM,mediaI);
 
   document.getElementById('tbl-lotes').innerHTML=tblRes(ms,dM,dI,
     `Qt ${unidade} Morais`,`Qt ${unidade} Investidores`,
@@ -1281,14 +1293,31 @@ function buildObras(){
   // CORREÇÃO 4: linha META/12 quando casas
   const mediaLinha=viz==='casas'&&meta?meta.meta_casas/12:null;
 
+  // CORREÇÃO 2: calcular metas Morais e Investidor separadas para Obras
+  let mediaObrasM=null, mediaObrasI=null;
+  if(viz==='casas'&&meta){
+    const t=tipo?tipo.toUpperCase():'';
+    if(t==='RUA'){
+      mediaObrasM=meta.cs_rua_morais||null;
+      mediaObrasI=meta.cs_rua_invest||null;
+    } else if(t==='CONDOMÍNIO'||t==='CONDOMINIO'){
+      mediaObrasM=meta.cs_cond_morais||null;
+      mediaObrasI=meta.cs_cond_invest||null;
+    } else {
+      mediaObrasM=(meta.cs_rua_morais||0)+(meta.cs_cond_morais||0)||null;
+      mediaObrasI=(meta.cs_rua_invest||0)+(meta.cs_cond_invest||0)||null;
+    }
+  }
+  const mediaLinhaObrasTotal=mediaObrasM!=null&&mediaObrasI!=null?(mediaObrasM+mediaObrasI):mediaObrasM||mediaObrasI||mediaLinha;
+
   document.getElementById('blk-obras-title').textContent=`${unidade} de Obras Iniciadas por Mês`;
   document.getElementById('kpi-obras-res').innerHTML=[
     kpi(`${unidade} Morais (${ano})`,fmtN(tM,1),'Por cota de empresa'),
     kpi(`${unidade} Investidores (${ano})`,fmtN(tI,1),'Por cota (1−cota)'),
     kpi(`Iniciado vs Meta ${ano}`,pctMeta,meta?`${fmtN(casasIniciadas,1)} de ${meta.meta_casas} casas meta`:'Sem meta cadastrada'),
   ].join('');
-  drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinha);
-  drawLines('ch-os',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinha);
+  drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinhaObrasTotal);
+  drawLinesComMedias('ch-os',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],mediaObrasM,mediaObrasI);
   document.getElementById('tbl-obras').innerHTML=tblRes(ms,dM,dI,`${unidade} Morais`,`${unidade} Investidores`);
   const det=document.getElementById('det-obras');if(!det)return;
   det.innerHTML=temObraIniciada?'':`<div class="aviso">⚠️ O campo <strong>OBRA INCIADA</strong> do Notion não está preenchido em nenhum registro. Os dados abaixo consideram obras com <strong>Data de Início da Obra</strong> preenchida como critério equivalente.</div>`;
@@ -1625,7 +1654,19 @@ function buildSetor(){
     fatMes[f.mes]=(fatMes[f.mes]||0)+f.valor;
   });
 
-  // Montar apenas meses com movimentação real (sem mês genérico inicial)
+  // CORREÇÃO 5: fallback para valor_na_mao das vendas por data_assinatura
+  // quando faturamentos_erp está vazio (ERP não retornou dados)
+  const usandoFallbackFat = Object.keys(fatMes).length===0;
+  if(usandoFallbackFat){
+    vendas.filter(v=>v.clientes&&v.data_assinatura&&v.valor_na_mao).forEach(v=>{
+      const m=mesD(v.data_assinatura);if(!m||!/^\d{4}-\d{2}$/.test(m))return;
+      // só conta vendas de obras na seleção atual
+      if(!enderecosSel.has(normS(v.endereco)))return;
+      fatMes[m]=(fatMes[m]||0)+(v.valor_na_mao||0);
+    });
+  }
+
+  // Montar apenas meses com movimentação real
   const mesesComMov=[...new Set([
     ...Object.keys(pagMes).filter(m=>pagMes[m]>0),
     ...Object.keys(fatMes).filter(m=>fatMes[m]>0)
@@ -1639,13 +1680,18 @@ function buildSetor(){
   }
   // Preencher meses zerados no meio
   const mInit=todosMeses[0],mFim=todosMeses[todosMeses.length-1];
-  const meses=[];
+  const mesesTodos=[];
   let cur=new Date(mInit+'-01');
   const fim=new Date(mFim+'-01');
   while(cur<=fim){
-    meses.push(`${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}`);
+    mesesTodos.push(`${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}`);
     cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);
   }
+  // CORREÇÃO 3: trim do início e fim — remover meses consecutivos zerados nas bordas
+  let iStart=0,iEnd=mesesTodos.length-1;
+  while(iStart<=iEnd&&!(pagMes[mesesTodos[iStart]]>0)&&!(fatMes[mesesTodos[iStart]]>0))iStart++;
+  while(iEnd>=iStart&&!(pagMes[mesesTodos[iEnd]]>0)&&!(fatMes[mesesTodos[iEnd]]>0))iEnd--;
+  const meses=mesesTodos.slice(iStart,iEnd+1);
 
   // Calcular fluxos
   const gastos=meses.map(m=>pagMes[m]||0);
@@ -1705,14 +1751,16 @@ function buildSetor(){
     `<div class="roi-card"><div class="roi-lbl">MTIR Mensal / Anual</div><div class="roi-val">${mtirAm!=null?fmtN(mtirAm*100,3)+'% / '+fmtN((mtirAa||0)*100,2)+'%':'—'}</div><div class="roi-sub">Fin: ${(rFin*100).toFixed(2)}% · Rein: ${(rRein*100).toFixed(2)}%</div></div>`,
   ].join('');
 
-  // CORREÇÃO 9: mostrar TODOS os meses incluindo primeiro e último — não filtrar nenhum
+  // CORREÇÃO 4: negativo=VERMELHO (empresa investindo/exposta), positivo=VERDE (retorno)
   const rowsExp=meses.map((m,i)=>{
-    const corExp=expCaixa[i]<0?'color:#2a9d5c;font-weight:700':expCaixa[i]>0?'color:#c0392b;font-weight:700':'';
+    // expCaixa negativo = acumulou mais gastos que receitas = exposição real da empresa
+    const v=expCaixa[i];
+    const corExp=v<0?'color:#c0392b;font-weight:700':v>0?'color:#2a9d5c;font-weight:700':'';
     return`<tr>
       <td><strong>${fmtM(m)}</strong></td>
       <td class="nr">${fmtBRL2(gastos[i])}</td>
       <td class="nr">${receitas[i]>0?fmtBRL2(receitas[i]):'—'}</td>
-      <td class="nr" style="${corExp}">${fmtBRL2(expCaixa[i])}</td>
+      <td class="nr" style="${corExp}">${fmtBRL2(v)}</td>
       <td class="nr">${mult[i]}</td>
       <td class="nr">${fmtBRL2(expProp[i])}</td>
     </tr>`;
