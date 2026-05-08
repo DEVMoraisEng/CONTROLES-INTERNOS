@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-08T20:57:06.232962+00:00",
+  "updated_at": "2026-05-08T21:47:37.450867+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -9835,8 +9835,8 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-05-08",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
@@ -19768,8 +19768,8 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-05-08",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
