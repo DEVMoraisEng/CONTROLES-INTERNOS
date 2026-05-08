@@ -2,6 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.bcb.gov.br; default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Morais Engenharia · Análise de Dados</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1731,7 +1733,11 @@ async function init(){
         Erro ao carregar dados:<br><code>${e.message}</code></div>`;
   }
 }
-init();
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',init);
+}else{
+  init();
+}
 </script>
 </body>
 </html>
