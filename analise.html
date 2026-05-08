@@ -564,8 +564,16 @@ let cdiAtual=1.0; // % a.m. padrão, atualizado via BACEN
 let paginaAtual='dash';
 
 function fechar(){
-  if(window.parent&&window.parent.fecharAnalise)window.parent.fecharAnalise();
-  else history.back();
+  try{
+    if(window.parent&&typeof window.parent.fecharAnalise==='function'){
+      window.parent.fecharAnalise();
+    } else if(window.frameElement){
+      // Está em iframe mas pai não tem fecharAnalise — tenta navegar
+      window.parent.location.reload();
+    } else {
+      history.back();
+    }
+  }catch(e){history.back();}
 }
 function voltarDash(){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));

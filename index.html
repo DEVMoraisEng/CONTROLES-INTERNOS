@@ -151,27 +151,36 @@ body{min-height:100vh;background:var(--bg);font-family:'Barlow',sans-serif;displ
 </div>
 
 <script>
-// Auth
-const HASH_OK = btoa("moraisengenharialtda:Morais1234@");
-if(localStorage.getItem("morais_auth")!==HASH_OK && sessionStorage.getItem("morais_auth")!==HASH_OK){
-  location.href="login.html";
-}
+// Auth — verificar antes de qualquer coisa
+(function(){
+  const HASH_OK=btoa("moraisengenharialtda:Morais1234@");
+  if(localStorage.getItem("morais_auth")!==HASH_OK&&sessionStorage.getItem("morais_auth")!==HASH_OK){
+    window.location.replace("login.html");
+  }
+})();
+
+const HASH_OK=btoa("moraisengenharialtda:Morais1234@");
+
 function sair(){
   localStorage.removeItem("morais_auth");
   sessionStorage.removeItem("morais_auth");
-  location.href="login.html";
+  window.location.replace("login.html");
 }
 
-// Modal análise
+// Modal análise — exposto no window para o iframe conseguir chamar
 function abrirAnalise(){
   const m=document.getElementById("modal-analise");
   const f=document.getElementById("iframe-analise");
-  f.src="analise.html";m.style.display="block";
+  if(!m||!f)return;
+  f.src="analise.html";
+  m.style.display="block";
 }
-function fecharAnalise(){
+window.fecharAnalise=function(){
   const m=document.getElementById("modal-analise");
   const f=document.getElementById("iframe-analise");
-  m.style.display="none";f.src="";
+  if(!m||!f)return;
+  m.style.display="none";
+  f.src="";
 }
 
 // Setores por cidade com links
@@ -191,16 +200,19 @@ const SETORES_GOIANIA=[
 
 // Calcular status de lotes por setor
 function calcStatusSetor(docs,vendas,nomeSetor){
-  const d=docs.filter(x=>x.setor===nomeSetor);
+  if(!docs||!vendas)return{emBreve:0,andamento:0,finalizados:0,vendidas:0,total:0};
+  // Tenta casar o nome do setor ignorando case e acentos
+  const norm=s=>(s||'').trim().toUpperCase();
+  const n=norm(nomeSetor);
+  const d=docs.filter(x=>norm(x.setor)===n||norm(x.setor).includes(n)||n.includes(norm(x.setor)));
   const emBreve=d.filter(x=>!x.data_aquisicao_lote).length;
   const andamento=d.filter(x=>x.data_inicio_obra&&!x.data_termino_obra).length;
-  // Finalizado: tem data_termino_obra OU todos os campos selecionáveis = SIM/INEXISTE
   const finCampos=["uso_solo_emitido","aprovacao_projeto","obra_iniciada","habite_se_concluido"];
   const finalizados=d.filter(x=>{
     if(x.data_termino_obra)return true;
     return finCampos.every(c=>x[c]==="SIM"||x[c]==="INEXISTE"||x[c]==="sim");
   }).length;
-  const vendidas=vendas.filter(v=>v.clientes&&v.setor===nomeSetor).length;
+  const vendidas=vendas.filter(v=>v&&v.clientes&&norm(v.setor)===n).length;
   return{emBreve,andamento,finalizados,vendidas,total:d.length};
 }
 
@@ -215,9 +227,10 @@ function buildCidades(docs,vendas){
         ${st.finalizados>0?`<span class="stat-pill pill-fin">Finalizados: ${st.finalizados}</span>`:''}
         ${st.vendidas>0?`<span class="stat-pill pill-vend">Vendidas: ${st.vendidas}</span>`:''}
       `;
+      const pTrim=pills.trim().replace(/\s+/g,' ');
       return`<a class="setor-card" href="${s.link}">
         <div class="setor-nome">${s.nome}</div>
-        <div class="setor-stats">${pills||'<span class="stat-pill pill-breve">Sem dados</span>'}</div>
+        <div class="setor-stats">${pTrim||'<span class="stat-pill pill-breve">Sem dados</span>'}</div>
       </a>`;
     }).join('');
     return`<div class="cidade-bloco">
