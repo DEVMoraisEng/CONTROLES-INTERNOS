@@ -303,18 +303,59 @@ def buscar_obras_erp():
 
 
 def buscar_faturamentos_erp():
-    """Busca aba Faturamentos do ERP: centro_de_custo + valor_recebido_parcela + data_competencia.
-    CORREÇÃO 11: usar coluna 'Valor recebido parcela' como campo principal.
+    """Busca aba Faturamentos do ERP: valor_recebido_parcela + data_competencia.
+    CORREÇÃO 5: logar colunas reais para diagnóstico.
     """
     import re as _re4
-    fat = []  # lista de dicts { cc, valor, mes }
+    fat = []
     print("  ERP: buscando Faturamentos...")
-    for row in erp_csv(ERP_CSV_FATURAMENTOS, "faturamentos"):
-        cc  = (row.get("centro_de_custo") or "").strip().upper()
-        # CORREÇÃO 11: priorizar 'Valor recebido parcela', fallback para variações
-        val = (row.get("Valor recebido parcela") or row.get("valor recebido parcela")
-               or row.get("valor_recebido_parcela") or row.get("VALOR RECEBIDO PARCELA"))
-        dt  = (row.get("data_competencia") or "").strip()
+    rows = erp_csv(ERP_CSV_FATURAMENTOS, "faturamentos")
+    if not rows:
+        print("  ERP Faturamentos: nenhuma linha retornada")
+        return fat
+    # LOG COLUNAS REAIS — crítico para diagnóstico
+    colunas_reais = list(rows[0].keys())
+    print(f"  ERP Faturamentos COLUNAS: {colunas_reais}")
+    # Candidatos para 'valor recebido' — tentar em ordem de preferência
+    CANDIDATOS_VALOR = [
+        "Valor recebido parcela", "valor recebido parcela",
+        "VALOR RECEBIDO PARCELA", "valor_recebido_parcela",
+        "Valor Recebido Parcela",
+        "valor_bruto", "Valor Bruto", "VALOR BRUTO",
+        "valor_liquido", "Valor Liquido",
+    ]
+    # Descobrir qual coluna existe
+    col_valor = None
+    for cand in CANDIDATOS_VALOR:
+        if cand in colunas_reais:
+            col_valor = cand
+            break
+    if not col_valor:
+        # Tentar match case-insensitive
+        for col in colunas_reais:
+            if 'receb' in col.lower() or 'bruto' in col.lower() or 'liquido' in col.lower():
+                col_valor = col
+                break
+    print(f"  ERP Faturamentos coluna valor usada: {repr(col_valor)}")
+    if not col_valor:
+        print("  ERP Faturamentos: coluna de valor não encontrada! Colunas disponíveis:", colunas_reais)
+        return fat
+    # Candidatos para data
+    CANDIDATOS_DATA = ["data_competencia", "Data Competencia", "DATA COMPETENCIA", "data_pagamento", "Data", "data"]
+    col_data = next((c for c in CANDIDATOS_DATA if c in colunas_reais), None)
+    if not col_data:
+        col_data = next((c for c in colunas_reais if 'data' in c.lower() or 'compet' in c.lower()), None)
+    print(f"  ERP Faturamentos coluna data usada: {repr(col_data)}")
+    # Candidatos para centro de custo
+    CANDIDATOS_CC = ["centro_de_custo", "Centro de Custo", "CENTRO DE CUSTO", "obra", "cc"]
+    col_cc = next((c for c in CANDIDATOS_CC if c in colunas_reais), None)
+    if not col_cc:
+        col_cc = next((c for c in colunas_reais if 'centro' in c.lower() or 'custo' in c.lower() or 'obra' in c.lower()), None)
+    print(f"  ERP Faturamentos coluna CC usada: {repr(col_cc)}")
+    for row in rows:
+        cc  = (row.get(col_cc, "") if col_cc else "").strip().upper()
+        val = row.get(col_valor, "") if col_valor else ""
+        dt  = (row.get(col_data, "") if col_data else "").strip()
         if cc and val:
             try:
                 v = float(str(val).replace(",", "."))
@@ -326,7 +367,9 @@ def buscar_faturamentos_erp():
                 fat.append({"cc": cc, "valor": v, "mes": mes})
             except:
                 pass
-    print(f"  ERP Faturamentos: {len(fat)} registros")
+    print(f"  ERP Faturamentos: {len(fat)} registros processados")
+    if fat:
+        print(f"  ERP Faturamentos amostra: {fat[:3]}")
     return fat
 
 
