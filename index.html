@@ -259,7 +259,12 @@ async function init(){
       `<div style="color:#c0392b;font-size:13px;padding:20px">Erro ao carregar: ${e.message}</div>`;
   }
 }
-init();
+// Garantir que o DOM está pronto antes de init()
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
 </body>
 </html>

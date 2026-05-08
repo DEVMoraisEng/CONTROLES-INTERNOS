@@ -556,6 +556,15 @@ tfoot td:last-child{border-right:none}
 </div><!-- /main-wrap -->
 
 <script>
+// Auth check — protege acesso direto à URL
+(function(){
+  const H=btoa("moraisengenharialtda:Morais1234@");
+  if(localStorage.getItem("morais_auth")!==H&&sessionStorage.getItem("morais_auth")!==H){
+    // Se estiver em iframe, o parent cuida do auth. Se não, redireciona.
+    try{ if(!window.frameElement) window.location.replace("login.html"); }catch(e){}
+  }
+})();
+
 // ── DADOS ──
 let docs=[],vendas=[],metas=[],pags={},fats=[];
 let cdiAtual=1.0; // % a.m. padrão, atualizado via BACEN
@@ -882,6 +891,7 @@ function initSelMes(){
     ...Object.values(pags).flatMap(mp=>Object.keys(mp))
   ])].filter(Boolean).sort();
   const el=document.getElementById('sel-mes');
+  if(!el)return;
   el.innerHTML='';
   todos.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=fmtM(m);el.appendChild(o);});
   el.value=todos[todos.length-1]||'';
@@ -1101,7 +1111,7 @@ function buildLotes(){
     `Qt ${unidade} Morais`,`Qt ${unidade} Investidores`,
     usarCasas?mediaM:null,usarCasas?mediaI:null);
 
-  const det=document.getElementById('det-lotes');det.innerHTML='';
+  const det=document.getElementById('det-lotes');if(!det)return;det.innerHTML='';
   const mesesComDados=ms.filter(m=>arr.some(d=>mesD(d.data_aquisicao_lote)===m));
   for(let i=0;i<mesesComDados.length;i+=2){
     const row=document.createElement('div');row.className='det-grid';
@@ -1151,7 +1161,7 @@ function buildObras(){
   drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinha);
   drawLines('ch-os',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinha);
   document.getElementById('tbl-obras').innerHTML=tblRes(ms,dM,dI,`${unidade} Morais`,`${unidade} Investidores`);
-  const det=document.getElementById('det-obras');
+  const det=document.getElementById('det-obras');if(!det)return;
   det.innerHTML=temObraIniciada?'':`<div class="aviso">⚠️ O campo <strong>OBRA INCIADA</strong> do Notion não está preenchido em nenhum registro. Os dados abaixo consideram obras com <strong>Data de Início da Obra</strong> preenchida como critério equivalente.</div>`;
   const mesesComDadosO=ms.filter(m=>arr.some(d=>mesD(d.data_inicio_obra)===m));
   for(let i=0;i<mesesComDadosO.length;i+=2){
