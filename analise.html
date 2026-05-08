@@ -558,15 +558,6 @@ tfoot td:last-child{border-right:none}
 </div><!-- /main-wrap -->
 
 <script>
-// Auth check — protege acesso direto à URL
-(function(){
-  const H=btoa("moraisengenharialtda:Morais1234@");
-  if(localStorage.getItem("morais_auth")!==H&&sessionStorage.getItem("morais_auth")!==H){
-    // Se estiver em iframe, o parent cuida do auth. Se não, redireciona.
-    try{ if(!window.frameElement) window.location.replace("login.html"); }catch(e){}
-  }
-})();
-
 // ── DADOS ──
 let docs=[],vendas=[],metas=[],pags={},fats=[];
 let cdiAtual=1.0; // % a.m. padrão, atualizado via BACEN

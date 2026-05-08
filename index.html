@@ -146,9 +146,9 @@ body{min-height:100vh;background:var(--bg);font-family:'Barlow',sans-serif;displ
   </div>
 </div>
 
-<!-- Modal análise -->
-<div id="modal-analise" style="display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.5)">
-  <iframe id="iframe-analise" src="" style="width:100%;height:100%;border:none"></iframe>
+<!-- Modal análise — iframe pré-carregado igual à versão que funcionava -->
+<div id="modal-analise" style="display:none;position:fixed;inset:0;z-index:1000;background:var(--bg);overflow:auto">
+  <iframe id="iframe-analise" src="analise.html" style="width:100%;height:100%;border:none;display:block"></iframe>
 </div>
 
 <script>
@@ -168,21 +168,15 @@ function sair(){
   window.location.replace("login.html");
 }
 
-// Modal análise — exposto no window para o iframe conseguir chamar
+// Mesma implementação da versão que funcionava
 function abrirAnalise(){
-  const m=document.getElementById("modal-analise");
-  const f=document.getElementById("iframe-analise");
-  if(!m||!f)return;
-  f.src="analise.html";
-  m.style.display="block";
+  document.getElementById("modal-analise").style.display="block";
+  document.body.style.overflow="hidden";
 }
 window.fecharAnalise=function(){
-  const m=document.getElementById("modal-analise");
-  const f=document.getElementById("iframe-analise");
-  if(!m||!f)return;
-  m.style.display="none";
-  f.src="";
-}
+  document.getElementById("modal-analise").style.display="none";
+  document.body.style.overflow="";
+};
 
 // Setores por cidade com links
 const SETORES_CANEDO=[
