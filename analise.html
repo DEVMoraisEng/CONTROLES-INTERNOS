@@ -694,12 +694,30 @@ function anosDisp(arr,campo){
   return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
 }
 
-// ── CANVAS ENGINE — usa clientWidth do pai (funciona mesmo com style.width antigo no canvas) ──
-function _pw(c){ return c.parentElement ? (c.parentElement.clientWidth||500) : 500; }
+// ── CANVAS ENGINE — clientWidth do pai, sem fallback, reagenda se ainda oculto ──
+function _pw(c){
+  if(!c.parentElement) return 0;
+  const w = c.parentElement.clientWidth;
+  return w > 0 ? w : 0;
+}
+// Se a aba ainda está oculta (pw=0), tenta novamente após o browser pintar
+function _retry(fn, args, n){
+  if(n > 10) return; // desiste após 10 tentativas (~500ms)
+  requestAnimationFrame(()=>{
+    const c = document.getElementById(args[0]);
+    if(!c) return;
+    if(c.parentElement && c.parentElement.clientWidth > 0){
+      fn(...args);
+    } else {
+      _retry(fn, args, n+1);
+    }
+  });
+}
 
 function drawBars(id,labels,datasets,fmtV,mediaLinha){
   const c=document.getElementById(id);if(!c)return;
-  const pw=_pw(c);if(pw<20)return;
+  const pw=_pw(c);
+  if(pw===0){_retry(drawBars,[id,labels,datasets,fmtV,mediaLinha],0);return;}
   const idxComDados=labels.map((_,i)=>datasets.some(d=>d.data[i]>0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -752,7 +770,8 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
 
 function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
   const c=document.getElementById(id);if(!c)return;
-  const pw=_pw(c);if(pw<20)return;
+  const pw=_pw(c);
+  if(pw===0){_retry(drawLinesComMedias,[id,labels,datasets,mediaM,mediaI],0);return;}
   const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -813,7 +832,8 @@ function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
 
 function drawLines(id,labels,datasets,fmtV,mediaLinha){
   const c=document.getElementById(id);if(!c)return;
-  const pw=_pw(c);if(pw<20)return;
+  const pw=_pw(c);
+  if(pw===0){_retry(drawLines,[id,labels,datasets,fmtV,mediaLinha],0);return;}
   const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -870,7 +890,8 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
 // ── CANVAS: EXPOSIÇÃO DE CAIXA (negativo=vermelho, positivo=verde) ──
 function drawLinesExposicao(id,labels,valores){
   const c=document.getElementById(id);if(!c)return;
-  const pw=_pw(c);if(pw<20)return;
+  const pw=_pw(c);
+  if(pw===0){_retry(drawLinesExposicao,[id,labels,valores],0);return;}
   if(!valores.length){c.style.display='none';return;}
   c.style.display='block';
   const H=parseInt(c.getAttribute('height'))||240;
@@ -1608,14 +1629,18 @@ function buildSetor(){
     document.getElementById('tbl-exp').innerHTML='';
     return;
   }
-  // Preencher meses zerados no meio
+  // FIX TIMEZONE: new Date('YYYY-MM-01') interpreta como UTC, comparações usam local time.
+  // Em UTC-3 (Brasil), '2026-03-01' UTC = 28/02 21h local, fazendo o loop parar em Fev.
+  // Solução: comparar strings YYYY-MM diretamente, sem Date objects.
   const mInit=todosMeses[0],mFim=todosMeses[todosMeses.length-1];
   const mesesTodos=[];
-  let cur=new Date(mInit+'-01');
-  const fim=new Date(mFim+'-01');
-  while(cur<=fim){
-    mesesTodos.push(`${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}`);
-    cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);
+  {
+    let y=parseInt(mInit.slice(0,4)),mo=parseInt(mInit.slice(5,7));
+    const yE=parseInt(mFim.slice(0,4)),moE=parseInt(mFim.slice(5,7));
+    while(y<yE||(y===yE&&mo<=moE)){
+      mesesTodos.push(y+'-'+String(mo).padStart(2,'0'));
+      mo++; if(mo>12){mo=1;y++;}
+    }
   }
   // CORREÇÃO 3: trim do início e fim — remover meses consecutivos zerados nas bordas
   let iStart=0,iEnd=mesesTodos.length-1;
