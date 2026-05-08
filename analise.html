@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
-<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.bcb.gov.br; default-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Morais Engenharia · Análise de Dados</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -48,6 +48,15 @@ body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;
 .main-wrap{flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .page{display:none;flex:1;min-height:0;overflow:hidden}
 .page.active{display:flex}
+/* Modo standalone — scroll normal quando aberto direto */
+body.standalone{overflow-y:auto}
+body.standalone .main-wrap{overflow:visible;height:auto}
+body.standalone .page{overflow:visible;height:auto}
+body.standalone .page.active{display:flex}
+body.standalone #page-dash{flex-direction:row}
+body.standalone .dash-main{overflow-y:visible}
+body.standalone .metas-body{overflow-y:visible}
+body.standalone .pg-body{overflow-y:visible}
 
 /* DASHBOARD */
 #page-dash{flex-direction:row}
@@ -561,6 +570,15 @@ tfoot td:last-child{border-right:none}
 // ── DADOS ──
 let docs=[],vendas=[],metas=[],pags={},fats=[];
 let cdiAtual=1.0; // % a.m. padrão, atualizado via BACEN
+
+// ── MODO STANDALONE (aberto diretamente, fora do iframe) ──
+(function(){
+  const emIframe = window.self !== window.top;
+  if(!emIframe){
+    // Não precisa de auth — adiciona classe para scroll normal
+    document.body.classList.add('standalone');
+  }
+})();
 
 // ── NAVEGAÇÃO ──
 let paginaAtual='dash';
@@ -1702,11 +1720,11 @@ async function init(){
 
     ['pz','st'].forEach(sfx=>{
       const sCi=document.getElementById(`sel-cid-${sfx}`);
-      cidades.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sCi.appendChild(o);});
+      if(sCi) cidades.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sCi.appendChild(o);});
       const sSe=document.getElementById(`sel-set-${sfx}`);
-      setores.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sSe.appendChild(o);});
+      if(sSe) setores.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sSe.appendChild(o);});
       const sOb=document.getElementById(`sel-obra-${sfx}`);
-      obras.forEach(ob=>{const o=document.createElement('option');o.value=ob;o.textContent=ob;sOb.appendChild(o);});
+      if(sOb) obras.forEach(ob=>{const o=document.createElement('option');o.value=ob;o.textContent=ob;sOb.appendChild(o);});
     });
 
     buildLotes();buildObras();buildVendas();

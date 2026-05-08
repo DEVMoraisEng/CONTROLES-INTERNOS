@@ -116,10 +116,10 @@ body{min-height:100vh;background:var(--bg);font-family:'Barlow',sans-serif;displ
 <div class="main">
   <!-- Linha 1: Controle e Análise -->
   <div class="ctrl-row">
-    <div class="mod-card destaque" onclick="abrirAnalise()">
+    <div class="mod-card destaque" onclick="abrirAnalise(event)" onmousedown="handleAnaliseMouseDown(event)" title="Click: abrir · Ctrl+Click / Scroll: nova aba">
       <div class="card-title">📊 Análise de Dados</div>
       <div class="card-badge g">Dashboard · Metas · Prazos · Setorizadas</div>
-      <button class="btn-acessar verde" onclick="event.stopPropagation();abrirAnalise()">Acessar →</button>
+      <a href="analise.html" class="btn-acessar verde" onclick="event.preventDefault();event.stopPropagation();abrirAnalise(event)" target="_blank" rel="noopener" id="btn-analise-link">Acessar →</a>
     </div>
     <a class="mod-card" href="documentos.html">
       <div class="card-title">📋 Gestão Documental</div>
@@ -168,10 +168,21 @@ function sair(){
   window.location.replace("login.html");
 }
 
-// Mesma implementação da versão que funcionava
-function abrirAnalise(){
+// Análise: click normal = modal, Ctrl+Click ou meio = nova aba
+function abrirAnalise(e){
+  if(e && (e.ctrlKey || e.metaKey || e.button===1)){
+    window.open('analise.html','_blank','noopener');
+    return;
+  }
   document.getElementById("modal-analise").style.display="block";
   document.body.style.overflow="hidden";
+}
+function handleAnaliseMouseDown(e){
+  // Botão do meio (scroll) → abre nova aba
+  if(e.button===1){
+    e.preventDefault();
+    window.open('analise.html','_blank','noopener');
+  }
 }
 window.fecharAnalise=function(){
   document.getElementById("modal-analise").style.display="none";
