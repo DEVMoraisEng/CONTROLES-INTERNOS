@@ -228,11 +228,13 @@ def erp_csv(url, nome):
         if r.status_code != 200:
             print(f"  ERP {nome} erro HTTP: {r.status_code}")
             return []
-        reader = csv.DictReader(io.StringIO(r.text))
+        # Forçar UTF-8 com BOM para planilhas Google que exportam com BOM
+        text = r.content.decode("utf-8-sig")
+        reader = csv.DictReader(io.StringIO(text))
         rows = list(reader)
         print(f"  ERP {nome}: {len(rows)} registros")
         if rows:
-            print(f"  ERP {nome} colunas: {list(rows[0].keys())[:8]}")
+            print(f"  ERP {nome} colunas: {list(rows[0].keys())}")
         return rows
     except Exception as e:
         print(f"  ERP {nome} exceção: {e}")
@@ -303,71 +305,66 @@ def buscar_obras_erp():
 
 
 def buscar_faturamentos_erp():
-    """Busca aba Faturamentos do ERP: valor_recebido_parcela + data_competencia.
-    CORREÇÃO 5: logar colunas reais para diagnóstico.
+    """Busca aba Faturamentos do ERP.
+    Coluna de valor: 'Valor recebido parcela' (nome exato confirmado pelo usuário).
     """
     import re as _re4
     fat = []
     print("  ERP: buscando Faturamentos...")
     rows = erp_csv(ERP_CSV_FATURAMENTOS, "faturamentos")
     if not rows:
-        print("  ERP Faturamentos: nenhuma linha retornada")
+        print("  ERP Faturamentos: nenhuma linha retornada — verificar URL/secret ERP_CSV_FATURAMENTOS")
         return fat
-    # LOG COLUNAS REAIS — crítico para diagnóstico
     colunas_reais = list(rows[0].keys())
-    print(f"  ERP Faturamentos COLUNAS: {colunas_reais}")
-    # Candidatos para 'valor recebido' — tentar em ordem de preferência
-    CANDIDATOS_VALOR = [
-        "Valor recebido parcela", "valor recebido parcela",
-        "VALOR RECEBIDO PARCELA", "valor_recebido_parcela",
-        "Valor Recebido Parcela",
-        "valor_bruto", "Valor Bruto", "VALOR BRUTO",
-        "valor_liquido", "Valor Liquido",
-    ]
-    # Descobrir qual coluna existe
-    col_valor = None
-    for cand in CANDIDATOS_VALOR:
-        if cand in colunas_reais:
-            col_valor = cand
-            break
+    print(f"  ERP Faturamentos todas as colunas: {colunas_reais}")
+
+    # Coluna de valor — nome exato confirmado: "Valor recebido parcela"
+    # Fallback automático por busca case-insensitive
+    def achar_col(cols, candidatos_exatos, busca_parcial):
+        for c in candidatos_exatos:
+            if c in cols: return c
+        for col in cols:
+            if any(p in col.lower() for p in busca_parcial):
+                return col
+        return None
+
+    col_valor = achar_col(colunas_reais,
+        ["Valor recebido parcela", "valor recebido parcela", "VALOR RECEBIDO PARCELA",
+         "Valor Recebido Parcela", "valor_recebido_parcela"],
+        ["receb"])
+    col_data  = achar_col(colunas_reais,
+        ["data_competencia", "Data Competencia", "data competencia", "DATA COMPETENCIA"],
+        ["compet", "data"])
+    col_cc    = achar_col(colunas_reais,
+        ["centro_de_custo", "centro de custo", "Centro de Custo", "CENTRO DE CUSTO"],
+        ["centro", "custo", "obra"])
+
+    print(f"  ERP Faturamentos → col_valor={repr(col_valor)} col_data={repr(col_data)} col_cc={repr(col_cc)}")
     if not col_valor:
-        # Tentar match case-insensitive
-        for col in colunas_reais:
-            if 'receb' in col.lower() or 'bruto' in col.lower() or 'liquido' in col.lower():
-                col_valor = col
-                break
-    print(f"  ERP Faturamentos coluna valor usada: {repr(col_valor)}")
-    if not col_valor:
-        print("  ERP Faturamentos: coluna de valor não encontrada! Colunas disponíveis:", colunas_reais)
+        print("  ERRO: coluna de valor não encontrada. Colunas disponíveis:", colunas_reais)
         return fat
-    # Candidatos para data
-    CANDIDATOS_DATA = ["data_competencia", "Data Competencia", "DATA COMPETENCIA", "data_pagamento", "Data", "data"]
-    col_data = next((c for c in CANDIDATOS_DATA if c in colunas_reais), None)
-    if not col_data:
-        col_data = next((c for c in colunas_reais if 'data' in c.lower() or 'compet' in c.lower()), None)
-    print(f"  ERP Faturamentos coluna data usada: {repr(col_data)}")
-    # Candidatos para centro de custo
-    CANDIDATOS_CC = ["centro_de_custo", "Centro de Custo", "CENTRO DE CUSTO", "obra", "cc"]
-    col_cc = next((c for c in CANDIDATOS_CC if c in colunas_reais), None)
-    if not col_cc:
-        col_cc = next((c for c in colunas_reais if 'centro' in c.lower() or 'custo' in c.lower() or 'obra' in c.lower()), None)
-    print(f"  ERP Faturamentos coluna CC usada: {repr(col_cc)}")
+
     for row in rows:
         cc  = (row.get(col_cc, "") if col_cc else "").strip().upper()
-        val = row.get(col_valor, "") if col_valor else ""
+        val_raw = (row.get(col_valor, "") if col_valor else "").strip()
         dt  = (row.get(col_data, "") if col_data else "").strip()
-        if cc and val:
-            try:
-                v = float(str(val).replace(",", "."))
-                m1 = _re4.match(r'(\d{2})/(\d{2})/(\d{4})', dt)
-                m2 = _re4.match(r'(\d{4})-(\d{2})', dt)
-                if m1:   mes = f"{m1.group(3)}-{m1.group(2)}"
-                elif m2: mes = f"{m2.group(1)}-{m2.group(2)}"
-                else:    mes = "SEM DATA"
-                fat.append({"cc": cc, "valor": v, "mes": mes})
-            except:
-                pass
-    print(f"  ERP Faturamentos: {len(fat)} registros processados")
+        if not cc or not val_raw:
+            continue
+        try:
+            # Suporta "1.234,56" (BR) e "1234.56" (US)
+            val_clean = val_raw.replace(".", "").replace(",", ".") if "," in val_raw else val_raw.replace(",", "")
+            v = float(val_clean)
+            if v <= 0:
+                continue
+            m1 = _re4.match(r'(\d{2})/(\d{2})/(\d{4})', dt)
+            m2 = _re4.match(r'(\d{4})-(\d{2})', dt)
+            if m1:   mes = f"{m1.group(3)}-{m1.group(2)}"
+            elif m2: mes = f"{m2.group(1)}-{m2.group(2)}"
+            else:    mes = "SEM DATA"
+            fat.append({"cc": cc, "valor": v, "mes": mes})
+        except Exception as e:
+            pass
+    print(f"  ERP Faturamentos: {len(fat)} registros com valor > 0")
     if fat:
         print(f"  ERP Faturamentos amostra: {fat[:3]}")
     return fat
