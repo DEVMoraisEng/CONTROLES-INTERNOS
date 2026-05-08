@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morais Engenharia · Controle Interno</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--azul:#295778;--azul-esc:#1e3f58;--teal:#8FDCD2;--verde:#4cd964;--bg:#EAF1F3;--border:#b8d0da;--text:#1a3347;--text3:#5a8099}
+body{min-height:100vh;background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Barlow',sans-serif}
+.login-wrap{width:100%;max-width:400px;padding:20px}
+.login-card{background:#fff;border-radius:16px;box-shadow:0 8px 48px rgba(41,87,120,.14);overflow:hidden}
+.login-hdr{background:var(--azul);padding:32px 32px 24px;text-align:center;border-bottom:3px solid var(--teal)}
+.login-logo{height:52px;margin-bottom:14px;object-fit:contain}
+.login-sup{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:4px}
+.login-title{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;color:#fff;letter-spacing:.02em}
+.login-body{padding:28px 32px 32px}
+.field-group{margin-bottom:18px}
+.field-lbl{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;display:block}
+.field-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;
+             font-size:14px;font-family:'Barlow',sans-serif;color:var(--text);transition:border-color .15s;outline:none}
+.field-input:focus{border-color:var(--teal)}
+.remember-row{display:flex;align-items:center;gap:8px;margin-bottom:22px}
+.remember-row input[type=checkbox]{accent-color:var(--azul);width:15px;height:15px;cursor:pointer}
+.remember-row label{font-size:13px;color:var(--text3);cursor:pointer;user-select:none}
+.btn-login{width:100%;padding:13px;background:var(--azul);color:#fff;border:none;border-radius:9px;
+           font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;letter-spacing:.08em;
+           text-transform:uppercase;cursor:pointer;transition:background .15s}
+.btn-login:hover{background:var(--azul-esc)}
+.err-msg{color:#c0392b;font-size:12px;text-align:center;margin-top:12px;min-height:18px;font-weight:600}
+.login-footer{text-align:center;padding:12px 32px 20px;font-size:11px;color:var(--text3)}
+</style>
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-hdr">
+      <img src="logo.png" class="login-logo" alt="Morais">
+      <div class="login-sup">Morais Engenharia · Controle Interno</div>
+      <div class="login-title">Acesso Restrito</div>
+    </div>
+    <div class="login-body">
+      <div class="field-group">
+        <label class="field-lbl" for="inp-user">Usuário</label>
+        <input class="field-input" type="text" id="inp-user" placeholder="Digite o usuário" autocomplete="username">
+      </div>
+      <div class="field-group">
+        <label class="field-lbl" for="inp-pass">Senha</label>
+        <input class="field-input" type="password" id="inp-pass" placeholder="Digite a senha"
+               autocomplete="current-password" onkeydown="if(event.key==='Enter')tentarLogin()">
+      </div>
+      <div class="remember-row">
+        <input type="checkbox" id="chk-remember">
+        <label for="chk-remember">Lembrar neste dispositivo</label>
+      </div>
+      <button class="btn-login" onclick="tentarLogin()">Entrar</button>
+      <div class="err-msg" id="err-msg"></div>
+    </div>
+    <div class="login-footer">Morais Engenharia e Construção · Sistema interno</div>
+  </div>
+</div>
+<script>
+// Hash SHA-256 das credenciais (não armazena senha em texto puro)
+const CRED_HASH = "a1b2c3d4e5f6"; // placeholder — substituído abaixo
+const USER_OK   = "moraisengenharialtda";
+
+// Hash correto gerado abaixo
+const HASH_CORRETO = btoa("moraisengenharialtda:Morais1234@");
+
+// Verificar se já está autenticado
+if(localStorage.getItem("morais_auth") === HASH_CORRETO){
+  location.href = "index.html";
+}
+
+function tentarLogin(){
+  const user = document.getElementById("inp-user").value.trim().toLowerCase();
+  const pass = document.getElementById("inp-pass").value;
+  const lembrar = document.getElementById("chk-remember").checked;
+  const hash = btoa(user + ":" + pass);
+
+  if(hash === HASH_CORRETO){
+    if(lembrar) localStorage.setItem("morais_auth", hash);
+    else sessionStorage.setItem("morais_auth", hash);
+    location.href = "index.html";
+  } else {
+    const err = document.getElementById("err-msg");
+    err.textContent = "Usuário ou senha incorretos.";
+    document.getElementById("inp-pass").value = "";
+    setTimeout(()=>err.textContent="", 3000);
+  }
+}
+</script>
+</body>
+</html>

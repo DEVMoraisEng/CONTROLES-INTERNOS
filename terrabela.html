@@ -336,6 +336,13 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* CPF/CNPJ pode ser longo — permite quebra */
+.field-value.wrap {
+  white-space: normal;
+  word-break: break-all;
+  overflow: visible;
+  text-overflow: unset;
+}
 .field-value.empty { color: var(--text4); font-weight: 400; font-style: italic; }
 .field-value.money { color: #1a5c3a; }
 .field-value.ok    { color: var(--verde); }
@@ -1665,7 +1672,7 @@ function renderInfoCardDocs(card, d) {
       </div>
       <div class="field-row cols-2">
         ${field('Proprietário', d.proprietario_documento || d.proprietario_real)}
-        ${field('CPF/CNPJ', d.cpf_cnpj)}
+        ${field('CPF/CNPJ', d.cpf_cnpj, 'wrap')}
       </div>
       <div class="field-row cols-2">
         ${field('Mestre', d.mestre)}

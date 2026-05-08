@@ -32,11 +32,11 @@ body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;
            color:#fff;letter-spacing:.02em}
 .hdr-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .updated{font-size:11px;color:rgba(255,255,255,.4);font-family:monospace;white-space:nowrap}
-.hdr-fechar{background:transparent;border:1px solid rgba(255,255,255,.25);
-            border-radius:7px;padding:7px 14px;font-family:'Barlow Condensed',sans-serif;
-            font-size:13px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;
-            cursor:pointer;transition:all .15s;flex-shrink:0}
-.hdr-fechar:hover{color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
+.hdr-fechar{background:rgba(143,220,210,.18);border:1px solid rgba(143,220,210,.4);
+            border-radius:7px;padding:7px 16px;font-family:'Barlow Condensed',sans-serif;
+            font-size:14px;font-weight:700;color:var(--teal);letter-spacing:.06em;
+            cursor:pointer;transition:background .15s;flex-shrink:0}
+.hdr-fechar:hover{background:rgba(143,220,210,.32)}
 #loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;
          justify-content:center;z-index:500;flex-direction:column;gap:12px}
 #loading.hidden{display:none}
@@ -125,7 +125,7 @@ select:focus{border-color:var(--teal)}
 .legenda{display:flex;gap:14px;margin-bottom:10px}
 .leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text3)}
 .leg-cor{width:12px;height:12px;border-radius:2px;flex-shrink:0}
-.chart-wrap{position:relative;width:100%}
+.chart-wrap{position:relative;width:100%;overflow-x:auto}
 canvas{display:block}
 .tbl-outer{display:flex;justify-content:center;margin-bottom:22px}
 .tbl-wrap{border-radius:8px;border:1.5px solid var(--border);overflow:hidden;
@@ -173,6 +173,26 @@ tfoot td:last-child{border-right:none}
 .rank-pos{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--text4);width:24px;flex-shrink:0}
 .rank-pos.top3{color:#c9a227}
 .rank-nome{flex:1;font-size:13px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.alert-badge{position:relative;display:inline-flex;align-items:center;
+              justify-content:center;width:22px;height:22px;border-radius:50%;
+              background:#c0392b;color:#fff;font-size:11px;font-weight:800;
+              cursor:pointer;flex-shrink:0;transition:transform .15s;user-select:none;
+              margin-left:6px;vertical-align:middle}
+.alert-badge:hover{transform:scale(1.15)}
+.alert-modal{position:fixed;inset:0;z-index:600;display:flex;align-items:center;
+             justify-content:center;background:rgba(0,0,0,.45)}
+.alert-modal-box{background:var(--branco);border-radius:12px;padding:24px;
+                 max-width:520px;width:90%;max-height:70vh;overflow-y:auto;
+                 box-shadow:0 12px 48px rgba(0,0,0,.22)}
+.alert-modal-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;
+                   color:#c0392b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.alert-item{padding:7px 0;border-bottom:1px solid var(--border2);font-size:12px;
+            color:var(--text);display:flex;align-items:center;gap:8px}
+.alert-item:last-child{border-bottom:none}
+.alert-item::before{content:'⚠';font-size:14px;flex-shrink:0}
+.alert-modal-close{margin-top:16px;padding:8px 20px;background:var(--azul);color:#fff;
+                   border:none;border-radius:7px;font-family:'Barlow Condensed',sans-serif;
+                   font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.06em}
 .rank-qt{font-family:'DM Mono',monospace;font-size:12px;color:var(--azul);font-weight:700}
 
 /* PRAZOS + SETORIZADAS — páginas de coluna única */
@@ -226,6 +246,15 @@ tfoot td:last-child{border-right:none}
 
 /* Linha de média no gráfico */
 .media-line{stroke-dasharray:6 4}
+.obra-search-wrap{position:relative;display:flex;flex-direction:column;gap:4px}
+.obra-tag{display:flex;align-items:center;gap:5px;background:var(--azul);color:#fff;
+          border-radius:5px;padding:3px 8px;font-size:11px;font-weight:600}
+.obra-tag-x{cursor:pointer;opacity:.7;font-size:13px;line-height:1}
+.obra-tag-x:hover{opacity:1}
+.obra-check-item{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;
+                 font-size:12px;color:var(--text);transition:background .12s}
+.obra-check-item:hover{background:var(--bg3)}
+.obra-check-item input[type=checkbox]{accent-color:var(--azul);width:14px;height:14px;cursor:pointer}
 
 @media(max-width:900px){
   #page-dash{flex-direction:column}
@@ -253,7 +282,7 @@ tfoot td:last-child{border-right:none}
   </div>
   <div class="hdr-right">
     <div class="updated" id="updated-at"></div>
-    <button class="hdr-fechar" onclick="fechar()">✕ Fechar</button>
+    <button class="hdr-fechar" onclick="fechar()">← Voltar</button>
   </div>
 </header>
 
@@ -286,14 +315,20 @@ tfoot td:last-child{border-right:none}
 <!-- METAS -->
 <div class="page" id="page-metas">
   <div class="metas-hdr">
-    <button class="btn-volta-dash" onclick="voltarDash()">← Análise de Dados</button>
+    <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
     <div class="metas-hdr-title">Metas</div>
   </div>
   <div class="sub-tabs-outer">
     <div class="sub-tabs-box">
-      <button class="sub-tab active" onclick="showSub('lotes',this)">Lotes Comprados</button>
-      <button class="sub-tab" onclick="showSub('obras',this)">Obras Iniciadas</button>
-      <button class="sub-tab" onclick="showSub('vendas',this)">Casas Vendidas</button>
+      <button class="sub-tab active" onclick="showSub('lotes',this)">Lotes Comprados
+        <span class="alert-badge" id="badge-lotes" style="display:none" onclick="event.stopPropagation();abrirAlerta('lotes')" title="Pendências"></span>
+      </button>
+      <button class="sub-tab" onclick="showSub('obras',this)">Obras Iniciadas
+        <span class="alert-badge" id="badge-obras" style="display:none" onclick="event.stopPropagation();abrirAlerta('obras')" title="Pendências"></span>
+      </button>
+      <button class="sub-tab" onclick="showSub('vendas',this)">Casas Vendidas
+        <span class="alert-badge" id="badge-vendas" style="display:none" onclick="event.stopPropagation();abrirAlerta('vendas')" title="Pendências"></span>
+      </button>
     </div>
   </div>
   <div class="metas-body">
@@ -330,7 +365,7 @@ tfoot td:last-child{border-right:none}
           </div>
           <div class="graf-body">
             <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-lt" height="220"></canvas></div>
+            <div class="chart-wrap"><canvas id="ch-lt" height="200"></canvas></div>
           </div>
         </div>
         <div class="graf-card">
@@ -340,7 +375,7 @@ tfoot td:last-child{border-right:none}
           </div>
           <div class="graf-body">
             <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-ls" height="220"></canvas></div>
+            <div class="chart-wrap"><canvas id="ch-ls" height="200"></canvas></div>
           </div>
         </div>
       </div>
@@ -429,7 +464,7 @@ tfoot td:last-child{border-right:none}
 <!-- ANÁLISE DE PRAZOS -->
 <div class="page" id="page-prazos">
   <div class="pg-hdr">
-    <button class="btn-volta-dash" onclick="voltarDash()">← Análise de Dados</button>
+    <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
     <div class="pg-hdr-title">Análise de Prazos</div>
   </div>
   <div class="pg-body">
@@ -462,17 +497,27 @@ tfoot td:last-child{border-right:none}
 <!-- ANÁLISES SETORIZADAS -->
 <div class="page" id="page-setor">
   <div class="pg-hdr">
-    <button class="btn-volta-dash" onclick="voltarDash()">← Análise de Dados</button>
+    <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
     <div class="pg-hdr-title">Análises Setorizadas</div>
   </div>
   <div class="pg-body">
     <div class="controles">
       <span class="sel-lbl">Cidade:</span>
-      <select id="sel-cid-st" onchange="buildSetor()"><option value="">Todas</option></select>
+      <select id="sel-cid-st" onchange="initObrasSetor();buildSetor()"><option value="">Todas</option></select>
       <span class="sel-lbl">Setor:</span>
-      <select id="sel-set-st" onchange="buildSetor()"><option value="">Todos</option></select>
+      <select id="sel-set-st" onchange="initObrasSetor();buildSetor()"><option value="">Todos</option></select>
       <span class="sel-lbl">Obra:</span>
-      <select id="sel-obra-st" onchange="buildSetor()"><option value="">Todas</option></select>
+      <div class="obra-search-wrap" id="obra-search-wrap">
+        <input type="text" id="obra-search-input" placeholder="Pesquisar obras..." autocomplete="off"
+          style="padding:7px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;
+                 color:var(--text);width:260px;background:var(--branco);"
+          oninput="filtrarObrasSearch()" onfocus="abrirDropObras()" >
+        <div id="obra-dropdown" style="display:none;position:absolute;z-index:300;
+          background:var(--branco);border:1px solid var(--border);border-radius:8px;
+          box-shadow:0 6px 24px rgba(0,0,0,.12);max-height:260px;overflow-y:auto;
+          min-width:300px;padding:6px 0"></div>
+        <div id="obras-selecionadas" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px"></div>
+      </div>
     </div>
 
     <!-- Config MTIR -->
@@ -618,7 +663,7 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
   const mediaF=mediaLinha!=null?mediaLinha:null;
 
   const H=parseInt(c.getAttribute('height'))||280;
-  const dpr=window.devicePixelRatio||1;
+  const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
@@ -670,6 +715,69 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
   }
 }
 
+// ── CANVAS: LINHAS COM 2 MÉDIAS ──
+function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
+  const c=document.getElementById(id);if(!c)return;
+  const pw=c.parentElement.clientWidth||500;if(pw<20)return;
+  const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
+  if(!idxComDados.length){c.style.display='none';return;}
+  c.style.display='block';
+  const labelsF=idxComDados.map(i=>labels[i]);
+  const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
+  const H=200,dpr=Math.max(window.devicePixelRatio||1,2);
+  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
+  const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
+  if(!n)return;
+  const allM=[mediaM,mediaI].filter(v=>v!=null);
+  const allVals=datasetsF.flatMap(d=>d.data).concat(allM);
+  const minV=Math.min(...allVals,0),maxV=Math.max(...allVals,0.01);
+  const pad=(maxV-minV)*0.15||maxV*0.15;
+  const yMin=Math.min(minV-pad,0),yMax=maxV+pad;
+  const xOf=i=>P.l+(i+.5)*(cW/n);
+  const yOf=v=>P.t+cH*(1-(v-yMin)/(yMax-yMin));
+  ctx.clearRect(0,0,W,H);
+  ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){
+    const v=yMin+(yMax-yMin)*i/4,y=yOf(v);
+    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
+    ctx.fillStyle='#5a8099';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='right';
+    ctx.fillText(v>=10?Math.round(v):v.toFixed(1),P.l-5,y+3.5);
+  }
+  ctx.fillStyle='#5a8099';ctx.font="600 10.5px 'Barlow',sans-serif";ctx.textAlign='center';
+  labelsF.forEach((lb,i)=>ctx.fillText(lb,xOf(i),H-P.b+16));
+  datasetsF.forEach(ds=>{
+    if(ds.data.every(v=>!v))return;
+    ctx.beginPath();ctx.strokeStyle=ds.color;ctx.lineWidth=2.5;
+    ds.data.forEach((v,i)=>{i===0?ctx.moveTo(xOf(i),yOf(v)):ctx.lineTo(xOf(i),yOf(v));});
+    ctx.stroke();
+    ds.data.forEach((v,i)=>{
+      ctx.beginPath();ctx.arc(xOf(i),yOf(v),4,0,Math.PI*2);
+      ctx.fillStyle=ds.color;ctx.fill();
+      ctx.fillStyle='#1a3347';ctx.font="600 10px 'DM Mono',monospace";ctx.textAlign='center';
+      ctx.fillText(v.toFixed(1),xOf(i),yOf(v)-10);
+    });
+  });
+  // Linha média Morais
+  if(mediaM!=null){
+    const y=yOf(mediaM);
+    ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='#295778';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
+    ctx.fillText('Média Morais: '+mediaM.toFixed(1),P.l+4,y-5);
+    ctx.restore();
+  }
+  // Linha média Investidor
+  if(mediaI!=null){
+    const y=yOf(mediaI);
+    ctx.save();ctx.strokeStyle='#8FDCD2';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='#5a8a82';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
+    ctx.fillText('Média Inv.: '+mediaI.toFixed(1),P.l+4,y+12);
+    ctx.restore();
+  }
+}
+
 // ── CANVAS: LINHAS ──
 function drawLines(id,labels,datasets,fmtV,mediaLinha){
   const c=document.getElementById(id);if(!c)return;
@@ -682,7 +790,7 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
 
   const H=parseInt(c.getAttribute('height'))||280;
-  const dpr=window.devicePixelRatio||1;
+  const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
@@ -956,19 +1064,34 @@ function buildLotes(){
         meta?`Adquirido: ${fmtN(casasMorais+casasInvest,1)} casas`:'Banco METAS Notion'),
   ].join('');
 
-  // CORREÇÃO 4: linha de média META/12 quando visualizar casas
-  const mediaLinha=usarCasas&&meta?meta.meta_casas/12:null;
-  // mediaM e mediaI para desvio na tabela
-  const mediaM=usarCasas&&meta?meta.meta_casas/12*0.5:null; // proporção simplificada
-  
-  drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinha);
-  drawLines('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinha);
+  // ITEM 2: médias mensais por tipo/proprietário vindas do banco METAS
+  let mediaM=null,mediaI=null;
+  if(usarCasas&&meta){
+    const t=tipo?tipo.toUpperCase():'';
+    if(t==='RUA'){mediaM=meta.cs_rua_morais||null;mediaI=meta.cs_rua_invest||null;}
+    else if(t==='CONDOMÍNIO'||t==='CONDOMINIO'){mediaM=meta.cs_cond_morais||null;mediaI=meta.cs_cond_invest||null;}
+    else{
+      // Todos: soma das médias
+      mediaM=(meta.cs_rua_morais||0)+(meta.cs_cond_morais||0)||null;
+      mediaI=(meta.cs_rua_invest||0)+(meta.cs_cond_invest||0)||null;
+    }
+  }
+  // Para o gráfico de barras (total) usar soma das duas médias
+  const mediaLinhaTotal=mediaM!=null&&mediaI!=null?(mediaM+mediaI):mediaM||mediaI;
 
-  // CORREÇÃO 5: tabela com colunas de casas, lotes e desvio
+  drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinhaTotal);
+  drawLines('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,null);
+  // No gráfico separado, desenhar duas linhas de média distintas
+  if(mediaM!=null||mediaI!=null){
+    // Redesenha ch-ls com linhas de média individuais
+    setTimeout(()=>drawLinesComMedias('ch-ls',lb,
+      [{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],
+      mediaM,mediaI),30);
+  }
+
   document.getElementById('tbl-lotes').innerHTML=tblRes(ms,dM,dI,
     `Qt ${unidade} Morais`,`Qt ${unidade} Investidores`,
-    usarCasas&&meta?meta.meta_casas/12*0.5:null,
-    usarCasas&&meta?meta.meta_casas/12*0.5:null);
+    usarCasas?mediaM:null,usarCasas?mediaI:null);
 
   const det=document.getElementById('det-lotes');det.innerHTML='';
   const mesesComDados=ms.filter(m=>arr.some(d=>mesD(d.data_aquisicao_lote)===m));
@@ -1228,38 +1351,122 @@ function calcMTIR(fluxos,rFin,rRein){
   return Math.pow(fv/(-pv),1/n)-1;
 }
 
+// ── OBRAS MULTI-SELECT ──
+let obrasSelecionadas=new Set(); // Set de endereços selecionados
+let obrasLista=[]; // cache de todas as obras disponíveis
+
+function initObrasSetor(){
+  const cid=document.getElementById('sel-cid-st')?.value||'';
+  const set=document.getElementById('sel-set-st')?.value||'';
+  let arr=docs;
+  if(cid)arr=arr.filter(d=>d.cidade===cid);
+  if(set)arr=arr.filter(d=>d.setor===set);
+  obrasLista=[...new Set(arr.map(d=>d.endereco).filter(Boolean))].sort();
+  // Manter apenas selecionadas que ainda existem no filtro
+  obrasSelecionadas=new Set([...obrasSelecionadas].filter(o=>obrasLista.includes(o)));
+  renderObrasDropdown('');
+  renderObrasTags();
+}
+
+function filtrarObrasSearch(){
+  const q=(document.getElementById('obra-search-input')?.value||'').toLowerCase();
+  renderObrasDropdown(q);
+  abrirDropObras();
+}
+
+function renderObrasDropdown(q){
+  const dd=document.getElementById('obra-dropdown');if(!dd)return;
+  const lista=q?obrasLista.filter(o=>o.toLowerCase().includes(q)):obrasLista;
+  if(!lista.length){dd.innerHTML='<div style="padding:10px 14px;color:var(--text4);font-size:12px">Nenhuma obra encontrada</div>';return;}
+  dd.innerHTML='<div class="obra-check-item" onclick="toggleTodasObras()">'+
+    '<input type="checkbox" id="chk-todas-obras" '+(obrasSelecionadas.size===0?'checked':'')+'>'+
+    '<span style="font-weight:700">Todas</span></div>'+
+    lista.map(o=>`<div class="obra-check-item" onclick="toggleObra('${o.replace(/'/g,"\'")}')">
+      <input type="checkbox" ${obrasSelecionadas.has(o)?'checked':''}>
+      <span>${o}</span></div>`).join('');
+}
+
+function toggleObra(o){
+  if(obrasSelecionadas.has(o))obrasSelecionadas.delete(o);
+  else obrasSelecionadas.add(o);
+  renderObrasTags();
+  renderObrasDropdown(document.getElementById('obra-search-input')?.value||'');
+  buildSetor();
+}
+
+function toggleTodasObras(){
+  obrasSelecionadas.clear();
+  renderObrasTags();
+  renderObrasDropdown('');
+  document.getElementById('obra-dropdown').style.display='none';
+  buildSetor();
+}
+
+function renderObrasTags(){
+  const wrap=document.getElementById('obras-selecionadas');if(!wrap)return;
+  if(!obrasSelecionadas.size){wrap.innerHTML='<span style="font-size:11px;color:var(--text4)">Todas as obras</span>';return;}
+  wrap.innerHTML=[...obrasSelecionadas].map(o=>
+    `<div class="obra-tag">${o}<span class="obra-tag-x" onclick="toggleObra('${o.replace(/'/g,"\'")}')">×</span></div>`
+  ).join('');
+}
+
+function abrirDropObras(){
+  const dd=document.getElementById('obra-dropdown');if(dd)dd.style.display='block';
+  // Fechar ao clicar fora
+  setTimeout(()=>document.addEventListener('click',fecharDropObrasOut,{once:true}),100);
+}
+function fecharDropObrasOut(e){
+  const wrap=document.getElementById('obra-search-wrap');
+  if(wrap&&!wrap.contains(e.target)){
+    const dd=document.getElementById('obra-dropdown');if(dd)dd.style.display='none';
+  } else {
+    setTimeout(()=>document.addEventListener('click',fecharDropObrasOut,{once:true}),100);
+  }
+}
+
+function getEnderecosSelecionados(){
+  return obrasSelecionadas.size>0?[...obrasSelecionadas]:null; // null = todas
+}
+
 function buildSetor(){
   const endD=new Set(docs.map(d=>normS(d.endereco)));
   const cid=document.getElementById('sel-cid-st')?.value||'';
   const set=document.getElementById('sel-set-st')?.value||'';
-  const obra=document.getElementById('sel-obra-st')?.value||'';
+  const obrasSel=getEnderecosSelecionados(); // null=todas, array=selecionadas
 
-  // Filtrar obras
+  // Filtrar docs
   let docsF=docs;
   if(cid)docsF=docsF.filter(d=>d.cidade===cid);
   if(set)docsF=docsF.filter(d=>d.setor===set);
-  if(obra)docsF=docsF.filter(d=>normS(d.endereco)===normS(obra));
+  if(obrasSel)docsF=docsF.filter(d=>obrasSel.includes(d.endereco));
   const enderecosSel=new Set(docsF.map(d=>normS(d.endereco)));
 
   // Pagamentos de obra (só endereços selecionados)
+  // Filtra apenas CCs que existem no banco de documentos E na seleção atual
   const pagMes={};
   Object.entries(pags).forEach(([cc,mp])=>{
     const u=normS(cc);
     if(!enderecosSel.has(u))return;
     Object.entries(mp).forEach(([m,v])=>{
+      if(!m||m==='SEM DATA'||!/^\d{4}-\d{2}$/.test(m))return; // ignora meses inválidos
       pagMes[m]=(pagMes[m]||0)+v;
     });
   });
 
-  // Faturamentos (só endereços selecionados)
+  // Faturamentos (só endereços selecionados, só meses válidos)
   const fatMes={};
   fats.forEach(f=>{
     if(!enderecosSel.has(normS(f.cc)))return;
+    if(!f.mes||!/^\d{4}-\d{2}$/.test(f.mes))return;
     fatMes[f.mes]=(fatMes[f.mes]||0)+f.valor;
   });
 
-  // Montar todos os meses entre primeiro e último com movimentação
-  const todosMeses=[...new Set([...Object.keys(pagMes),...Object.keys(fatMes)])].sort();
+  // Montar apenas meses com movimentação real (sem mês genérico inicial)
+  const mesesComMov=[...new Set([
+    ...Object.keys(pagMes).filter(m=>pagMes[m]>0),
+    ...Object.keys(fatMes).filter(m=>fatMes[m]>0)
+  ])].sort();
+  const todosMeses=mesesComMov;
   if(!todosMeses.length){
     document.getElementById('roi-res1').innerHTML='<div style="grid-column:1/-1;color:var(--text4);padding:20px;text-align:center">Sem dados para a seleção</div>';
     document.getElementById('roi-res2').innerHTML='';
@@ -1373,6 +1580,63 @@ function buildSetor(){
   drawLines('ch-exp',lb,[{data:expCaixa.map(v=>-v),color:'#295778',label:'Exposição'}],v=>fmtBRL(v));
 }
 
+// ── ALERTAS METAS ──
+let alertasCache={lotes:[],obras:[],vendas:[]};
+
+function calcAlertas(){
+  // LOTES: tem data mas não tem cota, OU tem cota mas não tem data
+  alertasCache.lotes=docs.filter(d=>{
+    const temData=!!d.data_aquisicao_lote;
+    const temCota=d.cota_empresa!=null&&d.cota_empresa!=='';
+    return temData!==temCota; // XOR — um tem, outro não
+  }).map(d=>d.endereco);
+
+  // OBRAS: obra_iniciada=SIM mas sem data, OU tem data mas obra_iniciada≠SIM
+  alertasCache.obras=docs.filter(d=>{
+    const obraSim=d.obra_iniciada==='SIM';
+    const temData=!!d.data_inicio_obra;
+    return (obraSim&&!temData)||(!obraSim&&temData&&d.data_aquisicao_lote);
+  }).map(d=>d.endereco);
+
+  // VENDAS: tem cliente mas não tem valor_venda_contrato ou valor_na_mao
+  alertasCache.vendas=docs.map(d=>{
+    const v=vendas.find(vn=>vn.clientes&&normS(vn.endereco)===normS(d.endereco));
+    if(!v)return null;
+    if(!v.valor_venda_contrato&&!v.valor_na_mao)return d.endereco;
+    return null;
+  }).filter(Boolean);
+
+  // Atualizar badges
+  ['lotes','obras','vendas'].forEach(k=>{
+    const b=document.getElementById('badge-'+k);
+    if(!b)return;
+    const n=alertasCache[k].length;
+    if(n>0){b.textContent=n>99?'99+':n;b.style.display='inline-flex';}
+    else b.style.display='none';
+  });
+}
+
+function abrirAlerta(tipo){
+  const titulos={lotes:'Lotes — Pendências',obras:'Obras — Pendências',vendas:'Casas Vendidas — Pendências'};
+  const descr={
+    lotes:'Obras com data de aquisição sem cota, ou com cota sem data de aquisição:',
+    obras:'Obras com OBRA INICIADA=SIM sem data de início, ou com data de início sem OBRA INICIADA=SIM:',
+    vendas:'Obras com cliente mas sem Valor de Contrato ou Valor na Mão:'
+  };
+  const lista=alertasCache[tipo]||[];
+  const modal=document.createElement('div');modal.className='alert-modal';
+  modal.innerHTML=`<div class="alert-modal-box">
+    <div class="alert-modal-title">⚠ ${titulos[tipo]} (${lista.length})</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:12px">${descr[tipo]}</div>
+    <div>${lista.length?lista.map(e=>`<div class="alert-item">${e}</div>`).join('')
+      :'<div style="color:var(--verde);padding:8px 0;font-size:13px">✓ Nenhuma pendência encontrada</div>'}
+    </div>
+    <button class="alert-modal-close" onclick="this.closest('.alert-modal').remove()">Fechar</button>
+  </div>`;
+  document.body.appendChild(modal);
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.remove();});
+}
+
 // ── BUSCA CDI VIA BACEN ──
 async function buscarCDI(){
   try{
@@ -1439,6 +1703,10 @@ async function init(){
 
     // CDI async
     buscarCDI();
+    // Calcular alertas de pendência
+    calcAlertas();
+    // Inicializar obras para setorizadas
+    initObrasSetor();
   }catch(e){
     document.getElementById('loading').innerHTML=
       `<div style="color:#c0392b;font-size:13px;padding:20px;text-align:center">

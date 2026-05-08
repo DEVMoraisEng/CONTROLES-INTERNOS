@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morais Engenharia · Mapas dos Setores</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --azul:#295778;--azul-esc:#1e3f58;--teal:#8FDCD2;--verde-btn:#4cd964;
+  --bg:#EAF1F3;--bg2:#F5F9FA;--bg3:#dceaef;--border:#b8d0da;--border2:#d0e4ec;
+  --text:#1a3347;--text3:#5a8099;--text4:#8aacbb;--branco:#fff;
+}
+body{min-height:100vh;background:var(--bg);font-family:'Barlow',sans-serif;display:flex;flex-direction:column}
+.header{background:var(--azul);border-bottom:3px solid var(--teal);padding:0 28px;
+        height:68px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.hdr-back{background:rgba(143,220,210,.18);border:1px solid rgba(143,220,210,.4);
+          border-radius:7px;padding:7px 16px;font-family:'Barlow Condensed',sans-serif;
+          font-size:14px;font-weight:700;color:var(--teal);letter-spacing:.06em;
+          text-transform:uppercase;cursor:pointer;transition:background .15s;flex-shrink:0;
+          text-decoration:none}
+.hdr-back:hover{background:rgba(143,220,210,.32)}
+.hdr-logo{height:38px;flex-shrink:0}
+.hdr-info{flex:1}
+.hdr-sup{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:#fff}
+.main{flex:1;padding:28px 32px 48px;max-width:1100px;margin:0 auto;width:100%}
+.cidade-blk{margin-bottom:32px}
+.cidade-hdr{display:flex;align-items:center;gap:12px;margin-bottom:14px;
+            padding-bottom:10px;border-bottom:2px solid var(--border2)}
+.cidade-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;
+              color:var(--azul);text-transform:uppercase;letter-spacing:.07em}
+.setores-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.setor-btn{background:var(--branco);border:2px solid var(--border);border-radius:11px;
+           padding:18px 22px;cursor:pointer;transition:border-color .18s,box-shadow .18s;
+           text-decoration:none;color:inherit;display:block}
+.setor-btn:hover{border-color:var(--teal);box-shadow:0 4px 16px rgba(41,87,120,.1)}
+.setor-btn-title{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;
+                 color:var(--azul);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.setor-btn-sub{font-size:11px;color:var(--text3)}
+@media(max-width:700px){.main{padding:16px}.setores-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header">
+  <a class="hdr-back" href="index.html">← Voltar</a>
+  <img src="logo.png" class="hdr-logo" alt="Morais">
+  <div class="hdr-info">
+    <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
+    <div class="hdr-title">Mapas dos Setores</div>
+  </div>
+</header>
+<div class="main">
+
+  <div class="cidade-blk">
+    <div class="cidade-hdr">
+      <div class="cidade-title">📍 Senador Canedo</div>
+    </div>
+    <div class="setores-grid">
+      <a class="setor-btn" href="terrabela.html">
+        <div class="setor-btn-title">Terrabela do Cerrado</div>
+        <div class="setor-btn-sub">Mapa de docs e vendas · SVG interativo</div>
+      </a>
+      <a class="setor-btn" href="ravena.html">
+        <div class="setor-btn-title">Ravena</div>
+        <div class="setor-btn-sub">Mapa de vendas · SVG interativo</div>
+      </a>
+      <a class="setor-btn" href="pqdosburitis.html">
+        <div class="setor-btn-title">Pq dos Buritis</div>
+        <div class="setor-btn-sub">Mapa de vendas · SVG interativo</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="cidade-blk">
+    <div class="cidade-hdr">
+      <div class="cidade-title">📍 Goiânia</div>
+    </div>
+    <div class="setores-grid">
+      <a class="setor-btn" href="joaobraz2.html">
+        <div class="setor-btn-title">João Braz 2</div>
+        <div class="setor-btn-sub">Mapa de vendas · SVG interativo</div>
+      </a>
+      <a class="setor-btn" href="ipanema.html">
+        <div class="setor-btn-title">Ipanema</div>
+        <div class="setor-btn-sub">Tabela de vendas</div>
+      </a>
+      <a class="setor-btn" href="marquesdeabreu.html">
+        <div class="setor-btn-title">Marques de Abreu</div>
+        <div class="setor-btn-sub">Tabela de vendas</div>
+      </a>
+      <a class="setor-btn" href="solarville.html">
+        <div class="setor-btn-title">Solar Ville</div>
+        <div class="setor-btn-sub">Tabela de vendas</div>
+      </a>
+      <a class="setor-btn" href="acropole.html">
+        <div class="setor-btn-title">Acrópole</div>
+        <div class="setor-btn-sub">Tabela de vendas</div>
+      </a>
+      <a class="setor-btn" href="stefigenia.html">
+        <div class="setor-btn-title">St. Efigênia</div>
+        <div class="setor-btn-sub">Tabela de vendas</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

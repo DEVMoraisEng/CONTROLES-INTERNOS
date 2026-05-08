@@ -311,7 +311,7 @@ def buscar_faturamentos_erp():
     print("  ERP: buscando Faturamentos...")
     for row in erp_csv(ERP_CSV_FATURAMENTOS, "faturamentos"):
         cc  = (row.get("centro_de_custo") or "").strip().upper()
-        val = row.get("valor_bruto") or row.get("valor_liquido") or row.get("valor_pago")
+        val = row.get("Valor recebido parcela") or row.get("valor_recebido_parcela") or row.get("valor_bruto") or row.get("valor_liquido")
         dt  = (row.get("data_competencia") or "").strip()
         if cc and val:
             try:
@@ -329,7 +329,10 @@ def buscar_faturamentos_erp():
 
 
 def buscar_metas():
-    """Busca banco de dados METAS do Notion: ANO (título) + META DE CASAS (número)."""
+    """Busca banco METAS do Notion.
+    Campos: ANO, META DE CASAS, CS COND. INVEST., CS COND. MORAIS, CS RUA INVEST., CS RUA MORAIS
+    Todos os campos de médias mensais já calculadas (não dividir por 12).
+    """
     metas = []
     if not TOKEN_METAS:
         print("  METAS: token não configurado (secret NOTION_TOKEN_METAS)")
@@ -339,27 +342,41 @@ def buscar_metas():
     print(f"  METAS: {len(pages)} páginas encontradas")
     for page in pages:
         p = page.get("properties", {})
-        # Log tipos para debug
-        tipos = {k: v.get("type") for k, v in p.items()}
-        print(f"  METAS props tipos: {tipos}")
         ano_str = None
-        qtd = None
+        meta_casas = None
+        cs_cond_invest = None
+        cs_cond_morais = None
+        cs_rua_invest  = None
+        cs_rua_morais  = None
         for k, v in p.items():
-            t = v.get("type", "")
-            # ANO pode ser título ou número
+            t  = v.get("type", "")
+            kl = k.strip().lower()
             if t == "title":
                 ano_str = prop_title(v)
             elif t == "number":
-                kl = k.lower()
-                if "meta" in kl or "casas" in kl:
-                    qtd = prop_number(v)
-                elif "ano" in kl:
-                    n = prop_number(v)
-                    if n is not None:
-                        ano_str = str(int(n))
+                n = prop_number(v)
+                if "meta" in kl and "casas" in kl:
+                    meta_casas = n
+                elif "ano" in kl and n is not None:
+                    ano_str = str(int(n))
+                elif "cs cond" in kl and "invest" in kl:
+                    cs_cond_invest = n
+                elif "cs cond" in kl and "morais" in kl:
+                    cs_cond_morais = n
+                elif "cs rua" in kl and "invest" in kl:
+                    cs_rua_invest = n
+                elif "cs rua" in kl and "morais" in kl:
+                    cs_rua_morais = n
         if ano_str:
             try:
-                metas.append({"ano": int(str(ano_str).strip()), "meta_casas": int(qtd or 0)})
+                metas.append({
+                    "ano":            int(str(ano_str).strip()),
+                    "meta_casas":     int(meta_casas or 0),
+                    "cs_cond_invest": cs_cond_invest or 0,
+                    "cs_cond_morais": cs_cond_morais or 0,
+                    "cs_rua_invest":  cs_rua_invest  or 0,
+                    "cs_rua_morais":  cs_rua_morais  or 0,
+                })
             except Exception as e:
                 print(f"  METAS: erro convertendo ano='{ano_str}': {e}")
     metas.sort(key=lambda x: x["ano"])
