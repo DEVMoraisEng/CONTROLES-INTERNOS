@@ -49,14 +49,24 @@ jobs:
         run: |
           mkdir -p dist
           cp index.html dist/
+          cp login.html dist/
+          cp mapas.html dist/
           cp terrabela.html dist/
           cp documentos.html dist/
           cp vendas.html dist/
           cp analise.html dist/
+          cp ravena.html dist/ 2>/dev/null || true
+          cp pqdosburitis.html dist/ 2>/dev/null || true
+          cp joaobraz2.html dist/ 2>/dev/null || true
+          cp ipanema.html dist/ 2>/dev/null || true
+          cp marquesdeabreu.html dist/ 2>/dev/null || true
+          cp solarville.html dist/ 2>/dev/null || true
+          cp acropole.html dist/ 2>/dev/null || true
+          cp stefigenia.html dist/ 2>/dev/null || true
           cp data.json dist/
           cp logo.png dist/ 2>/dev/null || true
-          cp TERRABELA_MAPA_DOCUMENTOS.svg dist/
-          cp TERRABELA_MAPA_VENDAS.svg dist/
+          cp TERRABELA_MAPA_DOCUMENTOS.svg dist/ 2>/dev/null || true
+          cp TERRABELA_MAPA_VENDAS.svg dist/ 2>/dev/null || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
