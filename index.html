@@ -138,12 +138,6 @@ body{min-height:100vh;background:var(--bg);font-family:'Barlow',sans-serif;displ
     <!-- preenchido pelo JS -->
   </div>
 
-  <!-- Botão Ver Mapas -->
-  <div class="mapas-btn-wrap">
-    <a class="btn-acessar verde" href="mapas.html" style="font-size:17px;padding:12px 40px;letter-spacing:.09em">
-      🗺️ Ver Mapas dos Setores
-    </a>
-  </div>
 </div>
 
 <!-- Modal análise — iframe pré-carregado igual à versão que funcionava -->
@@ -240,7 +234,7 @@ function buildCidades(docs,vendas){
       </a>`;
     }).join('');
     return`<div class="cidade-bloco">
-      <div class="cidade-hdr"><div class="cidade-nome">📍 ${nome}</div></div>
+      <div class="cidade-hdr"><div class="cidade-nome">🗺️ MAPAS DE SETORES — ${nome.toUpperCase()}</div></div>
       <div class="cidade-body">${cards}</div>
     </div>`;
   }

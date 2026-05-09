@@ -136,7 +136,12 @@ select:focus{border-color:var(--teal)}
 .legenda{display:flex;gap:14px;margin-bottom:10px}
 .leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text3)}
 .leg-cor{width:12px;height:12px;border-radius:2px;flex-shrink:0}
-.chart-wrap{position:relative;width:100%;overflow-x:auto}
+.chart-wrap{position:relative;width:100%;overflow:hidden}
+.chart-wrap canvas{display:block;max-width:100% !important;width:100% !important;height:auto}
+canvas#ch-lt,canvas#ch-ls{height:200px !important}
+canvas#ch-ot,canvas#ch-os{height:220px !important}
+canvas#ch-vv{height:200px !important}
+canvas#ch-exp{height:240px !important}
 canvas{display:block}
 .tbl-outer{display:flex;justify-content:center;margin-bottom:22px}
 .tbl-wrap{border-radius:8px;border:1.5px solid var(--border);overflow:hidden;
@@ -515,6 +520,29 @@ tfoot td:last-child{border-right:none}
     <div class="comp-grid" id="comp-eng"></div>
 
     <div class="blk-title">Detalhe por Obra</div>
+    <div class="controles" style="margin-bottom:12px;background:var(--bg2);padding:10px 14px;border-radius:8px;border:1px solid var(--border2)">
+      <span class="sel-lbl">Filtros da tabela:</span>
+      <span class="sel-lbl">Cidade:</span>
+      <select id="sel-cid-tbl-pz" onchange="renderTabelaPrazos()"><option value="">Todas</option></select>
+      <span class="sel-lbl">Setor:</span>
+      <select id="sel-set-tbl-pz" onchange="renderTabelaPrazos()"><option value="">Todos</option></select>
+      <span class="sel-lbl">Obras:</span>
+      <div class="multi-sel-wrap" style="position:relative;display:inline-block">
+        <button type="button" id="btn-multi-obras-pz" onclick="toggleMultiObrasPz(event)"
+                style="background:#fff;border:1.5px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:13px;min-width:200px;text-align:left">
+          <span id="lbl-multi-obras-pz">Todas as obras</span> ▾
+        </button>
+        <div id="drop-multi-obras-pz" style="display:none;position:absolute;top:100%;left:0;background:#fff;border:1.5px solid var(--border);border-radius:7px;
+                box-shadow:0 6px 24px rgba(0,0,0,.12);max-height:280px;overflow-y:auto;z-index:90;min-width:280px;padding:8px">
+          <input type="text" id="srch-obras-pz" placeholder="🔍 Buscar endereço…" oninput="filtrarMultiObrasPz()"
+                 style="width:100%;padding:6px 10px;border:1px solid var(--border);border-radius:5px;margin-bottom:6px;font-size:13px"/>
+          <label style="display:flex;align-items:center;gap:6px;padding:5px 6px;font-size:12px;cursor:pointer;border-bottom:1px solid var(--border2);margin-bottom:4px">
+            <input type="checkbox" id="chk-todas-obras-pz" onchange="toggleTodasObrasPz()" checked> <strong>Todas as obras</strong>
+          </label>
+          <div id="lista-multi-obras-pz"></div>
+        </div>
+      </div>
+    </div>
     <div class="tbl-outer" style="max-width:100%">
       <div class="tbl-wrap" style="max-width:100%" id="tbl-prazos"></div>
     </div>
@@ -533,16 +561,16 @@ tfoot td:last-child{border-right:none}
       <select id="sel-cid-st" onchange="initObrasSetor();buildSetor()"><option value="">Todas</option></select>
       <span class="sel-lbl">Setor:</span>
       <select id="sel-set-st" onchange="initObrasSetor();buildSetor()"><option value="">Todos</option></select>
-      <span class="sel-lbl">Obra:</span>
-      <div class="obra-search-wrap" id="obra-search-wrap">
-        <input type="text" id="obra-search-input" placeholder="Pesquisar obras..." autocomplete="off"
-          style="padding:7px 12px;border:1px solid var(--border);border-radius:7px;font-size:13px;
-                 color:var(--text);width:260px;background:var(--branco);"
+      <span class="sel-lbl">Obras:</span>
+      <div class="obra-search-wrap" id="obra-search-wrap" style="position:relative">
+        <input type="text" id="obra-search-input" placeholder="🔍 Digite para buscar endereço..." autocomplete="off"
+          style="padding:7px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;
+                 color:var(--text);width:280px;background:var(--branco);"
           oninput="filtrarObrasSearch()" onfocus="abrirDropObras()" >
-        <div id="obra-dropdown" style="display:none;position:absolute;z-index:300;
-          background:var(--branco);border:1px solid var(--border);border-radius:8px;
-          box-shadow:0 6px 24px rgba(0,0,0,.12);max-height:260px;overflow-y:auto;
-          min-width:300px;padding:6px 0"></div>
+        <div id="obra-dropdown" style="display:none;position:absolute;top:100%;left:0;z-index:300;
+          background:var(--branco);border:1.5px solid var(--border);border-radius:8px;
+          box-shadow:0 6px 24px rgba(0,0,0,.12);max-height:280px;overflow-y:auto;
+          min-width:300px;padding:6px 0;margin-top:4px"></div>
         <div id="obras-selecionadas" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px"></div>
       </div>
     </div>
@@ -577,6 +605,12 @@ tfoot td:last-child{border-right:none}
         <div class="chart-wrap"><canvas id="ch-exp" height="240"></canvas></div>
       </div>
     </div>
+
+    <!-- Item 8: Prazos da seleção atual com comparativo vs média global -->
+    <div class="blk-title">Tempos Médios da Seleção</div>
+    <div class="kpi-row r3" id="kpi-st-t1" style="margin-bottom:8px"></div>
+    <div class="kpi-row r3" id="kpi-st-t2" style="margin-bottom:8px"></div>
+    <div class="kpi-row r2" id="kpi-st-t3" style="margin-bottom:20px"></div>
   </div>
 </div>
 
@@ -628,7 +662,7 @@ function irPara(id,titulo,btn){
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active-nav'));
   if(btn)btn.classList.add('active-nav');
   paginaAtual=id;
-  setTimeout(()=>renderPagina(id),60);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>renderPagina(id)));
 }
 function voltarOuFechar(){
   // Chamado apenas se btn-back visível (não usado mais, mantido por segurança)
@@ -639,7 +673,7 @@ function showSub(id,btn){
   document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('sub-'+id).classList.add('active');
   btn.classList.add('active');
-  setTimeout(()=>renderSubAtiva(),60);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>renderSubAtiva()));
 }
 function renderSubAtiva(){
   const a=document.querySelector('.sub-pg.active');if(!a)return;
@@ -649,7 +683,7 @@ function renderSubAtiva(){
 }
 function renderPagina(id){
   if(id==='metas')renderSubAtiva();
-  else if(id==='prazos')buildPrazos();
+  else if(id==='prazos'){popularFiltrosTabelaPz();buildPrazos();}
   else if(id==='setor')buildSetor();
 }
 
@@ -694,27 +728,52 @@ function anosDisp(arr,campo){
   return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
 }
 
-// ── CANVAS ENGINE — clientWidth do pai, sem fallback, reagenda se ainda oculto ──
+// ── CANVAS ENGINE — robusta: sobe na árvore, fixa altura via CSS, redesenha em resize ──
 function _pw(c){
-  if(!c.parentElement) return 0;
-  const w = c.parentElement.clientWidth;
-  return w > 0 ? w : 0;
+  // Sobe pelo DOM até achar um ancestral com clientWidth > 0
+  let el = c.parentElement;
+  while(el){
+    if(el.clientWidth > 30) return el.clientWidth;
+    el = el.parentElement;
+  }
+  return 0;
 }
-// Se a aba ainda está oculta (pw=0), tenta novamente após o browser pintar
 function _retry(fn, args, n){
-  if(n > 10) return; // desiste após 10 tentativas (~500ms)
+  if(n > 30) return;
   requestAnimationFrame(()=>{
     const c = document.getElementById(args[0]);
     if(!c) return;
-    if(c.parentElement && c.parentElement.clientWidth > 0){
-      fn(...args);
-    } else {
-      _retry(fn, args, n+1);
-    }
+    if(_pw(c) > 30) fn(...args);
+    else _retry(fn, args, n+1);
+  });
+}
+// Salva o último render para poder re-renderizar em resize/visible
+const _lastDraw = {};
+function _registerDraw(id, fn, args){
+  _lastDraw[id] = {fn, args};
+}
+// ResizeObserver global: redesenha ao mudar largura
+if(typeof window!=='undefined' && !window._canvasROReady){
+  window._canvasROReady = true;
+  window.addEventListener('load', ()=>{
+    const ro = new ResizeObserver(entries=>{
+      for(const e of entries){
+        const id = e.target.dataset.cid;
+        if(id && _lastDraw[id] && e.contentRect.width > 30){
+          const job = _lastDraw[id];
+          job.fn(...job.args);
+        }
+      }
+    });
+    document.querySelectorAll('canvas[id^="ch-"]').forEach(c=>{
+      const wrap = c.closest('.chart-wrap');
+      if(wrap){ wrap.dataset.cid = c.id; ro.observe(wrap); }
+    });
   });
 }
 
 function drawBars(id,labels,datasets,fmtV,mediaLinha){
+  _registerDraw(id, drawBars, [id,labels,datasets,fmtV,mediaLinha]);
   const c=document.getElementById(id);if(!c)return;
   const pw=_pw(c);
   if(pw===0){_retry(drawBars,[id,labels,datasets,fmtV,mediaLinha],0);return;}
@@ -725,7 +784,7 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
   const H=parseInt(c.getAttribute('height'))||200;
   const dpr=Math.max(window.devicePixelRatio||1,2);
-  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  c.width=pw*dpr;c.height=H*dpr;
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
@@ -763,12 +822,13 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
     ctx.save();ctx.strokeStyle='#c9a227';ctx.lineWidth=2;ctx.setLineDash([6,4]);
     ctx.beginPath();ctx.moveTo(P.l,yM);ctx.lineTo(P.l+cW,yM);ctx.stroke();ctx.setLineDash([]);
     ctx.fillStyle='#c9a227';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
-    ctx.fillText('Meta: '+(fmtV?fmtV(mediaLinha):fmtN(mediaLinha,1)),P.l+4,yM-5);
+    ctx.fillText('Meta total: '+(fmtV?fmtV(mediaLinha):fmtN(mediaLinha,1)),P.l+4,yM-5);
     ctx.restore();
   }
 }
 
 function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
+  _registerDraw(id, drawLinesComMedias, [id,labels,datasets,mediaM,mediaI]);
   const c=document.getElementById(id);if(!c)return;
   const pw=_pw(c);
   if(pw===0){_retry(drawLinesComMedias,[id,labels,datasets,mediaM,mediaI],0);return;}
@@ -779,7 +839,7 @@ function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
   const H=parseInt(c.getAttribute('height'))||200;
   const dpr=Math.max(window.devicePixelRatio||1,2);
-  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  c.width=pw*dpr;c.height=H*dpr;
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
@@ -831,6 +891,7 @@ function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
 }
 
 function drawLines(id,labels,datasets,fmtV,mediaLinha){
+  _registerDraw(id, drawLines, [id,labels,datasets,fmtV,mediaLinha]);
   const c=document.getElementById(id);if(!c)return;
   const pw=_pw(c);
   if(pw===0){_retry(drawLines,[id,labels,datasets,fmtV,mediaLinha],0);return;}
@@ -841,7 +902,7 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
   const H=parseInt(c.getAttribute('height'))||200;
   const dpr=Math.max(window.devicePixelRatio||1,2);
-  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  c.width=pw*dpr;c.height=H*dpr;
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
@@ -889,6 +950,7 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
 
 // ── CANVAS: EXPOSIÇÃO DE CAIXA (negativo=vermelho, positivo=verde) ──
 function drawLinesExposicao(id,labels,valores){
+  _registerDraw(id, drawLinesExposicao, [id,labels,valores]);
   const c=document.getElementById(id);if(!c)return;
   const pw=_pw(c);
   if(pw===0){_retry(drawLinesExposicao,[id,labels,valores],0);return;}
@@ -896,7 +958,7 @@ function drawLinesExposicao(id,labels,valores){
   c.style.display='block';
   const H=parseInt(c.getAttribute('height'))||240;
   const dpr=Math.max(window.devicePixelRatio||1,2);
-  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
+  c.width=pw*dpr;c.height=H*dpr;
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,n=labels.length;if(!n)return;
   const P={t:30,r:20,b:44,l:100},cW=W-P.l-P.r,cH=H-P.t-P.b;
@@ -1361,47 +1423,86 @@ function filtrarDocsPrazos(){
   return arr;
 }
 
+// Item 3: KPI com comparação vs média global
+function kpiCmp(lbl, val, sub, valMedio, hasFiltro){
+  let cmp = '';
+  if(hasFiltro && val!=null && valMedio!=null && val !== valMedio){
+    const diff = val - valMedio;
+    const pct = valMedio>0 ? (diff/valMedio*100) : 0;
+    const cor = diff > 0 ? '#c0392b' : '#2a9d5c';   // mais dias=ruim=vermelho
+    const sinal = diff > 0 ? '↑' : '↓';
+    cmp = `<div class="kpi-cmp" style="font-size:11px;color:${cor};margin-top:3px;font-weight:700">
+      ${sinal} ${Math.abs(diff)}d ${pct?`(${pct>0?'+':''}${pct.toFixed(0)}%)`:''} vs média geral (${valMedio}d)
+    </div>`;
+  }
+  return `<div class="kpi-card">
+    <div class="kpi-lbl">${lbl}</div>
+    <div class="kpi-val">${val!=null?val+'d':'—'}</div>
+    ${sub?`<div class="kpi-sub2">${sub}</div>`:''}
+    ${cmp}
+  </div>`;
+}
+
+// Item 4: tempo de obra parcial — início até hoje (para obras sem término)
+function tempoObraParcial(arr){
+  const hoje = new Date().toISOString().slice(0,10);
+  const dias = arr.filter(d=>d.data_inicio_obra && !d.data_termino_obra)
+    .map(d=>diasDiff(d.data_inicio_obra, hoje))
+    .filter(x=>x!=null && x>0);
+  return dias.length ? Math.round(dias.reduce((a,b)=>a+b)/dias.length) : null;
+}
+
 function buildPrazos(){
-  const arr=filtrarDocsPrazos();
-  const tUS=mediaDias(arr,'data_sol_uso_solo','data_emissao_uso_solo');
-  const tAl=mediaDias(arr,'data_entrada_alvara','data_aprovacao_projeto');
-  const tIn=mediaDias(arr,'entrada_incorporacao_data','data_finalizacao_incorp');
-  const tRt=mediaDias(arr,'data_entrada_ret','data_finalizacao_ret');
-  // CORREÇÃO 5: obra apenas com início E término
-  const tOb=mediaDias(arr.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
-  // CORREÇÃO 4: início da obra → certidões
-  const tAv=mediaDias(arr.filter(d=>d.data_inicio_obra&&d.data_certidoes),'data_inicio_obra','data_certidoes');
-  // CORREÇÃO 6: aquisição lote → assinatura banco
-  const tGiro=(()=>{
-    const pares=[];
-    arr.forEach(d=>{
-      if(!d.data_aquisicao_lote)return;
+  const arr = filtrarDocsPrazos();
+  const hasFiltro =
+    !!document.getElementById('sel-cid-pz')?.value ||
+    !!document.getElementById('sel-set-pz')?.value ||
+    !!document.getElementById('sel-obra-pz')?.value;
+
+  const calcularKpis = (a) => {
+    const tUS=mediaDias(a,'data_sol_uso_solo','data_emissao_uso_solo');
+    const tAl=mediaDias(a,'data_entrada_alvara','data_aprovacao_projeto');
+    const tIn=mediaDias(a,'entrada_incorporacao_data','data_finalizacao_incorp');
+    const tRt=mediaDias(a,'data_entrada_ret','data_finalizacao_ret');
+    const tOb=mediaDias(a.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
+    const tObPar=tempoObraParcial(a);
+    const tAv=mediaDias(a.filter(d=>d.data_inicio_obra&&d.data_certidoes),'data_inicio_obra','data_certidoes');
+    const tGiro=(()=>{
+      const pares=[];
+      a.forEach(d=>{
+        if(!d.data_aquisicao_lote)return;
+        const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
+        if(v?.data_assinatura){const x=diasDiff(d.data_aquisicao_lote,v.data_assinatura);if(x)pares.push(x);}
+      });
+      return pares.length?Math.round(pares.reduce((a,b)=>a+b)/pares.length):null;
+    })();
+    const dv=[];
+    a.forEach(d=>{
+      if(!d.data_certidoes)return;
       const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
-      if(v?.data_assinatura){const x=diasDiff(d.data_aquisicao_lote,v.data_assinatura);if(x)pares.push(x);}
+      if(v?.data_venda){const x=diasDiff(d.data_certidoes,v.data_venda);if(x)dv.push(x);}
     });
-    return pares.length?Math.round(pares.reduce((a,b)=>a+b)/pares.length):null;
-  })();
-  const dv=[];
-  arr.forEach(d=>{
-    if(!d.data_certidoes)return;
-    const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
-    if(v?.data_venda){const x=diasDiff(d.data_certidoes,v.data_venda);if(x)dv.push(x);}
-  });
-  const tVe=dv.length?Math.round(dv.reduce((a,b)=>a+b)/dv.length):null;
+    const tVe=dv.length?Math.round(dv.reduce((a,b)=>a+b)/dv.length):null;
+    return {tUS,tAl,tIn,tRt,tOb,tObPar,tAv,tGiro,tVe};
+  };
+
+  const k = calcularKpis(arr);
+  const g = hasFiltro ? calcularKpis(docs) : k; // global vs filtrado
 
   document.getElementById('kpi-pz-t1').innerHTML=[
-    kpi('Uso do Solo',tUS!=null?tUS+'d':'—','Solicitação → emissão'),
-    kpi('Alvará',tAl!=null?tAl+'d':'—','Entrada → aprovação'),
-    kpi('Incorporação',tIn!=null?tIn+'d':'—','Entrada → finalização'),
+    kpiCmp('Uso do Solo',     k.tUS, 'Solicitação → emissão',   g.tUS, hasFiltro),
+    kpiCmp('Alvará',          k.tAl, 'Entrada → aprovação',     g.tAl, hasFiltro),
+    kpiCmp('Incorporação',    k.tIn, 'Entrada → finalização',   g.tIn, hasFiltro),
   ].join('');
   document.getElementById('kpi-pz-t2').innerHTML=[
-    kpi('RET',tRt!=null?tRt+'d':'—','Entrada → finalização'),
-    kpi('Venda',tVe!=null?tVe+'d':'—','Certidões → venda'),
-    kpi('Obra',tOb!=null?tOb+'d':'—','Início → término (c/ ambas as datas)'),
+    kpiCmp('RET',             k.tRt, 'Entrada → finalização',   g.tRt, hasFiltro),
+    kpiCmp('Venda',           k.tVe, 'Certidões → venda',       g.tVe, hasFiltro),
+    kpiCmp('Obra (Concluídas)', k.tOb, 'Início → término',      g.tOb, hasFiltro),
   ].join('');
   document.getElementById('kpi-pz-t3').innerHTML=[
-    kpi('Tempo Médio p/ Averbação',tAv!=null?tAv+'d':'—','Início da obra → certidões'),
-    kpi('Prazo de Giro (Lote→Banco)',tGiro!=null?tGiro+'d':'—','Aquisição do lote → assinatura banco'),
+    kpiCmp('Obra Parcial (em andamento)', k.tObPar, 'Início → hoje', g.tObPar, hasFiltro),
+    kpiCmp('Tempo p/ Averbação',          k.tAv,    'Início da obra → certidões', g.tAv, hasFiltro),
+    kpiCmp('Prazo de Giro (Lote→Banco)',  k.tGiro,  'Aquisição do lote → assinatura banco', g.tGiro, hasFiltro),
   ].join('');
 
   // Comparativo por despachante
@@ -1442,11 +1543,117 @@ function buildPrazos(){
       return dv.length?Math.round(dv.reduce((a,b)=>a+b)/dv.length):null;
     });
 
-  // Tabela detalhe por obra
-  const rows=arr.filter(d=>d.data_inicio_obra||d.data_aquisicao_lote).map(d=>{
-    const tObi=diasDiff(d.data_inicio_obra,d.data_termino_obra);
-    const tUSi=diasDiff(d.data_sol_uso_solo,d.data_emissao_uso_solo);
-    const tAli=diasDiff(d.data_entrada_alvara,d.data_aprovacao_projeto);
+  // Tabela: filtros próprios separados — chamar função independente
+  renderTabelaPrazos();
+}
+
+// Estado dos filtros da tabela de prazos
+let obrasSelecionadasPz = new Set();
+let obrasListaPz = [];
+
+function popularFiltrosTabelaPz(){
+  // Preencher selects de cidade e setor da tabela
+  const sCid = document.getElementById('sel-cid-tbl-pz');
+  const sSet = document.getElementById('sel-set-tbl-pz');
+  if(sCid && sCid.children.length<=1){
+    const cidades = [...new Set(docs.map(d=>d.cidade).filter(Boolean))].sort();
+    cidades.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sCid.appendChild(o);});
+  }
+  if(sSet && sSet.children.length<=1){
+    const setores = [...new Set(docs.map(d=>d.setor).filter(Boolean))].sort();
+    setores.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sSet.appendChild(o);});
+  }
+  refreshMultiObrasPz();
+}
+
+function refreshMultiObrasPz(){
+  const cid = document.getElementById('sel-cid-tbl-pz')?.value||'';
+  const set = document.getElementById('sel-set-tbl-pz')?.value||'';
+  let arr = docs;
+  if(cid) arr = arr.filter(d=>d.cidade===cid);
+  if(set) arr = arr.filter(d=>d.setor===set);
+  obrasListaPz = [...new Set(arr.map(d=>d.endereco).filter(Boolean))].sort();
+  obrasSelecionadasPz = new Set([...obrasSelecionadasPz].filter(o=>obrasListaPz.includes(o)));
+  renderListaMultiObrasPz('');
+  atualizarLabelMultiObrasPz();
+}
+
+function renderListaMultiObrasPz(filtro){
+  const lst = document.getElementById('lista-multi-obras-pz');
+  if(!lst) return;
+  const f = (filtro||'').toLowerCase();
+  const visiveis = obrasListaPz.filter(o=>o.toLowerCase().includes(f));
+  lst.innerHTML = visiveis.map(o=>`
+    <label style="display:flex;align-items:center;gap:6px;padding:4px 6px;font-size:12px;cursor:pointer;border-radius:4px" onmouseenter="this.style.background='var(--bg3)'" onmouseleave="this.style.background='transparent'">
+      <input type="checkbox" ${obrasSelecionadasPz.has(o)?'checked':''} onchange="toggleObraPz('${o.replace(/'/g,"\\'")}')">${o}
+    </label>
+  `).join('') || '<div style="font-size:11px;color:var(--text4);padding:8px">Nenhum endereço encontrado</div>';
+  document.getElementById('chk-todas-obras-pz').checked = obrasSelecionadasPz.size===0;
+}
+
+function filtrarMultiObrasPz(){
+  const f = document.getElementById('srch-obras-pz').value;
+  renderListaMultiObrasPz(f);
+}
+
+function toggleObraPz(end){
+  if(obrasSelecionadasPz.has(end)) obrasSelecionadasPz.delete(end);
+  else obrasSelecionadasPz.add(end);
+  atualizarLabelMultiObrasPz();
+  document.getElementById('chk-todas-obras-pz').checked = obrasSelecionadasPz.size===0;
+  renderTabelaPrazos();
+}
+
+function toggleTodasObrasPz(){
+  obrasSelecionadasPz.clear();
+  renderListaMultiObrasPz(document.getElementById('srch-obras-pz').value);
+  atualizarLabelMultiObrasPz();
+  renderTabelaPrazos();
+}
+
+function atualizarLabelMultiObrasPz(){
+  const lbl = document.getElementById('lbl-multi-obras-pz');
+  if(!lbl) return;
+  if(obrasSelecionadasPz.size===0) lbl.textContent='Todas as obras';
+  else if(obrasSelecionadasPz.size===1) lbl.textContent=[...obrasSelecionadasPz][0];
+  else lbl.textContent=`${obrasSelecionadasPz.size} obras selecionadas`;
+}
+
+function toggleMultiObrasPz(e){
+  e.stopPropagation();
+  const drop = document.getElementById('drop-multi-obras-pz');
+  drop.style.display = drop.style.display==='block' ? 'none' : 'block';
+  if(drop.style.display==='block'){
+    setTimeout(()=>document.addEventListener('click', fecharMultiObrasPzOut, {once:true}), 100);
+  }
+}
+function fecharMultiObrasPzOut(e){
+  const wrap = document.getElementById('drop-multi-obras-pz')?.parentElement;
+  if(wrap && !wrap.contains(e.target)) document.getElementById('drop-multi-obras-pz').style.display='none';
+}
+
+// Listener para popular tabela quando cidade/setor mudar
+window.addEventListener('change', e=>{
+  if(e.target.id==='sel-cid-tbl-pz' || e.target.id==='sel-set-tbl-pz'){
+    refreshMultiObrasPz();
+  }
+});
+
+function renderTabelaPrazos(){
+  // Aplicar filtros próprios da tabela
+  const cid = document.getElementById('sel-cid-tbl-pz')?.value||'';
+  const set = document.getElementById('sel-set-tbl-pz')?.value||'';
+  let arr = docs;
+  if(cid) arr = arr.filter(d=>d.cidade===cid);
+  if(set) arr = arr.filter(d=>d.setor===set);
+  if(obrasSelecionadasPz.size>0) arr = arr.filter(d=>obrasSelecionadasPz.has(d.endereco));
+
+  const hoje = new Date().toISOString().slice(0,10);
+  const rows = arr.filter(d=>d.data_inicio_obra||d.data_aquisicao_lote).map(d=>{
+    const tObi = diasDiff(d.data_inicio_obra, d.data_termino_obra);
+    const tObPar = (d.data_inicio_obra && !d.data_termino_obra) ? diasDiff(d.data_inicio_obra, hoje) : null;
+    const tUSi = diasDiff(d.data_sol_uso_solo, d.data_emissao_uso_solo);
+    const tAli = diasDiff(d.data_entrada_alvara, d.data_aprovacao_projeto);
     return`<tr>
       <td>${d.endereco||'—'}</td>
       <td>${d.despachante||'—'}</td>
@@ -1456,14 +1663,16 @@ function buildPrazos(){
       <td class="nr">${diasDiff(d.entrada_incorporacao_data,d.data_finalizacao_incorp)!=null?diasDiff(d.entrada_incorporacao_data,d.data_finalizacao_incorp)+'d':'—'}</td>
       <td class="nr">${diasDiff(d.data_entrada_ret,d.data_finalizacao_ret)!=null?diasDiff(d.data_entrada_ret,d.data_finalizacao_ret)+'d':'—'}</td>
       <td class="nr">${tObi!=null?tObi+'d':'—'}</td>
+      <td class="nr" style="${tObPar?'color:#c9a227;font-weight:700':''}">${tObPar!=null?tObPar+'d':'—'}</td>
     </tr>`;
   }).join('');
   document.getElementById('tbl-prazos').innerHTML=`<table>
     <thead><tr>
       <th class="left">Endereço</th><th>Despachante</th><th>Engenheiro</th>
-      <th>Uso Solo</th><th>Alvará</th><th>Incorp.</th><th>RET</th><th>Obra</th>
+      <th>Uso Solo</th><th>Alvará</th><th>Incorp.</th><th>RET</th>
+      <th>Obra (final)</th><th>Obra (parcial)</th>
     </tr></thead>
-    <tbody>${rows||'<tr><td colspan="8" style="color:var(--text4);padding:14px;text-align:center">Sem dados</td></tr>'}</tbody>
+    <tbody>${rows||'<tr><td colspan="9" style="color:var(--text4);padding:14px;text-align:center">Sem dados</td></tr>'}</tbody>
   </table>`;
 }
 
@@ -1502,11 +1711,25 @@ let obrasLista=[]; // cache de todas as obras disponíveis
 function initObrasSetor(){
   const cid=document.getElementById('sel-cid-st')?.value||'';
   const set=document.getElementById('sel-set-st')?.value||'';
-  let arr=docs;
+  // Item 7: só obras onde TODAS as casas tenham recebeu OK
+  const OK_RECEBEU = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  const vendasPorEnd = {};
+  vendas.forEach(v=>{
+    if(!v.clientes) return;
+    const e = normS(v.endereco||'');
+    if(!e) return;
+    (vendasPorEnd[e] = vendasPorEnd[e] || []).push(v);
+  });
+  const obrasCompletas = new Set();
+  Object.entries(vendasPorEnd).forEach(([e, vs])=>{
+    if(vs.every(v => OK_RECEBEU.has(String(v.recebeu||'').toUpperCase().trim()))){
+      obrasCompletas.add(e);
+    }
+  });
+  let arr=docs.filter(d=>obrasCompletas.has(normS(d.endereco)));
   if(cid)arr=arr.filter(d=>d.cidade===cid);
   if(set)arr=arr.filter(d=>d.setor===set);
   obrasLista=[...new Set(arr.map(d=>d.endereco).filter(Boolean))].sort();
-  // Manter apenas selecionadas que ainda existem no filtro
   obrasSelecionadas=new Set([...obrasSelecionadas].filter(o=>obrasLista.includes(o)));
   renderObrasDropdown('');
   renderObrasTags();
@@ -1573,13 +1796,30 @@ function getEnderecosSelecionados(){
 }
 
 function buildSetor(){
+  // Item 7: filtrar apenas obras onde TODAS as casas (vendas) tenham
+  // recebeu ∈ {SIM, INEXISTE, ÁGIO}. Obra precisa ter pelo menos 1 venda.
+  const OK_RECEBEU = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  const vendasPorEnd = {};
+  vendas.forEach(v=>{
+    if(!v.clientes) return;
+    const e = normS(v.endereco||'');
+    if(!e) return;
+    (vendasPorEnd[e] = vendasPorEnd[e] || []).push(v);
+  });
+  const obrasCompletas = new Set();
+  Object.entries(vendasPorEnd).forEach(([e, vs])=>{
+    if(vs.every(v => OK_RECEBEU.has(String(v.recebeu||'').toUpperCase().trim()))){
+      obrasCompletas.add(e);
+    }
+  });
+
   const endD=new Set(docs.map(d=>normS(d.endereco)));
   const cid=document.getElementById('sel-cid-st')?.value||'';
   const set=document.getElementById('sel-set-st')?.value||'';
   const obrasSel=getEnderecosSelecionados(); // null=todas, array=selecionadas
 
-  // Filtrar docs
-  let docsF=docs;
+  // Filtrar docs — só os que existem no Notion E têm todas as casas com recebeu OK
+  let docsF=docs.filter(d=>obrasCompletas.has(normS(d.endereco)));
   if(cid)docsF=docsF.filter(d=>d.cidade===cid);
   if(set)docsF=docsF.filter(d=>d.setor===set);
   if(obrasSel)docsF=docsF.filter(d=>obrasSel.includes(d.endereco));
@@ -1627,6 +1867,8 @@ function buildSetor(){
     document.getElementById('roi-res1').innerHTML='<div style="grid-column:1/-1;color:var(--text4);padding:20px;text-align:center">Sem dados para a seleção</div>';
     document.getElementById('roi-res2').innerHTML='';
     document.getElementById('tbl-exp').innerHTML='';
+    // Mesmo sem fluxo de caixa, mostrar prazos da seleção
+    buildPrazosSelecao(docsF);
     return;
   }
   // FIX TIMEZONE: new Date('YYYY-MM-01') interpreta como UTC, comparações usam local time.
@@ -1746,6 +1988,68 @@ function buildSetor(){
   const lb=meses.map(fmtM);
   // Usar drawLines mas com callback de cor por segmento
   drawLinesExposicao('ch-exp',lb,expCaixa);
+
+  // Item 8: Prazos da seleção atual com comparativo vs média global
+  buildPrazosSelecao(docsF);
+}
+
+function buildPrazosSelecao(arr){
+  const tempoObraParcial = (a)=>{
+    const hoje = new Date().toISOString().slice(0,10);
+    const dias = a.filter(d=>d.data_inicio_obra && !d.data_termino_obra)
+      .map(d=>diasDiff(d.data_inicio_obra, hoje))
+      .filter(x=>x!=null && x>0);
+    return dias.length ? Math.round(dias.reduce((x,y)=>x+y)/dias.length) : null;
+  };
+  const calc = (a) => {
+    const tUS=mediaDias(a,'data_sol_uso_solo','data_emissao_uso_solo');
+    const tAl=mediaDias(a,'data_entrada_alvara','data_aprovacao_projeto');
+    const tIn=mediaDias(a,'entrada_incorporacao_data','data_finalizacao_incorp');
+    const tRt=mediaDias(a,'data_entrada_ret','data_finalizacao_ret');
+    const tOb=mediaDias(a.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
+    const tObPar=tempoObraParcial(a);
+    const tAv=mediaDias(a.filter(d=>d.data_inicio_obra&&d.data_certidoes),'data_inicio_obra','data_certidoes');
+    const tGiro=(()=>{
+      const pares=[];
+      a.forEach(d=>{
+        if(!d.data_aquisicao_lote)return;
+        const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
+        if(v?.data_assinatura){const x=diasDiff(d.data_aquisicao_lote,v.data_assinatura);if(x)pares.push(x);}
+      });
+      return pares.length?Math.round(pares.reduce((x,y)=>x+y)/pares.length):null;
+    })();
+    const dv=[];
+    a.forEach(d=>{
+      if(!d.data_certidoes)return;
+      const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
+      if(v?.data_venda){const x=diasDiff(d.data_certidoes,v.data_venda);if(x)dv.push(x);}
+    });
+    const tVe=dv.length?Math.round(dv.reduce((x,y)=>x+y)/dv.length):null;
+    return {tUS,tAl,tIn,tRt,tOb,tObPar,tAv,tGiro,tVe};
+  };
+  const k = calc(arr);
+  const g = calc(docs);   // média global de TODOS os documentos
+  const hasFiltro = arr.length !== docs.length;
+
+  const e1=document.getElementById('kpi-st-t1');
+  const e2=document.getElementById('kpi-st-t2');
+  const e3=document.getElementById('kpi-st-t3');
+  if(!e1||!e2||!e3) return;
+  e1.innerHTML=[
+    kpiCmp('Uso do Solo',  k.tUS, 'Solicitação → emissão',  g.tUS, hasFiltro),
+    kpiCmp('Alvará',       k.tAl, 'Entrada → aprovação',    g.tAl, hasFiltro),
+    kpiCmp('Incorporação', k.tIn, 'Entrada → finalização',  g.tIn, hasFiltro),
+  ].join('');
+  e2.innerHTML=[
+    kpiCmp('RET',                  k.tRt, 'Entrada → finalização',  g.tRt, hasFiltro),
+    kpiCmp('Venda',                k.tVe, 'Certidões → venda',      g.tVe, hasFiltro),
+    kpiCmp('Obra (Concluídas)',    k.tOb, 'Início → término',       g.tOb, hasFiltro),
+  ].join('');
+  e3.innerHTML=[
+    kpiCmp('Obra Parcial (em andamento)', k.tObPar, 'Início → hoje',                       g.tObPar, hasFiltro),
+    kpiCmp('Tempo p/ Averbação',          k.tAv,    'Início da obra → certidões',          g.tAv,    hasFiltro),
+    kpiCmp('Prazo de Giro (Lote→Banco)',  k.tGiro,  'Aquisição do lote → assinatura banco', g.tGiro,  hasFiltro),
+  ].join('');
 }
 
 // ── ALERTAS METAS ──
@@ -1866,7 +2170,8 @@ async function init(){
       if(sOb) obras.forEach(ob=>{const o=document.createElement('option');o.value=ob;o.textContent=ob;sOb.appendChild(o);});
     });
 
-    buildLotes();buildObras();buildVendas();
+    // Não chamamos buildLotes/buildObras/buildVendas no init — só quando o usuário
+    // abrir a aba Metas. Isso evita desenhar canvas com aba oculta (que causava esticamento).
     document.getElementById('loading').classList.add('hidden');
 
     // CDI async
