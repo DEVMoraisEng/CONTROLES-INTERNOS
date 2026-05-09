@@ -133,9 +133,14 @@ select:focus{border-color:var(--teal)}
                 color:var(--azul);text-transform:uppercase;letter-spacing:.06em}
 .graf-hdr-sub{font-size:11px;color:var(--text3);margin-top:2px}
 .graf-body{padding:14px 16px}
-.legenda{display:flex;gap:14px;margin-bottom:10px}
+.legenda{display:flex;gap:14px;margin-bottom:10px;flex-wrap:wrap;align-items:center}
 .leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text3)}
 .leg-cor{width:12px;height:12px;border-radius:2px;flex-shrink:0}
+.leg-metas{display:flex;gap:14px;margin-left:8px;flex-wrap:wrap}
+.leg-meta{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+          padding:3px 10px;border-radius:12px;background:rgba(41,87,120,.05);
+          border:1px dashed currentColor;letter-spacing:.02em}
+.leg-meta-line{width:14px;height:2px;border-top:2px dashed currentColor;flex-shrink:0}
 .chart-wrap{position:relative;width:100%;overflow-x:auto}
 .chart-wrap canvas{max-width:100%;box-sizing:border-box}
 canvas{display:block}
@@ -384,8 +389,8 @@ tfoot td:last-child{border-right:none}
             <div class="graf-hdr-sub">Proporção por cota de empresa</div>
           </div>
           <div class="graf-body">
-            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-lt" height="200"></canvas></div>
+            <div class="legenda" id="leg-ch-lt"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div><span class="leg-metas" data-cid="ch-lt"></span></div>
+            <div class="chart-wrap"><canvas id="ch-lt" height="260"></canvas></div>
           </div>
         </div>
         <div class="graf-card">
@@ -394,8 +399,8 @@ tfoot td:last-child{border-right:none}
             <div class="graf-hdr-sub">Linhas separadas por proprietário</div>
           </div>
           <div class="graf-body">
-            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-ls" height="200"></canvas></div>
+            <div class="legenda" id="leg-ch-ls"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div><span class="leg-metas" data-cid="ch-ls"></span></div>
+            <div class="chart-wrap"><canvas id="ch-ls" height="260"></canvas></div>
           </div>
         </div>
       </div>
@@ -439,15 +444,15 @@ tfoot td:last-child{border-right:none}
         <div class="graf-card">
           <div class="graf-hdr"><div class="graf-hdr-title">Morais + Investidores (Total)</div><div class="graf-hdr-sub">Proporção por cota de empresa</div></div>
           <div class="graf-body">
-            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-ot" height="220"></canvas></div>
+            <div class="legenda" id="leg-ch-ot"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div><span class="leg-metas" data-cid="ch-ot"></span></div>
+            <div class="chart-wrap"><canvas id="ch-ot" height="280"></canvas></div>
           </div>
         </div>
         <div class="graf-card">
           <div class="graf-hdr"><div class="graf-hdr-title">Morais vs. Investidores (Separado)</div><div class="graf-hdr-sub">Linhas separadas por proprietário</div></div>
           <div class="graf-body">
-            <div class="legenda"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div></div>
-            <div class="chart-wrap"><canvas id="ch-os" height="220"></canvas></div>
+            <div class="legenda" id="leg-ch-os"><div class="leg"><div class="leg-cor" style="background:#295778"></div>Morais</div><div class="leg"><div class="leg-cor" style="background:#8FDCD2"></div>Investidor</div><span class="leg-metas" data-cid="ch-os"></span></div>
+            <div class="chart-wrap"><canvas id="ch-os" height="280"></canvas></div>
           </div>
         </div>
       </div>
@@ -478,7 +483,7 @@ tfoot td:last-child{border-right:none}
       </div>
       <div class="blk-title">Casas Vendidas por Mês</div>
       <div class="graf-card" style="margin-bottom:20px">
-        <div class="graf-body"><div class="chart-wrap"><canvas id="ch-vv" height="200"></canvas></div></div>
+        <div class="graf-body"><div class="chart-wrap"><canvas id="ch-vv" height="240"></canvas></div></div>
       </div>
       <div class="blk-title">Tabela por Mês</div>
       <div class="tbl-outer"><div class="tbl-wrap" id="tbl-vendas"></div></div>
@@ -598,7 +603,7 @@ tfoot td:last-child{border-right:none}
     <div class="blk-title">Exposição de Caixa ao Longo do Tempo</div>
     <div class="graf-card-full">
       <div class="graf-body" style="padding:20px 16px">
-        <div class="chart-wrap"><canvas id="ch-exp" height="240"></canvas></div>
+        <div class="chart-wrap"><canvas id="ch-exp" height="320"></canvas></div>
       </div>
     </div>
 
@@ -724,8 +729,24 @@ function anosDisp(arr,campo){
   return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
 }
 
+// Atualiza a legenda HTML com os valores das metas (Morais e Investidor)
+function _updateLegendaMetas(canvasId, mediaM, mediaI, fmtV){
+  const span = document.querySelector(`.leg-metas[data-cid="${canvasId}"]`);
+  if(!span) return;
+  const f = (v)=> fmtV ? fmtV(v) : (v>=10? Math.round(v).toString() : v.toFixed(1));
+  let html = '';
+  if(mediaM!=null && mediaM>0){
+    html += `<span class="leg-meta" style="color:#295778"><span class="leg-meta-line"></span>Meta Morais: ${f(mediaM)}</span>`;
+  }
+  if(mediaI!=null && mediaI>0){
+    html += `<span class="leg-meta" style="color:#5a8a82"><span class="leg-meta-line"></span>Meta Inv.: ${f(mediaI)}</span>`;
+  }
+  span.innerHTML = html;
+}
+
 // ── CANVAS: BARRAS ──
 function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
+  _updateLegendaMetas(id, mediaM, mediaI, fmtV);
   const c=document.getElementById(id);if(!c)return;
   c.style.width='';c.style.height='';
   const pw=c.parentElement.clientWidth||500;
@@ -742,7 +763,7 @@ function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
-  const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
+  const W=pw,P={t:30,r:14,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
   const allM=[mediaM,mediaI].filter(v=>v!=null&&v>0);
   const allVals=datasetsF.flatMap(d=>d.data).concat(allM).filter(v=>v>0);
@@ -752,6 +773,8 @@ function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
   const yMax=niceStep*5;
 
   ctx.clearRect(0,0,W,H);
+
+  // Grade
   ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
   ctx.fillStyle='#5a8099';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='right';
   for(let i=0;i<=4;i++){
@@ -777,15 +800,12 @@ function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
     });
   });
 
-  // Linhas de meta separadas — Morais (azul) e Investidor (teal)
+  // Linhas de meta (só linhas tracejadas — texto está na legenda HTML acima)
   if(mediaM!=null&&mediaM>0){
     const yM=P.t+cH*(1-mediaM/yMax);
     ctx.save();
     ctx.strokeStyle='#295778';ctx.lineWidth=2;ctx.setLineDash([6,4]);
     ctx.beginPath();ctx.moveTo(P.l,yM);ctx.lineTo(P.l+cW,yM);ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle='#295778';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
-    ctx.fillText('Meta Morais: '+(fmtV?fmtV(mediaM):fmtN(mediaM,1)),P.l+4,yM-5);
     ctx.restore();
   }
   if(mediaI!=null&&mediaI>0){
@@ -793,15 +813,13 @@ function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
     ctx.save();
     ctx.strokeStyle='#5a8a82';ctx.lineWidth=2;ctx.setLineDash([6,4]);
     ctx.beginPath();ctx.moveTo(P.l,yI);ctx.lineTo(P.l+cW,yI);ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle='#5a8a82';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
-    ctx.fillText('Meta Inv.: '+(fmtV?fmtV(mediaI):fmtN(mediaI,1)),P.l+4,yI+12);
     ctx.restore();
   }
 }
 
 // ── CANVAS: LINHAS COM 2 MÉDIAS ──
 function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
+  _updateLegendaMetas(id, mediaM, mediaI);
   const c=document.getElementById(id);if(!c)return;
   c.style.width='';c.style.height='';
   const pw=c.parentElement.clientWidth||500;if(pw<20)return;
@@ -810,7 +828,9 @@ function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
   c.style.display='block';
   const labelsF=idxComDados.map(i=>labels[i]);
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
-  const H=200,dpr=Math.max(window.devicePixelRatio||1,2);
+  const H=parseInt(c.dataset.h||c.getAttribute('height'))||260;
+  if(!c.dataset.h)c.dataset.h=H;
+  const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
@@ -846,18 +866,14 @@ function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
   });
   if(mediaM!=null){
     const y=yOf(mediaM);
-    ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
-    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle='#295778';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
-    ctx.fillText('Meta Morais: '+mediaM.toFixed(1),P.l+4,y-5);
+    ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
     ctx.restore();
   }
   if(mediaI!=null){
     const y=yOf(mediaI);
-    ctx.save();ctx.strokeStyle='#8FDCD2';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
-    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle='#5a8a82';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
-    ctx.fillText('Meta Inv.: '+mediaI.toFixed(1),P.l+4,y+12);
+    ctx.save();ctx.strokeStyle='#5a8a82';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
     ctx.restore();
   }
 }
@@ -945,53 +961,72 @@ function drawLinesExposicao(id,labels,valores){
   if(pw<20)return;
   if(!valores.length){c.style.display='none';return;}
   c.style.display='block';
-  const H=parseInt(c.dataset.h||c.getAttribute('height'))||240;
+  const H=parseInt(c.dataset.h||c.getAttribute('height'))||320;
   if(!c.dataset.h)c.dataset.h=H;
   const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,n=labels.length;if(!n)return;
-  const P={t:30,r:20,b:44,l:100},cW=W-P.l-P.r,cH=H-P.t-P.b;
-  const minV=Math.min(...valores),maxV=Math.max(...valores,0.01);
+  // Padding mais generoso: topo p/ legenda, esquerda p/ valores em BRL
+  const P={t:48,r:24,b:48,l:110},cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const minV=Math.min(...valores,0),maxV=Math.max(...valores,0.01);
   const range=Math.max(Math.abs(maxV),Math.abs(minV))||1;
-  const pad=range*0.12;
+  const pad=range*0.18;
   const yMin=minV-pad,yMax=maxV+pad;
   const xOf=i=>P.l+(n===1?cW/2:i*(cW/(n-1)));
   const yOf=v=>P.t+cH*(1-(v-yMin)/(yMax-yMin));
+
   ctx.clearRect(0,0,W,H);
-  ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
-  for(let i=0;i<=5;i++){
-    const v=yMin+(yMax-yMin)*i/5,y=yOf(v);
+
+  // Grade mais densa (8 linhas em vez de 5)
+  ctx.strokeStyle='#e2eef3';ctx.lineWidth=1;
+  ctx.fillStyle='#5a8099';ctx.font="500 11px 'Barlow',sans-serif";ctx.textAlign='right';
+  for(let i=0;i<=6;i++){
+    const v=yMin+(yMax-yMin)*i/6,y=yOf(v);
     ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
-    ctx.fillStyle='#5a8099';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='right';
-    ctx.fillText(fmtBRL(v),P.l-5,y+3.5);
+    ctx.fillText(fmtBRL(v),P.l-7,y+4);
   }
+  // Linha do zero destacada
   if(yMin<0&&yMax>0){
-    const y0=yOf(0);ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=1.5;
-    ctx.beginPath();ctx.moveTo(P.l,y0);ctx.lineTo(P.l+cW,y0);ctx.stroke();ctx.restore();
+    const y0=yOf(0);
+    ctx.save();ctx.strokeStyle='#1a3347';ctx.lineWidth=1.8;
+    ctx.beginPath();ctx.moveTo(P.l,y0);ctx.lineTo(P.l+cW,y0);ctx.stroke();
+    ctx.restore();
   }
-  ctx.fillStyle='#5a8099';ctx.font="600 10px 'Barlow',sans-serif";ctx.textAlign='center';
-  labels.forEach((lb,i)=>ctx.fillText(lb,xOf(i),H-P.b+16));
+  // Eixo X
+  ctx.fillStyle='#5a8099';ctx.font="600 11px 'Barlow',sans-serif";ctx.textAlign='center';
+  labels.forEach((lb,i)=>ctx.fillText(lb,xOf(i),H-P.b+18));
+
+  // Linhas coloridas por sinal
   const corExp=v=>v<0?'#c0392b':'#2a9d5c';
   if(n>1){
     for(let i=0;i<n-1;i++){
       const v1=valores[i],v2=valores[i+1];
-      ctx.beginPath();ctx.strokeStyle=corExp((v1+v2)/2);ctx.lineWidth=2.5;
+      ctx.beginPath();ctx.strokeStyle=corExp((v1+v2)/2);ctx.lineWidth=3;
+      ctx.lineCap='round';
       ctx.moveTo(xOf(i),yOf(v1));ctx.lineTo(xOf(i+1),yOf(v2));ctx.stroke();
     }
   }
+  // Pontos + valores
   valores.forEach((v,i)=>{
-    ctx.beginPath();ctx.arc(xOf(i),yOf(v),4,0,Math.PI*2);
+    ctx.beginPath();ctx.arc(xOf(i),yOf(v),5,0,Math.PI*2);
     ctx.fillStyle=corExp(v);ctx.fill();
-    ctx.fillStyle='#1a3347';ctx.font="600 9px 'DM Mono',monospace";ctx.textAlign='center';
-    ctx.fillText(fmtBRL(v),xOf(i),yOf(v)+(v<0?14:-8));
+    ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+    // Valor abaixo se positivo, acima se negativo (pra não cruzar a linha)
+    ctx.fillStyle=corExp(v);ctx.font="700 10px 'DM Mono',monospace";ctx.textAlign='center';
+    ctx.fillText(fmtBRL(v),xOf(i),yOf(v)+(v<0?-12:18));
   });
-  ctx.fillStyle='#c0392b';ctx.fillRect(P.l,6,10,10);
-  ctx.fillStyle='#333';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='left';
-  ctx.fillText('Empresa exposta',P.l+14,15);
-  ctx.fillStyle='#2a9d5c';ctx.fillRect(P.l+130,6,10,10);
-  ctx.fillText('Retorno positivo',P.l+144,15);
+
+  // Legenda no topo
+  ctx.font="600 12px 'Barlow',sans-serif";ctx.textAlign='left';ctx.textBaseline='middle';
+  let lx=P.l, ly=22;
+  ctx.fillStyle='#c0392b';ctx.fillRect(lx,ly-6,14,12);
+  ctx.fillStyle='#1a3347';ctx.fillText('Empresa exposta (capital investido)',lx+18,ly);
+  lx += ctx.measureText('Empresa exposta (capital investido)').width + 50;
+  ctx.fillStyle='#2a9d5c';ctx.fillRect(lx,ly-6,14,12);
+  ctx.fillStyle='#1a3347';ctx.fillText('Retorno positivo (lucro)',lx+18,ly);
+  ctx.textBaseline='alphabetic';
 }
 
 
