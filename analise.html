@@ -736,7 +736,8 @@ function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
   const labelsF=idxComDados.map(i=>labels[i]);
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
 
-  const H=parseInt(c.getAttribute('height'))||280;
+  const H=parseInt(c.dataset.h||c.getAttribute('height'))||280;
+  if(!c.dataset.h)c.dataset.h=H;
   const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
@@ -873,7 +874,8 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
   const labelsF=idxComDados.map(i=>labels[i]);
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
 
-  const H=parseInt(c.getAttribute('height'))||280;
+  const H=parseInt(c.dataset.h||c.getAttribute('height'))||280;
+  if(!c.dataset.h)c.dataset.h=H;
   const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
@@ -943,7 +945,8 @@ function drawLinesExposicao(id,labels,valores){
   if(pw<20)return;
   if(!valores.length){c.style.display='none';return;}
   c.style.display='block';
-  const H=parseInt(c.getAttribute('height'))||240;
+  const H=parseInt(c.dataset.h||c.getAttribute('height'))||240;
+  if(!c.dataset.h)c.dataset.h=H;
   const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
