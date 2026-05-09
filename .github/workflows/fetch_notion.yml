@@ -32,7 +32,7 @@ jobs:
           ERP_CSV_PROPOSTAS:    ${{ secrets.ERP_CSV_PROPOSTAS }}
           ERP_CSV_PAGAMENTOS:   ${{ secrets.ERP_CSV_PAGAMENTOS }}
           ERP_CSV_OBRAS:        ${{ secrets.ERP_CSV_OBRAS }}
-          ERP_CSV_FATURAMENTOS: ${{ secrets.ERP_CSV_FATURAMENTOS }}
+          ERP_CSV_RECEBIMENTOS: ${{ secrets.ERP_CSV_RECEBIMENTOS }}
           NOTION_TOKEN_METAS:   ${{ secrets.NOTION_TOKEN_METAS }}
           NOTION_DB_METAS:      ${{ secrets.NOTION_DB_METAS }}
         run: python fetch_all.py
