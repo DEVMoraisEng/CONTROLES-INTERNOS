@@ -136,12 +136,8 @@ select:focus{border-color:var(--teal)}
 .legenda{display:flex;gap:14px;margin-bottom:10px}
 .leg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text3)}
 .leg-cor{width:12px;height:12px;border-radius:2px;flex-shrink:0}
-.chart-wrap{position:relative;width:100%;overflow:hidden}
-.chart-wrap canvas{display:block;max-width:100% !important;width:100% !important;height:auto}
-canvas#ch-lt,canvas#ch-ls{height:200px !important}
-canvas#ch-ot,canvas#ch-os{height:220px !important}
-canvas#ch-vv{height:200px !important}
-canvas#ch-exp{height:240px !important}
+.chart-wrap{position:relative;width:100%;overflow-x:auto}
+.chart-wrap canvas{max-width:100%;box-sizing:border-box}
 canvas{display:block}
 .tbl-outer{display:flex;justify-content:center;margin-bottom:22px}
 .tbl-wrap{border-radius:8px;border:1.5px solid var(--border);overflow:hidden;
@@ -662,7 +658,7 @@ function irPara(id,titulo,btn){
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active-nav'));
   if(btn)btn.classList.add('active-nav');
   paginaAtual=id;
-  requestAnimationFrame(()=>requestAnimationFrame(()=>renderPagina(id)));
+  setTimeout(()=>renderPagina(id),60);
 }
 function voltarOuFechar(){
   // Chamado apenas se btn-back visível (não usado mais, mantido por segurança)
@@ -673,7 +669,7 @@ function showSub(id,btn){
   document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('sub-'+id).classList.add('active');
   btn.classList.add('active');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>renderSubAtiva()));
+  setTimeout(()=>renderSubAtiva(),60);
 }
 function renderSubAtiva(){
   const a=document.querySelector('.sub-pg.active');if(!a)return;
@@ -728,75 +724,32 @@ function anosDisp(arr,campo){
   return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
 }
 
-// ── CANVAS ENGINE — robusta: medição confinada ao .chart-wrap, não sobe na árvore ──
-function _pw(c){
-  // SOMENTE o pai imediato (.chart-wrap). Se for 0, retorna 0 e reagenda.
-  // Subir na árvore mediria o body inteiro → canvas gigante → esticamento ao voltar.
-  const p = c.parentElement;
-  if(!p) return 0;
-  const w = p.clientWidth;
-  return w > 30 ? w : 0;
-}
-function _retry(fn, args, n){
-  if(n > 30) return;
-  requestAnimationFrame(()=>{
-    const c = document.getElementById(args[0]);
-    if(!c) return;
-    if(_pw(c) > 30) fn(...args);
-    else _retry(fn, args, n+1);
-  });
-}
-// Salva o último render para poder re-renderizar em resize/visible
-const _lastDraw = {};
-function _registerDraw(id, fn, args){
-  _lastDraw[id] = {fn, args};
-}
-// ResizeObserver global — redesenha ao mudar largura do .chart-wrap
-if(typeof window!=='undefined' && !window._canvasROReady){
-  window._canvasROReady = true;
-  window.addEventListener('load', ()=>{
-    let lastWidths = {};
-    const ro = new ResizeObserver(entries=>{
-      for(const e of entries){
-        const id = e.target.dataset.cid;
-        if(!id || !_lastDraw[id]) continue;
-        const w = e.contentRect.width;
-        // Só redesenha se largura mudou significativamente (evita loops)
-        if(w > 30 && Math.abs(w - (lastWidths[id]||0)) > 3){
-          lastWidths[id] = w;
-          const job = _lastDraw[id];
-          job.fn(...job.args);
-        }
-      }
-    });
-    document.querySelectorAll('canvas[id^="ch-"]').forEach(c=>{
-      const wrap = c.closest('.chart-wrap');
-      if(wrap){ wrap.dataset.cid = c.id; ro.observe(wrap); }
-    });
-  });
-}
-
+// ── CANVAS: BARRAS ──
 function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
-  _registerDraw(id, drawBars, [id,labels,datasets,fmtV,mediaM,mediaI]);
   const c=document.getElementById(id);if(!c)return;
-  const pw=_pw(c);
-  if(pw===0){_retry(drawBars,[id,labels,datasets,fmtV,mediaM,mediaI],0);return;}
+  c.style.width='';c.style.height='';
+  const pw=c.parentElement.clientWidth||500;
+  if(pw<20)return;
   const idxComDados=labels.map((_,i)=>datasets.some(d=>d.data[i]>0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
   const labelsF=idxComDados.map(i=>labels[i]);
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
-  const H=parseInt(c.getAttribute('height'))||200;
+
+  const H=parseInt(c.getAttribute('height'))||280;
   const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
+  c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
-  const allVals=datasetsF.flatMap(d=>d.data).concat([mediaM,mediaI].filter(v=>v!=null&&v>0)).filter(v=>v>0);
+  const allM=[mediaM,mediaI].filter(v=>v!=null&&v>0);
+  const allVals=datasetsF.flatMap(d=>d.data).concat(allM).filter(v=>v>0);
   const mx=Math.max(...allVals,0.01);
   const mag=Math.pow(10,Math.floor(Math.log10(mx/4||1)));
   const niceStep=Math.ceil((mx/4)/mag)*mag||1;
   const yMax=niceStep*5;
+
   ctx.clearRect(0,0,W,H);
   ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
   ctx.fillStyle='#5a8099';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='right';
@@ -807,6 +760,7 @@ function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
   }
   ctx.fillStyle='#5a8099';ctx.font="600 10.5px 'Barlow',sans-serif";ctx.textAlign='center';
   labelsF.forEach((lb,i)=>{ctx.fillText(lb,P.l+(i+.5)*(cW/n),H-P.b+16);});
+
   const gW=cW/n,nD=datasetsF.length,bW=Math.min((gW*0.78)/nD,38),gPad=(gW-bW*nD)/2;
   datasetsF.forEach((ds,di)=>{
     ds.data.forEach((v,i)=>{
@@ -821,38 +775,42 @@ function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
       ctx.fillText(fmtV?fmtV(v):fmtN(v,v<10?1:0),x+(bW-1)/2,y-5);
     });
   });
-  // Item 9: linhas separadas Morais (azul) e Investidor (teal) — sem meta total amarela
+
+  // Linhas de meta separadas — Morais (azul) e Investidor (teal)
   if(mediaM!=null&&mediaM>0){
     const yM=P.t+cH*(1-mediaM/yMax);
-    ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=2;ctx.setLineDash([6,4]);
-    ctx.beginPath();ctx.moveTo(P.l,yM);ctx.lineTo(P.l+cW,yM);ctx.stroke();ctx.setLineDash([]);
+    ctx.save();
+    ctx.strokeStyle='#295778';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(P.l,yM);ctx.lineTo(P.l+cW,yM);ctx.stroke();
+    ctx.setLineDash([]);
     ctx.fillStyle='#295778';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
     ctx.fillText('Meta Morais: '+(fmtV?fmtV(mediaM):fmtN(mediaM,1)),P.l+4,yM-5);
     ctx.restore();
   }
   if(mediaI!=null&&mediaI>0){
     const yI=P.t+cH*(1-mediaI/yMax);
-    ctx.save();ctx.strokeStyle='#5a8a82';ctx.lineWidth=2;ctx.setLineDash([6,4]);
-    ctx.beginPath();ctx.moveTo(P.l,yI);ctx.lineTo(P.l+cW,yI);ctx.stroke();ctx.setLineDash([]);
+    ctx.save();
+    ctx.strokeStyle='#5a8a82';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(P.l,yI);ctx.lineTo(P.l+cW,yI);ctx.stroke();
+    ctx.setLineDash([]);
     ctx.fillStyle='#5a8a82';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
     ctx.fillText('Meta Inv.: '+(fmtV?fmtV(mediaI):fmtN(mediaI,1)),P.l+4,yI+12);
     ctx.restore();
   }
 }
 
+// ── CANVAS: LINHAS COM 2 MÉDIAS ──
 function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
-  _registerDraw(id, drawLinesComMedias, [id,labels,datasets,mediaM,mediaI]);
   const c=document.getElementById(id);if(!c)return;
-  const pw=_pw(c);
-  if(pw===0){_retry(drawLinesComMedias,[id,labels,datasets,mediaM,mediaI],0);return;}
+  c.style.width='';c.style.height='';
+  const pw=c.parentElement.clientWidth||500;if(pw<20)return;
   const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
   const labelsF=idxComDados.map(i=>labels[i]);
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
-  const H=parseInt(c.getAttribute('height'))||200;
-  const dpr=Math.max(window.devicePixelRatio||1,2);
-  c.width=pw*dpr;c.height=H*dpr;
+  const H=200,dpr=Math.max(window.devicePixelRatio||1,2);
+  c.width=pw*dpr;c.height=H*dpr;c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
@@ -903,54 +861,69 @@ function drawLinesComMedias(id,labels,datasets,mediaM,mediaI){
   }
 }
 
+// ── CANVAS: LINHAS ──
 function drawLines(id,labels,datasets,fmtV,mediaLinha){
-  _registerDraw(id, drawLines, [id,labels,datasets,fmtV,mediaLinha]);
   const c=document.getElementById(id);if(!c)return;
-  const pw=_pw(c);
-  if(pw===0){_retry(drawLines,[id,labels,datasets,fmtV,mediaLinha],0);return;}
+  c.style.width='';c.style.height='';
+  const pw=c.parentElement.clientWidth||500;
+  if(pw<20)return;
   const idxComDados=labels.map((_,i)=>datasets.some(d=>(d.data[i]||0)!==0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
   const labelsF=idxComDados.map(i=>labels[i]);
   const datasetsF=datasets.map(ds=>({...ds,data:idxComDados.map(i=>ds.data[i]||0)}));
-  const H=parseInt(c.getAttribute('height'))||200;
+
+  const H=parseInt(c.getAttribute('height'))||280;
   const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
+  c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
+
   const allVals=datasetsF.flatMap(d=>d.data).concat(mediaLinha!=null?[mediaLinha]:[]);
   const minV=Math.min(...allVals),maxV=Math.max(...allVals,0.01);
-  const range=maxV-minV||maxV;const pad=range*0.15;
+  const range=maxV-minV||maxV;
+  const pad=range*0.15;
   const yMin=minV<0?minV-pad:0,yMax=maxV+pad;
-  const xOf=i=>P.l+(n===1?cW/2:(i/(n-1))*cW);
-  const yOf=v=>P.t+cH*(1-(v-yMin)/(yMax-yMin));
+
   ctx.clearRect(0,0,W,H);
   ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
-  for(let i=0;i<=4;i++){
-    const v=yMin+(yMax-yMin)*i/4,y=yOf(v);
+  const steps=4;
+  for(let i=0;i<=steps;i++){
+    const v=yMin+(yMax-yMin)*i/steps,y=P.t+cH*(1-(v-yMin)/(yMax-yMin));
     ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
     ctx.fillStyle='#5a8099';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='right';
     ctx.fillText(fmtV?fmtV(v):fmtN(v,v<10?1:0),P.l-5,y+3.5);
   }
   if(yMin<0){
-    const y0=yOf(0);ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=1.5;
+    const y0=P.t+cH*(1-(0-yMin)/(yMax-yMin));
+    ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=1.5;
     ctx.beginPath();ctx.moveTo(P.l,y0);ctx.lineTo(P.l+cW,y0);ctx.stroke();ctx.restore();
   }
   ctx.fillStyle='#5a8099';ctx.font="600 10.5px 'Barlow',sans-serif";ctx.textAlign='center';
-  labelsF.forEach((lb,i)=>{ctx.fillText(lb,xOf(i),H-P.b+16);});
+  labelsF.forEach((lb,i)=>{ctx.fillText(lb,P.l+(i+.5)*(cW/n),H-P.b+16);});
+
+  const xOf=i=>P.l+(i+.5)*(cW/n);
+  const yOf=v=>P.t+cH*(1-(v-yMin)/(yMax-yMin));
+
   datasetsF.forEach(ds=>{
     if(ds.data.every(v=>!v))return;
     ctx.beginPath();ctx.strokeStyle=ds.color||'#295778';ctx.lineWidth=2.5;
-    ds.data.forEach((v,i)=>i===0?ctx.moveTo(xOf(i),yOf(v)):ctx.lineTo(xOf(i),yOf(v)));
+    ds.data.forEach((v,i)=>{
+      const x=xOf(i),y=yOf(v);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
     ctx.stroke();
     ds.data.forEach((v,i)=>{
-      ctx.beginPath();ctx.arc(xOf(i),yOf(v),4,0,Math.PI*2);
+      const x=xOf(i),y=yOf(v);
+      ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);
       ctx.fillStyle=ds.color||'#295778';ctx.fill();
       ctx.fillStyle='#1a3347';ctx.font="600 10px 'DM Mono',monospace";ctx.textAlign='center';
-      ctx.fillText(fmtV?fmtV(v):fmtN(v,v<10?1:0),xOf(i),yOf(v)-10);
+      ctx.fillText(fmtV?fmtV(v):fmtN(v,v<10?1:0),x,y-10);
     });
   });
+
   if(mediaLinha!=null&&mediaLinha>0){
     const y=yOf(mediaLinha);
     ctx.save();ctx.strokeStyle='#c9a227';ctx.lineWidth=2;ctx.setLineDash([6,4]);
@@ -961,17 +934,19 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
   }
 }
 
+
 // ── CANVAS: EXPOSIÇÃO DE CAIXA (negativo=vermelho, positivo=verde) ──
 function drawLinesExposicao(id,labels,valores){
-  _registerDraw(id, drawLinesExposicao, [id,labels,valores]);
   const c=document.getElementById(id);if(!c)return;
-  const pw=_pw(c);
-  if(pw===0){_retry(drawLinesExposicao,[id,labels,valores],0);return;}
+  c.style.width='';c.style.height='';
+  const pw=c.parentElement.clientWidth||500;
+  if(pw<20)return;
   if(!valores.length){c.style.display='none';return;}
   c.style.display='block';
   const H=parseInt(c.getAttribute('height'))||240;
   const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
+  c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,n=labels.length;if(!n)return;
   const P={t:30,r:20,b:44,l:100},cW=W-P.l-P.r,cH=H-P.t-P.b;
@@ -1716,10 +1691,10 @@ function calcMTIR(fluxos,rFin,rRein){
 let obrasSelecionadas=new Set(); // Set de endereços selecionados
 let obrasLista=[]; // cache de todas as obras disponíveis
 
-function initObrasSetor(){
-  const cid=document.getElementById('sel-cid-st')?.value||'';
-  const set=document.getElementById('sel-set-st')?.value||'';
-  // Item 7: só obras onde TODAS as casas tenham recebeu OK
+// Item 2: obras qualificadas para Análises Setorizadas:
+// (a) TODAS as casas vendidas com recebeu ∈ {SIM, INEXISTE, ÁGIO}
+// (b) tem pagamentos registrados no ERP (pagamentos_detalhe)
+function getObrasCompletas(){
   const OK_RECEBEU = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
   const vendasPorEnd = {};
   vendas.forEach(v=>{
@@ -1728,12 +1703,26 @@ function initObrasSetor(){
     if(!e) return;
     (vendasPorEnd[e] = vendasPorEnd[e] || []).push(v);
   });
-  const obrasCompletas = new Set();
+  // Endereços que têm pagamentos no ERP (pagamentos_detalhe é { cc -> { mes: valor } })
+  const obrasComPagamentos = new Set(
+    Object.keys(pags).map(cc => normS(cc)).filter(e => {
+      const meses = pags[Object.keys(pags).find(k=>normS(k)===e)];
+      return meses && Object.values(meses).some(v=>v>0);
+    })
+  );
+  const obras = new Set();
   Object.entries(vendasPorEnd).forEach(([e, vs])=>{
-    if(vs.every(v => OK_RECEBEU.has(String(v.recebeu||'').toUpperCase().trim()))){
-      obrasCompletas.add(e);
-    }
+    const todasOk = vs.every(v => OK_RECEBEU.has(String(v.recebeu||'').toUpperCase().trim()));
+    const temPag = obrasComPagamentos.has(e);
+    if(todasOk && temPag) obras.add(e);
   });
+  return obras;
+}
+
+function initObrasSetor(){
+  const cid=document.getElementById('sel-cid-st')?.value||'';
+  const set=document.getElementById('sel-set-st')?.value||'';
+  const obrasCompletas = getObrasCompletas();
   let arr=docs.filter(d=>obrasCompletas.has(normS(d.endereco)));
   if(cid)arr=arr.filter(d=>d.cidade===cid);
   if(set)arr=arr.filter(d=>d.setor===set);
@@ -1804,29 +1793,14 @@ function getEnderecosSelecionados(){
 }
 
 function buildSetor(){
-  // Item 7: filtrar apenas obras onde TODAS as casas (vendas) tenham
-  // recebeu ∈ {SIM, INEXISTE, ÁGIO}. Obra precisa ter pelo menos 1 venda.
-  const OK_RECEBEU = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
-  const vendasPorEnd = {};
-  vendas.forEach(v=>{
-    if(!v.clientes) return;
-    const e = normS(v.endereco||'');
-    if(!e) return;
-    (vendasPorEnd[e] = vendasPorEnd[e] || []).push(v);
-  });
-  const obrasCompletas = new Set();
-  Object.entries(vendasPorEnd).forEach(([e, vs])=>{
-    if(vs.every(v => OK_RECEBEU.has(String(v.recebeu||'').toUpperCase().trim()))){
-      obrasCompletas.add(e);
-    }
-  });
+  // Item 2: obras qualificadas — recebeu OK + pagamentos no ERP
+  const obrasCompletas = getObrasCompletas();
 
   const endD=new Set(docs.map(d=>normS(d.endereco)));
   const cid=document.getElementById('sel-cid-st')?.value||'';
   const set=document.getElementById('sel-set-st')?.value||'';
   const obrasSel=getEnderecosSelecionados(); // null=todas, array=selecionadas
 
-  // Filtrar docs — só os que existem no Notion E têm todas as casas com recebeu OK
   let docsF=docs.filter(d=>obrasCompletas.has(normS(d.endereco)));
   if(cid)docsF=docsF.filter(d=>d.cidade===cid);
   if(set)docsF=docsF.filter(d=>d.setor===set);
@@ -2178,8 +2152,7 @@ async function init(){
       if(sOb) obras.forEach(ob=>{const o=document.createElement('option');o.value=ob;o.textContent=ob;sOb.appendChild(o);});
     });
 
-    // Não chamamos buildLotes/buildObras/buildVendas no init — só quando o usuário
-    // abrir a aba Metas. Isso evita desenhar canvas com aba oculta (que causava esticamento).
+    buildLotes();buildObras();buildVendas();
     document.getElementById('loading').classList.add('hidden');
 
     // CDI async
@@ -2188,20 +2161,6 @@ async function init(){
     calcAlertas();
     // Inicializar obras para setorizadas
     initObrasSetor();
-
-    // CORREÇÃO 2: re-renderizar gráficos ao redimensionar (evita bug de esticamento)
-    let resizeTimer=null;
-    window.addEventListener('resize',()=>{
-      clearTimeout(resizeTimer);
-      resizeTimer=setTimeout(()=>{
-        const pag=document.querySelector('.page.active');
-        if(!pag)return;
-        if(pag.id==='page-metas'){renderSubAtiva();}
-        else if(pag.id==='page-setor'){buildSetor();}
-        else if(pag.id==='page-prazos'){buildPrazos();}
-        else if(pag.id==='page-dash'){buildDash();}
-      },200);
-    });
   }catch(e){
     document.getElementById('loading').innerHTML=
       `<div style="color:#c0392b;font-size:13px;padding:20px;text-align:center">
