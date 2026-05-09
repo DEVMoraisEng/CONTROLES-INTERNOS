@@ -728,15 +728,14 @@ function anosDisp(arr,campo){
   return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
 }
 
-// ── CANVAS ENGINE — robusta: sobe na árvore, fixa altura via CSS, redesenha em resize ──
+// ── CANVAS ENGINE — robusta: medição confinada ao .chart-wrap, não sobe na árvore ──
 function _pw(c){
-  // Sobe pelo DOM até achar um ancestral com clientWidth > 0
-  let el = c.parentElement;
-  while(el){
-    if(el.clientWidth > 30) return el.clientWidth;
-    el = el.parentElement;
-  }
-  return 0;
+  // SOMENTE o pai imediato (.chart-wrap). Se for 0, retorna 0 e reagenda.
+  // Subir na árvore mediria o body inteiro → canvas gigante → esticamento ao voltar.
+  const p = c.parentElement;
+  if(!p) return 0;
+  const w = p.clientWidth;
+  return w > 30 ? w : 0;
 }
 function _retry(fn, args, n){
   if(n > 30) return;
@@ -752,14 +751,19 @@ const _lastDraw = {};
 function _registerDraw(id, fn, args){
   _lastDraw[id] = {fn, args};
 }
-// ResizeObserver global: redesenha ao mudar largura
+// ResizeObserver global — redesenha ao mudar largura do .chart-wrap
 if(typeof window!=='undefined' && !window._canvasROReady){
   window._canvasROReady = true;
   window.addEventListener('load', ()=>{
+    let lastWidths = {};
     const ro = new ResizeObserver(entries=>{
       for(const e of entries){
         const id = e.target.dataset.cid;
-        if(id && _lastDraw[id] && e.contentRect.width > 30){
+        if(!id || !_lastDraw[id]) continue;
+        const w = e.contentRect.width;
+        // Só redesenha se largura mudou significativamente (evita loops)
+        if(w > 30 && Math.abs(w - (lastWidths[id]||0)) > 3){
+          lastWidths[id] = w;
           const job = _lastDraw[id];
           job.fn(...job.args);
         }
@@ -772,11 +776,11 @@ if(typeof window!=='undefined' && !window._canvasROReady){
   });
 }
 
-function drawBars(id,labels,datasets,fmtV,mediaLinha){
-  _registerDraw(id, drawBars, [id,labels,datasets,fmtV,mediaLinha]);
+function drawBars(id,labels,datasets,fmtV,mediaM,mediaI){
+  _registerDraw(id, drawBars, [id,labels,datasets,fmtV,mediaM,mediaI]);
   const c=document.getElementById(id);if(!c)return;
   const pw=_pw(c);
-  if(pw===0){_retry(drawBars,[id,labels,datasets,fmtV,mediaLinha],0);return;}
+  if(pw===0){_retry(drawBars,[id,labels,datasets,fmtV,mediaM,mediaI],0);return;}
   const idxComDados=labels.map((_,i)=>datasets.some(d=>d.data[i]>0)?i:-1).filter(i=>i>=0);
   if(!idxComDados.length){c.style.display='none';return;}
   c.style.display='block';
@@ -788,7 +792,7 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,P={t:28,r:12,b:44,l:62},cW=W-P.l-P.r,cH=H-P.t-P.b,n=labelsF.length;
   if(!n)return;
-  const allVals=datasetsF.flatMap(d=>d.data).concat(mediaLinha!=null?[mediaLinha]:[]).filter(v=>v>0);
+  const allVals=datasetsF.flatMap(d=>d.data).concat([mediaM,mediaI].filter(v=>v!=null&&v>0)).filter(v=>v>0);
   const mx=Math.max(...allVals,0.01);
   const mag=Math.pow(10,Math.floor(Math.log10(mx/4||1)));
   const niceStep=Math.ceil((mx/4)/mag)*mag||1;
@@ -817,12 +821,21 @@ function drawBars(id,labels,datasets,fmtV,mediaLinha){
       ctx.fillText(fmtV?fmtV(v):fmtN(v,v<10?1:0),x+(bW-1)/2,y-5);
     });
   });
-  if(mediaLinha!=null&&mediaLinha>0){
-    const yM=P.t+cH*(1-mediaLinha/yMax);
-    ctx.save();ctx.strokeStyle='#c9a227';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+  // Item 9: linhas separadas Morais (azul) e Investidor (teal) — sem meta total amarela
+  if(mediaM!=null&&mediaM>0){
+    const yM=P.t+cH*(1-mediaM/yMax);
+    ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=2;ctx.setLineDash([6,4]);
     ctx.beginPath();ctx.moveTo(P.l,yM);ctx.lineTo(P.l+cW,yM);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle='#c9a227';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
-    ctx.fillText('Meta total: '+(fmtV?fmtV(mediaLinha):fmtN(mediaLinha,1)),P.l+4,yM-5);
+    ctx.fillStyle='#295778';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
+    ctx.fillText('Meta Morais: '+(fmtV?fmtV(mediaM):fmtN(mediaM,1)),P.l+4,yM-5);
+    ctx.restore();
+  }
+  if(mediaI!=null&&mediaI>0){
+    const yI=P.t+cH*(1-mediaI/yMax);
+    ctx.save();ctx.strokeStyle='#5a8a82';ctx.lineWidth=2;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(P.l,yI);ctx.lineTo(P.l+cW,yI);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='#5a8a82';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
+    ctx.fillText('Meta Inv.: '+(fmtV?fmtV(mediaI):fmtN(mediaI,1)),P.l+4,yI+12);
     ctx.restore();
   }
 }
@@ -943,7 +956,7 @@ function drawLines(id,labels,datasets,fmtV,mediaLinha){
     ctx.save();ctx.strokeStyle='#c9a227';ctx.lineWidth=2;ctx.setLineDash([6,4]);
     ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();ctx.setLineDash([]);
     ctx.fillStyle='#c9a227';ctx.font="bold 10px 'Barlow',sans-serif";ctx.textAlign='left';
-    ctx.fillText('META/12: '+(fmtV?fmtV(mediaLinha):fmtN(mediaLinha,1)),P.l+4,y-5);
+    ctx.fillText('Meta: '+(fmtV?fmtV(mediaLinha):fmtN(mediaLinha,1)),P.l+4,y-5);
     ctx.restore();
   }
 }
@@ -1250,10 +1263,8 @@ function buildLotes(){
       mediaI=(meta.cs_rua_invest||0)+(meta.cs_cond_invest||0)||null;
     }
   }
-  // Para o gráfico de barras (total) usar soma das duas médias
-  const mediaLinhaTotal=mediaM!=null&&mediaI!=null?(mediaM+mediaI):mediaM||mediaI;
 
-  drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinhaTotal);
+  drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaM,mediaI);
   // Gráfico de linhas separadas: sempre com 2 médias (mesmo que null)
   drawLinesComMedias('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],mediaM,mediaI);
 
@@ -1303,10 +1314,8 @@ function buildObras(){
   const unidade=viz==='casas'?'Casas':'Lotes';
   const casasIniciadas=arr.reduce((s,d)=>s+(+(d.n_casas)||1),0);
   const pctMeta=meta&&casasIniciadas>0?fmtN(casasIniciadas/meta.meta_casas*100,0)+'%':'—';
-  // CORREÇÃO 4: linha META/12 quando casas
-  const mediaLinha=viz==='casas'&&meta?meta.meta_casas/12:null;
 
-  // CORREÇÃO 2: calcular metas Morais e Investidor separadas para Obras
+  // Item 9: metas Morais e Investidor separadas (Obras)
   let mediaObrasM=null, mediaObrasI=null;
   if(viz==='casas'&&meta){
     const t=tipo?tipo.toUpperCase():'';
@@ -1321,7 +1330,6 @@ function buildObras(){
       mediaObrasI=(meta.cs_rua_invest||0)+(meta.cs_cond_invest||0)||null;
     }
   }
-  const mediaLinhaObrasTotal=mediaObrasM!=null&&mediaObrasI!=null?(mediaObrasM+mediaObrasI):mediaObrasM||mediaObrasI||mediaLinha;
 
   document.getElementById('blk-obras-title').textContent=`${unidade} de Obras Iniciadas por Mês`;
   document.getElementById('kpi-obras-res').innerHTML=[
@@ -1329,7 +1337,7 @@ function buildObras(){
     kpi(`${unidade} Investidores (${ano})`,fmtN(tI,1),'Por cota (1−cota)'),
     kpi(`Iniciado vs Meta ${ano}`,pctMeta,meta?`${fmtN(casasIniciadas,1)} de ${meta.meta_casas} casas meta`:'Sem meta cadastrada'),
   ].join('');
-  drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaLinhaObrasTotal);
+  drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,mediaObrasM,mediaObrasI);
   drawLinesComMedias('ch-os',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],mediaObrasM,mediaObrasI);
   document.getElementById('tbl-obras').innerHTML=tblRes(ms,dM,dI,`${unidade} Morais`,`${unidade} Investidores`);
   const det=document.getElementById('det-obras');if(!det)return;
