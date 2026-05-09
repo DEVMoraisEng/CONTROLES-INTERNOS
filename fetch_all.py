@@ -211,7 +211,7 @@ def parse_venda(page):
 ERP_CSV_PROPOSTAS    = os.environ.get("ERP_CSV_PROPOSTAS",    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=1966733628&single=true&output=csv")
 ERP_CSV_PAGAMENTOS   = os.environ.get("ERP_CSV_PAGAMENTOS",   "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=593188455&single=true&output=csv")
 ERP_CSV_OBRAS        = os.environ.get("ERP_CSV_OBRAS",        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=931586083&single=true&output=csv")
-ERP_CSV_FATURAMENTOS = os.environ.get("ERP_CSV_FATURAMENTOS", "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=1427336895&single=true&output=csv")
+ERP_CSV_RECEBIMENTOS = os.environ.get("ERP_CSV_RECEBIMENTOS", "https://docs.google.com/spreadsheets/d/e/2PACX-1vQAVoeaF7ztdWagGt87vVr5dsNxFvpQ3uS6g5q3Ip6ppYchJxCaepob5SjWHhKIMjlNsLC1BXtzCKRd/pub?gid=147504490&single=true&output=csv")
 
 # ─── CREDENCIAIS NOTION METAS ────────────────────────────
 TOKEN_METAS = os.environ.get("NOTION_TOKEN_METAS", "")
@@ -304,22 +304,23 @@ def buscar_obras_erp():
     return obras
 
 
-def buscar_faturamentos_erp():
-    """Busca aba Faturamentos do ERP.
-    Coluna de valor: 'Valor recebido parcela' (nome exato confirmado pelo usuário).
+def buscar_recebimentos_erp():
+    """Busca aba Recebimentos do ERP.
+    Colunas esperadas:
+      - centro_de_custo  → endereço da obra
+      - data_recebimento → data do recebimento (DD/MM/YYYY ou YYYY-MM-DD)
+      - valor_recebido   → valor recebido na parcela
     """
     import re as _re4
-    fat = []
-    print("  ERP: buscando Faturamentos...")
-    rows = erp_csv(ERP_CSV_FATURAMENTOS, "faturamentos")
+    rec = []
+    print("  ERP: buscando Recebimentos...")
+    rows = erp_csv(ERP_CSV_RECEBIMENTOS, "recebimentos")
     if not rows:
-        print("  ERP Faturamentos: nenhuma linha retornada — verificar URL/secret ERP_CSV_FATURAMENTOS")
-        return fat
+        print("  ERP Recebimentos: nenhuma linha retornada — verificar URL/secret ERP_CSV_RECEBIMENTOS")
+        return rec
     colunas_reais = list(rows[0].keys())
-    print(f"  ERP Faturamentos todas as colunas: {colunas_reais}")
+    print(f"  ERP Recebimentos todas as colunas: {colunas_reais}")
 
-    # Coluna de valor — nome exato confirmado: "Valor recebido parcela"
-    # Fallback automático por busca case-insensitive
     def achar_col(cols, candidatos_exatos, busca_parcial):
         for c in candidatos_exatos:
             if c in cols: return c
@@ -329,20 +330,19 @@ def buscar_faturamentos_erp():
         return None
 
     col_valor = achar_col(colunas_reais,
-        ["Valor recebido parcela", "valor recebido parcela", "VALOR RECEBIDO PARCELA",
-         "Valor Recebido Parcela", "valor_recebido_parcela"],
-        ["receb"])
+        ["valor_recebido", "Valor Recebido", "VALOR RECEBIDO", "valor recebido"],
+        ["valor_receb", "valor receb"])
     col_data  = achar_col(colunas_reais,
-        ["data_competencia", "Data Competencia", "data competencia", "DATA COMPETENCIA"],
-        ["compet", "data"])
+        ["data_recebimento", "Data Recebimento", "DATA RECEBIMENTO", "data recebimento"],
+        ["data_receb", "data receb", "data"])
     col_cc    = achar_col(colunas_reais,
         ["centro_de_custo", "centro de custo", "Centro de Custo", "CENTRO DE CUSTO"],
         ["centro", "custo", "obra"])
 
-    print(f"  ERP Faturamentos → col_valor={repr(col_valor)} col_data={repr(col_data)} col_cc={repr(col_cc)}")
+    print(f"  ERP Recebimentos → col_valor={repr(col_valor)} col_data={repr(col_data)} col_cc={repr(col_cc)}")
     if not col_valor:
         print("  ERRO: coluna de valor não encontrada. Colunas disponíveis:", colunas_reais)
-        return fat
+        return rec
 
     for row in rows:
         cc  = (row.get(col_cc, "") if col_cc else "").strip().upper()
@@ -361,13 +361,18 @@ def buscar_faturamentos_erp():
             if m1:   mes = f"{m1.group(3)}-{m1.group(2)}"
             elif m2: mes = f"{m2.group(1)}-{m2.group(2)}"
             else:    mes = "SEM DATA"
-            fat.append({"cc": cc, "valor": v, "mes": mes})
+            rec.append({"cc": cc, "valor": v, "mes": mes})
         except Exception as e:
             pass
-    print(f"  ERP Faturamentos: {len(fat)} registros com valor > 0")
-    if fat:
-        print(f"  ERP Faturamentos amostra: {fat[:3]}")
-    return fat
+    print(f"  ERP Recebimentos: {len(rec)} registros com valor > 0")
+    if rec:
+        print(f"  ERP Recebimentos amostra: {rec[:3]}")
+    return rec
+
+
+# Compatibilidade: nome antigo da função
+def buscar_faturamentos_erp():
+    return buscar_recebimentos_erp()
 
 
 def buscar_metas():
