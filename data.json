@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-09T12:47:41.383009+00:00",
+  "updated_at": "2026-05-09T17:19:17.214123+00:00",
   "documentos": [
     {
       "id": "32fc5ab5-32d3-8000-83fe-fa20bcbc64b3",
@@ -24621,8 +24621,1450 @@
     "TB 21 QD 51 LT 38": 0.0,
     "TB 19 QD 51 LT 20": 0.0
   },
-  "faturamentos_erp": [],
-  "fat_por_tipo": {},
+  "faturamentos_erp": [
+    {
+      "cc": "RB 24 QD 06 LT 26",
+      "valor": 8675.55,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 8675.55,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 4275.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 45633.86,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 38868.12,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "I 3 QD 04 LT 17",
+      "valor": 9088.88,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 5000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 29818.15,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 5000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 13",
+      "valor": 40000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 60000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-05"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 0.01,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "RR 04 QD 03 LT 19",
+      "valor": 40000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 14",
+      "valor": 35000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 14",
+      "valor": 50000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 15",
+      "valor": 42000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 15",
+      "valor": 25000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 15",
+      "valor": 20000.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 20000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 35879.95,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 60000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 60000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 24867.0,
+      "mes": "2025-06"
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 60000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 20000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 40000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 20000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 100700.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 40000.0,
+      "mes": "2025-07"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 20000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 0.01,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 40000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 10000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 35000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 35000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 30000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 35000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 30000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 30000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 50000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 50000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 50000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 50000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 38",
+      "valor": 50000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 20000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 10000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 20000.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 40000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 60000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 15000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 46 LT 18",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 13",
+      "valor": 5000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 13",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 5000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 5000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 5000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 205.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 5000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
+      "valor": 5000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
+      "valor": 5000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 1000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 4000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 2000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 3000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 3000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 2000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "CONDOMÍNIO RESERVA DOS IPÊS",
+      "valor": 14340.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "MORAIS EMPREENDIMENTOS BURITIS - FATURAMENTO - SICOOB",
+      "valor": 5000.0,
+      "mes": "2025-08"
+    },
+    {
+      "cc": "ESCRITORIO - MOURA DANTAS EMPREENDIMENTOS",
+      "valor": 19780.68,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 5000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 5000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 34750.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 592.94,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 208000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 5000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 255200.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 640.62,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RPB 24 QD 29 LT 42",
+      "valor": 7184.28,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 50000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 35000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 35000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 25000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 31000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 60000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 30000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 25000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 39",
+      "valor": 125.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 40",
+      "valor": 125.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 35000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 40000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 50000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 35000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 15643.88,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 35000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 35000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 32",
+      "valor": 125.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 33",
+      "valor": 125.0,
+      "mes": "2025-09"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 50965.18,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 13070.67,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 25000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 32366.15,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 7358.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 25000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 1067.84,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 80000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 30000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 90000.0,
+      "mes": "2025-10"
+    },
+    {
+      "cc": "CONDOMÍNIO VALE DAS BRISAS",
+      "valor": 214.14,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 50000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 15708.7,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 6302.72,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 17988.58,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 24",
+      "valor": 40000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "APOLO LYKEIOS QD 01 LT 33",
+      "valor": 207.32,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "APOLO LYKEIOS QD 01 LT 33",
+      "valor": 621.09,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "APOLO LYKEIOS QD 01 LT 33",
+      "valor": 207.32,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 14210.8,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 40000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 15789.2,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 30000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 10000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 20000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 50000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 28500.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 5000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 15000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 5000.0,
+      "mes": "2026-05"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 7500.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 10000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 7500.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 15000.0,
+      "mes": "2026-05"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 5000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 3500.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS",
+      "valor": 25000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "OBRA TESTE",
+      "valor": 1000.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "OBRA TESTE",
+      "valor": 200.0,
+      "mes": "2025-11"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 37",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 37",
+      "valor": 50000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 15172.59,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 9149.07,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 15678.34,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 30402.08,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 19597.92,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 12562.9,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 27437.1,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-05"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 0.81,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 24",
+      "valor": 40000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 6779.36,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 24321.66,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 15678.35,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 18298.77,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 24827.41,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 32923.33,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 15000.32,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 14921.87,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 15172.59,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 40000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 34999.45,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 17076.67,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 40000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 29",
+      "valor": 14999.19,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 35105.27,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 35105.27,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 4894.72,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 30000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 4894.72,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 50000.01,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 89789.44,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 30289.56,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 9789.44,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
+      "valor": 17789.44,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 6831.96,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 40000.0,
+      "mes": "2026-05"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 23833.67,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 17872.98,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 58456.38,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 23560.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 20586.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 58456.39,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 32758.46,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 30587.32,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2026-05"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 45720.99,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 130.71,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 16370.95,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 19168.17,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 25000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 1426.77,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 7942.21,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 23701.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 10000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 35000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 26633.85,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 12000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA",
+      "valor": 50000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 20000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "IPANEMA - FATURAMENTO - SICOOB",
+      "valor": 30000.0,
+      "mes": "2025-12"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 50000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 10000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 40000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 30000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 0.01,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 0.33,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 50001.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 40000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 40000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 20000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 50000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 30000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 1461.12,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 60010.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 163.67,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 7000.0,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 7000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 310.08,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 7000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RUA 8 QD 09 LT 05 - GALPÃO",
+      "valor": 7000.0,
+      "mes": "2026-02"
+    },
+    {
+      "cc": "RR 01 QD 01 LT 12",
+      "valor": 50000.0,
+      "mes": "2026-04"
+    },
+    {
+      "cc": "RR 15 QD 02 LT 12",
+      "valor": 50000.0,
+      "mes": "2026-05"
+    },
+    {
+      "cc": "RR 15 QD 02 LT 12",
+      "valor": 6.04,
+      "mes": "2026-05"
+    },
+    {
+      "cc": "SV 24 QD 40 LT 22",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "SV 24 QD 40 LT 21",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "SV 13 QD 40 LT 20",
+      "valor": 65000.0,
+      "mes": "2026-01"
+    },
+    {
+      "cc": "52 QD 81 LT 12",
+      "valor": 57.57,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "52 QD 81 LT 11",
+      "valor": 57.56,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "52 QD 81 LT 09",
+      "valor": 57.56,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "66 QD 81 LT 08",
+      "valor": 57.56,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "52 QD 81 LT 10",
+      "valor": 57.56,
+      "mes": "2026-03"
+    },
+    {
+      "cc": "TB 19 QD 50 LT 09",
+      "valor": 77500.0,
+      "mes": "2026-04"
+    }
+  ],
+  "fat_por_tipo": {
+    "outros": {
+      "2025-09": 74834.22,
+      "2025-08": 99722.73999999999,
+      "2025-06": 80000.01000000001,
+      "2025-05": 100000.0,
+      "2025-07": 80000.0,
+      "2026-04": 95585.09,
+      "2025-11": 1200.0,
+      "2026-03": 340627.92,
+      "2026-05": 90000.0,
+      "2025-12": 294845.72,
+      "2026-01": 85782.31,
+      "2026-02": 107720.98999999999
+    },
+    "obra": {
+      "2026-02": 1147605.3499999999,
+      "2025-07": 290518.15,
+      "2026-03": 537810.0800000002,
+      "2025-10": 301067.83999999997,
+      "2025-06": 232746.95,
+      "2025-08": 240000.01,
+      "2025-09": 360500.0,
+      "2025-11": 695000.0,
+      "2026-04": 760778.51,
+      "2025-12": 633366.15,
+      "2026-01": 780533.95,
+      "2026-05": 90006.04
+    },
+    "escritorio": {
+      "2026-03": 32280.68,
+      "2026-04": 71000.0,
+      "2026-01": 50000.0,
+      "2026-02": 58500.0,
+      "2026-05": 20000.0
+    }
+  },
   "metas": [
     {
       "ano": 2026,
