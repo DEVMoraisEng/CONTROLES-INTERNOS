@@ -1010,13 +1010,39 @@ function drawLinesExposicao(id,labels,valores){
   }
   // Pontos + valores
   valores.forEach((v,i)=>{
-    ctx.beginPath();ctx.arc(xOf(i),yOf(v),5,0,Math.PI*2);
+    const x=xOf(i), y=yOf(v);
+    // Ponto
+    ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);
     ctx.fillStyle=corExp(v);ctx.fill();
     ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
-    // Valor abaixo se positivo, acima se negativo (pra não cruzar a linha)
-    ctx.fillStyle=corExp(v);ctx.font="700 10px 'DM Mono',monospace";ctx.textAlign='center';
-    ctx.fillText(fmtBRL(v),xOf(i),yOf(v)+(v<0?-12:18));
+
+    // Posicionamento do label:
+    // - x: deslocar à direita no primeiro ponto, à esquerda no último, centro no meio
+    // - y: acima ou abaixo dependendo do sinal (e da proximidade da linha zero)
+    ctx.font="700 10px 'DM Mono',monospace";
+    const txt = fmtBRL(v);
+    const tw = ctx.measureText(txt).width;
+
+    let tx, align;
+    if(i===0){ tx = x + 10; align = 'left'; }
+    else if(i===n-1){ tx = x - 10; align = 'right'; }
+    else { tx = x; align = 'center'; }
+    const ty = y + (v<0 ? -12 : 18);
+
+    // Fundo branco semi-transparente atrás do texto (evita conflito visual com a grade)
+    const padX=4, padY=2;
+    let bgX;
+    if(align==='left') bgX = tx - padX;
+    else if(align==='right') bgX = tx - tw - padX;
+    else bgX = tx - tw/2 - padX;
+    ctx.fillStyle = 'rgba(255,255,255,.85)';
+    ctx.fillRect(bgX, ty - 9, tw + padX*2, 12 + padY);
+
+    // Texto
+    ctx.fillStyle=corExp(v);ctx.textAlign=align;
+    ctx.fillText(txt, tx, ty);
   });
+  ctx.textAlign='left';
 
   // Legenda no topo
   ctx.font="600 12px 'Barlow',sans-serif";ctx.textAlign='left';ctx.textBaseline='middle';
