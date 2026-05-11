@@ -1391,12 +1391,24 @@ const STATUS_VENDAS_LABELS = {
 };
 
 function calcGcap(v) {
-  if (!v.data_venda) return '';
-  if (v.gcap_pago === true || String(v.gcap_pago).toUpperCase() === 'SIM') return 'GCAP PAGO';
-  if (v.gcap_gerado === true || String(v.gcap_gerado).toUpperCase() === 'SIM') return 'GCAP GERADO';
-  const dias = diffDays(v.data_venda, new Date().toISOString());
-  if (dias != null && dias > 30) return 'GCAP PENDENTE';
-  return '';
+  const GCAP_OK = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  const pg = String(v.gcap_pago||'').toUpperCase().trim();
+  if (GCAP_OK.has(pg)) return '';
+  if (!v.clientes) return '';
+  if (!isSim(v.assinou_contrato_banco)) return '';
+  // GCAP pendente — calcular data final (último dia útil do mês subsequente da assinatura)
+  if (v.data_assinatura) {
+    const [y,m] = v.data_assinatura.split('-').map(Number);
+    // Mês subsequente
+    let ny=y, nm=m+1; if(nm>12){nm=1;ny++;}
+    // Último dia do mês subsequente
+    let ultimo = new Date(ny, nm, 0); // dia 0 do mês seguinte = último dia do mês
+    // Último dia útil (seg-sex)
+    while(ultimo.getDay()===0||ultimo.getDay()===6) ultimo.setDate(ultimo.getDate()-1);
+    const dataFinal = `${String(ultimo.getDate()).padStart(2,'0')}/${String(ultimo.getMonth()+1).padStart(2,'0')}/${ultimo.getFullYear()}`;
+    return `GCAP PENDENTE – DATA FINAL: ${dataFinal}`;
+  }
+  return 'GCAP PENDENTE – PREENCHER DATA DE CONTRATO';
 }
 
 // ─── SVG LOADER ──────────────────────────────────

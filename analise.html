@@ -180,7 +180,7 @@ tfoot td:last-child{border-right:none}
 .det-footer td{color:var(--verde)!important;font-weight:700!important;
                font-family:'Barlow Condensed',sans-serif!important;font-size:13px!important;
                background:rgba(76,217,100,.1)!important;border-top:none!important}
-.rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.rank-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px}
 .rank-card{background:var(--branco);border:1.5px solid var(--border);border-radius:10px;overflow:hidden}
 .rank-hdr{background:var(--azul);padding:11px 16px}
 .rank-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;
@@ -310,8 +310,10 @@ tfoot td:last-child{border-right:none}
   <nav class="dash-nav">
     <button class="nav-btn active-nav" onclick="irPara('dash','Dashboard',this)">Dashboard</button>
     <button class="nav-btn" onclick="irPara('setor','Análise de Desempenho',this)">Análise de Desempenho</button>
+    <button class="nav-btn" onclick="irPara('comp','Comparativo de Desempenho',this)">Comparativo de Desempenho</button>
     <button class="nav-btn" onclick="irPara('metas','Metas',this)">Metas</button>
     <button class="nav-btn" onclick="irPara('prazos','Análise de Prazos',this)">Análise de Prazos</button>
+    <button class="nav-btn" onclick="irPara('custos','Análise de Custos',this)">Análise de Custos</button>
   </nav>
   <div class="dash-main">
     <div class="sel-bar">
@@ -481,6 +483,7 @@ tfoot td:last-child{border-right:none}
         <div class="kpi-card"><div class="kpi-lbl">VGV Médio (Contrato)</div><div class="kpi-val" id="kv-vgv-cont">—</div></div>
         <div class="kpi-card"><div class="kpi-lbl">Prazo Médio Certidões→Venda</div><div class="kpi-val" id="kv-prazo">—</div></div>
       </div>
+      <div id="vgv-alert-vendas"></div>
       <div class="blk-title">Casas Vendidas por Mês</div>
       <div class="graf-card" style="margin-bottom:20px">
         <div class="graf-body"><div class="chart-wrap"><canvas id="ch-vv" height="240"></canvas></div></div>
@@ -562,6 +565,12 @@ tfoot td:last-child{border-right:none}
       <select id="sel-cid-st" onchange="initObrasSetor();buildSetor()"><option value="">Todas</option></select>
       <span class="sel-lbl">Setor:</span>
       <select id="sel-set-st" onchange="initObrasSetor();buildSetor()"><option value="">Todos</option></select>
+      <span class="sel-lbl">Proprietário:</span>
+      <select id="sel-prop-st" onchange="initObrasSetor();buildSetor()">
+        <option value="">Todos</option>
+        <option value="morais">Morais</option>
+        <option value="invest">Investidor</option>
+      </select>
       <span class="sel-lbl">Obras:</span>
       <div class="obra-search-wrap" id="obra-search-wrap" style="position:relative">
         <input type="text" id="obra-search-input" placeholder="🔍 Digite para buscar endereço..." autocomplete="off"
@@ -612,6 +621,74 @@ tfoot td:last-child{border-right:none}
     <div class="kpi-row r3" id="kpi-st-t1" style="margin-bottom:8px"></div>
     <div class="kpi-row r3" id="kpi-st-t2" style="margin-bottom:8px"></div>
     <div class="kpi-row r2" id="kpi-st-t3" style="margin-bottom:20px"></div>
+  </div>
+</div>
+
+<!-- COMPARATIVO DE DESEMPENHO — duas Análises lado a lado -->
+<div class="page" id="page-comp">
+  <div class="pg-body">
+    <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
+    <div class="pg-hdr-title">Comparativo de Desempenho</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <!-- Lado A -->
+      <div class="comp-lado" id="comp-a" style="background:var(--branco);border:1.5px solid var(--border);border-radius:10px;padding:16px">
+        <div class="blk-title">Lado A</div>
+        <div class="controles" style="margin-bottom:8px">
+          <span class="sel-lbl">Cidade:</span><select id="sel-cid-ca" onchange="buildComp('a')"><option value="">Todas</option></select>
+          <span class="sel-lbl">Setor:</span><select id="sel-set-ca" onchange="buildComp('a')"><option value="">Todos</option></select>
+          <span class="sel-lbl">Obra:</span><select id="sel-obra-ca" onchange="buildComp('a')"><option value="">Todas</option></select>
+        </div>
+        <div id="comp-kpis-a"></div>
+        <div id="comp-fluxo-a"></div>
+        <div class="chart-wrap"><canvas id="ch-comp-a" height="240"></canvas></div>
+      </div>
+      <!-- Lado B -->
+      <div class="comp-lado" id="comp-b" style="background:var(--branco);border:1.5px solid var(--border);border-radius:10px;padding:16px">
+        <div class="blk-title">Lado B</div>
+        <div class="controles" style="margin-bottom:8px">
+          <span class="sel-lbl">Cidade:</span><select id="sel-cid-cb" onchange="buildComp('b')"><option value="">Todas</option></select>
+          <span class="sel-lbl">Setor:</span><select id="sel-set-cb" onchange="buildComp('b')"><option value="">Todos</option></select>
+          <span class="sel-lbl">Obra:</span><select id="sel-obra-cb" onchange="buildComp('b')"><option value="">Todas</option></select>
+        </div>
+        <div id="comp-kpis-b"></div>
+        <div id="comp-fluxo-b"></div>
+        <div class="chart-wrap"><canvas id="ch-comp-b" height="240"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ANÁLISE DE CUSTOS -->
+<div class="page" id="page-custos">
+  <div class="pg-body">
+    <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
+    <div class="pg-hdr-title">Análise de Custos</div>
+    <div class="controles" style="margin-bottom:14px">
+      <span class="sel-lbl">Cidade:</span><select id="sel-cid-cu" onchange="buildCustos()"><option value="">Todas</option></select>
+      <span class="sel-lbl">Endereço:</span>
+      <input type="text" id="cu-end-search" placeholder="🔍 Buscar endereço..." style="padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;width:220px" oninput="buildCustos()">
+      <span class="sel-lbl">Grupo:</span><select id="sel-grupo-cu" onchange="buildCustos()"><option value="">Todos</option></select>
+      <span class="sel-lbl">Categoria:</span><select id="sel-cat-cu" onchange="buildCustos()"><option value="">Todas</option></select>
+      <span class="sel-lbl">Plano:</span><select id="sel-plano-cu" onchange="buildCustos()"><option value="">Todos</option></select>
+      <span class="sel-lbl">Fornecedor:</span><select id="sel-forn-cu" onchange="buildCustos()"><option value="">Todos</option></select>
+      <span class="sel-lbl">Proprietário:</span>
+      <select id="sel-prop-cu" onchange="buildCustos()">
+        <option value="">Todos</option><option value="morais">Morais</option><option value="invest">Investidor</option>
+      </select>
+    </div>
+    <!-- KPIs de custos -->
+    <div class="kpi-row r4" id="kpi-custos" style="margin-bottom:14px"></div>
+    <div class="kpi-row r3" id="kpi-custos2" style="margin-bottom:20px"></div>
+    <!-- Rankings -->
+    <div class="blk-title">Rankings</div>
+    <div class="rank-grid" id="rank-custos" style="grid-template-columns:1fr 1fr 1fr 1fr"></div>
+    <!-- Gráfico desembolso mensal -->
+    <div class="blk-title">Desembolso Mensal</div>
+    <div class="graf-card-full" style="margin-bottom:20px">
+      <div class="graf-body" style="padding:20px 16px">
+        <div class="chart-wrap"><canvas id="ch-desembolso" height="280"></canvas></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -686,6 +763,8 @@ function renderPagina(id){
   if(id==='metas')renderSubAtiva();
   else if(id==='prazos'){popularFiltrosTabelaPz();buildPrazos();}
   else if(id==='setor')buildSetor();
+  else if(id==='custos'){initCustosSelects();buildCustos();}
+  else if(id==='comp'){initCompSelects('a');initCompSelects('b');buildComp('a');buildComp('b');}
 }
 
 // ── UTILS ──
@@ -1121,11 +1200,37 @@ function buildDash(){
   const subTri=`Esc: ${fmtBRL(escTri)} | VGV: ${fmtBRL(vgvTri)} (${mTri.map(fmtM).join(', ')})`;
   const subAno=`Esc: ${fmtBRL(escAno)} | VGV: ${fmtBRL(vgvAno)}`;
 
+  // Melhoria 1: Alerta VGV — casas vendidas sem valor_venda_contrato
+  const semVgv=vMes.filter(v=>!v.valor_venda_contrato);
+  const alertaVgv=semVgv.length>0
+    ?`<div style="color:#c0392b;font-size:11px;font-weight:700;margin-top:4px">⚠ ${semVgv.length} venda(s) sem valor de contrato: ${semVgv.map(v=>v.endereco||'?').join(', ')}</div>`
+    :'';
+
+  // Melhoria 2: Custos separados por grupo (pagamentos_full)
+  const pFull=window._pagFull||[];
+  const gruposMes={};
+  pFull.filter(p=>p.mes===mes).forEach(p=>{
+    const u=p.cc.toUpperCase().trim();
+    const g=(p.grupo||'Sem grupo').trim();
+    if(/ESCRIT/i.test(u)){
+      gruposMes['esc_'+g]=(gruposMes['esc_'+g]||0)+p.valor;
+    } else if(u==='POS OBRA MORAIS ENGENHARIA'){
+      gruposMes['pos_'+g]=(gruposMes['pos_'+g]||0)+p.valor;
+    } else if(endD.has(normS(p.cc))){
+      gruposMes['obr_'+g]=(gruposMes['obr_'+g]||0)+p.valor;
+    }
+  });
+  // Montar sub-texto com grupos para cada KPI de custo
+  const subGrupo=(prefix)=>{
+    const gs=Object.entries(gruposMes).filter(([k])=>k.startsWith(prefix)).map(([k,v])=>`${k.split('_').slice(1).join('_')}: ${fmtBRL(v)}`);
+    return gs.length?gs.join(' · '):'';
+  };
+
   document.getElementById('kpi-fin').innerHTML=[
-    kpi('VGV Mensal',fmtBRL(vgvM),vMes.length+' venda(s)',vgvM>0?'g':''),
-    kpi('Custo Obra Mensal',fmtBRL(cO),'Pagamentos ERP — obras'),
-    kpi('Custo Escritório Mensal',fmtBRL(cE),'CCs com ESCRITÓRIO'),
-    kpi('Custo Pós Obra Mensal',fmtBRL(cP),'CCs com POS OBRA'),
+    kpi('VGV Mensal',fmtBRL(vgvM),vMes.length+' venda(s)'+alertaVgv,vgvM>0?'g':''),
+    kpi('Custo Obra Mensal',fmtBRL(cO),'Pagamentos ERP — obras'+(subGrupo('obr_')?'<br><span style="font-size:10px;color:var(--text4)">'+subGrupo('obr_')+'</span>':'')),
+    kpi('Custo Escritório Mensal',fmtBRL(cE),'CCs com ESCRITÓRIO'+(subGrupo('esc_')?'<br><span style="font-size:10px;color:var(--text4)">'+subGrupo('esc_')+'</span>':'')),
+    kpi('Custo Pós Obra Mensal',fmtBRL(cP),'CCs com POS OBRA'+(subGrupo('pos_')?'<br><span style="font-size:10px;color:var(--text4)">'+subGrupo('pos_')+'</span>':'')),
   ].join('');
   document.getElementById('kpi-rat').innerHTML=[
     kpi('Custo Escritório / VGV Trimestral',vgvTri>0?fmtN(escTri/vgvTri*100,1)+'%':'—',subTri),
@@ -1415,10 +1520,22 @@ function buildVendas(){
     <tbody>${body||'<tr><td colspan="4" style="color:var(--text4);padding:14px;text-align:center">Sem dados</td></tr>'}</tbody>
     <tfoot><tr><td>TOTAL</td><td class="nr">${tQ}</td><td class="nr">${fmtBRL(tVmao)}</td><td class="nr">${fmtBRL(tVcont)}</td></tr></tfoot>
   </table>`;
-  const rC={},rR={};
+  // Ajuste 6: Alerta VGV — casas vendidas sem valor_venda_contrato
+  const semVgvVendas=v.filter(x=>!x.valor_venda_contrato);
+  const alertaVgvVendas=semVgvVendas.length>0
+    ?`<div style="background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.3);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#c0392b">
+       <strong>⚠ ${semVgvVendas.length} venda(s) sem VALOR DE CONTRATO preenchido:</strong><br>
+       ${semVgvVendas.map(x=>`${x.endereco||'?'} casa ${x.casa||'?'}`).join(' · ')}
+     </div>`
+    :'';
+  const vgvAlert=document.getElementById('vgv-alert-vendas');
+  if(vgvAlert) vgvAlert.innerHTML=alertaVgvVendas;
+
+  const rC={},rR={},rI={};
   v.forEach(x=>{
     if(x.corretor)rC[x.corretor]=(rC[x.corretor]||0)+1;
     if(x.correspondente)rR[x.correspondente]=(rR[x.correspondente]||0)+1;
+    if(x.imobiliaria)rI[x.imobiliaria]=(rI[x.imobiliaria]||0)+1;
   });
   const sR=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]).slice(0,10);
   function rCard(t,d){
@@ -1429,7 +1546,7 @@ function buildVendas(){
         <div class="rank-qt">${q}</div></div>`).join('')||'<div style="color:var(--text4);font-size:12px;padding:12px">Sem dados</div>'}
       </div></div>`;
   }
-  document.getElementById('rankings').innerHTML=rCard('Corretores com mais vendas',sR(rC))+rCard('Correspondentes com mais vendas',sR(rR));
+  document.getElementById('rankings').innerHTML=rCard('Corretores com mais vendas',sR(rC))+rCard('Correspondentes com mais vendas',sR(rR))+rCard('Imobiliárias com mais vendas',sR(rI));
 }
 
 // ── ANÁLISE DE PRAZOS ──
@@ -1843,6 +1960,10 @@ function buildSetor(){
   if(cid)docsF=docsF.filter(d=>d.cidade===cid);
   if(set)docsF=docsF.filter(d=>d.setor===set);
   if(obrasSel)docsF=docsF.filter(d=>obrasSel.includes(d.endereco));
+  // Ajuste 9: filtro proprietário
+  const propSt=document.getElementById('sel-prop-st')?.value||'';
+  if(propSt==='morais')docsF=docsF.filter(d=>cotaM(d)>0);
+  else if(propSt==='invest')docsF=docsF.filter(d=>cotaM(d)<1);
   const enderecosSel=new Set(docsF.map(d=>normS(d.endereco)));
 
   // Pagamentos de obra (só endereços selecionados)
@@ -2156,6 +2277,7 @@ async function init(){
     metas=data.metas||[];
     pags=data.pagamentos_detalhe||{};
     fats=data.faturamentos_erp||[];
+    window._pagFull=data.pagamentos_full||[];
 
     if(data.updated_at)
       document.getElementById('updated-at').textContent=
@@ -2205,6 +2327,137 @@ async function init(){
         Erro ao carregar dados:<br><code>${e.message}</code></div>`;
   }
 }
+// ── ANÁLISE DE CUSTOS ──
+function initCustosSelects(){
+  const pF=window._pagFull||[];
+  const grupos=[...new Set(pF.map(p=>p.grupo).filter(Boolean))].sort();
+  const cats=[...new Set(pF.map(p=>p.categoria).filter(Boolean))].sort();
+  const planos=[...new Set(pF.map(p=>p.plano_de_conta).filter(Boolean))].sort();
+  const forns=[...new Set(pF.map(p=>p.fornecedor).filter(Boolean))].sort();
+  const cids=[...new Set(docs.map(d=>d.cidade).filter(Boolean))].sort();
+  const fill=(id,arr)=>{const s=document.getElementById(id);if(!s||s.children.length>1)return;arr.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
+  fill('sel-cid-cu',cids);fill('sel-grupo-cu',grupos);fill('sel-cat-cu',cats);fill('sel-plano-cu',planos);fill('sel-forn-cu',forns);
+}
+function buildCustos(){
+  const pF=window._pagFull||[];
+  const cid=document.getElementById('sel-cid-cu')?.value||'';
+  const endS=(document.getElementById('cu-end-search')?.value||'').toUpperCase();
+  const grp=document.getElementById('sel-grupo-cu')?.value||'';
+  const cat=document.getElementById('sel-cat-cu')?.value||'';
+  const pln=document.getElementById('sel-plano-cu')?.value||'';
+  const frn=document.getElementById('sel-forn-cu')?.value||'';
+  const prp=document.getElementById('sel-prop-cu')?.value||'';
+  const endD=new Set(docs.map(d=>normS(d.endereco)));
+  // Filtrar pagamentos
+  let f=pF;
+  if(cid){const endCid=new Set(docs.filter(d=>d.cidade===cid).map(d=>normS(d.endereco)));f=f.filter(p=>endCid.has(normS(p.cc)));}
+  if(endS)f=f.filter(p=>p.cc.toUpperCase().includes(endS));
+  if(grp)f=f.filter(p=>p.grupo===grp);
+  if(cat)f=f.filter(p=>p.categoria===cat);
+  if(pln)f=f.filter(p=>p.plano_de_conta===pln);
+  if(frn)f=f.filter(p=>p.fornecedor===frn);
+  if(prp==='morais'){const mEnd=new Set(docs.filter(d=>cotaM(d)>0).map(d=>normS(d.endereco)));f=f.filter(p=>mEnd.has(normS(p.cc)));}
+  else if(prp==='invest'){const iEnd=new Set(docs.filter(d=>cotaM(d)<1).map(d=>normS(d.endereco)));f=f.filter(p=>iEnd.has(normS(p.cc)));}
+  // KPIs
+  const total=f.reduce((s,p)=>s+p.valor,0);
+  const totalJM=f.reduce((s,p)=>s+(p.juros_multa||0),0);
+  // Por grupo
+  const byGrupo={};f.forEach(p=>{const g=p.grupo||'Sem grupo';byGrupo[g]=(byGrupo[g]||0)+p.valor;});
+  const grupoSub=Object.entries(byGrupo).sort((a,b)=>b[1]-a[1]).map(([g,v])=>`${g}: ${fmtBRL(v)}`).join(' · ');
+  document.getElementById('kpi-custos').innerHTML=[
+    kpi('Total Pagamentos',fmtBRL(total),f.length+' registros'),
+    kpi('Compra de Terreno',fmtBRL(byGrupo['Compra de Terreno']||0),''),
+    kpi('Mão de Obra',fmtBRL(byGrupo['Mão de Obra (Terceirizada)']||byGrupo['Mão de Obra']||0),''),
+    kpi('Materiais',fmtBRL(byGrupo['Materiais']||0),''),
+  ].join('');
+  document.getElementById('kpi-custos2').innerHTML=[
+    kpi('Outros',fmtBRL(byGrupo['Outros']||0),''),
+    kpi('Juros e Multas',fmtBRL(totalJM),totalJM>0?'Total acumulado':'Nenhum'),
+    kpi('Fornecedores',new Set(f.map(p=>p.fornecedor).filter(Boolean)).size,'únicos'),
+  ].join('');
+  // Rankings
+  const rF={},rG={},rP={},rC={};
+  f.forEach(p=>{
+    if(p.fornecedor)rF[p.fornecedor]=(rF[p.fornecedor]||0)+p.valor;
+    if(p.grupo)rG[p.grupo]=(rG[p.grupo]||0)+p.valor;
+    if(p.plano_de_conta)rP[p.plano_de_conta]=(rP[p.plano_de_conta]||0)+p.valor;
+    if(p.categoria)rC[p.categoria]=(rC[p.categoria]||0)+p.valor;
+  });
+  const top10=(o)=>Object.entries(o).sort((a,b)=>b[1]-a[1]).slice(0,10);
+  function rkCard(t,d){
+    return`<div class="rank-card"><div class="rank-hdr"><div class="rank-hdr-title">${t}</div></div>
+      <div>${d.map(([n,q],i)=>`<div class="rank-row">
+        <div class="rank-pos ${i<3?'top3':''}">${i+1}º</div>
+        <div class="rank-nome" style="font-size:11px">${n||'—'}</div>
+        <div class="rank-qt" style="font-size:11px">${fmtBRL(q)}</div></div>`).join('')||'<div style="color:var(--text4);font-size:12px;padding:12px">Sem dados</div>'}
+      </div></div>`;
+  }
+  document.getElementById('rank-custos').innerHTML=rkCard('Top Fornecedores',top10(rF))+rkCard('Top Grupos',top10(rG))+rkCard('Top Plano de Conta',top10(rP))+rkCard('Top Categorias',top10(rC));
+  // Gráfico desembolso mensal
+  const byMes={};f.forEach(p=>{if(p.mes&&p.mes!=='SEM DATA')byMes[p.mes]=(byMes[p.mes]||0)+p.valor;});
+  const meses=Object.keys(byMes).sort();
+  const vals=meses.map(m=>byMes[m]);
+  drawLines('ch-desembolso',meses.map(fmtM),[{data:vals,color:'#295778',label:'Desembolso'}],v=>fmtBRL(v));
+}
+
+// ── COMPARATIVO DE DESEMPENHO ──
+function initCompSelects(side){
+  const sfx=side==='a'?'ca':'cb';
+  const cids=[...new Set(docs.map(d=>d.cidade).filter(Boolean))].sort();
+  const fill=(id,arr)=>{const s=document.getElementById(id);if(!s||s.children.length>1)return;arr.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
+  fill('sel-cid-'+sfx,cids);
+  // Setores e obras dependem da cidade
+  const cidVal=document.getElementById('sel-cid-'+sfx)?.value||'';
+  let arr=docs;if(cidVal)arr=arr.filter(d=>d.cidade===cidVal);
+  const sets=[...new Set(arr.map(d=>d.setor).filter(Boolean))].sort();
+  const obras=[...new Set(arr.map(d=>d.endereco).filter(Boolean))].sort();
+  const sSt=document.getElementById('sel-set-'+sfx);
+  const sOb=document.getElementById('sel-obra-'+sfx);
+  if(sSt){sSt.innerHTML='<option value="">Todos</option>';sets.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sSt.appendChild(o);});}
+  if(sOb){sOb.innerHTML='<option value="">Todas</option>';obras.forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o;sOb.appendChild(op);});}
+}
+function buildComp(side){
+  const sfx=side==='a'?'ca':'cb';
+  const cid=document.getElementById('sel-cid-'+sfx)?.value||'';
+  const set=document.getElementById('sel-set-'+sfx)?.value||'';
+  const obr=document.getElementById('sel-obra-'+sfx)?.value||'';
+  let arr=docs;
+  if(cid)arr=arr.filter(d=>d.cidade===cid);
+  if(set)arr=arr.filter(d=>d.setor===set);
+  if(obr)arr=arr.filter(d=>d.endereco===obr);
+  const endSel=new Set(arr.map(d=>normS(d.endereco)));
+  // KPIs de prazos
+  const calc=(a)=>{
+    const tUS=mediaDias(a,'data_sol_uso_solo','data_emissao_uso_solo');
+    const tAl=mediaDias(a,'data_entrada_alvara','data_aprovacao_projeto');
+    const tOb=mediaDias(a.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
+    return {tUS,tAl,tOb};
+  };
+  const k=calc(arr);
+  const g=calc(docs);
+  const hasFiltro=arr.length!==docs.length;
+  const el=document.getElementById('comp-kpis-'+side);
+  if(el)el.innerHTML='<div class="kpi-row r3" style="margin-bottom:8px">'+
+    kpiCmp('Uso do Solo',k.tUS,'Solicitação → emissão',g.tUS,hasFiltro)+
+    kpiCmp('Alvará',k.tAl,'Entrada → aprovação',g.tAl,hasFiltro)+
+    kpiCmp('Obra',k.tOb,'Início → término',g.tOb,hasFiltro)+
+  '</div>';
+  // Fluxo resumido
+  const pagMes={};
+  Object.entries(pags).forEach(([cc,mp])=>{if(!endSel.has(normS(cc)))return;Object.entries(mp).forEach(([m,v])=>{if(!/^\d{4}-\d{2}$/.test(m))return;pagMes[m]=(pagMes[m]||0)+v;});});
+  const meses=Object.keys(pagMes).filter(m=>pagMes[m]>0).sort();
+  const vals=meses.map(m=>pagMes[m]);
+  const elF=document.getElementById('comp-fluxo-'+side);
+  if(elF){
+    const tot=vals.reduce((a,b)=>a+b,0);
+    elF.innerHTML=`<div style="font-size:12px;color:var(--text3);margin:8px 0">Total gastos: <strong>${fmtBRL(tot)}</strong> em ${meses.length} meses</div>`;
+  }
+  drawLinesExposicao('ch-comp-'+side,meses.map(fmtM),vals.map((v,i)=>{
+    // Exposição acumulada
+    let ac=0;for(let j=0;j<=i;j++)ac-=vals[j];return ac;
+  }));
+}
+
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',init);
 }else{

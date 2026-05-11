@@ -271,6 +271,7 @@ def buscar_erp():
         categoria_   = (row.get("categoria") or "").strip()
         plano_conta_ = (row.get("plano_de_conta") or row.get("plano de conta") or "").strip()
         fornecedor_  = (row.get("fornecedor") or "").strip()
+        juros_multa_ = row.get("valor_juros_e_multa") or row.get("valor juros e multa") or ""
         if cc and val:
             try:
                 v = float(str(val).replace(",", "."))
@@ -287,7 +288,8 @@ def buscar_erp():
                 pagamentos_full.append({
                     "cc": cc, "valor": v, "mes": mes,
                     "grupo": grupo_, "categoria": categoria_,
-                    "plano_de_conta": plano_conta_, "fornecedor": fornecedor_
+                    "plano_de_conta": plano_conta_, "fornecedor": fornecedor_,
+                    "juros_multa": float(str(juros_multa_).replace(",",".")) if juros_multa_ else 0
                 })
             except:
                 pass
