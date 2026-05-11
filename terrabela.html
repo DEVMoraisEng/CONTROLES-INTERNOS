@@ -1027,9 +1027,9 @@ th[data-key="endereco"], td.col-end { min-width: 200px !important; }
       <div class="leg-item"><div class="leg-dot" style="background:var(--cinza)"></div> Não comprado</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--amarelo)"></div> Não iniciado</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--azul-esc)"></div> Em andamento</div>
-      <div class="leg-item"><div class="leg-dot" style="background:var(--verde)"></div> Finalizado no prazo</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#1a7a42"></div> Finalizado no prazo</div>
       <div class="leg-item"><div class="leg-dot" style="background:#6fcf97"></div> Finalizado s/ prazo</div>
-      <div class="leg-item"><div class="leg-dot" style="background:var(--laranja)"></div> Acima do prazo</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--laranja)"></div> Finalizado Acima do prazo</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--vermelho)"></div> Habite-se agendado</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--roxo)"></div> Habite-se concluído</div>
     </div>
@@ -1291,33 +1291,41 @@ function docConcluido(d) {
 function calcStatusDoc(d) {
   if (!d) return 'cinza';
   // Estados avançados: verificados ANTES de checar data_aquisicao_lote
-  // (lote pode estar concluído sem data de aquisição registrada)
   if (isSim(d.aprovou_habite_se)) {
-    // Sem datas de obra mas aprovado = Finalizado sem prazo registrado
     if (!d.data_inicio_obra && !d.data_termino_obra) return 'sem_prazo';
     return 'roxo';
   }
   if (isSim(d.agendou_habite_se)) return 'vermelho';
+  // IMPLEMENTAÇÃO: OBRA FINALIZADA? = "SIM SEM PRAZO" → Finalizado s/ prazo
+  const obFin = (d.obra_finalizada || '').toUpperCase().trim();
+  if (obFin === 'SIM SEM PRAZO') return 'sem_prazo';
   if (d.data_termino_obra && d.data_inicio_obra) {
     const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
     return (dias && dias > 0) ? (dias <= 150 ? 'verde' : 'laranja') : 'azul_esc';
   }
-  if (isSim(d.obra_iniciada)) return 'azul_esc';
+  if (isSim(d.obra_iniciada) || d.obra_iniciada === 'SIM SEM PRAZO') return 'azul_esc';
   if (d.data_inicio_obra)     return 'azul_esc';
-  // Documentação concluída mesmo sem obra registrada
   if (docConcluido(d))        return 'sem_prazo';
-  // Sem data de aquisição = não comprado
   if (!d.data_aquisicao_lote) return 'cinza';
   return 'amarelo';
+}
+
+// Verifica se obra em andamento estourou o prazo de 150 dias
+function obraEstourouPrazo(d) {
+  if (!d || !d.data_inicio_obra || d.data_termino_obra) return false;
+  const status = calcStatusDoc(d);
+  if (status !== 'azul_esc') return false; // só obras em andamento
+  const dias = diffDays(d.data_inicio_obra, new Date().toISOString());
+  return dias != null && dias > 150;
 }
 
 const COR_DOCS = {
   cinza:    '#c8dde5',   // não comprado (cinza claro)
   amarelo:  '#c9a227',   // não iniciado
   azul_esc: '#1e3f58',   // em andamento
-  verde:    '#2a9d5c',   // finalizado no prazo
+  verde:    '#1a7a42',   // finalizado no prazo (verde mais escuro)
   sem_prazo:'#6fcf97',   // finalizado sem prazo registrado (verde claro)
-  laranja:  '#d46a1a',   // acima do prazo
+  laranja:  '#d46a1a',   // finalizado acima do prazo
   vermelho: '#c0392b',   // habite-se agendado
   roxo:     '#7c4daf',   // habite-se concluído
 };
@@ -1328,7 +1336,7 @@ const STATUS_DOCS_LABELS = {
   azul_esc: 'Em andamento',
   verde:    'Finalizado no prazo',
   sem_prazo:'Finalizado s/ prazo',
-  laranja:  'Acima do prazo',
+  laranja:  'Finalizado Acima do prazo',
   vermelho: 'Habite-se agendado',
   roxo:     'Habite-se concluído',
 };
@@ -1500,6 +1508,8 @@ function drawGcapAlerts(svgEl) {
 
 // ─── PINTAR MAPA ─────────────────────────────────
 function paintMap(svgEl) {
+  // Limpar alertas visuais anteriores
+  svgEl.querySelectorAll('.prazo-alert-dot').forEach(e=>e.remove());
   svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
     el.style.fill        = COR_DOCS['cinza'];
     el.style.stroke      = '#ffffff';
@@ -1525,6 +1535,21 @@ function paintMap(svgEl) {
         el.style.stroke = '#295778';
         el.style.strokeWidth = '3';
         el.style.opacity = '1';
+      }
+      // IMPLEMENTAÇÃO: bolinha vermelha para prazo estourado (>150 dias em andamento)
+      if (d && obraEstourouPrazo(d)) {
+        const bb = el.getBBox();
+        const cx = bb.x + bb.width/2, cy = bb.y + bb.height/2;
+        const r = Math.min(bb.width, bb.height) * 0.18;
+        const ns = 'http://www.w3.org/2000/svg';
+        const circ = document.createElementNS(ns, 'circle');
+        circ.setAttribute('cx', cx); circ.setAttribute('cy', cy);
+        circ.setAttribute('r', Math.max(r, 4));
+        circ.setAttribute('fill', '#c0392b');
+        circ.setAttribute('stroke', '#ffffff');
+        circ.setAttribute('stroke-width', '1.5');
+        circ.classList.add('prazo-alert-dot');
+        el.parentNode.appendChild(circ);
       }
     });
   } else {

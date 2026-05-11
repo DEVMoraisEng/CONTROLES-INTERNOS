@@ -279,10 +279,16 @@ function fmtCell(val,fmt){
 
 // ── NUMERAÇÃO POR ANO ──────────────────────────────────────────────────────
 function calcNums(data){
-  const sorted=[...data].filter(v=>v.clientes&&v.data_venda).sort((a,b)=>new Date(a.data_venda)-new Date(b.data_venda));
+  // Ordena por data_venda e numera sequencialmente por ano, reiniciando a cada ano
+  const sorted=[...data].filter(v=>v.clientes&&v.data_venda).sort((a,b)=>{
+    // Comparar strings YYYY-MM-DD diretamente (sem Date para evitar timezone)
+    return (a.data_venda||'').localeCompare(b.data_venda||'');
+  });
   const map={}, cnt={};
   sorted.forEach(v=>{
-    const ano=new Date(v.data_venda).getFullYear();
+    // Extrair ano da string diretamente (evita bug timezone)
+    const ano=parseInt((v.data_venda||'').substring(0,4));
+    if(!ano) return;
     cnt[ano]=(cnt[ano]||0)+1;
     map[v.id||v.endereco]={ano,n:cnt[ano]};
   });
@@ -456,15 +462,43 @@ function renderBody(){
   });
   const filtered=base.filter(row=>rowPassaFiltros(row,COLS,null));
   const sorted=sortData(filtered);
-  document.getElementById('tabela-body').innerHTML=sorted.map((row,i)=>`
-    <tr style="${i%2?'background:var(--bg2)':''}">
+
+  // Cores de fundo por status de alerta (Ajuste 2)
+  const COR_LINHA = {
+    'amarelo':  'rgba(201,162,39,.10)',   // >20 dias
+    'vermelho': 'rgba(192,57,43,.08)',    // >45 dias
+    'laranja':  'rgba(212,106,26,.10)',   // >45 dias s/ receber
+  };
+
+  // Helper GCAP (Ajuste 3)
+  const GCAP_OK = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  function gcapPendente(v){
+    if(!v.clientes) return false;
+    if(!isSim(v.assinou_contrato_banco)) return false;
+    const pg = String(v.gcap_pago||'').toUpperCase().trim();
+    return !GCAP_OK.has(pg);
+  }
+
+  document.getElementById('tabela-body').innerHTML=sorted.map((row,i)=>{
+    const status = calcStatus(row);
+    const bgAlerta = COR_LINHA[status] || '';
+    const bgZebra = i%2 ? 'background:var(--bg2)' : '';
+    const bgFinal = bgAlerta ? `background:${bgAlerta.replace(')','')}` : bgZebra;
+    // GCAP badge
+    const gcap = gcapPendente(row)
+      ? '<span style="display:inline-flex;align-items:center;gap:3px;background:rgba(192,57,43,.12);color:#c0392b;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;border:1px solid rgba(192,57,43,.3);margin-left:4px" title="GCAP pendente">⚠ GCAP</span>'
+      : '';
+    return `<tr style="${bgFinal}">
       ${COLS.map((col,ci)=>{
         const hid=hiddenCols.has(col.key)?'col-hidden':'';
         const st=ci===1?'col-sticky-body':'';
         if(col.key==='_num') return `<td class="${hid} col-num">${row._num||''}</td>`;
+        // Endereço (col 1 sticky) — adicionar badge GCAP
+        if(ci===1 && gcap) return `<td class="${hid} ${st}">${fmtCell(row[col.key],col.fmt)}${gcap}</td>`;
         return `<td class="${hid} ${st}">${fmtCell(row[col.key],col.fmt)}</td>`;
       }).join('')}
-    </tr>`).join('')||'<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px">Nenhum registro encontrado</td></tr>';
+    </tr>`;
+  }).join('')||'<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px">Nenhum registro encontrado</td></tr>';
   document.getElementById('tabela-titulo').textContent=`Gestão de Vendas — Todos os Setores (${sorted.length})`;
   _filteredData=sorted;
 }

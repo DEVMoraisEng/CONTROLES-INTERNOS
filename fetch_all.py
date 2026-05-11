@@ -104,6 +104,7 @@ def parse_doc(page):
         "engenheiro_rt":            s("ENGENHEIRO RT"),
         "previsao_inicio_obra":     d("PREVISÃO DE INÍCIO DE OBRA"),
         "obra_iniciada":            s("OBRA INCIADA") or prop_status(get_prop(p, "OBRA INCIADA")) or ("SIM" if prop_checkbox(get_prop(p, "OBRA INCIADA")) else None),
+        "obra_finalizada":          s("OBRA FINALIZADA?") or prop_status(get_prop(p, "OBRA FINALIZADA?")) or t("OBRA FINALIZADA?"),
         "data_inicio_obra":         d("DATA DE INÍCIO DA OBRA"),
         "uso_solo_solicitado":      s("USO DO SOLO SOLICITADO"),
         "data_sol_uso_solo":        d("DATA DE SOLICITAÇÃO USO DO SOLO"),
@@ -170,8 +171,9 @@ def parse_venda(page):
         "clientes":                 t("CLIENTES"),
         "data_venda":               d("DATA DA VENDA"),
         "cpf":                      t("CPF"),
-        "correspondente":           t("CORRESPONDENTE"),
-        "corretor":                 t("CORRETOR"),
+        "correspondente":           s("CORRESPONDENTE") or t("CORRESPONDENTE"),
+        "corretor":                 s("CORRETOR") or t("CORRETOR"),
+        "imobiliaria":              s("IMOBILIÁRIA") or s("IMOBILIARIA"),
         "avaliacao":                n("AVALIAÇÃO"),
         "validade":                 d("VALIDADE"),
         "valor_na_mao":             n("VALOR NA MÃO"),
@@ -260,10 +262,15 @@ def buscar_erp():
     print("  ERP: buscando pagamentos...")
     import re as _re2
     pagos_detalhe = {}  # { obra_upper: { 'YYYY-MM': soma } }
+    pagamentos_full = []  # lista com todos os campos para Análise de Custos
     for row in erp_csv(ERP_CSV_PAGAMENTOS, "pagamentos"):
         cc  = (row.get("centro_de_custo") or row.get("obra") or row.get("descricao") or "").strip().upper()
         val = row.get("valor_pago")
         dt  = row.get("data_pagamento") or ""
+        grupo_       = (row.get("grupo") or "").strip()
+        categoria_   = (row.get("categoria") or "").strip()
+        plano_conta_ = (row.get("plano_de_conta") or row.get("plano de conta") or "").strip()
+        fornecedor_  = (row.get("fornecedor") or "").strip()
         if cc and val:
             try:
                 v = float(str(val).replace(",", "."))
@@ -277,13 +284,18 @@ def buscar_erp():
                 if cc not in pagos_detalhe:
                     pagos_detalhe[cc] = {}
                 pagos_detalhe[cc][mes] = pagos_detalhe[cc].get(mes, 0) + v
+                pagamentos_full.append({
+                    "cc": cc, "valor": v, "mes": mes,
+                    "grupo": grupo_, "categoria": categoria_,
+                    "plano_de_conta": plano_conta_, "fornecedor": fornecedor_
+                })
             except:
                 pass
 
-    print(f"  ERP: {len(orcados)} obras, {len(pagos)} centros de custo")
+    print(f"  ERP: {len(orcados)} obras, {len(pagos)} centros de custo, {len(pagamentos_full)} linhas detalhadas")
     if orcados: print("  Propostas ex:", list(orcados.keys())[:3])
     if pagos:   print("  Pagamentos ex:", list(pagos.keys())[:3])
-    return orcados, pagos, pagos_detalhe
+    return orcados, pagos, pagos_detalhe, pagamentos_full
 
 
 def buscar_obras_erp():
@@ -456,7 +468,7 @@ def main():
     vendas = [parse_venda(p) for p in pages_vendas]
 
     print("Buscando ERP (pagamentos)...")
-    orcados, pagos, pagos_detalhe = buscar_erp()
+    orcados, pagos, pagos_detalhe, pagamentos_full = buscar_erp()
 
     print("Buscando ERP (obras)...")
     obras_erp = buscar_obras_erp()
@@ -516,6 +528,7 @@ def main():
         "documentos":         documentos,
         "vendas":             vendas,
         "pagamentos_detalhe": {k: v for k, v in pagos_detalhe.items()},
+        "pagamentos_full":   pagamentos_full,   # lista [{cc, valor, mes, grupo, categoria, plano_de_conta, fornecedor}]
         "obras_erp":          obras_erp,          # { nome_upper: area_total }
         "faturamentos_erp":   faturamentos_erp,   # lista [{cc, valor, mes}]
         "fat_por_tipo":       fat_por_tipo,        # { tipo: { mes: valor } }
