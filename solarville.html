@@ -1010,7 +1010,11 @@ th[data-key="endereco"], td.col-end { min-width: 200px !important; }
   </div>
 </header>
 
-<!-- sem toggle — apenas vendas -->
+<!-- TOGGLE MODO -->
+<div class="toggle-wrap">
+  <button class="toggle-btn active" id="btn-docs"   onclick="setModo('docs')">⬡ Gestão Documental</button>
+  <button class="toggle-btn"        id="btn-vendas" onclick="setModo('vendas')">◈ Gestão de Vendas</button>
+</div>
 
 <!-- MAIN: MAPA + LATERAL -->
 <div class="main">
@@ -1019,7 +1023,7 @@ th[data-key="endereco"], td.col-end { min-width: 200px !important; }
   <div class="mapa-card">
     <div id="svg-container"><!-- SVG via JS --></div>
     <!-- Legenda docs -->
-    <div class="legenda" id="legenda-docs" style="display:none">
+    <div class="legenda" id="legenda-docs">
       <div class="leg-item"><div class="leg-dot" style="background:var(--cinza)"></div> Não comprado</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--amarelo)"></div> Não iniciado</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--azul-esc)"></div> Em andamento</div>
@@ -1030,7 +1034,7 @@ th[data-key="endereco"], td.col-end { min-width: 200px !important; }
       <div class="leg-item"><div class="leg-dot" style="background:var(--roxo)"></div> Habite-se concluído</div>
     </div>
     <!-- Legenda vendas -->
-    <div class="legenda" id="legenda-vendas">
+    <div class="legenda" id="legenda-vendas" style="display:none">
       <div class="leg-item"><div class="leg-dot" style="background:var(--v-cinza)"></div> Em breve</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--v-azul)"></div> Disponível</div>
       <div class="leg-item"><div class="leg-dot" style="background:var(--v-verde)"></div> Vendida</div>
@@ -1097,11 +1101,11 @@ th[data-key="endereco"], td.col-end { min-width: 200px !important; }
 const DATA_URL        = 'data.json';
 const SETOR_VEND      = 'SOLAR VILLE';
 const REF_PREFIX_DOCS = '';  // sem mapa docs
-const SVG_DOCS        = null;  // sem mapa docs
-const SVG_VENDAS      = 'SOLAR_VILLE.svg';
+const SVG_DOCS        = 'SOLAR_VILLE_DOCS.svg';  // sem mapa docs
+const SVG_VENDAS      = 'SOLAR_VILLE_VENDAS.svg';
 
 // ─── ESTADO ──────────────────────────────────────
-let modo        = 'vendas';
+let modo        = 'docs';
 let allDocs     = [];
 let allVendas   = [];
 let svgCache    = {};
@@ -1417,8 +1421,7 @@ async function loadSVG(url) {
 }
 
 async function renderMapa() {
-  // apenas modo vendas nesta página
-  const url = SVG_VENDAS;
+  const url = modo === 'docs' ? SVG_DOCS : SVG_VENDAS;
   const container = document.getElementById('svg-container');
   container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:300px;color:#8aacbb;font-size:12px">Carregando mapa...</div>';
   const svgText = await loadSVG(url);
@@ -2106,7 +2109,6 @@ function pesqSelect(item) {
 
 // ─── MODO ─────────────────────────────────────────
 function setModo(m) {
-  if (m === 'docs') return; // sem mapa docs nesta página
   if (modo === m) return;
   modo = m;
   activeStatusFilters.clear();
