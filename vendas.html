@@ -485,13 +485,22 @@ function renderBody(){
     'laranja':  'rgba(212,106,26,.10)',   // >45 dias s/ receber
   };
 
-  // Helper GCAP (Ajuste 3)
+  // Helper GCAP
   const GCAP_OK = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
   function gcapPendente(v){
     if(!v.clientes) return false;
     if(!isSim(v.assinou_contrato_banco)) return false;
     const pg = String(v.gcap_pago||'').toUpperCase().trim();
     return !GCAP_OK.has(pg);
+  }
+  // Calcula data limite do GCAP (último dia útil do mês seguinte à assinatura)
+  function gcapDataFinal(v){
+    if(!v.data_assinatura) return 'Preencher data de assinatura';
+    const [y,m]=v.data_assinatura.split('-').map(Number);
+    let ny=y,nm=m+1;if(nm>12){nm=1;ny++;}
+    let ultimo=new Date(ny,nm,0);
+    while(ultimo.getDay()===0||ultimo.getDay()===6)ultimo.setDate(ultimo.getDate()-1);
+    return 'Data limite: '+String(ultimo.getDate()).padStart(2,'0')+'/'+String(ultimo.getMonth()+1).padStart(2,'0')+'/'+ultimo.getFullYear();
   }
 
   document.getElementById('tabela-body').innerHTML=sorted.map((row,i)=>{
@@ -501,7 +510,7 @@ function renderBody(){
     const bgFinal = bgAlerta ? `background:${bgAlerta.replace(')','')}` : bgZebra;
     // GCAP badge
     const gcap = gcapPendente(row)
-      ? '<span style="display:inline-flex;align-items:center;gap:3px;background:rgba(192,57,43,.12);color:#c0392b;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;border:1px solid rgba(192,57,43,.3);margin-left:4px" title="GCAP pendente">⚠ GCAP</span>'
+      ? '<span style="display:inline-flex;align-items:center;gap:3px;background:rgba(192,57,43,.12);color:#c0392b;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;border:1px solid rgba(192,57,43,.3);margin-left:4px;cursor:help" title="GCAP pendente — '+gcapDataFinal(row)+'">⚠ GCAP</span>'
       : '';
     return `<tr style="${bgFinal}">
       ${COLS.map((col,ci)=>{

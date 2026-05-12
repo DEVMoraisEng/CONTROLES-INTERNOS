@@ -46,7 +46,7 @@ body{background:var(--bg);font-family:'Barlow',sans-serif;min-height:100vh;
       border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .main-wrap{flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.page{display:none;flex:1;min-height:0;overflow:hidden}
+.page{display:none;flex:1;min-height:0;overflow-y:auto;flex-direction:column}
 .page.active{display:flex}
 /* Modo standalone — scroll normal quando aberto direto */
 body.standalone{overflow-y:auto}
@@ -215,10 +215,11 @@ tfoot td:last-child{border-right:none}
 /* PRAZOS + SETORIZADAS — páginas de coluna única */
 #page-prazos,#page-setor{flex-direction:column;overflow:hidden}
 .pg-hdr{background:var(--azul-esc);border-bottom:2px solid rgba(143,220,210,.2);
-        padding:14px 28px;display:flex;align-items:center;gap:14px}
+        padding:14px 28px;display:flex;align-items:center;gap:14px;
+        position:sticky;top:0;z-index:10;flex-shrink:0}
 .pg-hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;
               font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.06em;flex:1}
-.pg-body{flex:1;padding:24px 28px 40px;overflow-y:auto}
+.pg-body{flex:1;padding:24px 28px 40px}
 
 /* Comparativo de barras horizontal */
 .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
@@ -2604,12 +2605,16 @@ function renderCompDrop(side,q){
   const dd=document.getElementById('comp-drop-'+side);if(!dd)return;
   const lista=q?compObrasLista[side].filter(o=>o.toLowerCase().includes(q)):compObrasLista[side];
   if(!lista.length){dd.innerHTML='<div style="padding:10px 14px;color:var(--text4);font-size:12px">Nenhuma obra encontrada</div>';return;}
-  dd.innerHTML='<div class="obra-check-item" onclick="toggleCompTodas(''+side+'')">'+
+  let html='<div class="obra-check-item" onclick="toggleCompTodas(\''+side+'\')">'+
     '<input type="checkbox" '+(compObrasSel[side].size===0?'checked':'')+'>'+
-    '<span style="font-weight:700">Todas</span></div>'+
-    lista.map(o=>'<div class="obra-check-item" onclick="toggleCompObra(''+side+'',''+o.replace(/'/g,"\'")+'')">' +
-      '<input type="checkbox" '+(compObrasSel[side].has(o)?'checked':'')+'>' +
-      '<span>'+o+'</span></div>').join('');
+    '<span style="font-weight:700">Todas</span></div>';
+  lista.forEach(function(o){
+    const esc=o.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    html+='<div class="obra-check-item" onclick="toggleCompObra(\''+side+'\',\''+esc+'\')">'+
+      '<input type="checkbox" '+(compObrasSel[side].has(o)?'checked':'')+'>'+
+      '<span>'+o+'</span></div>';
+  });
+  dd.innerHTML=html;
 }
 
 function toggleCompObra(side,o){
@@ -2630,9 +2635,12 @@ function toggleCompTodas(side){
 function renderCompTags(side){
   const wrap=document.getElementById('comp-tags-'+side);if(!wrap)return;
   if(!compObrasSel[side].size){wrap.innerHTML='<span style="font-size:10px;color:var(--text4)">Todas as obras</span>';return;}
-  wrap.innerHTML=[...compObrasSel[side]].map(o=>
-    '<div class="obra-tag">'+o+'<span class="obra-tag-x" onclick="toggleCompObra(''+side+'',''+o.replace(/'/g,"\'")+'')">\u00d7</span></div>'
-  ).join('');
+  let html='';
+  compObrasSel[side].forEach(function(o){
+    const esc=o.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    html+='<div class="obra-tag">'+o+'<span class="obra-tag-x" onclick="toggleCompObra(\''+side+'\',\''+esc+'\')">×</span></div>';
+  });
+  wrap.innerHTML=html;
 }
 
 function abrirCompDrop(side){
