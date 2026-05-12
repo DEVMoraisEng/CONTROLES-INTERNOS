@@ -505,11 +505,19 @@ tfoot td:last-child{border-right:none}
   <div class="pg-body">
     <div class="controles">
       <span class="sel-lbl">Cidade:</span>
-      <select id="sel-cid-pz" onchange="buildPrazos()"><option value="">Todas</option></select>
+      <select id="sel-cid-pz" onchange="popularObrasPzTop();buildPrazos()"><option value="">Todas</option></select>
       <span class="sel-lbl">Setor:</span>
-      <select id="sel-set-pz" onchange="buildPrazos()"><option value="">Todos</option></select>
+      <select id="sel-set-pz" onchange="popularObrasPzTop();buildPrazos()"><option value="">Todos</option></select>
       <span class="sel-lbl">Obra:</span>
-      <select id="sel-obra-pz" onchange="buildPrazos()"><option value="">Todas</option></select>
+      <div style="position:relative;display:inline-block">
+        <input type="text" id="pz-obra-input" placeholder="🔍 Digite para buscar..." autocomplete="off"
+          style="padding:7px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;width:240px;background:var(--branco)"
+          oninput="filtrarObrasPzTop()" onfocus="abrirDropObrasPzTop()">
+        <div id="pz-obra-drop" style="display:none;position:absolute;top:100%;left:0;z-index:200;
+          background:var(--branco);border:1.5px solid var(--border);border-radius:8px;
+          box-shadow:0 6px 24px rgba(0,0,0,.12);max-height:260px;overflow-y:auto;min-width:260px;padding:6px 0;margin-top:4px"></div>
+        <div id="pz-obra-tag" style="margin-top:4px;font-size:12px;color:var(--azul);font-weight:600"></div>
+      </div>
     </div>
 
     <div class="blk-title">Tempos Médios de Processo</div>
@@ -624,35 +632,53 @@ tfoot td:last-child{border-right:none}
   </div>
 </div>
 
-<!-- COMPARATIVO DE DESEMPENHO — duas Análises lado a lado -->
+<!-- COMPARATIVO DE DESEMPENHO — réplica da Análise de Desempenho lado a lado -->
 <div class="page" id="page-comp">
-  <div class="pg-body">
+  <div class="pg-hdr">
     <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
     <div class="pg-hdr-title">Comparativo de Desempenho</div>
+  </div>
+  <div class="pg-body">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-      <!-- Lado A -->
-      <div class="comp-lado" id="comp-a" style="background:var(--branco);border:1.5px solid var(--border);border-radius:10px;padding:16px">
-        <div class="blk-title">Lado A</div>
-        <div class="controles" style="margin-bottom:8px">
-          <span class="sel-lbl">Cidade:</span><select id="sel-cid-ca" onchange="buildComp('a')"><option value="">Todas</option></select>
-          <span class="sel-lbl">Setor:</span><select id="sel-set-ca" onchange="buildComp('a')"><option value="">Todos</option></select>
+      <!-- LADO A -->
+      <div style="background:var(--branco);border:1.5px solid var(--border);border-radius:10px;padding:16px;overflow:hidden">
+        <div class="blk-title" style="background:rgba(41,87,120,.1)">LADO A</div>
+        <div class="controles" style="margin-bottom:10px;flex-wrap:wrap">
+          <span class="sel-lbl">Cidade:</span><select id="sel-cid-ca" onchange="initCompObras('a');buildComp('a')"><option value="">Todas</option></select>
+          <span class="sel-lbl">Setor:</span><select id="sel-set-ca" onchange="initCompObras('a');buildComp('a')"><option value="">Todos</option></select>
           <span class="sel-lbl">Obra:</span><select id="sel-obra-ca" onchange="buildComp('a')"><option value="">Todas</option></select>
         </div>
-        <div id="comp-kpis-a"></div>
-        <div id="comp-fluxo-a"></div>
-        <div class="chart-wrap"><canvas id="ch-comp-a" height="240"></canvas></div>
+        <div class="blk-title">Resultado Financeiro</div>
+        <div class="roi-grid" id="comp-roi1-a"></div>
+        <div class="roi-grid" id="comp-roi2-a"></div>
+        <div class="blk-title">Fluxo de Caixa Mensal</div>
+        <div class="exp-table-wrap" id="comp-tbl-a" style="max-height:300px;overflow-y:auto"></div>
+        <div class="blk-title">Exposição de Caixa</div>
+        <div class="graf-card-full"><div class="graf-body" style="padding:12px 8px"><div class="chart-wrap"><canvas id="ch-comp-a" height="260"></canvas></div></div></div>
+        <div class="blk-title">Tempos Médios</div>
+        <div class="kpi-row r3" id="comp-pz1-a" style="margin-bottom:6px"></div>
+        <div class="kpi-row r3" id="comp-pz2-a" style="margin-bottom:6px"></div>
+        <div class="kpi-row r2" id="comp-pz3-a"></div>
       </div>
-      <!-- Lado B -->
-      <div class="comp-lado" id="comp-b" style="background:var(--branco);border:1.5px solid var(--border);border-radius:10px;padding:16px">
-        <div class="blk-title">Lado B</div>
-        <div class="controles" style="margin-bottom:8px">
-          <span class="sel-lbl">Cidade:</span><select id="sel-cid-cb" onchange="buildComp('b')"><option value="">Todas</option></select>
-          <span class="sel-lbl">Setor:</span><select id="sel-set-cb" onchange="buildComp('b')"><option value="">Todos</option></select>
+      <!-- LADO B -->
+      <div style="background:var(--branco);border:1.5px solid var(--border);border-radius:10px;padding:16px;overflow:hidden">
+        <div class="blk-title" style="background:rgba(143,220,210,.15)">LADO B</div>
+        <div class="controles" style="margin-bottom:10px;flex-wrap:wrap">
+          <span class="sel-lbl">Cidade:</span><select id="sel-cid-cb" onchange="initCompObras('b');buildComp('b')"><option value="">Todas</option></select>
+          <span class="sel-lbl">Setor:</span><select id="sel-set-cb" onchange="initCompObras('b');buildComp('b')"><option value="">Todos</option></select>
           <span class="sel-lbl">Obra:</span><select id="sel-obra-cb" onchange="buildComp('b')"><option value="">Todas</option></select>
         </div>
-        <div id="comp-kpis-b"></div>
-        <div id="comp-fluxo-b"></div>
-        <div class="chart-wrap"><canvas id="ch-comp-b" height="240"></canvas></div>
+        <div class="blk-title">Resultado Financeiro</div>
+        <div class="roi-grid" id="comp-roi1-b"></div>
+        <div class="roi-grid" id="comp-roi2-b"></div>
+        <div class="blk-title">Fluxo de Caixa Mensal</div>
+        <div class="exp-table-wrap" id="comp-tbl-b" style="max-height:300px;overflow-y:auto"></div>
+        <div class="blk-title">Exposição de Caixa</div>
+        <div class="graf-card-full"><div class="graf-body" style="padding:12px 8px"><div class="chart-wrap"><canvas id="ch-comp-b" height="260"></canvas></div></div></div>
+        <div class="blk-title">Tempos Médios</div>
+        <div class="kpi-row r3" id="comp-pz1-b" style="margin-bottom:6px"></div>
+        <div class="kpi-row r3" id="comp-pz2-b" style="margin-bottom:6px"></div>
+        <div class="kpi-row r2" id="comp-pz3-b"></div>
       </div>
     </div>
   </div>
@@ -660,10 +686,21 @@ tfoot td:last-child{border-right:none}
 
 <!-- ANÁLISE DE CUSTOS -->
 <div class="page" id="page-custos">
-  <div class="pg-body">
+  <div class="pg-hdr">
     <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
     <div class="pg-hdr-title">Análise de Custos</div>
-    <div class="controles" style="margin-bottom:14px">
+  </div>
+  <div class="pg-body">
+    <div class="controles" style="margin-bottom:14px;flex-wrap:wrap">
+      <span class="sel-lbl">Ano:</span><select id="sel-ano-cu" onchange="buildCustos()"></select>
+      <span class="sel-lbl">Período:</span>
+      <select id="sel-per-cu" onchange="buildCustos()">
+        <option value="ano">Ano completo</option>
+        <option value="tri">Último trimestre</option>
+        <option value="sem">Último semestre</option>
+        <option value="mes">Mês específico</option>
+      </select>
+      <span class="sel-lbl">Mês:</span><select id="sel-mes-cu" onchange="buildCustos()"><option value="">Todos</option></select>
       <span class="sel-lbl">Cidade:</span><select id="sel-cid-cu" onchange="buildCustos()"><option value="">Todas</option></select>
       <span class="sel-lbl">Endereço:</span>
       <input type="text" id="cu-end-search" placeholder="🔍 Buscar endereço..." style="padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;width:220px" oninput="buildCustos()">
@@ -764,7 +801,7 @@ function renderPagina(id){
   else if(id==='prazos'){popularFiltrosTabelaPz();buildPrazos();}
   else if(id==='setor')buildSetor();
   else if(id==='custos'){initCustosSelects();buildCustos();}
-  else if(id==='comp'){initCompSelects('a');initCompSelects('b');buildComp('a');buildComp('b');}
+  else if(id==='comp'){initCompObras('a');initCompObras('b');buildComp('a');buildComp('b');}
 }
 
 // ── UTILS ──
@@ -1048,7 +1085,7 @@ function drawLinesExposicao(id,labels,valores){
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,n=labels.length;if(!n)return;
   // Padding mais generoso: topo p/ legenda, esquerda p/ valores em BRL
-  const P={t:48,r:24,b:48,l:110},cW=W-P.l-P.r,cH=H-P.t-P.b;
+  const P={t:48,r:24,b:48,l:140},cW=W-P.l-P.r,cH=H-P.t-P.b;
   const minV=Math.min(...valores,0),maxV=Math.max(...valores,0.01);
   const range=Math.max(Math.abs(maxV),Math.abs(minV))||1;
   const pad=range*0.18;
@@ -1549,11 +1586,73 @@ function buildVendas(){
   document.getElementById('rankings').innerHTML=rCard('Corretores com mais vendas',sR(rC))+rCard('Correspondentes com mais vendas',sR(rR))+rCard('Imobiliárias com mais vendas',sR(rI));
 }
 
+// ── BUSCA DE OBRA NOS KPIs DE PRAZOS (topo) ──
+let _obraPzSel = '';  // obra selecionada nos KPIs de prazos
+
+function popularObrasPzTop(){
+  _obraPzSel = '';
+  document.getElementById('pz-obra-input').value = '';
+  document.getElementById('pz-obra-tag').textContent = '';
+  filtrarObrasPzTop();
+}
+
+function filtrarObrasPzTop(){
+  const q = (document.getElementById('pz-obra-input')?.value||'').toUpperCase();
+  const cid = document.getElementById('sel-cid-pz')?.value||'';
+  const set = document.getElementById('sel-set-pz')?.value||'';
+  let arr = docs;
+  if(cid) arr = arr.filter(d=>d.cidade===cid);
+  if(set) arr = arr.filter(d=>d.setor===set);
+  const obras = [...new Set(arr.map(d=>d.endereco).filter(Boolean))].sort();
+  const filtradas = q ? obras.filter(o=>o.toUpperCase().includes(q)) : obras;
+  const drop = document.getElementById('pz-obra-drop');
+  if(!drop) return;
+  if(!filtradas.length){ drop.innerHTML='<div style="padding:10px;color:var(--text4);font-size:12px">Nenhum endereço</div>'; return; }
+  drop.innerHTML = filtradas.map(o=>`
+    <div onclick="selecionarObraPzTop('${o.replace(/'/g,"\\'")}');event.stopPropagation()"
+      style="padding:7px 14px;font-size:12px;cursor:pointer;background:${_obraPzSel===o?'var(--bg3)':'transparent'}"
+      onmouseenter="this.style.background='var(--bg3)'" onmouseleave="this.style.background='${_obraPzSel===o?'var(--bg3)':'transparent'}'">
+      ${o}
+    </div>`).join('');
+}
+
+function selecionarObraPzTop(obra){
+  _obraPzSel = obra;
+  const inp = document.getElementById('pz-obra-input');
+  if(inp) inp.value = obra;
+  const tag = document.getElementById('pz-obra-tag');
+  if(tag) tag.innerHTML = obra ? `<span style="cursor:pointer" onclick="limparObraPzTop()">✕ ${obra}</span>` : '';
+  document.getElementById('pz-obra-drop').style.display = 'none';
+  buildPrazos();
+}
+
+function limparObraPzTop(){
+  _obraPzSel = '';
+  const inp = document.getElementById('pz-obra-input');
+  if(inp) inp.value = '';
+  const tag = document.getElementById('pz-obra-tag');
+  if(tag) tag.textContent = '';
+  buildPrazos();
+}
+
+function abrirDropObrasPzTop(){
+  filtrarObrasPzTop();
+  const drop = document.getElementById('pz-obra-drop');
+  if(drop) drop.style.display = 'block';
+  setTimeout(()=>document.addEventListener('click', fecharDropPzTop, {once:true}), 100);
+}
+
+function fecharDropPzTop(e){
+  const drop = document.getElementById('pz-obra-drop');
+  if(drop && !drop.contains(e.target)) drop.style.display = 'none';
+}
+
 // ── ANÁLISE DE PRAZOS ──
 function filtrarDocsPrazos(){
   const cid=document.getElementById('sel-cid-pz')?.value||'';
   const set=document.getElementById('sel-set-pz')?.value||'';
-  const obra=document.getElementById('sel-obra-pz')?.value||'';
+  // Obra agora vem do input de busca
+  const obra=_obraPzSel||document.getElementById('sel-obra-pz')?.value||'';
   let arr=docs;
   if(cid)arr=arr.filter(d=>d.cidade===cid);
   if(set)arr=arr.filter(d=>d.setor===set);
@@ -1595,7 +1694,7 @@ function buildPrazos(){
   const hasFiltro =
     !!document.getElementById('sel-cid-pz')?.value ||
     !!document.getElementById('sel-set-pz')?.value ||
-    !!document.getElementById('sel-obra-pz')?.value;
+    !!_obraPzSel;
 
   const calcularKpis = (a) => {
     const tUS=mediaDias(a,'data_sol_uso_solo','data_emissao_uso_solo');
@@ -2134,7 +2233,8 @@ function buildSetor(){
   buildPrazosSelecao(docsF);
 }
 
-function buildPrazosSelecao(arr){
+function buildPrazosSelecao(arr, id1, id2, id3){
+  const _id1=id1||'kpi-st-t1', _id2=id2||'kpi-st-t2', _id3=id3||'kpi-st-t3';
   const tempoObraParcial = (a)=>{
     const hoje = new Date().toISOString().slice(0,10);
     const dias = a.filter(d=>d.data_inicio_obra && !d.data_termino_obra)
@@ -2172,9 +2272,9 @@ function buildPrazosSelecao(arr){
   const g = calc(docs);   // média global de TODOS os documentos
   const hasFiltro = arr.length !== docs.length;
 
-  const e1=document.getElementById('kpi-st-t1');
-  const e2=document.getElementById('kpi-st-t2');
-  const e3=document.getElementById('kpi-st-t3');
+  const e1=document.getElementById(_id1);
+  const e2=document.getElementById(_id2);
+  const e3=document.getElementById(_id3);
   if(!e1||!e2||!e3) return;
   e1.innerHTML=[
     kpiCmp('Uso do Solo',  k.tUS, 'Solicitação → emissão',  g.tUS, hasFiltro),
@@ -2335,11 +2435,21 @@ function initCustosSelects(){
   const planos=[...new Set(pF.map(p=>p.plano_de_conta).filter(Boolean))].sort();
   const forns=[...new Set(pF.map(p=>p.fornecedor).filter(Boolean))].sort();
   const cids=[...new Set(docs.map(d=>d.cidade).filter(Boolean))].sort();
-  const fill=(id,arr)=>{const s=document.getElementById(id);if(!s||s.children.length>1)return;arr.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
+  const anos=[...new Set(pF.map(p=>p.mes?.slice(0,4)).filter(Boolean))].sort();
+  const mesesAll=[...new Set(pF.map(p=>p.mes).filter(m=>m&&m!=='SEM DATA'))].sort();
+  const fill=(id,arr,fmt)=>{const s=document.getElementById(id);if(!s||s.children.length>1)return;arr.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=fmt?fmt(v):v;s.appendChild(o);});};
   fill('sel-cid-cu',cids);fill('sel-grupo-cu',grupos);fill('sel-cat-cu',cats);fill('sel-plano-cu',planos);fill('sel-forn-cu',forns);
+  fill('sel-ano-cu',anos);
+  fill('sel-mes-cu',mesesAll,fmtM);
+  // Default: ano atual
+  const sA=document.getElementById('sel-ano-cu');
+  if(sA){const y=String(new Date().getFullYear());if([...sA.options].some(o=>o.value===y))sA.value=y;}
 }
 function buildCustos(){
   const pF=window._pagFull||[];
+  const anoSel=document.getElementById('sel-ano-cu')?.value||'';
+  const perSel=document.getElementById('sel-per-cu')?.value||'ano';
+  const mesSel=document.getElementById('sel-mes-cu')?.value||'';
   const cid=document.getElementById('sel-cid-cu')?.value||'';
   const endS=(document.getElementById('cu-end-search')?.value||'').toUpperCase();
   const grp=document.getElementById('sel-grupo-cu')?.value||'';
@@ -2348,8 +2458,28 @@ function buildCustos(){
   const frn=document.getElementById('sel-forn-cu')?.value||'';
   const prp=document.getElementById('sel-prop-cu')?.value||'';
   const endD=new Set(docs.map(d=>normS(d.endereco)));
-  // Filtrar pagamentos
+
+  // Filtrar por período
+  let mesesPermitidos=null;
+  if(perSel==='mes'&&mesSel){
+    mesesPermitidos=new Set([mesSel]);
+  } else if(anoSel){
+    const ms12=Array.from({length:12},(_,i)=>`${anoSel}-${String(i+1).padStart(2,'0')}`);
+    if(perSel==='tri'){
+      const hoje=new Date();const n=3;const ml=[];
+      for(let i=n-1;i>=0;i--){const d=new Date(hoje.getFullYear(),hoje.getMonth()-i,1);ml.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`);}
+      mesesPermitidos=new Set(ml);
+    } else if(perSel==='sem'){
+      const hoje=new Date();const n=6;const ml=[];
+      for(let i=n-1;i>=0;i--){const d=new Date(hoje.getFullYear(),hoje.getMonth()-i,1);ml.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`);}
+      mesesPermitidos=new Set(ml);
+    } else {
+      mesesPermitidos=new Set(ms12);
+    }
+  }
+
   let f=pF;
+  if(mesesPermitidos)f=f.filter(p=>mesesPermitidos.has(p.mes));
   if(cid){const endCid=new Set(docs.filter(d=>d.cidade===cid).map(d=>normS(d.endereco)));f=f.filter(p=>endCid.has(normS(p.cc)));}
   if(endS)f=f.filter(p=>p.cc.toUpperCase().includes(endS));
   if(grp)f=f.filter(p=>p.grupo===grp);
@@ -2401,19 +2531,20 @@ function buildCustos(){
 }
 
 // ── COMPARATIVO DE DESEMPENHO ──
-function initCompSelects(side){
+function initCompObras(side){
   const sfx=side==='a'?'ca':'cb';
   const cids=[...new Set(docs.map(d=>d.cidade).filter(Boolean))].sort();
   const fill=(id,arr)=>{const s=document.getElementById(id);if(!s||s.children.length>1)return;arr.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
   fill('sel-cid-'+sfx,cids);
-  // Setores e obras dependem da cidade
   const cidVal=document.getElementById('sel-cid-'+sfx)?.value||'';
   let arr=docs;if(cidVal)arr=arr.filter(d=>d.cidade===cidVal);
+  const setVal=document.getElementById('sel-set-'+sfx)?.value||'';
+  if(setVal)arr=arr.filter(d=>d.setor===setVal);
   const sets=[...new Set(arr.map(d=>d.setor).filter(Boolean))].sort();
   const obras=[...new Set(arr.map(d=>d.endereco).filter(Boolean))].sort();
   const sSt=document.getElementById('sel-set-'+sfx);
   const sOb=document.getElementById('sel-obra-'+sfx);
-  if(sSt){sSt.innerHTML='<option value="">Todos</option>';sets.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sSt.appendChild(o);});}
+  if(sSt){const cv=sSt.value;sSt.innerHTML='<option value="">Todos</option>';sets.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sSt.appendChild(o);});sSt.value=cv;}
   if(sOb){sOb.innerHTML='<option value="">Todas</option>';obras.forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o;sOb.appendChild(op);});}
 }
 function buildComp(side){
@@ -2421,41 +2552,75 @@ function buildComp(side){
   const cid=document.getElementById('sel-cid-'+sfx)?.value||'';
   const set=document.getElementById('sel-set-'+sfx)?.value||'';
   const obr=document.getElementById('sel-obra-'+sfx)?.value||'';
-  let arr=docs;
-  if(cid)arr=arr.filter(d=>d.cidade===cid);
-  if(set)arr=arr.filter(d=>d.setor===set);
-  if(obr)arr=arr.filter(d=>d.endereco===obr);
-  const endSel=new Set(arr.map(d=>normS(d.endereco)));
-  // KPIs de prazos
-  const calc=(a)=>{
-    const tUS=mediaDias(a,'data_sol_uso_solo','data_emissao_uso_solo');
-    const tAl=mediaDias(a,'data_entrada_alvara','data_aprovacao_projeto');
-    const tOb=mediaDias(a.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
-    return {tUS,tAl,tOb};
-  };
-  const k=calc(arr);
-  const g=calc(docs);
-  const hasFiltro=arr.length!==docs.length;
-  const el=document.getElementById('comp-kpis-'+side);
-  if(el)el.innerHTML='<div class="kpi-row r3" style="margin-bottom:8px">'+
-    kpiCmp('Uso do Solo',k.tUS,'Solicitação → emissão',g.tUS,hasFiltro)+
-    kpiCmp('Alvará',k.tAl,'Entrada → aprovação',g.tAl,hasFiltro)+
-    kpiCmp('Obra',k.tOb,'Início → término',g.tOb,hasFiltro)+
-  '</div>';
-  // Fluxo resumido
+  // Filtrar docs (usa mesma lógica de obrasCompletas do buildSetor)
+  const obrasCompletas=getObrasCompletas();
+  let docsF=docs.filter(d=>obrasCompletas.has(normS(d.endereco)));
+  if(cid)docsF=docsF.filter(d=>d.cidade===cid);
+  if(set)docsF=docsF.filter(d=>d.setor===set);
+  if(obr)docsF=docsF.filter(d=>d.endereco===obr);
+  const enderecosSel=new Set(docsF.map(d=>normS(d.endereco)));
+
+  // Pagamentos
   const pagMes={};
-  Object.entries(pags).forEach(([cc,mp])=>{if(!endSel.has(normS(cc)))return;Object.entries(mp).forEach(([m,v])=>{if(!/^\d{4}-\d{2}$/.test(m))return;pagMes[m]=(pagMes[m]||0)+v;});});
-  const meses=Object.keys(pagMes).filter(m=>pagMes[m]>0).sort();
-  const vals=meses.map(m=>pagMes[m]);
-  const elF=document.getElementById('comp-fluxo-'+side);
-  if(elF){
-    const tot=vals.reduce((a,b)=>a+b,0);
-    elF.innerHTML=`<div style="font-size:12px;color:var(--text3);margin:8px 0">Total gastos: <strong>${fmtBRL(tot)}</strong> em ${meses.length} meses</div>`;
+  Object.entries(pags).forEach(([cc,mp])=>{
+    if(!enderecosSel.has(normS(cc)))return;
+    Object.entries(mp).forEach(([m,v])=>{if(!/^\d{4}-\d{2}$/.test(m))return;pagMes[m]=(pagMes[m]||0)+v;});
+  });
+  // Faturamentos (fallback)
+  const fatMes={};
+  fats.forEach(f=>{if(!enderecosSel.has(normS(f.cc)))return;if(!/^\d{4}-\d{2}$/.test(f.mes))return;fatMes[f.mes]=(fatMes[f.mes]||0)+f.valor;});
+  if(Object.keys(fatMes).length===0){
+    vendas.filter(v=>v.clientes&&v.data_assinatura&&v.valor_na_mao).forEach(v=>{
+      const m=mesD(v.data_assinatura);if(!m||!/^\d{4}-\d{2}$/.test(m))return;
+      if(!enderecosSel.has(normS(v.endereco)))return;
+      fatMes[m]=(fatMes[m]||0)+(v.valor_na_mao||0);
+    });
   }
-  drawLinesExposicao('ch-comp-'+side,meses.map(fmtM),vals.map((v,i)=>{
-    // Exposição acumulada
-    let ac=0;for(let j=0;j<=i;j++)ac-=vals[j];return ac;
-  }));
+  // Meses
+  const mesesComMov=[...new Set([...Object.keys(pagMes).filter(m=>pagMes[m]>0),...Object.keys(fatMes).filter(m=>fatMes[m]>0)])].sort();
+  if(!mesesComMov.length){
+    ['comp-roi1-','comp-roi2-','comp-tbl-','comp-pz1-','comp-pz2-','comp-pz3-'].forEach(p=>{const e=document.getElementById(p+side);if(e)e.innerHTML='<div style="color:var(--text4);padding:14px;text-align:center">Sem dados</div>';});
+    return;
+  }
+  const mInit=mesesComMov[0],mFim=mesesComMov[mesesComMov.length-1];
+  const meses=[];
+  {let y=parseInt(mInit.slice(0,4)),mo=parseInt(mInit.slice(5,7));const yE=parseInt(mFim.slice(0,4)),moE=parseInt(mFim.slice(5,7));
+  while(y<yE||(y===yE&&mo<=moE)){meses.push(y+'-'+String(mo).padStart(2,'0'));mo++;if(mo>12){mo=1;y++;}}}
+  // Trim
+  let iS=0,iE=meses.length-1;
+  while(iS<=iE&&!(pagMes[meses[iS]]>0)&&!(fatMes[meses[iS]]>0))iS++;
+  while(iE>=iS&&!(pagMes[meses[iE]]>0)&&!(fatMes[meses[iE]]>0))iE--;
+  const ms=meses.slice(iS,iE+1);
+  const gastos=ms.map(m=>pagMes[m]||0);
+  const receitas=ms.map(m=>fatMes[m]||0);
+  const fluxo=ms.map((_,i)=>receitas[i]-gastos[i]);
+  const expCaixa=[];let ac=0;fluxo.forEach(v=>{ac+=v;expCaixa.push(ac);});
+  const totalGasto=gastos.reduce((a,b)=>a+b,0);
+  const totalRecebido=receitas.reduce((a,b)=>a+b,0);
+
+  // KPIs ROI
+  const maxExp=Math.min(...expCaixa);
+  const mult=ms.map((_,i)=>ms.length-i);
+  const el1=document.getElementById('comp-roi1-'+side);
+  const el2=document.getElementById('comp-roi2-'+side);
+  if(el1)el1.innerHTML=[kpi('Total Investido',fmtBRL(totalGasto),''),kpi('Total Recebido',fmtBRL(totalRecebido),'')].join('');
+  if(el2)el2.innerHTML=[kpi('Exposição Máxima',fmtBRL(maxExp),''),kpi('Resultado',fmtBRL(totalRecebido-totalGasto),totalRecebido>totalGasto?'Positivo':'Negativo')].join('');
+
+  // Tabela fluxo
+  const elT=document.getElementById('comp-tbl-'+side);
+  if(elT){
+    const rows=ms.map((m,i)=>{
+      const v=expCaixa[i];const cor=v<0?'color:#c0392b;font-weight:700':v>0?'color:#2a9d5c;font-weight:700':'';
+      return`<tr><td><strong>${fmtM(m)}</strong></td><td class="nr">${fmtBRL2(gastos[i])}</td><td class="nr">${receitas[i]>0?fmtBRL2(receitas[i]):'—'}</td><td class="nr" style="${cor}">${fmtBRL2(v)}</td></tr>`;
+    }).join('');
+    elT.innerHTML=`<table><thead><tr><th class="left">Mês</th><th>Gasto</th><th>Recebido</th><th>Exposição</th></tr></thead><tbody>${rows}</tbody>
+    <tfoot><tr><td>TOTAL</td><td class="nr">${fmtBRL2(totalGasto)}</td><td class="nr">${fmtBRL2(totalRecebido)}</td><td></td></tr></tfoot></table>`;
+  }
+  // Gráfico
+  drawLinesExposicao('ch-comp-'+side,ms.map(fmtM),expCaixa);
+
+  // Prazos
+  buildPrazosSelecao(docsF, 'comp-pz1-'+side, 'comp-pz2-'+side, 'comp-pz3-'+side);
 }
 
 if(document.readyState==='loading'){

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestão de Vendas · Todos os Setores · Morais Engenharia</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --azul:#295778;--azul-esc:#1e3f58;--azul-med:#2d6a96;
+  --teal:#8FDCD2;--bg:#EAF1F3;--bg2:#F5F9FA;--bg3:#dde8ec;
+  --border:#b8d0da;--border2:#d0e4ea;
+  --text:#1a3347;--text2:#295778;--text3:#5a8099;--text4:#8aacbb;--branco:#fff;
+  --verde:#2a9d5c;--vermelho:#c0392b;--amarelo:#c9a227;--laranja:#d46a1a;
+}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;font-size:14px}
+.header{background:var(--azul);border-bottom:3px solid var(--teal);padding:0 28px;height:64px;
+        display:flex;align-items:center;justify-content:space-between;gap:16px}
+.hdr-left{display:flex;align-items:center;gap:16px}
+.hdr-logo{width:40px;height:40px;flex-shrink:0}
+.hdr-sup{font-size:10px;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:.02em;line-height:1.1}
+.hdr-right{display:flex;align-items:center;gap:12px}
+.updated{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.45)}
+.btn-voltar{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.75);font-size:11px;font-weight:600;
+            letter-spacing:.07em;text-transform:uppercase;text-decoration:none;padding:6px 14px;
+            border:1.5px solid rgba(255,255,255,.2);border-radius:5px;transition:all .15s}
+.btn-voltar:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.4)}
+.tabela-section{padding:20px 28px 40px}
+.tabela-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:12px;flex-wrap:wrap}
+#tabela-titulo{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.07em}
+.tabela-controls{display:flex;gap:8px;flex-wrap:wrap}
+.btn-sm{padding:7px 14px;font-family:'Barlow',sans-serif;font-size:11px;font-weight:600;letter-spacing:.05em;
+        text-transform:uppercase;border:1.5px solid var(--border);background:var(--branco);color:var(--text2);
+        border-radius:5px;cursor:pointer;transition:all .15s}
+.btn-sm:hover{background:var(--bg3);border-color:var(--azul)}
+.btn-sm.danger:hover{border-color:var(--vermelho);color:var(--vermelho)}
+.btn-sm.excel{border-color:#1a7034;color:#1a7034}
+.btn-sm.excel:hover{background:#f0faf3;border-color:#155228}
+.filtros-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;padding:10px 12px;
+             background:var(--branco);border:1px solid var(--border);border-radius:8px;align-items:center}
+.filtro-label{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-right:4px;white-space:nowrap}
+.filtro-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;
+             border:1.5px solid var(--border);background:var(--bg);font-size:11px;font-weight:600;
+             color:var(--text2);cursor:pointer;transition:all .15s;user-select:none;white-space:nowrap}
+.filtro-chip .chip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.filtro-chip:hover{border-color:var(--azul-med);background:var(--bg3)}
+.filtro-chip.active{background:var(--azul);border-color:var(--azul);color:#fff}
+.filtro-sep{width:1px;height:18px;background:var(--border);margin:0 2px}
+.filtro-clear{font-size:10px;color:var(--text3);cursor:pointer;padding:2px 6px;border-radius:3px;margin-left:auto}
+.filtro-clear:hover{color:var(--vermelho)}
+.tbl-outer{background:var(--branco);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(41,87,120,.07)}
+.tbl-scroll{overflow-x:auto;max-height:75vh;overflow-y:auto}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px;min-width:800px}
+thead{position:sticky;top:0;z-index:10}
+thead th{padding:10px 12px;text-align:left;font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+         color:#fff;background:var(--azul);border-right:1px solid rgba(255,255,255,.12);border-bottom:2px solid var(--teal);
+         white-space:nowrap;cursor:pointer;user-select:none;position:relative;padding-right:22px}
+thead th:hover{background:var(--azul-med)}
+thead th:last-child{border-right:none}
+thead th .sort-icon{font-size:8px;margin-left:3px;opacity:.7}thead th .th-x{position:absolute;right:5px;top:50%;transform:translateY(-50%);cursor:pointer;opacity:.35;font-size:9px;line-height:1}thead th .th-x:hover{opacity:1}
+thead th.sort-asc .sort-icon::after{content:'▲';opacity:1}
+thead th.sort-desc .sort-icon::after{content:'▼';opacity:1}
+thead th:not(.sort-asc):not(.sort-desc) .sort-icon::after{content:'⇅'}
+thead tr.filter-row th{padding:4px 6px;background:var(--azul-esc);border-bottom:1px solid rgba(143,220,210,.2);
+                       border-right:1px solid rgba(255,255,255,.08);cursor:default}
+thead tr.filter-row th:last-child{border-right:none}
+thead tr.filter-row input.col-fi{
+  width:100%;padding:3px 5px;font-size:10px;font-family:'DM Mono',monospace;
+  background:rgba(255,255,255,.08);border:1px solid rgba(143,220,210,.2);border-radius:3px;
+  color:rgba(255,255,255,.8);outline:none;transition:border-color .15s}
+thead tr.filter-row input.col-fi:focus{border-color:var(--teal);background:rgba(255,255,255,.12)}
+thead tr.filter-row input.col-fi::placeholder{color:rgba(255,255,255,.3)}
+tbody tr{border-bottom:1px solid var(--border2);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#e8f3f7}
+tbody td{padding:8px 12px;vertical-align:middle;border-right:1px solid var(--border2);color:var(--text)}
+tbody td:last-child{border-right:none}
+.cell-null{color:var(--text4);font-style:italic;font-size:10px}
+.bool-sim{display:inline-block;background:rgba(42,157,92,.12);color:var(--verde);border:1px solid rgba(42,157,92,.3);border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
+.bool-nao{display:inline-block;background:rgba(192,57,43,.08);color:var(--vermelho);border:1px solid rgba(192,57,43,.2);border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700}
+.col-hidden{display:none}
+.tbl-rel{position:relative}
+.col-panel{display:none;position:absolute;right:0;top:36px;background:var(--branco);border:1px solid var(--border);
+           border-radius:8px;padding:12px;z-index:100;box-shadow:0 4px 20px rgba(41,87,120,.12);min-width:200px;max-height:300px;overflow-y:auto}
+.col-panel.open{display:block}
+.col-panel label{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;color:var(--text);cursor:pointer;border-bottom:1px solid var(--border2)}
+.col-panel label:last-child{border-bottom:none}
+#loading{position:fixed;inset:0;background:rgba(41,87,120,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;color:#fff;gap:14px}
+#loading.hidden{display:none}
+.spinner{width:36px;height:36px;border:3px solid rgba(255,255,255,.2);border-top-color:var(--teal);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#tip{position:fixed;background:var(--azul-esc);color:#fff;border-radius:6px;padding:8px 12px;font-size:11px;pointer-events:none;display:none;z-index:200;border:1px solid var(--teal);line-height:1.5;max-width:220px;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+#tip.on{display:block}
+@media(max-width:768px){.tabela-section{padding:12px 16px 28px}.header{padding:0 16px}}
+/* sticky */
+.col-sticky{position:sticky!important;left:0;z-index:5!important;background:var(--azul)!important;box-shadow:2px 0 6px rgba(41,87,120,.15)}
+.col-sticky-filter{position:sticky!important;left:0;z-index:4!important;background:var(--azul-esc)!important;box-shadow:2px 0 6px rgba(41,87,120,.15)}
+.col-sticky-body{position:sticky!important;left:0;z-index:2;background:var(--branco);box-shadow:2px 0 6px rgba(41,87,120,.10)}
+tbody tr:nth-child(even) .col-sticky-body{background:var(--bg2)}
+tbody tr:hover .col-sticky-body{background:#e8f3f7}
+th[data-key="endereco"],td.col-end{min-width:200px!important}
+td.col-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);text-align:center;min-width:40px}
+/* ── MULTI-SELECT ── */
+.ms-wrap{position:relative;width:100%}
+.ms-btn{width:100%;padding:3px 20px 3px 5px;font-size:10px;font-family:'DM Mono',monospace;
+  background:rgba(255,255,255,.08);border:1px solid rgba(143,220,210,.2);border-radius:3px;
+  color:rgba(255,255,255,.85);cursor:pointer;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative}
+.ms-btn::after{content:'▾';position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:8px;opacity:.6}
+.ms-btn.ativo{border-color:var(--teal)!important;background:rgba(143,220,210,.18)!important}
+.ms-dd{display:none;position:fixed;background:#1e3f58;border:1px solid rgba(143,220,210,.35);
+  border-radius:5px;z-index:9999;box-shadow:0 6px 24px rgba(0,0,0,.35);
+  max-height:240px;min-width:160px;max-width:280px;flex-direction:column}
+.ms-dd.aberto{display:flex}
+.ms-busca{padding:6px 8px;font-size:10px;font-family:'DM Mono',monospace;
+  background:rgba(255,255,255,.1);border:none;border-bottom:1px solid rgba(143,220,210,.2);
+  color:#fff;outline:none;flex-shrink:0}
+.ms-busca::placeholder{color:rgba(255,255,255,.4)}
+.ms-lista{overflow-y:auto;flex:1}
+.ms-item{display:flex;align-items:center;gap:7px;padding:5px 10px;font-size:10.5px;
+  font-family:'DM Mono',monospace;color:rgba(255,255,255,.85);cursor:pointer;user-select:none}
+.ms-item:hover{background:rgba(143,220,210,.12)}
+.ms-item input{accent-color:#8FDCD2;flex-shrink:0;pointer-events:none}
+.ms-rodape{padding:5px 10px;font-size:9.5px;color:#8FDCD2;cursor:pointer;
+  border-top:1px solid rgba(143,220,210,.15);text-align:center;flex-shrink:0}
+.ms-rodape:hover{background:rgba(143,220,210,.1)}
+</style>
+</head>
+<body>
+<div id="loading"><div class="spinner"></div><p>Carregando dados...</p></div>
+<div id="tip"></div>
+
+<header class="header">
+  <div class="hdr-left">
+    <img src="logo.png" class="hdr-logo" alt="Morais Engenharia">
+    <div>
+      <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
+      <div class="hdr-title">Gestão de Vendas — Todos os Setores</div>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="updated" id="updated-at">—</div>
+    <a href="index.html" class="btn-voltar">
+      <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M8 1L3 6l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Voltar
+    </a>
+  </div>
+</header>
+
+<div class="tabela-section">
+  <div class="tabela-header">
+    <div id="tabela-titulo">Gestão de Vendas</div>
+    <div class="tabela-controls">
+      <div class="tbl-rel">
+        <button class="btn-sm" onclick="toggleColPanel()">⊞ Colunas</button>
+        <div class="col-panel" id="col-panel"><div id="col-panel-list"></div></div>
+      </div>
+      <button class="btn-sm excel" onclick="exportarExcel()">⬇ Exportar Excel</button>
+      <button class="btn-sm danger" onclick="limparFiltros()">↺ Limpar Filtros</button>
+    </div>
+  </div>
+  <div class="filtros-bar" id="filtros-bar"></div>
+  <div class="tbl-outer">
+    <div class="tbl-scroll">
+      <table>
+        <thead>
+          <tr id="tabela-head"></tr>
+          <tr class="filter-row" id="tabela-filter-row"></tr>
+        </thead>
+        <tbody id="tabela-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ESTADO GLOBAL ──────────────────────────────────────────────────────────
+const DATA_URL = 'data.json';
+let allVendas = [];
+let colFilters = {};   // key → string (texto livre) ou Set (multi-select)
+let hiddenCols = new Set();
+let activeStatusFilters = new Set();
+let sortKey = 'data_venda';
+let sortDir = 'asc';
+let _filteredData = [];
+let _ddAberto = null;  // key do dropdown aberto
+
+// ── HELPERS ────────────────────────────────────────────────────────────────
+const fmtDate  = s => { if(!s) return null; try{return new Date(s).toLocaleDateString('pt-BR')}catch{return s} };
+const fmtMoney = v => { if(v==null||v==='') return null; const n=Number(v); return isNaN(n)?String(v):n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}) };
+const diffDays = (a,b) => { try{return Math.round((new Date(b)-new Date(a))/86400000)}catch{return null} };
+function isSim(v){ return v===true||String(v).toUpperCase().trim()==='SIM' }
+
+// ── COLUNAS ────────────────────────────────────────────────────────────────
+const COLS = [
+  {key:'_num',             label:'#'},
+  {key:'endereco',         label:'ENDEREÇO'},
+  {key:'casa',             label:'CASA'},
+  {key:'cidade',           label:'CIDADE'},
+  {key:'setor',            label:'SETOR'},
+  {key:'clientes',         label:'CLIENTES'},
+  {key:'data_venda',       label:'DATA DA VENDA',                        fmt:fmtDate},
+  {key:'cpf',              label:'CPF'},
+  {key:'correspondente',   label:'CORRESPONDENTE'},
+  {key:'corretor',         label:'CORRETOR'},
+  {key:'avaliacao',        label:'AVALIAÇÃO',                            fmt:fmtMoney},
+  {key:'validade',         label:'VALIDADE',                             fmt:fmtDate},
+  {key:'valor_na_mao',     label:'VALOR NA MÃO',                        fmt:fmtMoney},
+  {key:'comissao',         label:'COMISSÃO',                             fmt:fmtMoney},
+  {key:'valor_venda_contrato',label:'VALOR DE COMPRA E VENDA NO CONTRATO',fmt:fmtMoney},
+  {key:'banco',            label:'BANCO'},
+  {key:'agencia',          label:'AGÊNCIA'},
+  {key:'armazenou_contrato',   label:'ARMAZENOU CONTRATO COMPRA E VENDA?',  fmt:'bool'},
+  {key:'emitiu_rcpm',          label:'EMITIU RCPM?',                        fmt:'bool'},
+  {key:'mandou_docs_corresp',  label:'MANDOU TODOS OS DOCS. P/ CORRESPONDENTE?',fmt:'bool'},
+  {key:'data_envio_docs',      label:'DATA DE ENVIO DOS DOCUMENTOS',        fmt:fmtDate},
+  {key:'mandou_conformidade',  label:'MANDOU P/ CONFORMIDADE?',             fmt:'bool'},
+  {key:'processo_conforme',    label:'PROCESSO CONFORME?',                  fmt:'bool'},
+  {key:'assinou_contrato_banco',label:'ASSINOU E ARMAZENOU CONTRATO DO BANCO?',fmt:'bool'},
+  {key:'data_assinatura',      label:'DATA DE ASSINATURA DO CONTRATO',      fmt:fmtDate},
+  {key:'recebeu_taxa_vistoria',label:'RECEBEU TAXA VISTORIA?',              fmt:'bool'},
+  {key:'tem_cadastro',         label:'TEM NÚMERO DE CADASTRO?',             fmt:'bool'},
+  {key:'num_cadastro',         label:'Nº DE CADASTRO PREFEITURA'},
+  {key:'entrada_cartorio',     label:'DEU ENTRADA NO CARTÓRIO?',            fmt:'bool'},
+  {key:'agendou_pre_vistoria', label:'AGENDOU PRÉ VISTORIA?',              fmt:'bool'},
+  {key:'data_pre_vistoria',    label:'DATA DA PRÉ-VISTORIA',               fmt:fmtDate},
+  {key:'tem_manual',           label:'TEM MANUAL DE OBRA?',                 fmt:'bool'},
+  {key:'registro_pronto',      label:'FICOU PRONTO O REGISTRO?',            fmt:'bool'},
+  {key:'devolveu_banco',       label:'DEVOLVEU NO BANCO?',                  fmt:'bool'},
+  {key:'recebeu',              label:'RECEBEU?',                            fmt:'bool'},
+  {key:'entregou_casa',        label:'ENTREGOU A CASA E PEGOU TERMO DE ENTREGA?',fmt:'bool'},
+  {key:'data_entrega',         label:'DATA DA ENTREGA',                     fmt:fmtDate},
+  {key:'gcap_gerado',          label:'GEROU E ARMAZENOU GCAP?',             fmt:'bool'},
+  {key:'gcap_pago',            label:'PAGOU GCAP?',                         fmt:'bool'},
+  {key:'pesquisa',             label:'PREENCHEU A PESQUISA?',               fmt:'bool'},
+];
+
+// ── STATUS ─────────────────────────────────────────────────────────────────
+function calcAlerta(v){
+  if(!v.avaliacao||!v.data_envio_docs) return '';
+  const d=diffDays(v.data_envio_docs,new Date().toISOString());
+  if(d==null) return '';
+  const ok=isSim(v.processo_conforme), ass=isSim(v.assinou_contrato_banco), rec=isSim(v.recebeu);
+  if(d>=45&&ok&&ass&&!rec) return 'sem_receber';
+  if(d>=45&&(!ok||!ass))   return '45dias';
+  if(d>=20&&(!ok||!ass||!rec)) return '20dias';
+  return '';
+}
+function calcStatus(v){
+  if(isSim(v.entregou_casa))  return 'verde-esc';
+  const a=calcAlerta(v);
+  if(a==='sem_receber')       return 'laranja';
+  if(a==='45dias')            return 'vermelho';
+  if(a==='20dias')            return 'amarelo';
+  if(v.clientes)              return 'verde-claro';
+  if(v.avaliacao)             return 'azul';
+  return 'cinza';
+}
+const STATUS_VENDIDO = new Set(['verde-claro','amarelo','vermelho','laranja','verde-esc']);
+const COR = {cinza:'#b0c8d4',azul:'#295778','verde-claro':'#8FDCD2',amarelo:'#c9a227',vermelho:'#c0392b',laranja:'#d46a1a','verde-esc':'#1a6b40'};
+const LABEL = {cinza:'Em breve',azul:'Disponível','verde-claro':'Vendida',amarelo:'>20 dias',vermelho:'>45 dias',laranja:'>45 dias s/ receber','verde-esc':'Entregue'};
+
+// ── FORMAT CELL ────────────────────────────────────────────────────────────
+function fmtCell(val,fmt){
+  if(fmt==='bool'){
+    if(val==null||val==='') return '<span class="cell-null">—</span>';
+    const s=String(val).toUpperCase().trim();
+    if(s==='SIM'||val===true) return '<span class="bool-sim">SIM</span>';
+    if(s==='NÃO'||s==='NAO'||val===false) return '<span class="bool-nao">NÃO</span>';
+    if(s==='ÁGIO'||s==='AGIO') return `<span class="bool-sim" style="background:rgba(201,162,39,.15);color:#c9a227;border-color:rgba(201,162,39,.4)">ÁGIO</span>`;
+    if(s==='INEXISTE') return `<span class="bool-nao" style="background:rgba(90,128,153,.1);color:#5a8099;border-color:rgba(90,128,153,.3)">INEXISTE</span>`;
+    return `<span class="bool-nao" style="background:rgba(90,128,153,.1);color:#5a8099">${val}</span>`;
+  }
+  if(typeof fmt==='function'){const r=fmt(val);return r!=null?String(r):'<span class="cell-null">—</span>'}
+  return val!=null&&val!==''?String(val):'<span class="cell-null">—</span>';
+}
+
+// ── NUMERAÇÃO POR ANO ──────────────────────────────────────────────────────
+function calcNums(data){
+  // Ordena por data_venda e numera sequencialmente por ano, reiniciando a cada ano
+  const sorted=[...data].filter(v=>v.clientes&&v.data_venda).sort((a,b)=>{
+    // Comparar strings YYYY-MM-DD diretamente (sem Date para evitar timezone)
+    return (a.data_venda||'').localeCompare(b.data_venda||'');
+  });
+  const map={}, cnt={};
+  sorted.forEach(v=>{
+    // Extrair ano da string diretamente (evita bug timezone)
+    const ano=parseInt((v.data_venda||'').substring(0,4));
+    if(!ano) return;
+    cnt[ano]=(cnt[ano]||0)+1;
+    map[v.id||v.endereco]={ano,n:cnt[ano]};
+  });
+  return map;
+}
+
+// ── ORDENAÇÃO ──────────────────────────────────────────────────────────────
+function sortData(data){
+  if(!sortKey) return data;
+  return [...data].sort((a,b)=>{
+    let va=a[sortKey],vb=b[sortKey];
+    if(sortKey==='_num'){va=a._num_raw||0;vb=b._num_raw||0}
+    if(typeof va==='string'&&/^\d{4}-\d{2}-\d{2}/.test(va)){va=new Date(va);vb=vb?new Date(vb):new Date(0);return sortDir==='asc'?va-vb:vb-va}
+    if(!isNaN(Number(va))&&!isNaN(Number(vb))) return sortDir==='asc'?Number(va)-Number(vb):Number(vb)-Number(va);
+    va=String(va||'');vb=String(vb||'');
+    return sortDir==='asc'?va.localeCompare(vb,'pt-BR'):vb.localeCompare(va,'pt-BR');
+  });
+}
+function setSortCol(key){
+  if(sortKey===key) sortDir=sortDir==='asc'?'desc':'asc'; else{sortKey=key;sortDir='asc'}
+  renderBody();
+}
+
+// ── FILTROS HELPERS ────────────────────────────────────────────────────────
+function rowPassaFiltros(row,cols,excluir){
+  return cols.every(col=>{
+    if(col.key===excluir) return true;
+    const f=colFilters[col.key];
+    if(!f||(f instanceof Set&&f.size===0)||f==='') return true;
+    const rv=String(row[col.key]??'').toUpperCase().trim();
+    if(f instanceof Set) return [...f].some(fv=>fv==='—'?!row[col.key]&&row[col.key]!==0:rv===String(fv).toUpperCase().trim());
+    return rv.includes(String(f).toUpperCase());
+  });
+}
+function getBase(){
+  let data=[...allVendas];
+  const GCAP_OK=new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  if(activeStatusFilters.size>0){
+    data=data.filter(row=>{
+      const s=calcStatus(row);
+      if(activeStatusFilters.has('_vendida')&&STATUS_VENDIDO.has(s)) return true;
+      if(activeStatusFilters.has('_gcap')){
+        return row.clientes && isSim(row.assinou_contrato_banco) && !GCAP_OK.has(String(row.gcap_pago||'').toUpperCase().trim());
+      }
+      return activeStatusFilters.has(s);
+    });
+  }
+  return data;
+}
+
+// ── CHIPS STATUS ───────────────────────────────────────────────────────────
+function buildFiltrosBar(){
+  const bar=document.getElementById('filtros-bar');
+  const cnt={};let totalVend=0;let gcapCount=0;
+  const GCAP_OK=new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  allVendas.forEach(v=>{
+    const s=calcStatus(v);cnt[s]=(cnt[s]||0)+1;if(STATUS_VENDIDO.has(s))totalVend++;
+    // Contar GCAP pendentes
+    if(v.clientes && isSim(v.assinou_contrato_banco) && !GCAP_OK.has(String(v.gcap_pago||'').toUpperCase().trim())) gcapCount++;
+  });
+  const chips=[];
+  if(cnt['azul']) chips.push(chip('azul',`Disponível (${cnt['azul']})`));
+  if(totalVend)   chips.push(chip('_vendida',`Vendida (${totalVend})`,'#8FDCD2'));
+  ['amarelo','vermelho','laranja'].forEach(s=>{if(cnt[s])chips.push(chip(s,`${LABEL[s]} (${cnt[s]})`))});
+  if(cnt['verde-esc']) chips.push(chip('verde-esc',`Entregue (${cnt['verde-esc']})`));
+  if(cnt['cinza'])     chips.push(chip('cinza',`Em breve (${cnt['cinza']})`));
+  if(gcapCount)         chips.push(chip('_gcap',`⚠ GCAP Pendente (${gcapCount})`,'#c0392b'));
+  bar.innerHTML=`<span class="filtro-label">Status:</span>${chips.join('')}<span class="filtro-sep"></span><span class="filtro-clear" onclick="clearStatusFilters()">✕ Limpar</span>`;
+}
+function chip(s,label,cor){
+  const c=cor||COR[s]||'#8aacbb';
+  return `<span class="filtro-chip ${activeStatusFilters.has(s)?'active':''}" onclick="toggleSF('${s}')"><span class="chip-dot" style="background:${c}"></span>${label}</span>`;
+}
+function toggleSF(s){activeStatusFilters.has(s)?activeStatusFilters.delete(s):activeStatusFilters.add(s);buildFiltrosBar();build()}
+function clearStatusFilters(){activeStatusFilters.clear();buildFiltrosBar();build()}
+
+// ── MULTI-SELECT ENGINE (sem IDs no DOM) ───────────────────────────────────
+// Cada dropdown é um elemento único reutilizado — não fica embutido no thead.
+// Criamos UMA div flutuante fora da tabela e a reposicionamos.
+
+const _DD = document.createElement('div');
+_DD.className='ms-dd';
+_DD.innerHTML=`<input class="ms-busca" placeholder="buscar..."><div class="ms-lista"></div><div class="ms-rodape" data-acao="limpar">✕ Limpar seleção</div>`;
+document.body.appendChild(_DD);
+
+let _ddKey=null; // coluna atualmente aberta
+
+_DD.querySelector('.ms-busca').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase();
+  _DD.querySelectorAll('.ms-item').forEach(el=>{el.style.display=el.dataset.v.toLowerCase().includes(q)?'':'none'});
+});
+_DD.querySelector('.ms-rodape').addEventListener('click',e=>{e.stopPropagation();if(_ddKey){colFilters[_ddKey]='';fecharDD();build()}});
+_DD.addEventListener('click',e=>e.stopPropagation());
+
+function abrirDD(key,btnEl){
+  if(_ddKey===key){fecharDD();return}
+  if(_ddKey) fecharDD();
+  _ddKey=key;
+  const col=COLS.find(c=>c.key===key);
+  const selSet=(colFilters[key] instanceof Set)?colFilters[key]:new Set();
+  // Calcular opções disponíveis
+  const base=getBase();
+  const dataCol=base.filter(row=>rowPassaFiltros(row,COLS,key));
+  const uniq=[...new Set(dataCol.map(r=>r[key]).filter(v=>v!=null&&v!==''))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+  const opts=col.fmt==='bool'?['SIM','NÃO','ÁGIO','INEXISTE']:uniq;
+  const lista=_DD.querySelector('.ms-lista');
+  lista.innerHTML=opts.map(v=>`
+    <div class="ms-item" data-v="${v}">
+      <input type="checkbox" ${selSet.has(String(v))?'checked':''}>
+      ${v}
+    </div>`).join('');
+  lista.querySelectorAll('.ms-item').forEach(el=>{
+    el.addEventListener('click',ev=>{
+      ev.stopPropagation();
+      const cb=el.querySelector('input');
+      cb.checked=!cb.checked;
+      const v=el.dataset.v;
+      if(!colFilters[key]||!(colFilters[key] instanceof Set)) colFilters[key]=new Set();
+      if(cb.checked) colFilters[key].add(v); else colFilters[key].delete(v);
+      if(colFilters[key].size===0) colFilters[key]='';
+      atualizarBotao(key);
+      renderBody();
+    });
+  });
+  _DD.querySelector('.ms-busca').value='';
+  _DD.querySelectorAll('.ms-item').forEach(el=>el.style.display='');
+  // Posicionar
+  const rect=btnEl.getBoundingClientRect();
+  _DD.style.top=(rect.bottom+2)+'px';
+  _DD.style.left=rect.left+'px';
+  _DD.style.minWidth=Math.max(rect.width,160)+'px';
+  _DD.classList.add('aberto');
+  _DD.querySelector('.ms-busca').focus();
+}
+function fecharDD(){if(_ddKey){_DD.classList.remove('aberto');_ddKey=null}}
+document.addEventListener('click',()=>{if(_ddKey)fecharDD()});
+
+function atualizarBotao(key){
+  const btn=document.getElementById('ms-btn-'+key);
+  if(!btn) return;
+  const s=colFilters[key];
+  const ativo=s instanceof Set&&s.size>0;
+  btn.textContent=ativo?[...s].join(', '):'Todos';
+  btn.classList.toggle('ativo',ativo);
+}
+
+// ── RENDER HEADER DE FILTROS ───────────────────────────────────────────────
+function renderFiltros(){
+  const base=getBase();
+  const fr=document.getElementById('tabela-filter-row');
+  fr.innerHTML=COLS.map((col,ci)=>{
+    const hid=hiddenCols.has(col.key)?'col-hidden':'';
+    const sf=ci===1?'col-sticky-filter':'';
+    if(col.key==='_num') return `<th class="${hid}"></th>`;
+    const f=colFilters[col.key];
+    // dados desta coluna (cascata — exclui filtro da própria coluna)
+    const dataCol=base.filter(row=>rowPassaFiltros(row,COLS,col.key));
+    const uniq=[...new Set(dataCol.map(r=>r[col.key]).filter(v=>v!=null&&v!==''))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+    const isBool=col.fmt==='bool';
+    const isMulti=isBool||(uniq.length>0&&uniq.length<=30);
+    if(isMulti){
+      const selSet=f instanceof Set?f:new Set();
+      const label=selSet.size>0?[...selSet].join(', '):'Todos';
+      const ativo=selSet.size>0;
+      return `<th class="${hid} ${sf}"><div class="ms-wrap"><button class="ms-btn${ativo?' ativo':''}" id="ms-btn-${col.key}" onclick="abrirDD('${col.key}',this);event.stopPropagation()">${label}</button></div></th>`;
+    }
+    const cur=f instanceof Set?'':(f||'');
+    return `<th class="${hid} ${sf}"><input class="col-fi" placeholder="filtrar..." value="${cur}" data-fk="${col.key}" oninput="setTxtFilter('${col.key}',this.value)" onclick="event.stopPropagation()"></th>`;
+  }).join('');
+}
+
+// ── RENDER BODY ────────────────────────────────────────────────────────────
+function renderBody(){
+  const base=getBase();
+  const numMap=calcNums(base);
+  base.forEach(v=>{
+    const k=v.id||v.endereco;
+    const info=numMap[k];
+    v._num=info?`${info.ano}/${String(info.n).padStart(3,'0')}`:'-';
+    v._num_raw=info?info.ano*10000+info.n:0;
+  });
+  const filtered=base.filter(row=>rowPassaFiltros(row,COLS,null));
+  const sorted=sortData(filtered);
+
+  // Cores de fundo por status de alerta (Ajuste 2)
+  const COR_LINHA = {
+    'amarelo':  'rgba(201,162,39,.10)',   // >20 dias
+    'vermelho': 'rgba(192,57,43,.08)',    // >45 dias
+    'laranja':  'rgba(212,106,26,.10)',   // >45 dias s/ receber
+  };
+
+  // Helper GCAP (Ajuste 3)
+  const GCAP_OK = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  function gcapPendente(v){
+    if(!v.clientes) return false;
+    if(!isSim(v.assinou_contrato_banco)) return false;
+    const pg = String(v.gcap_pago||'').toUpperCase().trim();
+    return !GCAP_OK.has(pg);
+  }
+
+  document.getElementById('tabela-body').innerHTML=sorted.map((row,i)=>{
+    const status = calcStatus(row);
+    const bgAlerta = COR_LINHA[status] || '';
+    const bgZebra = i%2 ? 'background:var(--bg2)' : '';
+    const bgFinal = bgAlerta ? `background:${bgAlerta.replace(')','')}` : bgZebra;
+    // GCAP badge
+    const gcap = gcapPendente(row)
+      ? '<span style="display:inline-flex;align-items:center;gap:3px;background:rgba(192,57,43,.12);color:#c0392b;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;border:1px solid rgba(192,57,43,.3);margin-left:4px" title="GCAP pendente">⚠ GCAP</span>'
+      : '';
+    return `<tr style="${bgFinal}">
+      ${COLS.map((col,ci)=>{
+        const hid=hiddenCols.has(col.key)?'col-hidden':'';
+        const st=ci===1?'col-sticky-body':'';
+        if(col.key==='_num') return `<td class="${hid} col-num">${row._num||''}</td>`;
+        // Endereço (col 1 sticky) — adicionar badge GCAP
+        if(ci===1 && gcap) return `<td class="${hid} ${st}">${fmtCell(row[col.key],col.fmt)}${gcap}</td>`;
+        return `<td class="${hid} ${st}">${fmtCell(row[col.key],col.fmt)}</td>`;
+      }).join('')}
+    </tr>`;
+  }).join('')||'<tr><td colspan="99" style="text-align:center;color:#8aacbb;padding:28px">Nenhum registro encontrado</td></tr>';
+  document.getElementById('tabela-titulo').textContent=`Gestão de Vendas — Todos os Setores (${sorted.length})`;
+  _filteredData=sorted;
+}
+
+// ── BUILD COMPLETO ─────────────────────────────────────────────────────────
+function build(){
+  // Capturar foco antes de reconstruir filtros
+  const foco=document.activeElement;
+  const focoKey=foco&&foco.dataset&&foco.dataset.fk?foco.dataset.fk:null;
+  renderFiltros();
+  // Restaurar foco no input de texto (se era um input texto, não botão ms)
+  if(focoKey){
+    const el=document.querySelector(`[data-fk="${focoKey}"]`);
+    if(el){el.focus();const l=el.value.length;el.setSelectionRange(l,l)}
+  }
+  renderHeader();
+  renderBody();
+  renderColPanel();
+}
+
+function renderHeader(){
+  document.getElementById('tabela-head').innerHTML=COLS.map((col,ci)=>{
+    const hid=hiddenCols.has(col.key)?'col-hidden':'';
+    const st=ci===1?'col-sticky':'';
+    const sc=sortKey===col.key?(sortDir==='asc'?'sort-asc':'sort-desc'):'';
+    const click=` onclick="setSortCol('${col.key}')"`;
+    return `<th class="${hid} ${st} ${sc}" data-key="${col.key}"${click}>
+      ${col.label}<span class="sort-icon"></span>
+      ${col.key!=='_num'?`<span class="th-x" onclick="event.stopPropagation();toggleCol('${col.key}')">✕</span>`:''}
+    </th>`;
+  }).join('');
+}
+
+function renderColPanel(){
+  document.getElementById('col-panel-list').innerHTML=COLS.map(col=>`<label><input type="checkbox" ${hiddenCols.has(col.key)?'':'checked'} onchange="toggleCol('${col.key}')"> ${col.label}</label>`).join('');
+}
+
+// ── FILTRO TEXTO (não recria filtros, só body) ─────────────────────────────
+function setTxtFilter(key,val){
+  colFilters[key]=val;
+  renderBody();
+  // Atualiza contagem nos outros botões ms sem destruir o input ativo
+  COLS.forEach(col=>{
+    if(col.key!==key) atualizarBotao(col.key);
+  });
+}
+
+// ── MISC ───────────────────────────────────────────────────────────────────
+function toggleCol(key){hiddenCols.has(key)?hiddenCols.delete(key):hiddenCols.add(key);build()}
+function toggleColPanel(){document.getElementById('col-panel').classList.toggle('open')}
+function limparFiltros(){colFilters={};clearStatusFilters()}
+document.addEventListener('click',e=>{if(!e.target.closest('.tbl-rel'))document.getElementById('col-panel').classList.remove('open')});
+
+// ── EXCEL ──────────────────────────────────────────────────────────────────
+function exportarExcel(){
+  const cols=COLS.filter(c=>!hiddenCols.has(c.key));
+  const headers=cols.map(c=>c.label);
+  const rows=_filteredData.map(row=>cols.map(col=>{
+    if(col.key==='_num') return row._num||'';
+    const v=row[col.key];
+    if(v==null||v==='') return '';
+    if(col.fmt==='bool') return String(v);
+    if(typeof col.fmt==='function'){const r=col.fmt(v);return r??''}
+    return String(v);
+  }));
+  const wb=XLSX.utils.book_new();
+  const ws=XLSX.utils.aoa_to_sheet([headers,...rows]);
+  ws['!cols']=headers.map((h,i)=>({wch:Math.max(h.length,...rows.map(r=>String(r[i]||'').length),10)}));
+  XLSX.utils.book_append_sheet(wb,ws,'Vendas');
+  XLSX.writeFile(wb,`Gestao_Vendas_${new Date().toLocaleDateString('pt-BR').replace(/\//g,'-')}.xlsx`);
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+async function init(){
+  try{
+    const r=await fetch(DATA_URL);
+    const data=await r.json();
+    allVendas=(data.vendas||[]).sort((a,b)=>{
+      if(!a.data_venda&&!b.data_venda) return 0;
+      if(!a.data_venda) return 1;
+      if(!b.data_venda) return -1;
+      return new Date(a.data_venda)-new Date(b.data_venda);
+    });
+    if(data.updated_at) document.getElementById('updated-at').textContent='Atualizado: '+new Date(data.updated_at).toLocaleString('pt-BR');
+    buildFiltrosBar();
+    build();
+    document.getElementById('loading').classList.add('hidden');
+  }catch(e){
+    document.getElementById('loading').innerHTML=`<div style="color:#c0392b;font-size:14px">Erro ao carregar dados:<br>${e.message}</div>`;
+  }
+}
+init();
+</script>
+</body>
+</html>
