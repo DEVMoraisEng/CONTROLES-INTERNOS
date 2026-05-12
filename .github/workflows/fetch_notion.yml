@@ -1,10 +1,11 @@
-
 name: Atualizar dados e publicar site
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
+  schedule:
+    - cron: '0 */4 * * *'   # a cada 4 horas
 
 jobs:
   build-and-deploy:
