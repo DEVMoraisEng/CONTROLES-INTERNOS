@@ -1122,61 +1122,103 @@ function drawLinesExposicao(id,labels,valores){
   if(pw<20)return;
   if(!valores.length){c.style.display='none';return;}
   c.style.display='block';
-  const H=parseInt(c.dataset.h||c.getAttribute('height'))||320;
+  const H=parseInt(c.dataset.h||c.getAttribute('height'))||300;
   if(!c.dataset.h)c.dataset.h=H;
   const dpr=Math.max(window.devicePixelRatio||1,2);
   c.width=pw*dpr;c.height=H*dpr;
   c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,n=labels.length;if(!n)return;
-  // Padding: topo menor (legenda agora é HTML), esquerda p/ valores em BRL
-  const P={t:16,r:24,b:48,l:140},cW=W-P.l-P.r,cH=H-P.t-P.b;
+
+  // Formato abreviado para eixo Y (evita colisão): R$ 425k, R$ -1,2M
+  function fmtEixo(v){
+    const s=v<0?'-':'';
+    const a=Math.abs(v);
+    if(a>=1e6) return s+'R$ '+( a/1e6).toFixed(1).replace('.',',')+'M';
+    if(a>=1e3) return s+'R$ '+Math.round(a/1e3)+'k';
+    return s+'R$ '+Math.round(a);
+  }
+  // Formato completo para tooltip nos pontos
+  function fmtPonto(v){
+    return fmtBRL(v);
+  }
+
+  // Padding: esquerda menor pois o eixo Y usa formato abreviado
+  const P={t:14,r:20,b:44,l:80},cW=W-P.l-P.r,cH=H-P.t-P.b;
   const minV=Math.min(...valores,0),maxV=Math.max(...valores,0.01);
   const range=Math.max(Math.abs(maxV),Math.abs(minV))||1;
-  const pad=range*0.18;
+  const pad=range*0.20;
   const yMin=minV-pad,yMax=maxV+pad;
   const xOf=i=>P.l+(n===1?cW/2:i*(cW/(n-1)));
   const yOf=v=>P.t+cH*(1-(v-yMin)/(yMax-yMin));
 
   ctx.clearRect(0,0,W,H);
 
-  // Grade mais densa (8 linhas em vez de 5)
+  // Grade horizontal — 5 linhas espaçadas, sem aglomerar
+  const STEPS=5;
   ctx.strokeStyle='#e2eef3';ctx.lineWidth=1;
-  ctx.fillStyle='#5a8099';ctx.font="500 11px 'Barlow',sans-serif";ctx.textAlign='right';
-  for(let i=0;i<=6;i++){
-    const v=yMin+(yMax-yMin)*i/6,y=yOf(v);
+  for(let i=0;i<=STEPS;i++){
+    const v=yMin+(yMax-yMin)*i/STEPS,y=yOf(v);
     ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
-    ctx.fillText(fmtBRL(v),P.l-7,y+4);
+    // Rótulo eixo Y: fonte menor, alinhado à direita com folga
+    ctx.fillStyle='#5a8099';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='right';
+    ctx.fillText(fmtEixo(v),P.l-6,y+3.5);
   }
-  // Linha do zero destacada
+
+  // Linha do zero em destaque
   if(yMin<0&&yMax>0){
     const y0=yOf(0);
-    ctx.save();ctx.strokeStyle='#1a3347';ctx.lineWidth=1.8;
+    ctx.save();ctx.strokeStyle='#1a3347';ctx.lineWidth=2;
+    ctx.setLineDash([4,3]);
     ctx.beginPath();ctx.moveTo(P.l,y0);ctx.lineTo(P.l+cW,y0);ctx.stroke();
+    ctx.setLineDash([]);
+    // Label "R$ 0"
+    ctx.fillStyle='#1a3347';ctx.font="600 9px 'Barlow',sans-serif";ctx.textAlign='right';
+    ctx.fillText('R$ 0',P.l-6,y0-3);
     ctx.restore();
   }
-  // Eixo X
-  ctx.fillStyle='#5a8099';ctx.font="600 11px 'Barlow',sans-serif";ctx.textAlign='center';
-  labels.forEach((lb,i)=>ctx.fillText(lb,xOf(i),H-P.b+18));
 
-  // Linhas coloridas por sinal
+  // Eixo X — labels dos meses, espaçados, sem colisão
+  ctx.fillStyle='#5a8099';ctx.font="600 10px 'Barlow',sans-serif";ctx.textAlign='center';
+  // Se muitos meses, mostrar só a cada 2
+  const step=n>16?3:n>10?2:1;
+  labels.forEach((lb,i)=>{if(i%step===0||i===n-1)ctx.fillText(lb,xOf(i),H-P.b+16);});
+
+  // Linhas coloridas por sinal entre pontos consecutivos
   const corExp=v=>v<0?'#c0392b':'#2a9d5c';
   if(n>1){
     for(let i=0;i<n-1;i++){
       const v1=valores[i],v2=valores[i+1];
-      ctx.beginPath();ctx.strokeStyle=corExp((v1+v2)/2);ctx.lineWidth=3;
+      ctx.beginPath();ctx.strokeStyle=corExp((v1+v2)/2);ctx.lineWidth=2.5;
       ctx.lineCap='round';
       ctx.moveTo(xOf(i),yOf(v1));ctx.lineTo(xOf(i+1),yOf(v2));ctx.stroke();
     }
   }
-  // Pontos + valores
+
+  // Pontos com borda branca
   valores.forEach((v,i)=>{
-    ctx.beginPath();ctx.arc(xOf(i),yOf(v),5,0,Math.PI*2);
+    const x=xOf(i),y=yOf(v);
+    ctx.beginPath();ctx.arc(x,y,4.5,0,Math.PI*2);
     ctx.fillStyle=corExp(v);ctx.fill();
-    ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
-    // Valor abaixo se positivo, acima se negativo (pra não cruzar a linha)
-    ctx.fillStyle=corExp(v);ctx.font="700 10px 'DM Mono',monospace";ctx.textAlign='center';
-    ctx.fillText(fmtBRL(v),xOf(i),yOf(v)+(v<0?-12:18));
+    ctx.strokeStyle='#fff';ctx.lineWidth=1.8;ctx.stroke();
+  });
+
+  // Valores nos pontos — fundo branco semi-transparente, alternados cima/baixo para não colidir
+  ctx.font="700 9.5px 'DM Mono',monospace";ctx.textAlign='center';
+  valores.forEach((v,i)=>{
+    const x=xOf(i),y=yOf(v);
+    const txt=fmtPonto(v);
+    const tw=ctx.measureText(txt).width;
+    // Alternar: par=acima, ímpar=abaixo (evita colisão entre pontos próximos)
+    const acima=v<0||(i%2===0);
+    const ty=acima?y-14:y+20;
+    // Fundo branco
+    ctx.save();
+    ctx.fillStyle='rgba(255,255,255,0.82)';
+    ctx.fillRect(x-tw/2-3,ty-10,tw+6,13);
+    ctx.fillStyle=corExp(v);
+    ctx.fillText(txt,x,ty);
+    ctx.restore();
   });
 
   ctx.textBaseline='alphabetic';
