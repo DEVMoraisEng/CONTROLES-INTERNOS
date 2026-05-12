@@ -1132,7 +1132,7 @@ function drawLinesExposicao(id,labels,valores){
 
   const W=pw,n=labels.length;if(!n)return;
 
-  // Formato abreviado para eixo Y — mesmo padrão do drawLines mas em BRL
+  // Formato abreviado para eixo Y
   function fmtEixo(v){
     const s=v<0?'-':'',a=Math.abs(v);
     if(a>=1e6)return s+'R$'+(a/1e6).toFixed(1).replace('.',',')+'M';
@@ -1140,30 +1140,34 @@ function drawLinesExposicao(id,labels,valores){
     return s+'R$'+Math.round(a);
   }
 
-  // Padding idêntico ao drawLines — só l aumenta um pouco para o BRL
-  const P={t:28,r:16,b:44,l:72},cW=W-P.l-P.r,cH=H-P.t-P.b;
+  // Padding: l grande o suficiente para rótulos do eixo Y + gap;
+  // r grande o suficiente para o label do último ponto não ser cortado
+  const LABEL_HALF = 44; // metade máxima de um label fmtBRL (ex: "R$ -369.410" ~88px/2)
+  const P={t:28, r:LABEL_HALF+8, b:44, l:72}, cW=W-P.l-P.r, cH=H-P.t-P.b;
 
   const minV=Math.min(...valores,0),maxV=Math.max(...valores,0.01);
   const range=Math.max(Math.abs(maxV),Math.abs(minV))||1;
   const pad=range*0.15;
   const yMin=minV-pad,yMax=maxV+pad;
 
+  // xOf: pontos distribuídos com margem interna para não colar nas bordas
   const xOf=i=>P.l+(n===1?cW/2:i*(cW/(n-1)));
   const yOf=v=>P.t+cH*(1-(v-yMin)/(yMax-yMin));
 
   ctx.clearRect(0,0,W,H);
 
-  // Grade horizontal — 4 steps igual ao drawLines
+  // Grade horizontal — 4 steps
   const steps=4;
   ctx.strokeStyle='#d0e4ec';ctx.lineWidth=1;
   for(let i=0;i<=steps;i++){
     const v=yMin+(yMax-yMin)*i/steps,y=yOf(v);
     ctx.beginPath();ctx.moveTo(P.l,y);ctx.lineTo(P.l+cW,y);ctx.stroke();
+    // Rótulo eixo Y: alinhado à direita com gap de 8px antes da linha
     ctx.fillStyle='#5a8099';ctx.font="500 10px 'Barlow',sans-serif";ctx.textAlign='right';
-    ctx.fillText(fmtEixo(v),P.l-5,y+3.5);
+    ctx.fillText(fmtEixo(v),P.l-8,y+3.5);
   }
 
-  // Linha do zero em destaque (igual drawLines)
+  // Linha do zero em destaque
   if(yMin<0&&yMax>0){
     const y0=yOf(0);
     ctx.save();ctx.strokeStyle='#295778';ctx.lineWidth=1.5;
@@ -1171,12 +1175,12 @@ function drawLinesExposicao(id,labels,valores){
     ctx.restore();
   }
 
-  // Labels eixo X — pula de 2 em 2 se muitos meses
+  // Labels eixo X
   ctx.fillStyle='#5a8099';ctx.font="600 10.5px 'Barlow',sans-serif";ctx.textAlign='center';
   const step=n>14?3:n>9?2:1;
   labels.forEach((lb,i)=>{if(i%step===0||i===n-1)ctx.fillText(lb,xOf(i),H-P.b+16);});
 
-  // Linhas coloridas por sinal entre pontos consecutivos
+  // Linhas coloridas por sinal
   const cor=v=>v<0?'#c0392b':'#2a9d5c';
   if(n>1){
     for(let i=0;i<n-1;i++){
@@ -1187,7 +1191,7 @@ function drawLinesExposicao(id,labels,valores){
     }
   }
 
-  // Pontos com borda branca (igual drawLines, raio 4)
+  // Pontos com borda branca
   valores.forEach((v,i)=>{
     const x=xOf(i),y=yOf(v);
     ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);
@@ -1195,20 +1199,22 @@ function drawLinesExposicao(id,labels,valores){
     ctx.strokeStyle='#fff';ctx.lineWidth=1.5;ctx.stroke();
   });
 
-  // Valores acima/abaixo de cada ponto (igual drawLines: sempre acima y-10)
-  // Alterna cima/baixo para evitar colisão quando pontos estão próximos
+  // Labels dos valores — clampeados para nunca sair da área útil
+  ctx.font="700 9.5px 'DM Mono',monospace";
   valores.forEach((v,i)=>{
     const x=xOf(i),y=yOf(v);
     const txt=fmtBRL(v);
-    const acima=v<=0;          // negativos: label acima da linha; positivos: abaixo
+    const acima=v<=0;
     const ty=acima?y-12:y+18;
-    ctx.font="700 9.5px 'DM Mono',monospace";ctx.textAlign='center';
-    // Fundo branco (mesmo recurso do drawLines não tem, mas necessário para BRL longo)
     const tw=ctx.measureText(txt).width;
-    ctx.fillStyle='rgba(255,255,255,0.80)';
-    ctx.fillRect(x-tw/2-2,ty-10,tw+4,13);
+    const half=tw/2+3;
+    // Clamp: label não pode sair à esquerda do eixo Y nem à direita do canvas
+    const xClamped=Math.min(Math.max(x, P.l+half), W-half-4);
+    ctx.textAlign='center';
+    ctx.fillStyle='rgba(255,255,255,0.85)';
+    ctx.fillRect(xClamped-half+1,ty-10,tw+4,13);
     ctx.fillStyle=cor(v);
-    ctx.fillText(txt,x,ty);
+    ctx.fillText(txt,xClamped,ty);
   });
 
   ctx.textBaseline='alphabetic';
