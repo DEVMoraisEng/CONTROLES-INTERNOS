@@ -1,3 +1,4 @@
+
 name: Atualizar dados e publicar site
 
 on:
@@ -67,6 +68,22 @@ jobs:
           cp logo.png dist/ 2>/dev/null || true
           cp TERRABELA_MAPA_DOCUMENTOS.svg dist/ 2>/dev/null || true
           cp TERRABELA_MAPA_VENDAS.svg dist/ 2>/dev/null || true
+          cp RAVENA_DOCS.svg dist/ 2>/dev/null || true
+          cp RAVENA_VENDAS.svg dist/ 2>/dev/null || true
+          cp PQ_DOS_BURITIS_DOCS.svg dist/ 2>/dev/null || true
+          cp PQ_DOS_BURITIS_VENDAS.svg dist/ 2>/dev/null || true
+          cp JOAO_BRAZ_DOCS.svg dist/ 2>/dev/null || true
+          cp JOAO_BRAZ_VENDAS.svg dist/ 2>/dev/null || true
+          cp IPANEMA_DOCS.svg dist/ 2>/dev/null || true
+          cp IPANEMA_VENDAS.svg dist/ 2>/dev/null || true
+          cp MQ_DE_ABREU_DOCS.svg dist/ 2>/dev/null || true
+          cp MQ_DE_ABREU_VENDAS.svg dist/ 2>/dev/null || true
+          cp SOLAR_VILLE_DOCS.svg dist/ 2>/dev/null || true
+          cp SOLAR_VILLE_VENDAS.svg dist/ 2>/dev/null || true
+          cp ACROPOLE_DOCS.svg dist/ 2>/dev/null || true
+          cp ACROPOLE_VENDAS.svg dist/ 2>/dev/null || true
+          cp COND_ESMERALDAS_DOCS.svg dist/ 2>/dev/null || true
+          cp esmeraldas.html dist/ 2>/dev/null || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
