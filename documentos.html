@@ -233,18 +233,18 @@ const COLS=[
 // CORREÇÃO — "Não comprado" é o fallback FINAL, nunca sobrescreve estados mais avançados
 function calcStatusDoc(d){
   if(!d) return 'cinza';
-  // Estados avançados primeiro (independente de ter ou não data_aquisicao_lote)
-  if(isSim(d.aprovou_habite_se)) return 'roxo';
-  if(isSim(d.agendou_habite_se)) return 'vermelho';
+  const obFin=(d.obra_finalizada||'').toUpperCase().trim();
+  if(obFin==='SIM SEM PRAZO') return 'sem_prazo';
   if(d.data_termino_obra&&d.data_inicio_obra){
     const dias=diffDias(d.data_inicio_obra,d.data_termino_obra);
-    return dias?( dias<=150?'verde':'laranja' ):'azul_esc';
+    return dias?(dias<=150?'verde':'laranja'):'azul_esc';
   }
+  if(isSim(d.aprovou_habite_se)) return 'roxo';
+  if(isSim(d.agendou_habite_se)) return 'vermelho';
   if(isSim(d.obra_iniciada)) return 'azul_esc';
   if(d.data_inicio_obra) return 'azul_esc';
-  // Só aqui verifica se foi comprado
-  if(!d.data_aquisicao_lote) return 'cinza'; // não comprado
-  return 'amarelo'; // comprado mas não iniciado
+  if(!d.data_aquisicao_lote) return 'cinza';
+  return 'amarelo';
 }
 
 const COR_DOCS={cinza:'#8faabb',amarelo:'#c9a227',azul_esc:'#1e3f58',verde:'#2a9d5c',laranja:'#d46a1a',vermelho:'#c0392b',roxo:'#7c4daf'};

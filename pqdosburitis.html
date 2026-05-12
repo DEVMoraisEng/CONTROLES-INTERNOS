@@ -1290,22 +1290,21 @@ function docConcluido(d) {
 
 function calcStatusDoc(d) {
   if (!d) return 'cinza';
-  // Estados avançados: verificados ANTES de checar data_aquisicao_lote
-  if (isSim(d.aprovou_habite_se)) {
-    if (!d.data_inicio_obra && !d.data_termino_obra) return 'sem_prazo';
-    return 'roxo';
-  }
-  if (isSim(d.agendou_habite_se)) return 'vermelho';
-  // IMPLEMENTAÇÃO: OBRA FINALIZADA? = "SIM SEM PRAZO" → Finalizado s/ prazo
+  // 1. Finalização SEM PRAZO (campos antigos sem datas)
   const obFin = (d.obra_finalizada || '').toUpperCase().trim();
   if (obFin === 'SIM SEM PRAZO') return 'sem_prazo';
+  // 2. Finalização COM PRAZO — tem prioridade total, habite-se não muda a cor
   if (d.data_termino_obra && d.data_inicio_obra) {
     const dias = diffDays(d.data_inicio_obra, d.data_termino_obra);
     return (dias && dias > 0) ? (dias <= 150 ? 'verde' : 'laranja') : 'azul_esc';
   }
+  // 3. Habite-se só aparece se a obra ainda não tiver data de término
+  if (isSim(d.aprovou_habite_se)) return 'roxo';
+  if (isSim(d.agendou_habite_se)) return 'vermelho';
+  // 4. Em andamento
   if (isSim(d.obra_iniciada) || d.obra_iniciada === 'SIM SEM PRAZO') return 'azul_esc';
-  if (d.data_inicio_obra)     return 'azul_esc';
-  if (docConcluido(d))        return 'sem_prazo';
+  if (d.data_inicio_obra) return 'azul_esc';
+  if (docConcluido && docConcluido(d)) return 'sem_prazo';
   if (!d.data_aquisicao_lote) return 'cinza';
   return 'amarelo';
 }
