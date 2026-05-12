@@ -619,8 +619,18 @@ tfoot td:last-child{border-right:none}
     <!-- Gráfico exposição -->
     <div class="blk-title">Exposição de Caixa ao Longo do Tempo</div>
     <div class="graf-card-full">
-      <div class="graf-body" style="padding:20px 16px">
-        <div class="chart-wrap"><canvas id="ch-exp" height="320"></canvas></div>
+      <div class="graf-body" style="padding:16px 16px 20px">
+        <div style="display:flex;gap:20px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
+          <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1a3347">
+            <span style="display:inline-block;width:14px;height:12px;background:#c0392b;border-radius:2px"></span>
+            Empresa exposta (capital investido)
+          </span>
+          <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#1a3347">
+            <span style="display:inline-block;width:14px;height:12px;background:#2a9d5c;border-radius:2px"></span>
+            Retorno positivo (lucro)
+          </span>
+        </div>
+        <div class="chart-wrap"><canvas id="ch-exp" height="280"></canvas></div>
       </div>
     </div>
 
@@ -646,7 +656,14 @@ tfoot td:last-child{border-right:none}
         <div class="controles" style="margin-bottom:10px;flex-wrap:wrap">
           <span class="sel-lbl">Cidade:</span><select id="sel-cid-ca" onchange="initCompObras('a');buildComp('a')"><option value="">Todas</option></select>
           <span class="sel-lbl">Setor:</span><select id="sel-set-ca" onchange="initCompObras('a');buildComp('a')"><option value="">Todos</option></select>
-          <span class="sel-lbl">Obra:</span><select id="sel-obra-ca" onchange="buildComp('a')"><option value="">Todas</option></select>
+          <span class="sel-lbl">Obra:</span>
+          <div class="obra-search-wrap" id="obra-search-wrap-ca" style="position:relative;display:inline-flex;flex-direction:column;gap:4px">
+            <input type="text" id="obra-search-ca" placeholder="🔍 Buscar obra..." autocomplete="off"
+              style="padding:6px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:12px;color:var(--text);width:220px;background:var(--branco);"
+              oninput="filtrarCompObras('a')" onfocus="abrirCompDrop('a')">
+            <div id="comp-drop-a" style="display:none;position:absolute;top:100%;left:0;z-index:300;background:var(--branco);border:1.5px solid var(--border);border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.12);max-height:240px;overflow-y:auto;min-width:260px;padding:6px 0;margin-top:4px"></div>
+            <div id="comp-tags-a" style="display:flex;flex-wrap:wrap;gap:3px;margin-top:4px"></div>
+          </div>
         </div>
         <div class="blk-title">Resultado Financeiro</div>
         <div class="roi-grid" id="comp-roi1-a"></div>
@@ -654,7 +671,17 @@ tfoot td:last-child{border-right:none}
         <div class="blk-title">Fluxo de Caixa Mensal</div>
         <div class="exp-table-wrap" id="comp-tbl-a" style="max-height:300px;overflow-y:auto"></div>
         <div class="blk-title">Exposição de Caixa</div>
-        <div class="graf-card-full"><div class="graf-body" style="padding:12px 8px"><div class="chart-wrap"><canvas id="ch-comp-a" height="260"></canvas></div></div></div>
+        <div class="graf-card-full"><div class="graf-body" style="padding:12px 8px 16px">
+          <div style="display:flex;gap:16px;align-items:center;margin-bottom:8px;flex-wrap:wrap">
+            <span style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#1a3347">
+              <span style="display:inline-block;width:12px;height:10px;background:#c0392b;border-radius:2px"></span>Capital exposto
+            </span>
+            <span style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#1a3347">
+              <span style="display:inline-block;width:12px;height:10px;background:#2a9d5c;border-radius:2px"></span>Retorno positivo
+            </span>
+          </div>
+          <div class="chart-wrap"><canvas id="ch-comp-a" height="220"></canvas></div>
+        </div></div>
         <div class="blk-title">Tempos Médios</div>
         <div class="kpi-row r3" id="comp-pz1-a" style="margin-bottom:6px"></div>
         <div class="kpi-row r3" id="comp-pz2-a" style="margin-bottom:6px"></div>
@@ -666,7 +693,14 @@ tfoot td:last-child{border-right:none}
         <div class="controles" style="margin-bottom:10px;flex-wrap:wrap">
           <span class="sel-lbl">Cidade:</span><select id="sel-cid-cb" onchange="initCompObras('b');buildComp('b')"><option value="">Todas</option></select>
           <span class="sel-lbl">Setor:</span><select id="sel-set-cb" onchange="initCompObras('b');buildComp('b')"><option value="">Todos</option></select>
-          <span class="sel-lbl">Obra:</span><select id="sel-obra-cb" onchange="buildComp('b')"><option value="">Todas</option></select>
+          <span class="sel-lbl">Obra:</span>
+          <div class="obra-search-wrap" id="obra-search-wrap-cb" style="position:relative;display:inline-flex;flex-direction:column;gap:4px">
+            <input type="text" id="obra-search-cb" placeholder="🔍 Buscar obra..." autocomplete="off"
+              style="padding:6px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:12px;color:var(--text);width:220px;background:var(--branco);"
+              oninput="filtrarCompObras('b')" onfocus="abrirCompDrop('b')">
+            <div id="comp-drop-b" style="display:none;position:absolute;top:100%;left:0;z-index:300;background:var(--branco);border:1.5px solid var(--border);border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.12);max-height:240px;overflow-y:auto;min-width:260px;padding:6px 0;margin-top:4px"></div>
+            <div id="comp-tags-b" style="display:flex;flex-wrap:wrap;gap:3px;margin-top:4px"></div>
+          </div>
         </div>
         <div class="blk-title">Resultado Financeiro</div>
         <div class="roi-grid" id="comp-roi1-b"></div>
@@ -674,7 +708,17 @@ tfoot td:last-child{border-right:none}
         <div class="blk-title">Fluxo de Caixa Mensal</div>
         <div class="exp-table-wrap" id="comp-tbl-b" style="max-height:300px;overflow-y:auto"></div>
         <div class="blk-title">Exposição de Caixa</div>
-        <div class="graf-card-full"><div class="graf-body" style="padding:12px 8px"><div class="chart-wrap"><canvas id="ch-comp-b" height="260"></canvas></div></div></div>
+        <div class="graf-card-full"><div class="graf-body" style="padding:12px 8px 16px">
+          <div style="display:flex;gap:16px;align-items:center;margin-bottom:8px;flex-wrap:wrap">
+            <span style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#1a3347">
+              <span style="display:inline-block;width:12px;height:10px;background:#c0392b;border-radius:2px"></span>Capital exposto
+            </span>
+            <span style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#1a3347">
+              <span style="display:inline-block;width:12px;height:10px;background:#2a9d5c;border-radius:2px"></span>Retorno positivo
+            </span>
+          </div>
+          <div class="chart-wrap"><canvas id="ch-comp-b" height="220"></canvas></div>
+        </div></div>
         <div class="blk-title">Tempos Médios</div>
         <div class="kpi-row r3" id="comp-pz1-b" style="margin-bottom:6px"></div>
         <div class="kpi-row r3" id="comp-pz2-b" style="margin-bottom:6px"></div>
@@ -1084,8 +1128,8 @@ function drawLinesExposicao(id,labels,valores){
   c.style.width=pw+'px';c.style.height=H+'px';
   const ctx=c.getContext('2d');ctx.scale(dpr,dpr);
   const W=pw,n=labels.length;if(!n)return;
-  // Padding mais generoso: topo p/ legenda, esquerda p/ valores em BRL
-  const P={t:48,r:24,b:48,l:140},cW=W-P.l-P.r,cH=H-P.t-P.b;
+  // Padding: topo menor (legenda agora é HTML), esquerda p/ valores em BRL
+  const P={t:16,r:24,b:48,l:140},cW=W-P.l-P.r,cH=H-P.t-P.b;
   const minV=Math.min(...valores,0),maxV=Math.max(...valores,0.01);
   const range=Math.max(Math.abs(maxV),Math.abs(minV))||1;
   const pad=range*0.18;
@@ -1134,14 +1178,6 @@ function drawLinesExposicao(id,labels,valores){
     ctx.fillText(fmtBRL(v),xOf(i),yOf(v)+(v<0?-12:18));
   });
 
-  // Legenda no topo
-  ctx.font="600 12px 'Barlow',sans-serif";ctx.textAlign='left';ctx.textBaseline='middle';
-  let lx=P.l, ly=22;
-  ctx.fillStyle='#c0392b';ctx.fillRect(lx,ly-6,14,12);
-  ctx.fillStyle='#1a3347';ctx.fillText('Empresa exposta (capital investido)',lx+18,ly);
-  lx += ctx.measureText('Empresa exposta (capital investido)').width + 50;
-  ctx.fillStyle='#2a9d5c';ctx.fillRect(lx,ly-6,14,12);
-  ctx.fillStyle='#1a3347';ctx.fillText('Retorno positivo (lucro)',lx+18,ly);
   ctx.textBaseline='alphabetic';
 }
 
@@ -2531,8 +2567,13 @@ function buildCustos(){
 }
 
 // ── COMPARATIVO DE DESEMPENHO ──
+// Estado multi-select de obras por lado
+const compObrasLista={a:[],b:[]};
+const compObrasSel={a:new Set(),b:new Set()};
+
 function initCompObras(side){
   const sfx=side==='a'?'ca':'cb';
+  // Popular cidades (só na primeira vez)
   const cids=[...new Set(docs.map(d=>d.cidade).filter(Boolean))].sort();
   const fill=(id,arr)=>{const s=document.getElementById(id);if(!s||s.children.length>1)return;arr.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o);});};
   fill('sel-cid-'+sfx,cids);
@@ -2541,23 +2582,79 @@ function initCompObras(side){
   const setVal=document.getElementById('sel-set-'+sfx)?.value||'';
   if(setVal)arr=arr.filter(d=>d.setor===setVal);
   const sets=[...new Set(arr.map(d=>d.setor).filter(Boolean))].sort();
-  const obras=[...new Set(arr.map(d=>d.endereco).filter(Boolean))].sort();
+  // Popular setor
   const sSt=document.getElementById('sel-set-'+sfx);
-  const sOb=document.getElementById('sel-obra-'+sfx);
   if(sSt){const cv=sSt.value;sSt.innerHTML='<option value="">Todos</option>';sets.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;sSt.appendChild(o);});sSt.value=cv;}
-  if(sOb){sOb.innerHTML='<option value="">Todas</option>';obras.forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o;sOb.appendChild(op);});}
+  // Popular lista de obras filtradas (apenas obras completas)
+  const obrasCompletas=getObrasCompletas();
+  const obras=[...new Set(arr.filter(d=>obrasCompletas.has(normS(d.endereco))).map(d=>d.endereco).filter(Boolean))].sort();
+  compObrasLista[side]=obras;
+  compObrasSel[side]=new Set([...compObrasSel[side]].filter(o=>obras.includes(o)));
+  renderCompDrop(side,'');
+  renderCompTags(side);
+}
+
+function filtrarCompObras(side){
+  const q=(document.getElementById('obra-search-'+side)?.value||'').toLowerCase();
+  renderCompDrop(side,q);
+  abrirCompDrop(side);
+}
+
+function renderCompDrop(side,q){
+  const dd=document.getElementById('comp-drop-'+side);if(!dd)return;
+  const lista=q?compObrasLista[side].filter(o=>o.toLowerCase().includes(q)):compObrasLista[side];
+  if(!lista.length){dd.innerHTML='<div style="padding:10px 14px;color:var(--text4);font-size:12px">Nenhuma obra encontrada</div>';return;}
+  dd.innerHTML='<div class="obra-check-item" onclick="toggleCompTodas(''+side+'')">'+
+    '<input type="checkbox" '+(compObrasSel[side].size===0?'checked':'')+'>'+
+    '<span style="font-weight:700">Todas</span></div>'+
+    lista.map(o=>'<div class="obra-check-item" onclick="toggleCompObra(''+side+'',''+o.replace(/'/g,"\'")+'')">' +
+      '<input type="checkbox" '+(compObrasSel[side].has(o)?'checked':'')+'>' +
+      '<span>'+o+'</span></div>').join('');
+}
+
+function toggleCompObra(side,o){
+  if(compObrasSel[side].has(o))compObrasSel[side].delete(o);else compObrasSel[side].add(o);
+  renderCompTags(side);
+  renderCompDrop(side,document.getElementById('obra-search-'+side)?.value||'');
+  buildComp(side);
+}
+
+function toggleCompTodas(side){
+  compObrasSel[side].clear();
+  renderCompTags(side);
+  renderCompDrop(side,'');
+  const dd=document.getElementById('comp-drop-'+side);if(dd)dd.style.display='none';
+  buildComp(side);
+}
+
+function renderCompTags(side){
+  const wrap=document.getElementById('comp-tags-'+side);if(!wrap)return;
+  if(!compObrasSel[side].size){wrap.innerHTML='<span style="font-size:10px;color:var(--text4)">Todas as obras</span>';return;}
+  wrap.innerHTML=[...compObrasSel[side]].map(o=>
+    '<div class="obra-tag">'+o+'<span class="obra-tag-x" onclick="toggleCompObra(''+side+'',''+o.replace(/'/g,"\'")+'')">\u00d7</span></div>'
+  ).join('');
+}
+
+function abrirCompDrop(side){
+  const dd=document.getElementById('comp-drop-'+side);if(dd)dd.style.display='block';
+  setTimeout(()=>document.addEventListener('click',function fecharComp(e){
+    const wrap=document.getElementById('obra-search-wrap-c'+side);
+    if(wrap&&!wrap.contains(e.target)){const d=document.getElementById('comp-drop-'+side);if(d)d.style.display='none';}
+    else setTimeout(()=>document.addEventListener('click',fecharComp,{once:true}),100);
+  },{once:true}),100);
 }
 function buildComp(side){
   const sfx=side==='a'?'ca':'cb';
   const cid=document.getElementById('sel-cid-'+sfx)?.value||'';
   const set=document.getElementById('sel-set-'+sfx)?.value||'';
-  const obr=document.getElementById('sel-obra-'+sfx)?.value||'';
   // Filtrar docs (usa mesma lógica de obrasCompletas do buildSetor)
   const obrasCompletas=getObrasCompletas();
   let docsF=docs.filter(d=>obrasCompletas.has(normS(d.endereco)));
   if(cid)docsF=docsF.filter(d=>d.cidade===cid);
   if(set)docsF=docsF.filter(d=>d.setor===set);
-  if(obr)docsF=docsF.filter(d=>d.endereco===obr);
+  // Multi-select de obras
+  const selObras=compObrasSel[side];
+  if(selObras&&selObras.size>0)docsF=docsF.filter(d=>selObras.has(d.endereco));
   const enderecosSel=new Set(docsF.map(d=>normS(d.endereco)));
 
   // Pagamentos
