@@ -2,585 +2,269 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morais Engenharia e Construção – Gestão de Obras</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Morais Engenharia · Controle Interno</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy:   #dde4ec;
-    --navy2:  #1e4468;
-    --teal:   #3d8b8b;
-    --teal2:  #4fa8a8;
-    --light:  #e8f0f0;
-    --white:  #ffffff;
-    --gray:   #8a9ab5;
-    --card-bg:#1e4060;
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --azul:#295778;--azul-esc:#1e3f58;--teal:#8FDCD2;--verde:#2a9d5c;--verde-btn:#4cd964;
+  --bg:#EAF1F3;--bg2:#F5F9FA;--bg3:#dceaef;--border:#b8d0da;--border2:#d0e4ec;
+  --text:#1a3347;--text3:#5a8099;--text4:#8aacbb;--branco:#fff;
+}
+body{min-height:100vh;background:var(--bg);font-family:'Barlow',sans-serif;display:flex;flex-direction:column}
+.header{background:var(--azul);border-bottom:3px solid var(--teal);padding:0 28px;
+        height:68px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.hdr-logo{height:38px;flex-shrink:0}
+.hdr-info{display:flex;flex-direction:column;flex:1}
+.hdr-sup{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.hdr-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:.02em}
+.hdr-right{display:flex;align-items:center;gap:14px}
+.updated{font-size:11px;color:rgba(255,255,255,.4);font-family:monospace}
+.btn-logout{background:transparent;border:1px solid rgba(143,220,210,.4);border-radius:7px;
+            padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:13px;
+            font-weight:700;color:var(--teal);letter-spacing:.06em;cursor:pointer;transition:background .15s}
+.btn-logout:hover{background:rgba(143,220,210,.18)}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* LAYOUT PRINCIPAL */
+.main{flex:1;padding:28px 32px 48px;max-width:1200px;margin:0 auto;width:100%}
 
-  body {
-    font-family: 'Barlow', sans-serif;
-    background: var(--navy);
-    color: var(--white);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+/* LINHA SUPERIOR: 3 botões de controle */
+.ctrl-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
 
-  /* ── HEADER ── */
-  header {
-    background: var(--navy2);
-    border-bottom: 2px solid var(--teal);
-    padding: 0 48px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 24px rgba(0,0,0,0.4);
-  }
+/* LINHA INFERIOR: 2 cidades lado a lado */
+.cidades-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
 
-  header img {
-    height: 44px;
-    width: auto;
-    object-fit: contain;
-  }
+/* BOTÃO VER MAPAS */
+.mapas-row{display:flex;justify-content:center;margin-bottom:0}
 
-  header .brand { display: flex; flex-direction: column; line-height: 1.1; }
+/* CARD PADRÃO */
+.mod-card{background:var(--branco);border:2px solid var(--border);border-radius:12px;
+          padding:18px 22px;cursor:pointer;transition:border-color .18s,box-shadow .18s;
+          display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit}
+.mod-card:hover{border-color:var(--teal);box-shadow:0 4px 18px rgba(41,87,120,.1)}
+.mod-card.destaque{border-color:rgba(76,217,100,.5);background:linear-gradient(135deg,var(--branco) 80%,rgba(76,217,100,.06))}
+.mod-card.destaque:hover{border-color:var(--verde-btn);box-shadow:0 4px 18px rgba(76,217,100,.15)}
+.card-title{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;
+            color:var(--azul);text-transform:uppercase;letter-spacing:.06em}
+.card-badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;
+            letter-spacing:.08em;color:var(--text3);background:var(--bg3);
+            border-radius:4px;padding:2px 8px;margin-top:2px;align-self:flex-start}
+.card-badge.g{background:rgba(76,217,100,.15);color:#1a6b40}
+.btn-acessar{display:inline-block;padding:8px 18px;background:var(--azul);color:#fff;
+             border:none;border-radius:7px;font-family:'Barlow Condensed',sans-serif;
+             font-size:14px;font-weight:800;letter-spacing:.07em;cursor:pointer;
+             text-transform:uppercase;transition:background .15s;align-self:flex-start;
+             text-decoration:none}
+.btn-acessar:hover{background:var(--azul-esc)}
+.btn-acessar.verde{background:var(--verde);padding:10px 28px;font-size:16px}
+.btn-acessar.verde:hover{background:#1f7a43}
 
-  header .brand-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    letter-spacing: 0.06em;
-    color: var(--white);
-    text-transform: uppercase;
-  }
+/* CIDADE BLOCO */
+.cidade-bloco{background:var(--branco);border:2px solid var(--border);border-radius:12px;overflow:hidden}
+.cidade-hdr{background:var(--azul);padding:12px 20px;display:flex;align-items:center;gap:10px}
+.cidade-nome{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;
+             color:#fff;text-transform:uppercase;letter-spacing:.07em;flex:1}
+.cidade-body{padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.setor-card{border:1.5px solid var(--border2);border-radius:8px;padding:12px 16px;
+            background:var(--bg2);cursor:pointer;transition:border-color .15s,background .15s;
+            text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px}
+.setor-card:hover{border-color:var(--teal);background:var(--bg3)}
+.setor-nome{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;
+            color:var(--azul);text-transform:uppercase;letter-spacing:.05em}
+.setor-stats{display:flex;gap:8px;flex-wrap:wrap}
+.stat-pill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;
+           letter-spacing:.05em;white-space:nowrap}
+.pill-breve{background:rgba(176,200,212,.3);color:#4a7a99}
+.pill-and{background:rgba(30,63,88,.15);color:var(--azul-esc)}
+.pill-fin{background:rgba(42,157,92,.15);color:var(--verde)}
+.pill-vend{background:rgba(143,220,210,.25);color:#1a6b6b}
 
-  header .brand-sub {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    color: var(--teal2);
-    text-transform: uppercase;
-  }
+/* BOTÃO MAPAS GRANDE */
+.mapas-btn-wrap{text-align:center;padding:4px 0}
 
-  header .spacer { flex: 1; }
+#loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;
+         justify-content:center;z-index:500;flex-direction:column;gap:12px}
+#loading.hidden{display:none}
+.spin{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--teal);
+      border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  header .updated {
-    font-size: 12px;
-    color: var(--gray);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── MAIN ── */
-  main {
-    flex: 1;
-    padding: 52px 48px 64px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .page-title {
-    text-align: center;
-    margin-bottom: 52px;
-  }
-
-  .page-title h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--teal2);
-    margin-bottom: 10px;
-  }
-
-  .page-title h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 50px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-
-  /* ── CITY SECTION ── */
-  .city-section {
-    margin-bottom: 48px;
-  }
-
-  .city-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .city-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    color: var(--teal2);
-    white-space: nowrap;
-  }
-
-  .city-line {
-    flex: 1;
-    height: 1px;
-    background: rgba(61,139,139,0.25);
-  }
-
-  .city-count {
-    font-size: 12px;
-    color: var(--gray);
-    letter-spacing: 0.06em;
-  }
-
-  /* ── GRID DE CARDS ── */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 18px;
-  }
-
-  .card {
-    background: var(--card-bg);
-    border: 1px solid rgba(61,139,139,0.2);
-    border-radius: 10px;
-    padding: 28px 24px;
-    cursor: pointer;
-    text-decoration: none;
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--teal), var(--teal2));
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    border-color: var(--teal);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(61,139,139,0.3);
-  }
-
-  .card:hover::before { opacity: 1; }
-
-  .card-icon {
-    width: 44px;
-    height: 44px;
-    background: rgba(61,139,139,0.15);
-    border: 1px solid rgba(61,139,139,0.3);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-  }
-
-  .card-name {
-    font-size: 30px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--white);
-    line-height: 1;
-  }
-
-  .card-sub {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--teal2);
-  }
-
-  .card-stats {
-    display: flex;
-    gap: 18px;
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .stat { display: flex; flex-direction: column; gap: 2px; }
-
-  .stat-val {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--white);
-  }
-
-  .stat-label {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-  }
-
-  .card-arrow {
-    position: absolute;
-    right: 20px;
-    bottom: 24px;
-    font-size: 18px;
-    color: var(--teal2);
-    opacity: 0;
-    transform: translateX(-6px);
-    transition: opacity 0.2s, transform 0.2s;
-  }
-
-  .card:hover .card-arrow { opacity: 1; transform: translateX(0); }
-
-  /* ── LEGENDA GLOBAL ── */
-  .legend-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    justify-content: center;
-    padding: 18px 28px;
-    background: var(--card-bg);
-    border: 1px solid rgba(61,139,139,0.15);
-    border-radius: 8px;
-    margin-top: 16px;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 12px;
-    color: var(--light);
-    font-weight: 500;
-  }
-
-  .legend-dot {
-    width: 13px;
-    height: 13px;
-    border-radius: 3px;
-    flex-shrink: 0;
-  }
-
-  .update-info {
-    font-size: 12px;
-    color: var(--gray);
-    text-align: center;
-    letter-spacing: 0.04em;
-    margin-top: 20px;
-  }
-
-  .update-info span { color: var(--teal2); }
-
-  @media (max-width: 768px) {
-    header { padding: 0 16px; height: auto; min-height: 54px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px; }
-    header img { height: 34px; }
-    header .brand-name { font-size: 17px; }
-    main { padding: 28px 16px 48px; }
-    .page-title h2 { font-size: 28px; }
-    .page-title { margin-bottom: 32px; }
-    .city-label { font-size: 10px; }
-    .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .card { padding: 20px 16px; gap: 10px; }
-    .card-name { font-size: 18px; }
-    .card-sub { font-size: 9px; }
-    .card-stats { gap: 12px; }
-    .stat-val { font-size: 16px; }
-    .stat-label { font-size: 9px; }
-    .legend-bar { gap: 10px 16px; padding: 12px 16px; }
-    .legend-item { font-size: 10px; }
-  }
-  @media (max-width: 400px) {
-    .grid { grid-template-columns: 1fr; }
-  }
+@media(max-width:900px){
+  .ctrl-row{grid-template-columns:1fr}
+  .cidades-row{grid-template-columns:1fr}
+  .main{padding:16px}
+}
 </style>
 </head>
 <body>
+<div id="loading"><div class="spin"></div></div>
 
-<header>
-  <img src="logo.png" alt="Logo Morais" onerror="this.style.display='none'">
-  <div class="brand">
-    <div class="brand-name">Morais</div>
-    <div class="brand-sub">Engenharia e Construção</div>
+<header class="header">
+  <img src="logo.png" class="hdr-logo" alt="Morais">
+  <div class="hdr-info">
+    <div class="hdr-sup">Morais Engenharia · Controle Interno</div>
+    <div class="hdr-title">Painel de Controle</div>
   </div>
-  <div class="spacer"></div>
-  <div class="updated" id="updated-at">Carregando...</div>
+  <div class="hdr-right">
+    <div class="updated" id="updated-at"></div>
+    <button class="btn-logout" onclick="sair()">Sair</button>
+  </div>
 </header>
 
-<main>
-  <div class="page-title">
-    <h1>Selecione o Empreendimento</h1>
-    <h2>Gestão de Obras</h2>
+<div class="main">
+  <!-- Linha 1: Controle e Análise -->
+  <div class="ctrl-row">
+    <div class="mod-card destaque" onclick="abrirAnalise(event)" onmousedown="handleAnaliseMouseDown(event)" title="Click: abrir · Ctrl+Click / Scroll: nova aba">
+      <div class="card-title">📊 Análise de Dados</div>
+      <div class="card-badge g">Dashboard · Metas · Prazos · Setorizadas</div>
+      <a href="analise.html" class="btn-acessar verde" onclick="event.preventDefault();event.stopPropagation();abrirAnalise(event)" target="_blank" rel="noopener" id="btn-analise-link">Acessar →</a>
+    </div>
+    <a class="mod-card" href="documentos.html">
+      <div class="card-title">📋 Gestão Documental</div>
+      <div class="card-badge">Todos os Setores · 147 registros</div>
+      <button class="btn-acessar">Acessar →</button>
+    </a>
+    <a class="mod-card" href="vendas.html">
+      <div class="card-title">🏠 Gestão de Vendas</div>
+      <div class="card-badge">Todos os Setores</div>
+      <button class="btn-acessar">Acessar →</button>
+    </a>
   </div>
 
-  <!-- GOIÂNIA -->
-  <div class="city-section">
-    <div class="city-header">
-      <div class="city-label">📍 Goiânia</div>
-      <div class="city-line"></div>
-      <div class="city-count" id="count-goiania">—</div>
-    </div>
-    <div class="grid">
-
-      <a class="card" href="acropole.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">Acrópole</div>
-          <div class="card-sub">Setor Acrópole</div>
-        </div>
-        <div class="card-stats" id="stats-acropole">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="esmeraldas.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">Esmeraldas</div>
-          <div class="card-sub">Cond. das Esmeraldas</div>
-        </div>
-        <div class="card-stats" id="stats-esmeraldas">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="ipanema.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">Ipanema</div>
-          <div class="card-sub">Setor Ipanema</div>
-        </div>
-        <div class="card-stats" id="stats-ipanema">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="joaobraz.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">João Braz 2</div>
-          <div class="card-sub">Setor João Braz</div>
-        </div>
-        <div class="card-stats" id="stats-joaobraz">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="marques.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">Marques de Abreu</div>
-          <div class="card-sub">Rua Marques de Abreu</div>
-        </div>
-        <div class="card-stats" id="stats-marques">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="solarville.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">Solar Ville</div>
-          <div class="card-sub">Residencial Solar Ville</div>
-        </div>
-        <div class="card-stats" id="stats-solarville">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-    </div>
+  <!-- Linha 2: Cidades lado a lado -->
+  <div class="cidades-row" id="cidades-row">
+    <!-- preenchido pelo JS -->
   </div>
 
-  <!-- SENADOR CANEDO -->
-  <div class="city-section">
-    <div class="city-header">
-      <div class="city-label">📍 Senador Canedo</div>
-      <div class="city-line"></div>
-      <div class="city-count" id="count-canedo">—</div>
-    </div>
-    <div class="grid">
+</div>
 
-      <a class="card" href="buritis.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">Pq. dos Buritis</div>
-          <div class="card-sub">Parque dos Buritis</div>
-        </div>
-        <div class="card-stats" id="stats-buritis">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="ravena.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">Ravena</div>
-          <div class="card-sub">Residencial Ravena</div>
-        </div>
-        <div class="card-stats" id="stats-ravena">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-      <a class="card" href="terrabela.html">
-        <div class="card-icon">🏗️</div>
-        <div>
-          <div class="card-name">Terrabela</div>
-          <div class="card-sub">Terrabela do Cerrado II</div>
-        </div>
-        <div class="card-stats" id="stats-terrabela">
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Lotes</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Em obra</div></div>
-          <div class="stat"><div class="stat-val">—</div><div class="stat-label">Concluídos</div></div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- LEGENDA -->
-  <div class="legend-bar">
-    <div class="legend-item"><div class="legend-dot" style="background:#b0bec5"></div>Não comprado</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#e8c84a"></div>Não iniciado</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#4a90d9"></div>Em andamento</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#27c45e"></div>Finalizado no prazo</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#00c9a7"></div>Finalizado sem prazo</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#f57c00"></div>Acima do prazo</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#e84393"></div>Habite-se agendado</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#8e44ad"></div>Habite-se concluído</div>
-  </div>
-
-  <div class="update-info" id="update-info">—</div>
-</main>
+<!-- Modal análise — iframe pré-carregado igual à versão que funcionava -->
+<div id="modal-analise" style="display:none;position:fixed;inset:0;z-index:1000;background:var(--bg);overflow:auto">
+  <iframe id="iframe-analise" src="analise.html" style="width:100%;height:100%;border:none;display:block"></iframe>
+</div>
 
 <script>
-const EMPREENDIMENTOS = {
-  acropole:   { label: 'Acrópole',          setores: ['ACROPOLE'],             cidade: 'GOIÂNIA' },
-  esmeraldas: { label: 'Esmeraldas',         setores: ['ESMERALDAS'],           cidade: 'GOIÂNIA' },
-  ipanema:    { label: 'Ipanema',            setores: ['IPANEMA'],              cidade: 'GOIÂNIA' },
-  joaobraz:   { label: 'João Braz 2',        setores: ['JOÃO BRAZ', 'JOAO BRAZ'],cidade: 'GOIÂNIA' },
-  marques:    { label: 'Marques de Abreu',   setores: ['MARQUES DE ABREU'],     cidade: 'GOIÂNIA' },
-  solarville: { label: 'Solar Ville',        setores: ['SOLAR VILLE'],          cidade: 'GOIÂNIA' },
-  buritis:    { label: 'Pq. dos Buritis',    setores: ['PQ DOS BURITIS','BURITIS'],cidade: 'SENADOR CANEDO' },
-  ravena:     { label: 'Ravena',             setores: ['RAVENA'],               cidade: 'SENADOR CANEDO' },
-  terrabela:  { label: 'Terrabela',          setores: ['TERRABELA'],            cidade: 'SENADOR CANEDO' },
+// Auth — verificar antes de qualquer coisa
+(function(){
+  const HASH_OK=btoa("moraisengenharialtda:Morais1234@");
+  if(localStorage.getItem("morais_auth")!==HASH_OK&&sessionStorage.getItem("morais_auth")!==HASH_OK){
+    window.location.replace("login.html");
+  }
+})();
+
+const HASH_OK=btoa("moraisengenharialtda:Morais1234@");
+
+function sair(){
+  localStorage.removeItem("morais_auth");
+  sessionStorage.removeItem("morais_auth");
+  window.location.replace("login.html");
+}
+
+// Análise: click normal = modal, Ctrl+Click ou meio = nova aba
+function abrirAnalise(e){
+  if(e && (e.ctrlKey || e.metaKey || e.button===1)){
+    window.open('analise.html','_blank','noopener');
+    return;
+  }
+  document.getElementById("modal-analise").style.display="block";
+  document.body.style.overflow="hidden";
+}
+function handleAnaliseMouseDown(e){
+  // Botão do meio (scroll) → abre nova aba
+  if(e.button===1){
+    e.preventDefault();
+    window.open('analise.html','_blank','noopener');
+  }
+}
+window.fecharAnalise=function(){
+  document.getElementById("modal-analise").style.display="none";
+  document.body.style.overflow="";
 };
 
-const POSITIVOS = ['SIM','INEXISTE','ÁGIO','AGIO'];
-
-const CAMPOS_DOC = [
-  'escritura_assinada','itbi_pago','registro_pago','projeto_feito',
-  'art_feita_paga','escritura_registrada','certidao_lote','contrato_mestre',
-  'contrato_investidor','taxas_alvara_pagas','projeto_aprovado',
-  'incorporacao_finalizada','ret_armazenado','taxas_habite_se',
-  'issqn','cno_cnd','armazenou_habite','certidoes_matricula'
+// Setores por cidade com links
+const SETORES_CANEDO=[
+  {nome:"Terrabela do Cerrado",link:"terrabela.html"},
+  {nome:"Ravena",link:"ravena.html"},
+  {nome:"Pq dos Buritis",link:"pqdosburitis.html"},
+];
+const SETORES_GOIANIA=[
+  {nome:"João Braz 2",link:"joaobraz2.html"},
+  {nome:"Ipanema",link:"ipanema.html"},
+  {nome:"Marques de Abreu",link:"marquesdeabreu.html"},
+  {nome:"Solar Ville",link:"solarville.html"},
+  {nome:"Acrópole",link:"acropole.html"},
+  {nome:"St. Efigênia",link:"stefigenia.html"},
 ];
 
-function calcStatus(doc) {
-  if (!doc) return 'nao_comprado';
-  if ((doc.aprovou_habite_se||'').toUpperCase() === 'SIM') return 'habite_concluido';
-  if ((doc.agendou_habite_se||'').toUpperCase() === 'SIM') return 'habite_agendado';
-  const completo = CAMPOS_DOC.every(k => !doc[k] || POSITIVOS.includes((doc[k]||'').toUpperCase().trim()));
-  if (completo && doc.data_inicio_obra) return 'fin_prazo';
-  if (doc.data_inicio_obra) return 'em_andamento';
-  if (doc.previsao_inicio_obra || doc.ref || doc.endereco) return 'nao_iniciado';
-  return 'nao_comprado';
+// Calcular status de lotes por setor
+function calcStatusSetor(docs,vendas,nomeSetor){
+  if(!docs||!vendas)return{emBreve:0,andamento:0,finalizados:0,vendidas:0,total:0};
+  // Tenta casar o nome do setor ignorando case e acentos
+  const norm=s=>(s||'').trim().toUpperCase();
+  const n=norm(nomeSetor);
+  const d=docs.filter(x=>norm(x.setor)===n||norm(x.setor).includes(n)||n.includes(norm(x.setor)));
+  const emBreve=d.filter(x=>!x.data_aquisicao_lote).length;
+  const andamento=d.filter(x=>x.data_inicio_obra&&!x.data_termino_obra).length;
+  const finCampos=["uso_solo_emitido","aprovacao_projeto","obra_iniciada","habite_se_concluido"];
+  const finalizados=d.filter(x=>{
+    if(x.data_termino_obra)return true;
+    return finCampos.every(c=>x[c]==="SIM"||x[c]==="INEXISTE"||x[c]==="sim");
+  }).length;
+  const vendidas=vendas.filter(v=>v&&v.clientes&&norm(v.setor)===n).length;
+  return{emBreve,andamento,finalizados,vendidas,total:d.length};
 }
 
-function pertence(doc, key) {
-  const emp = EMPREENDIMENTOS[key];
-  if (!emp) return false;
-  const setor = (doc.setor || '').toUpperCase();
-  return emp.setores.some(s => setor.includes(s));
-}
-
-function calcStats(docs, key) {
-  const meus = docs.filter(d => pertence(d, key));
-  const emObra = meus.filter(d => calcStatus(d) === 'em_andamento').length;
-  const concluidos = meus.filter(d => ['fin_prazo','fin_sem_prazo','habite_agendado','habite_concluido'].includes(calcStatus(d))).length;
-  return { total: meus.length, emObra, concluidos };
-}
-
-function fmt(n) { return n > 0 ? n : '—'; }
-
-fetch('data.json')
-  .then(r => r.json())
-  .then(data => {
-    const docs = data.documentos || [];
-
-    const upd = new Date(data.updated_at);
-    const fmtDate = upd.toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
-    document.getElementById('updated-at').textContent = `Atualizado: ${fmtDate}`;
-    document.getElementById('update-info').innerHTML = `Dados sincronizados do Notion em <span>${fmtDate}</span>`;
-
-    // Stats por empreendimento
-    let totalGoiania = 0, totalCanedo = 0;
-    Object.keys(EMPREENDIMENTOS).forEach(key => {
-      const s = calcStats(docs, key);
-      const el = document.getElementById(`stats-${key}`);
-      if (!el) return;
-      el.innerHTML = `
-        <div class="stat"><div class="stat-val">${s.total || '—'}</div><div class="stat-label">Lotes</div></div>
-        <div class="stat"><div class="stat-val">${fmt(s.emObra)}</div><div class="stat-label">Em obra</div></div>
-        <div class="stat"><div class="stat-val">${fmt(s.concluidos)}</div><div class="stat-label">Concluídos</div></div>
+function buildCidades(docs,vendas){
+  function renderCidade(nome,setores){
+    const cards=setores.map(s=>{
+      const st=calcStatusSetor(docs,vendas,s.nome.toUpperCase())||
+               calcStatusSetor(docs,vendas,s.nome)||{emBreve:0,andamento:0,finalizados:0,vendidas:0};
+      const pills=`
+        ${st.emBreve>0?`<span class="stat-pill pill-breve">Em Breve: ${st.emBreve}</span>`:''}
+        ${st.andamento>0?`<span class="stat-pill pill-and">Em Andamento: ${st.andamento}</span>`:''}
+        ${st.finalizados>0?`<span class="stat-pill pill-fin">Finalizados: ${st.finalizados}</span>`:''}
+        ${st.vendidas>0?`<span class="stat-pill pill-vend">Vendidas: ${st.vendidas}</span>`:''}
       `;
-      if (EMPREENDIMENTOS[key].cidade === 'GOIÂNIA') totalGoiania += s.total;
-      else totalCanedo += s.total;
-    });
+      const pTrim=pills.trim().replace(/\s+/g,' ');
+      return`<a class="setor-card" href="${s.link}">
+        <div class="setor-nome">${s.nome}</div>
+        <div class="setor-stats">${pTrim||'<span class="stat-pill pill-breve">Sem dados</span>'}</div>
+      </a>`;
+    }).join('');
+    return`<div class="cidade-bloco">
+      <div class="cidade-hdr"><div class="cidade-nome">🗺️ MAPAS DE SETORES — ${nome.toUpperCase()}</div></div>
+      <div class="cidade-body">${cards}</div>
+    </div>`;
+  }
+  document.getElementById("cidades-row").innerHTML=
+    renderCidade("Senador Canedo",SETORES_CANEDO)+
+    renderCidade("Goiânia",SETORES_GOIANIA);
+}
 
-    document.getElementById('count-goiania').textContent = `${totalGoiania} lotes`;
-    document.getElementById('count-canedo').textContent = `${totalCanedo} lotes`;
-  })
-  .catch(() => {
-    document.getElementById('updated-at').textContent = 'Sem dados';
-    document.getElementById('update-info').textContent = 'Não foi possível carregar data.json';
-  });
+async function init(){
+  try{
+    const r=await fetch("data.json");
+    const data=await r.json();
+    const docs=data.documentos||[];
+    const vendas=data.vendas||[];
+    if(data.updated_at)
+      document.getElementById("updated-at").textContent=
+        "Atualizado: "+new Date(data.updated_at).toLocaleString("pt-BR");
+    buildCidades(docs,vendas);
+    document.getElementById("loading").classList.add("hidden");
+  }catch(e){
+    document.getElementById("loading").innerHTML=
+      `<div style="color:#c0392b;font-size:13px;padding:20px">Erro ao carregar: ${e.message}</div>`;
+  }
+}
+// Garantir que o DOM está pronto antes de init()
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
 </body>
 </html>
