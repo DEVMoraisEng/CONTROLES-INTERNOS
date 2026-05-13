@@ -2739,24 +2739,77 @@ function buildComp(side){
   const expCaixa=[];let ac=0;fluxo.forEach(v=>{ac+=v;expCaixa.push(ac);});
   const totalGasto=gastos.reduce((a,b)=>a+b,0);
   const totalRecebido=receitas.reduce((a,b)=>a+b,0);
+  const lucroLiq=totalRecebido-totalGasto;
 
-  // KPIs ROI
-  const maxExp=Math.min(...expCaixa);
-  const mult=ms.map((_,i)=>ms.length-i);
+  // Multiplicador e exposição proporcional
+  const nMs=ms.length;
+  const mult=ms.map((_,i)=>nMs-i);
+  const expProp=ms.map((_,i)=>expCaixa[i]*mult[i]);
+  const somaMultip=mult.reduce((a,b)=>a+b,0);
+  const somaExpProp=expProp.reduce((a,b)=>a+b,0);
+  const expPos=expCaixa.map(v=>-v>0?-v:0);
+  const expMaxima=Math.max(...expPos,0);
+  const expMedia=somaMultip>0?somaExpProp/somaMultip:0;
+
+  // ROI
+  const roiBruto=totalGasto>0?lucroLiq/totalGasto*100:null;
+  const roiExpMax=expMaxima>0?lucroLiq/expMaxima*100:null;
+  const roiAjust=Math.abs(expMedia)>0?lucroLiq/Math.abs(expMedia)*100:null;
+
+  // TIR / MTIR
+  const tirAm=calcTIR(fluxo,0.02);
+  const tirAa=tirAm!=null?Math.pow(1+tirAm,12)-1:null;
+  const rFin=(parseFloat(document.getElementById('mtir-fin')?.value)||1.5)/100;
+  const rReinInput=document.getElementById('mtir-rein')?.value;
+  const rRein=rReinInput&&rReinInput.trim()!==''?parseFloat(rReinInput)/100:(typeof cdiAtual!=='undefined'?cdiAtual/100:0.015);
+  const mtirAm=calcMTIR(fluxo,rFin,rRein);
+  const mtirAa=mtirAm!=null?Math.pow(1+mtirAm,12)-1:null;
+
+  // ROI grid linha 1
   const el1=document.getElementById('comp-roi1-'+side);
   const el2=document.getElementById('comp-roi2-'+side);
-  if(el1)el1.innerHTML=[kpi('Total Investido',fmtBRL(totalGasto),''),kpi('Total Recebido',fmtBRL(totalRecebido),'')].join('');
-  if(el2)el2.innerHTML=[kpi('Exposição Máxima',fmtBRL(maxExp),''),kpi('Resultado',fmtBRL(totalRecebido-totalGasto),totalRecebido>totalGasto?'Positivo':'Negativo')].join('');
+  if(el1)el1.innerHTML=[
+    `<div class="roi-card"><div class="roi-lbl">Lucro Líquido</div><div class="roi-val ${lucroLiq>=0?'g':''}">${fmtBRL(lucroLiq)}</div><div class="roi-sub">Recebido − Gasto</div></div>`,
+    `<div class="roi-card"><div class="roi-lbl">Exposição Média</div><div class="roi-val">${fmtBRL(Math.abs(expMedia))}</div><div class="roi-sub">Σ Exp. Prop. / Σ Mult.</div></div>`,
+    `<div class="roi-card"><div class="roi-lbl">Exposição Máxima</div><div class="roi-val">${fmtBRL(expMaxima)}</div><div class="roi-sub">Pico de capital exposto</div></div>`,
+  ].join('');
+  if(el2)el2.innerHTML=[
+    `<div class="roi-card"><div class="roi-lbl">ROI Bruto</div><div class="roi-val ${(roiBruto||0)>=0?'g':''}">${roiBruto!=null?fmtN(roiBruto,2)+'%':'—'}</div><div class="roi-sub">Lucro / Gasto Total</div></div>`,
+    `<div class="roi-card"><div class="roi-lbl">ROI Exp. Máxima</div><div class="roi-val ${(roiExpMax||0)>=0?'g':''}">${roiExpMax!=null?fmtN(roiExpMax,2)+'%':'—'}</div><div class="roi-sub">Lucro / Exp. Máxima</div></div>`,
+    `<div class="roi-card"><div class="roi-lbl">ROI Ajustado</div><div class="roi-val ${(roiAjust||0)>=0?'g':''}">${roiAjust!=null?fmtN(roiAjust,2)+'%':'—'}</div><div class="roi-sub">Lucro / Exp. Média</div></div>`,
+    `<div class="roi-card"><div class="roi-lbl">TIR Mensal</div><div class="roi-val g">${tirAm!=null?fmtN(tirAm*100,3)+'%':'—'}</div><div class="roi-sub">Newton-Raphson</div></div>`,
+    `<div class="roi-card"><div class="roi-lbl">TIR Anual</div><div class="roi-val g">${tirAa!=null?fmtN(tirAa*100,2)+'%':'—'}</div><div class="roi-sub">(1+TIRam)¹²−1</div></div>`,
+    `<div class="roi-card"><div class="roi-lbl">MTIR Anual</div><div class="roi-val">${mtirAa!=null?fmtN(mtirAa*100,2)+'%':'—'}</div><div class="roi-sub">Fin: ${(rFin*100).toFixed(2)}% · Rein: ${(rRein*100).toFixed(2)}%</div></div>`,
+  ].join('');
 
-  // Tabela fluxo
+  // Tabela fluxo completa com multiplicador e exp. proporcional
   const elT=document.getElementById('comp-tbl-'+side);
   if(elT){
-    const rows=ms.map((m,i)=>{
-      const v=expCaixa[i];const cor=v<0?'color:#c0392b;font-weight:700':v>0?'color:#2a9d5c;font-weight:700':'';
-      return`<tr><td><strong>${fmtM(m)}</strong></td><td class="nr">${fmtBRL2(gastos[i])}</td><td class="nr">${receitas[i]>0?fmtBRL2(receitas[i]):'—'}</td><td class="nr" style="${cor}">${fmtBRL2(v)}</td></tr>`;
+    const rowsExp=ms.map((m,i)=>{
+      const v=expCaixa[i];
+      const cor=v<0?'color:#c0392b;font-weight:700':v>0?'color:#2a9d5c;font-weight:700':'';
+      return`<tr>
+        <td><strong>${fmtM(m)}</strong></td>
+        <td class="nr">${fmtBRL2(gastos[i])}</td>
+        <td class="nr">${receitas[i]>0?fmtBRL2(receitas[i]):'—'}</td>
+        <td class="nr" style="${cor}">${fmtBRL2(v)}</td>
+        <td class="nr">${mult[i]}</td>
+        <td class="nr">${fmtBRL2(expProp[i])}</td>
+      </tr>`;
     }).join('');
-    elT.innerHTML=`<table><thead><tr><th class="left">Mês</th><th>Gasto</th><th>Recebido</th><th>Exposição</th></tr></thead><tbody>${rows}</tbody>
-    <tfoot><tr><td>TOTAL</td><td class="nr">${fmtBRL2(totalGasto)}</td><td class="nr">${fmtBRL2(totalRecebido)}</td><td></td></tr></tfoot></table>`;
+    elT.innerHTML=`<table>
+      <thead><tr>
+        <th class="left">Mês</th><th>Valor Gasto</th><th>Valor Recebido</th>
+        <th>Exposição de Caixa</th><th>Multiplicador</th><th>Exp. Proporcional</th>
+      </tr></thead>
+      <tbody>${rowsExp}</tbody>
+      <tfoot><tr>
+        <td>TOTAL</td><td class="nr">${fmtBRL2(totalGasto)}</td>
+        <td class="nr">${fmtBRL2(totalRecebido)}</td>
+        <td class="nr"></td><td class="nr">${somaMultip}</td>
+        <td class="nr">${fmtBRL2(somaExpProp)}</td>
+      </tr></tfoot>
+    </table>`;
   }
   // Gráfico
   drawLinesExposicao('ch-comp-'+side,ms.map(fmtM),expCaixa);
