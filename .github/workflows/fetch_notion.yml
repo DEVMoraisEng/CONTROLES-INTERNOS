@@ -1,11 +1,13 @@
 name: Atualizar dados e publicar site
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:   # disparado pelo cron-job.org (método confiável)
   push:
     branches: [main]
+  # O schedule nativo do GitHub é NÃO confiável em repos com pouca atividade.
+  # Mantido apenas como fallback — use o cron-job.org como fonte primária.
   schedule:
-    - cron: '0 */4 * * *'   # a cada 4 horas
+    - cron: '0 */4 * * *'
 
 jobs:
   build-and-deploy:
@@ -17,6 +19,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Token com permissão de push para o repositório
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Busca o HEAD atualizado para evitar conflito no push
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -39,52 +46,68 @@ jobs:
           NOTION_DB_METAS:      ${{ secrets.NOTION_DB_METAS }}
         run: python fetch_all.py
 
-      - name: Commit data.json
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
-          git diff --staged --quiet || git commit -m "chore: atualizar data.json"
-          git push
-
+      # CORREÇÃO PRINCIPAL: preparar dist/ ANTES do commit,
+      # assim o data.json novo já está pronto para publicação
       - name: Preparar pasta de publicação
         run: |
           mkdir -p dist
-          cp index.html dist/
-          cp login.html dist/
-          cp mapas.html dist/
+          # HTMLs principais
+          cp index.html    dist/
+          cp login.html    dist/
+          cp mapas.html    dist/
           cp terrabela.html dist/
           cp documentos.html dist/
-          cp vendas.html dist/
-          cp analise.html dist/
-          cp ravena.html dist/ 2>/dev/null || true
-          cp pqdosburitis.html dist/ 2>/dev/null || true
-          cp joaobraz2.html dist/ 2>/dev/null || true
-          cp ipanema.html dist/ 2>/dev/null || true
-          cp marquesdeabreu.html dist/ 2>/dev/null || true
-          cp solarville.html dist/ 2>/dev/null || true
-          cp acropole.html dist/ 2>/dev/null || true
-          cp stefigenia.html dist/ 2>/dev/null || true
+          cp vendas.html   dist/
+          cp analise.html  dist/
+          # Setores do site de vendas (opcionais — não falham se ausentes)
+          cp ravena.html          dist/ 2>/dev/null || true
+          cp pqdosburitis.html    dist/ 2>/dev/null || true
+          cp joaobraz2.html       dist/ 2>/dev/null || true
+          cp ipanema.html         dist/ 2>/dev/null || true
+          cp marquesdeabreu.html  dist/ 2>/dev/null || true
+          cp solarville.html      dist/ 2>/dev/null || true
+          cp acropole.html        dist/ 2>/dev/null || true
+          cp stefigenia.html      dist/ 2>/dev/null || true
+          cp esmeraldas.html      dist/ 2>/dev/null || true
+          # Dados e assets
           cp data.json dist/
-          cp logo.png dist/ 2>/dev/null || true
+          cp logo.png  dist/ 2>/dev/null || true
+          # SVGs externos (não embutidos no HTML)
           cp TERRABELA_MAPA_DOCUMENTOS.svg dist/ 2>/dev/null || true
-          cp TERRABELA_MAPA_VENDAS.svg dist/ 2>/dev/null || true
-          cp RAVENA_DOCS.svg dist/ 2>/dev/null || true
-          cp RAVENA_VENDAS.svg dist/ 2>/dev/null || true
-          cp PQ_DOS_BURITIS_DOCS.svg dist/ 2>/dev/null || true
-          cp PQ_DOS_BURITIS_VENDAS.svg dist/ 2>/dev/null || true
-          cp JOAO_BRAZ_DOCS.svg dist/ 2>/dev/null || true
-          cp JOAO_BRAZ_VENDAS.svg dist/ 2>/dev/null || true
-          cp IPANEMA_DOCS.svg dist/ 2>/dev/null || true
-          cp IPANEMA_VENDAS.svg dist/ 2>/dev/null || true
-          cp MQ_DE_ABREU_DOCS.svg dist/ 2>/dev/null || true
-          cp MQ_DE_ABREU_VENDAS.svg dist/ 2>/dev/null || true
-          cp SOLAR_VILLE_DOCS.svg dist/ 2>/dev/null || true
-          cp SOLAR_VILLE_VENDAS.svg dist/ 2>/dev/null || true
-          cp ACROPOLE_DOCS.svg dist/ 2>/dev/null || true
-          cp ACROPOLE_VENDAS.svg dist/ 2>/dev/null || true
-          cp COND_ESMERALDAS_DOCS.svg dist/ 2>/dev/null || true
-          cp esmeraldas.html dist/ 2>/dev/null || true
+          cp TERRABELA_MAPA_VENDAS.svg     dist/ 2>/dev/null || true
+          cp RAVENA_DOCS.svg               dist/ 2>/dev/null || true
+          cp RAVENA_VENDAS.svg             dist/ 2>/dev/null || true
+          cp PQ_DOS_BURITIS_DOCS.svg       dist/ 2>/dev/null || true
+          cp PQ_DOS_BURITIS_VENDAS.svg     dist/ 2>/dev/null || true
+          cp JOAO_BRAZ_DOCS.svg            dist/ 2>/dev/null || true
+          cp JOAO_BRAZ_VENDAS.svg          dist/ 2>/dev/null || true
+          cp IPANEMA_DOCS.svg              dist/ 2>/dev/null || true
+          cp IPANEMA_VENDAS.svg            dist/ 2>/dev/null || true
+          cp MQ_DE_ABREU_DOCS.svg          dist/ 2>/dev/null || true
+          cp MQ_DE_ABREU_VENDAS.svg        dist/ 2>/dev/null || true
+          cp SOLAR_VILLE_DOCS.svg          dist/ 2>/dev/null || true
+          cp SOLAR_VILLE_VENDAS.svg        dist/ 2>/dev/null || true
+          cp ACROPOLE_DOCS.svg             dist/ 2>/dev/null || true
+          cp ACROPOLE_VENDAS.svg           dist/ 2>/dev/null || true
+          cp COND_ESMERALDAS_DOCS.svg      dist/ 2>/dev/null || true
+
+      # Commit do data.json no repositório APÓS gerar dist/
+      # Isso garante que o arquivo publicado seja o mesmo do commit
+      - name: Commit data.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          # Só comita se houve mudança real (evita commits vazios)
+          if git diff --staged --quiet; then
+            echo "data.json sem alterações — sem commit necessário"
+          else
+            git commit -m "chore: atualizar data.json [skip ci]"
+            # Rebase antes do push para evitar conflito se outro job rodou junto
+            git pull --rebase origin main
+            git push origin main
+            echo "data.json atualizado e publicado no repositório"
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
