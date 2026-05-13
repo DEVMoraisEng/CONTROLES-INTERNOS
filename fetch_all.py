@@ -85,6 +85,7 @@ def notion_pages(token, db_id, filtro=None):
 def parse_doc(page):
     p = page.get("properties", {})
     def s(nome): return prop_select(get_prop(p, nome))
+    def t(nome): return prop_text(get_prop(p, nome))
     def d(nome): return prop_date(get_prop(p, nome))
     def n(nome): return prop_number(get_prop(p, nome))
     return {
