@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T11:00:55.321750+00:00",
+  "updated_at": "2026-05-14T15:01:45.641948+00:00",
   "documentos": [
     {
       "id": "35fc5ab5-32d3-8072-abcb-f720a8f51af5",
@@ -1195,7 +1195,7 @@
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -1260,7 +1260,7 @@
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
