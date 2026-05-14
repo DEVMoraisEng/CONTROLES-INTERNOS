@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T18:22:49.001941+00:00",
+  "updated_at": "2026-05-14T19:00:51.913332+00:00",
   "documentos": [
     {
       "id": "35fc5ab5-32d3-8072-abcb-f720a8f51af5",
@@ -2781,7 +2781,7 @@
       "data_habite_se": "2026-04-30",
       "aprovou_habite_se": "SIM",
       "data_aprovacao_habite": "2026-05-07",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
       "art_acrescimo": "NÃO",
