@@ -184,27 +184,34 @@ window.fecharAnalise=function(){
 };
 
 // Setores por cidade com links
+// chave = valor EXATO de x.setor no data.json
 const SETORES_CANEDO=[
-  {nome:"Terrabela do Cerrado",link:"terrabela.html"},
-  {nome:"Ravena",link:"ravena.html"},
-  {nome:"Pq dos Buritis",link:"pqdosburitis.html"},
+  {nome:"Terrabela Cerrado",  chave:"TERRABELA CERRADO", link:"terrabela.html"},
+  {nome:"Ravena",             chave:"RAVENA",            link:"ravena.html"},
+  {nome:"Pq dos Buritis",    chave:"PQ DOS BURITIS",    link:"pqdosburitis.html"},
 ];
 const SETORES_GOIANIA=[
-  {nome:"João Braz 2",link:"joaobraz2.html"},
-  {nome:"Ipanema",link:"ipanema.html"},
-  {nome:"Marques de Abreu",link:"marquesdeabreu.html"},
-  {nome:"Solar Ville",link:"solarville.html"},
-  {nome:"Acrópole",link:"acropole.html"},
-  {nome:"St. Efigênia",link:"stefigenia.html"},
+  {nome:"João Braz 2",       chave:"JOÃO BRAZ 2",       link:"joaobraz2.html"},
+  {nome:"Ipanema",           chave:"IPANEMA",            link:"ipanema.html"},
+  {nome:"Marques de Abreu",  chave:"MARQUES DE ABREU",  link:"marquesdeabreu.html"},
+  {nome:"Solar Ville",       chave:"SOLAR VILLE",        link:"solarville.html"},
+  {nome:"Acrópole",          chave:"ACROPOLE",           link:"acropole.html"},
+  {nome:"St. Efigênia",      chave:"ST EFIGÊNIA",        link:"stefigenia.html"},
 ];
 
+// Normaliza para comparação: maiúsculas + sem acentos + sem pontuação
+function normStr(s){
+  return (s||'').trim().toUpperCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[.\-]/g,' ').replace(/\s+/g,' ').trim();
+}
+
 // Calcular status de lotes por setor
-function calcStatusSetor(docs,vendas,nomeSetor){
+function calcStatusSetor(docs,vendas,nomeSetor,chaveSetor){
   if(!docs||!vendas)return{emBreve:0,andamento:0,finalizados:0,vendidas:0,total:0};
-  // Tenta casar o nome do setor ignorando case e acentos
-  const norm=s=>(s||'').trim().toUpperCase();
-  const n=norm(nomeSetor);
-  const d=docs.filter(x=>norm(x.setor)===n||norm(x.setor).includes(n)||n.includes(norm(x.setor)));
+  // Casa pelo campo chave (nome exato do Notion), normalizado
+  const alvo=normStr(chaveSetor||nomeSetor);
+  const d=docs.filter(x=>normStr(x.setor)===alvo);
   const emBreve=d.filter(x=>!x.data_aquisicao_lote).length;
   const andamento=d.filter(x=>x.data_inicio_obra&&!x.data_termino_obra).length;
   const finCampos=["uso_solo_emitido","aprovacao_projeto","obra_iniciada","habite_se_concluido"];
@@ -212,15 +219,14 @@ function calcStatusSetor(docs,vendas,nomeSetor){
     if(x.data_termino_obra)return true;
     return finCampos.every(c=>x[c]==="SIM"||x[c]==="INEXISTE"||x[c]==="sim");
   }).length;
-  const vendidas=vendas.filter(v=>v&&v.clientes&&norm(v.setor)===n).length;
+  const vendidas=vendas.filter(v=>v&&v.clientes&&normStr(v.setor)===alvo).length;
   return{emBreve,andamento,finalizados,vendidas,total:d.length};
 }
 
 function buildCidades(docs,vendas){
   function renderCidade(nome,setores){
     const cards=setores.map(s=>{
-      const st=calcStatusSetor(docs,vendas,s.nome.toUpperCase())||
-               calcStatusSetor(docs,vendas,s.nome)||{emBreve:0,andamento:0,finalizados:0,vendidas:0};
+      const st=calcStatusSetor(docs,vendas,s.nome,s.chave)||{emBreve:0,andamento:0,finalizados:0,vendidas:0};
       const pills=`
         ${st.emBreve>0?`<span class="stat-pill pill-breve">Em Breve: ${st.emBreve}</span>`:''}
         ${st.andamento>0?`<span class="stat-pill pill-and">Em Andamento: ${st.andamento}</span>`:''}
