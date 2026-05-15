@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T18:48:51.190156+00:00",
+  "updated_at": "2026-05-15T19:00:47.610346+00:00",
   "documentos": [
     {
       "id": "35fc5ab5-32d3-8072-abcb-f720a8f51af5",
@@ -9274,7 +9274,7 @@
       "data_finalizacao_incorp": "2026-04-27",
       "entrada_ret": "SIM",
       "data_entrada_ret": "2026-04-27",
-      "ret_armazenado": "NÃO",
+      "ret_armazenado": "SIM",
       "agendou_habite_se": "SIM",
       "data_finalizacao_ret": null,
       "turno_habite_se": "MANHÃ",
