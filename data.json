@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T19:00:47.610346+00:00",
+  "updated_at": "2026-05-15T19:20:42.473424+00:00",
   "documentos": [
     {
       "id": "35fc5ab5-32d3-8072-abcb-f720a8f51af5",
@@ -6712,7 +6712,7 @@
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
       "previsao_inicio_obra": null,
-      "obra_iniciada": "NÃO",
+      "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
       "data_inicio_obra": "2026-04-13",
       "uso_solo_solicitado": "INEXISTE",
