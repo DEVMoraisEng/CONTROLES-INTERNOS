@@ -485,6 +485,7 @@ tfoot td:last-child{border-right:none}
         <div class="kpi-card"><div class="kpi-lbl">Prazo Médio Certidões→Venda</div><div class="kpi-val" id="kv-prazo">—</div></div>
       </div>
       <div id="vgv-alert-vendas"></div>
+      <div id="soma-alert-vendas"></div>
       <div class="blk-title">Casas Vendidas por Mês</div>
       <div class="graf-card" style="margin-bottom:20px">
         <div class="graf-body"><div class="chart-wrap"><canvas id="ch-vv" height="240"></canvas></div></div>
@@ -1667,6 +1668,25 @@ function buildVendas(){
     :'';
   const vgvAlert=document.getElementById('vgv-alert-vendas');
   if(vgvAlert) vgvAlert.innerHTML=alertaVgvVendas;
+
+  // Alerta de conferência: COMISSÃO + VALOR NA MÃO ≠ VALOR DE CONTRATO
+  const EPS=0.01; // tolerância para arredondamento de centavos
+  const somaErrada=v.filter(x=>{
+    const mao=x.valor_na_mao||0;
+    const com=x.comissao||0;
+    const cont=x.valor_venda_contrato||0;
+    // só verifica quando todos os três campos estão preenchidos
+    if(!mao&&!com&&!cont)return false;
+    return Math.abs((mao+com)-cont)>EPS;
+  });
+  const alertaSoma=somaErrada.length>0
+    ?`<div style="background:rgba(212,106,26,.08);border:1px solid rgba(212,106,26,.35);border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:12px;color:#d46a1a">
+       <strong>⚠ ${somaErrada.length} venda(s) com COMISSÃO + VALOR NA MÃO ≠ VALOR DE CONTRATO:</strong><br>
+       ${somaErrada.map(x=>`${x.endereco||'?'} casa ${x.casa||'?'}`).join(' · ')}
+     </div>`
+    :'';
+  const somaAlert=document.getElementById('soma-alert-vendas');
+  if(somaAlert) somaAlert.innerHTML=alertaSoma;
 
   const rC={},rR={},rI={};
   v.forEach(x=>{
