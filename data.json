@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-14T23:14:21.118861+00:00",
+  "updated_at": "2026-05-15T03:01:31.429435+00:00",
   "documentos": [
     {
       "id": "35fc5ab5-32d3-8072-abcb-f720a8f51af5",
@@ -13042,7 +13042,7 @@
       "recebeu_taxa_vistoria": "SIM",
       "tem_cadastro": "SIM",
       "num_cadastro": 1530456,
-      "entrada_cartorio": "NÃO",
+      "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null,
       "tem_manual": "SIM",
@@ -13489,7 +13489,7 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "data_entrega": null,
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
