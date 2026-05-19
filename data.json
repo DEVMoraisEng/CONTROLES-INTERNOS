@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-19T18:28:06.220018+00:00",
+  "updated_at": "2026-05-19T19:00:49.637794+00:00",
   "documentos": [
     {
       "id": "364c5ab5-32d3-8056-aef7-d62e1f288453",
@@ -414,7 +414,7 @@
       "data_sol_uso_solo": null,
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
@@ -479,7 +479,7 @@
       "data_sol_uso_solo": null,
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
@@ -544,7 +544,7 @@
       "data_sol_uso_solo": null,
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
@@ -1391,7 +1391,7 @@
       "data_emissao_uso_solo": null,
       "escritura_assinada": "SIM",
       "itbi_pago": "SIM",
-      "registro_pago": "NÃO",
+      "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
