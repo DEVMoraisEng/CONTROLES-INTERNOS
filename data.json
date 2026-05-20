@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-20T19:56:10.453074+00:00",
+  "updated_at": "2026-05-20T23:01:08.373543+00:00",
   "documentos": [
     {
       "id": "364c5ab5-32d3-8056-aef7-d62e1f288453",
@@ -421,7 +421,7 @@
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "NÃO",
       "data_entrada_alvara": null,
