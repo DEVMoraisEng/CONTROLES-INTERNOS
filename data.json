@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-20T19:00:51.405904+00:00",
+  "updated_at": "2026-05-20T19:56:10.453074+00:00",
   "documentos": [
     {
       "id": "364c5ab5-32d3-8056-aef7-d62e1f288453",
@@ -10960,7 +10960,7 @@
       "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -13028,7 +13028,7 @@
       "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -13116,7 +13116,7 @@
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -13160,7 +13160,7 @@
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -13468,7 +13468,7 @@
       "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -16944,7 +16944,7 @@
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -21740,7 +21740,7 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-13",
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -21784,7 +21784,7 @@
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -21828,7 +21828,7 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-08",
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
@@ -21872,7 +21872,7 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-18",
-      "gcap_gerado": "NÃO",
+      "gcap_gerado": "SIM",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
     },
