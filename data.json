@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-20T15:01:00.140031+00:00",
+  "updated_at": "2026-05-20T19:00:51.405904+00:00",
   "documentos": [
     {
       "id": "364c5ab5-32d3-8056-aef7-d62e1f288453",
@@ -1199,7 +1199,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
@@ -2783,7 +2783,7 @@
       "data_aprovacao_habite": "2026-04-28",
       "armazenou_habite": "NÃO",
       "issqn": "SIM",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "art_acrescimo": "NÃO",
       "certidoes_matricula": "NÃO",
       "data_certidoes": null,
@@ -2848,7 +2848,7 @@
       "data_aprovacao_habite": "2026-05-07",
       "armazenou_habite": "SIM",
       "issqn": "SIM",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "art_acrescimo": "NÃO",
       "certidoes_matricula": "NÃO",
       "data_certidoes": null,
@@ -3173,7 +3173,7 @@
       "data_aprovacao_habite": "2026-03-24",
       "armazenou_habite": "SIM",
       "issqn": "SIM",
-      "cno_cnd": "NÃO",
+      "cno_cnd": "SIM",
       "art_acrescimo": "SIM",
       "certidoes_matricula": "SIM",
       "data_certidoes": "2026-05-14",
@@ -6139,7 +6139,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "INEXISTE",
@@ -6269,7 +6269,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
@@ -6334,7 +6334,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
@@ -12368,8 +12368,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-08",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -12632,8 +12632,8 @@
       "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -13556,8 +13556,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -13600,8 +13600,8 @@
       "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -13776,8 +13776,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-04-25",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -13820,8 +13820,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-14",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -16876,15 +16876,15 @@
       "avaliacao": 374070,
       "validade": "2026-11-08",
       "valor_na_mao": 280000,
-      "comissao": null,
-      "valor_venda_contrato": null,
-      "banco": null,
+      "comissao": 5000,
+      "valor_venda_contrato": 275000,
+      "banco": "CAIXA",
       "agencia": null,
       "armazenou_contrato": "NÃO",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-04-08",
-      "mandou_conformidade": "NÃO",
+      "mandou_conformidade": "SIM",
       "processo_conforme": "NÃO",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
@@ -23016,8 +23016,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-04-13",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -23104,8 +23104,8 @@
       "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -23324,8 +23324,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-04-16",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
