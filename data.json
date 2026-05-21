@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-21T19:00:54.393093+00:00",
+  "updated_at": "2026-05-21T23:00:42.900188+00:00",
   "documentos": [
     {
       "id": "364c5ab5-32d3-8056-aef7-d62e1f288453",
@@ -3110,7 +3110,7 @@
       "issqn": "SIM",
       "cno_cnd": "NÃO",
       "art_acrescimo": "NÃO",
-      "certidoes_matricula": "NÃO",
+      "certidoes_matricula": "SIM",
       "data_certidoes": null,
       "docs_vistoria_scpo": "NÃO",
       "boletos_vistoria": "NÃO",
