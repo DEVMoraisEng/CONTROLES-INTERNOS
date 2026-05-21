@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-21T15:00:54.626462+00:00",
+  "updated_at": "2026-05-21T18:29:29.893046+00:00",
   "documentos": [
     {
       "id": "364c5ab5-32d3-8056-aef7-d62e1f288453",
@@ -418,7 +418,7 @@
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
-      "art_feita_paga": "NÃO",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
@@ -482,8 +482,8 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
-      "art_feita_paga": "NÃO",
+      "projeto_feito": "SIM",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
@@ -547,8 +547,8 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
-      "art_feita_paga": "NÃO",
+      "projeto_feito": "SIM",
+      "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
@@ -3703,7 +3703,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": 253129.9168,
+      "erp_orcado": 256630.4195,
       "erp_valor_pago": 53298.5500002
     },
     {
@@ -9488,7 +9488,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": 249266.8037,
+      "erp_orcado": 253766.8037,
       "erp_valor_pago": 201332.9
     },
     {
