@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-25T19:00:49.532428+00:00",
+  "updated_at": "2026-05-25T20:50:10.993861+00:00",
   "documentos": [
     {
       "id": "368c5ab5-32d3-80f3-9884-d3021ff43772",
@@ -8237,8 +8237,8 @@
       "ret_armazenado": "INEXISTE",
       "agendou_habite_se": "NÃO",
       "data_finalizacao_ret": null,
-      "turno_habite_se": null,
-      "data_habite_se": null,
+      "turno_habite_se": "MANHÃ",
+      "data_habite_se": "2026-05-22",
       "aprovou_habite_se": "NÃO",
       "data_aprovacao_habite": null,
       "armazenou_habite": "NÃO",
@@ -9665,10 +9665,10 @@
       "entrada_ret": "INEXISTE",
       "data_entrada_ret": null,
       "ret_armazenado": "INEXISTE",
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "data_finalizacao_ret": null,
-      "turno_habite_se": null,
-      "data_habite_se": null,
+      "turno_habite_se": "TARDE",
+      "data_habite_se": "2026-05-27",
       "aprovou_habite_se": "NÃO",
       "data_aprovacao_habite": null,
       "armazenou_habite": "NÃO",
@@ -11205,7 +11205,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8012-9078-d7a8b6a29186",
-      "endereco": "TB 6 QD 40 LT 34¼",
+      "endereco": "TB 6 QD 40 LT 34",
       "casa": 1,
       "ref": "TB01",
       "cidade": "SENADOR CANEDO",
@@ -11244,7 +11244,7 @@
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-20",
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -13312,7 +13312,7 @@
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -13400,7 +13400,7 @@
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -13444,7 +13444,7 @@
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -13752,7 +13752,7 @@
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -22024,7 +22024,7 @@
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-13",
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -22068,7 +22068,7 @@
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -22112,7 +22112,7 @@
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-08",
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -22156,7 +22156,7 @@
       "entregou_casa": "SIM",
       "data_entrega": "2026-05-18",
       "gcap_gerado": "SIM",
-      "gcap_pago": "NÃO",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
