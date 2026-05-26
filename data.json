@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-26T19:00:45.279386+00:00",
+  "updated_at": "2026-05-26T19:34:47.001052+00:00",
   "documentos": [
     {
       "id": "368c5ab5-32d3-80f3-9884-d3021ff43772",
@@ -11536,7 +11536,7 @@
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-04-29",
       "mandou_conformidade": "SIM",
-      "processo_conforme": "NÃO",
+      "processo_conforme": "SIM",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
       "recebeu_taxa_vistoria": "NÃO",
