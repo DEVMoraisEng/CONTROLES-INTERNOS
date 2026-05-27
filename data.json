@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-27T22:21:40.697661+00:00",
+  "updated_at": "2026-05-27T23:00:44.099980+00:00",
   "documentos": [
     {
       "id": "368c5ab5-32d3-80f3-9884-d3021ff43772",
@@ -13528,7 +13528,7 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
+      "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "SIM",
@@ -13603,8 +13603,8 @@
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-05-22",
-      "mandou_conformidade": "NÃO",
-      "processo_conforme": "NÃO",
+      "mandou_conformidade": "SIM",
+      "processo_conforme": "SIM",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
       "recebeu_taxa_vistoria": "NÃO",
