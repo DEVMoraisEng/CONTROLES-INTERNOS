@@ -80,6 +80,7 @@ body{min-height:100vh;background:var(--bg);font-family:'Barlow',sans-serif;displ
 .pill-and{background:rgba(30,63,88,.15);color:var(--azul-esc)}
 .pill-fin{background:rgba(42,157,92,.15);color:var(--verde)}
 .pill-vend{background:rgba(143,220,210,.25);color:#1a6b6b}
+.pill-nini{background:rgba(201,162,39,.18);color:#8a6d10}
 
 /* BOTÃO MAPAS GRANDE */
 .mapas-btn-wrap{text-align:center;padding:4px 0}
@@ -196,6 +197,7 @@ const SETORES_GOIANIA=[
   {nome:"Marques de Abreu",  chave:"MARQUES DE ABREU",  link:"marquesdeabreu.html"},
   {nome:"Solar Ville",       chave:"SOLAR VILLE",        link:"solarville.html"},
   {nome:"Acrópole",          chave:"ACROPOLE",           link:"acropole.html"},
+  {nome:"Cond. das Esmeraldas",chave:"COND. DAS ESMERALDAS",link:"esmeraldas.html"},
   {nome:"St. Efigênia",      chave:"ST EFIGÊNIA",        link:"stefigenia.html"},
 ];
 
@@ -205,30 +207,53 @@ function normStr(s){
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
     .replace(/[.\-]/g,' ').replace(/\s+/g,' ').trim();
 }
+function isSim(v){const s=String(v||'').toUpperCase().trim();return s==='SIM'||s==='INEXISTE'||s==='ÁGIO'||s==='AGIO';}
+
+// Status individual de um documento — replica calcStatusDoc dos mapas
+// Retorna uma das categorias: nao_comprado, nao_iniciado, andamento, finalizado
+function statusDoc(d){
+  if(!d) return 'nao_comprado';
+  const obFin=(d.obra_finalizada||'').toUpperCase().trim();
+  // Finalização sem prazo (campo Notion = SIM SEM PRAZO)
+  if(obFin==='SIM SEM PRAZO') return 'finalizado';
+  // Finalização com prazo
+  if(d.data_termino_obra) return 'finalizado';
+  // Habite-se concluído ou agendado = finalização
+  if(isSim(d.aprovou_habite_se)) return 'finalizado';
+  if(isSim(d.agendou_habite_se)) return 'finalizado';
+  // Em andamento
+  if(isSim(d.obra_iniciada) || (d.obra_iniciada||'').toUpperCase().trim()==='SIM SEM PRAZO') return 'andamento';
+  if(d.data_inicio_obra) return 'andamento';
+  // Não comprado
+  if(!d.data_aquisicao_lote) return 'nao_comprado';
+  // Comprado mas não iniciado
+  return 'nao_iniciado';
+}
 
 // Calcular status de lotes por setor
 function calcStatusSetor(docs,vendas,nomeSetor,chaveSetor){
-  if(!docs||!vendas)return{emBreve:0,andamento:0,finalizados:0,vendidas:0,total:0};
-  // Casa pelo campo chave (nome exato do Notion), normalizado
+  if(!docs||!vendas)return{naoComprado:0,naoIniciado:0,andamento:0,finalizados:0,vendidas:0,total:0};
   const alvo=normStr(chaveSetor||nomeSetor);
   const d=docs.filter(x=>normStr(x.setor)===alvo);
-  const emBreve=d.filter(x=>!x.data_aquisicao_lote).length;
-  const andamento=d.filter(x=>x.data_inicio_obra&&!x.data_termino_obra).length;
-  const finCampos=["uso_solo_emitido","aprovacao_projeto","obra_iniciada","habite_se_concluido"];
-  const finalizados=d.filter(x=>{
-    if(x.data_termino_obra)return true;
-    return finCampos.every(c=>x[c]==="SIM"||x[c]==="INEXISTE"||x[c]==="sim");
-  }).length;
+  let naoComprado=0,naoIniciado=0,andamento=0,finalizados=0;
+  d.forEach(doc=>{
+    const s=statusDoc(doc);
+    if(s==='nao_comprado') naoComprado++;
+    else if(s==='nao_iniciado') naoIniciado++;
+    else if(s==='andamento') andamento++;
+    else if(s==='finalizado') finalizados++;
+  });
   const vendidas=vendas.filter(v=>v&&v.clientes&&normStr(v.setor)===alvo).length;
-  return{emBreve,andamento,finalizados,vendidas,total:d.length};
+  return{naoComprado,naoIniciado,andamento,finalizados,vendidas,total:d.length};
 }
 
 function buildCidades(docs,vendas){
   function renderCidade(nome,setores){
     const cards=setores.map(s=>{
-      const st=calcStatusSetor(docs,vendas,s.nome,s.chave)||{emBreve:0,andamento:0,finalizados:0,vendidas:0};
+      const st=calcStatusSetor(docs,vendas,s.nome,s.chave)||{naoComprado:0,naoIniciado:0,andamento:0,finalizados:0,vendidas:0};
       const pills=`
-        ${st.emBreve>0?`<span class="stat-pill pill-breve">Em Breve: ${st.emBreve}</span>`:''}
+        ${st.naoComprado>0?`<span class="stat-pill pill-breve">Em Breve: ${st.naoComprado}</span>`:''}
+        ${st.naoIniciado>0?`<span class="stat-pill pill-nini">Não Iniciado: ${st.naoIniciado}</span>`:''}
         ${st.andamento>0?`<span class="stat-pill pill-and">Em Andamento: ${st.andamento}</span>`:''}
         ${st.finalizados>0?`<span class="stat-pill pill-fin">Finalizados: ${st.finalizados}</span>`:''}
         ${st.vendidas>0?`<span class="stat-pill pill-vend">Vendidas: ${st.vendidas}</span>`:''}

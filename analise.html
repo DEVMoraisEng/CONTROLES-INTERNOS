@@ -96,7 +96,52 @@ select:focus{border-color:var(--teal)}
 .kpi-val{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:800;
          color:var(--azul);line-height:1}
 .kpi-val.g{color:var(--verde)}
+.kpi-val.r{color:#c0392b}
 .kpi-sub2{font-size:11px;color:var(--text4);margin-top:4px}
+
+/* KPI EXPANDIDO — múltiplas estatísticas (12m/anual/média/mês) */
+.kpi-ext-row{display:grid;gap:12px;margin-bottom:14px}
+.kpi-ext-row.r1{grid-template-columns:1fr}
+.kpi-ext-row.r2{grid-template-columns:repeat(2,1fr)}
+.kpi-ext-row.r3{grid-template-columns:repeat(3,1fr)}
+.kpi-ext-row.r4{grid-template-columns:repeat(4,1fr)}
+.kpi-ext-card{background:var(--branco);border:1.5px solid var(--border);border-radius:10px;
+              padding:16px 18px;box-shadow:0 2px 8px rgba(41,87,120,.07);
+              display:flex;flex-direction:column;gap:10px;min-width:0}
+.kpi-ext-title{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;
+               color:var(--azul);text-transform:uppercase;letter-spacing:.07em;
+               padding-bottom:8px;border-bottom:1.5px solid var(--border2)}
+.kpi-ext-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi-ext-grid.cols4{grid-template-columns:repeat(4,1fr)}
+.kpi-ext-item{display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi-ext-lbl{font-size:10px;font-weight:700;color:var(--text3);
+             text-transform:uppercase;letter-spacing:.07em}
+.kpi-ext-val{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;
+             color:var(--azul);line-height:1;word-break:break-word}
+.kpi-ext-val.g{color:var(--verde)}
+.kpi-ext-val.r{color:#c0392b}
+.kpi-ext-extra{font-size:10.5px;color:var(--text3);line-height:1.25;margin-top:2px}
+.kpi-ext-extra strong{color:var(--text)}
+.kpi-ext-alert{background:rgba(192,57,43,.08);border-left:3px solid #c0392b;
+               border-radius:4px;padding:6px 9px;font-size:11px;color:#8a1f15;
+               margin-top:4px;line-height:1.3}
+
+/* Alerta de divergência ERP × Notion */
+.diverg-box{background:#fff8e1;border:1px solid #e0c068;border-left:5px solid #d4a017;
+            border-radius:8px;padding:10px 14px;font-size:12.5px;color:#5a4810;display:flex;
+            flex-direction:column;gap:6px}
+.diverg-box .diverg-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;
+            font-size:14px;color:#8a6d10;text-transform:uppercase;letter-spacing:.06em;
+            display:flex;align-items:center;gap:6px;cursor:pointer}
+.diverg-box .diverg-title .chev{transition:transform .15s}
+.diverg-box .diverg-title.open .chev{transform:rotate(90deg)}
+.diverg-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.diverg-col h5{font-size:11.5px;color:#5a4810;text-transform:uppercase;
+               letter-spacing:.06em;margin-bottom:4px;font-weight:800}
+.diverg-list{max-height:160px;overflow-y:auto;font-family:'DM Mono',monospace;
+             font-size:11px;line-height:1.5;color:#3a2e08;background:#fffdf2;
+             border:1px solid #e8d49a;border-radius:5px;padding:6px 9px}
+.diverg-list span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* METAS */
 #page-metas{flex-direction:column;overflow:hidden}
@@ -309,9 +354,7 @@ tfoot td:last-child{border-right:none}
 <!-- DASHBOARD -->
 <div class="page active" id="page-dash">
   <nav class="dash-nav">
-    <button class="nav-btn active-nav" onclick="irPara('dash','Dashboard',this)">Dashboard</button>
     <button class="nav-btn" onclick="irPara('setor','Análise de Desempenho',this)">Análise de Desempenho</button>
-    <button class="nav-btn" onclick="irPara('comp','Comparativo de Desempenho',this)">Comparativo de Desempenho</button>
     <button class="nav-btn" onclick="irPara('metas','Metas',this)">Metas</button>
     <button class="nav-btn" onclick="irPara('prazos','Análise de Prazos',this)">Análise de Prazos</button>
     <button class="nav-btn" onclick="irPara('custos','Análise de Custos',this)">Análise de Custos</button>
@@ -322,14 +365,11 @@ tfoot td:last-child{border-right:none}
       <select id="sel-mes" onchange="buildDash()"></select>
     </div>
     <div class="blk-title">Financeiro — Mês Selecionado</div>
-    <div class="kpi-row r4" id="kpi-fin"></div>
-    <div class="kpi-row r2" id="kpi-rat"></div>
+    <div id="kpi-fin-ext"></div>
+    <div class="kpi-row r4" id="kpi-rat"></div>
+    <div id="alerta-diverg" style="margin-bottom:14px"></div>
     <div class="blk-title">Produção — Mês Selecionado</div>
-    <div class="kpi-row r4" id="kpi-prod"></div>
-    <div class="blk-title">Tempos Médios — Todo o Período</div>
-    <div class="kpi-row r3" id="kpi-t1"></div>
-    <div class="kpi-row r3" id="kpi-t2"></div>
-    <div class="kpi-row r2" id="kpi-t3"></div>
+    <div id="kpi-prod-ext"></div>
   </div>
 </div>
 
@@ -568,6 +608,7 @@ tfoot td:last-child{border-right:none}
   <div class="pg-hdr">
     <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
     <div class="pg-hdr-title">Análise de Desempenho</div>
+    <button class="btn-volta-dash" style="background:rgba(143,220,210,.32);border-color:rgba(143,220,210,.5);color:#fff" onclick="irPara('comp','Comparativo de Desempenho',null)">📊 Modo Comparativo →</button>
   </div>
   <div class="pg-body">
     <div class="controles">
@@ -647,7 +688,7 @@ tfoot td:last-child{border-right:none}
 <!-- COMPARATIVO DE DESEMPENHO — réplica da Análise de Desempenho lado a lado -->
 <div class="page" id="page-comp">
   <div class="pg-hdr">
-    <button class="btn-volta-dash" onclick="voltarDash()">← Voltar para o Dashboard</button>
+    <button class="btn-volta-dash" onclick="irPara('setor','Análise de Desempenho',document.querySelectorAll('.nav-btn')[0])">← Voltar para Análise de Desempenho</button>
     <div class="pg-hdr-title">Comparativo de Desempenho</div>
   </div>
   <div class="pg-body">
@@ -837,8 +878,8 @@ function voltarDash(){
   document.getElementById('page-dash').classList.add('active');
   document.getElementById('btn-back').style.display='none';
   document.getElementById('hdr-title').textContent='Análise de Dados';
+  // remove active de todos os nav-btn — Dashboard é o estado inicial sem botão
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active-nav'));
-  document.querySelector('.nav-btn').classList.add('active-nav');
   paginaAtual='dash';
 }
 function irPara(id,titulo,btn){
@@ -1278,122 +1319,293 @@ function initSelMes(){
 function buildDash(){
   const mes=document.getElementById('sel-mes')?.value;if(!mes)return;
   const endD=new Set(docs.map(d=>normS(d.endereco)));
+  const ano=parseInt(mes.substring(0,4));
 
-  // CORREÇÃO 2: VGV usa valor_venda_contrato
-  const vMes=vendas.filter(v=>v.clientes&&mesD(v.data_venda)===mes);
-  const vgvM=vMes.reduce((s,v)=>s+(v.valor_venda_contrato||0),0);
-
-  let cO=0,cE=0,cP=0;
-  Object.entries(pags).forEach(([cc,mp])=>{
-    const v=mp[mes]||0;if(!v)return;
-    const u=cc.toUpperCase().trim();
-    if(/ESCRIT/i.test(u))cE+=v;
-    else if(u==='POS OBRA MORAIS ENGENHARIA')cP+=v; // CORREÇÃO 1: apenas este CC
-    else if(endD.has(normS(cc)))cO+=v;
-  });
-
-  function mesesAntes(n){
-    const base=new Date(mes+'-01'),ml=[];
+  // === Helpers de meses (sem objeto Date — evita bug timezone) ===
+  function listaMesesAntes(refMes,n){
+    const [y,m]=refMes.split('-').map(Number);
+    const r=[];
     for(let i=n-1;i>=0;i--){
-      const d=new Date(base.getFullYear(),base.getMonth()-i,1);
-      ml.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`);
+      let ty=y, tm=m-i;
+      while(tm<=0){tm+=12;ty--;}
+      r.push(`${ty}-${String(tm).padStart(2,'0')}`);
     }
-    return ml;
+    return r;
   }
-  const mTri=mesesAntes(3),mAno=mesesAntes(12);
-  const vgvTri=somaVgvMeses(mTri),escTri=somaEscMeses(mTri);
-  const vgvAno=somaVgvMeses(mAno),escAno=somaEscMeses(mAno);
+  function listaMesesDoAno(refAno){
+    return Array.from({length:12},(_,i)=>`${refAno}-${String(i+1).padStart(2,'0')}`);
+  }
+  function listaMesesAteMes(refMes){
+    // Meses do ano do mês selecionado, do janeiro até o mês selecionado (inclusivo)
+    const [y,m]=refMes.split('-').map(Number);
+    return Array.from({length:m},(_,i)=>`${y}-${String(i+1).padStart(2,'0')}`);
+  }
 
-  const lC=docs.filter(d=>mesD(d.data_aquisicao_lote)===mes).length;
-  const oI=docs.filter(d=>d.data_inicio_obra&&mesD(d.data_inicio_obra)===mes).length;
-  const oF=docs.filter(d=>mesD(d.data_termino_obra)===mes).length;
-  const cV=vendas.filter(v=>v.clientes&&mesD(v.data_venda)===mes).length;
-
-  const tUS=mediaDias(docs,'data_sol_uso_solo','data_emissao_uso_solo');
-  const tAl=mediaDias(docs,'data_entrada_alvara','data_aprovacao_projeto');
-  const tIn=mediaDias(docs,'entrada_incorporacao_data','data_finalizacao_incorp');
-  const tRt=mediaDias(docs,'data_entrada_ret','data_finalizacao_ret');
-  // CORREÇÃO 5: tempo de obra apenas para obras com início E término
-  const tOb=mediaDias(docs.filter(d=>d.data_inicio_obra&&d.data_termino_obra),'data_inicio_obra','data_termino_obra');
-  // CORREÇÃO 4: tempo médio p/ averbação = início da obra até certidões
-  const tAv=mediaDias(docs.filter(d=>d.data_inicio_obra&&d.data_certidoes),'data_inicio_obra','data_certidoes');
-  // CORREÇÃO 6: prazo de giro = aquisição do lote até assinatura no banco
-  const tGiro=(()=>{
-    const pares=[];
-    docs.forEach(d=>{
-      if(!d.data_aquisicao_lote)return;
-      const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
-      if(v?.data_assinatura){const x=diasDiff(d.data_aquisicao_lote,v.data_assinatura);if(x)pares.push(x);}
-    });
-    return pares.length?Math.round(pares.reduce((a,b)=>a+b)/pares.length):null;
-  })();
-  const dv=[];
-  docs.forEach(d=>{
-    if(!d.data_certidoes)return;
-    const v=vendas.find(v=>v.clientes&&normS(v.endereco)===normS(d.endereco));
-    if(v?.data_venda){const x=diasDiff(d.data_certidoes,v.data_venda);if(x)dv.push(x);}
-  });
-  const tVe=dv.length?Math.round(dv.reduce((a,b)=>a+b)/dv.length):null;
-
-  const subTri=`Esc: ${fmtBRL(escTri)} | VGV: ${fmtBRL(vgvTri)} (${mTri.map(fmtM).join(', ')})`;
-  const subAno=`Esc: ${fmtBRL(escAno)} | VGV: ${fmtBRL(vgvAno)}`;
-
-  // Melhoria 1: Alerta VGV — casas vendidas sem valor_venda_contrato
-  const semVgv=vMes.filter(v=>!v.valor_venda_contrato);
-  const alertaVgv=semVgv.length>0
-    ?`<div style="color:#c0392b;font-size:11px;font-weight:700;margin-top:4px">⚠ ${semVgv.length} venda(s) sem valor de contrato: ${semVgv.map(v=>v.endereco||'?').join(', ')}</div>`
-    :'';
-
-  // Melhoria 2: Custos separados por grupo (pagamentos_full)
-  const pFull=window._pagFull||[];
-  const gruposMes={};
-  pFull.filter(p=>p.mes===mes).forEach(p=>{
-    const u=p.cc.toUpperCase().trim();
-    const g=(p.grupo||'Sem grupo').trim();
-    if(/ESCRIT/i.test(u)){
-      gruposMes['esc_'+g]=(gruposMes['esc_'+g]||0)+p.valor;
-    } else if(u==='POS OBRA MORAIS ENGENHARIA'){
-      gruposMes['pos_'+g]=(gruposMes['pos_'+g]||0)+p.valor;
-    } else if(endD.has(normS(p.cc))){
-      gruposMes['obr_'+g]=(gruposMes['obr_'+g]||0)+p.valor;
-    }
-  });
-  // Montar sub-texto com grupos para cada KPI de custo
-  const subGrupo=(prefix)=>{
-    const gs=Object.entries(gruposMes).filter(([k])=>k.startsWith(prefix)).map(([k,v])=>`${k.split('_').slice(1).join('_')}: ${fmtBRL(v)}`);
-    return gs.length?gs.join(' · '):'';
+  // === Soma de VGV em lista de meses ===
+  const somaVgvEm=(ml)=>{
+    const set=new Set(ml);
+    return vendas.filter(v=>v.clientes&&set.has(mesD(v.data_venda)))
+                 .reduce((s,v)=>s+(v.valor_venda_contrato||0),0);
+  };
+  const contaCasasEm=(ml)=>{
+    const set=new Set(ml);
+    return vendas.filter(v=>v.clientes&&set.has(mesD(v.data_venda))).length;
+  };
+  const listaVendasEm=(ml)=>{
+    const set=new Set(ml);
+    return vendas.filter(v=>v.clientes&&set.has(mesD(v.data_venda)));
   };
 
-  document.getElementById('kpi-fin').innerHTML=[
-    kpi('VGV Mensal',fmtBRL(vgvM),vMes.length+' venda(s)'+alertaVgv,vgvM>0?'g':''),
-    kpi('Custo Obra Mensal',fmtBRL(cO),'Pagamentos ERP — obras'+(subGrupo('obr_')?'<br><span style="font-size:10px;color:var(--text4)">'+subGrupo('obr_')+'</span>':'')),
-    kpi('Custo Escritório Mensal',fmtBRL(cE),'CCs com ESCRITÓRIO'+(subGrupo('esc_')?'<br><span style="font-size:10px;color:var(--text4)">'+subGrupo('esc_')+'</span>':'')),
-    kpi('Custo Pós Obra Mensal',fmtBRL(cP),'CCs com POS OBRA'+(subGrupo('pos_')?'<br><span style="font-size:10px;color:var(--text4)">'+subGrupo('pos_')+'</span>':'')),
-  ].join('');
+  // === Soma de custos por classificação ===
+  // tipo: 'obra_sem_terreno' | 'so_terreno' | 'obra_total' | 'escritorio' | 'pos_obra'
+  const pFull=window._pagFull||[];
+  function somaCustoEm(tipo,ml){
+    const set=new Set(ml);
+    let total=0;
+    pFull.forEach(p=>{
+      if(!set.has(p.mes))return;
+      const u=(p.cc||'').toUpperCase().trim();
+      const ehEsc=/ESCRIT/i.test(u);
+      const ehPos=(u==='POS OBRA MORAIS ENGENHARIA');
+      const ehObra=(!ehEsc && !ehPos && endD.has(normS(p.cc)));
+      const planoTer=(p.plano_de_conta||'').toUpperCase().includes('AQUISIÇÃO DE TERRENO')
+                   || (p.plano_de_conta||'').toUpperCase().includes('AQUISICAO DE TERRENO');
+      if(tipo==='escritorio'&&ehEsc) total+=p.valor||0;
+      else if(tipo==='pos_obra'&&ehPos) total+=p.valor||0;
+      else if(tipo==='obra_total'&&ehObra) total+=p.valor||0;
+      else if(tipo==='obra_sem_terreno'&&ehObra&&!planoTer) total+=p.valor||0;
+      else if(tipo==='so_terreno'&&ehObra&&planoTer) total+=p.valor||0;
+    });
+    return total;
+  }
+
+  // === Períodos ===
+  const mesesAno=listaMesesDoAno(ano);                    // Jan-Dez do ano selecionado
+  const mesesAnoAteMes=listaMesesAteMes(mes);             // Jan até mês selecionado
+  const meses12=listaMesesAntes(mes,12);                  // Últimos 12 meses até o mês selecionado
+  const meses3=listaMesesAntes(mes,3);                    // Trimestre
+
+  // === VGV ===
+  const vgvMes=somaVgvEm([mes]);
+  const vgvAno=somaVgvEm(mesesAno);
+  const vgv12=somaVgvEm(meses12);
+  const casasMes=contaCasasEm([mes]);
+  const casasAno=contaCasasEm(mesesAno);
+  // Média mensal: dividir o vgv12 por 12 (12 meses corridos)
+  const vgvMedia=vgv12/12;
+  // Meta de casas (ano anterior)
+  const metaAno=(metas.find(m=>m.ano===(ano-1))?.meta_casas)||0;
+  const metaMes=metaAno?(metaAno/12):0;
+
+  // Alerta de vendas sem valor de contrato
+  const vMesArr=listaVendasEm([mes]);
+  const semVgvMes=vMesArr.filter(v=>!v.valor_venda_contrato);
+  const alertaVgv=semVgvMes.length>0
+    ?`<div class="kpi-ext-alert">⚠ ${semVgvMes.length} venda(s) sem valor de contrato: ${semVgvMes.map(v=>v.endereco||'?').slice(0,3).join(', ')}${semVgvMes.length>3?'…':''}</div>`
+    :'';
+
+  // Cor do VGV do Mês — verde se ≥ média, vermelho se abaixo
+  const corVgvMes=(vgvMes>=vgvMedia && vgvMes>0)?'g':(vgvMes>0?'r':'');
+
+  // === Custos ===
+  const cObraSemTerMes=somaCustoEm('obra_sem_terreno',[mes]);
+  const cObraSemTerAno=somaCustoEm('obra_sem_terreno',mesesAno);
+  const cObraSemTer12=somaCustoEm('obra_sem_terreno',meses12);
+  const cTerMes=somaCustoEm('so_terreno',[mes]);
+  const cTerAno=somaCustoEm('so_terreno',mesesAno);
+  const cTer12=somaCustoEm('so_terreno',meses12);
+  const cObraTotMes=somaCustoEm('obra_total',[mes]);
+  const cObraTotAno=somaCustoEm('obra_total',mesesAno);
+  const cObraTot12=somaCustoEm('obra_total',meses12);
+  const cEscMes=somaCustoEm('escritorio',[mes]);
+  const cEscAno=somaCustoEm('escritorio',mesesAno);
+  const cEsc12=somaCustoEm('escritorio',meses12);
+  const cPosMes=somaCustoEm('pos_obra',[mes]);
+  const cPosAno=somaCustoEm('pos_obra',mesesAno);
+  const cPos12=somaCustoEm('pos_obra',meses12);
+
+  // === Ratios ===
+  const vgvTri=somaVgvEm(meses3);
+  const escTri=somaCustoEm('escritorio',meses3);
+  // Pós-obra / Custo de obra (sem terreno) — Trim e Anual
+  const obraSemTerTri=somaCustoEm('obra_sem_terreno',meses3);
+  const obraSemTer12again=cObraSemTer12;
+  const cPosTri=somaCustoEm('pos_obra',meses3);
+
+  const ratEscTri=vgvTri>0?(escTri/vgvTri*100):null;
+  const ratEsc12=vgv12>0?(cEsc12/vgv12*100):null;
+  const ratPosTri=obraSemTerTri>0?(cPosTri/obraSemTerTri*100):null;
+  const ratPos12=cObraSemTer12>0?(cPos12/cObraSemTer12*100):null;
+
+  // === Produção ===
+  const lotesAno=docs.filter(d=>d.data_aquisicao_lote&&d.data_aquisicao_lote.substring(0,4)===String(ano)).length;
+  const lotesMes=docs.filter(d=>mesD(d.data_aquisicao_lote)===mes).length;
+  const mediaLotesMes=lotesAno/12;
+  // Meta de lotes não existe no banco — usar meta_casas (proxy) ou simplesmente omitir
+  const metaLotes=(metas.find(m=>m.ano===(ano-1))?.meta_casas)||0;
+
+  const obrasIniAno=docs.filter(d=>d.data_inicio_obra&&d.data_inicio_obra.substring(0,4)===String(ano)).length;
+  const obrasIniMes=docs.filter(d=>d.data_inicio_obra&&mesD(d.data_inicio_obra)===mes).length;
+  const mediaObrasIni=obrasIniAno/12;
+
+  const obrasFinAno=docs.filter(d=>d.data_termino_obra&&d.data_termino_obra.substring(0,4)===String(ano)).length;
+  const obrasFinMes=docs.filter(d=>d.data_termino_obra&&mesD(d.data_termino_obra)===mes).length;
+  const mediaObrasFin=obrasFinAno/12;
+
+  const casasVendAno=vendas.filter(v=>v.clientes&&v.data_venda&&v.data_venda.substring(0,4)===String(ano)).length;
+  const casasVendMes=vendas.filter(v=>v.clientes&&mesD(v.data_venda)===mes).length;
+  const mediaCasasVend=casasVendAno/12;
+
+  // === Função utilitária para renderizar mini-grid ===
+  const fmtBRLshort=(v)=>{
+    if(!v)return'R$ 0';
+    if(v>=1e6)return'R$ '+fmtN(v/1e6,2)+'M';
+    if(v>=1e3)return'R$ '+fmtN(v/1e3,0)+'k';
+    return fmtBRL(v);
+  };
+
+  // === Card de VGV (com metas e cor) ===
+  const corClass=(v)=>v?` class="kpi-ext-val ${v}"`:` class="kpi-ext-val"`;
+  const vgvCard=`
+    <div class="kpi-ext-card">
+      <div class="kpi-ext-title">📈 VGV</div>
+      <div class="kpi-ext-grid cols4">
+        <div class="kpi-ext-item">
+          <div class="kpi-ext-lbl">12 Meses</div>
+          <div class="kpi-ext-val">${fmtBRL(vgv12)}</div>
+        </div>
+        <div class="kpi-ext-item">
+          <div class="kpi-ext-lbl">Anual (${ano})</div>
+          <div class="kpi-ext-val">${fmtBRL(vgvAno)}</div>
+          ${metaAno?`<div class="kpi-ext-extra"><strong>${casasAno}</strong>/${metaAno} casas</div>`:`<div class="kpi-ext-extra"><strong>${casasAno}</strong> casa(s)</div>`}
+        </div>
+        <div class="kpi-ext-item">
+          <div class="kpi-ext-lbl">Média/Mês</div>
+          <div class="kpi-ext-val">${fmtBRL(vgvMedia)}</div>
+        </div>
+        <div class="kpi-ext-item">
+          <div class="kpi-ext-lbl">Mês (${fmtM(mes)})</div>
+          <div${corClass(corVgvMes)}>${fmtBRL(vgvMes)}</div>
+          ${metaMes?`<div class="kpi-ext-extra"><strong>${casasMes}</strong>/${fmtN(metaMes,1)} casas</div>`:`<div class="kpi-ext-extra"><strong>${casasMes}</strong> casa(s)</div>`}
+        </div>
+      </div>
+      ${alertaVgv}
+    </div>`;
+
+  // === Card Custo Obra (subdividido em 3) ===
+  function blocoCusto(titulo,v12,vAno,vMes){
+    const media=v12/12;
+    return `
+      <div class="kpi-ext-card">
+        <div class="kpi-ext-title">${titulo}</div>
+        <div class="kpi-ext-grid cols4">
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">12 Meses</div><div class="kpi-ext-val">${fmtBRL(v12)}</div></div>
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">Anual (${ano})</div><div class="kpi-ext-val">${fmtBRL(vAno)}</div></div>
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">Média/Mês</div><div class="kpi-ext-val">${fmtBRL(media)}</div></div>
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">Mês (${fmtM(mes)})</div><div class="kpi-ext-val">${fmtBRL(vMes)}</div></div>
+        </div>
+      </div>`;
+  }
+
+  const finExtHtml=`
+    <div class="kpi-ext-row r1">${vgvCard}</div>
+    <div class="kpi-ext-row r3">
+      ${blocoCusto('🏗 Custo Obra (s/ Terreno)',cObraSemTer12,cObraSemTerAno,cObraSemTerMes)}
+      ${blocoCusto('🏞 Compra de Terreno',cTer12,cTerAno,cTerMes)}
+      ${blocoCusto('Σ Custo Obra Total',cObraTot12,cObraTotAno,cObraTotMes)}
+    </div>
+    <div class="kpi-ext-row r2">
+      ${blocoCusto('🏢 Custo Escritório',cEsc12,cEscAno,cEscMes)}
+      ${blocoCusto('🔧 Custo Pós-Obra',cPos12,cPosAno,cPosMes)}
+    </div>`;
+  document.getElementById('kpi-fin-ext').innerHTML=finExtHtml;
+
+  // === Ratios (com meta de cor) ===
+  // Meta Esc/VGV: 4% (verde abaixo, vermelho acima)
+  // Meta PosObra/Obra: 1% (verde abaixo, vermelho acima)
+  const corRatio=(v,meta)=>v==null?'':v<=meta?'g':'r';
+  const subRatio=(v,meta)=>v==null?'':v<=meta?`<span style="color:var(--verde);font-weight:700">✓ ≤ meta ${meta}%</span>`:`<span style="color:#c0392b;font-weight:700">⚠ > meta ${meta}%</span>`;
+
   document.getElementById('kpi-rat').innerHTML=[
-    kpi('Custo Escritório / VGV Trimestral',vgvTri>0?fmtN(escTri/vgvTri*100,1)+'%':'—',subTri),
-    kpi('Custo Escritório / VGV Anual (12m)',vgvAno>0?fmtN(escAno/vgvAno*100,1)+'%':'—',subAno),
+    kpi('Custo Escritório / VGV Trimestral',ratEscTri!=null?fmtN(ratEscTri,2)+'%':'—',subRatio(ratEscTri,4),corRatio(ratEscTri,4)),
+    kpi('Custo Escritório / VGV Anual (12m)',ratEsc12!=null?fmtN(ratEsc12,2)+'%':'—',subRatio(ratEsc12,4),corRatio(ratEsc12,4)),
+    kpi('Custo Pós-Obra / Custo Obra Trim.',ratPosTri!=null?fmtN(ratPosTri,2)+'%':'—',subRatio(ratPosTri,1),corRatio(ratPosTri,1)),
+    kpi('Custo Pós-Obra / Custo Obra (12m)',ratPos12!=null?fmtN(ratPos12,2)+'%':'—',subRatio(ratPos12,1),corRatio(ratPos12,1)),
   ].join('');
-  document.getElementById('kpi-prod').innerHTML=[
-    kpi('Lotes Comprados no Mês',lC||'0','Data de aquisição'),
-    kpi('Obras Iniciadas no Mês',oI||'0','Data de início de obra'),
-    kpi('Obras Finalizadas no Mês',oF||'0','Data de término'),
-    kpi('Casas Vendidas no Mês',cV||'0','Clientes + data venda',cV>0?'g':''),
-  ].join('');
-  document.getElementById('kpi-t1').innerHTML=[
-    kpi('Uso do Solo',tUS!=null?tUS+'d':'—','Solicitação → emissão'),
-    kpi('Alvará',tAl!=null?tAl+'d':'—','Entrada → aprovação'),
-    kpi('Incorporação',tIn!=null?tIn+'d':'—','Entrada → finalização'),
-  ].join('');
-  document.getElementById('kpi-t2').innerHTML=[
-    kpi('RET',tRt!=null?tRt+'d':'—','Entrada → finalização'),
-    kpi('Tempo Médio de Obra',tOb!=null?tOb+'d':'—','Início → término (c/ ambas as datas)'),
-    kpi('Venda',tVe!=null?tVe+'d':'—','Certidões → data de venda'),
-  ].join('');
-  document.getElementById('kpi-t3').innerHTML=[
-    kpi('Tempo Médio p/ Averbação',tAv!=null?tAv+'d':'—','Início da obra → certidões'),
-    kpi('Prazo de Giro (Lote→Banco)',tGiro!=null?tGiro+'d':'—','Aquisição do lote → assinatura banco'),
-  ].join('');
+
+  // === Alerta de divergência ERP × Notion ===
+  renderAlertaDivergencia();
+
+  // === Produção (cards expandidos) ===
+  function blocoProducao(titulo,vAno,vMedia,vMes,meta,metaLbl){
+    const corMes=vMedia>0?(vMes>=vMedia?'g':'r'):'';
+    const linhaMeta=meta>0?`<div class="kpi-ext-extra">Meta: <strong>${fmtN(meta,1)}</strong></div>`:'';
+    const linhaMetaMes=meta>0?`<div class="kpi-ext-extra">Meta mês: <strong>${fmtN(meta/12,1)}</strong></div>`:'';
+    return `
+      <div class="kpi-ext-card">
+        <div class="kpi-ext-title">${titulo}</div>
+        <div class="kpi-ext-grid">
+          <div class="kpi-ext-item">
+            <div class="kpi-ext-lbl">Ano (${ano})</div>
+            <div class="kpi-ext-val">${vAno}</div>
+            ${linhaMeta}
+          </div>
+          <div class="kpi-ext-item">
+            <div class="kpi-ext-lbl">Média/Mês</div>
+            <div class="kpi-ext-val">${fmtN(vMedia,1)}</div>
+          </div>
+          <div class="kpi-ext-item">
+            <div class="kpi-ext-lbl">Mês (${fmtM(mes)})</div>
+            <div class="kpi-ext-val ${corMes}">${vMes}</div>
+            ${linhaMetaMes}
+          </div>
+        </div>
+      </div>`;
+  }
+  const prodHtml=`
+    <div class="kpi-ext-row r2">
+      ${blocoProducao('🏷 Lotes Comprados',lotesAno,mediaLotesMes,lotesMes,0,'')}
+      ${blocoProducao('🔨 Obras Iniciadas',obrasIniAno,mediaObrasIni,obrasIniMes,0,'')}
+    </div>
+    <div class="kpi-ext-row r2">
+      ${blocoProducao('✅ Obras Finalizadas',obrasFinAno,mediaObrasFin,obrasFinMes,0,'')}
+      ${blocoProducao('🏠 Casas Vendidas',casasVendAno,mediaCasasVend,casasVendMes,metaAno,'')}
+    </div>`;
+  document.getElementById('kpi-prod-ext').innerHTML=prodHtml;
+}
+
+// === Alerta de divergência ERP × Notion ===
+function renderAlertaDivergencia(){
+  const el=document.getElementById('alerta-diverg');if(!el)return;
+  const endNotion=new Set(docs.map(d=>normS(d.endereco)).filter(Boolean));
+  const ccErp=new Set();
+  (window._pagFull||[]).forEach(p=>{if(p.cc)ccErp.add(normS(p.cc));});
+  // CCs no ERP que parecem ser obras mas não estão no Notion
+  // Filtra entradas claramente não-obras
+  const PADROES_NAO_OBRA=/^(EMPRESA|REEMBOLSO|REFORMA|SALA |A CLASSIFICAR|ADIANTAMENTO|TERRA BELA FATURAMENTO|CONDOMÍNIO |CONDOMINIO |MOURA EMPREEND)/i;
+  const erpOrphan=[...ccErp].filter(cc=>!endNotion.has(cc) && !PADROES_NAO_OBRA.test(cc) && !cc.includes('ESCRIT') && !cc.includes('POS OBRA'));
+  const notionOrphan=[...endNotion].filter(end=>!ccErp.has(end));
+  const total=erpOrphan.length+notionOrphan.length;
+  if(total===0){el.innerHTML='';return;}
+  const id='diverg-cont-'+Math.random().toString(36).substring(2,8);
+  el.innerHTML=`
+    <div class="diverg-box">
+      <div class="diverg-title" onclick="this.classList.toggle('open');document.getElementById('${id}').style.display=this.classList.contains('open')?'grid':'none'">
+        <span class="chev">▶</span>
+        ⚠ Divergência ERP × Notion (${total} endereço${total>1?'s':''})
+        <span style="margin-left:auto;font-weight:400;font-size:11px;opacity:.75">clique para expandir</span>
+      </div>
+      <div id="${id}" class="diverg-cols" style="display:none">
+        <div class="diverg-col">
+          <h5>No ERP mas não no Notion (${erpOrphan.length})</h5>
+          <div class="diverg-list">${erpOrphan.length?erpOrphan.slice(0,200).sort().map(x=>`<span>${x}</span>`).join(''):'<span style="color:#888">— nenhum —</span>'}</div>
+        </div>
+        <div class="diverg-col">
+          <h5>No Notion mas sem pagamento ERP (${notionOrphan.length})</h5>
+          <div class="diverg-list">${notionOrphan.length?notionOrphan.slice(0,200).sort().map(x=>`<span>${x}</span>`).join(''):'<span style="color:#888">— nenhum —</span>'}</div>
+        </div>
+      </div>
+    </div>`;
 }
 
 // ── HELPERS METAS ──
