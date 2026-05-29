@@ -1526,11 +1526,47 @@ function buildDash(){
   const corRatio=(v,meta)=>v==null?'':v<=meta?'g':'r';
   const subRatio=(v,meta)=>v==null?'':v<=meta?`<span style="color:var(--verde);font-weight:700">✓ ≤ meta ${meta}%</span>`:`<span style="color:#c0392b;font-weight:700">⚠ > meta ${meta}%</span>`;
 
+  // Format compacto para detalhe (R$ 39,6M / R$ 503k / R$ 1.250)
+  const fmtCompacto=(v)=>{
+    if(!v) return 'R$ 0';
+    if(Math.abs(v)>=1e6) return 'R$ '+fmtN(v/1e6,2)+'M';
+    if(Math.abs(v)>=1e3) return 'R$ '+fmtN(v/1e3,0)+'k';
+    return 'R$ '+fmtN(v,0);
+  };
+
+  // Valores mês a mês do trimestre (para detalhe nos ratios)
+  const escMensal3=meses3.map(m=>somaCustoEm('escritorio',[m]));
+  const vgvMensal3=meses3.map(m=>somaVgvEm([m]));
+  const posMensal3=meses3.map(m=>somaCustoEm('pos_obra',[m]));
+  const obraSemTerMensal3=meses3.map(m=>somaCustoEm('obra_sem_terreno',[m]));
+
+  // Sub-texto detalhado mês a mês para o trimestre
+  function subDetTri(numLbl,vNum,denLbl,vDen){
+    const linhas=meses3.map((m,i)=>
+      `<div style="font-size:10.5px;color:var(--text3);line-height:1.4">`+
+      `<strong style="color:var(--text)">${fmtM(m)}</strong>: ${numLbl} <strong>${fmtCompacto(vNum[i])}</strong> / ${denLbl} <strong>${fmtCompacto(vDen[i])}</strong>`+
+      `</div>`
+    ).join('');
+    return linhas;
+  }
+  // Sub-texto total para o anual (12m)
+  function subDetAno(numLbl,vNumTot,denLbl,vDenTot){
+    return `<div style="font-size:10.5px;color:var(--text3);line-height:1.4">`+
+           `${numLbl} total: <strong style="color:var(--text)">${fmtCompacto(vNumTot)}</strong> · `+
+           `${denLbl} total: <strong style="color:var(--text)">${fmtCompacto(vDenTot)}</strong>`+
+           `</div>`;
+  }
+
+  const subEscTri = subRatio(ratEscTri,4) + subDetTri('Esc',escMensal3,'VGV',vgvMensal3);
+  const subEsc12  = subRatio(ratEsc12,4)  + subDetAno('Esc',cEsc12,'VGV',vgv12);
+  const subPosTri = subRatio(ratPosTri,1) + subDetTri('Pós',posMensal3,'Obra',obraSemTerMensal3);
+  const subPos12  = subRatio(ratPos12,1)  + subDetAno('Pós',cPos12,'Obra',cObraSemTer12);
+
   document.getElementById('kpi-rat').innerHTML=[
-    kpi('Custo Escritório / VGV Trimestral',ratEscTri!=null?fmtN(ratEscTri,2)+'%':'—',subRatio(ratEscTri,4),corRatio(ratEscTri,4)),
-    kpi('Custo Escritório / VGV Anual (12m)',ratEsc12!=null?fmtN(ratEsc12,2)+'%':'—',subRatio(ratEsc12,4),corRatio(ratEsc12,4)),
-    kpi('Custo Pós-Obra / Custo Obra Trim.',ratPosTri!=null?fmtN(ratPosTri,2)+'%':'—',subRatio(ratPosTri,1),corRatio(ratPosTri,1)),
-    kpi('Custo Pós-Obra / Custo Obra (12m)',ratPos12!=null?fmtN(ratPos12,2)+'%':'—',subRatio(ratPos12,1),corRatio(ratPos12,1)),
+    kpi('Custo Escritório / VGV Trimestral',ratEscTri!=null?fmtN(ratEscTri,2)+'%':'—',subEscTri,corRatio(ratEscTri,4)),
+    kpi('Custo Escritório / VGV Anual (12m)',ratEsc12!=null?fmtN(ratEsc12,2)+'%':'—',subEsc12,corRatio(ratEsc12,4)),
+    kpi('Custo Pós-Obra / Custo Obra Trim.',ratPosTri!=null?fmtN(ratPosTri,2)+'%':'—',subPosTri,corRatio(ratPosTri,1)),
+    kpi('Custo Pós-Obra / Custo Obra (12m)',ratPos12!=null?fmtN(ratPos12,2)+'%':'—',subPos12,corRatio(ratPos12,1)),
   ].join('');
 
   // === Alerta de divergência ERP × Notion ===
