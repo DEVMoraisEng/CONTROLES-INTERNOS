@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-01T14:49:39.518141+00:00",
+  "updated_at": "2026-06-01T15:01:06.371954+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-80de-abc4-ee495d08ad3f",
@@ -63,7 +63,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": null,
       "implantacao": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 271675.8554,
       "erp_valor_pago": 257857.35
     },
     {
@@ -128,7 +128,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": null,
       "implantacao": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 93000.0
     },
     {
@@ -193,7 +193,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": null,
       "implantacao": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 93000.0
     },
     {
@@ -258,7 +258,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": null,
       "implantacao": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 93000.0
     },
     {
@@ -388,7 +388,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": null,
       "implantacao": null,
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 276044.3311,
       "erp_valor_pago": 106178.11000000002
     },
     {
@@ -453,7 +453,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 82057.34
     },
     {
@@ -518,7 +518,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 84217.77
     },
     {
@@ -583,7 +583,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 80664.96
     },
     {
@@ -648,7 +648,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 81099.51
     },
     {
@@ -713,7 +713,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 270875.2451,
       "erp_valor_pago": 114898.28000000001
     },
     {
@@ -778,7 +778,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 96707.25
     },
     {
@@ -843,7 +843,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 95929.50000000001
     },
     {
@@ -908,7 +908,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 83158.20999999999
     },
     {
@@ -973,7 +973,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 123495.11000009994
     },
     {
@@ -1038,7 +1038,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 123489.82000009996
     },
     {
@@ -1103,7 +1103,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 123217.47000009996
     },
     {
@@ -1168,7 +1168,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 122367.48000009995
     },
     {
@@ -1233,7 +1233,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 123077.54000009997
     },
     {
@@ -1298,7 +1298,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 273563.7047,
       "erp_valor_pago": 6144.1
     },
     {
@@ -1363,7 +1363,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 1661.79
     },
     {
@@ -1428,7 +1428,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 1661.7900000000002
     },
     {
@@ -1493,7 +1493,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 108.39
     },
     {
@@ -1558,7 +1558,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 86437.57
     },
     {
@@ -1623,7 +1623,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 262691.3907,
       "erp_valor_pago": 88286.09999999999
     },
     {
@@ -1688,7 +1688,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 272433.894,
       "erp_valor_pago": 6521.089999999999
     },
     {
@@ -1753,7 +1753,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 272983.1651,
       "erp_valor_pago": 36802.79
     },
     {
@@ -1818,7 +1818,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 273023.2263,
       "erp_valor_pago": 106106.95
     },
     {
@@ -1883,7 +1883,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 268903.7538,
       "erp_valor_pago": 85273.56
     },
     {
@@ -1948,7 +1948,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 262297.8049,
       "erp_valor_pago": 17985.850000000002
     },
     {
@@ -2013,7 +2013,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 1032.13
     },
     {
@@ -2078,7 +2078,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 791.0
     },
     {
@@ -2143,7 +2143,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 108.39
     },
     {
@@ -2208,7 +2208,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 263915.5027,
       "erp_valor_pago": 1678.2699999999998
     },
     {
@@ -2273,7 +2273,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 261987.8049,
       "erp_valor_pago": 1119.88
     },
     {
@@ -2338,7 +2338,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 264487.0018,
       "erp_valor_pago": 86285.66
     },
     {
@@ -2403,7 +2403,7 @@
       "entrada_incorporacao_data": "2026-04-28",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 265770.9192,
       "erp_valor_pago": 38947.89
     },
     {
@@ -2468,7 +2468,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 271439.0319,
       "erp_valor_pago": 73362.79000040003
     },
     {
@@ -2533,7 +2533,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 266512.5572,
       "erp_valor_pago": 92685.03
     },
     {
@@ -2598,7 +2598,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254259.1169,
       "erp_valor_pago": 98768.7099999
     },
     {
@@ -2663,7 +2663,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 271523.1063,
       "erp_valor_pago": 30367.8
     },
     {
@@ -2728,7 +2728,7 @@
       "entrada_incorporacao_data": "2026-04-28",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 272977.2475,
       "erp_valor_pago": 5751.86
     },
     {
@@ -2793,7 +2793,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 263243.1919,
       "erp_valor_pago": 214186.85999971
     },
     {
@@ -2858,7 +2858,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 256936.1361,
       "erp_valor_pago": 201187.51999999996
     },
     {
@@ -2923,7 +2923,7 @@
       "entrada_incorporacao_data": "2026-04-28",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 274511.7825,
       "erp_valor_pago": 98729.17
     },
     {
@@ -2988,7 +2988,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 263775.1945,
       "erp_valor_pago": 140146.53
     },
     {
@@ -3053,7 +3053,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 260044.1526,
       "erp_valor_pago": 195969.8399999999
     },
     {
@@ -3118,7 +3118,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 259749.8836,
       "erp_valor_pago": 180882.68000010002
     },
     {
@@ -3183,7 +3183,7 @@
       "entrada_incorporacao_data": "2026-03-12",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 264271.3536,
       "erp_valor_pago": 234100.6599996
     },
     {
@@ -3248,7 +3248,7 @@
       "entrada_incorporacao_data": "2026-03-10",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 275021.0693,
       "erp_valor_pago": 271996.11999995005
     },
     {
@@ -3313,7 +3313,7 @@
       "entrada_incorporacao_data": "2026-01-27",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 275029.5848,
       "erp_valor_pago": 336240.7800005001
     },
     {
@@ -3378,7 +3378,7 @@
       "entrada_incorporacao_data": "2026-01-27",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 275796.2781,
       "erp_valor_pago": 343087.28000072006
     },
     {
@@ -3443,7 +3443,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 274921.9392,
       "erp_valor_pago": 249459.98000026998
     },
     {
@@ -3508,7 +3508,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 263012.3558,
       "erp_valor_pago": 254673.14999999997
     },
     {
@@ -3573,7 +3573,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 263363.9107,
       "erp_valor_pago": 239815.25000000003
     },
     {
@@ -3638,7 +3638,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 265390.2126,
       "erp_valor_pago": 261695.24000000002
     },
     {
@@ -3703,7 +3703,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 270655.1526,
       "erp_valor_pago": 271862.23999999993
     },
     {
@@ -3768,7 +3768,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 256395.6109,
       "erp_valor_pago": 240925.44999999998
     },
     {
@@ -3833,7 +3833,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 260169.4342,
       "erp_valor_pago": 229684.42000020004
     },
     {
@@ -3898,7 +3898,7 @@
       "entrada_incorporacao_data": "2025-10-27",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 261856.771,
       "erp_valor_pago": 249053.47999999995
     },
     {
@@ -3963,7 +3963,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 257129.4195,
       "erp_valor_pago": 64088.5500002
     },
     {
@@ -4028,7 +4028,7 @@
       "entrada_incorporacao_data": "2025-11-14",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 253529.3806,
       "erp_valor_pago": 317592.3900000001
     },
     {
@@ -4093,7 +4093,7 @@
       "entrada_incorporacao_data": "2025-10-06",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 267782.2914,
       "erp_valor_pago": 349772.05000000005
     },
     {
@@ -4158,7 +4158,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 262339.0697,
       "erp_valor_pago": 259859.6300005
     },
     {
@@ -4288,7 +4288,7 @@
       "entrada_incorporacao_data": "2025-10-07",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 251002.5278,
       "erp_valor_pago": 228507.34000000003
     },
     {
@@ -4353,7 +4353,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 249014.8218,
       "erp_valor_pago": 239521.2200000799
     },
     {
@@ -4418,7 +4418,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 249549.5112,
       "erp_valor_pago": 245745.9900003
     },
     {
@@ -5328,7 +5328,7 @@
       "entrada_incorporacao_data": "2025-07-02",
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 397372.153,
       "erp_valor_pago": 363864.6999999001
     },
     {
@@ -5913,7 +5913,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 247367.3153,
       "erp_valor_pago": 293240.98999976396
     },
     {
@@ -5978,7 +5978,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 247519.4453,
       "erp_valor_pago": 299791.51999999996
     },
     {
@@ -6043,7 +6043,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 76460.81999999999
     },
     {
@@ -6108,7 +6108,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 77434.37
     },
     {
@@ -6173,7 +6173,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 76452.3
     },
     {
@@ -6238,7 +6238,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 230652.0727,
       "erp_valor_pago": 76916.29000000001
     },
     {
@@ -6303,7 +6303,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 221889.4663,
       "erp_valor_pago": 76916.29000000001
     },
     {
@@ -6368,7 +6368,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 77985.87000000001
     },
     {
@@ -6433,7 +6433,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 276044.3311,
       "erp_valor_pago": 106178.11000000002
     },
     {
@@ -6498,7 +6498,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 264903.0769,
       "erp_valor_pago": 80955.43
     },
     {
@@ -6563,7 +6563,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 261871.7821,
       "erp_valor_pago": 8089.41
     },
     {
@@ -6628,7 +6628,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 260271.8392,
       "erp_valor_pago": 25070.840000000004
     },
     {
@@ -6693,7 +6693,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 292445.1731,
       "erp_valor_pago": 288449.9399996199
     },
     {
@@ -6758,7 +6758,7 @@
       "entrada_incorporacao_data": "2025-11-13",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 294437.0028,
       "erp_valor_pago": 287217.39000002004
     },
     {
@@ -6823,7 +6823,7 @@
       "entrada_incorporacao_data": "2025-11-13",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 278024.3485,
       "erp_valor_pago": 269685.7199998
     },
     {
@@ -6888,7 +6888,7 @@
       "entrada_incorporacao_data": "2025-11-13",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254382.3262,
       "erp_valor_pago": 264198.22000095004
     },
     {
@@ -6953,7 +6953,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 263402.9522,
       "erp_valor_pago": 227733.13
     },
     {
@@ -7018,7 +7018,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 258465.0885,
       "erp_valor_pago": 36281.99
     },
     {
@@ -7083,7 +7083,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 266458.8184,
       "erp_valor_pago": 58534.9
     },
     {
@@ -7148,7 +7148,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 256505.6822,
       "erp_valor_pago": 206999.47999999998
     },
     {
@@ -7213,7 +7213,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 5487.72
     },
     {
@@ -7278,7 +7278,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 268464.8611,
       "erp_valor_pago": 12151.0
     },
     {
@@ -7343,7 +7343,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254670.4543,
       "erp_valor_pago": 156379.77000039103
     },
     {
@@ -7408,7 +7408,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 254801.7523,
       "erp_valor_pago": 144747.23999970002
     },
     {
@@ -7473,7 +7473,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 3511.11
     },
     {
@@ -7538,7 +7538,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 270004.8611,
       "erp_valor_pago": 19535.270000000004
     },
     {
@@ -7603,7 +7603,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 692.95
     },
     {
@@ -7668,7 +7668,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 0.0,
       "erp_valor_pago": 768.39
     },
     {
@@ -7733,7 +7733,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 287195.4669,
       "erp_valor_pago": 403259.7700002599
     },
     {
@@ -7798,7 +7798,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 314270.4296,
       "erp_valor_pago": 400446.12000000005
     },
     {
@@ -7928,7 +7928,7 @@
       "entrada_incorporacao_data": "2026-03-16",
       "n_casas": 4,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 527710.3431,
       "erp_valor_pago": 265317.8599999999
     },
     {
@@ -7993,7 +7993,7 @@
       "entrada_incorporacao_data": "2026-03-16",
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 357150.1259,
       "erp_valor_pago": 338059.58000054996
     },
     {
@@ -8058,7 +8058,7 @@
       "entrada_incorporacao_data": "2026-03-16",
       "n_casas": 4,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 553902.3309,
       "erp_valor_pago": 263759.72
     },
     {
@@ -8123,7 +8123,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 514395.0544,
       "erp_valor_pago": 293831.51
     },
     {
@@ -8188,7 +8188,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 505425.8639,
       "erp_valor_pago": 312676.45
     },
     {
@@ -8253,7 +8253,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 479565.1478,
       "erp_valor_pago": 457048.67000000004
     },
     {
@@ -8318,7 +8318,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 484199.2841,
       "erp_valor_pago": 477648.5700000299
     },
     {
@@ -8383,7 +8383,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 489243.6866,
       "erp_valor_pago": 518045.5899997099
     },
     {
@@ -8448,7 +8448,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 490667.1026,
       "erp_valor_pago": 500487.48000000004
     },
     {
@@ -8513,7 +8513,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 4,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 573958.4801,
       "erp_valor_pago": 625647.1199999999
     },
     {
@@ -9358,7 +9358,7 @@
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 250001.2749,
       "erp_valor_pago": 184409.81999999995
     },
     {
@@ -9423,7 +9423,7 @@
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 250406.8566,
       "erp_valor_pago": 271723.83999999997
     },
     {
@@ -9488,7 +9488,7 @@
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 250550.3866,
       "erp_valor_pago": 273161.48
     },
     {
@@ -9553,7 +9553,7 @@
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 249205.7477,
       "erp_valor_pago": 327525.32000030007
     },
     {
@@ -9618,7 +9618,7 @@
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 248906.0747,
       "erp_valor_pago": 330037.82999999996
     },
     {
@@ -9683,7 +9683,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 253036.9697,
       "erp_valor_pago": 187479.05000005005
     },
     {
@@ -9748,7 +9748,7 @@
       "entrada_incorporacao_data": null,
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 253823.4248,
       "erp_valor_pago": 212925.53
     },
     {
@@ -9813,7 +9813,7 @@
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 250663.9904,
       "erp_valor_pago": 319891.6599998
     },
     {
@@ -9878,7 +9878,7 @@
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 251048.9809,
       "erp_valor_pago": 312871.09999999
     },
     {
@@ -9943,7 +9943,7 @@
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
       "implantacao": "RUA",
-      "erp_orcado": "SEM DADOS",
+      "erp_orcado": 253073.794,
       "erp_valor_pago": 318414.0999997999
     }
   ],
