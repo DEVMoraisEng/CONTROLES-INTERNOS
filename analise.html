@@ -860,7 +860,7 @@ tfoot td:last-child{border-right:none}
     <!-- KPIs de custos -->
     <div class="kpi-row r4" id="kpi-custos" style="margin-bottom:14px"></div>
     <div class="kpi-row r3" id="kpi-custos2" style="margin-bottom:14px"></div>
-    <div class="kpi-ext-row r2" id="kpi-custos3" style="margin-bottom:20px"></div>
+    <div class="kpi-row r2" id="kpi-custos3" style="margin-bottom:20px"></div>
     <!-- Rankings -->
     <div class="blk-title">Rankings</div>
     <div class="rank-grid" id="rank-custos" style="grid-template-columns:1fr 1fr 1fr 1fr"></div>
@@ -1597,7 +1597,39 @@ function buildDash(){
         </div>
       </div>`;
   }
-
+  // Médias Escritório/Pós-Obra com janela 2026+ (inseridas antes do finExtHtml)
+  const _hoje=new Date();
+  const _anoRef=String(_hoje.getFullYear());
+  // Últimos 12m filtrando só >= 2026-01
+  const _ml12=[];for(let i=11;i>=0;i--){let ty=_hoje.getFullYear(),tm=_hoje.getMonth()+1-i;while(tm<=0){tm+=12;ty--;}const ms=`${ty}-${String(tm).padStart(2,'0')}`;if(ms>='2026-01')_ml12.push(ms);}
+  // Meses jan até mês ANTERIOR ao atual (já transcorridos em 2026)
+  const _mlAno=[];for(let m=1;m<=_hoje.getMonth();m++)_mlAno.push(`${_anoRef}-${String(m).padStart(2,'0')}`);
+  // Agrega Escritório e Pós-Obra por mês a partir do _pagFull
+  const _byEsc={},_byPos={};
+  (window._pagFull||[]).forEach(p=>{
+    if(!p.mes||p.mes==='SEM DATA')return;
+    const u=(p.cc||'').toUpperCase().trim();
+    if(/ESCRIT/i.test(u))_byEsc[p.mes]=(_byEsc[p.mes]||0)+p.valor;
+    else if(u==='POS OBRA MORAIS ENGENHARIA')_byPos[p.mes]=(_byPos[p.mes]||0)+p.valor;
+  });
+  const _s=(by,ml)=>ml.reduce((s,m)=>s+(by[m]||0),0);
+  const mediaEscMes12Dash=_ml12.length?_s(_byEsc,_ml12)/_ml12.length:0;
+  const mediaPosM12Dash =_ml12.length?_s(_byPos,_ml12)/_ml12.length:0;
+  const mediaEscMesAnoDash=_mlAno.length?_s(_byEsc,_mlAno)/_mlAno.length:0;
+  const mediaPosMesAnoDash=_mlAno.length?_s(_byPos,_mlAno)/_mlAno.length:0;
+  function blocoEscPosDash(titulo,tot12,totAno,mediaMes12,mediaMesAno,vMes){
+    return `
+      <div class="kpi-ext-card">
+        <div class="kpi-ext-title">${titulo}</div>
+        <div class="kpi-ext-grid cols5">
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">12 Meses (2026+)</div><div class="kpi-ext-val">${fmtBRL(tot12)}</div></div>
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">Média/Mês (12m)</div><div class="kpi-ext-val">${fmtBRL(mediaMes12)}</div></div>
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">Anual (${_anoRef})</div><div class="kpi-ext-val">${fmtBRL(totAno)}</div></div>
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">Média/Mês (${_anoRef})</div><div class="kpi-ext-val">${fmtBRL(mediaMesAno)}</div></div>
+          <div class="kpi-ext-item"><div class="kpi-ext-lbl">Mês (${fmtM(mes)})</div><div class="kpi-ext-val">${fmtBRL(vMes)}</div></div>
+        </div>
+      </div>`;
+  }
   const finExtHtml=`
     <div class="kpi-ext-row r1">${vgvCard}</div>
     <div class="kpi-ext-row r3">
@@ -1606,8 +1638,8 @@ function buildDash(){
       ${blocoCusto('Σ Custo Obra Total',cObraTot12,cObraTotAno,cObraTotMes)}
     </div>
     <div class="kpi-ext-row r2">
-      ${blocoCusto('🏢 Custo Escritório',cEsc12,cEscAno,cEscMes)}
-      ${blocoCusto('🔧 Custo Pós-Obra',cPos12,cPosAno,cPosMes)}
+      ${blocoEscPosDash('🏢 Custo Escritório',cEsc12,cEscAno,mediaEscMes12Dash,mediaEscMesAnoDash,cEscMes)}
+      ${blocoEscPosDash('🔧 Custo Pós-Obra',cPos12,cPosAno,mediaPosM12Dash,mediaPosMesAnoDash,cPosMes)}
     </div>`;
   document.getElementById('kpi-fin-ext').innerHTML=finExtHtml;
 
@@ -3068,64 +3100,17 @@ function buildCustos(){
     kpi('Juros e Multas',fmtBRL(totalJM),totalJM>0?'Total acumulado':'Nenhum'),
     kpi('Fornecedores',new Set(f.map(p=>p.fornecedor).filter(Boolean)).size,'únicos'),
   ].join('');
-  // KPIs expandidos de Escritório e Pós-Obra
-  // Agrupa por mês para calcular médias corretas
-  const byMesEscKpi={},byMesPosKpi={};
-  // Usa _pagFull SEM filtro de período para calcular médias 12m e do ano
-  const pFull2=window._pagFull||[];
-  pFull2.forEach(p=>{
-    if(!p.mes||p.mes==='SEM DATA')return;
+  // KPIs simples de Escritório e Pós-Obra na aba Custos
+  let totEsc=0,totPos=0;
+  f.forEach(p=>{
     const u=(p.cc||'').toUpperCase().trim();
-    if(/ESCRIT/i.test(u)) byMesEscKpi[p.mes]=(byMesEscKpi[p.mes]||0)+p.valor;
-    else if(u==='POS OBRA MORAIS ENGENHARIA') byMesPosKpi[p.mes]=(byMesPosKpi[p.mes]||0)+p.valor;
+    if(/ESCRIT/i.test(u)) totEsc+=p.valor||0;
+    else if(u==='POS OBRA MORAIS ENGENHARIA') totPos+=p.valor||0;
   });
-  // Mês corrente para referência
-  const hoje3=new Date();
-  const mesRef=`${hoje3.getFullYear()}-${String(hoje3.getMonth()+1).padStart(2,'0')}`;
-  const anoRef=String(hoje3.getFullYear());
-  // Últimos 12 meses a partir de 2026-01 (exclui dados anteriores a 2026)
-  const meses12kpi=[];
-  for(let i=11;i>=0;i--){
-    let ty=hoje3.getFullYear(), tm=hoje3.getMonth()+1-i;
-    while(tm<=0){tm+=12;ty--;}
-    const ms=`${ty}-${String(tm).padStart(2,'0')}`;
-    if(ms>='2026-01') meses12kpi.push(ms);
-  }
-  // Meses transcorridos do ano corrente (jan até mês anterior ao atual, inclusive)
-  const mesesAnoKpi=[];
-  for(let m=1;m<=hoje3.getMonth();m++){
-    mesesAnoKpi.push(`${anoRef}-${String(m).padStart(2,'0')}`);
-  }
-  // Totais
-  const soma=(byMes,msList)=>msList.reduce((s,m)=>s+(byMes[m]||0),0);
-  const totEsc12=soma(byMesEscKpi,meses12kpi);
-  const totPos12=soma(byMesPosKpi,meses12kpi);
-  const totEscAno=soma(byMesEscKpi,mesesAnoKpi);
-  const totPosAno=soma(byMesPosKpi,mesesAnoKpi);
-  const totEscMes=byMesEscKpi[mesRef]||0;
-  const totPosMes=byMesPosKpi[mesRef]||0;
-  // Médias: divide pelo nº real de meses com dados (evita distorção de meses zerados)
-  const nMeses12=meses12kpi.filter(m=>byMesEscKpi[m]||byMesPosKpi[m]).length||1;
-  const nMesesAno=mesesAnoKpi.filter(m=>byMesEscKpi[m]||byMesPosKpi[m]).length||1;
-  const mediaEsc12 = meses12kpi.length?totEsc12/meses12kpi.length:0;
-  const mediaPos12 = meses12kpi.length?totPos12/meses12kpi.length:0;
-  const mediaEscAno = mesesAnoKpi.length?totEscAno/mesesAnoKpi.length:0;
-  const mediaPosAno = mesesAnoKpi.length?totPosAno/mesesAnoKpi.length:0;
-  function blocoEscPos(titulo,tot12,mediaMes12,totAno,mediaMesAno,vMes){
-    return `<div class="kpi-ext-card">
-      <div class="kpi-ext-title">${titulo}</div>
-      <div class="kpi-ext-grid cols5">
-        <div class="kpi-ext-item"><div class="kpi-ext-lbl">Total (período)</div><div class="kpi-ext-val">${fmtBRL(tot12)}</div></div>
-        <div class="kpi-ext-item"><div class="kpi-ext-lbl">Média/Mês (12m·2026+)</div><div class="kpi-ext-val">${fmtBRL(mediaMes12)}</div></div>
-        <div class="kpi-ext-item"><div class="kpi-ext-lbl">Total Ano (${anoRef})</div><div class="kpi-ext-val">${fmtBRL(totAno)}</div></div>
-        <div class="kpi-ext-item"><div class="kpi-ext-lbl">Média/Mês (${anoRef})</div><div class="kpi-ext-val">${fmtBRL(mediaMesAno)}</div></div>
-        <div class="kpi-ext-item"><div class="kpi-ext-lbl">Mês (${fmtM(mesRef)})</div><div class="kpi-ext-val">${fmtBRL(vMes)}</div></div>
-      </div>
-    </div>`;
-  }
-  document.getElementById('kpi-custos3').innerHTML=
-    blocoEscPos('🏢 Custo Escritório',totEsc12,mediaEsc12,totEscAno,mediaEscAno,totEscMes)+
-    blocoEscPos('🔧 Custo Pós-Obra',totPos12,mediaPos12,totPosAno,mediaPosAno,totPosMes);
+  document.getElementById('kpi-custos3').innerHTML=[
+    kpi('🏢 Custo Escritório',fmtBRL(totEsc),totEsc>0?'Centro de custo ESCRITÓRIO':'Sem registros'),
+    kpi('🔧 Custo Pós-Obra',fmtBRL(totPos),totPos>0?'Centro de custo PÓS OBRA':'Sem registros'),
+  ].join('');
   // Rankings
   const rF={},rG={},rP={},rC={};
   f.forEach(p=>{
