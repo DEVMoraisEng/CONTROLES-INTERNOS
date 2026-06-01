@@ -980,7 +980,11 @@ function initSel(id,items,def,fn){
   el.onchange=fn;
 }
 function anosDisp(arr,campo){
-  return[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))].sort();
+  const anos=[...new Set(arr.map(d=>anoD(d[campo])).filter(Boolean))];
+  // Garante que o ano corrente sempre aparece como opção
+  const anoCorrente=String(new Date().getFullYear());
+  if(!anos.includes(anoCorrente))anos.push(anoCorrente);
+  return anos.sort();
 }
 
 // Atualiza a legenda HTML com os valores das metas (Morais e Investidor)
@@ -996,10 +1000,10 @@ function _updateLegendaMetas(canvasId, mediaM, mediaI, fmtV, mediaRealM, mediaRe
     html += `<span class="leg-meta" style="color:#5a8a82"><span class="leg-meta-line"></span>Meta Inv.: ${f(mediaI)}</span>`;
   }
   if(mediaRealM!=null && mediaRealM>0){
-    html += `<span class="leg-meta" style="color:#295778"><span class="leg-meta-line" style="background:repeating-linear-gradient(90deg,#295778 0 2px,transparent 2px 5px)"></span>Média Morais: ${f(mediaRealM)}</span>`;
+    html += `<span class="leg-meta" style="color:#295778"><span class="leg-meta-line" style="border-top:2px dotted #295778;background:none"></span>Média Morais: ${f(mediaRealM)}</span>`;
   }
   if(mediaRealI!=null && mediaRealI>0){
-    html += `<span class="leg-meta" style="color:#5a8a82"><span class="leg-meta-line" style="background:repeating-linear-gradient(90deg,#5a8a82 0 2px,transparent 2px 5px)"></span>Média Inv.: ${f(mediaRealI)}</span>`;
+    html += `<span class="leg-meta" style="color:#5a8a82"><span class="leg-meta-line" style="border-top:2px dotted #5a8a82;background:none"></span>Média Inv.: ${f(mediaRealI)}</span>`;
   }
   span.innerHTML = html;
 }
@@ -1347,15 +1351,22 @@ function somaEscMeses(ml){
 
 // ── DASHBOARD ──
 function initSelMes(){
-  const todos=[...new Set([
+  // Coleta meses com dados
+  const comDados=new Set([
     ...vendas.filter(v=>v.data_venda).map(v=>mesD(v.data_venda)),
     ...Object.values(pags).flatMap(mp=>Object.keys(mp))
-  ])].filter(Boolean).sort();
+  ]);
+  // Sempre garante que o mês corrente está presente
+  const hoje=new Date();
+  const mesCorrente=`${hoje.getFullYear()}-${String(hoje.getMonth()+1).padStart(2,'0')}`;
+  comDados.add(mesCorrente);
+  const todos=[...comDados].filter(Boolean).sort();
   const el=document.getElementById('sel-mes');
   if(!el)return;
   el.innerHTML='';
   todos.forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=fmtM(m);el.appendChild(o);});
-  el.value=todos[todos.length-1]||'';
+  // Seleciona o mês corrente por padrão
+  el.value=mesCorrente;
 }
 
 function buildDash(){
@@ -1838,12 +1849,12 @@ function buildLotes(){
   // Gráficos: META (tracejada longa) + MÉDIA REAL (pontilhada fina)
   drawBars('ch-lt',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,
            mediaM,mediaI,
-           usarCasas&&mediaRealM>0?mediaRealM:null,
-           usarCasas&&mediaRealI>0?mediaRealI:null);
+           mediaRealM>0?mediaRealM:null,
+           mediaRealI>0?mediaRealI:null);
   drawLinesComMedias('ch-ls',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],
            mediaM,mediaI,
-           usarCasas&&mediaRealM>0?mediaRealM:null,
-           usarCasas&&mediaRealI>0?mediaRealI:null);
+           mediaRealM>0?mediaRealM:null,
+           mediaRealI>0?mediaRealI:null);
 
   document.getElementById('tbl-lotes').innerHTML=tblRes(ms,dM,dI,
     `Qt ${unidade} Morais`,`Qt ${unidade} Investidores`,
@@ -1939,12 +1950,12 @@ function buildObras(){
 
   drawBars('ch-ot',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],null,
            mediaObrasM,mediaObrasI,
-           viz==='casas'&&mediaRealM>0?mediaRealM:null,
-           viz==='casas'&&mediaRealI>0?mediaRealI:null);
+           mediaRealM>0?mediaRealM:null,
+           mediaRealI>0?mediaRealI:null);
   drawLinesComMedias('ch-os',lb,[{data:dM,color:'#295778'},{data:dI,color:'#8FDCD2'}],
            mediaObrasM,mediaObrasI,
-           viz==='casas'&&mediaRealM>0?mediaRealM:null,
-           viz==='casas'&&mediaRealI>0?mediaRealI:null);
+           mediaRealM>0?mediaRealM:null,
+           mediaRealI>0?mediaRealI:null);
   document.getElementById('tbl-obras').innerHTML=tblRes(ms,dM,dI,`${unidade} Morais`,`${unidade} Investidores`);
   const det=document.getElementById('det-obras');if(!det)return;
   det.innerHTML=temObraIniciada?'':`<div class="aviso">⚠️ O campo <strong>OBRA INCIADA</strong> do Notion não está preenchido em nenhum registro. Os dados abaixo consideram obras com <strong>Data de Início da Obra</strong> preenchida como critério equivalente.</div>`;
@@ -2027,7 +2038,7 @@ function buildVendas(){
   if(legSpan){
     let lh='';
     if(metaMes>0) lh += `<span class="leg-meta" style="color:#295778"><span class="leg-meta-line"></span>Meta mensal: ${fmtN(metaMes,1)}</span>`;
-    if(mediaMes>0) lh += `<span class="leg-meta" style="color:#295778"><span class="leg-meta-line" style="background:repeating-linear-gradient(90deg,#295778 0 2px,transparent 2px 5px)"></span>Média: ${fmtN(mediaMes,1)}</span>`;
+    if(mediaMes>0) lh += `<span class="leg-meta" style="color:#295778"><span class="leg-meta-line" style="border-top:2px dotted #295778;background:none"></span>Média: ${fmtN(mediaMes,1)}</span>`;
     legSpan.innerHTML=lh;
   }
 
