@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-01T15:01:06.371954+00:00",
+  "updated_at": "2026-06-01T17:26:03.041918+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-80de-abc4-ee495d08ad3f",
@@ -17500,10 +17500,10 @@
       "processo_conforme": "SIM",
       "assinou_contrato_banco": "SIM",
       "data_assinatura": "2026-05-26",
-      "recebeu_taxa_vistoria": "NÃO",
+      "recebeu_taxa_vistoria": "SIM",
       "tem_cadastro": "SIM",
       "num_cadastro": 1529435,
-      "entrada_cartorio": "SIM",
+      "entrada_cartorio": "NÃO",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": null,
       "tem_manual": "SIM",
@@ -19047,11 +19047,11 @@
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-05-15",
       "tem_manual": "SIM",
-      "registro_pronto": "NÃO",
-      "devolveu_banco": "NÃO",
+      "registro_pronto": "SIM",
+      "devolveu_banco": "SIM",
       "recebeu": "NÃO",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-06-01",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
@@ -20589,9 +20589,9 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "recebeu": "SIM",
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-05-30",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
