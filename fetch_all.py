@@ -302,17 +302,29 @@ def buscar_erp():
 
 
 def buscar_obras_erp():
-    """Busca aba Obras do ERP: nome + area_total."""
-    import re as _re3
+    """Busca aba Obras do ERP: nome, area_total e cliente."""
     obras = {}
     print("  ERP: buscando Obras...")
-    for row in erp_csv(ERP_CSV_OBRAS, "obras"):
+    rows = erp_csv(ERP_CSV_OBRAS, "obras")
+    if rows:
+        print(f"  ERP Obras colunas: {list(rows[0].keys())}")
+    for row in rows:
         nome = (row.get("nome") or "").strip().upper()
         area = row.get("area_total")
+        # Busca tolerante para o campo cliente
+        cliente_raw = ""
+        for k in row:
+            if "cliente" in k.lower():
+                cliente_raw = row[k]
+                break
         if nome and area:
             try:
                 val = float(str(area).replace(",", "."))
-                obras[nome] = obras.get(nome, 0) + val
+                area_acum = obras.get(nome, {}).get("area_total", 0) + val
+                obras[nome] = {
+                    "area_total": area_acum,
+                    "cliente":    cliente_raw.strip().upper()
+                }
             except:
                 pass
     print(f"  ERP Obras: {len(obras)} registros")
