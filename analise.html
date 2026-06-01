@@ -539,7 +539,7 @@ tfoot td:last-child{border-right:none}
       <div class="blk-title">VGV por Mês (Valor na Mão)</div>
       <div class="graf-card" style="margin-bottom:20px">
         <div class="graf-body">
-          <div class="legenda" id="leg-ch-vgv-mes">
+          <div class="legenda">
             <div class="leg"><div class="leg-cor" style="background:#295778"></div>VGV mensal (Valor na Mão)</div>
           </div>
           <div class="chart-wrap"><canvas id="ch-vgv-mes" height="240"></canvas></div>
@@ -858,7 +858,8 @@ tfoot td:last-child{border-right:none}
     </div>
     <!-- KPIs de custos -->
     <div class="kpi-row r4" id="kpi-custos" style="margin-bottom:14px"></div>
-    <div class="kpi-row r3" id="kpi-custos2" style="margin-bottom:20px"></div>
+    <div class="kpi-row r3" id="kpi-custos2" style="margin-bottom:14px"></div>
+    <div class="kpi-row r2" id="kpi-custos3" style="margin-bottom:20px"></div>
     <!-- Rankings -->
     <div class="blk-title">Rankings</div>
     <div class="rank-grid" id="rank-custos" style="grid-template-columns:1fr 1fr 1fr 1fr"></div>
@@ -869,14 +870,11 @@ tfoot td:last-child{border-right:none}
         <div class="chart-wrap"><canvas id="ch-desembolso" height="280"></canvas></div>
       </div>
     </div>
-    <div class="blk-title">Custo Escritório e Pós-Obra por Mês</div>
+    <div class="blk-title">Desembolso Mensal por Categoria</div>
     <div class="graf-card-full" style="margin-bottom:20px">
       <div class="graf-body" style="padding:20px 16px">
-        <div class="legenda" style="margin-bottom:8px">
-          <div class="leg"><div class="leg-cor" style="background:#295778"></div>Custo Escritório</div>
-          <div class="leg"><div class="leg-cor" style="background:#c0392b"></div>Custo Pós-Obra</div>
-        </div>
-        <div class="chart-wrap"><canvas id="ch-esc-pos" height="240"></canvas></div>
+        <div id="leg-ch-cat" class="legenda" style="margin-bottom:8px;flex-wrap:wrap"></div>
+        <div class="chart-wrap"><canvas id="ch-esc-pos" height="300"></canvas></div>
       </div>
     </div>
   </div>
@@ -2081,12 +2079,9 @@ function buildVendas(){
     legSpan.innerHTML=lh;
   }
 
-  // Gráfico VGV mensal (Valor na Mão)
+  // Gráfico VGV mensal (Valor na Mão) — linha, igual ao acumulado
   const dataVgvMes=ms.map(m=>pm[m]?.vgvMao||0);
-  drawBars('ch-vgv-mes',lb,[{data:dataVgvMes,color:'#295778'}],v=>fmtBRL(v),null,null,null,null);
-  // Sobrescrever legenda do ch-vgv-mes (sem Morais/Inv)
-  const legVgvMes=document.querySelector('.leg-metas[data-cid="ch-vgv-mes"]');
-  if(legVgvMes) legVgvMes.innerHTML='';
+  drawLines('ch-vgv-mes',lb,[{data:dataVgvMes,color:'#295778'}],v=>fmtBRL(v));
 
   // Gráfico VGV acumulado (valor na mão) ao longo do tempo
   let acum=0;
@@ -3072,6 +3067,18 @@ function buildCustos(){
     kpi('Juros e Multas',fmtBRL(totalJM),totalJM>0?'Total acumulado':'Nenhum'),
     kpi('Fornecedores',new Set(f.map(p=>p.fornecedor).filter(Boolean)).size,'únicos'),
   ].join('');
+  // KPIs de Escritório e Pós-Obra (calculados direto do _pagFull filtrado)
+  const endD_kpi=new Set(docs.map(d=>normS(d.endereco)));
+  let totEsc=0,totPos=0;
+  f.forEach(p=>{
+    const u=(p.cc||'').toUpperCase().trim();
+    if(/ESCRIT/i.test(u)) totEsc+=p.valor||0;
+    else if(u==='POS OBRA MORAIS ENGENHARIA') totPos+=p.valor||0;
+  });
+  document.getElementById('kpi-custos3').innerHTML=[
+    kpi('🏢 Custo Escritório',fmtBRL(totEsc),totEsc>0?'Centro de custo ESCRITÓRIO':'Sem registros'),
+    kpi('🔧 Custo Pós-Obra',fmtBRL(totPos),totPos>0?'Centro de custo PÓS OBRA':'Sem registros'),
+  ].join('');
   // Rankings
   const rF={},rG={},rP={},rC={};
   f.forEach(p=>{
@@ -3096,26 +3103,48 @@ function buildCustos(){
   const vals=meses.map(m=>byMes[m]);
   drawLines('ch-desembolso',meses.map(fmtM),[{data:vals,color:'#295778',label:'Desembolso'}],v=>fmtBRL(v));
 
-  // Gráfico separado: Escritório vs Pós-Obra
-  const endD_cu=new Set(docs.map(d=>normS(d.endereco)));
-  const byMesEsc={},byMesPos={};
+  // Gráfico por categoria (todos os grupos do ERP)
+  // Paleta de cores fixa por grupo
+  const CORES_CAT={
+    'Compra de Terreno':'#2a5e8c',
+    'Mão de Obra (Terceirizada)':'#1a6b40',
+    'Mão de Obra':'#1a6b40',
+    'Materiais':'#c0392b',
+    'Escritório':'#e67e22',
+    'Pós-Obra':'#8e44ad',
+    'Juros e Multas':'#c0392b',
+    'Outros':'#7f8c8d',
+  };
+  const DEFAULT_CORES=['#295778','#c0392b','#1a6b40','#e67e22','#8e44ad','#16a085','#d35400','#7f8c8d','#2c3e50'];
+  // Agrupa por grupo + mês
+  const byGrupoMes={};
   f.forEach(p=>{
     if(!p.mes||p.mes==='SEM DATA')return;
-    const u=(p.cc||'').toUpperCase().trim();
-    const ehEsc=/ESCRIT/i.test(u);
-    const ehPos=(u==='POS OBRA MORAIS ENGENHARIA');
-    if(ehEsc) byMesEsc[p.mes]=(byMesEsc[p.mes]||0)+p.valor;
-    else if(ehPos) byMesPos[p.mes]=(byMesPos[p.mes]||0)+p.valor;
+    const g=p.grupo||'Outros';
+    if(!byGrupoMes[g])byGrupoMes[g]={};
+    byGrupoMes[g][p.mes]=(byGrupoMes[g][p.mes]||0)+p.valor;
   });
-  const mesesEP=[...new Set([...Object.keys(byMesEsc),...Object.keys(byMesPos)])].sort();
-  const valsEsc=mesesEP.map(m=>byMesEsc[m]||0);
-  const valsPos=mesesEP.map(m=>byMesPos[m]||0);
-  const lbEP=mesesEP.map(fmtM);
-  if(mesesEP.length){
-    drawBars('ch-esc-pos',lbEP,[
-      {data:valsEsc,color:'#295778'},
-      {data:valsPos,color:'#c0392b'}
-    ],v=>fmtBRL(v),null,null,null,null);
+  const grupos=Object.keys(byGrupoMes).sort((a,b)=>{
+    const sa=Object.values(byGrupoMes[a]).reduce((x,y)=>x+y,0);
+    const sb=Object.values(byGrupoMes[b]).reduce((x,y)=>x+y,0);
+    return sb-sa;
+  });
+  const mesesCat=[...new Set(f.filter(p=>p.mes&&p.mes!=='SEM DATA').map(p=>p.mes))].sort();
+  const lbCat=mesesCat.map(fmtM);
+  if(mesesCat.length&&grupos.length){
+    const datasets=grupos.map((g,gi)=>({
+      data:mesesCat.map(m=>byGrupoMes[g][m]||0),
+      color:CORES_CAT[g]||DEFAULT_CORES[gi%DEFAULT_CORES.length],
+      label:g
+    }));
+    // Legenda HTML
+    const legCat=document.getElementById('leg-ch-cat');
+    if(legCat){
+      legCat.innerHTML=datasets.map(d=>
+        `<div class="leg"><div class="leg-cor" style="background:${d.color}"></div>${d.label}</div>`
+      ).join('');
+    }
+    drawBars('ch-esc-pos',lbCat,datasets,v=>fmtBRL(v),null,null,null,null);
     const legEP=document.querySelector('.leg-metas[data-cid="ch-esc-pos"]');
     if(legEP) legEP.innerHTML='';
   }
@@ -3137,11 +3166,14 @@ function initCuEndLista(){
 function abrirDropEnd(){
   const dd=document.getElementById('cu-end-drop');if(!dd)return;
   dd.style.display='block';
-  document.addEventListener('mousedown',fecharDropEndFora,{once:true});
+  setTimeout(()=>document.addEventListener('click',fecharDropEndFora,{once:true}),100);
 }
 function fecharDropEndFora(e){
   const wrap=document.getElementById('cu-end-drop')?.parentElement;
-  if(wrap&&!wrap.contains(e.target)){
+  if(wrap&&wrap.contains(e.target)){
+    // Clique dentro — reregistra para manter aberto
+    setTimeout(()=>document.addEventListener('click',fecharDropEndFora,{once:true}),100);
+  } else {
     const dd=document.getElementById('cu-end-drop');if(dd)dd.style.display='none';
   }
 }
