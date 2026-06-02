@@ -636,8 +636,31 @@ tfoot td:last-child{border-right:none}
     <div class="pg-hdr-title">Fluxo de Caixa</div>
   </div>
   <div class="pg-body">
-    <div class="aviso" style="margin-bottom:16px">
-      Exibe <strong>todas as obras</strong> com movimentações no ERP — sem filtro de status "Recebeu?". Inclui Morais e Investidores.
+
+    <!-- Filtros Fluxo de Caixa -->
+    <div class="controles" style="margin-bottom:16px">
+      <span class="sel-lbl">Cidade:</span>
+      <select id="sel-cid-fluxo" onchange="initObrasFluxo();buildFluxo()"><option value="">Todas</option></select>
+      <span class="sel-lbl">Setor:</span>
+      <select id="sel-set-fluxo" onchange="initObrasFluxo();buildFluxo()"><option value="">Todos</option></select>
+      <span class="sel-lbl">Proprietário:</span>
+      <select id="sel-prop-fluxo" onchange="initObrasFluxo();buildFluxo()">
+        <option value="">Todos</option>
+        <option value="morais">Morais</option>
+        <option value="invest">Investidor</option>
+      </select>
+      <span class="sel-lbl">Obras:</span>
+      <div class="obra-search-wrap" id="fluxo-search-wrap" style="position:relative">
+        <input type="text" id="fluxo-search-input" placeholder="🔍 Digite para buscar endereço..." autocomplete="off"
+          style="padding:7px 12px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;
+                 color:var(--text);width:260px;background:var(--branco);"
+          oninput="filtrarFluxoSearch()" onfocus="abrirDropFluxo()">
+        <div id="fluxo-dropdown" style="display:none;position:absolute;top:100%;left:0;z-index:300;
+          background:var(--branco);border:1.5px solid var(--border);border-radius:8px;
+          box-shadow:0 6px 24px rgba(0,0,0,.12);max-height:280px;overflow-y:auto;
+          min-width:300px;padding:6px 0;margin-top:4px"></div>
+        <div id="fluxo-selecionadas" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px"></div>
+      </div>
     </div>
 
     <!-- KPIs resumo -->
@@ -649,7 +672,7 @@ tfoot td:last-child{border-right:none}
     <div class="kpi-row r3" id="kpi-fluxo-lucro" style="margin-bottom:20px"></div>
 
     <!-- Fluxo de Caixa Mensal -->
-    <div class="blk-title">Fluxo de Caixa Mensal — Todas as Obras</div>
+    <div class="blk-title" id="blk-fluxo-mensal">Fluxo de Caixa Mensal — Todas as Obras</div>
     <div class="exp-table-wrap" id="tbl-fluxo"></div>
 
     <!-- Gráfico Exposição -->
@@ -670,8 +693,14 @@ tfoot td:last-child{border-right:none}
       </div>
     </div>
 
-    <!-- Obras com resultado negativo -->
-    <div class="blk-title" style="margin-top:20px">⚠ Obras com Resultado Negativo (Recebido − Pago &lt; 0)</div>
+    <!-- Resultado por obra (todas, ordenadas) -->
+    <div class="blk-title" style="margin-top:20px">Resultado por Obra</div>
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
+      <label style="font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px;cursor:pointer">
+        <input type="checkbox" id="chk-fluxo-soConcluidas" onchange="buildFluxo()" style="cursor:pointer">
+        Mostrar apenas obras com todas as casas recebidas
+      </label>
+    </div>
     <div id="tbl-fluxo-negativo"></div>
   </div>
 </div>
@@ -736,7 +765,18 @@ tfoot td:last-child{border-right:none}
     </div>
 
     <!-- KPIs financeiros (Morais: completo | Investidor: só lucro) -->
-    <div class="blk-title">Resultado Financeiro</div>
+    <div class="blk-title" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <span>Resultado Financeiro</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:11px;color:var(--text3);font-weight:500">Indicadores:</span>
+        <select id="sel-indicadores-st" onchange="buildSetor()"
+          style="font-size:12px;padding:4px 8px;border:1.5px solid var(--border);border-radius:6px;background:var(--branco);color:var(--text)">
+          <option value="basico">Básicos (ROI, TIR, MTIR)</option>
+          <option value="avancado">Avançados (Margem, Múltiplo, Payback)</option>
+          <option value="todos">Todos os indicadores</option>
+        </select>
+      </div>
+    </div>
     <div class="roi-grid" id="roi-res1"></div>
     <div class="roi-grid" id="roi-res2"></div>
 
@@ -1030,7 +1070,7 @@ function renderSubAtiva(){
   else if(a.id==='sub-vendas')buildVendas();
 }
 function renderPagina(id){
-  if(id==='fluxo')buildFluxo();
+  if(id==='fluxo'){initObrasFluxo();buildFluxo();}
   else if(id==='metas')renderSubAtiva();
   else if(id==='prazos'){popularFiltrosTabelaPz();buildPrazos();}
   else if(id==='setor'){
@@ -2737,9 +2777,92 @@ function getEnderecosSelecionados(){
   return obrasSelecionadas.size>0?[...obrasSelecionadas]:null; // null = todas
 }
 
-// ── FLUXO DE CAIXA GERAL (todas as obras, sem filtro recebeu?) ──
+// ── FLUXO MULTI-SELECT ──
+let fluxoSelecionadas = new Set();
+let fluxoLista = [];
+
+function initObrasFluxo(){
+  const cid = document.getElementById('sel-cid-fluxo')?.value||'';
+  const set = document.getElementById('sel-set-fluxo')?.value||'';
+  const prop = document.getElementById('sel-prop-fluxo')?.value||'';
+  // Obras = todas que têm pagamentos no ERP (sem filtro recebeu)
+  const ccsPag = new Set(Object.keys(pags).map(cc=>normS(cc)));
+  let arr = docs.filter(d=>ccsPag.has(normS(d.endereco)));
+  if(cid) arr=arr.filter(d=>d.cidade===cid);
+  if(set) arr=arr.filter(d=>d.setor===set);
+  if(prop==='morais') arr=arr.filter(d=>ehObraMorais(d.endereco));
+  else if(prop==='invest') arr=arr.filter(d=>!ehObraMorais(d.endereco));
+  fluxoLista=[...new Set(arr.map(d=>d.endereco).filter(Boolean))].sort();
+  fluxoSelecionadas=new Set([...fluxoSelecionadas].filter(o=>fluxoLista.includes(o)));
+  renderFluxoDropdown('');
+  renderFluxoTags();
+}
+
+function filtrarFluxoSearch(){
+  const q=(document.getElementById('fluxo-search-input')?.value||'').toLowerCase();
+  renderFluxoDropdown(q);
+  abrirDropFluxo();
+}
+
+function renderFluxoDropdown(q){
+  const dd=document.getElementById('fluxo-dropdown');if(!dd)return;
+  const lista=q?fluxoLista.filter(o=>o.toLowerCase().includes(q)):fluxoLista;
+  if(!lista.length){dd.innerHTML='<div style="padding:10px 14px;color:var(--text4);font-size:12px">Nenhuma obra encontrada</div>';return;}
+  dd.innerHTML='<div class="obra-check-item" onclick="toggleTodasFluxo()">'+
+    '<input type="checkbox" '+(fluxoSelecionadas.size===0?'checked':'')+'>'+
+    '<span style="font-weight:700">Todas</span></div>'+
+    lista.map(o=>`<div class="obra-check-item" onclick="toggleFluxoObra('${o.replace(/'/g,"\\'")}')">
+      <input type="checkbox" ${fluxoSelecionadas.has(o)?'checked':''}>
+      <span>${o}</span></div>`).join('');
+}
+
+function toggleFluxoObra(o){
+  if(fluxoSelecionadas.has(o))fluxoSelecionadas.delete(o);
+  else fluxoSelecionadas.add(o);
+  renderFluxoTags();
+  renderFluxoDropdown(document.getElementById('fluxo-search-input')?.value||'');
+  buildFluxo();
+}
+
+function toggleTodasFluxo(){
+  fluxoSelecionadas.clear();
+  renderFluxoTags();
+  renderFluxoDropdown('');
+  const dd=document.getElementById('fluxo-dropdown');if(dd)dd.style.display='none';
+  buildFluxo();
+}
+
+function renderFluxoTags(){
+  const wrap=document.getElementById('fluxo-selecionadas');if(!wrap)return;
+  if(!fluxoSelecionadas.size){wrap.innerHTML='<span style="font-size:11px;color:var(--text4)">Todas as obras</span>';return;}
+  wrap.innerHTML=[...fluxoSelecionadas].map(o=>
+    `<div class="obra-tag">${o}<span class="obra-tag-x" onclick="toggleFluxoObra('${o.replace(/'/g,"\\'")}')">×</span></div>`
+  ).join('');
+}
+
+function abrirDropFluxo(){
+  const dd=document.getElementById('fluxo-dropdown');if(dd)dd.style.display='block';
+  setTimeout(()=>document.addEventListener('click',fecharDropFluxoOut,{once:true}),100);
+}
+function fecharDropFluxoOut(e){
+  const wrap=document.getElementById('fluxo-search-wrap');
+  if(wrap&&!wrap.contains(e.target)){
+    const dd=document.getElementById('fluxo-dropdown');if(dd)dd.style.display='none';
+  } else {
+    setTimeout(()=>document.addEventListener('click',fecharDropFluxoOut,{once:true}),100);
+  }
+}
+
+// ── FLUXO DE CAIXA GERAL (com filtros) ──
 function buildFluxo(){
-  // Agregar pagamentos e recebimentos de TODAS as obras com movimentação
+  // Ler filtros
+  const cid = document.getElementById('sel-cid-fluxo')?.value||'';
+  const set = document.getElementById('sel-set-fluxo')?.value||'';
+  const prop = document.getElementById('sel-prop-fluxo')?.value||'';
+  const soConcluidas = document.getElementById('chk-fluxo-soConcluidas')?.checked||false;
+  const obrasSel = fluxoSelecionadas.size>0?fluxoSelecionadas:null; // null=todas
+
+  // Agregar pagamentos e recebimentos com filtros aplicados
   const pagMes={};
   const pagMoraisMes={};
   const pagInvestMes={};
@@ -2747,14 +2870,35 @@ function buildFluxo(){
   const fatMoraisMes={};
   const fatInvestMes={};
 
-  // Pagamentos: todas as CCs de obra (não escritório, não pós-obra)
+  // Conjunto de endereços selecionados pelos filtros (docs como fonte de verdade)
+  let docsAtivos = docs;
+  if(cid) docsAtivos=docsAtivos.filter(d=>d.cidade===cid);
+  if(set) docsAtivos=docsAtivos.filter(d=>d.setor===set);
+  if(prop==='morais') docsAtivos=docsAtivos.filter(d=>ehObraMorais(d.endereco));
+  else if(prop==='invest') docsAtivos=docsAtivos.filter(d=>!ehObraMorais(d.endereco));
+  if(obrasSel) docsAtivos=docsAtivos.filter(d=>obrasSel.has(d.endereco));
+  const endAtivos=new Set(docsAtivos.map(d=>normS(d.endereco)));
+
+  // Para obras sem match em docs, incluir CCs do ERP que batem com os filtros
+  // (CCs sem correspondência em docs são obras sem entrada no Notion)
   const endD=new Set(docs.map(d=>normS(d.endereco)));
+
+  // Pagamentos
   Object.entries(pags).forEach(([cc,mp])=>{
     const u=normS(cc);
     const ehEsc=/ESCRIT/i.test(u);
     const ehPos=(u==='POS OBRA MORAIS ENGENHARIA');
     if(ehEsc||ehPos)return;
+    // Aplicar filtro de seleção: se há filtros ativos, só CCs que existem em docs e passam o filtro
+    const noNotion=endD.has(u);
+    if(noNotion && !endAtivos.has(u))return;
+    // Se não está no Notion e há filtros de cidade/setor/obra, pular
+    if(!noNotion && (cid||set||(obrasSel&&obrasSel.size>0)))return;
+    // Filtro proprietário para CCs sem docs
+    if(!noNotion && prop) return;
     const morais=ehObraMorais(cc);
+    if(prop==='morais'&&!morais)return;
+    if(prop==='invest'&&morais)return;
     Object.entries(mp).forEach(([m,v])=>{
       if(!m||m==='SEM DATA'||!/^\d{4}-\d{2}$/.test(m)||!v)return;
       pagMes[m]=(pagMes[m]||0)+v;
@@ -2766,17 +2910,31 @@ function buildFluxo(){
   // Recebimentos (faturamentos_erp)
   fats.forEach(f=>{
     if(!f.mes||!/^\d{4}-\d{2}$/.test(f.mes)||!f.valor)return;
+    const u=normS(f.cc||'');
+    const noNotion=endD.has(u);
+    if(noNotion && !endAtivos.has(u))return;
+    if(!noNotion && (cid||set||(obrasSel&&obrasSel.size>0)))return;
+    if(!noNotion && prop)return;
     const morais=ehObraMorais(f.cc||'');
+    if(prop==='morais'&&!morais)return;
+    if(prop==='invest'&&morais)return;
     fatMes[f.mes]=(fatMes[f.mes]||0)+f.valor;
     if(morais)fatMoraisMes[f.mes]=(fatMoraisMes[f.mes]||0)+f.valor;
     else fatInvestMes[f.mes]=(fatInvestMes[f.mes]||0)+f.valor;
   });
+
   // Fallback: vendas por data_assinatura se faturamentos vazio
   const usandoFallback=Object.keys(fatMes).length===0;
   if(usandoFallback){
     vendas.filter(v=>v.clientes&&v.data_assinatura&&v.valor_na_mao).forEach(v=>{
-      const m=mesD(v.data_assinatura);if(!m||!/^\d{4}-\d{2}$/.test(m))return;
+      const u=normS(v.endereco||'');
+      const noNotion=endD.has(u);
+      if(noNotion&&!endAtivos.has(u))return;
+      if(!noNotion&&(cid||set||(obrasSel&&obrasSel.size>0)))return;
       const morais=ehObraMorais(v.endereco||'');
+      if(prop==='morais'&&!morais)return;
+      if(prop==='invest'&&morais)return;
+      const m=mesD(v.data_assinatura);if(!m||!/^\d{4}-\d{2}$/.test(m))return;
       fatMes[m]=(fatMes[m]||0)+(v.valor_na_mao||0);
       if(morais)fatMoraisMes[m]=(fatMoraisMes[m]||0)+(v.valor_na_mao||0);
       else fatInvestMes[m]=(fatInvestMes[m]||0)+(v.valor_na_mao||0);
@@ -2788,8 +2946,18 @@ function buildFluxo(){
     ...Object.keys(fatMes).filter(m=>fatMes[m]>0)
   ])].sort();
 
+  // Atualizar título
+  const titulo=document.getElementById('blk-fluxo-mensal');
+  if(titulo){
+    const labelFiltro=obrasSel&&obrasSel.size===1?[...obrasSel][0]:
+      obrasSel&&obrasSel.size>1?`${obrasSel.size} obras selecionadas`:
+      set?set:cid?cid:'Todas as Obras';
+    titulo.textContent=`Fluxo de Caixa Mensal — ${labelFiltro}`;
+  }
+
   if(!mesesComMov.length){
-    document.getElementById('kpi-fluxo-resumo').innerHTML='<div style="grid-column:1/-1;color:var(--text4);padding:20px;text-align:center">Sem dados de movimentação</div>';
+    document.getElementById('kpi-fluxo-resumo').innerHTML='<div style="grid-column:1/-1;color:var(--text4);padding:20px;text-align:center">Sem dados de movimentação para os filtros selecionados</div>';
+    document.getElementById('kpi-fluxo-lucro').innerHTML='';
     document.getElementById('tbl-fluxo').innerHTML='';
     document.getElementById('tbl-fluxo-negativo').innerHTML='';
     return;
@@ -2842,18 +3010,20 @@ function buildFluxo(){
 
   // KPI Resumo
   document.getElementById('kpi-fluxo-resumo').innerHTML=[
-    kpi('Total Pago (Todas as Obras)',fmtBRL(totalGasto)),
-    kpi('Total Recebido (Todas as Obras)',fmtBRL(totalRecebido)),
+    kpi('Total Pago (Filtro Ativo)',fmtBRL(totalGasto)),
+    kpi('Total Recebido (Filtro Ativo)',fmtBRL(totalRecebido)),
     kpi('Exposição Máxima',fmtBRL(expMaxima)),
     kpi('Exposição Média Ponderada',fmtBRL(Math.abs(expMedia))),
   ].join('');
 
-  // KPI Lucro por proprietário
-  document.getElementById('kpi-fluxo-lucro').innerHTML=[
-    kpi('Lucro Líquido Total',fmtBRL(lucroTotal),'Todas as obras',lucroTotal>=0?'g':'r'),
-    kpi('Lucro Líquido Morais',fmtBRL(lucroMorais),'Obras da Morais',lucroMorais>=0?'g':'r'),
-    kpi('Lucro Líquido Investidores',fmtBRL(lucroInvest),'Obras de terceiros',lucroInvest>=0?'g':'r'),
-  ].join('');
+  // KPI Lucro por proprietário (só se há os dois)
+  const kpisLucro=[];
+  kpisLucro.push(kpi('Lucro Líquido Total',fmtBRL(lucroTotal),'Todas as obras filtradas',lucroTotal>=0?'g':'r'));
+  if(totalGastoMorais>0||totalRecMorais>0)
+    kpisLucro.push(kpi('Lucro Líquido Morais',fmtBRL(lucroMorais),'Obras da Morais',lucroMorais>=0?'g':'r'));
+  if(totalGastoInvest>0||totalRecInvest>0)
+    kpisLucro.push(kpi('Lucro Líquido Investidores',fmtBRL(lucroInvest),'Obras de terceiros',lucroInvest>=0?'g':'r'));
+  document.getElementById('kpi-fluxo-lucro').innerHTML=kpisLucro.join('');
 
   // Tabela fluxo mensal
   const rows=ms.map((m,i)=>{
@@ -2885,46 +3055,65 @@ function buildFluxo(){
   // Gráfico exposição
   drawLinesExposicao('ch-fluxo-exp',ms.map(fmtM),expCaixa);
 
-  // Obras com resultado negativo (por obra individual)
-  const obrasNeg=[];
-  // Usar pagamentos_detalhe para pegar por obra
+  // Tabela de resultado por obra (todas, ordenadas do maior para menor)
+  const OK_RECEBEU_FL=new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  const obrasResultado=[];
   Object.entries(pags).forEach(([cc,mp])=>{
     const u=normS(cc);
     const ehEsc=/ESCRIT/i.test(u);
     const ehPos=(u==='POS OBRA MORAIS ENGENHARIA');
     if(ehEsc||ehPos)return;
+    // Aplicar mesmo filtro de cima
+    const noNotion=endD.has(u);
+    if(noNotion&&!endAtivos.has(u))return;
+    if(!noNotion&&(cid||set||(obrasSel&&obrasSel.size>0)))return;
+    const morais=ehObraMorais(cc);
+    if(prop==='morais'&&!morais)return;
+    if(prop==='invest'&&morais)return;
     let totalPagCC=0;
     Object.values(mp).forEach(v=>{if(v>0)totalPagCC+=v;});
     if(!totalPagCC)return;
-    // Recebimentos desta obra
     let totalRecCC=fats.filter(f=>normS(f.cc||'')===u).reduce((s,f)=>s+(f.valor||0),0);
-    // Fallback vendas
-    if(totalRecCC===0 && usandoFallback){
+    if(totalRecCC===0&&usandoFallback){
       totalRecCC=vendas.filter(v=>v.clientes&&normS(v.endereco||'')===u&&v.valor_na_mao)
         .reduce((s,v)=>s+(v.valor_na_mao||0),0);
     }
     const resultado=totalRecCC-totalPagCC;
-    if(resultado<0){
-      obrasNeg.push({obra:cc,pago:totalPagCC,recebido:totalRecCC,resultado});
+    // Filtro "só concluídas": todas as casas com cliente têm recebeu OK
+    if(soConcluidas){
+      const vsCC=vendas.filter(v=>v.clientes&&normS(v.endereco||'')===u);
+      if(!vsCC.length)return;
+      const todasOk=vsCC.every(v=>OK_RECEBEU_FL.has(String(v.recebeu||'').toUpperCase().trim()));
+      if(!todasOk)return;
     }
+    obrasResultado.push({obra:cc,pago:totalPagCC,recebido:totalRecCC,resultado,morais});
   });
-  obrasNeg.sort((a,b)=>a.resultado-b.resultado); // piores primeiro
+  // Ordenar: positivo para negativo (maior resultado primeiro)
+  obrasResultado.sort((a,b)=>b.resultado-a.resultado);
 
-  if(!obrasNeg.length){
+  if(!obrasResultado.length){
     document.getElementById('tbl-fluxo-negativo').innerHTML=
-      '<div style="color:var(--verde);padding:12px 4px;font-size:13px;font-weight:600">✓ Nenhuma obra com resultado negativo</div>';
+      '<div style="color:var(--text4);padding:12px 4px;font-size:13px">Nenhuma obra encontrada para os filtros selecionados</div>';
   } else {
-    const rowsNeg=obrasNeg.map(o=>`<tr>
-      <td>${o.obra}</td>
-      <td class="nr">${fmtBRL2(o.pago)}</td>
-      <td class="nr">${o.recebido>0?fmtBRL2(o.recebido):'—'}</td>
-      <td class="nr" style="color:#c0392b;font-weight:700">${fmtBRL2(o.resultado)}</td>
-    </tr>`).join('');
+    const rowsRes=obrasResultado.map(o=>{
+      const corRes=o.resultado>0?'color:#2a9d5c;font-weight:700':o.resultado<0?'color:#c0392b;font-weight:700':'';
+      const badge=o.morais
+        ?'<span style="font-size:10px;background:#295778;color:#fff;border-radius:3px;padding:1px 5px;margin-left:6px">Morais</span>'
+        :'<span style="font-size:10px;background:#d46a1a;color:#fff;border-radius:3px;padding:1px 5px;margin-left:6px">Invest.</span>';
+      return`<tr>
+        <td>${o.obra}${badge}</td>
+        <td class="nr">${fmtBRL2(o.pago)}</td>
+        <td class="nr">${o.recebido>0?fmtBRL2(o.recebido):'—'}</td>
+        <td class="nr" style="${corRes}">${fmtBRL2(o.resultado)}</td>
+        <td class="nr">${o.pago>0?fmtN(o.resultado/o.pago*100,1)+'%':'—'}</td>
+      </tr>`;
+    }).join('');
     document.getElementById('tbl-fluxo-negativo').innerHTML=`<table>
       <thead><tr>
-        <th class="left">Obra</th><th>Total Pago</th><th>Total Recebido</th><th>Resultado</th>
+        <th class="left">Obra</th><th>Total Pago</th><th>Total Recebido</th>
+        <th>Resultado</th><th>ROI</th>
       </tr></thead>
-      <tbody>${rowsNeg}</tbody>
+      <tbody>${rowsRes}</tbody>
     </table>`;
   }
 }
@@ -2959,45 +3148,62 @@ function buildSetor(){
   const moraisOnly=document.getElementById('setor-morais-only');
   const mtirBox=document.getElementById('mtir-box-setor');
   const avisoEl=document.getElementById('aviso-setor-prop');
-  if(moraisOnly)moraisOnly.style.display=temMorais?'block':'none';
-  if(mtirBox)mtirBox.style.display=temMorais?'flex':'none';
+  // CORREÇÃO: mostrar fluxo/MTIR para qualquer seleção que tenha dados (Morais OU Investidor)
+  const temDadosFluxo=temMorais||temInvest;
+  if(moraisOnly)moraisOnly.style.display=temDadosFluxo?'block':'none';
+  if(mtirBox)mtirBox.style.display=temDadosFluxo?'flex':'none';
   if(avisoEl){
     if(temInvest&&!temMorais){
       avisoEl.style.display='block';
-      avisoEl.textContent='Seleção contém apenas obras de Investidores — exibindo lucro líquido e tempos médios.';
+      avisoEl.textContent='Seleção contém apenas obras de Investidores — exibindo fluxo de caixa, lucro líquido e tempos médios.';
     } else if(temInvest&&temMorais){
       avisoEl.style.display='block';
-      avisoEl.textContent='Seleção mista (Morais + Investidores). Fluxo de Caixa e Exposição consideram apenas as obras da Morais.';
+      avisoEl.textContent='Seleção mista (Morais + Investidores). KPIs de ROI/TIR/MTIR consideram apenas as obras da Morais.';
     } else {
       avisoEl.style.display='none';
     }
   }
 
   // Pagamentos de obra (só endereços selecionados)
-  // Para fluxo/exposição: usa só enderecosMorais (item 4)
+  // Para fluxo/exposição: usa enderecosMorais se houver, senão usa todos (seleção pura investidor)
   // Para lucro simples investidores: usa enderecosInvest
-  const pagMes={};         // Morais — para fluxo e exposição
-  const pagMesInvest={};   // Investidores — para lucro líquido
+  const pagMes={};         // para fluxo e exposição
+  const pagMesInvest={};   // Investidores — para lucro líquido separado
   Object.entries(pags).forEach(([cc,mp])=>{
     const u=normS(cc);
     if(!enderecosSel.has(u))return;
     const isMoraisCC=enderecosMorais.has(u);
+    const isInvestCC=enderecosInvest.has(u);
     Object.entries(mp).forEach(([m,v])=>{
       if(!m||m==='SEM DATA'||!/^\d{4}-\d{2}$/.test(m))return;
-      if(isMoraisCC)pagMes[m]=(pagMes[m]||0)+v;
-      else pagMesInvest[m]=(pagMesInvest[m]||0)+v;
+      // Se seleção é só Morais ou mista: fluxo principal = Morais
+      // Se seleção é só Investidor: fluxo principal = Investidor
+      if(temMorais){
+        if(isMoraisCC)pagMes[m]=(pagMes[m]||0)+v;
+        else if(isInvestCC)pagMesInvest[m]=(pagMesInvest[m]||0)+v;
+      } else {
+        // seleção pura investidor — usa pagMes para fluxo
+        pagMes[m]=(pagMes[m]||0)+v;
+        pagMesInvest[m]=(pagMesInvest[m]||0)+v;
+      }
     });
   });
 
   // Faturamentos (só endereços selecionados, só meses válidos)
-  const fatMes={};         // Morais
-  const fatMesInvest={};   // Investidores
+  const fatMes={};         // principal (Morais se tem Morais, senão Investidor)
+  const fatMesInvest={};   // Investidores separado
   fats.forEach(f=>{
     const u=normS(f.cc||'');
     if(!enderecosSel.has(u))return;
     if(!f.mes||!/^\d{4}-\d{2}$/.test(f.mes))return;
-    if(enderecosMorais.has(u))fatMes[f.mes]=(fatMes[f.mes]||0)+f.valor;
-    else fatMesInvest[f.mes]=(fatMesInvest[f.mes]||0)+f.valor;
+    if(temMorais){
+      if(enderecosMorais.has(u))fatMes[f.mes]=(fatMes[f.mes]||0)+f.valor;
+      else fatMesInvest[f.mes]=(fatMesInvest[f.mes]||0)+f.valor;
+    } else {
+      // seleção pura investidor — usa fatMes para fluxo
+      fatMes[f.mes]=(fatMes[f.mes]||0)+f.valor;
+      fatMesInvest[f.mes]=(fatMesInvest[f.mes]||0)+f.valor;
+    }
   });
 
   // CORREÇÃO 5: fallback para valor_na_mao das vendas por data_assinatura
@@ -3008,8 +3214,13 @@ function buildSetor(){
       const m=mesD(v.data_assinatura);if(!m||!/^\d{4}-\d{2}$/.test(m))return;
       const u=normS(v.endereco||'');
       if(!enderecosSel.has(u))return;
-      if(enderecosMorais.has(u))fatMes[m]=(fatMes[m]||0)+(v.valor_na_mao||0);
-      else fatMesInvest[m]=(fatMesInvest[m]||0)+(v.valor_na_mao||0);
+      if(temMorais){
+        if(enderecosMorais.has(u))fatMes[m]=(fatMes[m]||0)+(v.valor_na_mao||0);
+        else fatMesInvest[m]=(fatMesInvest[m]||0)+(v.valor_na_mao||0);
+      } else {
+        fatMes[m]=(fatMes[m]||0)+(v.valor_na_mao||0);
+        fatMesInvest[m]=(fatMesInvest[m]||0)+(v.valor_na_mao||0);
+      }
     });
   }
 
@@ -3082,6 +3293,20 @@ function buildSetor(){
   const roiExpMax=expMaxima>0?lucroLiq/expMaxima*100:null;
   const roiAjust=Math.abs(expMedia)>0?lucroLiq/Math.abs(expMedia)*100:null;
 
+  // Margem Bruta = Lucro / Recebido Total
+  const margemBruta=totalRecebido>0?lucroLiq/totalRecebido*100:null;
+
+  // Múltiplo do Capital = Recebido / Investido (expMaxima como proxy)
+  const multiploCapital=expMaxima>0?(totalRecebido/expMaxima):null;
+  const multiploGasto=totalGasto>0?(totalRecebido/totalGasto):null;
+
+  // Payback: mês em que expCaixa >= 0 pela primeira vez
+  const idxPayback=expCaixa.findIndex(v=>v>=0);
+  const paybackMeses=idxPayback>=0?idxPayback+1:null;
+
+  // Custo médio mensal de obra
+  const custoMedioMensal=meses.length>0?totalGasto/meses.length:null;
+
   // TIR
   const tirAm=calcTIR(fluxoLiq,0.02);
   const tirAa=tirAm!=null?Math.pow(1+tirAm,12)-1:null;
@@ -3093,6 +3318,9 @@ function buildSetor(){
   document.getElementById('mtir-cdi-badge').textContent=rReinInput&&rReinInput.trim()!==''?'Manual':'CDI: '+cdiAtual.toFixed(2)+'% a.m.';
   const mtirAm=calcMTIR(fluxoLiq,rFin,rRein);
   const mtirAa=mtirAm!=null?Math.pow(1+mtirAm,12)-1:null;
+
+  // Spread TIR vs CDI (meses)
+  const spreadTirCdi=tirAm!=null?(tirAm*100-cdiAtual):null;
 
   // Render KPIs — Resultado Financeiro
   // Linha 1: Morais (lucro+exposição) + Investidor (lucro líquido simples)
@@ -3107,16 +3335,31 @@ function buildSetor(){
   }
   document.getElementById('roi-res1').innerHTML=kpisR1.join('');
 
-  // Linha 2: ROI/TIR/MTIR — só para obras Morais
+  // Linha 2: ROI/TIR/MTIR/indicadores extras — só para obras Morais
   if(temMorais){
-    document.getElementById('roi-res2').innerHTML=[
-      `<div class="roi-card"><div class="roi-lbl">ROI Bruto</div><div class="roi-val ${roiBruto>=0?'g':''}">${roiBruto!=null?fmtN(roiBruto,2)+'%':'—'}</div><div class="roi-sub">Lucro / Gasto Total</div></div>`,
-      `<div class="roi-card"><div class="roi-lbl">ROI Exp. Máxima</div><div class="roi-val ${roiExpMax>=0?'g':''}">${roiExpMax!=null?fmtN(roiExpMax,2)+'%':'—'}</div><div class="roi-sub">Lucro / Exposição Máxima</div></div>`,
-      `<div class="roi-card"><div class="roi-lbl">ROI Ajustado</div><div class="roi-val ${roiAjust>=0?'g':''}">${roiAjust!=null?fmtN(roiAjust,2)+'%':'—'}</div><div class="roi-sub">Lucro / Exposição Média</div></div>`,
-      `<div class="roi-card"><div class="roi-lbl">TIR Mensal</div><div class="roi-val g">${tirAm!=null?fmtN(tirAm*100,3)+'%':'—'}</div><div class="roi-sub">Newton-Raphson, chute 2%</div></div>`,
-      `<div class="roi-card"><div class="roi-lbl">TIR Anual</div><div class="roi-val g">${tirAa!=null?fmtN(tirAa*100,2)+'%':'—'}</div><div class="roi-sub">(1+TIRam)¹²−1</div></div>`,
-      `<div class="roi-card"><div class="roi-lbl">MTIR Mensal / Anual</div><div class="roi-val">${mtirAm!=null?fmtN(mtirAm*100,3)+'% / '+fmtN((mtirAa||0)*100,2)+'%':'—'}</div><div class="roi-sub">Fin: ${(rFin*100).toFixed(2)}% · Rein: ${(rRein*100).toFixed(2)}%</div></div>`,
-    ].join('');
+    const indSel=document.getElementById('sel-indicadores-st')?.value||'basico';
+    let indicadoresHtml=[];
+    if(indSel==='basico'||indSel==='todos'){
+      indicadoresHtml.push(
+        `<div class="roi-card"><div class="roi-lbl">ROI Bruto</div><div class="roi-val ${roiBruto>=0?'g':''}">${roiBruto!=null?fmtN(roiBruto,2)+'%':'—'}</div><div class="roi-sub">Lucro / Gasto Total</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">ROI Exp. Máxima</div><div class="roi-val ${roiExpMax>=0?'g':''}">${roiExpMax!=null?fmtN(roiExpMax,2)+'%':'—'}</div><div class="roi-sub">Lucro / Exposição Máxima</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">ROI Ajustado</div><div class="roi-val ${roiAjust>=0?'g':''}">${roiAjust!=null?fmtN(roiAjust,2)+'%':'—'}</div><div class="roi-sub">Lucro / Exposição Média</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">TIR Mensal</div><div class="roi-val g">${tirAm!=null?fmtN(tirAm*100,3)+'%':'—'}</div><div class="roi-sub">Newton-Raphson, chute 2%</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">TIR Anual</div><div class="roi-val g">${tirAa!=null?fmtN(tirAa*100,2)+'%':'—'}</div><div class="roi-sub">(1+TIRam)¹²−1</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">MTIR Mensal / Anual</div><div class="roi-val">${mtirAm!=null?fmtN(mtirAm*100,3)+'% / '+fmtN((mtirAa||0)*100,2)+'%':'—'}</div><div class="roi-sub">Fin: ${(rFin*100).toFixed(2)}% · Rein: ${(rRein*100).toFixed(2)}%</div></div>`
+      );
+    }
+    if(indSel==='avancado'||indSel==='todos'){
+      indicadoresHtml.push(
+        `<div class="roi-card"><div class="roi-lbl">Margem Bruta</div><div class="roi-val ${margemBruta>=0?'g':''}">${margemBruta!=null?fmtN(margemBruta,2)+'%':'—'}</div><div class="roi-sub">Lucro / Total Recebido</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">Múltiplo do Capital</div><div class="roi-val ${multiploGasto>=1?'g':''}">${multiploGasto!=null?fmtN(multiploGasto,3)+'×':'—'}</div><div class="roi-sub">Recebido / Gasto Total</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">Múltiplo s/ Exp. Máx.</div><div class="roi-val ${multiploCapital>=1?'g':''}">${multiploCapital!=null?fmtN(multiploCapital,3)+'×':'—'}</div><div class="roi-sub">Recebido / Exposição Máxima</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">Payback</div><div class="roi-val">${paybackMeses!=null?paybackMeses+' mes'+( paybackMeses===1?'':'es'):'Ainda negativo'}</div><div class="roi-sub">Meses até exposição zerar</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">Custo Médio Mensal</div><div class="roi-val">${custoMedioMensal!=null?fmtBRL(custoMedioMensal):'—'}</div><div class="roi-sub">Gasto Total / Nº de Meses</div></div>`,
+        `<div class="roi-card"><div class="roi-lbl">Spread TIR−CDI (a.m.)</div><div class="roi-val ${spreadTirCdi!=null&&spreadTirCdi>=0?'g':'r'}">${spreadTirCdi!=null?fmtN(spreadTirCdi,3)+' p.p.':'—'}</div><div class="roi-sub">TIR mensal vs CDI atual (${cdiAtual.toFixed(2)}%)</div></div>`
+      );
+    }
+    document.getElementById('roi-res2').innerHTML=indicadoresHtml.join('');
   } else {
     document.getElementById('roi-res2').innerHTML='';
   }
@@ -3347,7 +3590,7 @@ async function init(){
     const setores=[...new Set(docs.map(d=>d.setor).filter(Boolean))].sort();
     const obras=[...new Set(docs.map(d=>d.endereco).filter(Boolean))].sort();
 
-    ['pz','st'].forEach(sfx=>{
+    ['pz','st','fluxo'].forEach(sfx=>{
       const sCi=document.getElementById(`sel-cid-${sfx}`);
       if(sCi) cidades.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sCi.appendChild(o);});
       const sSe=document.getElementById(`sel-set-${sfx}`);
