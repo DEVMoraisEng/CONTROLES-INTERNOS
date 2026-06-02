@@ -2712,14 +2712,18 @@ let obrasLista=[]; // cache de todas as obras disponíveis
 // (b) tem pagamentos registrados no ERP (pagamentos_detalhe)
 function getObrasCompletas(){
   const OK_RECEBEU = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
-  const vendasPorEnd = {};
+  // Todas as linhas de venda por endereço (com e sem cliente)
+  const todasVendasPorEnd = {};
   vendas.forEach(v=>{
-    if(!v.clientes) return;
     const e = normS(v.endereco||'');
     if(!e) return;
-    (vendasPorEnd[e] = vendasPorEnd[e] || []).push(v);
+    (todasVendasPorEnd[e] = todasVendasPorEnd[e] || []).push(v);
   });
-  // Endereços que têm pagamentos no ERP (pagamentos_detalhe é { cc -> { mes: valor } })
+  // n_casas por endereço (do docs)
+  const nCasasDoc = {};
+  docs.forEach(d=>{ const e=normS(d.endereco||''); if(e) nCasasDoc[e]=d.n_casas||1; });
+
+  // Endereços que têm pagamentos no ERP
   const obrasComPagamentos = new Set(
     Object.keys(pags).map(cc => normS(cc)).filter(e => {
       const meses = pags[Object.keys(pags).find(k=>normS(k)===e)];
@@ -2727,10 +2731,15 @@ function getObrasCompletas(){
     })
   );
   const obras = new Set();
-  Object.entries(vendasPorEnd).forEach(([e, vs])=>{
-    const todasOk = vs.every(v => OK_RECEBEU.has(String(v.recebeu||'').toUpperCase().trim()));
+  Object.entries(todasVendasPorEnd).forEach(([e, vs])=>{
+    // Todas as linhas (com ou sem cliente) devem ter recebeu OK
+    const todasRecOk = vs.every(v => OK_RECEBEU.has(String(v.recebeu||'').toUpperCase().trim()));
+    if(!todasRecOk) return;
+    // Número de casas vendidas deve bater com n_casas do doc
+    const nVendidas = vs.filter(v=>v.clientes).length;
+    if(nVendidas < (nCasasDoc[e]||1)) return;
     const temPag = obrasComPagamentos.has(e);
-    if(todasOk && temPag) obras.add(e);
+    if(temPag) obras.add(e);
   });
   return obras;
 }
@@ -2825,10 +2834,16 @@ function initObrasFluxo(){
   const OK_RECEBEU_FL = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
   const obrasConcluidasSet = soConcluidas ? (()=>{
     const s = new Set();
-    const vendasPorEnd = {};
-    vendas.forEach(v=>{ if(!v.clientes) return; const e=normS(v.endereco||''); if(e)(vendasPorEnd[e]=vendasPorEnd[e]||[]).push(v); });
-    Object.entries(vendasPorEnd).forEach(([e,vs])=>{
-      if(vs.every(v=>OK_RECEBEU_FL.has(String(v.recebeu||'').toUpperCase().trim())))s.add(e);
+    const OK_RC=new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+    const todasVendasPE={};
+    vendas.forEach(v=>{ const e=normS(v.endereco||''); if(e)(todasVendasPE[e]=todasVendasPE[e]||[]).push(v); });
+    const nCasasDoc={};
+    docs.forEach(doc=>{ const e=normS(doc.endereco||''); if(e)nCasasDoc[e]=doc.n_casas||1; });
+    Object.entries(todasVendasPE).forEach(([e,vs])=>{
+      const todasRecOk=vs.every(v=>OK_RC.has(String(v.recebeu||'').toUpperCase().trim()));
+      if(!todasRecOk)return;
+      const nVendidas=vs.filter(v=>v.clientes).length;
+      if(nVendidas>=(nCasasDoc[e]||1))s.add(e);
     });
     return s;
   })() : null;
@@ -2929,16 +2944,27 @@ function buildFluxo(){
   else if(prop==='invest') docsAtivos=docsAtivos.filter(d=>!ehObraMorais(d.endereco));
   if(obrasSel) docsAtivos=docsAtivos.filter(d=>obrasSel.has(d.endereco));
 
-  // Filtro "somente concluídas": obras onde todas as casas com cliente têm recebeu OK
+  // Filtro "somente concluídas": TODAS as linhas de venda do lote (com ou sem cliente)
+  // têm recebeu OK, E o número de casas vendidas (com cliente) bate com n_casas do doc
   if(soConcluidas){
     const OK_RC=new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
-    const vendasPE={};
-    vendas.forEach(v=>{ if(!v.clientes)return; const e=normS(v.endereco||''); if(e)(vendasPE[e]=vendasPE[e]||[]).push(v); });
+    // Mapa endereço → todas as linhas de venda (independente de ter cliente)
+    const todasVendasPE={};
+    vendas.forEach(v=>{ const e=normS(v.endereco||''); if(e)(todasVendasPE[e]=todasVendasPE[e]||[]).push(v); });
+    // Mapa endereço → n_casas do doc
+    const nCasasDoc={};
+    docs.forEach(doc=>{ const e=normS(doc.endereco||''); if(e)nCasasDoc[e]=doc.n_casas||1; });
     docsAtivos=docsAtivos.filter(d=>{
       const e=normS(d.endereco);
-      const vs=vendasPE[e];
-      if(!vs||!vs.length)return false; // sem venda = não concluída
-      return vs.every(v=>OK_RC.has(String(v.recebeu||'').toUpperCase().trim()));
+      const todasVs=todasVendasPE[e]||[];
+      if(!todasVs.length)return false;
+      // Todas as linhas (com ou sem cliente) devem ter recebeu OK
+      const todasRecOk=todasVs.every(v=>OK_RC.has(String(v.recebeu||'').toUpperCase().trim()));
+      if(!todasRecOk)return false;
+      // Número de casas vendidas (com cliente) deve bater com n_casas do doc
+      const nVendidas=todasVs.filter(v=>v.clientes).length;
+      const nEsperadas=nCasasDoc[e]||1;
+      return nVendidas>=nEsperadas;
     });
   }
 
@@ -3145,11 +3171,17 @@ function buildFluxo(){
     }
     const resultado=totalRecCC-totalPagCC;
     // Filtro "só concluídas": todas as casas com cliente têm recebeu OK
+    // Filtro "só concluídas": todas as linhas do lote (com e sem cliente) têm recebeu OK
+    // E número de casas vendidas bate com n_casas do doc
     if(soConcluidas){
-      const vsCC=vendas.filter(v=>v.clientes&&normS(v.endereco||'')===u);
-      if(!vsCC.length)return;
-      const todasOk=vsCC.every(v=>OK_RECEBEU_FL.has(String(v.recebeu||'').toUpperCase().trim()));
-      if(!todasOk)return;
+      const todasVsCC=vendas.filter(v=>normS(v.endereco||'')===u);
+      if(!todasVsCC.length)return;
+      const todasRecOk=todasVsCC.every(v=>OK_RECEBEU_FL.has(String(v.recebeu||'').toUpperCase().trim()));
+      if(!todasRecOk)return;
+      const docCC=docs.find(d=>normS(d.endereco||'')===u);
+      const nEsp=docCC?.n_casas||1;
+      const nVend=todasVsCC.filter(v=>v.clientes).length;
+      if(nVend<nEsp)return;
     }
     obrasResultado.push({obra:cc,pago:totalPagCC,recebido:totalRecCC,resultado,morais});
   });
