@@ -759,7 +759,18 @@ tfoot td:last-child{border-right:none}
       </div>
       <div class="mtir-field">
         <label>Taxa de Reinvestimento (% a.m.)</label>
-        <input type="number" id="mtir-rein" value="" step="0.01" min="0" placeholder="CDI" onchange="buildSetor()">
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <select id="mtir-bench" onchange="onBenchChange('','buildSetor')"
+            style="font-size:12px;padding:4px 8px;border:1.5px solid var(--border);border-radius:6px;background:var(--branco);color:var(--text)">
+            <option value="cdi">CDI</option>
+            <option value="selic">SELIC</option>
+            <option value="ipca">IPCA</option>
+            <option value="poup">Poupança</option>
+            <option value="manual">Manual</option>
+          </select>
+          <input type="number" id="mtir-rein" value="" step="0.01" min="0" placeholder="Auto"
+            style="width:80px" disabled onchange="buildSetor()">
+        </div>
       </div>
       <span class="mtir-badge" id="mtir-cdi-badge">CDI auto</span>
     </div>
@@ -838,7 +849,18 @@ tfoot td:last-child{border-right:none}
           </div>
           <div class="mtir-field">
             <label>Taxa de Reinvestimento (% a.m.)</label>
-            <input type="number" id="mtir-rein-a" value="" step="0.01" min="0" placeholder="CDI" onchange="buildComp('a')">
+            <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+              <select id="mtir-bench-a" onchange="onBenchChange('a','buildComp')"
+                style="font-size:12px;padding:4px 8px;border:1.5px solid var(--border);border-radius:6px;background:var(--branco);color:var(--text)">
+                <option value="cdi">CDI</option>
+                <option value="selic">SELIC</option>
+                <option value="ipca">IPCA</option>
+                <option value="poup">Poupança</option>
+                <option value="manual">Manual</option>
+              </select>
+              <input type="number" id="mtir-rein-a" value="" step="0.01" min="0" placeholder="Auto"
+                style="width:80px" disabled onchange="buildComp('a')">
+            </div>
           </div>
           <span class="mtir-badge" id="mtir-cdi-badge-a">CDI auto</span>
         </div>
@@ -888,7 +910,18 @@ tfoot td:last-child{border-right:none}
           </div>
           <div class="mtir-field">
             <label>Taxa de Reinvestimento (% a.m.)</label>
-            <input type="number" id="mtir-rein-b" value="" step="0.01" min="0" placeholder="CDI" onchange="buildComp('b')">
+            <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+              <select id="mtir-bench-b" onchange="onBenchChange('b','buildComp')"
+                style="font-size:12px;padding:4px 8px;border:1.5px solid var(--border);border-radius:6px;background:var(--branco);color:var(--text)">
+                <option value="cdi">CDI</option>
+                <option value="selic">SELIC</option>
+                <option value="ipca">IPCA</option>
+                <option value="poup">Poupança</option>
+                <option value="manual">Manual</option>
+              </select>
+              <input type="number" id="mtir-rein-b" value="" step="0.01" min="0" placeholder="Auto"
+                style="width:80px" disabled onchange="buildComp('b')">
+            </div>
           </div>
           <span class="mtir-badge" id="mtir-cdi-badge-b">CDI auto</span>
         </div>
@@ -3118,7 +3151,7 @@ function buildFluxo(){
   }
 }
 
-function buildSetor(){
+async function buildSetor(){
   // Item 2: obras qualificadas — recebeu OK + pagamentos no ERP
   const obrasCompletas = getObrasCompletas();
 
@@ -3313,14 +3346,17 @@ function buildSetor(){
 
   // MTIR
   const rFin=(parseFloat(document.getElementById('mtir-fin')?.value)||1.5)/100;
-  const rReinInput=document.getElementById('mtir-rein')?.value;
-  const rRein=rReinInput&&rReinInput.trim()!==''?parseFloat(rReinInput)/100:cdiAtual/100;
-  document.getElementById('mtir-cdi-badge').textContent=rReinInput&&rReinInput.trim()!==''?'Manual':'CDI: '+cdiAtual.toFixed(2)+'% a.m.';
+  const rRein=await getRRein('');
+  const badgeSt=document.getElementById('mtir-cdi-badge');
+  // badge já atualizado dentro de getRRein
   const mtirAm=calcMTIR(fluxoLiq,rFin,rRein);
   const mtirAa=mtirAm!=null?Math.pow(1+mtirAm,12)-1:null;
 
-  // Spread TIR vs CDI (meses)
-  const spreadTirCdi=tirAm!=null?(tirAm*100-cdiAtual):null;
+  // Spread TIR vs benchmark ativo (meses)
+  const benchAtivo=document.getElementById('mtir-bench')?.value||'cdi';
+  const benchNome=(BENCHMARKS[benchAtivo]||{}).nome||'CDI';
+  const taxaBenchAm=rRein*100; // já é % a.m. do benchmark selecionado
+  const spreadTirCdi=tirAm!=null?(tirAm*100-taxaBenchAm):null;
 
   // Render KPIs — Resultado Financeiro
   // Linha 1: Morais (lucro+exposição) + Investidor (lucro líquido simples)
@@ -3356,7 +3392,7 @@ function buildSetor(){
         `<div class="roi-card"><div class="roi-lbl">Múltiplo s/ Exp. Máx.</div><div class="roi-val ${multiploCapital>=1?'g':''}">${multiploCapital!=null?fmtN(multiploCapital,3)+'×':'—'}</div><div class="roi-sub">Recebido / Exposição Máxima</div></div>`,
         `<div class="roi-card"><div class="roi-lbl">Payback</div><div class="roi-val">${paybackMeses!=null?paybackMeses+' mes'+( paybackMeses===1?'':'es'):'Ainda negativo'}</div><div class="roi-sub">Meses até exposição zerar</div></div>`,
         `<div class="roi-card"><div class="roi-lbl">Custo Médio Mensal</div><div class="roi-val">${custoMedioMensal!=null?fmtBRL(custoMedioMensal):'—'}</div><div class="roi-sub">Gasto Total / Nº de Meses</div></div>`,
-        `<div class="roi-card"><div class="roi-lbl">Spread TIR−CDI (a.m.)</div><div class="roi-val ${spreadTirCdi!=null&&spreadTirCdi>=0?'g':'r'}">${spreadTirCdi!=null?fmtN(spreadTirCdi,3)+' p.p.':'—'}</div><div class="roi-sub">TIR mensal vs CDI atual (${cdiAtual.toFixed(2)}%)</div></div>`
+        `<div class="roi-card"><div class="roi-lbl">Spread TIR−${benchNome} (a.m.)</div><div class="roi-val ${spreadTirCdi!=null&&spreadTirCdi>=0?'g':'r'}">${spreadTirCdi!=null?fmtN(spreadTirCdi,3)+' p.p.':'—'}</div><div class="roi-sub">TIR mensal vs ${benchNome} (${taxaBenchAm.toFixed(2)}%)</div></div>`
       );
     }
     document.getElementById('roi-res2').innerHTML=indicadoresHtml.join('');
@@ -3526,22 +3562,134 @@ function abrirAlerta(tipo){
   modal.addEventListener('click',e=>{if(e.target===modal)modal.remove();});
 }
 
-// ── BUSCA CDI VIA BACEN ──
-async function buscarCDI(){
+// ── BENCHMARKS DE REINVESTIMENTO ──
+// Séries SGS do Bacen:
+//   4391 = CDI diário (% a.d.)
+//   432  = SELIC meta (% a.a.)
+//   433  = IPCA mensal acumulado (% a.m.)
+//   195  = Poupança mensal (% a.m.)
+const BENCHMARKS = {
+  cdi:  { codigo: 4391, nome: 'CDI',      tipo: 'diario'  },
+  selic:{ codigo: 432,  nome: 'SELIC',    tipo: 'anual'   },
+  ipca: { codigo: 433,  nome: 'IPCA',     tipo: 'mensal'  },
+  poup: { codigo: 195,  nome: 'Poupança', tipo: 'mensal'  },
+};
+
+// Cache em memória: { cdi: 1.05, selic: 1.03, ... } — % a.m.
+const benchCache = {};
+
+async function buscarBenchmark(key){
+  if(benchCache[key]!=null) return benchCache[key];
+  const cfg = BENCHMARKS[key];
+  if(!cfg) return null;
   try{
-    const hoje=new Date(),d30=new Date(hoje);d30.setDate(d30.getDate()-35);
+    const hoje=new Date(), d60=new Date(hoje);
+    d60.setDate(d60.getDate() - (cfg.tipo==='diario'?40:90));
     const fmt=d=>d.toLocaleDateString('pt-BR').replace(/\//g,'%2F');
-    const url=`https://api.bcb.gov.br/dados/serie/bcdata.sgs.4391/dados?formato=json&dataInicial=${fmt(d30)}&dataFinal=${fmt(hoje)}`;
-    const r=await fetch(url);if(!r.ok)return;
-    const data=await r.json();
-    if(data&&data.length){
-      // Últimos 20 dias úteis → média mensal
-      const recentes=data.slice(-20);
-      const media=recentes.reduce((s,d)=>s+parseFloat(d.valor),0)/recentes.length;
-      cdiAtual=+(media*21).toFixed(4); // ~21 dias úteis/mês
-      document.getElementById('mtir-cdi-badge').textContent='CDI: '+cdiAtual.toFixed(2)+'% a.m.';
+    const url=`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${cfg.codigo}/dados?formato=json&dataInicial=${fmt(d60)}&dataFinal=${fmt(hoje)}`;
+    const r=await fetch(url); if(!r.ok) return null;
+    const data=await r.json(); if(!data||!data.length) return null;
+
+    let taxaMensal;
+    if(cfg.tipo==='diario'){
+      // CDI: taxa diária em % → média dos últimos 20 dias úteis → × 21
+      const rec=data.slice(-20);
+      const mediaDiaria=rec.reduce((s,d)=>s+parseFloat(d.valor),0)/rec.length;
+      taxaMensal=+(mediaDiaria*21).toFixed(4);
+    } else if(cfg.tipo==='anual'){
+      // SELIC meta: % a.a. → converter para % a.m. via (1+aa/100)^(1/12)-1
+      const ultimo=parseFloat(data[data.length-1].valor);
+      taxaMensal=+((Math.pow(1+ultimo/100,1/12)-1)*100).toFixed(4);
+    } else {
+      // IPCA / Poupança: já é % a.m. — usar média dos últimos 3 meses
+      const rec=data.slice(-3);
+      taxaMensal=+(rec.reduce((s,d)=>s+parseFloat(d.valor),0)/rec.length).toFixed(4);
     }
-  }catch(e){/* silencioso — usa padrão 1% */}
+    benchCache[key]=taxaMensal;
+    return taxaMensal;
+  }catch(e){ return null; }
+}
+
+// Retorna a taxa de reinvestimento a.m. para um sufixo (''|'a'|'b')
+async function getRRein(sufixo){
+  const selId  = sufixo ? `mtir-bench-${sufixo}` : 'mtir-bench';
+  const inpId  = sufixo ? `mtir-rein-${sufixo}`  : 'mtir-rein';
+  const badgeId= sufixo ? `mtir-cdi-badge-${sufixo}` : 'mtir-cdi-badge';
+
+  const bench = document.getElementById(selId)?.value || 'cdi';
+  const badge = document.getElementById(badgeId);
+
+  if(bench==='manual'){
+    const v=parseFloat(document.getElementById(inpId)?.value);
+    if(badge) badge.textContent='Manual';
+    return isNaN(v)?cdiAtual/100:v/100;
+  }
+
+  const cfg=BENCHMARKS[bench];
+  let taxa=benchCache[bench];
+  if(taxa==null){
+    taxa=await buscarBenchmark(bench);
+    if(taxa==null){
+      // fallback: usar cdiAtual para CDI, valores padrão para os demais
+      taxa = bench==='cdi'?cdiAtual:bench==='selic'?1.05:bench==='ipca'?0.5:0.7;
+    }
+  }
+
+  // Preencher input como display (read-only)
+  const inp=document.getElementById(inpId);
+  if(inp){ inp.value=taxa.toFixed(4); }
+  if(badge) badge.textContent=`${cfg.nome}: ${taxa.toFixed(2)}% a.m.`;
+
+  // Atualizar cdiAtual globalmente quando bench for CDI (mantém compatibilidade)
+  if(bench==='cdi') cdiAtual=taxa;
+
+  return taxa/100;
+}
+
+// Chamado quando o usuário muda o select de benchmark
+function onBenchChange(sufixo, buildFn){
+  const selId = sufixo ? `mtir-bench-${sufixo}` : 'mtir-bench';
+  const inpId = sufixo ? `mtir-rein-${sufixo}`  : 'mtir-rein';
+  const bench = document.getElementById(selId)?.value||'cdi';
+  const inp   = document.getElementById(inpId);
+  if(inp){
+    if(bench==='manual'){
+      inp.disabled=false;
+      inp.placeholder='% a.m.';
+      inp.value='';
+    } else {
+      inp.disabled=true;
+      inp.placeholder='Auto';
+      inp.value='';
+    }
+  }
+  // Disparar rebuild — getRRein fará o fetch se necessário
+  if(buildFn==='buildComp') { buildComp(sufixo||'a'); }
+  else buildSetor();
+}
+
+// Compat: buscarCDI continua funcionando (chamada no init)
+async function buscarCDI(){
+  const taxa=await buscarBenchmark('cdi');
+  if(taxa!=null){
+    cdiAtual=taxa;
+    // Atualizar badge principal se bench ainda for CDI
+    const bench=document.getElementById('mtir-bench')?.value||'cdi';
+    if(bench==='cdi'){
+      const badge=document.getElementById('mtir-cdi-badge');
+      if(badge) badge.textContent='CDI: '+cdiAtual.toFixed(2)+'% a.m.';
+      const inp=document.getElementById('mtir-rein');
+      if(inp&&!inp.disabled===false) inp.value=cdiAtual.toFixed(4);
+    }
+    // Atualizar badges A e B se necessário
+    ['a','b'].forEach(s=>{
+      const bch=document.getElementById(`mtir-bench-${s}`)?.value||'cdi';
+      if(bch==='cdi'){
+        const bg=document.getElementById(`mtir-cdi-badge-${s}`);
+        if(bg) bg.textContent='CDI: '+cdiAtual.toFixed(2)+'% a.m.';
+      }
+    });
+  }
 }
 
 // ── INIT ──
@@ -3922,7 +4070,7 @@ function abrirCompDrop(side){
     else setTimeout(()=>document.addEventListener('click',fecharComp,{once:true}),100);
   },{once:true}),100);
 }
-function buildComp(side){
+async function buildComp(side){
   const sfx=side==='a'?'ca':'cb';
   const cid=document.getElementById('sel-cid-'+sfx)?.value||'';
   const set=document.getElementById('sel-set-'+sfx)?.value||'';
@@ -4028,10 +4176,7 @@ function buildComp(side){
   const tirAm=calcTIR(fluxo,0.02);
   const tirAa=tirAm!=null?Math.pow(1+tirAm,12)-1:null;
   const rFin=(parseFloat(document.getElementById('mtir-fin-'+side)?.value)||1.5)/100;
-  const rReinInput=document.getElementById('mtir-rein-'+side)?.value;
-  const rRein=rReinInput&&rReinInput.trim()!==''?parseFloat(rReinInput)/100:(typeof cdiAtual!=='undefined'?cdiAtual/100:0.015);
-  const badge=document.getElementById('mtir-cdi-badge-'+side);
-  if(badge)badge.textContent=rReinInput&&rReinInput.trim()!==''?'Manual':'CDI: '+(typeof cdiAtual!=='undefined'?cdiAtual.toFixed(2):'1.50')+'% a.m.';
+  const rRein=await getRRein(side);
   const mtirAm=calcMTIR(fluxo,rFin,rRein);
   const mtirAa=mtirAm!=null?Math.pow(1+mtirAm,12)-1:null;
 
