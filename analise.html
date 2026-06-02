@@ -786,7 +786,8 @@ tfoot td:last-child{border-right:none}
         </select>
       </div>
     </div>
-    <div class="roi-grid" id="roi-res1"></div>
+    <div class="roi-grid" id="roi-res-lucros" style="margin-bottom:6px"></div>
+    <div class="roi-grid" id="roi-res-exp" style="margin-bottom:6px"></div>
     <div class="roi-grid" id="roi-res2"></div>
 
     <!-- Fluxo e gráfico — só obras Morais -->
@@ -3333,7 +3334,9 @@ async function buildSetor(){
   ])].sort();
   const todosMeses=mesesComMov;
   if(!todosMeses.length){
-    document.getElementById('roi-res1').innerHTML='<div style="grid-column:1/-1;color:var(--text4);padding:20px;text-align:center">Sem dados para a seleção</div>';
+    document.getElementById('roi-res-lucros').innerHTML='<div style="grid-column:1/-1;color:var(--text4);padding:20px;text-align:center">Sem dados para a seleção</div>';
+    document.getElementById('roi-res-exp').innerHTML='';
+    document.getElementById('roi-res2').innerHTML='';
     document.getElementById('roi-res2').innerHTML='';
     document.getElementById('tbl-exp').innerHTML='';
     // Mesmo sem fluxo de caixa, mostrar prazos da seleção
@@ -3422,18 +3425,23 @@ async function buildSetor(){
   const taxaBenchAm=rRein*100; // já é % a.m. do benchmark selecionado
   const spreadTirCdi=tirAm!=null?(tirAm*100-taxaBenchAm):null;
 
-  // Render KPIs — Resultado Financeiro
-  // Linha 1: Morais (lucro+exposição) + Investidor (lucro líquido simples)
-  const kpisR1=[];
+  // ── Linha 1: Lucros (Total + Morais + Investidores) ──
+  const kpisLucros=[];
+  const lucroTotal=lucroLiq+(temInvest?lucroInvest:0);
+  kpisLucros.push(`<div class="roi-card"><div class="roi-lbl">Lucro Líquido Total</div><div class="roi-val ${lucroTotal>=0?'g':'r'}">${fmtBRL(lucroTotal)}</div><div class="roi-sub">Morais + Investidores</div></div>`);
+  if(temMorais)
+    kpisLucros.push(`<div class="roi-card"><div class="roi-lbl">Lucro Líquido (Morais)</div><div class="roi-val ${lucroLiq>=0?'g':''}">${fmtBRL(lucroLiq)}</div><div class="roi-sub">Recebido − Gasto (Morais)</div></div>`);
+  if(temInvest)
+    kpisLucros.push(`<div class="roi-card"><div class="roi-lbl">Lucro Líquido (Investidores)</div><div class="roi-val ${lucroInvest>=0?'g':'r'}">${fmtBRL(lucroInvest)}</div><div class="roi-sub">Recebido − Pago (Investidores)</div></div>`);
+  document.getElementById('roi-res-lucros').innerHTML=kpisLucros.join('');
+
+  // ── Linha 2: Exposições (só Morais) ──
+  const kpisExp=[];
   if(temMorais){
-    kpisR1.push(`<div class="roi-card"><div class="roi-lbl">Lucro Líquido (Morais)</div><div class="roi-val ${lucroLiq>=0?'g':''}">${fmtBRL(lucroLiq)}</div><div class="roi-sub">Recebido − Gasto (Morais)</div></div>`);
-    kpisR1.push(`<div class="roi-card"><div class="roi-lbl">Exposição Média</div><div class="roi-val">${fmtBRL(Math.abs(expMedia))}</div><div class="roi-sub">Σ Exp. Prop. / Σ Multiplicadores</div></div>`);
-    kpisR1.push(`<div class="roi-card"><div class="roi-lbl">Exposição Máxima</div><div class="roi-val">${fmtBRL(expMaxima)}</div><div class="roi-sub">Pico de capital exposto</div></div>`);
+    kpisExp.push(`<div class="roi-card"><div class="roi-lbl">Exposição Média</div><div class="roi-val">${fmtBRL(Math.abs(expMedia))}</div><div class="roi-sub">Σ Exp. Prop. / Σ Multiplicadores</div></div>`);
+    kpisExp.push(`<div class="roi-card"><div class="roi-lbl">Exposição Máxima</div><div class="roi-val">${fmtBRL(expMaxima)}</div><div class="roi-sub">Pico de capital exposto</div></div>`);
   }
-  if(temInvest){
-    kpisR1.push(`<div class="roi-card"><div class="roi-lbl">Lucro Líquido (Investidores)</div><div class="roi-val ${lucroInvest>=0?'g':'r'}">${fmtBRL(lucroInvest)}</div><div class="roi-sub">Recebido − Pago (Investidores)</div></div>`);
-  }
-  document.getElementById('roi-res1').innerHTML=kpisR1.join('');
+  document.getElementById('roi-res-exp').innerHTML=kpisExp.join('');
 
   // Linha 2: ROI/TIR/MTIR/indicadores extras — só para obras Morais
   if(temMorais){
