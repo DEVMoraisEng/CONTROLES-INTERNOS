@@ -638,7 +638,7 @@ tfoot td:last-child{border-right:none}
   <div class="pg-body">
 
     <!-- Filtros Fluxo de Caixa -->
-    <div class="controles" style="margin-bottom:16px">
+    <div class="controles" style="margin-bottom:16px;flex-wrap:wrap;row-gap:8px">
       <span class="sel-lbl">Cidade:</span>
       <select id="sel-cid-fluxo" onchange="initObrasFluxo();buildFluxo()"><option value="">Todas</option></select>
       <span class="sel-lbl">Setor:</span>
@@ -661,6 +661,10 @@ tfoot td:last-child{border-right:none}
           min-width:300px;padding:6px 0;margin-top:4px"></div>
         <div id="fluxo-selecionadas" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px"></div>
       </div>
+      <label style="font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px;cursor:pointer;margin-left:4px">
+        <input type="checkbox" id="chk-fluxo-soConcluidas" onchange="initObrasFluxo();buildFluxo()" style="cursor:pointer;width:14px;height:14px">
+        Somente obras concluídas (todas as casas recebidas)
+      </label>
     </div>
 
     <!-- KPIs resumo -->
@@ -695,12 +699,6 @@ tfoot td:last-child{border-right:none}
 
     <!-- Resultado por obra (todas, ordenadas) -->
     <div class="blk-title" style="margin-top:20px">Resultado por Obra</div>
-    <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
-      <label style="font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px;cursor:pointer">
-        <input type="checkbox" id="chk-fluxo-soConcluidas" onchange="buildFluxo()" style="cursor:pointer">
-        Mostrar apenas obras com todas as casas recebidas
-      </label>
-    </div>
     <div id="tbl-fluxo-negativo"></div>
   </div>
 </div>
@@ -2818,9 +2816,29 @@ function initObrasFluxo(){
   const cid = document.getElementById('sel-cid-fluxo')?.value||'';
   const set = document.getElementById('sel-set-fluxo')?.value||'';
   const prop = document.getElementById('sel-prop-fluxo')?.value||'';
-  // Obras = todas que têm pagamentos no ERP (sem filtro recebeu)
+  const soConcluidas = document.getElementById('chk-fluxo-soConcluidas')?.checked||false;
+
+  // Obras = todas que têm pagamentos no ERP (sem filtro recebeu por padrão)
   const ccsPag = new Set(Object.keys(pags).map(cc=>normS(cc)));
-  let arr = docs.filter(d=>ccsPag.has(normS(d.endereco)));
+
+  // Se soConcluidas: só obras que passam na verificação de recebeu OK
+  const OK_RECEBEU_FL = new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+  const obrasConcluidasSet = soConcluidas ? (()=>{
+    const s = new Set();
+    const vendasPorEnd = {};
+    vendas.forEach(v=>{ if(!v.clientes) return; const e=normS(v.endereco||''); if(e)(vendasPorEnd[e]=vendasPorEnd[e]||[]).push(v); });
+    Object.entries(vendasPorEnd).forEach(([e,vs])=>{
+      if(vs.every(v=>OK_RECEBEU_FL.has(String(v.recebeu||'').toUpperCase().trim())))s.add(e);
+    });
+    return s;
+  })() : null;
+
+  let arr = docs.filter(d=>{
+    const u = normS(d.endereco);
+    if(!ccsPag.has(u)) return false;
+    if(soConcluidas && obrasConcluidasSet && !obrasConcluidasSet.has(u)) return false;
+    return true;
+  });
   if(cid) arr=arr.filter(d=>d.cidade===cid);
   if(set) arr=arr.filter(d=>d.setor===set);
   if(prop==='morais') arr=arr.filter(d=>ehObraMorais(d.endereco));
@@ -2910,6 +2928,20 @@ function buildFluxo(){
   if(prop==='morais') docsAtivos=docsAtivos.filter(d=>ehObraMorais(d.endereco));
   else if(prop==='invest') docsAtivos=docsAtivos.filter(d=>!ehObraMorais(d.endereco));
   if(obrasSel) docsAtivos=docsAtivos.filter(d=>obrasSel.has(d.endereco));
+
+  // Filtro "somente concluídas": obras onde todas as casas com cliente têm recebeu OK
+  if(soConcluidas){
+    const OK_RC=new Set(['SIM','INEXISTE','ÁGIO','AGIO']);
+    const vendasPE={};
+    vendas.forEach(v=>{ if(!v.clientes)return; const e=normS(v.endereco||''); if(e)(vendasPE[e]=vendasPE[e]||[]).push(v); });
+    docsAtivos=docsAtivos.filter(d=>{
+      const e=normS(d.endereco);
+      const vs=vendasPE[e];
+      if(!vs||!vs.length)return false; // sem venda = não concluída
+      return vs.every(v=>OK_RC.has(String(v.recebeu||'').toUpperCase().trim()));
+    });
+  }
+
   const endAtivos=new Set(docsAtivos.map(d=>normS(d.endereco)));
 
   // Para obras sem match em docs, incluir CCs do ERP que batem com os filtros
