@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-03T11:00:48.469502+00:00",
+  "updated_at": "2026-06-03T15:01:01.660177+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
@@ -14294,8 +14294,8 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-06-02",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
       "pesquisa": "NÃO"
