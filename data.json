@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-07T07:00:46.652334+00:00",
+  "updated_at": "2026-06-07T07:50:42.413458+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
@@ -2794,7 +2794,7 @@
       "n_casas": 2,
       "implantacao": "RUA",
       "erp_orcado": 266512.5572,
-      "erp_valor_pago": 96085.03
+      "erp_valor_pago": 96085.03000000001
     },
     {
       "id": "32fc5ab5-32d3-8010-ad3f-eceb00faceff",
@@ -3834,7 +3834,7 @@
       "n_casas": 2,
       "implantacao": "RUA",
       "erp_orcado": 263363.9107,
-      "erp_valor_pago": 240623.96000000005
+      "erp_valor_pago": 240623.96000000002
     },
     {
       "id": "32fc5ab5-32d3-8002-84c4-da8ade39be95",
@@ -4224,7 +4224,7 @@
       "n_casas": 2,
       "implantacao": "RUA",
       "erp_orcado": 257129.4195,
-      "erp_valor_pago": 85648.1500002
+      "erp_valor_pago": 85648.15000020001
     },
     {
       "id": "32fc5ab5-32d3-802d-a297-f949afcfb0c4",
@@ -7604,7 +7604,7 @@
       "n_casas": 2,
       "implantacao": "RUA",
       "erp_orcado": 254670.4543,
-      "erp_valor_pago": 164865.470000391
+      "erp_valor_pago": 164865.47000039104
     },
     {
       "id": "32fc5ab5-32d3-80ac-9489-f52b2dcda4d0",
@@ -7799,7 +7799,7 @@
       "n_casas": 2,
       "implantacao": "RUA",
       "erp_orcado": 270004.8611,
-      "erp_valor_pago": 26975.27
+      "erp_valor_pago": 26975.270000000004
     },
     {
       "id": "32fc5ab5-32d3-8073-9189-fc183b5dfe99",
@@ -25872,7 +25872,7 @@
       "2025-10": 61502.03,
       "2025-07": 30043.15,
       "2026-01": 37996.0,
-      "2025-12": 71603.45999999999,
+      "2025-12": 71603.46,
       "2025-05": 107007.39,
       "2026-05": 2447.69,
       "2025-09": 37556.96000000001,
@@ -25887,7 +25887,7 @@
     "RR 04 QD 03 LT 19": {
       "2025-11": 26090.35,
       "2026-04": 3521.0099999999998,
-      "2025-06": 29331.379999999997,
+      "2025-06": 29331.38,
       "2025-09": 38198.329999999994,
       "2025-07": 57057.05,
       "2025-08": 38541.71,
@@ -25902,7 +25902,7 @@
     "FERROVIARIOS QD 01 LT 14": {
       "2026-01": 64875.21,
       "2025-12": 53372.369999999995,
-      "2026-03": 58658.11000003001,
+      "2026-03": 58658.11000003,
       "2026-06": 14881.09,
       "2025-11": 49739.84000000001,
       "2025-07": 19950.539999999997,
@@ -25932,7 +25932,7 @@
     "TB 20 QD 37 LT 17": {
       "2025-09": 21364.94,
       "2025-07": 105892.97,
-      "2025-06": 39978.189999999995,
+      "2025-06": 39978.19,
       "2026-04": 1213.7099999999998,
       "2025-12": 19451.089999999993,
       "2025-08": 93586.2,
@@ -25947,7 +25947,7 @@
     "TB 14 QD 43 LT 48": {
       "2025-09": 17002.77,
       "2025-12": 21865.68,
-      "2025-08": 61778.0,
+      "2025-08": 61778.00000000001,
       "2026-04": 493.71999999999997,
       "2025-06": 27595.28,
       "2025-10": 22419.670000000002,
@@ -26072,7 +26072,7 @@
       "2025-11": 61242.829999999994,
       "2025-09": 34425.46,
       "2026-05": 117.2,
-      "2025-08": 22024.1,
+      "2025-08": 22024.100000000002,
       "2026-03": 3892.74,
       "2025-12": 20519.260000000002,
       "2025-10": 55154.43,
@@ -26156,7 +26156,7 @@
       "2025-11": 560.0
     },
     "RPB 24 QD 26A LT 04": {
-      "2026-05": 15573.259999999998,
+      "2026-05": 15573.26,
       "2026-06": 7440.0,
       "2026-04": 375.78999999999996,
       "2026-01": 1853.95,
@@ -26224,7 +26224,7 @@
       "2026-03": 47752.78,
       "2026-04": 10343.92,
       "2026-01": 39116.970001049995,
-      "2025-11": 50593.6099999,
+      "2025-11": 50593.60999989999,
       "2026-02": 15568.98,
       "2026-06": 26.26
     },
@@ -26357,9 +26357,9 @@
       "2026-05": 21867.84,
       "2025-09": 170326.71,
       "2025-10": 46095.59,
-      "2026-06": 138.51999999999998,
+      "2026-06": 138.52,
       "2026-03": 26928.91,
-      "2025-12": 44085.370000259994
+      "2025-12": 44085.37000026
     },
     "RPB 24 QD 29 LT 42": {
       "2025-11": 39623.04,
@@ -26388,7 +26388,7 @@
       "2026-01": 16783.5,
       "2026-04": 25125.35,
       "2026-03": 49219.61000000001,
-      "2025-11": 39091.48999999999,
+      "2025-11": 39091.49,
       "2026-05": 5159.99,
       "2026-06": 53.82
     },
@@ -26417,7 +26417,7 @@
       "2026-06": 253.9
     },
     "TB 21 QD 50 LT 25": {
-      "2025-11": 36936.23,
+      "2025-11": 36936.229999999996,
       "2025-10": 11298.029999999999,
       "2026-02": 33785.22,
       "2025-12": 39563.770000000004,
@@ -26548,7 +26548,7 @@
       "2026-03": 48640.37,
       "2026-05": 33101.58,
       "2026-04": 17664.760000000002,
-      "2025-11": 32813.46,
+      "2025-11": 32813.45999999999,
       "2025-12": 48195.64,
       "2025-10": 232.73
     },
@@ -26687,7 +26687,7 @@
     "TB 18 QD 49 LT 26": {
       "2026-05": 87871.27,
       "2026-03": 904.53,
-      "2026-04": 20148.32,
+      "2026-04": 20148.319999999996,
       "2025-12": 1947.67,
       "2026-02": 1521.83,
       "2026-01": 335.55,
@@ -26808,7 +26808,7 @@
       "2026-02": 930.22
     },
     "TB 18 QD 49 LT 38": {
-      "2026-05": 35107.07000000001,
+      "2026-05": 35107.07,
       "2026-04": 2910.600000000001,
       "2026-02": 821.83,
       "2026-01": 108.39
@@ -26883,7 +26883,7 @@
     },
     "TB 19 QD 51 LT 14": {
       "2026-05": 5952.59,
-      "2026-06": 22395.93,
+      "2026-06": 22395.929999999997,
       "2026-04": 71.83,
       "2026-03": 496.66999999999996
     },
@@ -27420,16 +27420,6 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 458.0,
-      "mes": "2025-06",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Flex Impermeabilizantes",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "W 6 QD 17 LT 06",
       "valor": 985.0,
       "mes": "2025-06",
       "grupo": "Materiais",
@@ -27441,6 +27431,16 @@
     {
       "cc": "W 6 QD 17 LT 06",
       "valor": 555.0,
+      "mes": "2025-06",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Flex Impermeabilizantes",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 458.0,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -28270,16 +28270,6 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 2480.38149,
-      "mes": "2025-10",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 1423.24149
-    },
-    {
-      "cc": "W 6 QD 17 LT 06",
       "valor": 4498.39851,
       "mes": "2025-10",
       "grupo": "Materiais",
@@ -28287,6 +28277,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Th Distribuidora",
       "juros_multa": 2581.17851
+    },
+    {
+      "cc": "W 6 QD 17 LT 06",
+      "valor": 2480.38149,
+      "mes": "2025-10",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 1423.24149
     },
     {
       "cc": "W 6 QD 17 LT 06",
@@ -29020,7 +29020,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 9000.0,
+      "valor": 0.0,
       "mes": "2025-05",
       "grupo": "Materiais",
       "categoria": "Locação de equipamentos",
@@ -29030,7 +29030,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 0.0,
+      "valor": 9000.0,
       "mes": "2025-05",
       "grupo": "Materiais",
       "categoria": "Locação de equipamentos",
@@ -29610,7 +29610,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 933.04,
+      "valor": 2284.56,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -29620,7 +29620,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 2284.56,
+      "valor": 933.04,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -29680,7 +29680,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 0.0,
+      "valor": 1848.0,
       "mes": "2025-06",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -29690,7 +29690,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 1848.0,
+      "valor": 0.0,
       "mes": "2025-06",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -30030,7 +30030,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 1728.44,
+      "valor": 1668.35,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -30040,7 +30040,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 1668.35,
+      "valor": 1728.44,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -30410,7 +30410,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 30.0,
+      "valor": 35.0,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -30420,7 +30420,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 35.0,
+      "valor": 30.0,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -30450,7 +30450,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 3453.06,
+      "valor": 2754.0,
       "mes": "2025-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -30460,7 +30460,7 @@
     },
     {
       "cc": "W 6 QD 17 LT 06",
-      "valor": 2754.0,
+      "valor": 3453.06,
       "mes": "2025-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -31070,27 +31070,27 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
+      "valor": 833.33,
+      "mes": "2025-11",
+      "grupo": "Mão de Obra (Terceirizada)",
+      "categoria": "Mão de Obra Terceirizada",
+      "plano_de_conta": "Mão de Obra Terceirizada",
+      "fornecedor": "Francisco Câmara (Encanador)",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 13",
+      "valor": 833.33,
+      "mes": "2025-11",
+      "grupo": "Mão de Obra (Terceirizada)",
+      "categoria": "Mão de Obra Terceirizada",
+      "plano_de_conta": "Mão de Obra Terceirizada",
+      "fornecedor": "Francisco Câmara (Encanador)",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 13",
       "valor": 833.34,
-      "mes": "2025-11",
-      "grupo": "Mão de Obra (Terceirizada)",
-      "categoria": "Mão de Obra Terceirizada",
-      "plano_de_conta": "Mão de Obra Terceirizada",
-      "fornecedor": "Francisco Câmara (Encanador)",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 833.33,
-      "mes": "2025-11",
-      "grupo": "Mão de Obra (Terceirizada)",
-      "categoria": "Mão de Obra Terceirizada",
-      "plano_de_conta": "Mão de Obra Terceirizada",
-      "fornecedor": "Francisco Câmara (Encanador)",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 833.33,
       "mes": "2025-11",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -31430,37 +31430,17 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 1071.632879,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 5231.867121,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 4594.705634,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 13",
       "valor": 173.4272444,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 13",
+      "valor": 1071.632879,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -31480,7 +31460,27 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
+      "valor": 5231.867121,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 13",
       "valor": 941.1243657,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 13",
+      "valor": 4594.705634,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -32270,7 +32270,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 675.15,
+      "valor": 1161.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -32280,7 +32280,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 1161.0,
+      "valor": 675.15,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -32990,16 +32990,6 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 3524.867967,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 70.65796716
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 13",
       "valor": 3173.372033,
       "mes": "2025-12",
       "grupo": "Materiais",
@@ -33007,6 +32997,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Th Distribuidora",
       "juros_multa": 63.61203284
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 13",
+      "valor": 3524.867967,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 70.65796716
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
@@ -33260,7 +33260,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 1750.0,
+      "valor": 1210.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -33270,7 +33270,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 1210.0,
+      "valor": 1750.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -33300,7 +33300,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 635.04,
+      "valor": 970.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -33310,7 +33310,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 970.0,
+      "valor": 635.04,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -33480,7 +33480,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 156.42,
+      "valor": 13.17,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -33490,7 +33490,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 13",
-      "valor": 13.17,
+      "valor": 156.42,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -33680,7 +33680,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 333.33,
+      "valor": 333.34,
       "mes": "2025-11",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -33690,7 +33690,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 333.34,
+      "valor": 333.33,
       "mes": "2025-11",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -34040,7 +34040,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 384.0,
+      "valor": 2950.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -34050,7 +34050,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 2950.0,
+      "valor": 384.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -34100,7 +34100,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 0.03,
+      "valor": 9499.97,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -34110,7 +34110,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 9499.97,
+      "valor": 0.03,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -34220,7 +34220,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 500.0,
+      "valor": 87.5,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -34230,7 +34230,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 87.5,
+      "valor": 500.0,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -34400,7 +34400,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 1667.700885,
+      "valor": 1229.379115,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -34410,7 +34410,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 1229.379115,
+      "valor": 1667.700885,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -34970,7 +34970,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 233.34,
+      "valor": 233.33,
       "mes": "2025-12",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -34980,7 +34980,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 233.33,
+      "valor": 233.34,
       "mes": "2025-12",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -35240,7 +35240,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 7272.93,
+      "valor": 5994.41,
       "mes": "2025-12",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -35250,7 +35250,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 5994.41,
+      "valor": 7272.93,
       "mes": "2025-12",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -35540,7 +35540,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 534.2,
+      "valor": 2273.65,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -35550,7 +35550,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 12",
-      "valor": 2273.65,
+      "valor": 534.2,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -36200,7 +36200,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 126.9962366,
+      "valor": 547.9137634,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -36210,7 +36210,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 547.9137634,
+      "valor": 126.9962366,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -36380,7 +36380,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 25.5,
+      "valor": 8.11,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -36390,7 +36390,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 8.11,
+      "valor": 25.5,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -36550,7 +36550,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 0.0,
+      "valor": 450.0,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Locação de equipamentos",
@@ -36570,7 +36570,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 450.0,
+      "valor": 0.0,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Locação de equipamentos",
@@ -36660,7 +36660,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 2031.31,
+      "valor": 2468.6,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -36670,7 +36670,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 315.14,
+      "valor": 2031.31,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -36690,7 +36690,7 @@
     },
     {
       "cc": "RR 04 QD 03 LT 19",
-      "valor": 2468.6,
+      "valor": 315.14,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -37790,7 +37790,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 14",
-      "valor": 4162.817386,
+      "valor": 128.2921376,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -37810,6 +37810,26 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 14",
+      "valor": 2302.159523,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 14",
+      "valor": 4162.817386,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 14",
       "valor": 80.65786243,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -37820,27 +37840,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 14",
-      "valor": 128.2921376,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 14",
       "valor": 3661.750477,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 14",
-      "valor": 2302.159523,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -38850,6 +38850,16 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 14",
+      "valor": 0.8,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Goyaço",
+      "juros_multa": 0.8
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 14",
       "valor": 8581.12,
       "mes": "2025-11",
       "grupo": "Materiais",
@@ -38867,16 +38877,6 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Goyaço",
       "juros_multa": 0.0
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 14",
-      "valor": 0.8,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Goyaço",
-      "juros_multa": 0.8
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 14",
@@ -38960,7 +38960,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 14",
-      "valor": 381.3,
+      "valor": 970.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -38970,7 +38970,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 14",
-      "valor": 970.0,
+      "valor": 381.3,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -39400,7 +39400,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 1960.376324,
+      "valor": 3371.913676,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -39410,7 +39410,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 3371.913676,
+      "valor": 1960.376324,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -39630,7 +39630,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 6000.0,
+      "valor": 2699.87,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -39640,7 +39640,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 2699.87,
+      "valor": 6000.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -40090,7 +40090,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 276.14,
+      "valor": 8354.79,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -40100,7 +40100,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 8354.79,
+      "valor": 276.14,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -40230,7 +40230,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 990.0,
+      "valor": 442.5,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -40240,7 +40240,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 442.5,
+      "valor": 990.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -40320,7 +40320,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 114.0,
+      "valor": 315.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -40330,7 +40330,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 15",
-      "valor": 315.0,
+      "valor": 114.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -40670,16 +40670,6 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 666.66,
-      "mes": "2025-09",
-      "grupo": "Mão de Obra (Terceirizada)",
-      "categoria": "Mão de Obra Terceirizada",
-      "plano_de_conta": "Mão de Obra Terceirizada",
-      "fornecedor": "Weverton Maximo da Silva (cerâmica)",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 20 QD 37 LT 17",
       "valor": 666.68,
       "mes": "2025-09",
       "grupo": "Mão de Obra (Terceirizada)",
@@ -40690,7 +40680,17 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 333.34,
+      "valor": 666.66,
+      "mes": "2025-09",
+      "grupo": "Mão de Obra (Terceirizada)",
+      "categoria": "Mão de Obra Terceirizada",
+      "plano_de_conta": "Mão de Obra Terceirizada",
+      "fornecedor": "Weverton Maximo da Silva (cerâmica)",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 333.33,
       "mes": "2025-07",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -40700,7 +40700,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 333.33,
+      "valor": 333.34,
       "mes": "2025-07",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -40910,7 +40910,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 90.0,
+      "valor": 4800.0,
       "mes": "2025-08",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -40920,7 +40920,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 4800.0,
+      "valor": 90.0,
       "mes": "2025-08",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -41030,7 +41030,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 333.34,
+      "valor": 333.33,
       "mes": "2025-11",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -41040,7 +41040,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 333.33,
+      "valor": 333.34,
       "mes": "2025-11",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -41310,16 +41310,6 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 2020.0,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "VIDRO ALVES",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 20 QD 37 LT 17",
       "valor": 6650.0,
       "mes": "2026-01",
       "grupo": "Materiais",
@@ -41330,7 +41320,17 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 2551.44,
+      "valor": 2020.0,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "VIDRO ALVES",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 20 QD 37 LT 17",
+      "valor": 4463.57,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -41340,7 +41340,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 4463.57,
+      "valor": 2551.44,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -41520,7 +41520,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 1166.66,
+      "valor": 1166.67,
       "mes": "2025-10",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -41530,7 +41530,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 1166.67,
+      "valor": 1166.66,
       "mes": "2025-10",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -41610,7 +41610,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 3400.0,
+      "valor": 3500.0,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -41620,7 +41620,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 3500.0,
+      "valor": 3400.0,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -41640,7 +41640,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 666.66,
+      "valor": 666.67,
       "mes": "2025-09",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -41650,7 +41650,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 666.67,
+      "valor": 666.66,
       "mes": "2025-09",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -41700,7 +41700,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 94.0,
+      "valor": 931.5,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -41710,7 +41710,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 931.5,
+      "valor": 94.0,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -42180,7 +42180,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 166.67,
+      "valor": 166.66,
       "mes": "2025-12",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -42190,7 +42190,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 166.66,
+      "valor": 166.67,
       "mes": "2025-12",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -42220,7 +42220,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 156.9,
+      "valor": 4369.34,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -42230,7 +42230,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 4369.34,
+      "valor": 156.9,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -42550,7 +42550,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 4143.0,
+      "valor": 417.96,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -42570,7 +42570,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 417.96,
+      "valor": 4143.0,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -42670,7 +42670,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 10000.0,
+      "valor": 384.0,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -42680,7 +42680,7 @@
     },
     {
       "cc": "TB 20 QD 37 LT 17",
-      "valor": 384.0,
+      "valor": 10000.0,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -42780,7 +42780,7 @@
     },
     {
       "cc": "TB 14 QD 43 LT 48",
-      "valor": 2728.75,
+      "valor": 680.0,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -42810,7 +42810,7 @@
     },
     {
       "cc": "TB 14 QD 43 LT 48",
-      "valor": 680.0,
+      "valor": 2728.75,
       "mes": "2025-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -43880,16 +43880,6 @@
     },
     {
       "cc": "TB 14 QD 43 LT 48",
-      "valor": 3766.382103,
-      "mes": "2025-08",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 88.27210302
-    },
-    {
-      "cc": "TB 14 QD 43 LT 48",
       "valor": 2290.747897,
       "mes": "2025-08",
       "grupo": "Materiais",
@@ -43897,6 +43887,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 53.68789698
+    },
+    {
+      "cc": "TB 14 QD 43 LT 48",
+      "valor": 3766.382103,
+      "mes": "2025-08",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 88.27210302
     },
     {
       "cc": "TB 14 QD 43 LT 48",
@@ -43930,7 +43930,7 @@
     },
     {
       "cc": "TB 14 QD 43 LT 48",
-      "valor": 2500.0,
+      "valor": 450.0,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -43940,7 +43940,7 @@
     },
     {
       "cc": "TB 14 QD 43 LT 48",
-      "valor": 450.0,
+      "valor": 2500.0,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -44260,13 +44260,13 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 325.1235143,
+      "valor": 622.3091252,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
       "fornecedor": "Br Aço",
-      "juros_multa": 7.423514328
+      "juros_multa": 14.20912516
     },
     {
       "cc": "TB 19 QD 46 LT 07",
@@ -44280,13 +44280,13 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 622.3091252,
+      "valor": 325.1235143,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
       "fornecedor": "Br Aço",
-      "juros_multa": 14.20912516
+      "juros_multa": 7.423514328
     },
     {
       "cc": "TB 19 QD 46 LT 07",
@@ -44380,7 +44380,7 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 2000.0,
+      "valor": 1300.0,
       "mes": "2026-01",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -44400,7 +44400,7 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 1300.0,
+      "valor": 2000.0,
       "mes": "2026-01",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -44500,7 +44500,7 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 56.5,
+      "valor": 231.6,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -44510,7 +44510,7 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 231.6,
+      "valor": 56.5,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -44540,7 +44540,7 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 4326.85,
+      "valor": 86.05,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -44550,7 +44550,7 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 86.05,
+      "valor": 4326.85,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -45500,16 +45500,6 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 500.0,
-      "mes": "2026-02",
-      "grupo": "Mão de Obra (Terceirizada)",
-      "categoria": "Mão de Obra Terceirizada",
-      "plano_de_conta": "Mão de Obra Terceirizada",
-      "fornecedor": "Rosivan Correia de Sousa",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 19 QD 46 LT 07",
       "valor": 355.0,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
@@ -45520,7 +45510,7 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 1258.6,
+      "valor": 5300.0,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -45530,7 +45520,17 @@
     },
     {
       "cc": "TB 19 QD 46 LT 07",
-      "valor": 5300.0,
+      "valor": 500.0,
+      "mes": "2026-02",
+      "grupo": "Mão de Obra (Terceirizada)",
+      "categoria": "Mão de Obra Terceirizada",
+      "plano_de_conta": "Mão de Obra Terceirizada",
+      "fornecedor": "Rosivan Correia de Sousa",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 19 QD 46 LT 07",
+      "valor": 1258.6,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -45870,6 +45870,26 @@
     },
     {
       "cc": "TB 14 QD 43 LT 35",
+      "valor": 165.7161323,
+      "mes": "2025-09",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 3.508144257
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 29.00009645,
+      "mes": "2025-09",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.6139204456
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
       "valor": 158.5047747,
       "mes": "2025-09",
       "grupo": "Materiais",
@@ -45890,16 +45910,6 @@
     },
     {
       "cc": "TB 14 QD 43 LT 35",
-      "valor": 165.7161323,
-      "mes": "2025-09",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 3.508144257
-    },
-    {
-      "cc": "TB 14 QD 43 LT 35",
       "valor": 547.243824,
       "mes": "2025-08",
       "grupo": "Materiais",
@@ -45917,16 +45927,6 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Br Aço",
       "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 14 QD 43 LT 35",
-      "valor": 29.00009645,
-      "mes": "2025-09",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.6139204456
     },
     {
       "cc": "TB 14 QD 43 LT 35",
@@ -46040,6 +46040,16 @@
     },
     {
       "cc": "TB 14 QD 43 LT 35",
+      "valor": 3914.47,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
       "valor": 181.28,
       "mes": "2025-11",
       "grupo": "Materiais",
@@ -46051,16 +46061,6 @@
     {
       "cc": "TB 14 QD 43 LT 35",
       "valor": 4170.16,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 14 QD 43 LT 35",
-      "valor": 3914.47,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -47050,16 +47050,6 @@
     },
     {
       "cc": "TB 14 QD 43 LT 35",
-      "valor": 2130.339793,
-      "mes": "2025-10",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 0.02979294816
-    },
-    {
-      "cc": "TB 14 QD 43 LT 35",
       "valor": 2159.950207,
       "mes": "2025-10",
       "grupo": "Materiais",
@@ -47070,7 +47060,17 @@
     },
     {
       "cc": "TB 14 QD 43 LT 35",
-      "valor": 2540.0,
+      "valor": 2130.339793,
+      "mes": "2025-10",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 0.02979294816
+    },
+    {
+      "cc": "TB 14 QD 43 LT 35",
+      "valor": 180.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -47080,7 +47080,7 @@
     },
     {
       "cc": "TB 14 QD 43 LT 35",
-      "valor": 180.0,
+      "valor": 2540.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -48230,7 +48230,7 @@
     },
     {
       "cc": "ESCRITORIO - MORAIS ENGENHARIA",
-      "valor": 308.34,
+      "valor": 189.2,
       "mes": "2026-05",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -48240,7 +48240,7 @@
     },
     {
       "cc": "ESCRITORIO - MORAIS ENGENHARIA",
-      "valor": 189.2,
+      "valor": 308.34,
       "mes": "2026-05",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -48350,7 +48350,7 @@
     },
     {
       "cc": "ESCRITORIO - MORAIS ENGENHARIA",
-      "valor": 219.2,
+      "valor": 2522.32,
       "mes": "2026-05",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -48360,7 +48360,7 @@
     },
     {
       "cc": "ESCRITORIO - MORAIS ENGENHARIA",
-      "valor": 2522.32,
+      "valor": 219.2,
       "mes": "2026-05",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -50230,7 +50230,7 @@
     },
     {
       "cc": "ESCRITORIO - MORAIS ENGENHARIA",
-      "valor": 85.22,
+      "valor": 1014.48,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -50240,7 +50240,7 @@
     },
     {
       "cc": "ESCRITORIO - MORAIS ENGENHARIA",
-      "valor": 1014.48,
+      "valor": 85.22,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -50810,7 +50810,7 @@
     },
     {
       "cc": "ESCRITORIO - MORAIS ENGENHARIA",
-      "valor": 18.96,
+      "valor": 179.9,
       "mes": "2026-04",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -50820,7 +50820,7 @@
     },
     {
       "cc": "ESCRITORIO - MORAIS ENGENHARIA",
-      "valor": 179.9,
+      "valor": 18.96,
       "mes": "2026-04",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -51950,7 +51950,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 3400.0,
+      "valor": 1750.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -51960,7 +51960,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 1750.0,
+      "valor": 3400.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -52010,7 +52010,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 8400.0,
+      "valor": 2910.0,
       "mes": "2025-09",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -52020,7 +52020,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 2910.0,
+      "valor": 8400.0,
       "mes": "2025-09",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -52610,7 +52610,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 4182.06,
+      "valor": 3902.57,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -52620,7 +52620,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 3902.57,
+      "valor": 4182.06,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -52730,17 +52730,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 286.39,
-      "mes": "2025-07",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 17 QD 48 LT 41",
-      "valor": 2054.58,
+      "valor": 364.15,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -52760,7 +52750,17 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 364.15,
+      "valor": 286.39,
+      "mes": "2025-07",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 17 QD 48 LT 41",
+      "valor": 2054.58,
       "mes": "2025-07",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -52860,16 +52860,6 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 1392.65,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Madeireira Esperança",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 17 QD 48 LT 41",
       "valor": 4010.35,
       "mes": "2026-01",
       "grupo": "Materiais",
@@ -52880,13 +52870,13 @@
     },
     {
       "cc": "TB 17 QD 48 LT 41",
-      "valor": 174.4170758,
+      "valor": 1392.65,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
-      "fornecedor": "TINTAS ACRIL PLUS",
-      "juros_multa": 4.617075836
+      "fornecedor": "Madeireira Esperança",
+      "juros_multa": 0.0
     },
     {
       "cc": "TB 17 QD 48 LT 41",
@@ -52897,6 +52887,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "TINTAS ACRIL PLUS",
       "juros_multa": 185.0229242
+    },
+    {
+      "cc": "TB 17 QD 48 LT 41",
+      "valor": 174.4170758,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "TINTAS ACRIL PLUS",
+      "juros_multa": 4.617075836
     },
     {
       "cc": "TB 17 QD 48 LT 41",
@@ -53250,7 +53250,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 16",
-      "valor": 648.0,
+      "valor": 375.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -53260,7 +53260,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 16",
-      "valor": 375.0,
+      "valor": 648.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -53370,7 +53370,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 16",
-      "valor": 150.0,
+      "valor": 1250.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -53380,7 +53380,7 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 16",
-      "valor": 1250.0,
+      "valor": 150.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -54070,16 +54070,6 @@
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 17",
-      "valor": 858.2923771,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 11.29237713
-    },
-    {
-      "cc": "FERROVIARIOS QD 01 LT 17",
       "valor": 697.5576229,
       "mes": "2026-05",
       "grupo": "Materiais",
@@ -54087,6 +54077,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Br Aço",
       "juros_multa": 9.177622869
+    },
+    {
+      "cc": "FERROVIARIOS QD 01 LT 17",
+      "valor": 858.2923771,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 11.29237713
     },
     {
       "cc": "FERROVIARIOS QD 01 LT 17",
@@ -55090,6 +55090,16 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
+      "valor": 1272.0,
+      "mes": "2025-11",
+      "grupo": "Mão de Obra (Terceirizada)",
+      "categoria": "Mão de Obra Terceirizada",
+      "plano_de_conta": "Mão de Obra Terceirizada",
+      "fornecedor": "Erenilto Martins De Medeiros (Mestre de obras)",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
       "valor": 5000.0,
       "mes": "2025-11",
       "grupo": "Mão de Obra (Terceirizada)",
@@ -55111,16 +55121,6 @@
     {
       "cc": "TB 17 QD 48 LT 44",
       "valor": 5000.0,
-      "mes": "2025-11",
-      "grupo": "Mão de Obra (Terceirizada)",
-      "categoria": "Mão de Obra Terceirizada",
-      "plano_de_conta": "Mão de Obra Terceirizada",
-      "fornecedor": "Erenilto Martins De Medeiros (Mestre de obras)",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 17 QD 48 LT 44",
-      "valor": 1272.0,
       "mes": "2025-11",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -55270,16 +55270,6 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
-      "valor": 180.0,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "FS PRE-MOLDADOS",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 17 QD 48 LT 44",
       "valor": 2540.0,
       "mes": "2025-11",
       "grupo": "Materiais",
@@ -55291,6 +55281,16 @@
     {
       "cc": "TB 17 QD 48 LT 44",
       "valor": 132.0,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "FS PRE-MOLDADOS",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 180.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -55330,16 +55330,6 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
-      "valor": 86.04,
-      "mes": "2026-02",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 17 QD 48 LT 44",
       "valor": 3849.42,
       "mes": "2026-02",
       "grupo": "Materiais",
@@ -55351,6 +55341,16 @@
     {
       "cc": "TB 17 QD 48 LT 44",
       "valor": 3901.44,
+      "mes": "2026-02",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 17 QD 48 LT 44",
+      "valor": 86.04,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -55510,7 +55510,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
-      "valor": 3289.18,
+      "valor": 330.45,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -55520,7 +55520,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
-      "valor": 330.45,
+      "valor": 3289.18,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -55760,7 +55760,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
-      "valor": 1341.162595,
+      "valor": 1402.407405,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -55770,7 +55770,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
-      "valor": 1402.407405,
+      "valor": 1341.162595,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -56040,7 +56040,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
-      "valor": 121.3,
+      "valor": 1122.16,
       "mes": "2026-01",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -56050,7 +56050,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 44",
-      "valor": 1122.16,
+      "valor": 121.3,
       "mes": "2026-01",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -56330,16 +56330,6 @@
     },
     {
       "cc": "TB 17 QD 48 LT 38",
-      "valor": 723.4605289,
-      "mes": "2026-04",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 11.86052889
-    },
-    {
-      "cc": "TB 17 QD 48 LT 38",
       "valor": 248.4938483,
       "mes": "2026-04",
       "grupo": "Materiais",
@@ -56357,6 +56347,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Br Aço",
       "juros_multa": 49.46420572
+    },
+    {
+      "cc": "TB 17 QD 48 LT 38",
+      "valor": 723.4605289,
+      "mes": "2026-04",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 11.86052889
     },
     {
       "cc": "TB 17 QD 48 LT 38",
@@ -56380,7 +56380,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 38",
-      "valor": 1500.0,
+      "valor": 450.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -56390,7 +56390,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 38",
-      "valor": 450.0,
+      "valor": 1500.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -56650,7 +56650,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 414.0,
+      "valor": 1500.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -56660,7 +56660,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 1500.0,
+      "valor": 414.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -56760,7 +56760,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 610.0,
+      "valor": 365.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -56770,7 +56770,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 365.0,
+      "valor": 610.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -57090,16 +57090,6 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 749.430524,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 41.25829479
-    },
-    {
-      "cc": "TB 17 QD 48 LT 40",
       "valor": 523.709476,
       "mes": "2025-11",
       "grupo": "Materiais",
@@ -57107,6 +57097,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Th Distribuidora",
       "juros_multa": 28.83170521
+    },
+    {
+      "cc": "TB 17 QD 48 LT 40",
+      "valor": 749.430524,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 41.25829479
     },
     {
       "cc": "TB 17 QD 48 LT 40",
@@ -57770,7 +57770,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 2940.76,
+      "valor": 626.61,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -57780,7 +57780,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 2925.34,
+      "valor": 2940.76,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -57800,7 +57800,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 626.61,
+      "valor": 2925.34,
       "mes": "2025-08",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -57910,7 +57910,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 1373.284171,
+      "valor": 1435.995829,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -57920,7 +57920,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 40",
-      "valor": 1435.995829,
+      "valor": 1373.284171,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -58320,7 +58320,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
-      "valor": 230.0,
+      "valor": 365.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -58330,7 +58330,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
-      "valor": 365.0,
+      "valor": 230.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -58470,6 +58470,16 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
+      "valor": 131.91,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "FS PRE-MOLDADOS",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
       "valor": 2538.22,
       "mes": "2025-12",
       "grupo": "Materiais",
@@ -58481,16 +58491,6 @@
     {
       "cc": "TB 17 QD 48 LT 46",
       "valor": 179.87,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "FS PRE-MOLDADOS",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 17 QD 48 LT 46",
-      "valor": 131.91,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -58540,7 +58540,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
-      "valor": 2440.0,
+      "valor": 8000.0,
       "mes": "2026-01",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -58550,7 +58550,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
-      "valor": 8000.0,
+      "valor": 2440.0,
       "mes": "2026-01",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -58890,26 +58890,6 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
-      "valor": 2102.4,
-      "mes": "2025-09",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Goyaço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 17 QD 48 LT 46",
-      "valor": 3226.4,
-      "mes": "2025-09",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Goyaço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 17 QD 48 LT 46",
       "valor": 357.0,
       "mes": "2025-09",
       "grupo": "Materiais",
@@ -58920,7 +58900,27 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
+      "valor": 2102.4,
+      "mes": "2025-09",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Goyaço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
       "valor": 403.5,
+      "mes": "2025-09",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Goyaço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 17 QD 48 LT 46",
+      "valor": 3226.4,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -59140,7 +59140,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
-      "valor": 604.42,
+      "valor": 2481.51,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -59150,7 +59150,7 @@
     },
     {
       "cc": "TB 17 QD 48 LT 46",
-      "valor": 2481.51,
+      "valor": 604.42,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -60960,16 +60960,6 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
-      "valor": 2636.202411,
-      "mes": "2025-09",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
       "valor": 457.1024113,
       "mes": "2025-09",
       "grupo": "Materiais",
@@ -60991,6 +60981,16 @@
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
       "valor": 854.1975887,
+      "mes": "2025-09",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
+      "valor": 2636.202411,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -61060,7 +61060,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
-      "valor": 2500.0,
+      "valor": 260.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -61070,7 +61070,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
-      "valor": 260.0,
+      "valor": 2500.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -61170,7 +61170,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
-      "valor": 375.0,
+      "valor": 267.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -61180,7 +61180,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
-      "valor": 267.0,
+      "valor": 375.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -61240,7 +61240,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
-      "valor": 27.38,
+      "valor": 34.9,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -61250,7 +61250,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 02",
-      "valor": 34.9,
+      "valor": 27.38,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -61820,7 +61820,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
-      "valor": 643.88,
+      "valor": 1907.88,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -61830,7 +61830,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
-      "valor": 1907.88,
+      "valor": 643.88,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -62550,7 +62550,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
-      "valor": 3256.25,
+      "valor": 369.85,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -62560,7 +62560,7 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
-      "valor": 369.85,
+      "valor": 3256.25,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -62990,16 +62990,6 @@
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
-      "valor": 86.8394233,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 0.7994232987
-    },
-    {
-      "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
       "valor": 87.47527682,
       "mes": "2025-12",
       "grupo": "Materiais",
@@ -63017,6 +63007,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 1.295299885
+    },
+    {
+      "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
+      "valor": 86.8394233,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 0.7994232987
     },
     {
       "cc": "GERCINA BORGES TEIXEIRA QD 02 LT 03",
@@ -65610,7 +65610,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 04",
-      "valor": 315.9,
+      "valor": 5056.2,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -65620,7 +65620,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 04",
-      "valor": 5056.2,
+      "valor": 315.9,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -65990,7 +65990,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 43.0,
+      "valor": 16.9,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66000,7 +66000,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 16.9,
+      "valor": 43.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66040,7 +66040,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 315.0,
+      "valor": 610.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66050,7 +66050,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 610.0,
+      "valor": 315.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66410,7 +66410,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 30.0,
+      "valor": 125.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66420,7 +66420,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 125.0,
+      "valor": 30.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66460,16 +66460,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 38.52,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 10",
       "valor": 88.92,
       "mes": "2026-05",
       "grupo": "Materiais",
@@ -66480,7 +66470,17 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 302.12,
+      "valor": 38.52,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 10",
+      "valor": 5160.45,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66490,7 +66490,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 5160.45,
+      "valor": 302.12,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66820,7 +66820,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 3640.0,
+      "valor": 1850.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -66830,7 +66830,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 1850.0,
+      "valor": 3640.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -67000,7 +67000,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 3428.127428,
+      "valor": 2086.872572,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -67020,7 +67020,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 10",
-      "valor": 2086.872572,
+      "valor": 3428.127428,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -67660,7 +67660,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 12",
-      "valor": 330.0,
+      "valor": 610.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -67670,7 +67670,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 12",
-      "valor": 610.0,
+      "valor": 330.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -67720,7 +67720,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 12",
-      "valor": 14.9,
+      "valor": 10.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -67730,7 +67730,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 12",
-      "valor": 10.0,
+      "valor": 14.9,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -68360,7 +68360,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 13",
-      "valor": 375.0,
+      "valor": 2650.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -68370,7 +68370,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 13",
-      "valor": 2650.0,
+      "valor": 375.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -68400,7 +68400,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 13",
-      "valor": 4917.69,
+      "valor": 3370.91,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -68410,7 +68410,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 13",
-      "valor": 3370.91,
+      "valor": 4917.69,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -69030,7 +69030,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 13",
-      "valor": 200.0,
+      "valor": 198.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -69040,7 +69040,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 13",
-      "valor": 198.0,
+      "valor": 200.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -69440,16 +69440,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 686.7884657,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 0.3484657498
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 14",
       "valor": 1875.371534,
       "mes": "2025-11",
       "grupo": "Materiais",
@@ -69460,12 +69450,42 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
+      "valor": 686.7884657,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 0.3484657498
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
       "valor": 1000.0,
       "mes": "2026-01",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
       "plano_de_conta": "Mão de Obra Terceirizada",
       "fornecedor": "Cleudesson de Meira Lima (cerâmica)",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 45.47051248,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 2144.527815,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
       "juros_multa": 0.0
     },
     {
@@ -69480,13 +69500,13 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 40.88637857,
+      "valor": 2254.951673,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
       "fornecedor": "Center Pisos",
-      "juros_multa": 0.3068910504
+      "juros_multa": 0.0
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
@@ -69500,33 +69520,13 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 2144.527815,
+      "valor": 40.88637857,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
       "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 14",
-      "valor": 2254.951673,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 14",
-      "valor": 45.47051248,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
+      "juros_multa": 0.3068910504
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
@@ -69760,16 +69760,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 5881.72,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "TINTAS ACRIL PLUS",
-      "juros_multa": 25.32
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 14",
       "valor": 2880.0,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -69777,6 +69767,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "TINTAS ACRIL PLUS",
       "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 5881.72,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "TINTAS ACRIL PLUS",
+      "juros_multa": 25.32
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
@@ -69810,7 +69810,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 2540.0,
+      "valor": 180.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -69820,7 +69820,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 180.0,
+      "valor": 2540.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -69970,7 +69970,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 54.18,
+      "valor": 47.6,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -69980,7 +69980,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 47.6,
+      "valor": 54.18,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -70000,7 +70000,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 44.3,
+      "valor": 13.16,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -70010,7 +70010,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 13.16,
+      "valor": 44.3,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -70310,7 +70310,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 4000.0,
+      "valor": 2550.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -70320,7 +70320,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 2550.0,
+      "valor": 4000.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -70500,16 +70500,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 296.52,
-      "mes": "2025-10",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 14",
       "valor": 575.4,
       "mes": "2025-10",
       "grupo": "Materiais",
@@ -70521,6 +70511,16 @@
     {
       "cc": "RPB 24 QD 26A LT 14",
       "valor": 5796.95,
+      "mes": "2025-10",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 296.52,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -70660,7 +70660,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 14.9,
+      "valor": 39.8,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -70670,7 +70670,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 39.8,
+      "valor": 14.9,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -71060,16 +71060,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 550.5370882,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 0.977088198
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 14",
       "valor": 1139.802912,
       "mes": "2025-11",
       "grupo": "Materiais",
@@ -71077,6 +71067,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 2.022911802
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 550.5370882,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 0.977088198
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
@@ -71330,16 +71330,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 371.9,
-      "mes": "2026-04",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 14",
       "valor": 605.07,
       "mes": "2026-04",
       "grupo": "Materiais",
@@ -71350,7 +71340,17 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 198.12,
+      "valor": 371.9,
+      "mes": "2026-04",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 14",
+      "valor": 276.26,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -71360,7 +71360,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 14",
-      "valor": 276.26,
+      "valor": 198.12,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -71530,16 +71530,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 1413.972491,
-      "mes": "2025-10",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 35.84249142
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 17",
       "valor": 840.9675086,
       "mes": "2025-10",
       "grupo": "Materiais",
@@ -71547,6 +71537,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 21.31750858
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 1413.972491,
+      "mes": "2025-10",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 35.84249142
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
@@ -71710,7 +71710,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 30.8,
+      "valor": 137.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -71720,7 +71720,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 137.0,
+      "valor": 30.8,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -71890,6 +71890,16 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
+      "valor": 345.0,
+      "mes": "2025-10",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Flex Impermeabilizantes",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
       "valor": 30.0,
       "mes": "2025-10",
       "grupo": "Materiais",
@@ -71901,16 +71911,6 @@
     {
       "cc": "RPB 24 QD 26A LT 17",
       "valor": 945.0,
-      "mes": "2025-10",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Flex Impermeabilizantes",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 17",
-      "valor": 345.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -72040,16 +72040,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 369.1265435,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 11.84654348
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 17",
       "valor": 58.06345652,
       "mes": "2026-01",
       "grupo": "Materiais",
@@ -72057,6 +72047,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 1.863456515
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 369.1265435,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 11.84654348
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
@@ -72250,6 +72250,16 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
+      "valor": 66.65,
+      "mes": "2025-09",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
       "valor": 609.6,
       "mes": "2025-09",
       "grupo": "Materiais",
@@ -72261,16 +72271,6 @@
     {
       "cc": "RPB 24 QD 26A LT 17",
       "valor": 76.2,
-      "mes": "2025-09",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 17",
-      "valor": 66.65,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -72640,7 +72640,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 832.0,
+      "valor": 880.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -72650,7 +72650,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 880.0,
+      "valor": 832.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -72890,7 +72890,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 4000.0,
+      "valor": 2540.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -72900,7 +72900,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 2540.0,
+      "valor": 4000.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73450,27 +73450,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 1690.0,
-      "mes": "2025-09",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Bruto Materiais para Construção",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 17",
       "valor": 715.0,
-      "mes": "2025-09",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Bruto Materiais para Construção",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 17",
-      "valor": 552.5,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73490,6 +73470,26 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
+      "valor": 552.5,
+      "mes": "2025-09",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Bruto Materiais para Construção",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 1690.0,
+      "mes": "2025-09",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Bruto Materiais para Construção",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
       "valor": 29.0,
       "mes": "2026-01",
       "grupo": "Materiais",
@@ -73500,7 +73500,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 3400.0,
+      "valor": 1750.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73510,7 +73510,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 1750.0,
+      "valor": 3400.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73530,16 +73530,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 62.58005386,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 8.40005386
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 17",
       "valor": 27.48994614,
       "mes": "2026-01",
       "grupo": "Materiais",
@@ -73550,7 +73540,17 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 37.8,
+      "valor": 62.58005386,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 8.40005386
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
+      "valor": 25.2,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73560,7 +73560,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 25.2,
+      "valor": 37.8,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73650,7 +73650,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 10.0,
+      "valor": 55.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73660,7 +73660,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
-      "valor": 55.0,
+      "valor": 10.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73720,6 +73720,16 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 17",
+      "valor": 2400.0,
+      "mes": "2025-10",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Madeireira Esperança",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 17",
       "valor": 405.0,
       "mes": "2025-10",
       "grupo": "Materiais",
@@ -73731,16 +73741,6 @@
     {
       "cc": "RPB 24 QD 26A LT 17",
       "valor": 250.0,
-      "mes": "2025-10",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Madeireira Esperança",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 17",
-      "valor": 2400.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73810,7 +73810,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 07",
-      "valor": 1850.0,
+      "valor": 1950.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -73820,7 +73820,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 07",
-      "valor": 1950.0,
+      "valor": 1850.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -74410,7 +74410,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 07",
-      "valor": 375.0,
+      "valor": 2650.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -74420,7 +74420,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 07",
-      "valor": 2650.0,
+      "valor": 375.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -74460,7 +74460,37 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 07",
+      "valor": 288.5166786,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 07",
+      "valor": 4582.903321,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 07",
       "valor": 156.356572,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 07",
+      "valor": 3260.740107,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -74490,36 +74520,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 07",
-      "valor": 3260.740107,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 07",
-      "valor": 4582.903321,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 07",
-      "valor": 288.5166786,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 07",
       "valor": 756.9,
       "mes": "2026-04",
       "grupo": "Materiais",
@@ -74540,26 +74540,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 07",
-      "valor": 2086.872572,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Rocha Mármores e Granitos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 07",
-      "valor": 348.1274281,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Rocha Mármores e Granitos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 07",
       "valor": 3428.127428,
       "mes": "2026-05",
       "grupo": "Materiais",
@@ -74570,7 +74550,27 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 07",
+      "valor": 2086.872572,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Rocha Mármores e Granitos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 07",
       "valor": 571.8725719,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Rocha Mármores e Granitos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 07",
+      "valor": 348.1274281,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -74820,16 +74820,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
-      "valor": 9.0,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Reembolso Eng Isaac",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 16",
       "valor": 9.9,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -74841,6 +74831,16 @@
     {
       "cc": "RPB 24 QD 26A LT 16",
       "valor": 4.0,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Reembolso Eng Isaac",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
+      "valor": 9.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -74930,7 +74930,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
-      "valor": 15.4,
+      "valor": 11.8,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -74940,7 +74940,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
-      "valor": 11.8,
+      "valor": 15.4,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -76020,7 +76020,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
-      "valor": 410.62,
+      "valor": 1808.16,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -76030,7 +76030,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
-      "valor": 1808.16,
+      "valor": 410.62,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -76410,16 +76410,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
-      "valor": 369.1265435,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 11.84654348
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 16",
       "valor": 58.06345652,
       "mes": "2026-01",
       "grupo": "Materiais",
@@ -76427,6 +76417,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 1.863456515
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
+      "valor": 369.1265435,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 11.84654348
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
@@ -76620,7 +76620,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
-      "valor": 3400.0,
+      "valor": 1750.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -76630,7 +76630,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
-      "valor": 1750.0,
+      "valor": 3400.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -76710,6 +76710,16 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 16",
+      "valor": 4666.09,
+      "mes": "2026-01",
+      "grupo": "Outros",
+      "categoria": "Outras Despesas",
+      "plano_de_conta": "Outras Despesas",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 16",
       "valor": 124.5,
       "mes": "2026-01",
       "grupo": "Outros",
@@ -76721,16 +76731,6 @@
     {
       "cc": "RPB 24 QD 26A LT 16",
       "valor": 4575.69,
-      "mes": "2026-01",
-      "grupo": "Outros",
-      "categoria": "Outras Despesas",
-      "plano_de_conta": "Outras Despesas",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 16",
-      "valor": 4666.09,
       "mes": "2026-01",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -77690,16 +77690,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 06",
-      "valor": 3428.127428,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Rocha Mármores e Granitos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 06",
       "valor": 2086.872572,
       "mes": "2026-05",
       "grupo": "Materiais",
@@ -77710,7 +77700,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 06",
-      "valor": 571.8725719,
+      "valor": 3428.127428,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -77721,6 +77711,16 @@
     {
       "cc": "RPB 24 QD 26A LT 06",
       "valor": 348.1274281,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Rocha Mármores e Granitos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 06",
+      "valor": 571.8725719,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -78330,16 +78330,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 686.7884657,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 0.3484657498
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 15",
       "valor": 1875.371534,
       "mes": "2025-11",
       "grupo": "Materiais",
@@ -78347,6 +78337,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Th Distribuidora",
       "juros_multa": 0.9515342502
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 686.7884657,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 0.3484657498
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
@@ -78410,7 +78410,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 3400.0,
+      "valor": 1750.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -78420,7 +78420,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 1750.0,
+      "valor": 3400.0,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -78480,7 +78480,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 2522.5,
+      "valor": 4000.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -78490,7 +78490,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 4000.0,
+      "valor": 2522.5,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -78810,7 +78810,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 2540.0,
+      "valor": 180.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -78820,7 +78820,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 180.0,
+      "valor": 2540.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -78980,7 +78980,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 580.38,
+      "valor": 373.38,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -78990,7 +78990,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 373.38,
+      "valor": 580.38,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -79090,7 +79090,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 37.8,
+      "valor": 25.2,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -79100,7 +79100,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 25.2,
+      "valor": 37.8,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -79180,6 +79180,16 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
+      "valor": 47.6,
+      "mes": "2026-01",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Th Distribuidora",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
       "valor": 54.18,
       "mes": "2026-01",
       "grupo": "Materiais",
@@ -79190,12 +79200,12 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 47.6,
-      "mes": "2026-01",
+      "valor": 345.0,
+      "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
+      "fornecedor": "Flex Impermeabilizantes",
       "juros_multa": 0.0
     },
     {
@@ -79211,16 +79221,6 @@
     {
       "cc": "RPB 24 QD 26A LT 15",
       "valor": 945.0,
-      "mes": "2025-10",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Flex Impermeabilizantes",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 15",
-      "valor": 345.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -79260,7 +79260,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 4141.68,
+      "valor": 4243.18,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -79270,7 +79270,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 4243.18,
+      "valor": 4141.68,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -79490,7 +79490,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 179.7,
+      "valor": 137.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -79500,7 +79500,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 137.0,
+      "valor": 179.7,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -79560,16 +79560,6 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 1120.360687,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 2.420686926
-    },
-    {
-      "cc": "RPB 24 QD 26A LT 15",
       "valor": 221.8393131,
       "mes": "2025-11",
       "grupo": "Materiais",
@@ -79577,6 +79567,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 0.479313074
+    },
+    {
+      "cc": "RPB 24 QD 26A LT 15",
+      "valor": 1120.360687,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 2.420686926
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
@@ -80020,7 +80020,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 832.0,
+      "valor": 880.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -80030,7 +80030,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 880.0,
+      "valor": 832.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -80200,7 +80200,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 311.3,
+      "valor": 1556.5,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -80210,7 +80210,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 1556.5,
+      "valor": 311.3,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -80350,7 +80350,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 162.5,
+      "valor": 812.5,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -80360,7 +80360,7 @@
     },
     {
       "cc": "RPB 24 QD 26A LT 15",
-      "valor": 812.5,
+      "valor": 162.5,
       "mes": "2025-09",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -84660,7 +84660,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 20.0,
+      "valor": 5335.0,
       "mes": "2025-09",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -84670,7 +84670,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 5335.0,
+      "valor": 20.0,
       "mes": "2025-09",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -84940,7 +84940,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 880.6231114,
+      "valor": 52.88455068,
       "mes": "2025-12",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
@@ -84950,23 +84950,13 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 2492.12818,
+      "valor": 3018.130657,
       "mes": "2025-12",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
       "plano_de_conta": "Outras Despesas",
       "fornecedor": "Center Pisos",
-      "juros_multa": 0.004403115557
-    },
-    {
-      "cc": "RPB 24 QD 28 LT 01",
-      "valor": 1066.492338,
-      "mes": "2025-12",
-      "grupo": "Outros",
-      "categoria": "Outras Despesas",
-      "plano_de_conta": "Outras Despesas",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
+      "juros_multa": 0.00533246169
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
@@ -84990,16 +84980,6 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 3018.130657,
-      "mes": "2025-12",
-      "grupo": "Outros",
-      "categoria": "Outras Despesas",
-      "plano_de_conta": "Outras Despesas",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.00533246169
-    },
-    {
-      "cc": "RPB 24 QD 28 LT 01",
       "valor": 52.88455068,
       "mes": "2025-12",
       "grupo": "Outros",
@@ -85020,13 +85000,33 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 52.88455068,
+      "valor": 880.6231114,
       "mes": "2025-12",
       "grupo": "Outros",
       "categoria": "Outras Despesas",
       "plano_de_conta": "Outras Despesas",
       "fornecedor": "Center Pisos",
       "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 1066.492338,
+      "mes": "2025-12",
+      "grupo": "Outros",
+      "categoria": "Outras Despesas",
+      "plano_de_conta": "Outras Despesas",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 2492.12818,
+      "mes": "2025-12",
+      "grupo": "Outros",
+      "categoria": "Outras Despesas",
+      "plano_de_conta": "Outras Despesas",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.004403115557
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
@@ -85220,16 +85220,6 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 3.99,
-      "mes": "2026-06",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Reembolso Eng Isaac",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 28 LT 01",
       "valor": 108.27,
       "mes": "2026-06",
       "grupo": "Materiais",
@@ -85240,7 +85230,17 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 44.7,
+      "valor": 3.99,
+      "mes": "2026-06",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Reembolso Eng Isaac",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 19.9,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -85250,7 +85250,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 19.9,
+      "valor": 44.7,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -85330,7 +85330,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 51.3,
+      "valor": 172.96,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -85340,7 +85340,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 172.96,
+      "valor": 51.3,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -85470,7 +85470,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 1270.0,
+      "valor": 450.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -85480,7 +85480,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 450.0,
+      "valor": 1270.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -85890,16 +85890,6 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 389.024747,
-      "mes": "2025-10",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 3.744747027
-    },
-    {
-      "cc": "RPB 24 QD 28 LT 01",
       "valor": 753.715253,
       "mes": "2025-10",
       "grupo": "Materiais",
@@ -85907,6 +85897,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Br Aço",
       "juros_multa": 7.255252973
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 389.024747,
+      "mes": "2025-10",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 3.744747027
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
@@ -86310,17 +86310,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 44.69,
-      "mes": "2026-02",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Ferragista",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "RPB 24 QD 28 LT 01",
-      "valor": 16.0,
+      "valor": 27.91,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -86340,7 +86330,17 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 27.91,
+      "valor": 44.69,
+      "mes": "2026-02",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Ferragista",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "RPB 24 QD 28 LT 01",
+      "valor": 16.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -86490,7 +86490,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 95.96,
+      "valor": 348.56,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -86500,7 +86500,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 348.56,
+      "valor": 95.96,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -86670,7 +86670,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 7800.0,
+      "valor": 4200.0,
       "mes": "2026-05",
       "grupo": "Outros",
       "categoria": "Comissão Venda de Casa",
@@ -86680,7 +86680,7 @@
     },
     {
       "cc": "RPB 24 QD 28 LT 01",
-      "valor": 4200.0,
+      "valor": 7800.0,
       "mes": "2026-05",
       "grupo": "Outros",
       "categoria": "Comissão Venda de Casa",
@@ -86750,7 +86750,7 @@
     },
     {
       "cc": "RPB 24 QD 29 LT 42",
-      "valor": 11.9,
+      "valor": 36.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -86760,7 +86760,7 @@
     },
     {
       "cc": "RPB 24 QD 29 LT 42",
-      "valor": 36.0,
+      "valor": 11.9,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -87030,7 +87030,7 @@
     },
     {
       "cc": "RPB 24 QD 29 LT 42",
-      "valor": 14.7,
+      "valor": 26.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -87040,7 +87040,7 @@
     },
     {
       "cc": "RPB 24 QD 29 LT 42",
-      "valor": 26.0,
+      "valor": 14.7,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -87460,7 +87460,7 @@
     },
     {
       "cc": "RPB 24 QD 29 LT 42",
-      "valor": 2277.5,
+      "valor": 4000.0,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -87470,7 +87470,7 @@
     },
     {
       "cc": "RPB 24 QD 29 LT 42",
-      "valor": 4000.0,
+      "valor": 2277.5,
       "mes": "2025-10",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -88020,7 +88020,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 2022.22,
+      "valor": 1905.73,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -88030,7 +88030,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 1905.73,
+      "valor": 2022.22,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -88110,7 +88110,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 365.0,
+      "valor": 610.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -88120,7 +88120,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 610.0,
+      "valor": 365.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -88460,7 +88460,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 3200.0,
+      "valor": 60.0,
       "mes": "2025-12",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -88470,7 +88470,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 60.0,
+      "valor": 3200.0,
       "mes": "2025-12",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -88540,16 +88540,6 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 280.8088143,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 0.5988143225
-    },
-    {
-      "cc": "TB 21 QD 50 LT 32",
       "valor": 1079.121186,
       "mes": "2025-12",
       "grupo": "Materiais",
@@ -88557,6 +88547,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 2.301185678
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 280.8088143,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 0.5988143225
     },
     {
       "cc": "TB 21 QD 50 LT 32",
@@ -88920,16 +88920,6 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 2557.5,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Rocha Mármores e Granitos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 21 QD 50 LT 32",
       "valor": 4000.0,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -88940,17 +88930,17 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 337.4,
-      "mes": "2025-11",
+      "valor": 2557.5,
+      "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
+      "fornecedor": "Rocha Mármores e Granitos",
       "juros_multa": 0.0
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 275.34,
+      "valor": 337.4,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -88980,22 +88970,12 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 64.76584557,
-      "mes": "2026-03",
+      "valor": 275.34,
+      "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 21 QD 50 LT 32",
-      "valor": 1319.479191,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
+      "fornecedor": "Br Aço",
       "juros_multa": 0.0
     },
     {
@@ -89020,7 +89000,17 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 2840.165037,
+      "valor": 64.76584557,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 1319.479191,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89040,7 +89030,17 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 197.59,
+      "valor": 2840.165037,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 21 QD 50 LT 32",
+      "valor": 200.95,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Conta de energia",
@@ -89050,7 +89050,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 200.95,
+      "valor": 197.59,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Conta de energia",
@@ -89130,7 +89130,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 325.0,
+      "valor": 1500.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89140,7 +89140,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 32",
-      "valor": 1500.0,
+      "valor": 325.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89240,16 +89240,6 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 2043.273573,
-      "mes": "2026-01",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Th Distribuidora",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 21 QD 50 LT 26",
       "valor": 2760.796427,
       "mes": "2026-01",
       "grupo": "Materiais",
@@ -89260,17 +89250,17 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 4303.05,
-      "mes": "2026-03",
+      "valor": 2043.273573,
+      "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
+      "fornecedor": "Th Distribuidora",
       "juros_multa": 0.0
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 86.05,
+      "valor": 4303.05,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89291,6 +89281,16 @@
     {
       "cc": "TB 21 QD 50 LT 26",
       "valor": 743.79,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 21 QD 50 LT 26",
+      "valor": 86.05,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89450,7 +89450,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 180.0,
+      "valor": 2540.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89460,7 +89460,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 2540.0,
+      "valor": 180.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89570,7 +89570,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 4000.0,
+      "valor": 2557.5,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89580,7 +89580,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 2557.5,
+      "valor": 4000.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89860,7 +89860,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 375.0,
+      "valor": 550.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -89870,7 +89870,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 550.0,
+      "valor": 375.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -90140,7 +90140,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 60.0,
+      "valor": 3200.0,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -90150,7 +90150,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 3200.0,
+      "valor": 60.0,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -90380,7 +90380,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 3337.68,
+      "valor": 153.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -90400,7 +90400,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 153.0,
+      "valor": 275.34,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -90410,7 +90410,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 26",
-      "valor": 275.34,
+      "valor": 3337.68,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -93670,7 +93670,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 180.0,
+      "valor": 2540.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -93690,7 +93690,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 2540.0,
+      "valor": 180.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -94280,7 +94280,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 395.0,
+      "valor": 610.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -94290,7 +94290,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 610.0,
+      "valor": 395.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -94320,17 +94320,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 2805.56,
-      "mes": "2025-11",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 21 QD 50 LT 25",
-      "valor": 3641.08,
+      "valor": 275.34,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -94350,7 +94340,17 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 275.34,
+      "valor": 2805.56,
+      "mes": "2025-11",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 21 QD 50 LT 25",
+      "valor": 3641.08,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -94500,7 +94500,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 208.95,
+      "valor": 4141.68,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -94510,7 +94510,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 4141.68,
+      "valor": 208.95,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -94570,7 +94570,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 60.0,
+      "valor": 3200.0,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -94580,7 +94580,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 3200.0,
+      "valor": 60.0,
       "mes": "2026-02",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -94600,7 +94600,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 200.84,
+      "valor": 173.16,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -94610,7 +94610,7 @@
     },
     {
       "cc": "TB 21 QD 50 LT 25",
-      "valor": 173.16,
+      "valor": 200.84,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -97040,7 +97040,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 34",
-      "valor": 1500.0,
+      "valor": 525.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -97050,7 +97050,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 34",
-      "valor": 525.0,
+      "valor": 1500.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -97110,7 +97110,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 34",
-      "valor": 2430.63,
+      "valor": 3741.57,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -97120,7 +97120,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 34",
-      "valor": 3741.57,
+      "valor": 2430.63,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -97810,23 +97810,13 @@
     },
     {
       "cc": "TB 21 QD 51 LT 34",
-      "valor": 2505.907969,
+      "valor": 331.233048,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
       "fornecedor": "Goyaço",
-      "juros_multa": 61.90796899
-    },
-    {
-      "cc": "TB 21 QD 51 LT 34",
-      "valor": 499.0796661,
-      "mes": "2026-02",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Goyaço",
-      "juros_multa": 12.32966608
+      "juros_multa": 8.183048029
     },
     {
       "cc": "TB 21 QD 51 LT 34",
@@ -97840,13 +97830,23 @@
     },
     {
       "cc": "TB 21 QD 51 LT 34",
-      "valor": 331.233048,
+      "valor": 499.0796661,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
       "plano_de_conta": "Materiais",
       "fornecedor": "Goyaço",
-      "juros_multa": 8.183048029
+      "juros_multa": 12.32966608
+    },
+    {
+      "cc": "TB 21 QD 51 LT 34",
+      "valor": 2505.907969,
+      "mes": "2026-02",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Goyaço",
+      "juros_multa": 61.90796899
     },
     {
       "cc": "TB 21 QD 51 LT 34",
@@ -98050,7 +98050,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 183.54,
+      "valor": 425.02,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98070,7 +98070,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 425.02,
+      "valor": 183.54,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98290,7 +98290,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 525.0,
+      "valor": 1500.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98300,7 +98300,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 1500.0,
+      "valor": 525.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98510,16 +98510,6 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 180.0,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "FS PRE-MOLDADOS",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 21 QD 51 LT 35",
       "valor": 2540.0,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -98531,6 +98521,16 @@
     {
       "cc": "TB 21 QD 51 LT 35",
       "valor": 132.0,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "FS PRE-MOLDADOS",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 21 QD 51 LT 35",
+      "valor": 180.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98690,7 +98690,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 2850.84,
+      "valor": 280.54,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98700,7 +98700,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 280.54,
+      "valor": 2850.84,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98890,7 +98890,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 395.0,
+      "valor": 610.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98900,7 +98900,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 610.0,
+      "valor": 395.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98940,7 +98940,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 2802.0,
+      "valor": 4000.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -98950,7 +98950,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 35",
-      "valor": 4000.0,
+      "valor": 2802.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -102640,7 +102640,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 4970.81,
+      "valor": 3415.43,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -102650,7 +102650,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 3415.43,
+      "valor": 4970.81,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103040,7 +103040,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 13.0,
+      "valor": 26.98,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103050,7 +103050,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 26.98,
+      "valor": 13.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103400,16 +103400,6 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 300.2717838,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Goyaço",
-      "juros_multa": 6.271783758
-    },
-    {
-      "cc": "ATALANTA QD 01 LT 21",
       "valor": 4883.808216,
       "mes": "2025-12",
       "grupo": "Materiais",
@@ -103417,6 +103407,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Goyaço",
       "juros_multa": 102.0082162
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 21",
+      "valor": 300.2717838,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Goyaço",
+      "juros_multa": 6.271783758
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
@@ -103550,7 +103550,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 3577.0,
+      "valor": 4000.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103560,7 +103560,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 4000.0,
+      "valor": 3577.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103660,7 +103660,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 3328.839603,
+      "valor": 2182.740397,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103670,7 +103670,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 21",
-      "valor": 2182.740397,
+      "valor": 3328.839603,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103750,27 +103750,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 3215.554257,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "ATALANTA QD 01 LT 22",
       "valor": 1206.432473,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "ATALANTA QD 01 LT 22",
-      "valor": 1758.745743,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103800,7 +103780,27 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
+      "valor": 3215.554257,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 22",
       "valor": 86.82178489,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 22",
+      "valor": 1758.745743,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103890,7 +103890,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 94.32,
+      "valor": 295.08,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -103900,7 +103900,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 295.08,
+      "valor": 94.32,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -104110,7 +104110,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 53.8,
+      "valor": 77.7,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -104120,7 +104120,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 77.7,
+      "valor": 53.8,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -104600,7 +104600,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 1375.0,
+      "valor": 286.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -104610,7 +104610,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 286.0,
+      "valor": 1375.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -104780,7 +104780,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 4000.0,
+      "valor": 3577.02,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -104790,7 +104790,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 22",
-      "valor": 3577.02,
+      "valor": 4000.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -105540,7 +105540,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 4000.0,
+      "valor": 3577.02,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -105550,7 +105550,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 3577.02,
+      "valor": 4000.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -105820,7 +105820,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 77.7,
+      "valor": 53.8,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -105830,7 +105830,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 53.8,
+      "valor": 77.7,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -106010,7 +106010,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 468.0,
+      "valor": 1035.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -106020,7 +106020,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 1035.0,
+      "valor": 468.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -106190,16 +106190,6 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 245.8,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Center Pisos",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "ATALANTA QD 01 LT 23",
       "valor": 4970.81,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -106211,6 +106201,16 @@
     {
       "cc": "ATALANTA QD 01 LT 23",
       "valor": 3415.43,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Center Pisos",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "ATALANTA QD 01 LT 23",
+      "valor": 245.8,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -106480,7 +106480,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 94.32,
+      "valor": 295.08,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -106490,7 +106490,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 23",
-      "valor": 295.08,
+      "valor": 94.32,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -106620,7 +106620,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 2395.14,
+      "valor": 2234.25,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -106630,7 +106630,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 2234.25,
+      "valor": 2395.14,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -107130,7 +107130,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 1430.0,
+      "valor": 770.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -107140,7 +107140,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 770.0,
+      "valor": 1430.0,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -107520,7 +107520,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 3425.0,
+      "valor": 4000.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -107530,7 +107530,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 4000.0,
+      "valor": 3425.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -107730,7 +107730,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 5701.58,
+      "valor": 302.12,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -107740,7 +107740,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 302.12,
+      "valor": 5701.58,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -107790,7 +107790,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 53.8,
+      "valor": 77.7,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -107800,7 +107800,7 @@
     },
     {
       "cc": "ATALANTA QD 01 LT 24",
-      "valor": 77.7,
+      "valor": 53.8,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -108200,7 +108200,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 33",
-      "valor": 4167.63,
+      "valor": 146.7,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -108220,7 +108220,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 33",
-      "valor": 146.7,
+      "valor": 4167.63,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -109460,7 +109460,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 33",
-      "valor": 5586.2,
+      "valor": 343.0,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -109470,7 +109470,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 33",
-      "valor": 343.0,
+      "valor": 5586.2,
       "mes": "2025-11",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -109920,7 +109920,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 34",
-      "valor": 46.8,
+      "valor": 43.8,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -109930,7 +109930,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 34",
-      "valor": 43.8,
+      "valor": 46.8,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -110230,7 +110230,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 34",
-      "valor": 3929.15,
+      "valor": 268.35,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -110240,7 +110240,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 34",
-      "valor": 268.35,
+      "valor": 3929.15,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -111540,7 +111540,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 35",
-      "valor": 2354.97,
+      "valor": 1449.2,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -111550,7 +111550,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 35",
-      "valor": 1449.2,
+      "valor": 2354.97,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -111940,7 +111940,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 35",
-      "valor": 3490.44,
+      "valor": 122.9,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -111950,7 +111950,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 35",
-      "valor": 122.9,
+      "valor": 3490.44,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -111970,7 +111970,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 35",
-      "valor": 14.1,
+      "valor": 178.4,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -111980,7 +111980,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 35",
-      "valor": 178.4,
+      "valor": 14.1,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -112500,7 +112500,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 2354.96,
+      "valor": 1436.43,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -112510,7 +112510,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 1436.43,
+      "valor": 2354.96,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -112650,7 +112650,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 355.0,
+      "valor": 648.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -112660,7 +112660,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 648.0,
+      "valor": 355.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -112990,7 +112990,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 300.0,
+      "valor": 1600.0,
       "mes": "2026-05",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -113010,7 +113010,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 1600.0,
+      "valor": 300.0,
       "mes": "2026-05",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -113210,7 +113210,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 733.48,
+      "valor": 13.55,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -113220,7 +113220,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 13.55,
+      "valor": 733.48,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -113300,7 +113300,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 53.8,
+      "valor": 57.8,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -113310,7 +113310,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 57.8,
+      "valor": 53.8,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -113380,7 +113380,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 4765.17,
+      "valor": 185.15,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -113390,7 +113390,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 36",
-      "valor": 185.15,
+      "valor": 4765.17,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -114040,7 +114040,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 37",
-      "valor": 627.25,
+      "valor": 4294.5,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -114050,7 +114050,7 @@
     },
     {
       "cc": "APOLO LYKEIOS QD 01 LT 37",
-      "valor": 4294.5,
+      "valor": 627.25,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -114360,7 +114360,7 @@
     },
     {
       "cc": "PATHERNON QD 01 LT 26",
-      "valor": 3100.0,
+      "valor": 1150.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -114370,7 +114370,7 @@
     },
     {
       "cc": "PATHERNON QD 01 LT 26",
-      "valor": 1150.0,
+      "valor": 3100.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -114600,7 +114600,7 @@
     },
     {
       "cc": "PATHERNON QD 01 LT 26",
-      "valor": 248.4,
+      "valor": 5574.66,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -114610,7 +114610,7 @@
     },
     {
       "cc": "PATHERNON QD 01 LT 26",
-      "valor": 5574.66,
+      "valor": 248.4,
       "mes": "2025-12",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -114950,16 +114950,6 @@
     },
     {
       "cc": "PATHERNON QD 01 LT 26",
-      "valor": 13.20978716,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Total Atacadista",
-      "juros_multa": 1.50978716
-    },
-    {
-      "cc": "PATHERNON QD 01 LT 26",
       "valor": 74.24577809,
       "mes": "2025-12",
       "grupo": "Materiais",
@@ -114987,6 +114977,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Total Atacadista",
       "juros_multa": 67.4758723
+    },
+    {
+      "cc": "PATHERNON QD 01 LT 26",
+      "valor": 13.20978716,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Total Atacadista",
+      "juros_multa": 1.50978716
     },
     {
       "cc": "PATHERNON QD 01 LT 26",
@@ -115330,7 +115330,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 1630.4,
+      "valor": 74.97,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -115340,7 +115340,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 74.97,
+      "valor": 1630.4,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -115530,7 +115530,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 100.0,
+      "valor": 1500.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -115540,7 +115540,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 1500.0,
+      "valor": 100.0,
       "mes": "2026-01",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -115570,7 +115570,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 132.65,
+      "valor": 89.7,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -115580,7 +115580,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 89.7,
+      "valor": 132.65,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -116120,7 +116120,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 39.8,
+      "valor": 16.08,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -116130,7 +116130,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 16.08,
+      "valor": 39.8,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -116240,16 +116240,6 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 393.6189805,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 5.188980466
-    },
-    {
-      "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
       "valor": 7097.23102,
       "mes": "2025-12",
       "grupo": "Materiais",
@@ -116257,6 +116247,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Br Aço",
       "juros_multa": 93.56101953
+    },
+    {
+      "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+      "valor": 393.6189805,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 5.188980466
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
@@ -116270,7 +116270,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 92.46399622,
+      "valor": 3085.502488,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -116280,7 +116280,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 1822.033516,
+      "valor": 5116.787512,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -116310,7 +116310,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 5116.787512,
+      "valor": 92.46399622,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -116320,7 +116320,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 3085.502488,
+      "valor": 1822.033516,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -116460,16 +116460,6 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
-      "valor": 588.0061273,
-      "mes": "2025-12",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Flex Impermeabilizantes",
-      "juros_multa": 16.00612729
-    },
-    {
-      "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
       "valor": 364.9338727,
       "mes": "2025-12",
       "grupo": "Materiais",
@@ -116477,6 +116467,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Flex Impermeabilizantes",
       "juros_multa": 9.933872708
+    },
+    {
+      "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
+      "valor": 588.0061273,
+      "mes": "2025-12",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Flex Impermeabilizantes",
+      "juros_multa": 16.00612729
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2",
@@ -116940,7 +116940,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 60.0,
+      "valor": 750.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -116950,7 +116950,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 750.0,
+      "valor": 60.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117100,7 +117100,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 1210.0,
+      "valor": 900.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117110,7 +117110,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 900.0,
+      "valor": 1210.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117160,7 +117160,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 730.0,
+      "valor": 630.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117170,7 +117170,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 630.0,
+      "valor": 730.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117670,7 +117670,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 1750.0,
+      "valor": 750.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117680,7 +117680,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 750.0,
+      "valor": 1750.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117820,7 +117820,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 621.25,
+      "valor": 4894.25,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117830,7 +117830,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 4894.25,
+      "valor": 621.25,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117950,7 +117950,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 880.0,
+      "valor": 1750.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -117970,7 +117970,7 @@
     },
     {
       "cc": "DONA MORENA QD 18 LT 8-11 B1",
-      "valor": 1750.0,
+      "valor": 880.0,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -118480,6 +118480,16 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
+      "valor": 5115.4,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
       "valor": 588.4,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -118491,16 +118501,6 @@
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
       "valor": 474.76,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 5115.4,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -118800,7 +118800,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 2927.4,
+      "valor": 2348.5,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -118810,7 +118810,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 2348.5,
+      "valor": 2927.4,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -118940,7 +118940,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 4986.26,
+      "valor": 6196.27,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -118950,7 +118950,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 6196.27,
+      "valor": 4986.26,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -119040,7 +119040,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 7000.0,
+      "valor": 833.95,
       "mes": "2026-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -119050,7 +119050,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 833.95,
+      "valor": 7000.0,
       "mes": "2026-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -119200,7 +119200,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 2000.0,
+      "valor": 650.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -119210,7 +119210,7 @@
     },
     {
       "cc": "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3",
-      "valor": 650.0,
+      "valor": 2000.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -120860,7 +120860,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 37",
-      "valor": 410.0,
+      "valor": 420.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -120870,7 +120870,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 37",
-      "valor": 420.0,
+      "valor": 410.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -121040,16 +121040,6 @@
     },
     {
       "cc": "TB 18 QD 49 LT 37",
-      "valor": 829.8022484,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 13.60224835
-    },
-    {
-      "cc": "TB 18 QD 49 LT 37",
       "valor": 1376.7682,
       "mes": "2026-05",
       "grupo": "Materiais",
@@ -121057,6 +121047,16 @@
       "plano_de_conta": "Materiais",
       "fornecedor": "Br Aço",
       "juros_multa": 22.56819985
+    },
+    {
+      "cc": "TB 18 QD 49 LT 37",
+      "valor": 829.8022484,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 13.60224835
     },
     {
       "cc": "TB 18 QD 49 LT 37",
@@ -121370,7 +121370,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 24",
-      "valor": 704.0,
+      "valor": 1451.83,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -121390,7 +121390,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 24",
-      "valor": 1451.83,
+      "valor": 704.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122120,7 +122120,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 26",
-      "valor": 420.0,
+      "valor": 410.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122130,7 +122130,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 26",
-      "valor": 410.0,
+      "valor": 420.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122250,7 +122250,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 26",
-      "valor": 132.0,
+      "valor": 2760.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122260,7 +122260,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 26",
-      "valor": 2760.0,
+      "valor": 132.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122380,7 +122380,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 26",
-      "valor": 1354.19,
+      "valor": 816.2,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122400,7 +122400,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 26",
-      "valor": 816.2,
+      "valor": 2514.44,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122410,7 +122410,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 26",
-      "valor": 2514.44,
+      "valor": 1354.19,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122690,7 +122690,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 29",
-      "valor": 185.15,
+      "valor": 3371.89,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122700,7 +122700,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 29",
-      "valor": 3371.89,
+      "valor": 185.15,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122790,7 +122790,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 29",
-      "valor": 2275.0,
+      "valor": 1225.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -122800,7 +122800,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 29",
-      "valor": 1225.0,
+      "valor": 2275.0,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -123430,7 +123430,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 29",
-      "valor": 247.3792427,
+      "valor": 81.62029831,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -123440,7 +123440,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 29",
-      "valor": 81.62029831,
+      "valor": 209.110042,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -123460,7 +123460,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 29",
-      "valor": 209.110042,
+      "valor": 247.3792427,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -123670,7 +123670,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
-      "valor": 4000.0,
+      "valor": 2557.5,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -123680,7 +123680,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
-      "valor": 2557.5,
+      "valor": 4000.0,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -124430,8 +124430,8 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
-      "valor": 1700.0,
-      "mes": "2026-04",
+      "valor": 211.0,
+      "mes": "2026-05",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
       "plano_de_conta": "Mão de Obra Terceirizada",
@@ -124440,8 +124440,8 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
-      "valor": 211.0,
-      "mes": "2026-05",
+      "valor": 300.0,
+      "mes": "2026-04",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
       "plano_de_conta": "Mão de Obra Terceirizada",
@@ -124460,7 +124460,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
-      "valor": 390.0,
+      "valor": 1700.0,
       "mes": "2026-04",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -124470,7 +124470,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
-      "valor": 300.0,
+      "valor": 390.0,
       "mes": "2026-04",
       "grupo": "Mão de Obra (Terceirizada)",
       "categoria": "Mão de Obra Terceirizada",
@@ -124500,7 +124500,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
-      "valor": 3823.08,
+      "valor": 2956.94,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -124510,7 +124510,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
-      "valor": 2956.94,
+      "valor": 3823.08,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -124670,6 +124670,16 @@
     },
     {
       "cc": "TB 18 QD 49 LT 27",
+      "valor": 2107.42,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 18 QD 49 LT 27",
       "valor": 1951.41,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -124681,16 +124691,6 @@
     {
       "cc": "TB 18 QD 49 LT 27",
       "valor": 1087.21,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 18 QD 49 LT 27",
-      "valor": 2107.42,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -124900,16 +124900,6 @@
     },
     {
       "cc": "TB 18 QD 49 LT 32",
-      "valor": 758.4,
-      "mes": "2026-03",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 18 QD 49 LT 32",
       "valor": 2260.36,
       "mes": "2026-03",
       "grupo": "Materiais",
@@ -124921,6 +124911,16 @@
     {
       "cc": "TB 18 QD 49 LT 32",
       "valor": 2397.96,
+      "mes": "2026-03",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 18 QD 49 LT 32",
+      "valor": 758.4,
       "mes": "2026-03",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -125060,7 +125060,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 32",
-      "valor": 2599.95,
+      "valor": 2765.33,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -125070,7 +125070,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 32",
-      "valor": 2765.33,
+      "valor": 2599.95,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -125230,17 +125230,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 31",
-      "valor": 3230.03,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 18 QD 49 LT 31",
-      "valor": 708.2,
+      "valor": 2825.68,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -125260,7 +125250,17 @@
     },
     {
       "cc": "TB 18 QD 49 LT 31",
-      "valor": 2825.68,
+      "valor": 3230.03,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 18 QD 49 LT 31",
+      "valor": 708.2,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -126230,7 +126230,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 2867.37,
+      "valor": 3821.7,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -126240,7 +126240,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 3821.7,
+      "valor": 2867.37,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -126280,7 +126280,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 185.15,
+      "valor": 3371.85,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -126300,7 +126300,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 3371.85,
+      "valor": 185.15,
       "mes": "2026-04",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -126360,7 +126360,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 10.32,
+      "valor": 108.54,
       "mes": "2026-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -126370,7 +126370,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 108.54,
+      "valor": 10.32,
       "mes": "2026-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -126560,26 +126560,6 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 2313.785906,
-      "mes": "2026-02",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Goyaço",
-      "juros_multa": 54.22590581
-    },
-    {
-      "cc": "TB 18 QD 49 LT 35",
-      "valor": 356.8634549,
-      "mes": "2026-02",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Goyaço",
-      "juros_multa": 8.363454909
-    },
-    {
-      "cc": "TB 18 QD 49 LT 35",
       "valor": 1468.321597,
       "mes": "2026-02",
       "grupo": "Materiais",
@@ -126600,7 +126580,27 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 4000.0,
+      "valor": 356.8634549,
+      "mes": "2026-02",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Goyaço",
+      "juros_multa": 8.363454909
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 2313.785906,
+      "mes": "2026-02",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Goyaço",
+      "juros_multa": 54.22590581
+    },
+    {
+      "cc": "TB 18 QD 49 LT 35",
+      "valor": 3200.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -126610,7 +126610,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 35",
-      "valor": 3200.0,
+      "valor": 4000.0,
       "mes": "2026-02",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -129890,7 +129890,7 @@
     },
     {
       "cc": "RR 15 QD 02 LT 12",
-      "valor": 333.3,
+      "valor": 5561.95,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -129900,7 +129900,7 @@
     },
     {
       "cc": "RR 15 QD 02 LT 12",
-      "valor": 5561.95,
+      "valor": 333.3,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -130070,7 +130070,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 38",
-      "valor": 72.22,
+      "valor": 266.21,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -130080,7 +130080,7 @@
     },
     {
       "cc": "TB 18 QD 49 LT 38",
-      "valor": 266.21,
+      "valor": 72.22,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -130240,6 +130240,16 @@
     },
     {
       "cc": "TB 18 QD 49 LT 38",
+      "valor": 2716.72,
+      "mes": "2026-05",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 18 QD 49 LT 38",
       "valor": 708.2,
       "mes": "2026-05",
       "grupo": "Materiais",
@@ -130261,16 +130271,6 @@
     {
       "cc": "TB 18 QD 49 LT 38",
       "valor": 244.42,
-      "mes": "2026-05",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 18 QD 49 LT 38",
-      "valor": 2716.72,
       "mes": "2026-05",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -132460,7 +132460,7 @@
     },
     {
       "cc": "TB 19 QD 51 LT 14",
-      "valor": 865.1,
+      "valor": 1567.08,
       "mes": "2026-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -132480,16 +132480,6 @@
     },
     {
       "cc": "TB 19 QD 51 LT 14",
-      "valor": 2531.64,
-      "mes": "2026-06",
-      "grupo": "Materiais",
-      "categoria": "Materiais",
-      "plano_de_conta": "Materiais",
-      "fornecedor": "Br Aço",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "TB 19 QD 51 LT 14",
       "valor": 1581.84,
       "mes": "2026-06",
       "grupo": "Materiais",
@@ -132500,7 +132490,17 @@
     },
     {
       "cc": "TB 19 QD 51 LT 14",
-      "valor": 1567.08,
+      "valor": 2531.64,
+      "mes": "2026-06",
+      "grupo": "Materiais",
+      "categoria": "Materiais",
+      "plano_de_conta": "Materiais",
+      "fornecedor": "Br Aço",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "TB 19 QD 51 LT 14",
+      "valor": 865.1,
       "mes": "2026-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -132990,7 +132990,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 29",
-      "valor": 5871.16,
+      "valor": 865.1,
       "mes": "2026-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -133000,7 +133000,7 @@
     },
     {
       "cc": "TB 21 QD 51 LT 29",
-      "valor": 865.1,
+      "valor": 5871.16,
       "mes": "2026-06",
       "grupo": "Materiais",
       "categoria": "Materiais",
@@ -133300,37 +133300,37 @@
     },
     {
       "cc": "52 QD 81 LT 12",
+      "valor": 407.429072,
+      "mes": "2026-03",
+      "grupo": "Outros",
+      "categoria": "Taxas gerais",
+      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
+      "fornecedor": "Prefeitura de Goiânia",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "52 QD 81 LT 12",
+      "valor": 407.429072,
+      "mes": "2026-03",
+      "grupo": "Outros",
+      "categoria": "Taxas gerais",
+      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
+      "fornecedor": "Prefeitura de Goiânia",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "52 QD 81 LT 12",
+      "valor": 407.429072,
+      "mes": "2026-03",
+      "grupo": "Outros",
+      "categoria": "Taxas gerais",
+      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
+      "fornecedor": "Prefeitura de Goiânia",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "52 QD 81 LT 12",
       "valor": 459.2382335,
-      "mes": "2026-03",
-      "grupo": "Outros",
-      "categoria": "Taxas gerais",
-      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
-      "fornecedor": "Prefeitura de Goiânia",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "52 QD 81 LT 12",
-      "valor": 407.429072,
-      "mes": "2026-03",
-      "grupo": "Outros",
-      "categoria": "Taxas gerais",
-      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
-      "fornecedor": "Prefeitura de Goiânia",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "52 QD 81 LT 12",
-      "valor": 407.429072,
-      "mes": "2026-03",
-      "grupo": "Outros",
-      "categoria": "Taxas gerais",
-      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
-      "fornecedor": "Prefeitura de Goiânia",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "52 QD 81 LT 12",
-      "valor": 407.429072,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Taxas gerais",
@@ -133490,6 +133490,16 @@
     },
     {
       "cc": "52 QD 81 LT 11",
+      "valor": 460.2445506,
+      "mes": "2026-03",
+      "grupo": "Outros",
+      "categoria": "Taxas gerais",
+      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
+      "fornecedor": "Prefeitura de Goiânia",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "52 QD 81 LT 11",
       "valor": 459.2382335,
       "mes": "2026-03",
       "grupo": "Outros",
@@ -133521,16 +133531,6 @@
     {
       "cc": "52 QD 81 LT 11",
       "valor": 407.429072,
-      "mes": "2026-03",
-      "grupo": "Outros",
-      "categoria": "Taxas gerais",
-      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
-      "fornecedor": "Prefeitura de Goiânia",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "52 QD 81 LT 11",
-      "valor": 460.2445506,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Taxas gerais",
@@ -133701,6 +133701,16 @@
     {
       "cc": "52 QD 81 LT 09",
       "valor": 459.2382335,
+      "mes": "2026-03",
+      "grupo": "Outros",
+      "categoria": "Taxas gerais",
+      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
+      "fornecedor": "Prefeitura de Goiânia",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "52 QD 81 LT 09",
+      "valor": 518.7697906,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Taxas gerais",
@@ -133729,16 +133739,6 @@
       "juros_multa": 0.0
     },
     {
-      "cc": "52 QD 81 LT 09",
-      "valor": 518.7697906,
-      "mes": "2026-03",
-      "grupo": "Outros",
-      "categoria": "Taxas gerais",
-      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
-      "fornecedor": "Prefeitura de Goiânia",
-      "juros_multa": 0.0
-    },
-    {
       "cc": "66 QD 81 LT 08",
       "valor": 106000.0,
       "mes": "2026-03",
@@ -133860,26 +133860,6 @@
     },
     {
       "cc": "66 QD 81 LT 08",
-      "valor": 519.9065577,
-      "mes": "2026-03",
-      "grupo": "Outros",
-      "categoria": "Taxas gerais",
-      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
-      "fornecedor": "Prefeitura de Goiânia",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "66 QD 81 LT 08",
-      "valor": 460.2445506,
-      "mes": "2026-03",
-      "grupo": "Outros",
-      "categoria": "Taxas gerais",
-      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
-      "fornecedor": "Prefeitura de Goiânia",
-      "juros_multa": 0.0
-    },
-    {
-      "cc": "66 QD 81 LT 08",
       "valor": 518.7697906,
       "mes": "2026-03",
       "grupo": "Outros",
@@ -133891,6 +133871,26 @@
     {
       "cc": "66 QD 81 LT 08",
       "valor": 460.2445506,
+      "mes": "2026-03",
+      "grupo": "Outros",
+      "categoria": "Taxas gerais",
+      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
+      "fornecedor": "Prefeitura de Goiânia",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "66 QD 81 LT 08",
+      "valor": 460.2445506,
+      "mes": "2026-03",
+      "grupo": "Outros",
+      "categoria": "Taxas gerais",
+      "plano_de_conta": "TAXAS GERAIS - OBRA E AVERBAÇÃO",
+      "fornecedor": "Prefeitura de Goiânia",
+      "juros_multa": 0.0
+    },
+    {
+      "cc": "66 QD 81 LT 08",
+      "valor": 519.9065577,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Taxas gerais",
@@ -134080,7 +134080,7 @@
     },
     {
       "cc": "52 QD 81 LT 10",
-      "valor": 459.2382335,
+      "valor": 407.429072,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Taxas gerais",
@@ -134110,7 +134110,7 @@
     },
     {
       "cc": "52 QD 81 LT 10",
-      "valor": 407.429072,
+      "valor": 459.2382335,
       "mes": "2026-03",
       "grupo": "Outros",
       "categoria": "Taxas gerais",
