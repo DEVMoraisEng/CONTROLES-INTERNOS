@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-09T23:00:45.637242+00:00",
+  "updated_at": "2026-06-10T02:49:42.567439+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
@@ -15060,7 +15060,7 @@
       "cpf": "053.266.71310",
       "correspondente": "KELLI",
       "corretor": "JULIANA",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 330600,
       "validade": "2026-09-08",
       "valor_na_mao": 270000,
