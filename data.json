@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-15T15:01:02.093639+00:00",
+  "updated_at": "2026-06-15T17:06:34.774293+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
@@ -987,7 +987,7 @@
       "proprietario_documento": "TERRA BELA MORAIS ENGENHARIA SPE",
       "proprietario_real": "LIVIAN",
       "cpf_cnpj": null,
-      "mestre": null,
+      "mestre": "IRINEU",
       "despachante": "LIDIANA",
       "eng_execucao": "ISAAC",
       "engenheiro_rt": null,
@@ -1006,7 +1006,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "NÃO",
       "taxas_alvara_pagas": "SIM",
       "data_entrada_alvara": "2026-05-26",
@@ -1052,7 +1052,7 @@
       "proprietario_documento": "TERRA BELA MORAIS ENGENHARIA SPE",
       "proprietario_real": "MORAIS ENGENHARIA",
       "cpf_cnpj": "58.168.971/0001-25",
-      "mestre": null,
+      "mestre": "IRINEU",
       "despachante": "LIDIANA",
       "eng_execucao": "ISAAC",
       "engenheiro_rt": "ISAAC",
@@ -1071,7 +1071,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "INEXISTE",
       "taxas_alvara_pagas": "SIM",
       "data_entrada_alvara": "2026-05-27",
