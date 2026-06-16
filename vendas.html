@@ -188,9 +188,10 @@ let _filteredData = [];
 let _ddAberto = null;  // key do dropdown aberto
 
 // ── HELPERS ────────────────────────────────────────────────────────────────
-const fmtDate  = s => { if(!s) return null; try{return new Date(s).toLocaleDateString('pt-BR')}catch{return s} };
+const fmtDate  = s => { if(!s) return null; const m=s.match(/^(\d{4})-(\d{2})-(\d{2})/); if(m) return `${m[3]}/${m[2]}/${m[1]}`; try{return new Date(s).toLocaleDateString('pt-BR')}catch{return s} };
 const fmtMoney = v => { if(v==null||v==='') return null; const n=Number(v); return isNaN(n)?String(v):n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}) };
-const diffDays = (a,b) => { try{return Math.round((new Date(b)-new Date(a))/86400000)}catch{return null} };
+const parseDate = s => { if(!s) return null; const m=s.match(/^(\d{4})-(\d{2})-(\d{2})/); if(m) return new Date(+m[1],+m[2]-1,+m[3]); return new Date(s); };
+const diffDays = (a,b) => { try{return Math.round((parseDate(b)-parseDate(a))/86400000)}catch{return null} };
 function isSim(v){ return v===true||String(v).toUpperCase().trim()==='SIM' }
 
 // ── COLUNAS ────────────────────────────────────────────────────────────────
@@ -301,7 +302,7 @@ function sortData(data){
   return [...data].sort((a,b)=>{
     let va=a[sortKey],vb=b[sortKey];
     if(sortKey==='_num'){va=a._num_raw||0;vb=b._num_raw||0}
-    if(typeof va==='string'&&/^\d{4}-\d{2}-\d{2}/.test(va)){va=new Date(va);vb=vb?new Date(vb):new Date(0);return sortDir==='asc'?va-vb:vb-va}
+    if(typeof va==='string'&&/^\d{4}-\d{2}-\d{2}/.test(va)){va=parseDate(va);vb=vb?parseDate(vb):new Date(0);return sortDir==='asc'?va-vb:vb-va}
     if(!isNaN(Number(va))&&!isNaN(Number(vb))) return sortDir==='asc'?Number(va)-Number(vb):Number(vb)-Number(va);
     va=String(va||'');vb=String(vb||'');
     return sortDir==='asc'?va.localeCompare(vb,'pt-BR'):vb.localeCompare(va,'pt-BR');
@@ -604,7 +605,7 @@ async function init(){
       if(!a.data_venda&&!b.data_venda) return 0;
       if(!a.data_venda) return 1;
       if(!b.data_venda) return -1;
-      return new Date(a.data_venda)-new Date(b.data_venda);
+      return parseDate(a.data_venda)-parseDate(b.data_venda);
     });
     if(data.updated_at) document.getElementById('updated-at').textContent='Atualizado: '+new Date(data.updated_at).toLocaleString('pt-BR');
     buildFiltrosBar();
