@@ -916,8 +916,8 @@ function obraFinalizada(doc) {
 // Dias entre início da obra e término (ou hoje, se ainda não terminou)
 function diasDeObra(doc) {
   if (!doc.data_inicio_obra) return null;
-  const fim = doc.data_termino_obra ? new Date(doc.data_termino_obra) : new Date();
-  const ini = new Date(doc.data_inicio_obra);
+  const fim = doc.data_termino_obra ? parseDate(doc.data_termino_obra) : new Date();
+  const ini = parseDate(doc.data_inicio_obra);
   return Math.round((fim - ini) / 86400000);
 }
 
@@ -969,8 +969,8 @@ function parseDateBR(str) {
 
 function diasObra(doc) {
   if (!doc.data_inicio_obra) return null;
-  const fim = doc.data_termino_obra ? new Date(doc.data_termino_obra) : new Date();
-  const ini = new Date(doc.data_inicio_obra);
+  const fim = doc.data_termino_obra ? parseDate(doc.data_termino_obra) : new Date();
+  const ini = parseDate(doc.data_inicio_obra);
   const dias = Math.round((fim - ini) / 86400000);
   return dias > 0 ? `${dias} dias` : null;
 }
