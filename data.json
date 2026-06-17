@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-17T18:11:25.214908+00:00",
+  "updated_at": "2026-06-17T19:01:07.423225+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
@@ -8507,7 +8507,7 @@
       "art_acrescimo": "INEXISTE",
       "certidoes_matricula": "NÃO",
       "data_certidoes": null,
-      "docs_vistoria_scpo": "NÃO",
+      "docs_vistoria_scpo": "SIM",
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
       "entrada_incorporacao_data": null,
