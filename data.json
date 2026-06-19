@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-19T19:00:49.008246+00:00",
+  "updated_at": "2026-06-19T21:04:12.659352+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
@@ -9805,8 +9805,8 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "art_acrescimo": "SIM",
-      "certidoes_matricula": "NÃO",
-      "data_certidoes": null,
+      "certidoes_matricula": "SIM",
+      "data_certidoes": "2026-06-19",
       "docs_vistoria_scpo": "SIM",
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
@@ -10126,12 +10126,12 @@
       "data_habite_se": "2026-05-15",
       "aprovou_habite_se": "SIM",
       "data_aprovacao_habite": "2026-06-02",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "art_acrescimo": "NÃO",
-      "certidoes_matricula": "NÃO",
-      "data_certidoes": null,
+      "certidoes_matricula": "SIM",
+      "data_certidoes": "2026-06-19",
       "docs_vistoria_scpo": "SIM",
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
