@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-22T15:01:04.389070+00:00",
+  "updated_at": "2026-06-22T16:44:27.388415+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
@@ -23339,15 +23339,15 @@
       "comissao": 13750,
       "valor_venda_contrato": 275000,
       "banco": "CAIXA",
-      "agencia": null,
+      "agencia": 1959,
       "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-06-02",
       "mandou_conformidade": "SIM",
       "processo_conforme": "SIM",
-      "assinou_contrato_banco": "NÃO",
-      "data_assinatura": null,
+      "assinou_contrato_banco": "SIM",
+      "data_assinatura": "2026-06-19",
       "recebeu_taxa_vistoria": "NÃO",
       "tem_cadastro": "NÃO",
       "num_cadastro": null,
