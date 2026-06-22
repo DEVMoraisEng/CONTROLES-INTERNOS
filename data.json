@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-22T11:00:51.098013+00:00",
+  "updated_at": "2026-06-22T15:01:04.389070+00:00",
   "documentos": [
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
@@ -8498,7 +8498,7 @@
       "agendou_habite_se": "SIM",
       "data_finalizacao_ret": null,
       "turno_habite_se": "MANHÃ",
-      "data_habite_se": "2026-05-19",
+      "data_habite_se": "2026-06-24",
       "aprovou_habite_se": "NÃO",
       "data_aprovacao_habite": null,
       "armazenou_habite": "NÃO",
@@ -9919,7 +9919,7 @@
       "projeto_aprovado": "SIM",
       "data_aprovacao_projeto": "2025-12-29",
       "entrada_incorporacao": "INEXISTE",
-      "taxas_habite_se": "NÃO",
+      "taxas_habite_se": "SIM",
       "incorporacao_finalizada": "INEXISTE",
       "data_finalizacao_incorp": null,
       "entrada_ret": "INEXISTE",
