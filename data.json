@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T07:00:56.132941+00:00",
+  "updated_at": "2026-06-23T07:42:53.517858+00:00",
   "documentos": [
     {
       "id": "387c5ab5-32d3-8088-842d-e054ce1c1d11",
@@ -144894,7 +144894,7 @@
       "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
     },
     "RPB 24 QD 26A LT 05": {
-      "area_total": 118.16,
+      "area_total": 176.1,
       "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
     },
     "RPB 24 QD 26A LT 09": {
@@ -145400,6 +145400,18 @@
     "MORAIS ENGENHARIA - FOLHA DE PAGAMENTO": {
       "area_total": 0.0,
       "cliente": ""
+    },
+    "TB 19 QD 51 LT 03": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "TB 19 QD 51 LT 02": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "TB 21 QD 51 LT 40": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
     }
   },
   "faturamentos_erp": [
