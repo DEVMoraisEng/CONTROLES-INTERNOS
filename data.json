@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-23T19:00:48.363562+00:00",
+  "updated_at": "2026-06-23T21:27:28.602192+00:00",
   "documentos": [
     {
       "id": "387c5ab5-32d3-8088-842d-e054ce1c1d11",
@@ -2229,7 +2229,7 @@
       "previsao_inicio_obra": null,
       "obra_iniciada": "SIM",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": null,
+      "data_inicio_obra": "2026-05-20",
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
       "uso_solo_emitido": "INEXISTE",
@@ -2294,7 +2294,7 @@
       "previsao_inicio_obra": null,
       "obra_iniciada": "NÃO",
       "obra_finalizada": "NÃO",
-      "data_inicio_obra": "2026-05-20",
+      "data_inicio_obra": null,
       "uso_solo_solicitado": "INEXISTE",
       "data_sol_uso_solo": null,
       "uso_solo_emitido": "INEXISTE",
