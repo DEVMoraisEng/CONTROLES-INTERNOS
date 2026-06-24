@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-24T14:14:09.810224+00:00",
+  "updated_at": "2026-06-24T15:00:57.495453+00:00",
   "documentos": [
     {
       "id": "387c5ab5-32d3-8088-842d-e054ce1c1d11",
@@ -13179,7 +13179,7 @@
     },
     {
       "id": "33cc5ab5-32d3-805a-9005-fec0349bc3f9",
-      "endereco": "TB 5 QD 40 LT 01",
+      "endereco": "TB 5 QD 40 LT 018",
       "casa": 1,
       "ref": "TB01",
       "cidade": "SENADOR CANEDO",
@@ -14358,7 +14358,7 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
+      "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-06-17",
       "gcap_gerado": "NÃO",
@@ -14924,7 +14924,7 @@
       "recebeu_taxa_vistoria": "SIM",
       "tem_cadastro": "SIM",
       "num_cadastro": 83574,
-      "entrada_cartorio": "NÃO",
+      "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null,
       "tem_manual": "NÃO",
@@ -14939,7 +14939,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8013-bc4c-f18ad847e13e",
-      "endereco": "TB 17 QD 48 LT 46",
+      "endereco": "TB 17 QD 48 LT 464",
       "casa": 2,
       "ref": "TB44",
       "cidade": "SENADOR CANEDO",
@@ -15278,10 +15278,10 @@
       "num_cadastro": 83980,
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null,
+      "data_pre_vistoria": "2026-06-17",
       "tem_manual": "NÃO",
-      "registro_pronto": "NÃO",
-      "devolveu_banco": "NÃO",
+      "registro_pronto": "SIM",
+      "devolveu_banco": "SIM",
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
       "data_entrega": null,
