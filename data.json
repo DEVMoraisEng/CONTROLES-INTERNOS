@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26T14:11:32.254257+00:00",
+  "updated_at": "2026-06-26T15:00:47.671055+00:00",
   "documentos": [
     {
       "id": "38ac5ab5-32d3-8091-adb8-eedb23596f97",
@@ -2174,7 +2174,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "SIM",
       "contrato_investidor": "SIM",
@@ -2369,7 +2369,7 @@
       "registro_pago": "SIM",
       "projeto_feito": "SIM",
       "art_feita_paga": "SIM",
-      "escritura_registrada": "NÃO",
+      "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
