@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-02T19:00:58.703688+00:00",
+  "updated_at": "2026-07-02T20:58:23.717949+00:00",
   "documentos": [
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
@@ -1000,7 +1000,7 @@
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -10254,8 +10254,8 @@
       "data_finalizacao_ret": null,
       "turno_habite_se": null,
       "data_habite_se": null,
-      "aprovou_habite_se": "NÃO",
-      "data_aprovacao_habite": null,
+      "aprovou_habite_se": "SIM",
+      "data_aprovacao_habite": "2026-07-02",
       "armazenou_habite": "NÃO",
       "issqn": "NÃO",
       "cno_cnd": "SIM",
@@ -10319,8 +10319,8 @@
       "data_finalizacao_ret": null,
       "turno_habite_se": "TARDE",
       "data_habite_se": "2026-05-27",
-      "aprovou_habite_se": "NÃO",
-      "data_aprovacao_habite": null,
+      "aprovou_habite_se": "SIM",
+      "data_aprovacao_habite": "2026-07-02",
       "armazenou_habite": "NÃO",
       "issqn": "SIM",
       "cno_cnd": "SIM",
