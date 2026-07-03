@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T17:18:14.343177+00:00",
+  "updated_at": "2026-07-03T19:00:47.156495+00:00",
   "documentos": [
     {
       "id": "392c5ab5-32d3-801f-bfcb-f11fb899c6d8",
@@ -2093,7 +2093,7 @@
       "proprietario_real": "ALEXANDRE AURELIO",
       "cpf_cnpj": "566.099.811-91",
       "mestre": null,
-      "despachante": null,
+      "despachante": "YAN",
       "eng_execucao": "CAIO",
       "engenheiro_rt": "FELIPE BERÇAN",
       "previsao_inicio_obra": null,
@@ -2113,8 +2113,8 @@
       "certidao_lote": "INEXISTE",
       "contrato_mestre": "NÃO",
       "contrato_investidor": "NÃO",
-      "taxas_alvara_pagas": "NÃO",
-      "data_entrada_alvara": null,
+      "taxas_alvara_pagas": "SIM",
+      "data_entrada_alvara": "2026-07-03",
       "mao_obra_despachante": "NÃO",
       "projeto_aprovado": "NÃO",
       "data_aprovacao_projeto": null,
