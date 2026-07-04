@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-03T23:00:50.406714+00:00",
+  "updated_at": "2026-07-04T02:22:35.234327+00:00",
   "documentos": [
     {
       "id": "392c5ab5-32d3-801f-bfcb-f11fb899c6d8",
@@ -19612,8 +19612,8 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "NÃO",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-07-03",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
       "pesquisa": "NÃO"
