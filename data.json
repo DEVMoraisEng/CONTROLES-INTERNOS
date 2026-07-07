@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-07T17:54:27.815132+00:00",
+  "updated_at": "2026-07-07T19:01:16.967786+00:00",
   "documentos": [
     {
       "id": "392c5ab5-32d3-801f-bfcb-f11fb899c6d8",
@@ -3624,8 +3624,8 @@
       "data_finalizacao_ret": null,
       "turno_habite_se": "MANHÃ",
       "data_habite_se": "2026-07-02",
-      "aprovou_habite_se": "NÃO",
-      "data_aprovacao_habite": null,
+      "aprovou_habite_se": "SIM",
+      "data_aprovacao_habite": "2026-07-07",
       "armazenou_habite": "NÃO",
       "issqn": "NÃO",
       "cno_cnd": "NÃO",
