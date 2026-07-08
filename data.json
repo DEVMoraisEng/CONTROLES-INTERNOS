@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T17:23:42.806261+00:00",
+  "updated_at": "2026-07-08T19:01:16.505851+00:00",
   "documentos": [
     {
       "id": "392c5ab5-32d3-801f-bfcb-f11fb899c6d8",
@@ -1522,7 +1522,7 @@
       "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
@@ -19743,7 +19743,7 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
+      "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-07-03",
       "gcap_gerado": "NÃO",
