@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-12T23:01:01.295073+00:00",
+  "updated_at": "2026-07-13T02:09:02.604382+00:00",
   "documentos": [
     {
       "id": "392c5ab5-32d3-801f-bfcb-f11fb899c6d8",
@@ -13584,8 +13584,8 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-04-15",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
       "pesquisa": "NÃO"
@@ -15721,7 +15721,7 @@
       "comissao": 12500,
       "valor_venda_contrato": 257500,
       "banco": "CAIXA",
-      "agencia": null,
+      "agencia": 3641,
       "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
@@ -15729,7 +15729,7 @@
       "mandou_conformidade": "SIM",
       "processo_conforme": "SIM",
       "assinou_contrato_banco": "NÃO",
-      "data_assinatura": null,
+      "data_assinatura": "2026-07-10",
       "recebeu_taxa_vistoria": "NÃO",
       "tem_cadastro": "SIM",
       "num_cadastro": 1530705,
@@ -17456,8 +17456,8 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-04-23",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
       "pesquisa": "NÃO"
@@ -18274,7 +18274,7 @@
       "valor_venda_contrato": 225000,
       "banco": "CAIXA",
       "agencia": null,
-      "armazenou_contrato": "NÃO",
+      "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-07-10",
