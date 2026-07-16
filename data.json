@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-16T17:08:32.248544+00:00",
+  "updated_at": "2026-07-16T19:00:56.400986+00:00",
   "documentos": [
     {
       "id": "39cc5ab5-32d3-8075-9d96-cfaa88cff6c7",
@@ -24367,7 +24367,7 @@
       "valor_venda_contrato": 285000,
       "banco": "CAIXA",
       "agencia": null,
-      "armazenou_contrato": "NÃO",
+      "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-07-16",
