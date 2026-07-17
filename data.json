@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-17T17:06:28.473845+00:00",
+  "updated_at": "2026-07-17T19:00:54.831118+00:00",
   "documentos": [
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
@@ -7526,7 +7526,7 @@
       "data_habite_se": "2026-05-20",
       "aprovou_habite_se": "SIM",
       "data_aprovacao_habite": "2026-05-21",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "art_acrescimo": "SIM",
@@ -23995,7 +23995,7 @@
       "data_entrega": "2026-05-26",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-8008-a102-cf3703bc0795",
@@ -24039,7 +24039,7 @@
       "data_entrega": "2026-05-08",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-8066-b40b-e1116ad75d34",
@@ -25227,7 +25227,7 @@
       "data_entrega": "2026-04-13",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80e5-bc8d-e6b97ad403ed",
@@ -25271,7 +25271,7 @@
       "data_entrega": "2026-05-25",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80a8-bc27-d75e2182621f",
@@ -25315,7 +25315,7 @@
       "data_entrega": "2026-05-19",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-801a-9134-ea12d389a398",
@@ -25491,7 +25491,7 @@
       "data_entrega": "2026-04-06",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80a0-9e98-c71579eaec21",
@@ -25535,7 +25535,7 @@
       "data_entrega": "2026-04-16",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80a3-820d-efae46ac0030",
@@ -26128,15 +26128,15 @@
       "comissao": 15250,
       "valor_venda_contrato": 305000,
       "banco": "CAIXA",
-      "agencia": null,
-      "armazenou_contrato": "NÃO",
+      "agencia": 1009,
+      "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-07-08",
-      "mandou_conformidade": "NÃO",
-      "processo_conforme": "NÃO",
-      "assinou_contrato_banco": "NÃO",
-      "data_assinatura": null,
+      "mandou_conformidade": "SIM",
+      "processo_conforme": "SIM",
+      "assinou_contrato_banco": "SIM",
+      "data_assinatura": "2026-07-16",
       "recebeu_taxa_vistoria": "NÃO",
       "tem_cadastro": "NÃO",
       "num_cadastro": null,
