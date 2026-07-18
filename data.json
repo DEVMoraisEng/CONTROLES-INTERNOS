@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-18T03:00:59.220064+00:00",
+  "updated_at": "2026-07-18T05:59:53.841604+00:00",
   "documentos": [
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
@@ -10534,6 +10534,50 @@
   ],
   "vendas": [
     {
+      "id": "3a1c5ab5-32d3-8025-a531-e743269f6ce4",
+      "endereco": null,
+      "casa": null,
+      "ref": null,
+      "cidade": null,
+      "setor": "PQ DOS BURITIS",
+      "clientes": null,
+      "data_venda": null,
+      "cpf": null,
+      "correspondente": null,
+      "corretor": null,
+      "imobiliaria": null,
+      "avaliacao": null,
+      "validade": null,
+      "valor_na_mao": null,
+      "comissao": null,
+      "valor_venda_contrato": null,
+      "banco": null,
+      "agencia": null,
+      "armazenou_contrato": null,
+      "emitiu_rcpm": null,
+      "mandou_docs_corresp": null,
+      "data_envio_docs": null,
+      "mandou_conformidade": null,
+      "processo_conforme": null,
+      "assinou_contrato_banco": null,
+      "data_assinatura": null,
+      "recebeu_taxa_vistoria": null,
+      "tem_cadastro": null,
+      "num_cadastro": null,
+      "entrada_cartorio": null,
+      "agendou_pre_vistoria": null,
+      "data_pre_vistoria": null,
+      "tem_manual": null,
+      "registro_pronto": null,
+      "devolveu_banco": null,
+      "recebeu": null,
+      "entregou_casa": null,
+      "data_entrega": null,
+      "gcap_gerado": null,
+      "gcap_pago": null,
+      "pesquisa": null
+    },
+    {
       "id": "3a1c5ab5-32d3-80e0-b007-e53dce840359",
       "endereco": null,
       "casa": null,
@@ -12875,7 +12919,7 @@
       "clientes": "RAILMA MACARIO DA CRUZ",
       "data_venda": "2026-01-17",
       "cpf": "090.052.915-67",
-      "correspondente": null,
+      "correspondente": "MARIA",
       "corretor": "ELIEZER",
       "imobiliaria": "MERCADO",
       "avaliacao": 315000,
@@ -12907,7 +12951,7 @@
       "data_entrega": "2026-05-21",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8013-9556-c2cefc314e18",
@@ -12951,7 +12995,7 @@
       "data_entrega": "2026-04-15",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80fe-b894-c0b55d94f3f1",
@@ -15170,15 +15214,15 @@
       "validade": "2026-11-16",
       "valor_na_mao": 270000,
       "comissao": 15000,
-      "valor_venda_contrato": 285000,
+      "valor_venda_contrato": 281000,
       "banco": "CAIXA",
       "agencia": null,
       "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-06-01",
-      "mandou_conformidade": "NÃO",
-      "processo_conforme": "NÃO",
+      "mandou_conformidade": "SIM",
+      "processo_conforme": "SIM",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
       "recebeu_taxa_vistoria": "NÃO",
@@ -15283,7 +15327,7 @@
       "data_entrega": "2026-05-21",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8050-a1d2-d903bdf2cf4d",
@@ -15371,7 +15415,7 @@
       "data_entrega": "2026-06-02",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8043-9c0b-d24344550665",
@@ -15415,7 +15459,7 @@
       "data_entrega": "2026-05-29",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8057-b445-e10bd46882c3",
@@ -15459,7 +15503,7 @@
       "data_entrega": "2026-07-07",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80ed-ab7e-e3cf69a64a43",
@@ -15503,7 +15547,7 @@
       "data_entrega": "2026-07-01",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-807e-a74c-e50fbe794e16",
@@ -15635,7 +15679,7 @@
       "data_entrega": "2026-07-06",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-803b-9f2e-fded702d6b87",
@@ -15679,7 +15723,7 @@
       "data_entrega": "2026-05-15",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80b1-b5ac-c2d3197e99dd",
@@ -15781,7 +15825,7 @@
       "cpf": "575.659.961-49",
       "correspondente": "GABRIEL",
       "corretor": "PAULO CÉSAR",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 320000,
       "validade": "2026-08-06",
       "valor_na_mao": 260000,
@@ -15811,7 +15855,7 @@
       "data_entrega": null,
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80d6-b7d0-e035d889da32",
@@ -15824,7 +15868,7 @@
       "data_venda": "2026-02-19",
       "cpf": "380.000.808-42",
       "correspondente": "ANDRE/CAIO",
-      "corretor": null,
+      "corretor": "WELTON",
       "imobiliaria": "A7 BROKER",
       "avaliacao": 330000,
       "validade": "2026-08-02",
@@ -15855,7 +15899,7 @@
       "data_entrega": "2026-06-16",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8047-a369-e568c58d8f39",
@@ -15899,7 +15943,7 @@
       "data_entrega": "2026-06-03",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80bb-9b28-f4637f93f30f",
@@ -16001,7 +16045,7 @@
       "cpf": "057.205.843-82",
       "correspondente": "KELLI",
       "corretor": "JULIANA",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 340000,
       "validade": "2026-08-06",
       "valor_na_mao": 268000,
@@ -16031,7 +16075,7 @@
       "data_entrega": "2026-04-25",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8000-a63d-ec3df1375977",
@@ -16075,7 +16119,7 @@
       "data_entrega": "2026-05-14",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8064-b2a7-c1db187c4d91",
@@ -16132,7 +16176,7 @@
       "data_venda": "2025-10-13",
       "cpf": "014.993.831-42",
       "correspondente": "ANDRE",
-      "corretor": null,
+      "corretor": "WELTON",
       "imobiliaria": "A7 BROKER",
       "avaliacao": 310000,
       "validade": "2026-04-07",
@@ -17277,7 +17321,7 @@
       "cpf": "700.583.161-67",
       "correspondente": "ANDRE",
       "corretor": "CLEIBIELLY",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 270000,
       "validade": "2025-09-02",
       "valor_na_mao": 242250,
@@ -20005,18 +20049,18 @@
       "cpf": "689.329.952-49",
       "correspondente": "MAÍRA",
       "corretor": "RAPHAEL ALCANTARA",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 300000,
       "validade": null,
       "valor_na_mao": 230000,
       "comissao": 15000,
       "valor_venda_contrato": 245000,
       "banco": "CAIXA",
-      "agencia": null,
+      "agencia": 1575,
       "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
-      "data_envio_docs": "2000-01-01",
+      "data_envio_docs": null,
       "mandou_conformidade": "SIM",
       "processo_conforme": "SIM",
       "assinou_contrato_banco": "SIM",
@@ -20226,17 +20270,17 @@
       "correspondente": "MELQUESEDEQUE",
       "corretor": "IVAN",
       "imobiliaria": "IVAN IMÓVEIS",
-      "avaliacao": 27500,
+      "avaliacao": 275000,
       "validade": null,
       "valor_na_mao": 235000,
       "comissao": 10000,
       "valor_venda_contrato": 245000,
       "banco": "CAIXA",
-      "agencia": null,
+      "agencia": 12,
       "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
-      "data_envio_docs": "2000-01-01",
+      "data_envio_docs": "2025-04-03",
       "mandou_conformidade": "SIM",
       "processo_conforme": "SIM",
       "assinou_contrato_banco": "SIM",
@@ -20246,13 +20290,13 @@
       "num_cadastro": 1,
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2000-01-01",
+      "data_pre_vistoria": "2025-07-04",
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
       "entregou_casa": "SIM",
-      "data_entrega": "2000-01-01",
+      "data_entrega": "1999-06-11",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
       "pesquisa": "INEXISTE"
@@ -20607,7 +20651,7 @@
       "data_entrega": "2026-06-01",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-8046-9fc0-e39894dc4bb6",
@@ -22029,7 +22073,7 @@
       "cpf": "707.211.521-80",
       "correspondente": "PONTUAL CRED",
       "corretor": "WAGNER",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 297877.61,
       "validade": "2025-01-17",
       "valor_na_mao": 250000,
@@ -22103,7 +22147,7 @@
       "data_entrega": "2026-06-17",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8021-b493-d326b7189fd1",
@@ -22117,7 +22161,7 @@
       "cpf": "467.193.678-03",
       "correspondente": "KELLI",
       "corretor": "JULIANA",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 378000,
       "validade": "2026-10-08",
       "valor_na_mao": 278000,
@@ -22147,7 +22191,7 @@
       "data_entrega": "2026-05-30",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8084-8b44-ff714d15f711",
