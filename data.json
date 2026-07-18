@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-17T23:00:50.503625+00:00",
+  "updated_at": "2026-07-18T01:53:59.105974+00:00",
   "documentos": [
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
@@ -10534,6 +10534,50 @@
   ],
   "vendas": [
     {
+      "id": "3a1c5ab5-32d3-80e0-b007-e53dce840359",
+      "endereco": null,
+      "casa": null,
+      "ref": null,
+      "cidade": null,
+      "setor": "ST FÉ",
+      "clientes": null,
+      "data_venda": null,
+      "cpf": null,
+      "correspondente": null,
+      "corretor": null,
+      "imobiliaria": null,
+      "avaliacao": null,
+      "validade": null,
+      "valor_na_mao": null,
+      "comissao": null,
+      "valor_venda_contrato": null,
+      "banco": null,
+      "agencia": null,
+      "armazenou_contrato": null,
+      "emitiu_rcpm": null,
+      "mandou_docs_corresp": null,
+      "data_envio_docs": null,
+      "mandou_conformidade": null,
+      "processo_conforme": null,
+      "assinou_contrato_banco": null,
+      "data_assinatura": null,
+      "recebeu_taxa_vistoria": null,
+      "tem_cadastro": null,
+      "num_cadastro": null,
+      "entrada_cartorio": null,
+      "agendou_pre_vistoria": null,
+      "data_pre_vistoria": null,
+      "tem_manual": null,
+      "registro_pronto": null,
+      "devolveu_banco": null,
+      "recebeu": null,
+      "entregou_casa": null,
+      "data_entrega": null,
+      "gcap_gerado": null,
+      "gcap_pago": null,
+      "pesquisa": null
+    },
+    {
       "id": "395c5ab5-32d3-8082-bb6c-c7054d7fd856",
       "endereco": "SV-26 QD 40 LT 17",
       "casa": 2,
@@ -13171,7 +13215,7 @@
       "data_entrega": "2026-05-20",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8010-8483-e1c199bf9dc8",
@@ -13347,7 +13391,7 @@
       "data_entrega": "2026-05-22",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-805a-9005-fec0349bc3f9",
@@ -13391,7 +13435,7 @@
       "data_entrega": "2026-06-12",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-807d-9cec-cba61d5fc1f3",
@@ -16779,7 +16823,7 @@
       "data_entrega": "2026-04-23",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80a3-9d28-dfa1a830ae26",
@@ -17057,7 +17101,7 @@
       "cpf": "013.201.212-09",
       "correspondente": "RAUSTER",
       "corretor": "RAUSTER",
-      "imobiliaria": null,
+      "imobiliaria": "REMAX",
       "avaliacao": 275000,
       "validade": "2000-01-01",
       "valor_na_mao": 237500,
@@ -17068,23 +17112,23 @@
       "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
-      "data_envio_docs": null,
+      "data_envio_docs": "2025-02-18",
       "mandou_conformidade": "SIM",
       "processo_conforme": "SIM",
       "assinou_contrato_banco": "SIM",
-      "data_assinatura": "2000-01-01",
+      "data_assinatura": "2025-03-07",
       "recebeu_taxa_vistoria": "SIM",
       "tem_cadastro": "SIM",
-      "num_cadastro": null,
+      "num_cadastro": 36715102150010,
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2000-01-01",
+      "data_pre_vistoria": "2025-03-19",
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
       "entregou_casa": "SIM",
-      "data_entrega": null,
+      "data_entrega": "2025-03-03",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
       "pesquisa": "INEXISTE"
@@ -18465,7 +18509,7 @@
       "cpf": "701015871-12",
       "correspondente": "KELLI",
       "corretor": "RAPHAEL ALCANTARA",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 350000,
       "validade": "2025-10-17",
       "valor_na_mao": 285000,
@@ -18477,7 +18521,7 @@
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": null,
-      "mandou_conformidade": null,
+      "mandou_conformidade": "SIM",
       "processo_conforme": "SIM",
       "assinou_contrato_banco": "SIM",
       "data_assinatura": "2025-07-28",
@@ -24083,7 +24127,7 @@
       "data_entrega": "2026-05-18",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8067-b4b7-da5e5b9b3d30",
@@ -25095,7 +25139,7 @@
       "data_entrega": "2026-04-15",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8047-b193-d854ee5fb76b",
@@ -25139,7 +25183,7 @@
       "data_entrega": "2026-04-15",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-80b1-82ba-c76a4451acca",
