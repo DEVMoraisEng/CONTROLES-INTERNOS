@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-20T15:00:57.232192+00:00",
+  "updated_at": "2026-07-20T17:31:19.771507+00:00",
   "documentos": [
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
@@ -14125,7 +14125,7 @@
       "processo_conforme": "SIM",
       "assinou_contrato_banco": "SIM",
       "data_assinatura": "2026-07-09",
-      "recebeu_taxa_vistoria": "NÃO",
+      "recebeu_taxa_vistoria": "SIM",
       "tem_cadastro": "SIM",
       "num_cadastro": 84097,
       "entrada_cartorio": "NÃO",
