@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-21T19:00:55.775592+00:00",
+  "updated_at": "2026-07-21T21:00:45.513503+00:00",
   "documentos": [
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
@@ -20871,7 +20871,7 @@
       "data_entrega": "2026-07-13",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8055-9f1d-c72dea82af90",
