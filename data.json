@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23T03:00:52.669131+00:00",
+  "updated_at": "2026-07-23T06:25:54.401556+00:00",
   "documentos": [
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
@@ -23974,10 +23974,10 @@
       "banco": "CAIXA",
       "agencia": null,
       "armazenou_contrato": "SIM",
-      "emitiu_rcpm": "NÃO",
-      "mandou_docs_corresp": "NÃO",
+      "emitiu_rcpm": "SIM",
+      "mandou_docs_corresp": "SIM",
       "data_envio_docs": null,
-      "mandou_conformidade": "NÃO",
+      "mandou_conformidade": "SIM",
       "processo_conforme": "NÃO",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
