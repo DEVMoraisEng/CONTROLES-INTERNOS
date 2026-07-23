@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-23T17:13:30.631171+00:00",
+  "updated_at": "2026-07-23T19:00:53.026191+00:00",
   "documentos": [
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
@@ -17145,7 +17145,7 @@
       "cpf": "043.951.252-20",
       "correspondente": "ANDRE",
       "corretor": "JESSICA",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 330000,
       "validade": "2026-02-15",
       "valor_na_mao": 265000,
