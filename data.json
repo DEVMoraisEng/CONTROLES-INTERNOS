@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-24T15:00:58.497833+00:00",
+  "updated_at": "2026-07-24T17:24:08.150014+00:00",
   "documentos": [
     {
       "id": "3a6c5ab5-32d3-809b-b0fb-ffde8da3711a",
@@ -9997,7 +9997,7 @@
       "aprovou_habite_se": "NÃO",
       "data_aprovacao_habite": null,
       "armazenou_habite": "NÃO",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "NÃO",
       "art_acrescimo": "SIM",
       "certidoes_matricula": "NÃO",
@@ -10062,7 +10062,7 @@
       "aprovou_habite_se": "SIM",
       "data_aprovacao_habite": "2026-07-16",
       "armazenou_habite": "NÃO",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "art_acrescimo": "SIM",
       "certidoes_matricula": "NÃO",
@@ -10322,7 +10322,7 @@
       "aprovou_habite_se": "SIM",
       "data_aprovacao_habite": "2026-07-02",
       "armazenou_habite": "SIM",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "SIM",
       "art_acrescimo": "SIM",
       "certidoes_matricula": "NÃO",
