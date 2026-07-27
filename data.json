@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-27T15:00:53.340046+00:00",
+  "updated_at": "2026-07-27T17:38:01.484458+00:00",
   "documentos": [
     {
       "id": "3a7c5ab5-32d3-80b0-bc52-d7519fa7f189",
@@ -15016,10 +15016,10 @@
       "valor_venda_contrato": 295000,
       "banco": "CAIXA",
       "agencia": null,
-      "armazenou_contrato": "NÃO",
-      "emitiu_rcpm": "NÃO",
-      "mandou_docs_corresp": "NÃO",
-      "data_envio_docs": null,
+      "armazenou_contrato": "SIM",
+      "emitiu_rcpm": "SIM",
+      "mandou_docs_corresp": "SIM",
+      "data_envio_docs": "2026-07-27",
       "mandou_conformidade": "NÃO",
       "processo_conforme": "NÃO",
       "assinou_contrato_banco": "NÃO",
