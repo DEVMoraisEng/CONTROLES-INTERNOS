@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-27T21:05:11.479778+00:00",
+  "updated_at": "2026-07-27T23:01:01.058796+00:00",
   "documentos": [
     {
       "id": "3a7c5ab5-32d3-80b0-bc52-d7519fa7f189",
@@ -14766,7 +14766,7 @@
       "entrada_cartorio": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null,
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
@@ -14810,7 +14810,7 @@
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-24",
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
