@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28T13:49:56.815804+00:00",
+  "updated_at": "2026-07-28T15:01:04.104635+00:00",
   "documentos": [
     {
       "id": "3a7c5ab5-32d3-80b0-bc52-d7519fa7f189",
@@ -26971,9 +26971,9 @@
       "ref": "A14",
       "cidade": "GOIÂNIA",
       "setor": "ACROPOLE",
-      "clientes": null,
-      "data_venda": null,
-      "cpf": null,
+      "clientes": "JUCILIANO PEREIRA DE SOUSA",
+      "data_venda": "2026-07-28",
+      "cpf": "124.631.184-40",
       "correspondente": null,
       "corretor": null,
       "imobiliaria": null,
