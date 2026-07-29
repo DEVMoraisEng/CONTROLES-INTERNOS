@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-29T13:54:50.144207+00:00",
+  "updated_at": "2026-07-29T15:00:57.518865+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -7462,7 +7462,7 @@
       "aprovou_habite_se": "SIM",
       "data_aprovacao_habite": "2026-07-14",
       "armazenou_habite": "NÃO",
-      "issqn": "NÃO",
+      "issqn": "SIM",
       "cno_cnd": "NÃO",
       "art_acrescimo": "NÃO",
       "certidoes_matricula": "NÃO",
