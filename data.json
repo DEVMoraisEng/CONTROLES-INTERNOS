@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30T17:19:38.643423+00:00",
+  "updated_at": "2026-07-30T19:00:58.683419+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -740,7 +740,7 @@
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -805,7 +805,7 @@
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
       "escritura_assinada": "SIM",
-      "itbi_pago": "NÃO",
+      "itbi_pago": "SIM",
       "registro_pago": "NÃO",
       "projeto_feito": "NÃO",
       "art_feita_paga": "NÃO",
@@ -16287,8 +16287,8 @@
       "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -16331,8 +16331,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-07-02",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -24911,8 +24911,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-07-15",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -24999,8 +24999,8 @@
       "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -25043,8 +25043,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-07-06",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -25131,8 +25131,8 @@
       "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-06-29",
-      "gcap_gerado": "NÃO",
-      "gcap_pago": "NÃO",
+      "gcap_gerado": "SIM",
+      "gcap_pago": "SIM",
       "pesquisa": "NÃO"
     },
     {
@@ -27267,10 +27267,10 @@
       "valor_venda_contrato": 300000,
       "banco": "CAIXA",
       "agencia": null,
-      "armazenou_contrato": "NÃO",
-      "emitiu_rcpm": "NÃO",
-      "mandou_docs_corresp": "NÃO",
-      "data_envio_docs": null,
+      "armazenou_contrato": "SIM",
+      "emitiu_rcpm": "SIM",
+      "mandou_docs_corresp": "SIM",
+      "data_envio_docs": "2026-07-28",
       "mandou_conformidade": "NÃO",
       "processo_conforme": "NÃO",
       "assinou_contrato_banco": "NÃO",
