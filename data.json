@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T11:00:52.509249+00:00",
+  "updated_at": "2026-07-31T13:50:13.795193+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -21913,7 +21913,7 @@
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-22",
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "NÃO",
@@ -21957,7 +21957,7 @@
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-24",
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
