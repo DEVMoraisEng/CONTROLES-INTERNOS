@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-31T15:00:57.124073+00:00",
+  "updated_at": "2026-07-31T17:23:18.500844+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -15226,9 +15226,9 @@
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-15",
       "tem_manual": "SIM",
-      "registro_pronto": "NÃO",
-      "devolveu_banco": "NÃO",
-      "recebeu": "NÃO",
+      "registro_pronto": "SIM",
+      "devolveu_banco": "SIM",
+      "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "NÃO",
