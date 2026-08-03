@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T15:00:53.026783+00:00",
+  "updated_at": "2026-08-03T17:46:00.652472+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -393,7 +393,7 @@
     },
     {
       "id": "390c5ab5-32d3-803b-964a-e2adbc985ba9",
-      "endereco": "XERENTES QD 129 LT 71B",
+      "endereco": "MACEIO QD 129 LT 71B",
       "ref": null,
       "setor": "JARDIM PETROPOLIS",
       "cidade": "GOIÂNIA",
@@ -453,12 +453,12 @@
       "entrada_incorporacao_data": null,
       "n_casas": 4,
       "implantacao": "RUA",
-      "erp_orcado": 0.0,
-      "erp_valor_pago": 73906.65
+      "erp_orcado": "SEM DADOS",
+      "erp_valor_pago": "SEM DADOS"
     },
     {
       "id": "390c5ab5-32d3-800d-a295-f8ff0a6cc3e4",
-      "endereco": "XERENTES QD 129 LT 71A",
+      "endereco": "MACEIO QD 129 LT 71A",
       "ref": null,
       "setor": "JARDIM PETROPOLIS",
       "cidade": "GOIÂNIA",
@@ -518,12 +518,12 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": 0.0,
-      "erp_valor_pago": 73932.66
+      "erp_orcado": "SEM DADOS",
+      "erp_valor_pago": "SEM DADOS"
     },
     {
       "id": "390c5ab5-32d3-8061-b788-c6d110793b9a",
-      "endereco": "XERENTES QD 129 LT 71C",
+      "endereco": "MACEIO QD 129 LT 71C",
       "ref": null,
       "setor": "JARDIM PETROPOLIS",
       "cidade": "GOIÂNIA",
@@ -583,8 +583,8 @@
       "entrada_incorporacao_data": null,
       "n_casas": 3,
       "implantacao": "RUA",
-      "erp_orcado": 0.0,
-      "erp_valor_pago": 73766.75999999998
+      "erp_orcado": "SEM DADOS",
+      "erp_valor_pago": "SEM DADOS"
     },
     {
       "id": "38fc5ab5-32d3-8069-9c3f-d2665ed59613",
@@ -15489,7 +15489,7 @@
       "entrada_cartorio": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null,
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
@@ -15533,7 +15533,7 @@
       "entrada_cartorio": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null,
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
@@ -18955,7 +18955,7 @@
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-07-10",
-      "mandou_conformidade": "NÃO",
+      "mandou_conformidade": "SIM",
       "processo_conforme": "NÃO",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
@@ -24952,7 +24952,7 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
+      "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "NÃO",
