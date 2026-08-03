@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03T14:24:53.098184+00:00",
+  "updated_at": "2026-08-03T15:00:53.026783+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -27149,7 +27149,7 @@
       "entrada_cartorio": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null,
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
@@ -27193,7 +27193,7 @@
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-31",
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
@@ -27237,7 +27237,7 @@
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-07-27",
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
@@ -27281,7 +27281,7 @@
       "entrada_cartorio": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null,
-      "tem_manual": "NÃO",
+      "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
