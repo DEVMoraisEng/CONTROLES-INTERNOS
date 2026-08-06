@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-08-06T13:49:50.765259+00:00",
+  "updated_at": "2026-08-06T15:01:12.408992+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
       "endereco": "TB 17 QD 49 LT 14",
-      "ref": null,
+      "ref": "TC 85",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-07-31",
@@ -134,7 +134,7 @@
     {
       "id": "3abc5ab5-32d3-80b6-94e7-ed680745610a",
       "endereco": "TB 17 QD 49 LT 11",
-      "ref": null,
+      "ref": "TC 84",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-08-31",
@@ -589,7 +589,7 @@
     {
       "id": "38fc5ab5-32d3-8069-9c3f-d2665ed59613",
       "endereco": "TB 19 QD 50 LT 14",
-      "ref": null,
+      "ref": "TC 87",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-06-30",
@@ -654,7 +654,7 @@
     {
       "id": "38fc5ab5-32d3-8034-97f3-e872277bdad4",
       "endereco": "TB 19 QD 50 LT 11",
-      "ref": null,
+      "ref": "TC 86",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-06-30",
@@ -719,7 +719,7 @@
     {
       "id": "38fc5ab5-32d3-80d4-827d-f1c62e4014a8",
       "endereco": "TB 19 QD 50 LT 16",
-      "ref": null,
+      "ref": "TC 89",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-06-30",
@@ -784,7 +784,7 @@
     {
       "id": "38fc5ab5-32d3-8026-97c5-dab2051693d6",
       "endereco": "TB 19 QD 50 LT 15",
-      "ref": null,
+      "ref": "TC 88",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-06-30",
@@ -914,7 +914,7 @@
     {
       "id": "372c5ab5-32d3-802b-a7a1-e2e0da3edb1d",
       "endereco": "TB 19 QD 51 LT 03",
-      "ref": null,
+      "ref": "TC 91",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-05-30",
@@ -979,7 +979,7 @@
     {
       "id": "372c5ab5-32d3-80ce-b502-c0c3e6feeafb",
       "endereco": "TB 19 QD 51 LT 02",
-      "ref": null,
+      "ref": "TC 90",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-05-30",
@@ -1044,7 +1044,7 @@
     {
       "id": "372c5ab5-32d3-8087-91f2-ed21a7f28f66",
       "endereco": "TB 21 QD 51 LT 40",
-      "ref": null,
+      "ref": "TC 92",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-05-30",
@@ -1174,7 +1174,7 @@
     {
       "id": "368c5ab5-32d3-80f3-9884-d3021ff43772",
       "endereco": "TB 18 QD 49 LT 25",
-      "ref": null,
+      "ref": "TC 93",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-05-22",
@@ -1239,7 +1239,7 @@
     {
       "id": "368c5ab5-32d3-8074-9086-dcdb86a5b005",
       "endereco": "TB 06 QD 39 LT 50",
-      "ref": null,
+      "ref": "TC 94",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-05-22",
@@ -1304,7 +1304,7 @@
     {
       "id": "368c5ab5-32d3-8084-b44e-c4d20bb44101",
       "endereco": "TB 06 QD 39 LT 47",
-      "ref": null,
+      "ref": "TC 95",
       "setor": "TERRABELA CERRADO",
       "cidade": "SENADOR CANEDO",
       "data_aquisicao_lote": "2026-05-22",
