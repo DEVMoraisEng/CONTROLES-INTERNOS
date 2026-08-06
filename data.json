@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-06T19:00:55.351997+00:00",
+  "updated_at": "2026-08-06T23:00:54.787162+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -24847,7 +24847,7 @@
       "valor_venda_contrato": 285000,
       "banco": "CAIXA",
       "agencia": null,
-      "armazenou_contrato": "NÃO",
+      "armazenou_contrato": "SIM",
       "emitiu_rcpm": "NÃO",
       "mandou_docs_corresp": "NÃO",
       "data_envio_docs": null,
