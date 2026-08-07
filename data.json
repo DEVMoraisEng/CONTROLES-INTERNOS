@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-07T11:00:51.357013+00:00",
+  "updated_at": "2026-08-07T12:48:21.625798+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -27,7 +27,7 @@
       "escritura_assinada": "NÃO",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
@@ -157,7 +157,7 @@
       "escritura_assinada": "NÃO",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
-      "projeto_feito": "NÃO",
+      "projeto_feito": "SIM",
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
