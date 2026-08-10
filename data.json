@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-10T12:53:54.892389+00:00",
+  "updated_at": "2026-08-10T15:00:59.076817+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -24,7 +24,7 @@
       "data_sol_uso_solo": null,
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
@@ -154,7 +154,7 @@
       "data_sol_uso_solo": null,
       "uso_solo_emitido": "INEXISTE",
       "data_emissao_uso_solo": null,
-      "escritura_assinada": "NÃO",
+      "escritura_assinada": "SIM",
       "itbi_pago": "NÃO",
       "registro_pago": "NÃO",
       "projeto_feito": "SIM",
@@ -3685,10 +3685,10 @@
       "entrada_ret": "SIM",
       "data_entrada_ret": "2026-07-08",
       "ret_armazenado": "SIM",
-      "agendou_habite_se": "NÃO",
+      "agendou_habite_se": "SIM",
       "data_finalizacao_ret": "2026-07-20",
-      "turno_habite_se": null,
-      "data_habite_se": null,
+      "turno_habite_se": "MANHÃ",
+      "data_habite_se": "2026-09-04",
       "aprovou_habite_se": "NÃO",
       "data_aprovacao_habite": null,
       "armazenou_habite": "NÃO",
@@ -13048,9 +13048,9 @@
       "correspondente": null,
       "corretor": null,
       "imobiliaria": null,
-      "avaliacao": 350000,
+      "avaliacao": 345000,
       "validade": "2027-01-25",
-      "valor_na_mao": 280000,
+      "valor_na_mao": 275000,
       "comissao": null,
       "valor_venda_contrato": null,
       "banco": null,
@@ -13302,7 +13302,7 @@
     {
       "id": "3a7c5ab5-32d3-800b-81e0-c87dcba566dc",
       "endereco": "TB 21 QD 51 LT 38",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB98",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -13346,7 +13346,7 @@
     {
       "id": "3a7c5ab5-32d3-8059-ba26-c43fcb6ee489",
       "endereco": "TB 21 QD 51 LT 38",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB99",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -13918,7 +13918,7 @@
     {
       "id": "392c5ab5-32d3-80bd-a6e5-d3851b19ca32",
       "endereco": "TB 19 QD 51 LT 16",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB100",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -13962,7 +13962,7 @@
     {
       "id": "392c5ab5-32d3-8001-9d79-d7e0ed183a85",
       "endereco": "TB 19 QD 51 LT 16",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB101",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14094,7 +14094,7 @@
     {
       "id": "38fc5ab5-32d3-8057-82fd-d2523f3afe46",
       "endereco": "TB 14 QD 42 LT 19",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB102",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14138,7 +14138,7 @@
     {
       "id": "38fc5ab5-32d3-80a7-aadb-d4813352596d",
       "endereco": "TB 14 QD 42 LT 19",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB103",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14402,7 +14402,7 @@
     {
       "id": "382c5ab5-32d3-809c-865b-cc7e6b161f2e",
       "endereco": "TB 21 QD 51 LT 28",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB104",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14446,7 +14446,7 @@
     {
       "id": "382c5ab5-32d3-80bd-b6bc-cdecc3c7dc55",
       "endereco": "TB 21 QD 51 LT 28",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB105",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14490,7 +14490,7 @@
     {
       "id": "382c5ab5-32d3-80c1-b460-e30bdbcb82d9",
       "endereco": "TB 19 QD 51 LT 15",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB106",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14534,7 +14534,7 @@
     {
       "id": "382c5ab5-32d3-8016-8f77-da1bd3030a19",
       "endereco": "TB 19 QD 51 LT 15",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB107",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14886,7 +14886,7 @@
     {
       "id": "36fc5ab5-32d3-807b-a35e-fd5ba8604991",
       "endereco": "TB 18 QD 49 LT 30",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB108",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14930,7 +14930,7 @@
     {
       "id": "36fc5ab5-32d3-80a7-b47e-d73ee09052bd",
       "endereco": "TB 18 QD 49 LT 30",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB109",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -14974,7 +14974,7 @@
     {
       "id": "36fc5ab5-32d3-80ae-af29-c2c0f46380ce",
       "endereco": "TB 01 QD 49 LT 40",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB110",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15018,7 +15018,7 @@
     {
       "id": "36fc5ab5-32d3-80ad-a352-d55a67d3d7c5",
       "endereco": "TB 01 QD 49 LT 40",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB111",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15062,7 +15062,7 @@
     {
       "id": "36fc5ab5-32d3-809d-8e2c-e98976b82837",
       "endereco": "TB 21 QD 51 LT 23",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB112",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15106,7 +15106,7 @@
     {
       "id": "36fc5ab5-32d3-804c-a2a3-dfebe2ca40d6",
       "endereco": "TB 21 QD 51 LT 23",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB113",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15238,7 +15238,7 @@
     {
       "id": "367c5ab5-32d3-80a4-92e1-d7f61370be1b",
       "endereco": "TB 21 QD 51 LT 26",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB116",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15282,7 +15282,7 @@
     {
       "id": "367c5ab5-32d3-8084-843b-fa14c151d1ec",
       "endereco": "TB 21 QD 51 LT 26",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB117",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15326,7 +15326,7 @@
     {
       "id": "364c5ab5-32d3-801d-8ec9-f1fde81d7aff",
       "endereco": "TB 16 QD 47 LT 40",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB118",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15370,7 +15370,7 @@
     {
       "id": "364c5ab5-32d3-807e-b1e6-c80db02935ad",
       "endereco": "TB 16 QD 47 LT 40",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB119",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15414,7 +15414,7 @@
     {
       "id": "361c5ab5-32d3-808a-a5dd-e00a1278417f",
       "endereco": "TB 21 QD 51 LT 29",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB96",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15458,7 +15458,7 @@
     {
       "id": "361c5ab5-32d3-80cd-aa1c-cdfe20cb49c2",
       "endereco": "TB 21 QD 51 LT 29",
-      "casa": 1,
+      "casa": 2,
       "ref": "TB97",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
@@ -15634,7 +15634,7 @@
     {
       "id": "35dc5ab5-32d3-80f7-a84a-f22b72772670",
       "endereco": "TB 19 QD 51 LT 14",
-      "casa": 2,
+      "casa": 1,
       "ref": "TB86",
       "cidade": null,
       "setor": "TERRABELA CERRADO",
