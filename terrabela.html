@@ -1477,19 +1477,16 @@ function drawGcapAlerts(svgEl) {
   const vbH = vb.height || 9094;
   const fontSize = Math.min(vbW, vbH) * 0.007; // ~100 unidades SVG
 
-  svgEl.querySelectorAll('polygon[id]').forEach(el => {
+  svgEl.querySelectorAll('polygon[id], path[id], rect[id]').forEach(el => {
     const idNorm = el.id.replace(/\s+/g,'').toUpperCase();
     const v = byRef[idNorm];
     if (!v || !temGcapPendente(v)) return;
 
-    // Centroide do polígono via média dos pontos
-    const pts = (el.getAttribute('points') || '').trim().split(/[\s,]+/).map(Number);
-    if (pts.length < 4) return;
-    let sx = 0, sy = 0, n = 0;
-    for (let i = 0; i + 1 < pts.length; i += 2) { sx += pts[i]; sy += pts[i+1]; n++; }
-    if (!n) return;
-    const cx = sx / n;
-    const cy = sy / n;
+    // Centroide (funciona para polygon, path e rect)
+    const c = centroide(el);
+    if (!c) return;
+    const cx = c.x;
+    const cy = c.y;
 
     // Criar círculo laranja de fundo
     const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
