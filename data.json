@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-13T12:55:31.921168+00:00",
+  "updated_at": "2026-08-13T15:01:02.188934+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -10,7 +10,7 @@
       "data_aquisicao_lote": "2026-07-31",
       "cota_empresa": 0,
       "proprietario_documento": "MOURA DANTAS EMPREENDIMENTOS LTDA",
-      "proprietario_real": null,
+      "proprietario_real": "MOURA",
       "cpf_cnpj": "57.805.579/0001-87",
       "mestre": null,
       "despachante": null,
@@ -140,7 +140,7 @@
       "data_aquisicao_lote": "2026-08-31",
       "cota_empresa": 0,
       "proprietario_documento": "MOURA DANTAS EMPREENDIMENTOS LTDA",
-      "proprietario_real": null,
+      "proprietario_real": "MOURA",
       "cpf_cnpj": "57.805.579/0001-87",
       "mestre": null,
       "despachante": null,
@@ -8960,8 +8960,8 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "art_acrescimo": "SIM",
-      "certidoes_matricula": "NÃO",
-      "data_certidoes": null,
+      "certidoes_matricula": "SIM",
+      "data_certidoes": "2026-08-13",
       "docs_vistoria_scpo": "SIM",
       "boletos_vistoria": "SIM",
       "data_termino_obra": null,
