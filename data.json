@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T11:01:03.115779+00:00",
+  "updated_at": "2026-08-14T12:51:36.855187+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -3955,8 +3955,8 @@
       "issqn": "SIM",
       "cno_cnd": "NÃO",
       "art_acrescimo": "SIM",
-      "certidoes_matricula": "NÃO",
-      "data_certidoes": null,
+      "certidoes_matricula": "SIM",
+      "data_certidoes": "2026-08-14",
       "docs_vistoria_scpo": "SIM",
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
@@ -18606,7 +18606,7 @@
       "mandou_conformidade": "SIM",
       "processo_conforme": "SIM",
       "assinou_contrato_banco": "SIM",
-      "data_assinatura": null,
+      "data_assinatura": "2026-08-01",
       "recebeu_taxa_vistoria": "SIM",
       "tem_cadastro": "SIM",
       "num_cadastro": 83992,
