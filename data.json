@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-15T03:00:52.564210+00:00",
+  "updated_at": "2026-08-15T04:23:06.454105+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -17076,7 +17076,7 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
+      "recebeu": "SIM",
       "entregou_casa": "SIM",
       "data_entrega": "2026-08-10",
       "gcap_gerado": "NÃO",
@@ -17560,12 +17560,12 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "recebeu": "SIM",
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-08-14",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-80f3-b6b8-cfb7ae2738c3",
@@ -18001,11 +18001,11 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-08-14",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-8092-a2e5-dcae131e2dd7",
