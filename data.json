@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T20:15:55.645174+00:00",
+  "updated_at": "2026-08-18T23:00:59.804427+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -8313,7 +8313,7 @@
       "certidoes_matricula": "SIM",
       "data_certidoes": "2026-08-18",
       "docs_vistoria_scpo": "SIM",
-      "boletos_vistoria": "NÃO",
+      "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2026-06-22",
       "n_casas": 2,
