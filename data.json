@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T12:33:24.748514+00:00",
+  "updated_at": "2026-08-19T15:00:53.146398+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -13778,7 +13778,7 @@
       "avaliacao": null,
       "validade": null,
       "valor_na_mao": null,
-      "comissao": 20,
+      "comissao": null,
       "valor_venda_contrato": null,
       "banco": null,
       "agencia": null,
@@ -18604,7 +18604,7 @@
     },
     {
       "id": "33cc5ab5-32d3-8052-9475-c38fdffd5076",
-      "endereco": "TB 17 QD 48 LT 38! ",
+      "endereco": "TB 17 QD 48 LT 38",
       "casa": 1,
       "ref": "TB35",
       "cidade": "SENADOR CANEDO",
