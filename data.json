@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T11:00:58.199896+00:00",
+  "updated_at": "2026-08-19T12:21:33.949638+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -2896,8 +2896,8 @@
       "taxas_alvara_pagas": "SIM",
       "data_entrada_alvara": "2026-06-30",
       "mao_obra_despachante": "SIM",
-      "projeto_aprovado": "NÃO",
-      "data_aprovacao_projeto": null,
+      "projeto_aprovado": "SIM",
+      "data_aprovacao_projeto": "2026-08-19",
       "entrada_incorporacao": "INEXISTE",
       "taxas_habite_se": "NÃO",
       "incorporacao_finalizada": "INEXISTE",
