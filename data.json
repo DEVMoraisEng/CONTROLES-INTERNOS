@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-20T12:34:41.974142+00:00",
+  "updated_at": "2026-08-20T15:00:59.782405+00:00",
   "documentos": [
     {
       "id": "3abc5ab5-32d3-804c-ab18-f4f288e531f3",
@@ -15538,8 +15538,8 @@
       "avaliacao": null,
       "validade": null,
       "valor_na_mao": 270000,
-      "comissao": 17,
-      "valor_venda_contrato": 287,
+      "comissao": 17000,
+      "valor_venda_contrato": 287000,
       "banco": "CAIXA",
       "agencia": null,
       "armazenou_contrato": "SIM",
@@ -26645,8 +26645,8 @@
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-08-20",
       "tem_manual": "SIM",
-      "registro_pronto": "NÃO",
-      "devolveu_banco": "NÃO",
+      "registro_pronto": "SIM",
+      "devolveu_banco": "SIM",
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
       "data_entrega": null,
