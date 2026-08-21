@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-21T20:18:24.348761+00:00",
+  "updated_at": "2026-08-21T23:01:06.426428+00:00",
   "documentos": [
     {
       "id": "3c2c5ab5-32d3-8095-b727-c29407deb49d",
@@ -27012,8 +27012,8 @@
       "agendou_pre_vistoria": "SIM",
       "data_pre_vistoria": "2026-08-12",
       "tem_manual": "NÃO",
-      "registro_pronto": "NÃO",
-      "devolveu_banco": "NÃO",
+      "registro_pronto": "SIM",
+      "devolveu_banco": "SIM",
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
       "data_entrega": null,
