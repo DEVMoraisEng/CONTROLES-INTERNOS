@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-24T19:00:54.656908+00:00",
+  "updated_at": "2026-08-24T20:22:17.838682+00:00",
   "documentos": [
     {
       "id": "3c2c5ab5-32d3-8095-b727-c29407deb49d",
@@ -17184,7 +17184,7 @@
       "comissao": 18000,
       "valor_venda_contrato": 298000,
       "banco": "CAIXA",
-      "agencia": null,
+      "agencia": 1575,
       "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
@@ -17774,7 +17774,7 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
+      "recebeu": "SIM",
       "entregou_casa": "NÃO",
       "data_entrega": null,
       "gcap_gerado": "NÃO",
@@ -18509,7 +18509,7 @@
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-08-17",
-      "mandou_conformidade": "NÃO",
+      "mandou_conformidade": "SIM",
       "processo_conforme": "NÃO",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
