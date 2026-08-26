@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-26T12:38:48.790501+00:00",
+  "updated_at": "2026-08-26T15:01:17.399131+00:00",
   "documentos": [
     {
       "id": "3c2c5ab5-32d3-8095-b727-c29407deb49d",
@@ -24482,9 +24482,9 @@
       "correspondente": null,
       "corretor": null,
       "imobiliaria": null,
-      "avaliacao": 304,
+      "avaliacao": 305000,
       "validade": null,
-      "valor_na_mao": 265,
+      "valor_na_mao": 265000,
       "comissao": null,
       "valor_venda_contrato": null,
       "banco": null,
@@ -24526,7 +24526,7 @@
       "correspondente": null,
       "corretor": null,
       "imobiliaria": null,
-      "avaliacao": 305,
+      "avaliacao": 305000,
       "validade": null,
       "valor_na_mao": 265000,
       "comissao": null,
