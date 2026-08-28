@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-28T15:56:55.778678+00:00",
+  "updated_at": "2026-08-28T19:00:59.851549+00:00",
   "documentos": [
     {
       "id": "3c2c5ab5-32d3-8095-b727-c29407deb49d",
@@ -29680,18 +29680,18 @@
       "comissao": 15000,
       "valor_venda_contrato": 300000,
       "banco": "CAIXA",
-      "agencia": null,
+      "agencia": 2256,
       "armazenou_contrato": "SIM",
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-07-28",
       "mandou_conformidade": "SIM",
       "processo_conforme": "SIM",
-      "assinou_contrato_banco": "NÃO",
-      "data_assinatura": null,
-      "recebeu_taxa_vistoria": "NÃO",
-      "tem_cadastro": "NÃO",
-      "num_cadastro": null,
+      "assinou_contrato_banco": "SIM",
+      "data_assinatura": "2026-08-25",
+      "recebeu_taxa_vistoria": "SIM",
+      "tem_cadastro": "SIM",
+      "num_cadastro": 36606904000011,
       "entrada_cartorio": "NÃO",
       "agendou_pre_vistoria": "NÃO",
       "data_pre_vistoria": null,
@@ -29830,12 +29830,12 @@
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
-      "recebeu": "NÃO",
+      "recebeu": "SIM",
       "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "data_entrega": "2026-08-28",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-80e6-a2c5-f744c0e8891a",
