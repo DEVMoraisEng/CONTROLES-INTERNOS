@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T11:01:23.900909+00:00",
+  "updated_at": "2026-08-31T15:01:09.307636+00:00",
   "documentos": [
     {
       "id": "3c2c5ab5-32d3-8095-b727-c29407deb49d",
@@ -10841,14 +10841,14 @@
       "data_habite_se": "2026-07-13",
       "aprovou_habite_se": "SIM",
       "data_aprovacao_habite": "2026-07-16",
-      "armazenou_habite": "NÃO",
+      "armazenou_habite": "SIM",
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "art_acrescimo": "SIM",
-      "certidoes_matricula": "NÃO",
-      "data_certidoes": null,
+      "certidoes_matricula": "SIM",
+      "data_certidoes": "2026-08-31",
       "docs_vistoria_scpo": "SIM",
-      "boletos_vistoria": "NÃO",
+      "boletos_vistoria": "SIM",
       "data_termino_obra": null,
       "entrada_incorporacao_data": "2025-11-05",
       "n_casas": 2,
@@ -26545,11 +26545,11 @@
       "cidade": "GOIÂNIA",
       "setor": "MARQUES DE ABREU",
       "clientes": "ANDRESSA ALVES DE SOUZA",
-      "data_venda": null,
+      "data_venda": "2026-08-27",
       "cpf": "701.919.221-10",
       "correspondente": "AUDICRED",
-      "corretor": "LUCAS BERNARDES",
-      "imobiliaria": null,
+      "corretor": "LUCAS",
+      "imobiliaria": "TCM AURA",
       "avaliacao": 365000,
       "validade": "2027-02-15",
       "valor_na_mao": 280250,
@@ -197978,7 +197978,732 @@
       "juros_multa": 0.0
     }
   ],
-  "obras_erp": {},
+  "obras_erp": {
+    "Z. [OBRA MODELO] CASA ALTO PADRÃO - 220 M²": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "Z. [OBRA MODELO] CASA MÉDIO PADRÃO - 100 M2": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "Z. [OBRA MODELO] REFORMA": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "RB 24 QD 06 LT 26": {
+      "area_total": 4462.14,
+      "cliente": ""
+    },
+    "I 3 QD 04 LT 17": {
+      "area_total": 0.0,
+      "cliente": "JULIO CESAR GOMES DE MORAIS FILHO"
+    },
+    "Z. TESTE": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "Z. (OBRA MODELO) - CASA 2 QUARTOS": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "W 6 QD 17 LT 06": {
+      "area_total": 218.76,
+      "cliente": "JOAO VITOR CABRAL DE MORAIS"
+    },
+    "FERROVIARIOS QD 01 LT 13": {
+      "area_total": 209.73,
+      "cliente": "JOAO VITOR CABRAL DE MORAIS"
+    },
+    "FERROVIARIOS QD 01 LT 12": {
+      "area_total": 209.73,
+      "cliente": "JULIO CESAR GOMES DE MORAIS FILHO"
+    },
+    "RR 04 QD 03 LT 19": {
+      "area_total": 157.0,
+      "cliente": "MARIA EUNICE MORENO BUENO"
+    },
+    "FERROVIARIOS QD 01 LT 14": {
+      "area_total": 209.73,
+      "cliente": "JULIO CESAR GOMES DE MORAIS FILHO"
+    },
+    "FERROVIARIOS QD 01 LT 15": {
+      "area_total": 209.73,
+      "cliente": "JOAO VITOR CABRAL DE MORAIS"
+    },
+    "Z. MODELO CASAS PADRÃO MCMV": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "TB 20 QD 37 LT 17": {
+      "area_total": 189.99,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "TB 14 QD 43 LT 48": {
+      "area_total": 118.16,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "TB 19 QD 46 LT 07": {
+      "area_total": 118.16,
+      "cliente": "RODRIGO RODRIGUES CABRAL"
+    },
+    "TB 14 QD 43 LT 35": {
+      "area_total": 176.1,
+      "cliente": "IRACEMA DA SILVA NUNES"
+    },
+    "ESCRITORIO - MORAIS ENGENHARIA": {
+      "area_total": 0.0,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "TB 17 QD 48 LT 41": {
+      "area_total": 118.16,
+      "cliente": "LEONARDO NUNES DE CASTRO VIEIRA"
+    },
+    "FERROVIARIOS QD 01 LT 16": {
+      "area_total": 209.73,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "FERROVIARIOS QD 01 LT 17": {
+      "area_total": 209.73,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "TB 17 QD 48 LT 44": {
+      "area_total": 118.16,
+      "cliente": "ANTONIO LUCAS VIEIRA CABRAL MENEZES"
+    },
+    "TB 17 QD 48 LT 38": {
+      "area_total": 118.16,
+      "cliente": "IRACEMA DA SILVA NUNES"
+    },
+    "TB 17 QD 48 LT 40": {
+      "area_total": 118.16,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "TB 17 QD 48 LT 46": {
+      "area_total": 118.16,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "MORAIS ENGENHARIA - FATURAMENTO - SICOOB": {
+      "area_total": 0.0,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "TERRA BELA - FATURAMENTO - SICOOB": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "GERCINA BORGES TEIXEIRA QD 02 LT 02": {
+      "area_total": 131.24,
+      "cliente": "JULIO CESAR GOMES DE MORAIS FILHO"
+    },
+    "GERCINA BORGES TEIXEIRA QD 02 LT 03": {
+      "area_total": 131.24,
+      "cliente": "JOAO VITOR CABRAL DE MORAIS"
+    },
+    "TB 21 QD 46 LT 18": {
+      "area_total": 120.87,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "RPB 24 QD 26A LT 01": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 04": {
+      "area_total": 176.1,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 05": {
+      "area_total": 176.1,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 09": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 10": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 11": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 12": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 13": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 14": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 17": {
+      "area_total": 127.7,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 02": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 07": {
+      "area_total": 176.1,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 16": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 06": {
+      "area_total": 118.12,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 08": {
+      "area_total": 176.1,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 26A LT 15": {
+      "area_total": 118.16,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "CONDOMÍNIO RESERVA DOS IPÊS": {
+      "area_total": 0.0,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "MORAIS EMPREENDIMENTOS BURITIS - FATURAMENTO - SICOOB": {
+      "area_total": 0.0,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "TB 19 QD 50 LT 03": {
+      "area_total": 118.16,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 19 QD 50 LT 04": {
+      "area_total": 118.16,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "ESCRITORIO - MOURA DANTAS EMPREENDIMENTOS": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "MOURA EMPREENDIMENTOS - CONTA 49310-4 / BOX OBRAS": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "MOURA EMPREENDIMENTOS – BOX OBRAS": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "SALA 1212": {
+      "area_total": 0.0,
+      "cliente": "JOAO VITOR CABRAL DE MORAIS"
+    },
+    "MORAIS EMPREENDIMENTOS BURITIS - FATURAMENTO - INTER": {
+      "area_total": 0.0,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 28 LT 01": {
+      "area_total": 121.76,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "RPB 24 QD 29 LT 42": {
+      "area_total": 0.0,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "TB 21 QD 50 LT 32": {
+      "area_total": 118.16,
+      "cliente": "LEONARDO NUNES DE CASTRO VIEIRA"
+    },
+    "TB 21 QD 50 LT 26": {
+      "area_total": 118.16,
+      "cliente": "ISABELA CABRAL DE MORAIS"
+    },
+    "TB 21 QD 50 LT 39": {
+      "area_total": 118.16,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 21 QD 50 LT 40": {
+      "area_total": 118.16,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 21 QD 50 LT 25": {
+      "area_total": 118.16,
+      "cliente": "ALEXANDRE AURELIO COSTA"
+    },
+    "TB 21 QD 51 LT 32": {
+      "area_total": 173.5,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 21 QD 51 LT 33": {
+      "area_total": 118.16,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 21 QD 51 LT 34": {
+      "area_total": 118.16,
+      "cliente": "DARCY VIEIRA CABRAL"
+    },
+    "TB 21 QD 51 LT 35": {
+      "area_total": 118.16,
+      "cliente": "NEUSELY VIEIRA CABRAL"
+    },
+    "TB 21 QD 46 LT 26": {
+      "area_total": 173.5,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "REFORMA SALA 1212": {
+      "area_total": 0.0,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "CONDOMÍNIO RESERVA DOS JACARANDÁS": {
+      "area_total": 0.0,
+      "cliente": "MORAIS VALE DAS BRISAS SPE LTDA"
+    },
+    "ATALANTA QD 01 LT 21": {
+      "area_total": 116.3,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "ATALANTA QD 01 LT 22": {
+      "area_total": 116.3,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "ATALANTA QD 01 LT 23": {
+      "area_total": 116.3,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "ATALANTA QD 01 LT 24": {
+      "area_total": 130.8,
+      "cliente": "LEONARDO NUNES DE CASTRO VIEIRA"
+    },
+    "APOLO LYKEIOS QD 01 LT 33": {
+      "area_total": 116.3,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "APOLO LYKEIOS QD 01 LT 34": {
+      "area_total": 116.3,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "APOLO LYKEIOS QD 01 LT 35": {
+      "area_total": 116.3,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "APOLO LYKEIOS QD 01 LT 36": {
+      "area_total": 116.3,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "APOLO LYKEIOS QD 01 LT 37": {
+      "area_total": 116.3,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "PATHERNON QD 01 LT 26": {
+      "area_total": 135.86,
+      "cliente": "ELIZENE GONÇALVES FERREIRA"
+    },
+    "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B2": {
+      "area_total": 175.63,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "DONA MORENA QD 18 LT 8-11 B1": {
+      "area_total": 212.12,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "CASSIMIRO J MARQUES DE ABREU QD 18 LT 8-11 B3": {
+      "area_total": 224.17,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "ESCRITÓRIO - MORAIS EMPREENDIMENTOS BURITIS": {
+      "area_total": 0.0,
+      "cliente": "MORAIS EMPREENDIMENTOS BURITIS"
+    },
+    "OBRA TESTE": {
+      "area_total": 160.0,
+      "cliente": "JOÃO MARCOS VIEIRA CABRAL MENEZES"
+    },
+    "ESCRITORIO - IPANEMA MORAIS INCORPORACOES SPE LTDA": {
+      "area_total": 0.0,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "TB 18 QD 49 LT 37": {
+      "area_total": 176.0,
+      "cliente": "ROGERIO COSTA PINTO"
+    },
+    "TB 18 QD 49 LT 24": {
+      "area_total": 118.12,
+      "cliente": "CAIO MANABU DIAS YOSHIDA"
+    },
+    "TB 18 QD 49 LT 26": {
+      "area_total": 176.0,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "TB 18 QD 49 LT 29": {
+      "area_total": 118.12,
+      "cliente": "LEONARDO NUNES DE CASTRO VIEIRA"
+    },
+    "TB 18 QD 49 LT 27": {
+      "area_total": 118.12,
+      "cliente": "TIAGO DA SILVA ALEIXO"
+    },
+    "FATURAMENTOS NÃO ESPECIFICOS DE UMA OBRA": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "IPANEMA - FATURAMENTO - SICOOB": {
+      "area_total": 0.0,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "TB 18 QD 49 LT 32": {
+      "area_total": 118.12,
+      "cliente": "ROSILENE MARIA DOS SANTOS"
+    },
+    "TB 18 QD 49 LT 31": {
+      "area_total": 176.0,
+      "cliente": "DARTAGNAN VASCONCELOS"
+    },
+    "TB 18 QD 49 LT 30": {
+      "area_total": 176.1,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "SV 26 QD 40 LT 17": {
+      "area_total": 95.74,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "SV 13 QD 40 LT 18": {
+      "area_total": 78.99,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "SV 13 QD 40 LT 19": {
+      "area_total": 0.0,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "TB 18 QD 49 LT 35": {
+      "area_total": 118.12,
+      "cliente": "ROSIVAN CORREIA DE SOUSA"
+    },
+    "TB 01 QD 49 LT 40": {
+      "area_total": 176.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "VXZ ESCRITORIO": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "RUA 8 QD 09 LT 05 - GALPÃO": {
+      "area_total": 0.0,
+      "cliente": "VXZ CONSTRUTORA"
+    },
+    "POS OBRA MORAIS ENGENHARIA": {
+      "area_total": 0.0,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "RR 01 QD 01 LT 12": {
+      "area_total": 194.2,
+      "cliente": "JULIA MORAES OLIVEIRA"
+    },
+    "RR 03  QD 02 LT 20": {
+      "area_total": 194.22,
+      "cliente": "KARLLA FLEURY SOARES ARAUJO"
+    },
+    "RR 15 QD 02 LT 12": {
+      "area_total": 170.75,
+      "cliente": "MARCOS DE SIQUEIRA PINTO"
+    },
+    "TB 18 QD 49 LT 38": {
+      "area_total": 176.0,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "TB 16 QD 47 LT 40": {
+      "area_total": 176.1,
+      "cliente": "KARLLA FLEURY SOARES ARAUJO"
+    },
+    "TB 25 QD 47 LT 44": {
+      "area_total": 176.1,
+      "cliente": "IVANA MACHADO NUNES BENTO"
+    },
+    "SV 24 QD 40 LT 22": {
+      "area_total": 0.0,
+      "cliente": "LIVIAN VIEIRA CABRAL DE MORAIS"
+    },
+    "SV 24 QD 40 LT 21": {
+      "area_total": 95.74,
+      "cliente": "JULIO CESAR GOMES DE MORAIS FILHO"
+    },
+    "SV 13 QD 40 LT 20": {
+      "area_total": 78.99,
+      "cliente": "JOAO VITOR CABRAL DE MORAIS"
+    },
+    "POS OBRA JULIO CESAR": {
+      "area_total": 0.0,
+      "cliente": "JULIO CESAR GOMES DE MORAIS FILHO"
+    },
+    "POS OBRA JOÃO VITOR": {
+      "area_total": 0.0,
+      "cliente": "JOAO VITOR CABRAL DE MORAIS"
+    },
+    "OBRA TESTE DE COEFICIENTES (GERCINA LT 02)": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "ESCRITORIO - TERRA BELA MORAIS ENGENHARIA SPE LTDA": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "RR 02 QD 01 LT 29": {
+      "area_total": 194.22,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 21 QD 51 LT 23": {
+      "area_total": 176.1,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 21 QD 51 LT 26": {
+      "area_total": 176.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 19 QD 51 LT 14": {
+      "area_total": 176.0,
+      "cliente": "MATHEUS SAMPAIO MELLO"
+    },
+    "TB 19 QD 51 LT 13": {
+      "area_total": 176.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 15 QD 47 LT 18": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 17 QD 49 LT 10": {
+      "area_total": 176.1,
+      "cliente": "ROSILENE MARIA DOS SANTOS"
+    },
+    "TB 17 QD 49 LT 15": {
+      "area_total": 176.0,
+      "cliente": "ROSILENE MARIA DOS SANTOS"
+    },
+    "TB 21 QD 51 LT 29": {
+      "area_total": 176.1,
+      "cliente": "ROGERIO COSTA PINTO"
+    },
+    "TB 21 QD 51 LT 28": {
+      "area_total": 176.1,
+      "cliente": "ROSILENE MARIA DOS SANTOS"
+    },
+    "TESTE": {
+      "area_total": 0.0,
+      "cliente": "JULIO CESAR GOMES DE MORAIS FILHO"
+    },
+    "52 QD 81 LT 12": {
+      "area_total": 267.14,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "52 QD 81 LT 11": {
+      "area_total": 267.14,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "52 QD 81 LT 09": {
+      "area_total": 0.0,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "66 QD 81 LT 08": {
+      "area_total": 270.21,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "52 QD 81 LT 10": {
+      "area_total": 0.0,
+      "cliente": "IPANEMA MORAIS INCORPORACOES SPE LTDA"
+    },
+    "TB 21 QD 50 LT 34": {
+      "area_total": 118.68,
+      "cliente": "ROGERIO COSTA PINTO"
+    },
+    "TB 14 QD 42 LT 19": {
+      "area_total": 176.1,
+      "cliente": "LUIZ FERNANDO BARBOSA MOREIRA"
+    },
+    "TB 19 QD 51 LT 16": {
+      "area_total": 176.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 19 QD 51 LT 19": {
+      "area_total": 176.0,
+      "cliente": "ALEXANDRE AURELIO COSTA"
+    },
+    "TB 19 QD 51 LT 15": {
+      "area_total": 176.1,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "RR 01 QD 01 LT 09": {
+      "area_total": 194.22,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 19 QD 51 LT 17": {
+      "area_total": 176.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "REEMBOLSO - EMPRESA MORAIS ENGENHARIA": {
+      "area_total": 0.0,
+      "cliente": "MORAIS ENGENHARIA E CONSTRUCAO"
+    },
+    "ESCRITORIO - MORAIS INCORPORACOES SENADOR CANEDO SPE LTDA": {
+      "area_total": 0.0,
+      "cliente": "MORAIS INCORPORACOES SENADOR CANEDO SPE"
+    },
+    "ESCRITORIO - MORAIS PARTICIPAÇÕES IMOBILIARIAS SPE I LTDA": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "ESCRITORIO - MORAIS EMPREENDIMENTOS GOIANIA SPE I LTDA": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "A CLASSIFICAR - OBRA PENDENTE": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "RR 02 QD 01 LT 23": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "RR 01 QD 01 LT 08": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 19 QD 50 LT 07": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 19 QD 50 LT 09": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "TB 21 QD 51 LT 38": {
+      "area_total": 176.1,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 19 QD 51 LT 20": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 18 QD 49 LT 25": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 06 QD 39 LT 50": {
+      "area_total": 0.0,
+      "cliente": "TERRA BELA MORAIS ENGENHARIA SPE"
+    },
+    "TB 06 QD 39 LT 47": {
+      "area_total": 0.0,
+      "cliente": "MORAIS INCORPORACOES SENADOR CANEDO SPE"
+    },
+    "ADIANTAMENTO COMISSÃO - TERRA BELA": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "CONTROLE DE APORTES E DISTRIBUIÇÕES": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "ESCRITORIO - JOAO V PARTICIPACOES": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "ESCRITORIO - JULIO PARTICIPACOES": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "CHACARA GUAPO": {
+      "area_total": 0.0,
+      "cliente": "JOAO VITOR CABRAL DE MORAIS"
+    },
+    "MORAIS ENGENHARIA - FOLHA DE PAGAMENTO": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "TB 19 QD 51 LT 03": {
+      "area_total": 176.1,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "TB 19 QD 51 LT 02": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "TB 21 QD 51 LT 40": {
+      "area_total": 176.88,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "TB 19 QD 50 LT 14": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "TB 19 QD 50 LT 11": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "TB 19 QD 50 LT 16": {
+      "area_total": 0.0,
+      "cliente": "MORAIS INCORPORACOES SENADOR CANEDO SPE"
+    },
+    "TB 19 QD 50 LT 15": {
+      "area_total": 0.0,
+      "cliente": "MORAIS INCORPORACOES SENADOR CANEDO SPE"
+    },
+    "MACEIO QD 129 LT 71B": {
+      "area_total": 0.0,
+      "cliente": "MORAIS EMPREENDIMENTOS GOIÂNIA SPE I LTDA"
+    },
+    "MACEIO QD 129 LT 71A": {
+      "area_total": 0.0,
+      "cliente": "MORAIS EMPREENDIMENTOS GOIÂNIA SPE I LTDA"
+    },
+    "MACEIO QD 129 LT 71C": {
+      "area_total": 0.0,
+      "cliente": "MORAIS EMPREENDIMENTOS GOIÂNIA SPE I LTDA"
+    },
+    "RR 03 QD 03 LT 05": {
+      "area_total": 0.0,
+      "cliente": "MORAIS INCORPORACOES SENADOR CANEDO SPE"
+    },
+    "PARAISO": {
+      "area_total": 0.0,
+      "cliente": ""
+    },
+    "TB 17 QD 49 LT 14": {
+      "area_total": 176.0,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "TB 17 QD 49 LT 11": {
+      "area_total": 0.0,
+      "cliente": "MOURA DANTAS EMPREENDIMENTOS LTDA"
+    },
+    "FL 27 QD 38 LT 16": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "FL 27 QD 38 LT 15": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "FL 27 QD 37 LT 10": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "FL 27 QD 37 LT 09": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "FL 27 QD 37 LT 08": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "FL 27 QD 37 LT 07": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    },
+    "FL 27 QD 37 LT 17": {
+      "area_total": 0.0,
+      "cliente": "MORAIS PARTICIPACOES IMOBILIARIAS SPE"
+    }
+  },
   "faturamentos_erp": [
     {
       "cc": "RB 24 QD 06 LT 26",
