@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-08T15:49:07.237274+00:00",
+  "updated_at": "2026-09-08T19:01:01.147440+00:00",
   "documentos": [
     {
       "id": "3cfc5ab5-32d3-80bd-ac38-d1c3eddd1d47",
@@ -22328,7 +22328,7 @@
       "cpf": "709.789.151-35",
       "correspondente": "YURI",
       "corretor": "ELIEZER",
-      "imobiliaria": null,
+      "imobiliaria": "MERCADO",
       "avaliacao": 360000,
       "validade": "2026-06-21",
       "valor_na_mao": 270000,
