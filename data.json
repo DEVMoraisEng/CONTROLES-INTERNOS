@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-09T19:00:50.913632+00:00",
+  "updated_at": "2026-09-09T22:09:30.058054+00:00",
   "documentos": [
     {
       "id": "3cfc5ab5-32d3-80bd-ac38-d1c3eddd1d47",
@@ -2566,7 +2566,7 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "data_entrada_alvara": "2026-08-04",
@@ -2631,7 +2631,7 @@
       "art_feita_paga": "NÃO",
       "escritura_registrada": "NÃO",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
+      "contrato_mestre": "SIM",
       "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "NÃO",
       "data_entrada_alvara": null,
@@ -4646,8 +4646,8 @@
       "art_feita_paga": "SIM",
       "escritura_registrada": "SIM",
       "certidao_lote": "INEXISTE",
-      "contrato_mestre": "NÃO",
-      "contrato_investidor": "NÃO",
+      "contrato_mestre": "SIM",
+      "contrato_investidor": "SIM",
       "taxas_alvara_pagas": "SIM",
       "data_entrada_alvara": "2026-06-30",
       "mao_obra_despachante": "SIM",
