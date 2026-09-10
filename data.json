@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-10T19:00:57.959212+00:00",
+  "updated_at": "2026-09-10T22:11:06.373947+00:00",
   "documentos": [
     {
       "id": "3cfc5ab5-32d3-80bd-ac38-d1c3eddd1d47",
@@ -20026,7 +20026,7 @@
       "data_entrega": "2026-05-08",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-803a-8595-d3ff2fae0adf",
@@ -20290,7 +20290,7 @@
       "data_entrega": "2026-05-22",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-800e-b6d5-f8f734455c3f",
@@ -22490,7 +22490,7 @@
       "data_entrega": "2026-06-26",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-8035-84c8-e1a2b4682ea4",
