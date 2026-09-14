@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-09-14T11:00:58.910417+00:00",
+  "updated_at": "2026-09-14T15:01:01.277209+00:00",
   "documentos": [
     {
       "id": "3d8c5ab5-32d3-8089-bfe2-c00bb7c3e685",
-      "endereco": null,
+      "endereco": "PR 06 QD 07 LT 29",
       "ref": null,
       "setor": null,
       "cidade": "GOIÂNIA",
@@ -12745,7 +12745,7 @@
   "vendas": [
     {
       "id": "3d5c5ab5-32d3-80af-aff4-d5c12c5b504b",
-      "endereco": null,
+      "endereco": "TB 19 QD 51 LT 20",
       "casa": null,
       "ref": null,
       "cidade": null,
