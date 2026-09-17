@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-17T15:00:55.868997+00:00",
+  "updated_at": "2026-09-17T16:01:46.421348+00:00",
   "documentos": [
     {
       "id": "3d8c5ab5-32d3-8089-bfe2-c00bb7c3e685",
@@ -28959,7 +28959,7 @@
       "emitiu_rcpm": "SIM",
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-08-31",
-      "mandou_conformidade": "NÃO",
+      "mandou_conformidade": "SIM",
       "processo_conforme": "NÃO",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
@@ -29048,7 +29048,7 @@
       "mandou_docs_corresp": "SIM",
       "data_envio_docs": "2026-08-07",
       "mandou_conformidade": "SIM",
-      "processo_conforme": "NÃO",
+      "processo_conforme": "SIM",
       "assinou_contrato_banco": "NÃO",
       "data_assinatura": null,
       "recebeu_taxa_vistoria": "NÃO",
@@ -31614,10 +31614,10 @@
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
       "entregou_casa": "SIM",
-      "data_entrega": null,
+      "data_entrega": "2026-08-18",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-8007-bdf8-e2fe0b64abe4",
