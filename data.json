@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-18T11:00:51.734839+00:00",
+  "updated_at": "2026-09-18T15:00:49.997974+00:00",
   "documentos": [
     {
       "id": "3d8c5ab5-32d3-8089-bfe2-c00bb7c3e685",
@@ -9203,7 +9203,7 @@
       "mao_obra_despachante": "SIM",
       "projeto_aprovado": "SIM",
       "data_aprovacao_projeto": "2026-09-04",
-      "entrada_incorporacao": "NÃO",
+      "entrada_incorporacao": "SIM",
       "taxas_habite_se": "NÃO",
       "incorporacao_finalizada": "NÃO",
       "data_finalizacao_incorp": null,
@@ -9225,7 +9225,7 @@
       "docs_vistoria_scpo": "NÃO",
       "boletos_vistoria": "NÃO",
       "data_termino_obra": null,
-      "entrada_incorporacao_data": null,
+      "entrada_incorporacao_data": "2026-09-18",
       "n_casas": 2,
       "implantacao": "RUA",
       "erp_orcado": 279452.2205,
