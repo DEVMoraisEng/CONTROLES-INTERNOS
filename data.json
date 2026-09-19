@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-19T11:00:54.112304+00:00",
+  "updated_at": "2026-09-19T15:00:58.857348+00:00",
   "documentos": [
     {
       "id": "3d8c5ab5-32d3-8089-bfe2-c00bb7c3e685",
@@ -19640,16 +19640,16 @@
       "num_cadastro": 1530859,
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null,
+      "data_pre_vistoria": "2026-09-18",
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "data_entrega": "2026-09-18",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-80e6-8682-e8de7e7d60bf",
@@ -19733,11 +19733,11 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-09-18",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-8040-b8eb-d9f971e3bf20",
@@ -19865,11 +19865,11 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "NÃO",
-      "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "entregou_casa": "SIM",
+      "data_entrega": "2026-09-18",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-803c-a6d8-fa6c5fceeec3",
@@ -19992,7 +19992,7 @@
       "num_cadastro": 1530709,
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": "2026-09-10",
+      "data_pre_vistoria": "2026-09-21",
       "tem_manual": "SIM",
       "registro_pronto": "NÃO",
       "devolveu_banco": "NÃO",
@@ -20877,7 +20877,7 @@
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "SIM",
-      "entregou_casa": "NÃO",
+      "entregou_casa": "SIM",
       "data_entrega": "2026-09-11",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
@@ -31564,16 +31564,16 @@
       "num_cadastro": 36606904000011,
       "entrada_cartorio": "SIM",
       "agendou_pre_vistoria": "SIM",
-      "data_pre_vistoria": null,
+      "data_pre_vistoria": "2026-09-03",
       "tem_manual": "SIM",
       "registro_pronto": "SIM",
       "devolveu_banco": "SIM",
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "data_entrega": "2026-09-18",
       "gcap_gerado": "NÃO",
       "gcap_pago": "NÃO",
-      "pesquisa": "NÃO"
+      "pesquisa": "SIM"
     },
     {
       "id": "33cc5ab5-32d3-80bc-8628-c48a55cfe3a8",
