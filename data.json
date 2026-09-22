@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-22T11:00:58.608151+00:00",
+  "updated_at": "2026-09-22T15:00:52.102217+00:00",
   "documentos": [
     {
       "id": "3d8c5ab5-32d3-8089-bfe2-c00bb7c3e685",
@@ -12470,8 +12470,8 @@
       "issqn": "SIM",
       "cno_cnd": "SIM",
       "art_acrescimo": "SIM",
-      "certidoes_matricula": "NÃO",
-      "data_certidoes": null,
+      "certidoes_matricula": "SIM",
+      "data_certidoes": "2026-09-22",
       "docs_vistoria_scpo": "SIM",
       "boletos_vistoria": "NÃO",
       "data_termino_obra": "2026-07-29",
