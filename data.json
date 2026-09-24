@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-24T15:01:02.364703+00:00",
+  "updated_at": "2026-09-24T16:18:16.570644+00:00",
   "documentos": [
     {
       "id": "3e4c5ab5-32d3-8104-9537-c08dd5b28b28",
@@ -21094,10 +21094,10 @@
       "devolveu_banco": "NÃO",
       "recebeu": "NÃO",
       "entregou_casa": "NÃO",
-      "data_entrega": null,
+      "data_entrega": "2026-09-12",
       "gcap_gerado": "SIM",
       "gcap_pago": "SIM",
-      "pesquisa": "NÃO"
+      "pesquisa": "INEXISTE"
     },
     {
       "id": "33cc5ab5-32d3-804a-8dfd-d78402ca7d51",
